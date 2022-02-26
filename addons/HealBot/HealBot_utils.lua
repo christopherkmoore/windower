@@ -239,6 +239,8 @@ function processCommand(command,...)
         buffs.registerNewBuff(args, true)
     elseif S{'cancelbuff','nobuff'}:contains(command) then
         buffs.registerNewBuff(args, false)
+    elseif command == 'wipebuffs' then
+        utils.wipe_bufflist()
     elseif S{'bufflist','bl'}:contains(command) then
         if not validate(args, 1, 'Error: No argument specified for BuffList') then return end
         utils.apply_bufflist(args)
@@ -398,6 +400,10 @@ function utils.apply_bufflist(args)
     else
         atc('Error: Invalid argument specified for BuffList: '..bl_name)
     end
+end
+
+function utils.wipe_bufflist()
+    buffs.buffList = {}
 end
 
 
