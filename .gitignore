@@ -20,3 +20,4 @@ console.log
 
 addons/XIPivot/data/DATs/XI-View/ROM/119/57.DAT
 addons/XIPivot/data/DATs/XI-View/ROM/119/51.DAT
+plugins/*.dll
