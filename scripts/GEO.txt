@@ -1,0 +1,13 @@
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
+send Threechix gs c set autowsmode on; 
+send Threechix gs c autows Hexa Strike;
+
+send Threechix lua load autoMB;
+send Threechix amb on;
+
+
+singer on;
+// sing refresh Threechix on;
+// sing refresh Chixslave on;

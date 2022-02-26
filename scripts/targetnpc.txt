@@ -1,0 +1,3 @@
+send Twochix sat alltarget;
+wait 0.5;
+send @all setkey enter down; pause 0.1; send @all setkey enter up;

@@ -1,0 +1,616 @@
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+
+send Threechix /ma "Indi-Voidance" <me>;
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+send Threechix /ma "Indi-Poison" <me>; 
+send Onechix /ma "Valor Minuet" <me>;
+wait 6;
+
+

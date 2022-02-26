@@ -1,0 +1,3 @@
+send Chixslave gs c toggle AutoBuffMode;
+send Chixslave gs c toggle autowsmode; 
+send Chixslave gs c autows Heavy Swing;

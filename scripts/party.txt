@@ -1,0 +1,5 @@
+send Twochix input /pcmd add Chixslave;
+wait 2; 
+send Twochix input /pcmd add Onechix; 
+wait 2; 
+send Twochix input /pcmd add Threechix; 

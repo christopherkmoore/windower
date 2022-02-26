@@ -1,0 +1,5 @@
+lua load tradenpc
+tradenpc 1 "newton coffer key" Bountibox;
+
+wait 1 
+lua unload tradenpc

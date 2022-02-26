@@ -1,0 +1,10 @@
+setkey numpad7 down;wait 0.1;setkey numpad7 up
+
+wait 1; 
+
+send Twochix sat youtarget Onechix;
+send Onechix /ma "Carnage Elegy" <t>
+
+wait 2;
+
+// send Onechix /follow Twochix;

@@ -1,0 +1,1 @@
+send @all input /equip ring1 \"Facility Ring\"; wait 8; send @all input /item \"Facility Ring\" <me>;

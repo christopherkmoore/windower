@@ -1,0 +1,59 @@
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
+send Threechix gs c set autowsmode on; 
+send Threechix gs c autows Moonlight;
+
+send Threechix lua load autoMB;
+send Threechix amb on;
+
+
+send Chixslave hb on; 
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave gs c set AutoSubMode on;
+
+send Chixslave hb buff Chixslave Afflatus Solace;
+send Chixslave hb buff Chixslave Sublimation;
+
+send Chixslave hb buff Chixslave Protectra V;
+send Chixslave hb buff Chixslave Shellra V;
+send Chixslave hb buff Chixslave Boost-STR;
+send Chixslave hb buff Chixslave Auspice;
+send Chixslave hb buff Chixslave Aurorastorm;
+
+send Chixslave hb buff Chixslave Haste;
+send Chixslave hb buff Twochix Haste;
+send Chixslave hb buff Onechix Haste;
+
+send Chixslave hb assist Twochix;
+send Chixslave hb debuff on;
+send Chixslave hb debuff Dia II;
+send Chixslave hb debuff Paralyze;
+send Chixslave hb debuff Slow;
+send Chixslave hb debuff Addle;
+send Chixslave hb debuff Blind;
+
+send Chixslave hb buff Chixslave barfira;
+
+send Chixslave lua load automb;
+send Chixslave amb on;
+send Chixslave cast Holy II;
+
+
+
+send Onechix singer on;
+send Onechix singer debuffing on;
+
+send Onechix gs c set autowsmode on;
+send Onechix gs c set autoshadowmode off;
+send Onechix gs c autows Savage Blade;
+
+// send Onechix sing pianissimo on;
+// send Onechix sing ballad 1 Threechix;
+// send Onechix sing ballad 1 Chixslave;
+
+send Onechix sing march 1;
+send Onechix sing minuet 2;
+
+

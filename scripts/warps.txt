@@ -1,0 +1,6 @@
+exec bots_off;
+
+send @all input /equip ring1 \"Warp ring\"; wait 10; send @all input /item \"Warp ring\" <me>;
+
+wait 10;
+send Onechix /ma "Chocobo Mazurka" <me>;

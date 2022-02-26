@@ -1,0 +1,21 @@
+send Onechix singer off;
+send Onechix singer debuffing off;
+send Onechix sing pianissimo off;
+
+send Onechix gs c set autowsmode off; 
+send Onechix gs c set autoshadowmode off;
+
+send Threechix gs c set AutoBuffMode off;
+send Threechix gs c set autowsmode off; 
+send Threechix gs c autows Hexa Strike;
+send Threechix amb off;
+
+send Threechix sing refresh Threechix off;
+send Threechix sing refresh Chixslave off;
+
+send Threechix singer off;
+
+send Chixslave hb off; 
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave hb debuff on;
