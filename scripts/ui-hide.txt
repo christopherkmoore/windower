@@ -1,0 +1,4 @@
+gi hide;
+sb visible;
+unload ffxidb;
+lua unload equipviewer;

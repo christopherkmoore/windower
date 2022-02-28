@@ -239,7 +239,7 @@ function processCommand(command,...)
         buffs.registerNewBuff(args, true)
     elseif S{'cancelbuff','nobuff'}:contains(command) then
         buffs.registerNewBuff(args, false)
-    elseif command == 'wipebuffs' then
+    elseif command == 'wipebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         utils.wipe_bufflist()
     elseif S{'bufflist','bl'}:contains(command) then
         if not validate(args, 1, 'Error: No argument specified for BuffList') then return end

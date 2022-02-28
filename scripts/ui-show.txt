@@ -1,0 +1,4 @@
+gi show all;
+sb visible;
+load ffxidb;
+lua load equipviewer;

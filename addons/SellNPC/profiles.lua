@@ -175,7 +175,34 @@ profiles['mog'] = S{
     'crab shell',
     'gysahl greens',
     'zegham carrot',
-    
+    'purple polypore',
+    'giant stinger',
+    'sprig of chamomile',
+    'eastern ginger root',
+    'acorn',
+    'pebble',
+    'distilled water',
+
+    'flame geode',
+    'snow geode',
+    'breeze geode',
+    'soil geode',
+    'thunder geode',
+    'aqua geode',
+    'light geode',
+    'shadow geode',
+    'wijnruit',
+    'bay leaves',
+    'sweet william',
+    'kopparnickle ore',
+    'salted hare',
+
+    'ramuite',
+    'garudite',
+    'carbite',
+
+    'smilodon hide',
+    'durium sheet'
 
 }
 

@@ -277,7 +277,7 @@ function initialize()
     get.jp_mods.tenuto = jp.tenuto_effect *2
     get.jp_mods.marcato = jp.marcato_effect
     get.jp_mods.mult = jp.jp_spent >= 1200
-    get.base_songs = 2
+    get.base_songs = 3
     for _, bag in ipairs(equippable_bags) do
         local items = windower.ffxi.get_items(bag)
         if items.enabled then

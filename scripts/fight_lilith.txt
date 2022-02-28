@@ -1,12 +1,10 @@
-send Twochix /ja "Bestial Loyalty" <me>;
-wait 3;
-send Twochix /ma "Yoran-Oran (UC)" <me>;
-wait 4;
-send Twochix /ma "Koru-Moru" <me>;
-
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+
+wait 1;
+
 send Chixslave gs c set AutoSubMode on;
 
 send Chixslave hb buff Chixslave Afflatus Solace;
@@ -33,6 +31,11 @@ send Chixslave hb debuff Blind;
 send Chixslave hb buff Chixslave barfira;
 send Chixslave hb buff Chixslave baramnesra;
 
+send Twochix /ja "Bestial Loyalty" <me>;
+wait 3;
+send Twochix /ma "Yoran-Oran (UC)" <me>;
+wait 4;
+send Twochix /ma "Koru-Moru" <me>;
 
 send Onechix singer on;
 send Onechix singer debuffing on;

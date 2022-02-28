@@ -1,6 +1,8 @@
 hb on; 
 hb reset buffs;
 hb reset debuffs;
+hb wipebuffs;
+wait 0.5; 
 
 gs c set AutoSubMode on;
 
