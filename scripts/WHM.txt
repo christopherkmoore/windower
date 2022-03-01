@@ -21,8 +21,8 @@ hb buff Chixslave Aurorastorm;
 
 
 hb buff Chixslave Haste;
-hb buff Twochix Haste;
-hb buff Onechix Haste;
+//hb buff Twochix Haste;
+//hb buff Onechix Haste;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;

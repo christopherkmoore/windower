@@ -192,14 +192,15 @@ profiles['mog'] = S{
     'light geode',
     'shadow geode',
     'wijnruit',
-    'bay leaves',
+    'handful of bay leaves',
     'sweet william',
-    'kopparnickle ore',
+    'Kopparnickel Ore',
     'salted hare',
 
     'ramuite',
     'garudite',
     'carbite',
+    'leviatite',
 
     'smilodon hide',
     'durium sheet'
