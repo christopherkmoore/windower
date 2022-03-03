@@ -130,7 +130,7 @@ profiles['mog'] = S{
     'leviatite',
 
     'walnut log',
-
+    'carnation',
     'Rusty Bucket',
     'zebra eel',
     'gugru tuna',
@@ -203,7 +203,12 @@ profiles['mog'] = S{
     'leviatite',
 
     'smilodon hide',
-    'durium sheet'
+    'durium sheet',
+    'iron sand',
+    'hemlock',
+    'watermelon',
+    'butterpear',
+    'silver ore',
 
 }
 

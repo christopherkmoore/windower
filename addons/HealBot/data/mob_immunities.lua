@@ -1,7 +1,13 @@
 return {
+    ["Atabex"] = S{
+        2
+    },
     ["Bedrock Crag"] = S{
         4,
         194
+    },
+    ["Bozzeto Warder"] = S{
+        2
     },
     ["Bozzetto Necronura"] = S{
         7
@@ -33,9 +39,21 @@ return {
         194
     },
     ["Gnarled Rampart"] = S{
+        4,
+        13,
+        194
+    },
+    ["Icy Palisade"] = S{
         194
     },
     ["Knotted Root"] = S{
+        4,
+        13,
+        194
+    },
+    ["Monolithic Boulder"] = S{
+        4,
+        13,
         194
     },
     ["Sere Stump"] = S{

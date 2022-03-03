@@ -1,5 +1,7 @@
 <settings>
     <global>
+        <!--Time in minutes of inactivity until a disconnect, 0 to disable-->
+        <AutoDisconnectTime>0</AutoDisconnectTime>
         <!--If set to true will automatically determine the correct aspect ratio-->
         <AdjustAspectRatio>true</AdjustAspectRatio>
         <!--Explicitly define the aspect ratio (x:y resolution), will be ignored if "AdjustAspectRatio" is enabled-->
@@ -12,9 +14,6 @@
         <AnimationFrameRate>0</AnimationFrameRate>
         <!--If set to true will enable footstep effects (both display and sound)-->
         <FootstepEffects>true</FootstepEffects>
-        <!--Time in minutes of inactivity until a disconnect, 0 to disable-->
-        <AutoDisconnectTime>0</AutoDisconnectTime>
-        <MapDrawDistance>2</MapDrawDistance>
         <!--2 for 30 FPS, 1 for 60 FPS, 0 for uncapped frame rates-->
         <FrameRateDivisor>1</FrameRateDivisor>
     </global>

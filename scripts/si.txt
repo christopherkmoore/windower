@@ -1,1 +1,1 @@
-send @all input /ma "Sneak" <me>; wait 5; send @all input /ma "Invisible" <me>;
+send @all input /ma "Sneak" <me>; wait 6; send @all input /ma "Invisible" <me>;

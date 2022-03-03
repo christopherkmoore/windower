@@ -1,3 +1,5 @@
+send @others exec unfollow;
+wait 0.2;
 send @all /targetnpc;
-wait 0.5;
+wait 1;
 send @all setkey enter down; pause 0.1; send @all setkey enter up;

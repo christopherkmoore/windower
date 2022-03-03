@@ -1,0 +1,9 @@
+send Onechix /attack
+send Threechix /attack
+wait 1;
+
+sat alltarget;
+sat youattack Onechix;
+sat youattack Threechix;
+
+send Chixslave exec unfollow;
