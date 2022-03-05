@@ -9,3 +9,5 @@ send Onechix sing delay 2.5;
 send Onechix gs c set autowsmode on; 
 send Onechix gs c set autoshadowmode on;
 send Onechix gs c autows Savage Blade;
+
+//send Onechix sing ws on;

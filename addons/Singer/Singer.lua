@@ -150,16 +150,14 @@ local display_box = function()
     for k,v in ipairs(setting.debuffs) do
         str = str..'\n  %d:[%s]':format(k, v)
     end
---[[
+
+    str = str .. '\n Buffs:'
     for buff, targets in pairs(setting.buffs) do
         for target in targets:it() do
-            local targ = target
-            if members[targ] then
-                str = str .. '\n %s:[%s]':format(buff, targ)
-            end
+            str = str .. '\n   %s:[%s]':format(buff, target)
         end
     end
-]]
+
     str = str..'\n Dummy Songs:[%d]':format(setting.dummy:length())
 
     for k,v in pairs(settings.recast) do
@@ -202,7 +200,7 @@ function do_stuff()
                 targ and targ.valid_target and targ.is_npc and targ.hpp < settings.max_ws and targ.hpp > settings.min_ws and  
                 math.sqrt(targ.distance) <= 4) and (goal_tp == 1000 or not buffs['aftermath: lv.3']) then
 
-                windower.send_command('input /ws "Mordant Rime" <t>')
+                windower.send_command('input /ws "Savage Blade" <t>')
                 del = 4.2
                 return
             end

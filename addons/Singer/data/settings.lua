@@ -6,8 +6,8 @@ return {
         ["lizards"] = L{"Victory March","Valor Minuet IV","Valor Minuet V",},
     },
     ["buffs"] = T{
-        ["refresh"] = L{},
-        ["haste"] = L{},
+        ["refresh"] = L{"Chixslave"},
+        ["haste"] = L{"Twochix", "Onechix", "Chixslave", "Threechix"},
         ["aurorastorm"] = L{},
         ["firestorm"] = L{},
     },

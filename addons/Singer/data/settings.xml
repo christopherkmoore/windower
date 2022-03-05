@@ -4,10 +4,11 @@
         <actions>true</actions>
         <active>true</active>
         <aoe>
-            <p1>false</p1>
+            <p0>true</p0>
+            <p1>true</p1>
             <p2>true</p2>
             <p3>true</p3>
-            <p4>false</p4>
+            <p4>true</p4>
             <p5>true</p5>
             <party>true</party>
         </aoe>
@@ -52,7 +53,7 @@
         </box>
         <clarion>false</clarion>
         <debuffing>true</debuffing>
-        <delay>2.5</delay>
+        <delay>3</delay>
         <interval>0.1</interval>
         <marcato>Sentinel&apos;s Scherzo</marcato>
         <max_ws>99</max_ws>
@@ -61,8 +62,8 @@
         <pianissimo>true</pianissimo>
         <recast>
             <buff>
-                <max>10</max>
-                <min>5</min>
+                <max>15</max>
+                <min>12</min>
             </buff>
             <song>
                 <max>25</max>
@@ -75,7 +76,20 @@
     </global>
     <onechix>
         <actions>false</actions>
+        <box>
+            <pos>
+                <x>1326</x>
+                <y>49</y>
+            </pos>
+        </box>
         <debuffing>false</debuffing>
+        <delay>4</delay>
         <pianissimo>false</pianissimo>
+        <recast>
+            <buff>
+                <max>10</max>
+                <min>5</min>
+            </buff>
+        </recast>
     </onechix>
 </settings>
