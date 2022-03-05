@@ -53,8 +53,8 @@
         </box>
         <clarion>false</clarion>
         <debuffing>true</debuffing>
-        <delay>3</delay>
-        <interval>0.1</interval>
+        <delay>2.5</delay>
+        <interval>0.3</interval>
         <marcato>Sentinel&apos;s Scherzo</marcato>
         <max_ws>99</max_ws>
         <min_ws>20</min_ws>
@@ -84,6 +84,7 @@
         </box>
         <debuffing>false</debuffing>
         <delay>4</delay>
+        <interval>0.1</interval>
         <pianissimo>false</pianissimo>
         <recast>
             <buff>

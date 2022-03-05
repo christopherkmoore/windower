@@ -1,13 +1,7 @@
 send Onechix singer on;
 send Onechix singer debuffing on;
 
-send Onechix sing minuet 1;
-send Onechix sing march 2;
+send Onechix sing minuet 2;
+send Onechix sing march 1;
 
-send Onechix sing delay 2.5;
-
-send Onechix gs c set autowsmode on; 
-send Onechix gs c set autoshadowmode on;
-send Onechix gs c autows Savage Blade;
-
-//send Onechix sing ws on;
+send Onechix sing ws on;

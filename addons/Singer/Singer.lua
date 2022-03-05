@@ -182,7 +182,7 @@ function do_stuff()
         counter = 0
         del = settings.interval
         local play = windower.ffxi.get_player()
-
+        if not play or play.main_job ~= 'BRD' or play.sub_job == 'RDM' then buffRDM() end
         if not play or play.main_job ~= 'BRD' or (play.status ~= 1 and play.status ~= 0) then return end
         if is_moving or buffs.stun or buffs.sleep or buffs.charm or buffs.terror or buffs.petrification then return end
 
@@ -233,19 +233,6 @@ function do_stuff()
             end
         end
 
-        local recast = math.random(settings.recast.buff.min,settings.recast.buff.max)+math.random()
-        for key,targets in pairs(setting.buffs) do
-            local spell = get.spell(key)
-            for k,targ in ipairs(targets) do
-                if targ and spell and spell_recasts[spell.id] <= 0 and get.valid_ally(targ:lower(), 20) and play.vitals.mp >= 40 and
-                (not timers.buffs or not timers.buffs[spell.enl] or not timers.buffs[spell.enl][targ] or 
-                os.time() - timers.buffs[spell.enl][targ]+recast > 0) then
-                    cast.MA(spell.enl,targ)
-                    return
-                end
-            end
-        end
-
         if settings.debuffing then
             local targ = windower.ffxi.get_mob_by_target('bt')
 
@@ -269,6 +256,22 @@ function do_stuff()
     end
 end
 
+function buffRDM() 
+    local spell_recasts = windower.ffxi.get_spell_recasts()
+    local recast = 10
+    for key,targets in pairs(setting.buffs) do
+        local spell = get.spell(key)
+        for k,targ in ipairs(targets) do
+            if targ and spell and spell_recasts[spell.id] <= 0 and get.valid_ally(targ:lower(), 20) and
+            (not timers.buffs or not timers.buffs[spell.enl] or not timers.buffs[spell.enl][targ] or 
+            os.time() - timers.buffs[spell.enl][targ]+recast > 0) then
+                cast.MA(spell.enl,targ)
+                return
+            end
+        end
+    end
+end
+
 do_stuff:loop(settings.interval)
 
 start_categories = S{8,9}
@@ -287,13 +290,12 @@ windower.register_event('incoming chunk', function(id,data,modified,injected,blo
             -- Finish Casting
             del = settings.delay
             local spell = get.spell_by_id(act.param)
-
             if spell then
                 local targ = windower.ffxi.get_mob_by_id(act.targets[1].id)
-
                 if targ then
                     timers.buffs[spell.enl] = timers.buffs[spell.enl] or {}
                     timers.buffs[spell.enl][targ.name] = os.time() + spell.dur
+                    -- adds buff and buff duration on spell cast.
                 end
                 return
             end
