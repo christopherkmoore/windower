@@ -7,7 +7,12 @@ send Threechix gs c autows Hexa Strike;
 send Threechix lua load autoMB;
 send Threechix amb on;
 
+hb on
+hb ignore Threechix
+hb ignore Chixslave
+hb ignore Twochix
+hb ignore Onechix 
 
-singer on;
+send Threechix hb debuff Dia II;
 // sing refresh Threechix on;
 // sing refresh Chixslave on;

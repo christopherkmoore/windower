@@ -1,12 +1,12 @@
+send @all lua load healbot;
+send @all lua load singer;
+
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
 
-send Threechix hb on; 
-send Threechix hb reset buffs;
-send Threechix hb reset debuffs;
-send Threechix hb wipebuffs;
+send Threechix singer on;
 
 wait 1;
 
@@ -21,9 +21,9 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-//send Chixslave hb buff Chixslave Haste;
-//send Chixslave hb buff Twochix Haste;
-//send Chixslave hb buff Onechix Haste;
+send Chixslave hb buff Chixslave Haste;
+send Chixslave hb buff Twochix Haste;
+send Chixslave hb buff Onechix Haste;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
@@ -38,11 +38,12 @@ send Chixslave hb buff Chixslave baramnesra;
 
 send Twochix /ja "Bestial Loyalty" <me>;
 wait 3;
-send Twochix /ma "AAEV" <me>;
+send Twochix /ma "Yoran-Oran (UC)" <me>;
 wait 4;
 send Twochix /ma "Koru-Moru" <me>;
 
 send Onechix singer on;
+send Onechix singer playlist clear;
 send Onechix singer debuffing on;
 
 send Onechix gs c set autowsmode on;
@@ -53,8 +54,8 @@ send Onechix sing pianissimo on;
 send Onechix sing ballad 1 Threechix;
 send Onechix sing ballad 1 Chixslave;
 
-send Onechix sing march 2;
-send Onechix sing minuet 1;
+send Onechix sing march 1;
+send Onechix sing minuet 2;
 
 wait 10;
 
@@ -64,10 +65,5 @@ send Threechix gs c autogeo Fury;
 send Threechix gs c set autowsmode on; 
 send Threechix gs c autows Moonlight;
 
-//send Threechix hb buff Chixslave Refresh;
-//send Threechix hb buff Threechix Refresh;
-//send Threechix hb buff Chixslave Haste;
-//send Threechix hb buff Onechix Haste;
-//send Threechix hb buff Twochix Haste;
+send Threechix sing refresh threechix on;
 
-send Threechix hb watch Twochix;
