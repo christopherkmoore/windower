@@ -1,5 +1,5 @@
 sat alltarget;
 sat youattack Onechix;
-sat youattack Threechix;
 
+send Threechix exec unfollow;
 send Chixslave exec unfollow;

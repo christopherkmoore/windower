@@ -1,4 +1,9 @@
 return {
+    ["Amaranth Barrier"] = S{
+        4,
+        13,
+        194
+    },
     ["Atabex"] = S{
         2
     },

@@ -40,10 +40,6 @@ send Twochix /ma "Koru-Moru" <me>;
 send Onechix singer on;
 send Onechix singer debuffing on;
 
-send Onechix gs c set autowsmode on;
-send Onechix gs c set autoshadowmode off;
-send Onechix gs c autows Savage Blade;
-
 send Onechix sing pianissimo on;
 send Onechix sing ballad 1 Threechix;
 send Onechix sing ballad 1 Chixslave;

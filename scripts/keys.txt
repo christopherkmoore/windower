@@ -1,5 +1,6 @@
 lua load tradenpc
-tradenpc 1 "newton coffer key" Bountibox;
+
+tradenpc 1 "newton coffer key" Winrix;
 
 wait 1 
 lua unload tradenpc
