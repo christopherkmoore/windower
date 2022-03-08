@@ -71,6 +71,9 @@ end
 
 -- BST gearsets
 function init_gear_sets()
+
+    sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
+
     -- PRECAST SETS
     sets.precast.JA['Killer Instinct'] = { body = "Nukumi Gausape" } -- head="Ankusa Helm +1"
     sets.precast.JA['Bestial Loyalty'] = {
@@ -581,7 +584,7 @@ function init_gear_sets()
         left_ear = "Eabani Earring",
         right_ear = "Assuage Earring",
         left_ring = "Meghanada Ring",
-        right_ring = "Warp Ring",
+        right_ring = "Vocane Ring",
         back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%',}}
 
     }
@@ -650,7 +653,7 @@ function init_gear_sets()
         body = "Tot. Jackcoat +3",
         hands = "Ankusa Gloves +1",
         ring1 = "Defending Ring",
-        ring2 = "C. Palug Ring",
+        ring2 = "Vocane Ring",                                         -- ring2 = "C. Palug Ring",
         back = "Artio's Mantle",
         waist = "Isa Belt",
         legs = "Tali'ah Sera. +2",
@@ -671,7 +674,7 @@ function init_gear_sets()
         body = "Tali'ah Manteel +2",
         hands = "Tali'ah gages +1",
         ring1 = "Defending Ring",
-        ring2 = "C. Palug Ring",
+        ring2 = "Vocane Ring",                                                                --ring2 = "C. Palug Ring",
         waist = "Isa Belt",
         legs = "Tali'ah Sera. +2",
         feet = "Tali'ah Crackows +1",
@@ -878,7 +881,7 @@ function init_gear_sets()
         left_ear = "Eabani Earring",
         right_ear = "Assuage Earring",
         left_ring = "Petrov Ring",
-        right_ring = "Meghanada ring",
+        right_ring = "Vocane Ring",
         back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
     }
 
@@ -1005,7 +1008,7 @@ function init_gear_sets()
             augments = {'DMG:+15', 'Pet: Accuracy+20', 'Pet: Attack+20'}
         },
         ammo = "Livid Broth",
-        head = "Tali'ah Turban +2",  -- maybe change back to Tali'ah or Meg. +2
+        head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
         hands = "Emicho Gauntlets +1",
         legs = "Meg. Chausses +2",
@@ -1017,7 +1020,7 @@ function init_gear_sets()
         left_ear = "Eabani Earring",
         right_ear = "Brutal Earring",
         left_ring = "Petrov Ring",
-        right_ring = "Rajas Ring",
+        right_ring = "Vocane Ring",
         back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
     }
 
@@ -1070,7 +1073,7 @@ function init_gear_sets()
     -- }
 
     sets.engaged.DW.FullAcc = { 
-        head = "Meghanada Visor +2",  -- maybe change back to Tali'ah or Meg. +2
+        head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
         hands = "Meg. Gloves +2",
         legs = "Meg. Chausses +2",
@@ -1082,7 +1085,7 @@ function init_gear_sets()
         left_ear = "Eabani Earring",
         right_ear = "Assuage Earring",
         left_ring = "Petrov Ring",
-        right_ring = "Meghanada ring",
+        right_ring = "Vocane Ring",
         back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
     }
 

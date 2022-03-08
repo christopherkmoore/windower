@@ -37,6 +37,9 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+
+	sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
+
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -59,7 +62,7 @@ function init_gear_sets()
 	-- Fast cast sets for spells
     sets.precast.FC = {main="Ababinili +1",sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
-		body="Inyanga Jubbah +2",hands="Gende. Gages +1",ring1="Kishar Ring",ring2="Lebeche Ring",
+		body="Inyanga Jubbah +2",hands="Gende. Gages +1",ring1="Kishar Ring", ring2="Weatherspoon Ring",                                           -- ring2="Lebeche Ring",
 		back="Perimede Cape",waist="Embla Sash",legs="Aya. Cosciales +2",feet="Regal Pumps +1"}
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {waist="Siegel Sash"})
@@ -325,12 +328,12 @@ function init_gear_sets()
 
 	sets.midcast['Enfeebling Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
-		body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Kishar Ring",ring2="Stikini Ring +1",
+		body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Kishar Ring",ring2="Weatherspoon Ring",
 		back="Aurist's Cape +1",waist="Luminary Sash",legs="Chironic Hose",feet="Uk'uxkaj Boots"}
 
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
-		body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Metamor. Ring +1",ring2="Stikini Ring +1",
+		body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Metamor. Ring +1",ring2="Weatherspoon Ring",
 		back="Aurist's Cape +1",waist="Luminary Sash",legs="Chironic Hose",feet="Theo. Duckbills +3"}
 		
 	sets.midcast.Dia = set_combine(sets.midcast['Enfeebling Magic'], sets.TreasureHunter)

@@ -43,6 +43,9 @@ end
 
 function init_gear_sets()
 	
+
+	sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
+
 	--------------------------------------
 	-- Precast sets
 	--------------------------------------
@@ -64,7 +67,7 @@ function init_gear_sets()
 
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Psycloth Tiara",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
-		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Lebeche Ring",
+		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                                                          --ring2="Lebeche Ring",
 		back="Perimede Cape",waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
 
 	sets.precast.FC.Geomancy = set_combine(sets.precast.FC, {range="Dunna",ammo=empty})
@@ -137,7 +140,7 @@ function init_gear_sets()
 	sets.midcast.StatusRemoval = set_combine(sets.midcast.FastRecast, {main=gear.grioavolr_fc_staff,sub="Clemency Grip"})
 	
     sets.midcast['Elemental Magic'] = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
-        head="Mallquis Chapeau +1",neck="Saevus Pendant +1",ear1="Crematio Earring",ear2="Friomisi Earring",
+        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Crematio Earring",ear2="Friomisi Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace
         body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri ring",
         back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
 
@@ -152,7 +155,7 @@ function init_gear_sets()
         back="Swith Cape +1",waist="Witful Belt",legs="Assid. Pants +1",feet="Regal Pumps"}
 		
     sets.midcast['Elemental Magic'].Fodder = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
-        head="Mallquis Chapeau +1",neck="Saevus Pendant +1",ear1="Crematio Earring",ear2="Friomisi Earring",
+        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Crematio Earring",ear2="Friomisi Earring",
         body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
         back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
 		
@@ -167,7 +170,7 @@ function init_gear_sets()
         back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
 
 	sets.midcast['Elemental Magic'].HighTierNuke.Fodder = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Mallquis Chapeau +1",neck="Saevus Pendant +1",ear1="Regal Earring",ear2="Malignance Earring",
+        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Regal Earring",ear2="Malignance Earring",
         body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
         back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
 		
@@ -257,7 +260,7 @@ function init_gear_sets()
 	-- Resting sets
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",
 		head="Befouled Crown",neck="Chrys. Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Mallquis saio +2",hands=gear.merlinic_refresh_hands,ring1="Defending Ring",ring2="Dark Ring",
+		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",legs="Assid. Pants +1",feet="Mallquis Clogs +2"}
 
 	-- Idle sets
@@ -359,8 +362,8 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Seidr Cotehardie"}
 	
 	-- Gear for Magic Burst mode.
-    sets.MagicBurst = {main=gear.grioavolr_MB,sub="Alber Strap",head="Ea Hat",neck="Mizu. Kubikazari",
-	body="Ea Houppelande",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches"}
+    sets.MagicBurst = set_combine(sets.midcast['Elemental Magic'], {main=gear.grioavolr_MB,sub="Alber Strap",head="Ea Hat",neck="Mizu. Kubikazari",
+	body="Ea Houppelande",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches"})
 
 	sets.ResistantMagicBurst = {main=gear.grioavolr_MB,sub="Enki Strap",
 	head="Ea Hat",neck="Mizu. Kubikazari",body="Ea Houppelande",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches"}

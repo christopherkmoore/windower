@@ -26,7 +26,10 @@ function user_job_setup()
 end
 
 function init_gear_sets()
--- commented out because something in here was causing the head to be set to empty (couldn't equip anything). can remake as I get gear. CKM
+
+	sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
+
+	-- commented out because something in here was causing the head to be set to empty (couldn't equip anything). can remake as I get gear. CKM
 	--------------------------------------
 	-- Start defining the sets
 	--------------------------------------
@@ -46,7 +49,7 @@ function init_gear_sets()
 	-- Fast cast sets for spells
 	sets.precast.FC = {main="Kali",sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
-		body="Inyanga Jubbah",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Lebeche Ring",
+		body="Inyanga Jubbah",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                              --ring2="Lebeche Ring",  
 		back="Intarabus's Cape",waist="Witful Belt",legs="Aya. Cosciales +2",feet="Gende. Galosh. +1"}
 
 	sets.precast.FC.Cure = set_combine(sets.precast.FC, {feet="Vanya Clogs"})
@@ -56,7 +59,7 @@ function init_gear_sets()
 	
 	sets.precast.FC.BardSong = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Eminent Flute",ammo=empty,
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
-		body="Inyanga Jubbah",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Lebeche Ring",
+		body="Inyanga Jubbah",hands="Leyline Gloves",ring1="Kishar Ring", ring2="Weatherspoon Ring",                             -- ring2="Lebeche Ring",
 		back="Intarabus's Cape",waist="Witful Belt",legs="Aya. Cosciales +2",feet="Telchine Pigaches"}
 
 	sets.precast.FC.SongDebuff = set_combine(sets.precast.FC.BardSong,{range="Marsyas"})
@@ -134,7 +137,7 @@ function init_gear_sets()
 	-- For song buffs (duration and AF3 set bonus)
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Eminent Flute",ammo=empty,
 		head="Fili Calot +1",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
-		body="Fili Hongreline",hands="Fili Manchettes",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
+		body="Fili Hongreline",hands="Fili Manchettes",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Brioso Slippers +1"}
 		
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
@@ -142,7 +145,7 @@ function init_gear_sets()
 	-- For song defbuffs (duration primary, accuracy secondary)
 	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Eminent Flute",ammo=empty,
 		head="Inyanga Tiara",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
-		body="Ayanmo Corazza +2",hands="Inyan. Dastanas +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
+		body="Ayanmo Corazza +2",hands="Inyan. Dastanas +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Inyanga Crackows +1"}
 		
 	sets.midcast.SongDebuff.DW = {main="Kali",sub="Kali"}
@@ -150,7 +153,7 @@ function init_gear_sets()
 	-- For song defbuffs (accuracy primary, duration secondary)
 	sets.midcast.SongDebuff.Resistant = {main="Daybreak",sub="Ammurapi Shield",range="Blurred Harp +1",ammo=empty,
 		head="Inyanga Tiara +1",neck="Moonbow Whistle",ear1="Regal Earring",ear2="Digni. Earring",
-		body="Inyanga Jubbah",hands="Inyan. Dastanas +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
+		body="Inyanga Jubbah",hands="Inyan. Dastanas +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                    --ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Acuity Belt +1",legs="Inyanga Shalwar +2",feet="Aya. Gambieras +2"}
 
 	-- Song-specific recast reduction
