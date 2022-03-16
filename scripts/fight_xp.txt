@@ -1,7 +1,7 @@
-send @all lua load healbot;
+//send @all lua load healbot;
 send Threechix lua load singer;
 
-//send @all exec cps;
+send @all exec cps;
 //wait 15;
 
 send Chixslave hb on; 
@@ -22,10 +22,6 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-send Chixslave hb buff Chixslave Haste;
-send Chixslave hb buff Twochix Haste;
-send Chixslave hb buff Onechix Haste;
-
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
 send Chixslave hb debuff Dia II;
@@ -38,19 +34,19 @@ send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
 
 send Onechix singer on;
-send Onechix singer debuffing on;
-send Onechix singer playlist lizards;
+send Onechix pianissimo off;
+send Onechix debuffing off;
+send Onechix singer minuet 2;
+send Onechix singer march 1; 
 
 send Onechix sing ws on;
-send Onechix sing pianissimo on;
-
-wait 10;
 
 send Threechix singer on;
-
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
-send Threechix gs c set autowsmode on; 
-send Threechix gs c autows Moonlight;
+
+send Threechix lua load automb;
+send Threechix amb on;
+send Threechix amb tier 2;
 

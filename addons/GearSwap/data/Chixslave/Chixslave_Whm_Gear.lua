@@ -374,7 +374,7 @@ function init_gear_sets()
 		ring2="Stikini Ring +1",
 		back="Moonlight Cape",
 		waist="Shinjutsu-no-Obi",
-		legs="Assid. Pants +1",
+		legs="Inyanga Shalwar +2",
 		feet="Aya. Gambieras +1"
 	}
 

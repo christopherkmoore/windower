@@ -284,9 +284,9 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {ammo="Aurgelmir Orb +1",
-        head="Malignance Chapeau",neck="Iskur Gorget",ear1="Suppanomimi",ear2="Sherida Earring",
+        head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Eabani Earring",ear2="Sherida Earring",                   --neck="Iskur Gorget"
         body="Adhemar Jacket +1",hands="Adhemar Wrist. +1",ring1="Gere Ring",ring2="Vocane Ring",
-        back=gear.da_jse_back,waist="Windbuffet Belt +1",legs="Samnuha Tights",feet=gear.herculean_ta_feet}
+        back=gear.da_jse_back,waist="Sailfi Belt +1",legs="Samnuha Tights",feet=gear.herculean_ta_feet}             --waist="Windbuffet Belt +1"
 		
     sets.engaged.SomeAcc = {ammo="Aurgelmir Orb +1",
         head="Malignance Chapeau",neck="Combatant's Torque",ear1="Brutal Earring",ear2="Sherida Earring",

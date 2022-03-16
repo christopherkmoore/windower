@@ -57,7 +57,7 @@
         <interval>0.3</interval>
         <marcato>Sentinel&apos;s Scherzo</marcato>
         <max_ws>99</max_ws>
-        <min_ws>20</min_ws>
+        <min_ws>0</min_ws>
         <nightingale>true</nightingale>
         <pianissimo>true</pianissimo>
         <recast>
@@ -73,6 +73,7 @@
         <soul_voice>false</soul_voice>
         <timers>true</timers>
         <troubadour>true</troubadour>
+        <use_ws>true</use_ws>
     </global>
     <onechix>
         <actions>false</actions>
@@ -81,6 +82,11 @@
                 <x>1326</x>
                 <y>49</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <debuffing>false</debuffing>
         <delay>4</delay>

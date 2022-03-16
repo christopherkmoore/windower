@@ -573,9 +573,9 @@ function init_gear_sets()
             augments = {'DMG:+15', 'Pet: Accuracy+20', 'Pet: Attack+20'}
         },
         ammo = "Livid Broth",
-        head = "Meghanada Visor +2",
+        head = "Malignance Chapeau",
         body = "Meg. Cuirie +2",
-        hands = "Meg. Gloves +2",
+        hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
         neck = "Sanctity Necklace",
@@ -584,7 +584,7 @@ function init_gear_sets()
         left_ear = "Eabani Earring",
         right_ear = "Assuage Earring",
         left_ring = "Meghanada Ring",
-        right_ring = "Vocane Ring",
+        right_ring = "Defending Ring",
         back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%',}}
 
     }
@@ -672,7 +672,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Handler's Earring +1",
         body = "Tali'ah Manteel +2",
-        hands = "Tali'ah gages +1",
+        hands = "Tali'ah gages +2",
         ring1 = "Defending Ring",
         ring2 = "Vocane Ring",                                                                --ring2 = "C. Palug Ring",
         waist = "Isa Belt",
@@ -869,9 +869,9 @@ function init_gear_sets()
     -- }
 
     sets.engaged.FullAcc = {
-        head = "Meghanada Visor +2",  -- maybe change back to Tali'ah or Meg. +2
+        head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
-        hands = "Meg. Gloves +2",
+        hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
         -- feet = "Meg. Jam. +2",
@@ -1010,10 +1010,10 @@ function init_gear_sets()
         ammo = "Livid Broth",
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
-        hands = "Emicho Gauntlets +1",
+        hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
-        feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
-        -- feet = "Meg. Jam. +2",
+        -- feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
+        feet = "Meg. Jam. +2",
         neck = "Sanctity Necklace",
         -- waist = "Klouskap Sash",
         waist = "Sailfi Belt +1",
@@ -1075,7 +1075,7 @@ function init_gear_sets()
     sets.engaged.DW.FullAcc = { 
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
-        hands = "Meg. Gloves +2",
+        hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
         -- feet = "Meg. Jam. +2",

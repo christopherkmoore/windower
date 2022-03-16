@@ -1,4 +1,7 @@
 return {
+    ["Aggressor Antlion"] = S{
+        194
+    },
     ["Amaranth Barrier"] = S{
         4,
         13,
@@ -42,6 +45,9 @@ return {
     ["Dragua"] = S{
         13,
         194
+    },
+    ["Gaizkin"] = S{
+        4
     },
     ["Gnarled Rampart"] = S{
         4,

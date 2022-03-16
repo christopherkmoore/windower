@@ -187,18 +187,18 @@ function do_stuff()
         if is_moving or buffs.stun or buffs.sleep or buffs.charm or buffs.terror or buffs.petrification then return end
 
         local JA_WS_lock = buffs.amnesia or buffs.impairment
-
-        if use_ws and not JA_WS_lock and play.status == 1 then
+        if settings.use_ws and not JA_WS_lock and play.status == 1 then
             local targ = windower.ffxi.get_mob_by_target('t')
-            local goal_tp
-            if not times['aftermath: lv.3'] or os.time() - times['aftermath: lv.3'] <= 5 then
-                goal_tp = 3000
-            else
-                goal_tp = 1000
-            end
+            local goal_tp = 1000
+
+            -- if not times['aftermath: lv.3'] or os.time() - times['aftermath: lv.3'] <= 5 then
+            --     goal_tp = 3000
+            -- else
+            --     goal_tp = 1000
+            -- end
             if (get.eye_sight(windower.ffxi.get_mob_by_target('me'),targ) and play.vitals.tp >= goal_tp and 
                 targ and targ.valid_target and targ.is_npc and targ.hpp < settings.max_ws and targ.hpp > settings.min_ws and  
-                math.sqrt(targ.distance) <= 4) and (goal_tp == 1000 or not buffs['aftermath: lv.3']) then
+                math.sqrt(targ.distance) <= 4) and goal_tp == 1000 then
 
                 windower.send_command('input /ws "Savage Blade" <t>')
                 del = 4.2
@@ -642,17 +642,12 @@ windower.register_event('addon command', function(...)
         settings.recast[commands[2]].min = tonumber(commands[3]) or settings.recast[commands[2]].min
         settings.recast[commands[2]].max = tonumber(commands[4]) or settings.recast[commands[2]].max
         addon_message('%s recast set to min: %s max: %s':format(commands[2], settings.recast[commands[2]].min, settings.recast[commands[2]].max))
-    elseif commands[1] == 'ws' and commands[3] then
-        if commands[3] == 'on' then
+    elseif commands[1] == 'ws' and commands[2] then
+        if commands[2] == 'on' then
             settings.use_ws = true
-        elseif commands[3] == 'off' then
+            addon_message('enabled autows')
+        elseif commands[2] == 'off' then
             settings.use_ws = false
-        elseif tonumber(commands[3]) then
-            if commands[2] == '<' then
-                settings.max_ws = tonumber(commands[3])
-            elseif commands[2] == '>' then
-                settings.min_ws = tonumber(commands[3])
-            end
         end
    elseif commands[1]:startswith('dummy') then
         local ind = tonumber(commands[1]:sub(6))

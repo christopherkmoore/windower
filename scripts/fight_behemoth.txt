@@ -1,0 +1,63 @@
+send Chixslave hb on; 
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+
+wait 1;
+
+send Chixslave gs c set AutoSubMode on;
+
+send Chixslave hb buff Chixslave Afflatus Solace;
+send Chixslave hb buff Chixslave Sublimation;
+
+send Chixslave hb buff Chixslave Protectra V;
+send Chixslave hb buff Chixslave Shellra V;
+send Chixslave hb buff Chixslave Boost-STR;
+send Chixslave hb buff Chixslave Auspice;
+send Chixslave hb buff Chixslave Aurorastorm;
+
+send Chixslave hb buff Chixslave Haste;
+send Chixslave hb buff Twochix Haste;
+send Chixslave hb buff Onechix Haste;
+
+send Chixslave hb assist Twochix;
+send Chixslave hb debuff on;
+send Chixslave hb debuff Dia II;
+send Chixslave hb debuff Paralyze;
+send Chixslave hb debuff Slow;
+send Chixslave hb debuff Addle;
+send Chixslave hb debuff Blind;
+
+send Chixslave hb buff Chixslave barthundra;
+send Chixslave hb buff Chixslave baramnesra;
+
+send Twochix /ma "Yoran-Oran (UC)" <me>;
+wait 4;
+send Twochix /ma "Koru-Moru" <me>;
+
+send Onechix singer on;
+send Onechix singer debuffing on;
+
+send Onechix sing pianissimo on;
+send Onechix sing ballad 1 Threechix;
+send Onechix sing ballad 1 Chixslave;
+
+send Onechix sing madrigal 2;
+send Onechix sing march 1;
+
+wait 10;
+
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c autoindi Fend;
+send Threechix gs c autogeo Torpor;
+send Threechix gs c set autowsmode on; 
+send Threechix gs c autows Moonlight;
+
+send Threechix lua load autoMB;
+send Threechix amb on;
+send Threechix amb tier 4;
+
+// Sov Behe
+// min 1450 acc
+// eat sushi
+

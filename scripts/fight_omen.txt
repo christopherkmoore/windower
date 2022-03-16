@@ -1,0 +1,34 @@
+send Chixslave hb on; 
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+
+send Onechix singer playlist clear;
+wait 2;
+
+send Threechix singer on;
+send Onechix singer on;
+
+send Chixslave gs c set AutoSubMode on;
+send Chixslave hb buff Chixslave Afflatus Solace;
+send Chixslave hb buff Chixslave Sublimation;
+
+send Chixslave hb buff Chixslave Protectra V;
+send Chixslave hb buff Chixslave Shellra V;
+send Chixslave hb buff Chixslave Boost-STR;
+send Chixslave hb buff Chixslave Auspice;
+send Chixslave hb buff Chixslave Aurorastorm;
+
+send Chixslave hb buff Chixslave barfira;
+send Chixslave hb buff Chixslave baramnesra;
+
+send Chixslave hb assist Twochix;
+send Chixslave hb debuff on;
+send Chixslave hb debuff Dia II;
+
+send Onechix sing march 2;
+send Onechix sing minuet 1;
+
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c autoindi Refresh;
+
