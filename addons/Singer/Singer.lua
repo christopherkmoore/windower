@@ -44,7 +44,7 @@ setting = T{
     },
     debuffs = L{},
     debuffs = L{"Carnage Elegy","Pining Nocturne",},
-    dummy = L{"Knight's Minne","Knight's Minne II",},
+    dummy = L{},
     songs = L{"Advancing March","Victory March","Blade Madrigal","Sword Madrigal","Valor Minuet V",},
     song = {},
     playlist = T{

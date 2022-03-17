@@ -59,7 +59,7 @@
         <max_ws>99</max_ws>
         <min_ws>0</min_ws>
         <nightingale>true</nightingale>
-        <pianissimo>true</pianissimo>
+        <pianissimo>false</pianissimo>
         <recast>
             <buff>
                 <max>15</max>
@@ -82,16 +82,10 @@
                 <x>1326</x>
                 <y>49</y>
             </pos>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
         </box>
-        <debuffing>false</debuffing>
         <delay>4</delay>
         <interval>0.1</interval>
-        <pianissimo>false</pianissimo>
+        <min_ws>20</min_ws>
         <recast>
             <buff>
                 <max>10</max>
@@ -99,4 +93,17 @@
             </buff>
         </recast>
     </onechix>
+    <threechix>
+        <actions>false</actions>
+        <box>
+            <pos>
+                <x>1326</x>
+            </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
+        </box>
+    </threechix>
 </settings>

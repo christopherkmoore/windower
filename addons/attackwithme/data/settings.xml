@@ -1,0 +1,9 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <master>Twochix</master>
+        <slaves>Onechix</slaves>
+        <slaves_close_in>true</slaves_close_in>
+        <slaves_close_in_distance>2.6</slaves_close_in_distance>
+    </global>
+</settings>

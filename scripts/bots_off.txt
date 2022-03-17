@@ -1,6 +1,10 @@
 send Onechix singer off;
 send Onechix singer debuffing off;
 send Onechix sing pianissimo off;
+send Onechix sing nightingale off;
+send Onechix sing troubadour off; 
+send Onechix sing soul_voice off,
+send Onechix sing clarion off;
 
 send Onechix gs c set autowsmode off; 
 send Onechix gs c set autoshadowmode off;
@@ -12,6 +16,10 @@ send Threechix amb off;
 
 send Threechix sing refresh Threechix off;
 send Threechix sing refresh Chixslave off;
+send Threechix sing haste Twochix off;
+send Threechix sing haste Onechix off;
+send Threechix sing haste Chixslave off;
+send Threechix sing haste Threechix off;
 
 send Threechix singer off;
 
@@ -19,3 +27,4 @@ send Chixslave hb off;
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb debuff on;
+send Chixslave hb wipebuffs;

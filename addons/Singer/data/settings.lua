@@ -1,5 +1,5 @@
 return {
-    ["dummy"] = L{"Knight's Minne",},
+    ["dummy"] = L{},
     ["debuffs"] = L{"Carnage Elegy","Foe Requiem VII",},
     ["playlist"] = T{
         ["clear"] = L{},

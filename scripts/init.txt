@@ -87,7 +87,9 @@ lua load Skillchains
 lua load findall
 lua load SellNPC
 lua load superwarp
+// removed SendAllTarget to try attackwithme
 lua load SendAllTarget
+lua load attackwithme
 lua load autojoin
 lua load sparks
 lua load healbot
@@ -101,6 +103,7 @@ bind ^m send @all exec mounts
 bind ^d send @all exec dismounts
 bind ^a sat allattack
 bind ^w exec warps
+bind ^t exec targetnpc
 
 block_mouseinput 1;
 

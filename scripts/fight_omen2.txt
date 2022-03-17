@@ -32,11 +32,19 @@ send Chixslave hb debuff Slow;
 send Chixslave hb debuff Addle;
 send Chixslave hb debuff Blind;
 
+
+send Onechix sing nightingale on;
+send Onechix sing troubadour on; 
+send Onechix sing soul_voice on,
+send Onechix sing clarion on;
+
 send Onechix sing reset;
 send Onechix singer debuffing on;
 send Onechix sing march 1;
 send Onechix sing scherzo 1;
 send Onechix sing madrigal 1;
+
+
 send Onechix sing pianissimo on;
 send Onechix sing ballad 1 Threechix;
 send Onechix sing ballad 1 Chixslave;

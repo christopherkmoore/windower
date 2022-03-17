@@ -17,4 +17,8 @@
         <!--2 for 30 FPS, 1 for 60 FPS, 0 for uncapped frame rates-->
         <FrameRateDivisor>1</FrameRateDivisor>
     </global>
+    <Onechix>
+        <!--If set to true will automatically lock onto a target after engaging-->
+        <BattleAutoTarget>false</BattleAutoTarget>
+    </Onechix>
 </settings>

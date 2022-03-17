@@ -57,7 +57,7 @@ function init_gear_sets()
 	sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {waist="Siegel Sash"})
 	sets.precast.FC.Dispelga = set_combine(sets.precast.FC, {main="Daybreak",sub="Genmei Shield"})
 	
-	sets.precast.FC.BardSong = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Eminent Flute",ammo=empty,
+	sets.precast.FC.BardSong = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Blurred Harp +1",ammo=empty,
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah",hands="Leyline Gloves",ring1="Kishar Ring", ring2="Weatherspoon Ring",                             -- ring2="Lebeche Ring",
 		back="Intarabus's Cape",waist="Witful Belt",legs="Aya. Cosciales +2",feet="Telchine Pigaches"}
@@ -135,7 +135,7 @@ function init_gear_sets()
 	sets.midcast["Knight's Minne II"] = set_combine(sets.precast.FC.BardSong, sets.precast.DaurdablaDummy)
 
 	-- For song buffs (duration and AF3 set bonus)
-	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Eminent Flute",ammo=empty,
+	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Blurred Harp +1",ammo=empty,
 		head="Fili Calot +1",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline",hands="Fili Manchettes",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Brioso Slippers +1"}
@@ -143,7 +143,7 @@ function init_gear_sets()
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
 
 	-- For song defbuffs (duration primary, accuracy secondary)
-	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Eminent Flute",ammo=empty,
+	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Blurred Harp +1",ammo=empty,
 		head="Inyanga Tiara",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Ayanmo Corazza +2",hands="Inyan. Dastanas +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Inyanga Crackows +1"}

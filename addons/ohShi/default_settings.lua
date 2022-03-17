@@ -41,8 +41,8 @@ defaults.bg.red = 0
 defaults.bg.blue = 0
 defaults.bg.green = 0
 defaults.pos = {}
-defaults.pos.x = 400
-defaults.pos.y = 300
+defaults.pos.x = 862
+defaults.pos.y = 534
 defaults.text = {}
 defaults.text.red = 255
 defaults.text.green = 255
@@ -58,8 +58,14 @@ defaults.moblist['legion'] = S{"Veiled", "Lofty", "Soaring", "Mired", "Paramount
 defaults.moblist['meebles'] = S{"Goldwing", "Silagilith", "Surtr", "Dreyruk", "Samursk", "Umagrhk", "Izyx", "Grannus", "Svaha", "Melisseus"}
 defaults.moblist['other'] = S{"Tiamat", "Khimaira", "Khrysokhimaira", "Cerberus", "Dvergr", "Bloodthirsty", "Hydra", "Enraged", "Odin"}
 defaults.moblist['dangerous'] = S{"Provenance Watcher", "Apademak"}
-defaults.dangerwords = T{}
-defaults.dangerwords['weaponskills'] = S{"Zantetsuken", "Geirrothr", "Astral Flow", "Chainspell", "Beastruction", "Mandible Massacre", "Oblivion's Mantle", "Divesting Gale", "Frog Song", "Frog Chorus", "Danse Macabre", "Raksha Stance", "Yama's Judgment", "Ballistic Kick", "Eradicator", "Arm Cannon", "Gorge", "Extreme Purgitation", "Slimy Proposal", "Rancid Reflux", "Pawn's Penumbra", "Gates of Hades", "Fulmination", "Nerve Gas", "Thundris Shriek"}
+defaults.dangerwords = T{"Pain Sync"}
+
+defaults.dangerwords['weaponskills'] = S{
+    "Zantetsuken", "Geirrothr", "Astral Flow", "Chainspell", "Beastruction", "Mandible Massacre", "Oblivion's Mantle", 
+    "Divesting Gale", "Frog Song", "Frog Chorus", "Danse Macabre", "Raksha Stance", "Yama's Judgment", "Ballistic Kick", 
+    "Eradicator", "Arm Cannon", "Gorge", "Extreme Purgitation", "Slimy Proposal", "Rancid Reflux", "Pawn's Penumbra", "Gates of Hades", 
+    "Fulmination", "Nerve Gas", "Thundris Shriek", "Pain Sync"}
+
 defaults.dangerwords['spells'] = S{"Death", "Meteor", "Kaustra", "Breakga", "Thundaga IV", "Thundaja", "Firaga IV", "Firaja", "Aeroga IV", "Aeroja", "Blizzaga IV", "Blizzaja", "Stonega IV", "Stoneja"}
 
 --Fill settings from either defaults table or settings.xml

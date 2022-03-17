@@ -2,6 +2,11 @@ send @others exec unfollow;
 wait 0.2;
 send @all /targetnpc;
 wait 0.3;
-send @all setkey enter down; 
-wait 5;
-send @all setkey enter up;
+
+send Onechix exec enters;
+wait 0.1;
+send Twochix exec enters;
+wait 0.1;
+send Threechix exec enters;
+wait 0.1;
+send Chixslave exec enters;
