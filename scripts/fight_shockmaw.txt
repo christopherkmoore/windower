@@ -3,10 +3,11 @@ send Chixslave hb on;
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
+send Chixslave hb ignoretrusts off;
 
 send Twochix /ma "AAEV" <me>;
 wait 4;
-send Twochix /ma "Koru-Moru" <me>;
+send Twochix /ma "Yoran-Oran (UC)" <me>;
 
 send Onechix singer playlist clear;
 
@@ -22,7 +23,7 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-send Chixslave hb buff Chixslave barfira;
+send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave baramnesra;
 
 send Chixslave hb assist Twochix;
@@ -38,6 +39,7 @@ send Onechix sing nightingale on;
 send Onechix sing troubadour on; 
 send Onechix sing soul_voice on,
 send Onechix sing clarion on;
+send Onechix sing ws on;
 
 send Onechix sing reset;
 send Onechix singer debuffing on;
@@ -45,19 +47,17 @@ send Onechix sing march 1;
 send Onechix sing scherzo 1;
 send Onechix sing madrigal 1;
 
-
-send Onechix sing pianissimo on;
-send Onechix sing ballad 1 Threechix;
-send Onechix sing ballad 1 Chixslave;
-
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
+send Threechix gs c autogeo Barrier;
 
 send Threechix sing on;
-send Threechix amb on;
-send Threechix amb tier 3;
+send Threechix sing haste Twochix;
+send Threechix sing haste Onechix;
+send Threechix sing haste Chixslave;
+send Threechix sing haste Threechix;
+send Threechix sing refresh Threechix;
+send Threechix sing refresh Chixslave;
 
 
-// Crux:
-// Grassy Thinker uses AoE Pain Sink (use scherzo to counter?)
+// need paralyze meds
