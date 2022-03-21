@@ -6,7 +6,7 @@ send Chixslave hb wipebuffs;
 send Chixslave hb ignoretrusts off;
 
 send Twochix /ma "AAEV" <me>;
-wait 4;
+wait 5;
 send Twochix /ma "Yoran-Oran (UC)" <me>;
 
 send Onechix singer playlist clear;
@@ -44,12 +44,12 @@ send Onechix sing ws on;
 send Onechix sing reset;
 send Onechix singer debuffing on;
 send Onechix sing march 1;
-send Onechix sing scherzo 1;
+send Onechix sing minuet 1;
 send Onechix sing madrigal 1;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Barrier;
+send Threechix gs c autogeo Fury;
 
 send Threechix sing on;
 send Threechix sing haste Twochix;

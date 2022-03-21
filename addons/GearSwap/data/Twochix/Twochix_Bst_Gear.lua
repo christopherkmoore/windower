@@ -576,7 +576,7 @@ function init_gear_sets()
         head = "Malignance Chapeau",
         body = "Meg. Cuirie +2",
         hands = "Malignance Gloves",
-        legs = "Meg. Chausses +2",
+        legs = "Malignance Tights",
         feet = "Meg. Jam. +2",
         neck = "Sanctity Necklace",
         -- waist = "Klouskap Sash",
@@ -1011,7 +1011,7 @@ function init_gear_sets()
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Tali'ah Manteel +2",
         hands = "Malignance Gloves",
-        legs = "Meg. Chausses +2",
+        legs = "Malignance Tights",
         -- feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
         feet = "Meg. Jam. +2",
         neck = "Sanctity Necklace",

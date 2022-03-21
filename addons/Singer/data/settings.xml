@@ -77,16 +77,16 @@
     </global>
     <onechix>
         <actions>false</actions>
+        <aoe>
+            <p3>false</p3>
+            <p4>false</p4>
+            <p5>false</p5>
+        </aoe>
         <box>
             <pos>
                 <x>1326</x>
                 <y>49</y>
             </pos>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
         </box>
         <clarion>true</clarion>
         <delay>4</delay>
@@ -107,10 +107,17 @@
                 <x>1326</x>
                 <y>0</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
+        <clarion>true</clarion>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
+        <pianissimo>true</pianissimo>
         <recast>
             <buff>
                 <max>10</max>

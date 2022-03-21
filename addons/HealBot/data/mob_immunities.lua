@@ -7,6 +7,9 @@ return {
         13,
         194
     },
+    ["Asanbosam"] = S{
+        2
+    },
     ["Atabex"] = S{
         2
     },

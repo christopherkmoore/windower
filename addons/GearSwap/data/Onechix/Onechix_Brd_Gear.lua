@@ -112,7 +112,7 @@ function init_gear_sets()
 		back="Intarabus's Cape",waist="Witful Belt",legs="Aya. Cosciales +2",feet="Gende. Galosh. +1"}
 
 	-- Gear to enhance certain classes of songs
-	sets.midcast.Ballad = {legs="Fili Rhingrave +1"}
+	sets.midcast.Ballad = {legs="Fili Rhingrave"}
 	sets.midcast.Lullaby = {range="Marsyas"}
 	sets.midcast.Lullaby.Resistant = {range="Blurred Harp +1"}
 	sets.midcast['Horde Lullaby'] = {range="Marsyas"}
@@ -121,7 +121,7 @@ function init_gear_sets()
 	sets.midcast['Horde Lullaby II'] = {range="Marsyas"}
 	sets.midcast['Horde Lullaby II'].Resistant = {range="Blurred Harp +1"}
 	sets.midcast['Horde Lullaby II'].AoE = {range="Blurred Harp +1"}
-	sets.midcast.Madrigal = {head="Fili Calot +1"}
+	sets.midcast.Madrigal = {head="Fili Calot"}
 	sets.midcast.Paeon = {}
 	sets.midcast.March = {hands="Fili Manchettes"}
 	sets.midcast['Honor March'] = set_combine(sets.midcast.March,{range="Marsyas"})
@@ -136,7 +136,7 @@ function init_gear_sets()
 
 	-- For song buffs (duration and AF3 set bonus)
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Blurred Harp +1",ammo=empty,
-		head="Fili Calot +1",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline",hands="Fili Manchettes",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
 		back="Intarabus's Cape",waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Brioso Slippers +1"}
 		
@@ -160,7 +160,7 @@ function init_gear_sets()
 	sets.midcast.SongRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Blurred Harp +1",ammo=empty,
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah",hands="Gendewitha Gages +1",ring1="Kishar Ring",ring2="Prolix Ring",
-		back="Intarabus's Cape",waist="Witful Belt",legs="Fili Rhingrave +1",feet="Aya. Gambieras +2"}
+		back="Intarabus's Cape",waist="Witful Belt",legs="Fili Rhingrave",feet="Aya. Gambieras +2"}
 		
 	sets.midcast.SongDebuff.DW = {}
 
