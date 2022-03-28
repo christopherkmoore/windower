@@ -1,17 +1,21 @@
+send @all lua load aecho;
+
+send Threechix lua load singer;
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
+send Chixslave hb ignoretrusts off;
 
-send Threechix hb on; 
-send Threechix hb reset buffs;
-send Threechix hb reset debuffs;
-send Threechix hb wipebuffs;
+send Twochix /ma "AAEV" <me>;
+wait 5;
+send Twochix /ma "Yoran-Oran (UC)" <me>;
 
-wait 1;
+send Onechix singer playlist clear;
+
+send Onechix singer on;
 
 send Chixslave gs c set AutoSubMode on;
-
 send Chixslave hb buff Chixslave Afflatus Solace;
 send Chixslave hb buff Chixslave Sublimation;
 
@@ -20,51 +24,45 @@ send Chixslave hb buff Chixslave Shellra V;
 send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
+send Chixslave hb buff Chixslave Stoneskin;
 
-//send Chixslave hb buff Chixslave Haste;
-//send Chixslave hb buff Twochix Haste;
-//send Chixslave hb buff Onechix Haste;
+send Chixslave hb buff Chixslave barstonra;
+send Chixslave hb buff Chixslave barpetra;
 
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff on;
+send Chixslave hb debuff off;
 send Chixslave hb debuff Dia II;
 send Chixslave hb debuff Paralyze;
 send Chixslave hb debuff Slow;
 send Chixslave hb debuff Addle;
 send Chixslave hb debuff Blind;
+send Chixslave hb follow Twochix on;
+send Chixslave hb follow dist 15
 
-send Twochix /ja "Bestial Loyalty" <me>;
-wait 3;
-send Twochix /ma "AAEV" <me>;
-wait 4;
-send Twochix /ma "Koru-Moru" <me>;
+send Onechix sing nightingale on;
+send Onechix sing troubadour on; 
+send Onechix sing soul_voice on,
+send Onechix sing clarion on;
+send Onechix sing ws off;
 
-send Onechix singer on;
+send Onechix sing reset;
 send Onechix singer debuffing on;
-
-send Onechix gs c set autowsmode on;
-send Onechix gs c set autoshadowmode off;
-send Onechix gs c autows Savage Blade;
-send Onechix sing playlist lizards 
-
-send Onechix sing pianissimo on;
-send Onechix sing ballad 1 Threechix;
-send Onechix sing ballad 1 Chixslave;
-
-
-wait 10;
+send Onechix sing march 1;
+send Onechix sing minuet 2;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
-send Threechix gs c set autowsmode on; 
-send Threechix gs c autows Moonlight;
 
-send Threechix hb buff Chixslave Refresh;
-send Threechix hb buff Threechix Refresh;
-send Threechix hb buff Chixslave Haste;
-send Threechix hb buff Onechix Haste;
-send Threechix hb buff Twochix Haste;
+send Threechix sing on;
+send Threechix sing haste Twochix on;
+send Threechix sing haste Onechix on;
+send Threechix sing haste Chixslave on;
+send Threechix sing haste Threechix on;
+send Threechix sing refresh Threechix on;
+send Threechix sing refresh Chixslave on;
 
-send Threechix hb watch Twochix;
-send Threechix amb on
+send Threechix automb on;
+send Threechix automb tier 4;
+
+// need paralyze meds

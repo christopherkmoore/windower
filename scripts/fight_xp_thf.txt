@@ -1,19 +1,18 @@
+//send @all lua load healbot;
 send Threechix lua load singer;
+
+send @all exec cps;
+//wait 15;
+
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
-send Chixslave hb ignoretrusts off;
 
-send Twochix /ma "AAEV" <me>;
-wait 5;
-send Twochix /ma "Yoran-Oran (UC)" <me>;
-
-send Onechix singer playlist clear;
-
-send Onechix singer on;
+wait 1;
 
 send Chixslave gs c set AutoSubMode on;
+
 send Chixslave hb buff Chixslave Afflatus Solace;
 send Chixslave hb buff Chixslave Sublimation;
 
@@ -23,9 +22,6 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave baramnesra;
-
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
 send Chixslave hb debuff Dia II;
@@ -34,30 +30,25 @@ send Chixslave hb debuff Slow;
 send Chixslave hb debuff Addle;
 send Chixslave hb debuff Blind;
 
+send Chixslave hb buff Chixslave barwatera;
+send Chixslave hb buff Chixslave barblindra;
 
-send Onechix sing nightingale on;
-send Onechix sing troubadour on; 
-send Onechix sing soul_voice on,
-send Onechix sing clarion on;
+send Onechix singer on;
+send Onechix pianissimo off;
+send Onechix debuffing off;
+send Onechix singer minuet 2;
+send Onechix singer march 1; 
+
+send Onechix pianissimo on;
+
 send Onechix sing ws on;
 
-send Onechix sing reset;
-send Onechix singer debuffing on;
-send Onechix sing march 1;
-send Onechix sing minuet 1;
-send Onechix sing madrigal 1;
-
+send Threechix singer on;
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
-send Threechix sing on;
-send Threechix sing haste Twochix on;
-send Threechix sing haste Onechix on;
-send Threechix sing haste Chixslave on;
-send Threechix sing haste Threechix on;
-send Threechix sing refresh Threechix on;
-send Threechix sing refresh Chixslave on;
+send Threechix lua load automb;
+send Threechix amb on;
+send Threechix amb tier 2;
 
-
-// need paralyze meds

@@ -222,13 +222,23 @@ profiles['mog'] = S{
     'X-potion +1',
     'X-potion +2',
     'X-potion +3',
+    'Hi-potion',
+    'Hi-potion +1',
+    'Hi-potion +2',
+    'Hi-potion +3',
     'Potion',
     'Potion +1',
     'Potion +2',
     'Potion +3',
     'Sulfur',
     'Mistletoe',
-
+    'Damascus Ingot',
+    'Ocl. Sheet',
+    'Behem. Leather',
+    'Tomato Juice',
+    'Twill Damask',
+    'buburimu grape',
+    'saffron blossom',
 }
 
 return profiles

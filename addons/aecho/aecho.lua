@@ -40,7 +40,7 @@ res = require('resources')
 defaults = {}
 defaults.buffs = S{	"light arts","addendum: white","penury","celerity","accession","perpetuance","rapture",
                     "dark arts","addendum: black","parsimony","alacrity","manifestation","ebullience","immanence",
-                    "stun","petrified","silence","stun","sleep","slow","paralyze"
+                    "stun","petrified","silence","stun","sleep","slow","paralyze","doom",
                 }
 defaults.alttrack = true
 defaults.sitrack = true
@@ -55,6 +55,10 @@ windower.register_event('gain buff', function(id)
         if key:lower() == name:lower() then
             if name:lower() == 'silence' and autoecho then
                 windower.send_command('input /item "Echo Drops" '..windower.ffxi.get_player()["name"])
+                windower.add_to_chat("Drops used")
+            end
+            if name:lower() == 'doom' and autoecho then
+                windower.send_command('input /item "Holy Water" '..windower.ffxi.get_player()["name"])
             end
             if settings.alttrack then
                 windower.send_command('send @others atc '..windower.ffxi.get_player()["name"]..' - '..name)
@@ -119,6 +123,7 @@ windower.register_event('addon command', function(...)
             settings.buffs:print()
         elseif comm == 'toggle' then
             autoecho = not autoecho
+            
         else
             return
         end

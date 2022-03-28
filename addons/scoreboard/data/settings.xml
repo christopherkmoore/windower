@@ -92,8 +92,9 @@
         <display>
             <pos>
                 <x>1457</x>
-                <y>311</y>
+                <y>310</y>
             </pos>
         </display>
+        <visible>true</visible>
     </twochix>
 </settings>

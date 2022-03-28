@@ -22,9 +22,10 @@ send Threechix sing haste Chixslave off;
 send Threechix sing haste Threechix off;
 
 send Threechix singer off;
-
+send Chixslave healbot reload;
 send Chixslave hb off; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb debuff on;
 send Chixslave hb wipebuffs;
+send Chixslave hb follow off;

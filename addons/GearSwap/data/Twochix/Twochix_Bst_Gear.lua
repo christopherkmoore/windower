@@ -31,7 +31,8 @@ function user_job_setup()
         'BlackbeardRandy',
         'AttentiveIbuki',
         'DroopyDortwin',
-        'AcuexFamiliar'
+        'AcuexFamiliar',
+        'VivaciousVickie',
     }
     send_command('bind ^f7 gs c cycle JugMode')
 
@@ -292,7 +293,7 @@ function init_gear_sets()
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
         -- back = "Aptitude Mantle",
-        back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10',}},
+        back=gear.capeWS
 
     }
 
@@ -574,7 +575,7 @@ function init_gear_sets()
         },
         ammo = "Livid Broth",
         head = "Malignance Chapeau",
-        body = "Meg. Cuirie +2",
+        body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
         feet = "Meg. Jam. +2",
@@ -585,7 +586,7 @@ function init_gear_sets()
         right_ear = "Assuage Earring",
         left_ring = "Meghanada Ring",
         right_ring = "Defending Ring",
-        back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%',}}
+        back=gear.capeTP
 
     }
 
@@ -678,7 +679,7 @@ function init_gear_sets()
         waist = "Isa Belt",
         legs = "Tali'ah Sera. +2",
         feet = "Tali'ah Crackows +1",
-        back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
+        back=gear.capeTP
     }
 
     -- sets.idle.Pet.Engaged.DW = {
@@ -870,7 +871,7 @@ function init_gear_sets()
 
     sets.engaged.FullAcc = {
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
-        body = "Tali'ah Manteel +2",
+        body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
@@ -882,7 +883,7 @@ function init_gear_sets()
         right_ear = "Assuage Earring",
         left_ring = "Petrov Ring",
         right_ring = "Vocane Ring",
-        back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
+        back=gear.capeTP
     }
 
 
@@ -1009,7 +1010,7 @@ function init_gear_sets()
         },
         ammo = "Livid Broth",
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
-        body = "Tali'ah Manteel +2",
+        body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
         -- feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
@@ -1021,7 +1022,7 @@ function init_gear_sets()
         right_ear = "Brutal Earring",
         left_ring = "Petrov Ring",
         right_ring = "Vocane Ring",
-        back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
+        back=gear.capeTP
     }
 
     -- sets.engaged.DW.SomeAcc = {
@@ -1074,7 +1075,7 @@ function init_gear_sets()
 
     sets.engaged.DW.FullAcc = { 
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
-        body = "Tali'ah Manteel +2",
+        body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
@@ -1086,7 +1087,7 @@ function init_gear_sets()
         right_ear = "Assuage Earring",
         left_ring = "Petrov Ring",
         right_ring = "Vocane Ring",
-        back={ name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-8%'}}
+        back=gear.capeTP
     }
 
     -- sets.engaged.DW.Fodder = {

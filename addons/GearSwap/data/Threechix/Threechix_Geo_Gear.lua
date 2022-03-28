@@ -140,47 +140,47 @@ function init_gear_sets()
 	sets.midcast.StatusRemoval = set_combine(sets.midcast.FastRecast, {main=gear.grioavolr_fc_staff,sub="Clemency Grip"})
 	
     sets.midcast['Elemental Magic'] = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
-        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Crematio Earring",ear2="Friomisi Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri ring",
-        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace           ear1="Crematio Earring"
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri ring",
+        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 
     sets.midcast['Elemental Magic'].Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Mallquis Chapeau +1",neck="Sanctity Necklace",ear1="Regal Earring",ear2="Malignance Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",                     -- ear1="Regal Earring"
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri Ring",
+        back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 		
     sets.midcast['Elemental Magic'].Proc = {main=empty,sub=empty,ammo="Impatiens",
-        head="Nahtirah Hat",neck="Loricate Torque +1",ear1="Gifted Earring",ear2="Loquac. Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Kishar Ring",ring2="Prolix Ring",
-        back="Swith Cape +1",waist="Witful Belt",legs="Assid. Pants +1",feet="Regal Pumps"}
+        head="Jhakri Coronal +2",neck="Loricate Torque +1",ear1="Gifted Earring",ear2="Loquac. Earring",                             --head="Nahtirah Hat"
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Kishar Ring",ring2="Prolix Ring",
+        back="Swith Cape +1",waist="Witful Belt",legs="Jhakri Slops +2",feet="Regal Pumps"}
 		
     sets.midcast['Elemental Magic'].Fodder = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
-        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Crematio Earring",ear2="Friomisi Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri Ring",
+        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Mallquis Chapeau +1",neck="Baetyl Pendant",ear1="Regal Earring",ear2="Malignance Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Baetyl Pendant", ear1="Malignance Earring",ear2="Friomisi Earring",
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri Ring",
+        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke.Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Mallquis Chapeau +1",neck="Sanctity Necklace",ear1="Regal Earring",ear2="Malignance Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri Ring",
+        back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 
 	sets.midcast['Elemental Magic'].HighTierNuke.Fodder = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Mallquis Chapeau +1",neck="Quanpur necklace",ear1="Regal Earring",ear2="Malignance Earring",
-        body="Mallquis saio +2",hands="Mallquis Cuffs +1",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Mallquis Trews +1",feet="Mallquis Clogs +2"}
+        head="Jhakri Coronal +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
+        body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Resonance Ring",ring2="Jhakri Ring",
+        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Jhakri Pigaches +2"}
 		
     sets.midcast['Dark Magic'] = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-        head=gear.merlinic_nuke_head,neck="Erra Pendant",ear1="Regal Earring",ear2="Malignance Earring",
+        head=gear.merlinic_nuke_head,neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
         body=gear.merlinic_nuke_body,hands="Amalric Gages +1",ring1="Metamor. Ring +1",ring2="Stikini Ring +1",
         back=gear.nuke_jse_back,waist="Yamabuki-no-Obi",legs="Merlinic Shalwar",feet=gear.merlinic_aspir_feet}
 		
     sets.midcast.Drain = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-        head="Pixie Hairpin +1",neck="Erra Pendant",ear1="Regal Earring",ear2="Malignance Earring",
+        head="Pixie Hairpin +1",neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
         body=gear.merlinic_nuke_body,hands="Amalric Gages +1",ring1="Excelsis Ring",ring2="Evanescence Ring",
         back=gear.nuke_jse_back,waist="Fucho-no-obi",legs="Merlinic Shalwar",feet=gear.merlinic_aspir_feet}
     

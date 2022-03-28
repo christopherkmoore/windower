@@ -20,8 +20,17 @@ return {
     ["Bozzeto Warder"] = S{
         2
     },
+    ["Bozzetto Consul"] = S{
+        2
+    },
+    ["Bozzetto Hunter"] = S{
+        2
+    },
     ["Bozzetto Necronura"] = S{
         7
+    },
+    ["Bozzetto Stalwart"] = S{
+        2
     },
     ["Broadleaf Palm"] = S{
         2,
@@ -69,6 +78,9 @@ return {
         4,
         13,
         194
+    },
+    ["Sabotender Dulce"] = S{
+        4
     },
     ["Sere Stump"] = S{
         194

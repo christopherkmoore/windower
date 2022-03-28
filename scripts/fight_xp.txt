@@ -38,6 +38,7 @@ send Onechix pianissimo off;
 send Onechix debuffing off;
 send Onechix singer minuet 2;
 send Onechix singer march 1; 
+send Onechix pianissimo on;
 
 send Onechix sing ws on;
 
@@ -48,5 +49,5 @@ send Threechix gs c autogeo Fury;
 
 send Threechix lua load automb;
 send Threechix amb on;
-send Threechix amb tier 2;
+send Threechix amb tier 3;
 

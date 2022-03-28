@@ -326,10 +326,15 @@ function init_gear_sets()
 		
 	sets.midcast.Dispelga = set_combine(sets.midcast.Dispel, {main="Daybreak",sub="Ammurapi Shield"})
 
-	sets.midcast['Enfeebling Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-		head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
-		body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Kishar Ring",ring2="Weatherspoon Ring",
-		back="Aurist's Cape +1",waist="Luminary Sash",legs="Chironic Hose",feet="Uk'uxkaj Boots"}
+	sets.midcast['Enfeebling Magic'] = {main="Marin Staff +1",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
+		head="Inyanga Tiara +2",neck="Sanctity necklace",ear1="Malignance Earring",ear2="Nourish. Earring +1",
+		body="Inyanga Jubbah +2",hands="Inyan. Dastanas +2",ring1="Inyanga Ring",ring2="Weatherspoon Ring",
+		back="Aurist's Cape +1",waist="Luminary Sash",legs="Inyanga Shalwar +2",feet="Inyanga Crackows +2"}
+
+	-- sets.midcast['Enfeebling Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
+	-- 	head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
+	-- 	body="Theophany Briault +2",hands="Inyan. Dastanas +2",ring1="Kishar Ring",ring2="Weatherspoon Ring",
+	-- 	back="Aurist's Cape +1",waist="Luminary Sash",legs="Chironic Hose",feet="Uk'uxkaj Boots"}
 
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
@@ -357,12 +362,12 @@ function init_gear_sets()
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",ammo="Homiliary",
 		head="Befouled Crown",neck="Chrys. Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Ebers Bliaud +1",hands=gear.chironic_refresh_hands,ring1="Defending Ring",ring2="Dark Ring",
-		back="Umbra Cape",waist="Fucho-no-obi",legs="Assid. Pants +1",feet="Aya. Gambieras +1"}
+		back="Umbra Cape",waist="Fucho-no-obi",legs="Assid. Pants +1",feet="Aya. Gambieras +2"}
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 	sets.idle = {
-		main="Queller Rod",
-		sub="Sors Shield",                  -- Genmei Shield
+		main="Malignance Pole",
+		-- sub="Sors Shield",                  -- Genmei Shield
 		ammo="Homiliary",
 		head="Inyanga Tiara +2",            -- probably want for DT Aya. Zucchetto +2
 		neck="Loricate Torque +1",
@@ -374,32 +379,32 @@ function init_gear_sets()
 		ring2="Stikini Ring +1",
 		back="Moonlight Cape",
 		waist="Shinjutsu-no-Obi",
-		legs="Inyanga Shalwar +2",
-		feet="Aya. Gambieras +1"
+		legs="Aya. Cosciales +2",
+		feet="Inyanga Crackows +2"
 	}
 
 
 	sets.idle.PDT = {main="Queller Rod",sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Vrikodara Jupon",hands="Gende. Gages +1",ring1="Defending Ring",ring2="Dark Ring",
-		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +1"}
+		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +2"}
 		
 	sets.idle.MDT = {main="Queller Rod",sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Inyanga Jubbah +2",hands="Gende. Gages +1",ring1="Defending Ring",ring2="Inyang Ring",
-		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +1"}
+		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +2"}
 		
 	sets.idle.Weak = {main="Queller Rod",sub="Genmei Shield",ammo="Homiliary",
 		head="Befouled Crown",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Witching Robe",hands=gear.chironic_refresh_hands,ring1="Defending Ring",ring2="Dark Ring",
-		back="Umbra Cape",waist="Witful Belt",legs="Assid. Pants +1",feet="Aya. Gambieras +1"}
+		back="Umbra Cape",waist="Witful Belt",legs="Assid. Pants +1",feet="Aya. Gambieras +2"}
 
     -- Defense sets
 
 	sets.defense.PDT = {main="Bolelabunga",sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Vrikodara Jupon",hands="Gende. Gages +1",ring1="Defending Ring",ring2="Dark Ring",
-		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +1"}
+		back="Moonlight Cape",waist="Flax Sash",legs="Assid. Pants +1",feet="Aya. Gambieras +2"}
 
 	sets.defense.MDT = {main="Mafic Cudgel",sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
