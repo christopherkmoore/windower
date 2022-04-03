@@ -10,7 +10,6 @@ ambu
 odessey farms
 
 
-check malignance earring for chixslave and onechix
 
 Long term
 --------------
@@ -25,8 +24,6 @@ brd idle HP DT cape
 brd ws cape Savage
 finish TP cape
 
-geo gearswaps are broken.
-geo finish magic burst cape
 geo fast cast cape
 geo conserve MP cape?
 geo +2 mal set

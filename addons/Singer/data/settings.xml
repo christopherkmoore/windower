@@ -87,11 +87,17 @@
                 <x>1327</x>
                 <y>36</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <clarion>true</clarion>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
+        <pianissimo>true</pianissimo>
         <recast>
             <buff>
                 <max>10</max>
@@ -124,5 +130,6 @@
                 <min>5</min>
             </buff>
         </recast>
+        <use_ws>false</use_ws>
     </threechix>
 </settings>

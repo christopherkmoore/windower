@@ -22,11 +22,10 @@ send Chixslave hb buff Onechix Haste;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
-send Chixslave hb debuff Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
+send Chixslave hb debuff use Dia II;
+send Chixslave hb debuff use Paralyze;
+send Chixslave hb debuff use Slow;
+send Chixslave hb debuff use Addle;
 
 send Chixslave hb buff Chixslave barthundra;
 send Chixslave hb buff Chixslave baramnesra;

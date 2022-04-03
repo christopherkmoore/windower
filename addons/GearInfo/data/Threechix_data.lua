@@ -553,9 +553,19 @@ return {
             [4]="Head"
         }, 
         ["AGI"]=19, 
-        ["item_level"]=117, 
+        ["en"]="Wayfarer Circlet", 
         ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
         ["HP"]=32, 
+        ["item_level"]=117, 
+        ["VIT"]=19, 
+        ["STR"]=19, 
+        ["Haste"]=6, 
+        ["MP"]=31, 
+        ["id"]=27742, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Magic Atk. Bonus"]=5, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -567,26 +577,16 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["VIT"]=19, 
-        ["STR"]=19, 
-        ["Haste"]=6, 
-        ["MP"]=31, 
-        ["id"]=27742, 
-        ["INT"]=24, 
-        ["category"]="Armor", 
-        ["CHR"]=24, 
-        ["Magic Atk. Bonus"]=5, 
-        ["en"]="Wayfarer Circlet"
+        }
     }, 
     [20]={
         ["discription"]="Geomancy +3", 
+        ["en"]="Eminent Bell", 
+        ["skill"]="Handbell", 
         ["id"]=21462, 
         ["slots"]={
             [2]="Range"
         }, 
-        ["en"]="Eminent Bell", 
-        ["skill"]="Handbell", 
         ["category"]="Weapon", 
         ["jobs"]={
             [21]="GEO"
@@ -619,9 +619,19 @@ return {
             [5]="Body"
         }, 
         ["AGI"]=20, 
-        ["item_level"]=117, 
+        ["en"]="Wayfarer Robe", 
         ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
         ["HP"]=48, 
+        ["item_level"]=117, 
+        ["VIT"]=20, 
+        ["STR"]=20, 
+        ["Haste"]=3, 
+        ["MP"]=57, 
+        ["id"]=27883, 
+        ["INT"]=28, 
+        ["category"]="Armor", 
+        ["CHR"]=28, 
+        ["Magic Atk. Bonus"]=6, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -633,17 +643,7 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["VIT"]=20, 
-        ["STR"]=20, 
-        ["Haste"]=3, 
-        ["MP"]=57, 
-        ["id"]=27883, 
-        ["INT"]=28, 
-        ["category"]="Armor", 
-        ["CHR"]=28, 
-        ["Magic Atk. Bonus"]=6, 
-        ["en"]="Wayfarer Robe"
+        }
     }, 
     [22]={
         ["discription"]="DMG:117 Delay:216 INT+6 MND+6 \"Magic Atk. Bonus\"+16 Magic Damage+124 Club skill +242 Parrying skill +242 Magic Accuracy skill +215 Reives: \"Save TP\"+400 Occasionally attacks twice", 
@@ -654,11 +654,11 @@ return {
         ["en"]="Homestead Wand", 
         ["delay"]=216, 
         ["INT"]=6, 
+        ["skill"]="Club", 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
-        ["skill"]="Club", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -763,7 +763,7 @@ return {
             ["set id"]=110
         }, 
         ["DEF"]=99, 
-        ["AGI"]=16, 
+        ["en"]="Wayfarer Slops", 
         ["item_level"]=117, 
         ["discription"]="DEF:99 HP+38 MP+28 STR+24 VIT+12 AGI+16 INT+32 MND+22 CHR+19 \"Magic Atk. Bonus\"+5 Evasion+24 Magic Evasion+100 \"Magic Def. Bonus\"+5 Haste+5% Set: \"Refresh\"+3", 
         ["HP"]=38, 
@@ -776,7 +776,7 @@ return {
         ["CHR"]=19, 
         ["INT"]=32, 
         ["category"]="Armor", 
-        ["en"]="Wayfarer Slops"
+        ["AGI"]=16
     }, 
     [25]={
         ["Evasion"]=33, 
@@ -1164,7 +1164,7 @@ return {
     [38]={
         ["Evasion"]=27, 
         ["MND"]=26, 
-        ["item_level"]=119, 
+        ["en"]="Assiduity Pants", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -1175,7 +1175,7 @@ return {
             [21]="GEO"
         }, 
         ["STR"]=25, 
-        ["en"]="Assiduity Pants", 
+        ["item_level"]=119, 
         ["Haste"]=5, 
         ["AGI"]=17, 
         ["HP"]=43, 
@@ -1228,7 +1228,6 @@ return {
             [21]="GEO"
         }, 
         ["DEX"]=6, 
-        ["MND"]=23, 
         ["Set Bonus"]={
             ["set id"]=15, 
             ["bonus"]={
@@ -1255,10 +1254,11 @@ return {
                 }
             }
         }, 
-        ["en"]="Mallquis Clogs +2", 
-        ["STR"]=6, 
-        ["AGI"]=26, 
+        ["MND"]=23, 
         ["item_level"]=119, 
+        ["STR"]=6, 
+        ["en"]="Mallquis Clogs +2", 
+        ["AGI"]=26, 
         ["HP"]=20, 
         ["id"]=25955, 
         ["VIT"]=19, 
@@ -1386,7 +1386,7 @@ return {
     [45]={
         ["Evasion"]=27, 
         ["MND"]=26, 
-        ["en"]="Assid. Pants +1", 
+        ["item_level"]=119, 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -1398,7 +1398,7 @@ return {
         }, 
         ["Refresh"]=2, 
         ["STR"]=25, 
-        ["item_level"]=119, 
+        ["en"]="Assid. Pants +1", 
         ["Haste"]=5, 
         ["AGI"]=17, 
         ["HP"]=43, 
@@ -1418,10 +1418,10 @@ return {
     [46]={
         ["Handbell skill"]=18, 
         ["en"]="Dunna", 
-        ["skill"]="Handbell", 
         ["slots"]={
             [2]="Range"
         }, 
+        ["skill"]="Handbell", 
         ["category"]="Weapon", 
         ["discription"]="Handbell skill +18 Geomancy +5 Luopan: Damage taken -5%", 
         ["id"]=21372, 
@@ -1432,14 +1432,14 @@ return {
     [47]={
         ["Evasion"]=19, 
         ["MND"]=18, 
-        ["item_level"]=109, 
+        ["en"]="Geomancy Tunic", 
         ["jobs"]={
             [21]="GEO"
         }, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["en"]="Geomancy Tunic", 
+        ["AGI"]=13, 
         ["DEF"]=91, 
         ["discription"]="DEF:91 HP+25 MP+75 STR+13 DEX+13 VIT+13 AGI+13 INT+18 MND+18 CHR+18 Evasion+19 Magic Evasion+54 Dark magic skill +15 Haste+2% \"Mag. Def. Bon.\"+3 Adds \"Refresh\" ef. Enhances \"Life Cycle\" effect", 
         ["HP"]=25, 
@@ -1452,12 +1452,12 @@ return {
         ["CHR"]=18, 
         ["INT"]=18, 
         ["category"]="Armor", 
-        ["AGI"]=13
+        ["item_level"]=109
     }, 
     [48]={
         ["Evasion"]=55, 
         ["MND"]=19, 
-        ["item_level"]=119, 
+        ["en"]="Vanya Clogs", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -1470,7 +1470,7 @@ return {
         ["slots"]={
             [8]="Feet"
         }, 
-        ["en"]="Vanya Clogs", 
+        ["AGI"]=33, 
         ["DEF"]=70, 
         ["discription"]="DEF:70 HP+13 MP+14 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +20 Haste+3% \"Cure\" potency +5% \"Cursna\"+5", 
         ["HP"]=13, 
@@ -1483,19 +1483,19 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["AGI"]=33
+        ["item_level"]=119
     }, 
     [49]={
         ["Evasion"]=25, 
         ["MND"]=12, 
-        ["item_level"]=109, 
+        ["en"]="Geomancy Sandals", 
         ["jobs"]={
             [21]="GEO"
         }, 
         ["slots"]={
             [8]="Feet"
         }, 
-        ["en"]="Geomancy Sandals", 
+        ["AGI"]=21, 
         ["DEF"]=48, 
         ["discription"]="DEF:48 HP+6 MP+37 STR+6 DEX+7 VIT+6 AGI+21 INT+11 MND+12 CHR+21 Evasion+25 Magic Evasion+73 \"Magic Def. Bonus\"+2 Movement speed +12% Haste+3%", 
         ["HP"]=6, 
@@ -1508,7 +1508,7 @@ return {
         ["CHR"]=21, 
         ["INT"]=11, 
         ["category"]="Armor", 
-        ["AGI"]=21
+        ["item_level"]=109
     }, 
     [50]={
         ["Evasion"]=10, 
@@ -1522,11 +1522,11 @@ return {
             [6]="Hands"
         }, 
         ["AGI"]=3, 
-        ["en"]="Geomancy Mitaines", 
-        ["Geomancy skill"]=15, 
+        ["discription"]="DEF:61 HP+35 MP+37 STR+4 DEX+17 VIT+16 AGI+3 INT+12 MND+21 CHR+12 Evasion+10 Magic Evasion+25 \"Magic Def. Bonus\"+1 Geomancy skill +15 Physical damage taken -1% Haste+3% Luopan: Damage taken -10%", 
+        ["VIT"]=16, 
         ["HP"]=35, 
-        ["PDT"]=-1, 
-        ["item_level"]=109, 
+        ["Geomancy skill"]=15, 
+        ["en"]="Geomancy Mitaines", 
         ["STR"]=4, 
         ["DEF"]=61, 
         ["MP"]=37, 
@@ -1534,8 +1534,8 @@ return {
         ["INT"]=12, 
         ["category"]="Armor", 
         ["CHR"]=12, 
-        ["VIT"]=16, 
-        ["discription"]="DEF:61 HP+35 MP+37 STR+4 DEX+17 VIT+16 AGI+3 INT+12 MND+21 CHR+12 Evasion+10 Magic Evasion+25 \"Magic Def. Bonus\"+1 Geomancy skill +15 Physical damage taken -1% Haste+3% Luopan: Damage taken -10%"
+        ["PDT"]=-1, 
+        ["item_level"]=109
     }, 
     [51]={
         ["Evasion"]=12, 
@@ -1547,7 +1547,7 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["item_level"]=109, 
+        ["en"]="Geomancy Pants", 
         ["DEF"]=78, 
         ["AGI"]=11, 
         ["HP"]=55, 
@@ -1559,7 +1559,7 @@ return {
         ["STR"]=16, 
         ["CHR"]=12, 
         ["INT"]=21, 
-        ["en"]="Geomancy Pants"
+        ["item_level"]=109
     }, 
     [52]={
         ["discription"]="DEF:6 Accuracy+6 Attack+6 Magic Accuracy+6 \"Magic Atk. Bonus\"+3 Magic burst damage +2 Set: Enhances \"Fast Cast\"", 
@@ -1750,10 +1750,10 @@ return {
             [8]="Feet"
         }, 
         ["AGI"]=33, 
-        ["Fast Cast"]=6, 
+        ["discription"]="DEF:65 HP+13 MP+34 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +10 Enhancing magic skill +10 Haste+3% \"Fast Cast\"+3% Unity Ranking: \"Fast Cast\"+1～3%", 
         ["item_level"]=119, 
         ["HP"]=13, 
-        ["en"]="Regal Pumps", 
+        ["Fast Cast"]=6, 
         ["VIT"]=10, 
         ["STR"]=10, 
         ["DEF"]=65, 
@@ -1763,7 +1763,7 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["discription"]="DEF:65 HP+13 MP+34 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +10 Enhancing magic skill +10 Haste+3% \"Fast Cast\"+3% Unity Ranking: \"Fast Cast\"+1～3%"
+        ["en"]="Regal Pumps"
     }, 
     [59]={
         ["discription"]="Experience point bonus: +150% Maximum duration: 720 min. Maximum bonus: 30000", 
@@ -1848,8 +1848,8 @@ return {
             [2]="\"Fast Cast\"+10", 
             [3]="INT+7"
         }, 
-        ["item_level"]=119, 
         ["en"]="Psycloth Tiara", 
+        ["item_level"]=119, 
         ["AGI"]=18, 
         ["HP"]=36, 
         ["id"]=26796, 
@@ -1913,8 +1913,8 @@ return {
             [21]="GEO"
         }, 
         ["DEF"]=101, 
-        ["item_level"]=119, 
         ["AGI"]=17, 
+        ["Fast Cast"]=7, 
         ["discription"]="DEF:101 HP+43 MP+29 STR+25 VIT+12 AGI+17 INT+40 MND+30 CHR+19 Magic Accuracy+20 Evasion+27 Magic Evasion+107 \"Magic Def. Bonus\"+6 Enfeebling magic skill +18 Haste+5% Pet: Damage taken -4%", 
         ["en"]="Psycloth Lappas", 
         ["HP"]=43, 
@@ -1923,7 +1923,7 @@ return {
             [2]="Mag. Acc.+15", 
             [3]="\"Fast Cast\"+7"
         }, 
-        ["Fast Cast"]=7, 
+        ["item_level"]=119, 
         ["slots"]={
             [7]="Legs"
         }, 
@@ -1948,11 +1948,11 @@ return {
             [6]="Hands"
         }, 
         ["AGI"]=5, 
-        ["en"]="Geo. Mitaines +1", 
-        ["Geomancy skill"]=15, 
+        ["discription"]="DEF:85 HP+47 MP+39 STR+6 DEX+28 VIT+25 AGI+5 INT+19 MND+33 CHR+19 Evasion+22 Magic Evasion+37 \"Magic Def. Bonus\"+3 Geomancy skill +15 Physical damage taken -1% Haste+3% Luopan: Damage taken -11%", 
+        ["VIT"]=25, 
         ["HP"]=47, 
-        ["PDT"]=-1, 
-        ["item_level"]=119, 
+        ["Geomancy skill"]=15, 
+        ["en"]="Geo. Mitaines +1", 
         ["STR"]=6, 
         ["DEF"]=85, 
         ["MP"]=39, 
@@ -1960,8 +1960,8 @@ return {
         ["INT"]=19, 
         ["category"]="Armor", 
         ["CHR"]=19, 
-        ["VIT"]=25, 
-        ["discription"]="DEF:85 HP+47 MP+39 STR+6 DEX+28 VIT+25 AGI+5 INT+19 MND+33 CHR+19 Evasion+22 Magic Evasion+37 \"Magic Def. Bonus\"+3 Geomancy skill +15 Physical damage taken -1% Haste+3% Luopan: Damage taken -11%"
+        ["PDT"]=-1, 
+        ["item_level"]=119
     }, 
     [65]={
         ["jobs"]={
@@ -2110,14 +2110,14 @@ return {
     [69]={
         ["Evasion"]=41, 
         ["MND"]=29, 
-        ["en"]="Geo. Tunic +1", 
+        ["AGI"]=21, 
         ["jobs"]={
             [21]="GEO"
         }, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["AGI"]=21, 
+        ["item_level"]=119, 
         ["DEF"]=127, 
         ["discription"]="DEF:127 HP+54 MP+85 STR+21 DEX+21 VIT+21 AGI+21 INT+29 MND+29 CHR+29 Evasion+41 Magic Evasion+80 \"Magic Def. Bonus\"+6 Dark magic skill +17 Haste+3% \"Refresh\"+2 \"Life Cycle\"+10", 
         ["HP"]=54, 
@@ -2130,7 +2130,7 @@ return {
         ["CHR"]=29, 
         ["INT"]=29, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["en"]="Geo. Tunic +1"
     }, 
     [70]={
         ["Evasion"]=27, 
@@ -2143,10 +2143,10 @@ return {
         }, 
         ["Haste"]=5, 
         ["AGI"]=17, 
-        ["Fast Cast"]=11, 
+        ["discription"]="DEF:109 HP+78 MP+64 STR+25 VIT+12 AGI+17 INT+34 MND+24 CHR+19 Evasion+27 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+5% \"Fast Cast\"+11% Spell interruption rate down 20%", 
         ["item_level"]=119, 
         ["HP"]=78, 
-        ["en"]="Geo. Pants +1", 
+        ["Fast Cast"]=11, 
         ["VIT"]=12, 
         ["DEF"]=109, 
         ["MP"]=64, 
@@ -2155,7 +2155,7 @@ return {
         ["CHR"]=19, 
         ["INT"]=34, 
         ["category"]="Armor", 
-        ["discription"]="DEF:109 HP+78 MP+64 STR+25 VIT+12 AGI+17 INT+34 MND+24 CHR+19 Evasion+27 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+5% \"Fast Cast\"+11% Spell interruption rate down 20%"
+        ["en"]="Geo. Pants +1"
     }, 
     [71]={
         ["discription"]="Attack+8 Enhances effect of \"Drain\" and \"Aspir\"", 
@@ -2195,12 +2195,12 @@ return {
     [72]={
         ["Evasion"]=55, 
         ["MND"]=19, 
-        ["AGI"]=33, 
+        ["item_level"]=119, 
         ["jobs"]={
             [21]="GEO"
         }, 
         ["STR"]=10, 
-        ["item_level"]=119, 
+        ["en"]="Geo. Sandals +1", 
         ["Haste"]=3, 
         ["discription"]="DEF:67 HP+13 MP+49 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Haste+3% Movement speed +12%", 
         ["HP"]=13, 
@@ -2215,19 +2215,19 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["en"]="Geo. Sandals +1"
+        ["AGI"]=33
     }, 
     [73]={
         ["Evasion"]=36, 
         ["MND"]=26, 
-        ["item_level"]=119, 
+        ["en"]="Geo. Galero +1", 
         ["jobs"]={
             [21]="GEO"
         }, 
         ["slots"]={
             [4]="Head"
         }, 
-        ["en"]="Geo. Galero +1", 
+        ["AGI"]=16, 
         ["DEF"]=97, 
         ["discription"]="DEF:97 HP+36 MP+46 STR+16 DEX+16 VIT+16 AGI+16 INT+26 MND+26 CHR+21 Evasion+36 Magic Evasion+75 \"Magic Def. Bonus\"+5 Elemental magic skill +15 Haste+6% \"Cardinal Chant\"+2", 
         ["HP"]=36, 
@@ -2240,7 +2240,7 @@ return {
         ["CHR"]=21, 
         ["INT"]=26, 
         ["category"]="Armor", 
-        ["AGI"]=16
+        ["item_level"]=119
     }, 
     [74]={
         ["damage"]=286, 
@@ -2322,7 +2322,6 @@ return {
         ["DEX"]=33, 
         ["Haste"]=1, 
         ["MND"]=32, 
-        ["discription"]="DEF:119 STR+37 DEX+33 VIT+14 AGI+16 INT+50 MND+32 CHR+30 Accuracy+46 Attack+46 Magic Accuracy+46 Evasion+33 Magic Evasion+53 \"Magic Atk. Bonus\"+43 \"Magic Def. Bonus\"+5 Haste+1% \"Refresh\"+4 Set: Enhances \"Fast Cast\"", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2341,9 +2340,10 @@ return {
             }, 
             ["set id"]=138
         }, 
+        ["discription"]="DEF:119 STR+37 DEX+33 VIT+14 AGI+16 INT+50 MND+32 CHR+30 Accuracy+46 Attack+46 Magic Accuracy+46 Evasion+33 Magic Evasion+53 \"Magic Atk. Bonus\"+43 \"Magic Def. Bonus\"+5 Haste+1% \"Refresh\"+4 Set: Enhances \"Fast Cast\"", 
         ["AGI"]=16, 
-        ["en"]="Jhakri Robe +2", 
         ["item_level"]=119, 
+        ["en"]="Jhakri Robe +2", 
         ["id"]=25794, 
         ["Attack"]=46, 
         ["INT"]=50, 
@@ -2577,7 +2577,7 @@ return {
     [83]={
         ["Evasion"]=60, 
         ["MND"]=17, 
-        ["item_level"]=119, 
+        ["en"]="Inspirited Boots", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -2590,7 +2590,7 @@ return {
         ["slots"]={
             [8]="Feet"
         }, 
-        ["en"]="Inspirited Boots", 
+        ["AGI"]=29, 
         ["DEF"]=70, 
         ["discription"]="DEF:70 HP+9 MP+20 STR+8 DEX+8 VIT+8 AGI+29 INT+25 MND+17 CHR+32 \"Magic Atk. Bonus\"+20 Magic Damage+10 Evasion+60 Magic Evasion+118 \"Magic Def. Bonus\"+6 Haste+3% Duration of Refresh effects received +15", 
         ["HP"]=9, 
@@ -2603,7 +2603,7 @@ return {
         ["CHR"]=32, 
         ["INT"]=25, 
         ["category"]="Armor", 
-        ["AGI"]=29
+        ["item_level"]=119
     }, 
     [84]={
         ["discription"]="INT+8 MND+8 Magic Accuracy+10 \"Magic Atk. Bonus\"+8 \"Fast Cast\"+4%", 
@@ -2684,7 +2684,9 @@ return {
     [87]={
         ["Evasion"]=41, 
         ["MND"]=21, 
-        ["AGI"]=26, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
         ["jobs"]={
             [4]="BLM", 
             [5]="RDM", 
@@ -2693,13 +2695,6 @@ return {
             [21]="GEO"
         }, 
         ["DEX"]=28, 
-        ["Attack"]=42, 
-        ["en"]="Jhakri Pigaches +2", 
-        ["discription"]="DEF:62 STR+25 DEX+28 VIT+3 AGI+26 INT+33 MND+21 CHR+34 Accuracy+42 Attack+42 Magic Accuracy+42 Evasion+41 Magic Evasion+69 \"Magic Atk. Bonus\"+39 \"Magic Def. Bonus\"+4 Magic burst damage +7 Set: Enhances \"Fast Cast\"", 
-        ["item_level"]=119, 
-        ["slots"]={
-            [8]="Feet"
-        }, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2718,6 +2713,11 @@ return {
             }, 
             ["set id"]=138
         }, 
+        ["AGI"]=26, 
+        ["en"]="Jhakri Pigaches +2", 
+        ["discription"]="DEF:62 STR+25 DEX+28 VIT+3 AGI+26 INT+33 MND+21 CHR+34 Accuracy+42 Attack+42 Magic Accuracy+42 Evasion+41 Magic Evasion+69 \"Magic Atk. Bonus\"+39 \"Magic Def. Bonus\"+4 Magic burst damage +7 Set: Enhances \"Fast Cast\"", 
+        ["item_level"]=119, 
+        ["Attack"]=42, 
         ["Accuracy"]=42, 
         ["INT"]=33, 
         ["STR"]=25, 
@@ -2731,7 +2731,9 @@ return {
     }, 
     [88]={
         ["Evasion"]=24, 
-        ["Attack"]=44, 
+        ["slots"]={
+            [4]="Head"
+        }, 
         ["jobs"]={
             [4]="BLM", 
             [5]="RDM", 
@@ -2740,16 +2742,9 @@ return {
             [21]="GEO"
         }, 
         ["DEX"]=27, 
-        ["AGI"]=1, 
+        ["Haste"]=3, 
         ["MND"]=21, 
         ["discription"]="DEF:90 STR+31 DEX+27 VIT+7 AGI+1 INT+36 MND+21 CHR+20 Accuracy+44 Attack+44 Magic Accuracy+44 Evasion+24 Magic Evasion+37 \"Magic Atk. Bonus\"+41 \"Magic Def. Bonus\"+2 Haste+3% \"Skillchain Bonus\"+7 Set: Enhances \"Fast Cast\"", 
-        ["item_level"]=119, 
-        ["Haste"]=3, 
-        ["en"]="Jhakri Coronal +2", 
-        ["slots"]={
-            [4]="Head"
-        }, 
-        ["id"]=25578, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2768,6 +2763,11 @@ return {
             }, 
             ["set id"]=138
         }, 
+        ["AGI"]=1, 
+        ["en"]="Jhakri Coronal +2", 
+        ["item_level"]=119, 
+        ["id"]=25578, 
+        ["Attack"]=44, 
         ["INT"]=36, 
         ["STR"]=31, 
         ["DEF"]=90, 
@@ -2781,7 +2781,9 @@ return {
     [89]={
         ["Evasion"]=13, 
         ["MND"]=35, 
-        ["AGI"]=2, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
         ["jobs"]={
             [4]="BLM", 
             [5]="RDM", 
@@ -2790,13 +2792,6 @@ return {
             [21]="GEO"
         }, 
         ["DEX"]=41, 
-        ["Attack"]=43, 
-        ["en"]="Jhakri Cuffs +2", 
-        ["discription"]="DEF:79 STR+18 DEX+41 VIT+17 AGI+2 INT+36 MND+35 CHR+20 Accuracy+43 Attack+43 Magic Accuracy+43 Evasion+13 Magic Evasion+32 \"Magic Atk. Bonus\"+40 \"Magic Def. Bonus\"+1 Weapon skill damage +7% Set: Enhances \"Fast Cast\"", 
-        ["item_level"]=119, 
-        ["slots"]={
-            [6]="Hands"
-        }, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2815,6 +2810,11 @@ return {
             }, 
             ["set id"]=138
         }, 
+        ["AGI"]=2, 
+        ["en"]="Jhakri Cuffs +2", 
+        ["discription"]="DEF:79 STR+18 DEX+41 VIT+17 AGI+2 INT+36 MND+35 CHR+20 Accuracy+43 Attack+43 Magic Accuracy+43 Evasion+13 Magic Evasion+32 \"Magic Atk. Bonus\"+40 \"Magic Def. Bonus\"+1 Weapon skill damage +7% Set: Enhances \"Fast Cast\"", 
+        ["item_level"]=119, 
+        ["Attack"]=43, 
         ["Accuracy"]=43, 
         ["INT"]=36, 
         ["STR"]=18, 
@@ -2828,7 +2828,7 @@ return {
     }, 
     [90]={
         ["Evasion"]=13, 
-        ["Magic Accuracy"]=45, 
+        ["MND"]=26, 
         ["jobs"]={
             [4]="BLM", 
             [5]="RDM", 
@@ -2836,17 +2836,10 @@ return {
             [20]="SCH", 
             [21]="GEO"
         }, 
-        ["AGI"]=14, 
-        ["item_level"]=119, 
-        ["MND"]=26, 
-        ["Haste"]=2, 
-        ["discription"]="DEF:101 STR+47 VIT+3 AGI+14 INT+52 MND+26 CHR+20 Accuracy+45 Attack+45 Magic Accuracy+45 Evasion+13 Magic Evasion+69 \"Magic Atk. Bonus\"+42 \"Magic Def. Bonus\"+4 Haste+2% \"Store TP\"+9 Set: Enhances \"Fast Cast\"", 
-        ["Store TP"]=9, 
-        ["en"]="Jhakri Slops +2", 
         ["slots"]={
             [7]="Legs"
         }, 
-        ["id"]=25883, 
+        ["Haste"]=2, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2865,6 +2858,13 @@ return {
             }, 
             ["set id"]=138
         }, 
+        ["AGI"]=14, 
+        ["item_level"]=119, 
+        ["Store TP"]=9, 
+        ["en"]="Jhakri Slops +2", 
+        ["discription"]="DEF:101 STR+47 VIT+3 AGI+14 INT+52 MND+26 CHR+20 Accuracy+45 Attack+45 Magic Accuracy+45 Evasion+13 Magic Evasion+69 \"Magic Atk. Bonus\"+42 \"Magic Def. Bonus\"+4 Haste+2% \"Store TP\"+9 Set: Enhances \"Fast Cast\"", 
+        ["id"]=25883, 
+        ["Magic Accuracy"]=45, 
         ["INT"]=52, 
         ["STR"]=47, 
         ["DEF"]=101, 
@@ -2874,5 +2874,516 @@ return {
         ["category"]="Armor", 
         ["VIT"]=3, 
         ["Attack"]=45
+    }, 
+    [91]={
+        ["Handbell skill"]=5, 
+        ["en"]="Reti Pendant", 
+        ["CHR"]=7, 
+        ["slots"]={
+            [9]="Neck"
+        }, 
+        ["category"]="Armor", 
+        ["discription"]="CHR+7 String instrument skill +9 Handbell skill +5 \"Conserve MP\"+4", 
+        ["id"]=27521, 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }
+    }, 
+    [92]={
+        ["MDT"]=-4, 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["category"]="Armor", 
+        ["en"]="Dampener's Torque", 
+        ["HP"]=25, 
+        ["slots"]={
+            [9]="Neck"
+        }, 
+        ["Accuracy"]=5, 
+        ["id"]=27511, 
+        ["discription"]="HP+25 Accuracy+5 Attack+5 Magic damage taken -4%", 
+        ["Attack"]=5
+    }, 
+    [93]={
+        ["discription"]="Magic Accuracy+25 Geomancy +6", 
+        ["en"]="Bagua Charm +1", 
+        ["slots"]={
+            [9]="Neck"
+        }, 
+        ["id"]=25538, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=25
+    }, 
+    [94]={
+        ["Evasion"]=16, 
+        ["MND"]=12, 
+        ["item_level"]=109, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=8, 
+        ["discription"]="DEF:71 HP+52 MP+26 STR+8 DEX+8 VIT+8 AGI+8 INT+12 MND+12 CHR+12 Magic Accuracy+15 Evasion+16 Magic Evasion+51 \"Magic Def. Bonus\"+2 Haste+5% \"Drain\" and \"Aspir\" potency +20", 
+        ["en"]="Bagua Galero", 
+        ["Haste"]=5, 
+        ["id"]=26664, 
+        ["HP"]=52, 
+        ["AGI"]=8, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["STR"]=8, 
+        ["DEF"]=71, 
+        ["MP"]=26, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Primeval Zeal\" effect", 
+            [4]="none"
+        }, 
+        ["INT"]=12, 
+        ["category"]="Armor", 
+        ["CHR"]=12, 
+        ["VIT"]=8, 
+        ["Magic Accuracy"]=15
+    }, 
+    [95]={
+        ["Evasion"]=41, 
+        ["AGI"]=21, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=21, 
+        ["id"]=26841, 
+        ["MND"]=29, 
+        ["discription"]="DEF:129 HP+94 MP+99 STR+21 DEX+21 VIT+21 AGI+21 INT+29 MND+29 CHR+29 \"Magic Atk. Bonus\"+23 Evasion+41 Magic Evasion+80 \"Magic Def. Bonus\"+6 Geomancy skill +12 Haste+3%", 
+        ["STR"]=21, 
+        ["Haste"]=3, 
+        ["en"]="Bagua Tunic +1", 
+        ["HP"]=94, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Bolster\" effect", 
+            [4]="none"
+        }, 
+        ["Geomancy skill"]=12, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["DEF"]=129, 
+        ["MP"]=99, 
+        ["VIT"]=21, 
+        ["INT"]=29, 
+        ["category"]="Armor", 
+        ["CHR"]=29, 
+        ["Magic Atk. Bonus"]=23, 
+        ["item_level"]=119
+    }, 
+    [96]={
+        ["Evasion"]=38, 
+        ["MND"]=24, 
+        ["AGI"]=25, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [21]="GEO"
+        }, 
+        ["DEX"]=21, 
+        ["item_level"]=119, 
+        ["en"]="Ea Hat", 
+        ["discription"]="DEF:103 HP+34 MP+50 STR+20 DEX+21 VIT+24 AGI+25 INT+38 MND+24 CHR+29 Magic Accuracy+40 \"Magic Atk. Bonus\"+33 Evasion+38 Magic Evasion+99 \"Magic Def. Bonus\"+5 Haste+6% Magic burst damage +6 Magic burst damage II +6", 
+        ["Haste"]=6, 
+        ["HP"]=34, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["VIT"]=24, 
+        ["STR"]=20, 
+        ["DEF"]=103, 
+        ["MP"]=50, 
+        ["id"]=25553, 
+        ["INT"]=38, 
+        ["category"]="Armor", 
+        ["CHR"]=29, 
+        ["Magic Atk. Bonus"]=33, 
+        ["Magic Accuracy"]=40
+    }, 
+    [97]={
+        ["Evasion"]=45, 
+        ["MND"]=32, 
+        ["AGI"]=26, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [21]="GEO"
+        }, 
+        ["DEX"]=24, 
+        ["item_level"]=119, 
+        ["en"]="Ea Houppelande", 
+        ["discription"]="DEF:133 HP+68 MP+94 STR+23 DEX+24 VIT+26 AGI+26 INT+43 MND+32 CHR+34 Magic Accuracy+42 Evasion+45 Magic Evasion+118 \"Magic Atk. Bonus\"+39 \"Magic Def. Bonus\"+8 Haste+3% Magic burst damage +8 Magic burst damage II +8", 
+        ["Haste"]=3, 
+        ["HP"]=68, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["VIT"]=26, 
+        ["STR"]=23, 
+        ["DEF"]=133, 
+        ["MP"]=94, 
+        ["id"]=26529, 
+        ["INT"]=43, 
+        ["category"]="Armor", 
+        ["CHR"]=34, 
+        ["Magic Atk. Bonus"]=39, 
+        ["Magic Accuracy"]=42
+    }, 
+    [98]={
+        ["Evasion"]=37, 
+        ["MND"]=26, 
+        ["AGI"]=24, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [21]="GEO"
+        }, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["item_level"]=119, 
+        ["en"]="Ea Slops", 
+        ["discription"]="DEF:115 HP+61 MP+85 STR+26 VIT+17 AGI+24 INT+43 MND+26 CHR+23 Magic Accuracy+41 \"Magic Atk. Bonus\"+36 Evasion+37 Magic Evasion+137 \"Magic Def. Bonus\"+7 Haste+5% Magic burst damage +7 Magic burst damage II +7", 
+        ["DEF"]=115, 
+        ["HP"]=61, 
+        ["id"]=25893, 
+        ["Magic Atk. Bonus"]=36, 
+        ["Haste"]=5, 
+        ["MP"]=85, 
+        ["VIT"]=17, 
+        ["STR"]=26, 
+        ["CHR"]=23, 
+        ["INT"]=43, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=41
+    }, 
+    [99]={
+        ["Evasion"]=56, 
+        ["MND"]=21, 
+        ["AGI"]=38, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [21]="GEO"
+        }, 
+        ["DEX"]=14, 
+        ["discription"]="DEF:73 HP+15 MP+26 STR+11 DEX+14 VIT+15 AGI+38 MND+21 CHR+39 Magic Accuracy+38 \"Magic Atk. Bonus\"+27 Evasion+56 Magic Evasion+137 \"Magic Def. Bonus\"+5 Haste+3% Magic burst damage +4 Magic burst damage II +4", 
+        ["en"]="Ea Pigaches", 
+        ["item_level"]=119, 
+        ["DEF"]=73, 
+        ["HP"]=15, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["VIT"]=15, 
+        ["Haste"]=3, 
+        ["MP"]=26, 
+        ["id"]=25960, 
+        ["STR"]=11, 
+        ["category"]="Armor", 
+        ["CHR"]=39, 
+        ["Magic Atk. Bonus"]=27, 
+        ["Magic Accuracy"]=38
+    }, 
+    [100]={
+        ["Evasion"]=27, 
+        ["MND"]=35, 
+        ["DEF"]=91, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [21]="GEO"
+        }, 
+        ["DEX"]=29, 
+        ["item_level"]=119, 
+        ["en"]="Ea Cuffs", 
+        ["discription"]="DEF:91 HP+6 MP+14 STR+7 DEX+29 VIT+30 INT+35 MND+35 CHR+23 Magic Accuracy+39 Evasion+27 Magic Evasion+91 \"Magic Atk. Bonus\"+30 \"Magic Def. Bonus\"+4 Haste+3% Magic burst damage +5 Magic burst damage II +5", 
+        ["STR"]=7, 
+        ["HP"]=6, 
+        ["id"]=25980, 
+        ["Magic Atk. Bonus"]=30, 
+        ["Haste"]=3, 
+        ["MP"]=14, 
+        ["VIT"]=30, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["CHR"]=23, 
+        ["INT"]=35, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=39
+    }, 
+    [101]={
+        ["discription"]="DEF:15 Indicolure effect duration +20 \"Life Cycle\"+10", 
+        ["category"]="Armor", 
+        ["en"]="Nantosuelta's Cape", 
+        ["Magic Atk. Bonus"]=10, 
+        ["id"]=26266, 
+        ["INT"]=20, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["augments"]={
+            [1]="INT+20", 
+            [2]="Mag. Acc+20 /Mag. Dmg.+20", 
+            [3]="Magic Damage +10", 
+            [4]="\"Mag.Atk.Bns.\"+10", 
+            [5]="Pet: Damage taken -5%"
+        }, 
+        ["DEF"]=15, 
+        ["Magic Accuracy"]=20
+    }, 
+    [102]={
+        ["Evasion"]=22, 
+        ["MND"]=33, 
+        ["AGI"]=5, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=28, 
+        ["discription"]="DEF:84 HP+22 MP+14 STR+6 DEX+28 VIT+25 AGI+5 INT+19 MND+33 CHR+19 Evasion+22 Magic Evasion+37 \"Magic Def. Bonus\"+3 Haste+3% Enmity-6 \"Refresh\"+1 Elemental magic casting time -12%", 
+        ["item_level"]=119, 
+        ["Haste"]=3, 
+        ["id"]=27017, 
+        ["HP"]=22, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["VIT"]=25, 
+        ["DEF"]=84, 
+        ["MP"]=14, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Curative Recantation\" effect", 
+            [4]="none"
+        }, 
+        ["STR"]=6, 
+        ["CHR"]=19, 
+        ["INT"]=19, 
+        ["category"]="Armor", 
+        ["en"]="Bagua Mitaines +1"
+    }, 
+    [103]={
+        ["Evasion"]=36, 
+        ["MND"]=19, 
+        ["item_level"]=119, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=14, 
+        ["discription"]="DEF:98 HP+71 MP+32 STR+14 DEX+14 VIT+14 AGI+14 INT+19 MND+19 CHR+19 Magic Accuracy+18 Evasion+36 Magic Evasion+75 \"Magic Def. Bonus\"+5 Haste+6% \"Drain\" and \"Aspir\" potency +25", 
+        ["en"]="Bagua Galero +1", 
+        ["Haste"]=6, 
+        ["id"]=26665, 
+        ["HP"]=71, 
+        ["AGI"]=14, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["STR"]=14, 
+        ["DEF"]=98, 
+        ["MP"]=32, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Primeval Zeal\" effect", 
+            [4]="none"
+        }, 
+        ["INT"]=19, 
+        ["category"]="Armor", 
+        ["CHR"]=19, 
+        ["VIT"]=14, 
+        ["Magic Accuracy"]=18
+    }, 
+    [104]={
+        ["Evasion"]=40, 
+        ["MND"]=27, 
+        ["AGI"]=20, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["discription"]="DEF:108 HP+98 MP+29 STR+25 VIT+12 AGI+20 INT+37 MND+27 CHR+19 Evasion+40 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+5% \"Indicolure\" spell duration +15", 
+        ["item_level"]=119, 
+        ["Haste"]=5, 
+        ["id"]=27193, 
+        ["HP"]=98, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["VIT"]=12, 
+        ["DEF"]=108, 
+        ["MP"]=29, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Mending Halation\" effect", 
+            [4]="none"
+        }, 
+        ["STR"]=25, 
+        ["CHR"]=19, 
+        ["INT"]=37, 
+        ["category"]="Armor", 
+        ["en"]="Bagua Pants +1"
+    }, 
+    [105]={
+        ["Evasion"]=55, 
+        ["MND"]=22, 
+        ["AGI"]=33, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=11, 
+        ["discription"]="DEF:67 HP+43 MP+14 STR+10 DEX+11 VIT+13 AGI+33 INT+20 MND+22 CHR+34 Evasion+55 Magic Evasion+107  \"Magic Def. Bonus\"+5 Enfeebling magic skill +17 Haste+3% Luopan: \"Regen\"+3", 
+        ["item_level"]=119, 
+        ["Haste"]=3, 
+        ["id"]=27369, 
+        ["HP"]=43, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["VIT"]=13, 
+        ["DEF"]=67, 
+        ["MP"]=14, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Radial Arcana\" effect", 
+            [4]="none"
+        }, 
+        ["STR"]=10, 
+        ["CHR"]=34, 
+        ["INT"]=20, 
+        ["category"]="Armor", 
+        ["en"]="Bagua Sandals +1"
+    }, 
+    [106]={
+        ["Evasion"]=15, 
+        ["MND"]=13, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=10, 
+        ["AGI"]=2, 
+        ["en"]="Azimuth Hood", 
+        ["discription"]="DEF:72 HP+15 MP+46 STR+10 DEX+10 VIT+10 AGI+2 INT+21 MND+13 CHR+13 Evasion+15 Magic Evasion+58 \"Magic Def. Bonus\"+3 Haste+5% Geomancy skill +10 \"Full Circle\"+1 Luopan: \"Regen\"+2 Set: MP occasionally not depleted when using geomancy spells", 
+        ["Haste"]=5, 
+        ["HP"]=15, 
+        ["VIT"]=10, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }, 
+            ["set id"]=223
+        }, 
+        ["STR"]=10, 
+        ["DEF"]=72, 
+        ["MP"]=46, 
+        ["id"]=26780, 
+        ["INT"]=21, 
+        ["category"]="Armor", 
+        ["CHR"]=13, 
+        ["Geomancy skill"]=10, 
+        ["item_level"]=109
+    }, 
+    [107]={
+        ["Evasion"]=28, 
+        ["MND"]=11, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["jobs"]={
+            [21]="GEO"
+        }, 
+        ["DEX"]=5, 
+        ["AGI"]=18, 
+        ["en"]="Azimuth Gaiters", 
+        ["discription"]="DEF:49 HP+34 MP+47 STR+5 DEX+5 VIT+5 AGI+18 INT+12 MND+11 CHR+20 Evasion+28 Magic Evasion+80\"Magic Def. Bonus\"+3 Haste+3% \"Indicolure\" spell duration +15 Physical damage taken -3% Set: MP occasionally not depleted when using geomancy spells", 
+        ["Haste"]=3, 
+        ["HP"]=34, 
+        ["VIT"]=5, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }, 
+            ["set id"]=223
+        }, 
+        ["STR"]=5, 
+        ["DEF"]=49, 
+        ["MP"]=47, 
+        ["id"]=27451, 
+        ["INT"]=12, 
+        ["category"]="Armor", 
+        ["CHR"]=20, 
+        ["PDT"]=-3, 
+        ["item_level"]=109
     }
 }

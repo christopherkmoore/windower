@@ -31,13 +31,10 @@ send Chixslave hb buff Chixslave barpetra;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff off;
-send Chixslave hb debuff Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
-send Chixslave hb follow Twochix on;
-send Chixslave hb follow dist 15
+send Chixslave hb debuff use Dia II;
+send Chixslave hb debuff use Paralyze;
+send Chixslave hb debuff use Slow;
+send Chixslave hb debuff use Addle;
 
 send Onechix sing nightingale on;
 send Onechix sing troubadour on; 
@@ -48,7 +45,8 @@ send Onechix sing ws off;
 send Onechix sing reset;
 send Onechix singer debuffing on;
 send Onechix sing march 1;
-send Onechix sing minuet 2;
+//send Onechix sing minuet 2;
+send Onechix pianissimo on;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
@@ -63,6 +61,6 @@ send Threechix sing refresh Threechix on;
 send Threechix sing refresh Chixslave on;
 
 send Threechix automb on;
-send Threechix automb tier 4;
+send Threechix automb tier 5;
 
 // need paralyze meds

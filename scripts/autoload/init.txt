@@ -96,6 +96,8 @@ lua load healbot
 lua load aecho;
 send Onechix lua load singer;
 send Onechix sing off;
+send Threechix lua load automb;
+send Chixslave lua load automb;
 send Onechix awm slave on;
 send Twochix awm master on;
 

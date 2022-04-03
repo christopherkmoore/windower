@@ -15,6 +15,7 @@ return {
     },
     ["Bedrock Crag"] = S{
         4,
+        13,
         194
     },
     ["Bozzeto Warder"] = S{
@@ -67,6 +68,8 @@ return {
         194
     },
     ["Icy Palisade"] = S{
+        4,
+        13,
         194
     },
     ["Knotted Root"] = S{

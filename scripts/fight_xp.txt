@@ -1,4 +1,5 @@
 //send @all lua load healbot;
+send Chixslave lua load automb
 send Threechix lua load singer;
 
 send @all exec cps;
@@ -8,8 +9,12 @@ send Chixslave hb on;
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
+send Onechix sing playlist clear;
 
 wait 1;
+
+send Chixslave amb on;
+send Chixslave amb c holy;
 
 send Chixslave gs c set AutoSubMode on;
 
@@ -24,30 +29,36 @@ send Chixslave hb buff Chixslave Aurorastorm;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
-send Chixslave hb debuff Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
+send Chixslave hb debuff use Dia II;
 
-send Chixslave hb buff Chixslave barwatera;
+send Chixslave hb buff Chixslave barfira;
 send Chixslave hb buff Chixslave barblindra;
 
 send Onechix singer on;
-send Onechix pianissimo off;
-send Onechix debuffing off;
-send Onechix singer minuet 2;
-send Onechix singer march 1; 
-send Onechix pianissimo on;
+send Onechix sing pianissimo on;
+send Onechix sing Nightingale on;
+send Onechix sing Troubadour on
+send Onechix sing debuffing off;
+send Onechix sing minuet 2;
+send Onechix sing march 1; 
+
 
 send Onechix sing ws on;
 
-send Threechix singer on;
+send Threechix sing off;
+send Threechix sing haste Twochix on;
+send Threechix sing haste Onechix on;
+send Threechix sing haste Chixslave on;
+send Threechix sing haste Threechix on;
+send Threechix sing refresh Threechix on;
+send Threechix sing refresh Chixslave on;
+send Threechix sing haste Bettyprocker on;
+send Threechix sing refresh Bettyprocker on;
+
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
-send Threechix lua load automb;
 send Threechix amb on;
 send Threechix amb tier 3;
 

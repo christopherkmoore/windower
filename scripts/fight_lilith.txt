@@ -22,22 +22,20 @@ send Chixslave hb buff Onechix Haste;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
-send Chixslave hb debuff Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
+send Chixslave hb debuff use Dia II;
+send Chixslave hb debuff use Paralyze;
+send Chixslave hb debuff use Slow;
+send Chixslave hb debuff use Addle;
 
 send Chixslave hb buff Chixslave barfira;
 send Chixslave hb buff Chixslave baramnesra;
 
-send Twochix /ja "Bestial Loyalty" <me>;
-wait 3;
 send Twochix /ma "Yoran-Oran (UC)" <me>;
 wait 4;
 send Twochix /ma "Koru-Moru" <me>;
 
 send Onechix singer on;
+send Onechix sing ws off;
 send Onechix singer debuffing on;
 
 send Onechix sing pianissimo on;
