@@ -7,8 +7,7 @@ send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
 send Chixslave hb ignoretrusts off;
 
-send Twochix /ma "AAEV" <me>;
-wait 5;
+wait 1;
 send Twochix /ma "Yoran-Oran (UC)" <me>;
 
 send Onechix singer playlist clear;
@@ -30,7 +29,7 @@ send Chixslave hb buff Chixslave barstonra;
 send Chixslave hb buff Chixslave barpetra;
 
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff off;
+send Chixslave hb debuff on;
 send Chixslave hb debuff use Dia II;
 send Chixslave hb debuff use Paralyze;
 send Chixslave hb debuff use Slow;
@@ -38,29 +37,38 @@ send Chixslave hb debuff use Addle;
 
 send Onechix sing nightingale on;
 send Onechix sing troubadour on; 
+send Onechix pianissimo on;
 send Onechix sing soul_voice on,
 send Onechix sing clarion on;
 send Onechix sing ws off;
 
 send Onechix sing reset;
-send Onechix singer debuffing on;
+send Onechix singer debuffing off;
+send Onechix gs c set autoshadowmode on;
 send Onechix sing march 1;
-//send Onechix sing minuet 2;
-send Onechix pianissimo on;
+send Onechix sing minuet 1;
+send Onechix sing madrigal 1;
+
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
-send Threechix sing on;
+send Threechix singer on;
 send Threechix sing haste Twochix on;
-send Threechix sing haste Onechix on;
+//send Threechix sing haste Onechix on;
 send Threechix sing haste Chixslave on;
 send Threechix sing haste Threechix on;
+//send Threechix sing haste Bettyprocker on;
 send Threechix sing refresh Threechix on;
-send Threechix sing refresh Chixslave on;
+send Threechix sing haste machair on;
+send Threechix sing haste Flaccidcelery on;
+send Threechix sing refresh Flaccidcelery on;
 
 send Threechix automb on;
-send Threechix automb tier 5;
+send Threechix amb tier 4;
+send Threechix amb c spell;
+
+send Chixslave hb ignore_debuff everyone poison;
 
 // need paralyze meds

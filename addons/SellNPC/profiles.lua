@@ -203,7 +203,9 @@ profiles['mog'] = S{
     'leviatite',
     'platinum nugget',
     'dst. nugget',
-    
+    'durium ore',
+    'eschalixir',
+    'eschalixir +1',
 
     'smilodon hide',
     'durium sheet',

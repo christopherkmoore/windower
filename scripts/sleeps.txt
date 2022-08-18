@@ -1,0 +1,3 @@
+send Twochix sat youtarget Onechix;
+wait 0.5;
+send Onechix /ma "Horde Lullaby II" <t>

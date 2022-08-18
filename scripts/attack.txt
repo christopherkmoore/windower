@@ -1,5 +1,0 @@
-sat alltarget;
-sat youattack Onechix;
-
-send Threechix exec unfollow;
-send Chixslave exec unfollow;

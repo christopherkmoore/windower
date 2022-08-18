@@ -1,4 +1,4 @@
---Copyright (c) 2014, Byrthnoth
+--Copyright © 2014, Byrthnoth
 --All rights reserved.
 
 --Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ require('chat')
 
 _addon.name = 'PointWatch'
 _addon.author = 'Byrth'
-_addon.version = 0.211112
+_addon.version = 0.220327
 _addon.command = 'pw'
 
 settings = config.load('data\\settings.xml',default_settings)
@@ -64,10 +64,7 @@ packet_handlers = {
     [0x02A] = function(org) -- Resting message
         local p = packets.parse('incoming',org)
         local zone = 'z'..windower.ffxi.get_info().zone
-        if settings.options.message_printing then
-            print('Message ID: '..bit.band(p['Message ID'], 16383))
-        end
-        
+
         if messages[zone] then
             local msg = bit.band(p['Message ID'], 16383)
             for i,v in pairs(messages[zone]) do
@@ -114,9 +111,16 @@ packet_handlers = {
         local p = packets.parse('incoming',org)
         xp.current = p['Current EXP']
         xp.tnl = p['Required EXP']
+        xp.job = res.jobs[p['Main Job']].name
+        xp.job_abbr = res.jobs[p['Main Job']].name_short
+        xp.job_level = p['Main Job Level']
+        xp.sub_job = res.jobs[p['Sub Job']].name
+        xp.sub_job_abbr = res.jobs[p['Sub Job']].name_short
+        xp.sub_job_level = p['Sub Job Level']
         accolades.current = p['Unity Points']
         ep.current = p['Current Exemplar Points']
         ep.tnml = p['Required Exemplar Points']
+        ep.master_level = p['Master Level']
     end,
     [0x063] = function(org)
         local p = packets.parse('incoming',org)
@@ -125,9 +129,12 @@ packet_handlers = {
             lp.number_of_merits = p['Merit Points']
             lp.maximum_merits = p['Max Merit Points']
         elseif p['Order'] == 5 then
-            local job = windower.ffxi.get_player().main_job_full
-            cp.current = p[job..' Capacity Points']
-            cp.number_of_job_points = p[job..' Job Points']
+            local player = windower.ffxi.get_player()
+            if player then
+                local job = player.main_job_full
+                cp.current = p[job..' Capacity Points']
+                cp.number_of_job_points = p[job..' Job Points']
+            end
         end
     end,
     [0x110] = function(org)
@@ -204,9 +211,6 @@ windower.register_event('addon command',function(...)
         windower.send_command('lua u pointwatch')
     elseif first_cmd == 'reset' then
         initialize()
-    elseif first_cmd == 'message_printing' then
-        settings.options.message_printing = not settings.options.message_printing
-        print('Pointwatch: Message printing is '..tostring(settings.options.message_printing)..'.')
     elseif first_cmd == 'eval' then
         assert(loadstring(table.concat(commands, ' ')))()
     end

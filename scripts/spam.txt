@@ -1,0 +1,320 @@
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6
+send Twochix /ma \'Pollen\" <me>
+wait 6

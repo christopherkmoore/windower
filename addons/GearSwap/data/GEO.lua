@@ -182,13 +182,11 @@ end
 
 function job_post_midcast(spell, spellMap, eventArgs)
 
-	if spell.skill == 'Elemental Magic' and default_spell_map ~= 'ElementalEnfeeble' and spell.english ~= 'Impact' then
-		if state.MagicBurstMode.value ~= 'Off' then
-			if state.CastingMode.value:contains('Resistant') and sets.ResistantMagicBurst then
-				equip(sets.ResistantMagicBurst)
-			else
-				equip(sets.MagicBurst)
-			end
+	if spell.skill == 'Elemental Magic' then
+		if state.CastingMode.value:contains('Resistant') and sets.ResistantMagicBurst then
+			equip(sets.ResistantMagicBurst)
+		else
+			equip(sets.MagicBurst)
 		end
 		if spell.element == world.weather_element or spell.element == world.day_element then
 			if state.CastingMode.value == 'Fodder' then
@@ -331,6 +329,10 @@ function job_get_spell_map(spell, default_spell_map)
 end
 
 function job_customize_idle_set(idleSet)
+	if pet.isvalid then
+		idleSet = equip(sets.idle.Pet)
+	end
+
     if buffactive['Sublimation: Activated'] then
         if (state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere')) and sets.buff.Sublimation then
             idleSet = set_combine(idleSet, sets.buff.Sublimation)

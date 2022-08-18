@@ -7,6 +7,9 @@ return {
         13,
         194
     },
+    ["Antaeus"] = S{
+        2
+    },
     ["Asanbosam"] = S{
         2
     },
@@ -22,6 +25,9 @@ return {
         2
     },
     ["Bozzetto Consul"] = S{
+        2
+    },
+    ["Bozzetto Devout"] = S{
         2
     },
     ["Bozzetto Hunter"] = S{
@@ -52,6 +58,9 @@ return {
     ["Dhorme Khimaira"] = S{
         13
     },
+    ["Diabolos Spade"] = S{
+        4
+    },
     ["Dimensional Tether"] = S{
         194
     },
@@ -67,10 +76,17 @@ return {
         13,
         194
     },
+    ["Heliotrope Barrier"] = S{
+        13,
+        194
+    },
     ["Icy Palisade"] = S{
         4,
         13,
         194
+    },
+    ["Incarnation Icon"] = S{
+        2
     },
     ["Knotted Root"] = S{
         4,

@@ -76,7 +76,7 @@ function init_gear_sets()
     sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
 
     -- PRECAST SETS
-    sets.precast.JA['Killer Instinct'] = { body = "Nukumi Gausape" } -- head="Ankusa Helm +1"
+    sets.precast.JA['Killer Instinct'] = { body = "Nukumi Gausape +1", head="Ankusa Helm +2" } 
     sets.precast.JA['Bestial Loyalty'] = {
         body = "Mirke Wardecors",
         hands = "Ankusa Gloves"
@@ -86,19 +86,19 @@ function init_gear_sets()
         legs = "Ankusa Trousers +1"
     }
     sets.precast.JA.Tame = {
-        head = "Beast Helm"
+        head = "Totemic Helm"
     }
     sets.precast.JA.Spur = {
         back = "Artio's Mantle",
         feet = "Nukumi Ocreae +1"
     }
-    sets.SpurAxe = {
-        main = "Skullrender"
-    }
-    sets.SpurAxesDW = {
-        main = "Skullrender",
-        sub = "Skullrender"
-    }
+    -- sets.SpurAxe = {
+    --     main = "Skullrender"
+    -- }
+    -- sets.SpurAxesDW = {
+    --     main = "Skullrender",
+    --     sub = "Skullrender"
+    -- }
 
     sets.precast.JA['Feral Howl'] = {}
 
@@ -112,8 +112,8 @@ function init_gear_sets()
         ring2 = "Stikini Ring +1",
         back = "Pastoralist's Mantle",
         waist = "Klouskap Sash",
-        legs = "",
-        feet = "Beast Gaiters"
+        legs = "Totemic Trousers +2",
+        feet = "Totemic Gaiters"
     }
 
     sets.precast.JA.Reward.Theta = set_combine(sets.precast.JA.Reward, {
@@ -281,9 +281,9 @@ function init_gear_sets()
     -- Default weaponskill sets.
     sets.precast.WS = {
         ammo = "Voluspa Tathlum",
-        head = "Meghanada Visor +2",
+        head = "Ankusa Helm +2",
         neck = "Fotia Gorget",
-        ear1 = "Thrud Earring",
+        ear1 = "Sherida Earring",
         ear2 = "Brutal Earring",
         body = "Tali'ah manteel +2",
         hands = "Meg. Gloves +2",
@@ -293,8 +293,7 @@ function init_gear_sets()
         legs = "Meg. Chausses +2",
         feet = "Meg. Jam. +2",
         -- back = "Aptitude Mantle",
-        back=gear.capeWS
-
+        back=gear.capeWS,
     }
 
     sets.precast.WS.SomeAcc = {
@@ -369,12 +368,12 @@ function init_gear_sets()
     sets.precast.WS['Ruinator'].WSMidAcc = set_combine(sets.precast.WS.WSMidAcc, {})
     sets.precast.WS['Ruinator'].WSHighAcc = set_combine(sets.precast.WS.WSHighAcc, {})
 
-    sets.precast.WS['Onslaught'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Onslaught'] = set_combine(sets.precast.WS, { head = "Ankusa Helm +2", back=gear.capeWS_Onslaught})
     sets.precast.WS['Onslaught'].WSMidAcc = set_combine(sets.precast.WSMidAcc, {})
     sets.precast.WS['Onslaught'].WSHighAcc = set_combine(sets.precast.WSHighAcc, {})
 
     sets.precast.WS['Primal Rend'] = {
-        ammo = "Dosis Tathlum",
+        -- ammo = "Dosis Tathlum",
         head = gear.valorus_head_magic_attack,
         neck = "Sanctity Necklace",
         ear1 = "Moonshade Earring",
@@ -422,7 +421,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = "Tali'ah Manteel +2",
-        hands = "Nukumi Manoplas",
+        hands = "Nukumi Manoplas +1",
         ring1 = "Varar Ring +1",
         ring2 = "C. Palug Ring",
         back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10',}},
@@ -468,7 +467,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas",
+        hands = "Nukumi Manoplas +1",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -492,7 +491,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas",
+        hands = "Nukumi Manoplas +1",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -516,7 +515,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas",
+        hands = "Nukumi Manoplas +1",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -540,7 +539,7 @@ function init_gear_sets()
         head = "Nukumi Cabasset"
     }
     sets.midcast.Pet.TPBonus = {
-        hands = "Nukumi Manoplas"
+        hands = "Nukumi Manoplas +1"
     }
 
     -- RESTING
@@ -568,12 +567,7 @@ function init_gear_sets()
     -- }
 
     sets.idle = {
-        main = "Kaja Axe",
-        sub = {
-            name = "Skullrender",
-            augments = {'DMG:+15', 'Pet: Accuracy+20', 'Pet: Attack+20'}
-        },
-        ammo = "Livid Broth",
+        -- ammo = "Livid Broth",
         head = "Malignance Chapeau",
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
@@ -586,8 +580,7 @@ function init_gear_sets()
         right_ear = "Assuage Earring",
         left_ring = "Meghanada Ring",
         right_ring = "Defending Ring",
-        back=gear.capeTP
-
+        back=gear.capeTP,
     }
 
     -- sets.idle.Refresh = {
@@ -667,7 +660,7 @@ function init_gear_sets()
     --     name = "Kumbhakarna",
     --     augments = {'Pet: "Mag.Atk.Bns."+20', 'Pet: Phys. dmg. taken -4%', 'Pet: TP Bonus+200'}
     -- },
-        ammo = "Voluspa Tathlum",
+        -- ammo = "Voluspa Tathlum",
         head = "Tali'ah Turban +2",
         neck = "Shulmanu Collar",
         ear1 = "Enmerkar Earring",
@@ -755,7 +748,7 @@ function init_gear_sets()
     -- sets.defense.PetMEVA = sets.defense.PetMDT
 
     -- sets.defense.PKiller = set_combine(sets.defense.PDT, {
-    --     body = "Nukumi Gausape"
+    --     body = "Nukumi Gausape +1"
     -- })
     -- sets.defense.Reraise = set_combine(sets.defense.PDT, {
     --     head = "Twilight Helm",
@@ -794,7 +787,7 @@ function init_gear_sets()
     -- }
 
     -- sets.defense.MKiller = set_combine(sets.defense.MDT, {
-    --     body = "Nukumi Gausape +1"
+    --     body = "Nukumi Gausape +1 +1"
     -- })
 
     -- sets.Kiting = {
@@ -887,21 +880,21 @@ function init_gear_sets()
     }
 
 
-    -- sets.engaged.Fodder = {
-    --     ammo = "Aurgelmir Orb +1",
-    --     head = "Malignance Chapeau",
-    --     neck = "Asperity Necklace",
-    --     ear1 = "Trux Earring",
-    --     ear2 = "Brutal Earring",
-    --     body = "Malignance Tabard",
-    --     hands = "Malignance Gloves",
-    --     ring1 = "Petrov Ring",
-    --     ring2 = "Epona's Ring",
-    --     back = "Bleating Mantle",
-    --     waist = "Windbuffet Belt +1",
-    --     legs = "Malignance Tights",
-    --     feet = "Malignance Boots"
-    -- }
+    sets.engaged.Fodder = {
+        ammo = "Aurgelmir Orb +1",
+        head = "Malignance Chapeau",
+        neck = "Asperity Necklace",
+        ear1 = "Sherida Earring",
+        ear2 = "Eabani Earring",
+        body = "Malignance Tabard",
+        hands = "Emicho Gauntlets +1",
+        ring1 = "Petrov Ring",
+        ring2 = "Epona's Ring",
+        back = gear.capeTP,
+        waist = "Windbuffet Belt +1",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots"
+    }
 
     -- -- MELEE (SINGLE-WIELD) HYBRID SETS
     -- sets.engaged.PDT = {
@@ -1003,22 +996,19 @@ function init_gear_sets()
     --     feet = "Meg. Jam. +2"
     -- }
     sets.engaged.DW = {
-        main = "Kaja Axe",
-        sub = {
-            name = "Skullrender",
-            augments = {'DMG:+15', 'Pet: Accuracy+20', 'Pet: Attack+20'}
-        },
-        ammo = "Livid Broth",
+        ammo = "Voluspa Tathlum",
+
+        -- ammo = "Livid Broth",
         head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
         -- feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
         feet = "Meg. Jam. +2",
-        neck = "Sanctity Necklace",
+        neck = "Anu Torque",
         -- waist = "Klouskap Sash",
         waist = "Sailfi Belt +1",
-        left_ear = "Eabani Earring",
+        left_ear = "Sherida Earring",
         right_ear = "Brutal Earring",
         left_ring = "Petrov Ring",
         right_ring = "Vocane Ring",
@@ -1152,7 +1142,7 @@ function init_gear_sets()
     sets.engaged.DW.PetTank.Fodder = set_combine(sets.engaged.DW.Fodder, {})
 
     sets.buff['Killer Instinct'] = {
-        body = "Nukumi Gausape"
+        body = "Nukumi Gausape +1", head="Ankusa Helm +2"
     }
     sets.buff.Doom = set_combine(sets.buff.Doom, {})
     sets.buff.Sleep = {
@@ -1428,7 +1418,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas",
+    --     hands = "Nukumi Manoplas +1",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",
@@ -1452,7 +1442,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas",
+    --     hands = "Nukumi Manoplas +1",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",
@@ -1476,7 +1466,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas",
+    --     hands = "Nukumi Manoplas +1",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",

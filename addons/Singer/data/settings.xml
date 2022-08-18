@@ -84,19 +84,16 @@
         </aoe>
         <box>
             <pos>
-                <x>1327</x>
-                <y>36</y>
+                <x>1332</x>
+                <y>32</y>
             </pos>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
         </box>
         <clarion>true</clarion>
+        <debuffing>false</debuffing>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
+        <nightingale>false</nightingale>
         <pianissimo>true</pianissimo>
         <recast>
             <buff>
@@ -104,6 +101,7 @@
                 <min>5</min>
             </buff>
         </recast>
+        <troubadour>false</troubadour>
         <use_ws>false</use_ws>
     </onechix>
     <threechix>
@@ -115,14 +113,16 @@
         </aoe>
         <box>
             <pos>
-                <x>1326</x>
+                <x>1320</x>
                 <y>0</y>
             </pos>
         </box>
         <clarion>true</clarion>
+        <debuffing>false</debuffing>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
+        <nightingale>false</nightingale>
         <pianissimo>true</pianissimo>
         <recast>
             <buff>
@@ -130,6 +130,7 @@
                 <min>5</min>
             </buff>
         </recast>
+        <troubadour>false</troubadour>
         <use_ws>false</use_ws>
     </threechix>
 </settings>

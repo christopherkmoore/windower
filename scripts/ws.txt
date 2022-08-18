@@ -1,1 +1,0 @@
-send @others gs c toggle autowsmode; wait 1; send @others gs c autows Heavy Swing;

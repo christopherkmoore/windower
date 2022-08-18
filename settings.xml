@@ -20,6 +20,7 @@
     <addon>shortcuts</addon>
     <addon>autojoin</addon>
     <addon>pointwatch</addon>
+    <addon>latentchecker</addon>
     <plugin>Timers</plugin>
     <plugin>Config</plugin>
     <plugin>Run</plugin>

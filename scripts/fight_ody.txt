@@ -1,0 +1,55 @@
+send Chixslave hb on; 
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+
+send Onechix singer playlist clear;
+wait 2;
+
+
+
+send Chixslave gs c set AutoSubMode on;
+send Chixslave hb buff Chixslave Afflatus Solace;
+send Chixslave hb buff Chixslave Sublimation;
+
+send Chixslave hb buff Chixslave Protectra V;
+send Chixslave hb buff Chixslave Shellra V;
+send Chixslave hb buff Chixslave Boost-STR;
+send Chixslave hb buff Chixslave Auspice;
+send Chixslave hb buff Chixslave Aurorastorm;
+send Chixslave hb buff Chixslave Reraise IV;
+
+send Chixslave hb assist Twochix;
+send Chixslave hb debuff on;
+send Chixslave hb debuff Dia II;
+
+send Onechix sing march 1;
+send Onechix sing minuet 2;
+
+send Onechix singer on;
+
+send Onechix sing ws on;
+send Onechix sing pianissimo on;
+send Onechix sing Nightingale on;
+send Onechix sing Troubadour on
+send Onechix sing debuffing off;
+
+send Threechix sing off;
+send Threechix sing haste Twochix on;
+send Threechix sing haste Onechix on;
+send Threechix sing haste Chixslave on;
+send Threechix sing haste Threechix on;
+send Threechix sing refresh Threechix on;
+
+send Threechix sing haste minaras;
+send Threechix sing haste woddlesx;
+
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c toggle AutoGeoMode;
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
+
+
+send Threechix amb on;
+send Threechix amb tier 3;
+send Threechix amb c spell;

@@ -1,2 +1,0 @@
-send Onechix /attack;
-send Threechix /attack;

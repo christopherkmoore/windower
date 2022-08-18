@@ -25,6 +25,7 @@ lua load DressUp;
 lua load enternity;
 lua load GearSwap;
 lua load itemizer;
+lua load latentchecker;
 lua load ohShi;
 lua load Omen;
 lua load PetTP;

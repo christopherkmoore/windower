@@ -1,6 +1,10 @@
 lua load tradenpc
 
-tradenpc 1 "newton coffer key" Winrix;
+send @all tradenpc 1 \"newton coffer key\" Winrix;
+
+
+wait 1
+send @all tradenpc 1 "Special gobbiedial key" Winrix;
 
 wait 1 
 lua unload tradenpc

@@ -29,6 +29,33 @@
                     <prelude>0</prelude>
                 </song_bonus>
             </joachim>
+            <onechix>
+                <emperean_armor_bonus>1</emperean_armor_bonus>
+                <gjallarhorn>true</gjallarhorn>
+                <jp>
+                    <minne>20</minne>
+                    <minuet>20</minuet>
+                </jp>
+                <merits>
+                    <madrigal>0</madrigal>
+                    <minne>0</minne>
+                    <minuet>5</minuet>
+                </merits>
+                <song_bonus>
+                    <all_songs>6</all_songs>
+                    <ballad>1</ballad>
+                    <carol>0</carol>
+                    <etude>0</etude>
+                    <madrigal>1</madrigal>
+                    <mambo>0</mambo>
+                    <march>1</march>
+                    <mazurka>0</mazurka>
+                    <minne>1</minne>
+                    <minuet>1</minuet>
+                    <paeon>0</paeon>
+                    <prelude>0</prelude>
+                </song_bonus>
+            </onechix>
             <ulmia>
                 <emperean_armor_bonus>0</emperean_armor_bonus>
                 <gjallarhorn>false</gjallarhorn>

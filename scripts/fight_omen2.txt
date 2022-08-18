@@ -31,8 +31,6 @@ send Chixslave hb debuff Dia II;
 send Chixslave hb debuff Paralyze;
 send Chixslave hb debuff Slow;
 send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
-
 
 send Onechix sing nightingale on;
 send Onechix sing troubadour on; 

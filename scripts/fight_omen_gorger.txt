@@ -10,9 +10,7 @@ send Onechix singer playlist clear;
 
 send Onechix singer on;
 
-send Chixslave gs c set AutoSubMode on;
-send Chixslave hb buff Chixslave Afflatus Solace;
-send Chixslave hb buff Chixslave Sublimation;
+send Chixslave gs c set AutoSubMode off;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff off;
@@ -21,9 +19,7 @@ send Chixslave hb debuff off;
 send Onechix sing reset;
 send Onechix singer debuffing off;
 
-send Threechix gs c set AutoBuffMode auto;
-send Threechix gs c autoindi Refresh;
-send Threechix gs c autogeo Torpor;
+send Threechix gs c set AutoBuffMode off;
 
 send Threechix amb on;
 send Threechix amb tier 3;

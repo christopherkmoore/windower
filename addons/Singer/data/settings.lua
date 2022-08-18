@@ -1,6 +1,6 @@
 return {
-    ["dummy"] = L{},
-    ["debuffs"] = L{"Carnage Elegy","Foe Requiem VII",},
+    ["dummy"] = L{"Knight's Minne"},
+    ["debuffs"] = L{"Carnage Elegy","Light Threnody II",},
     ["playlist"] = T{
         ["clear"] = L{},
         ["lizards"] = L{"Victory March","Valor Minuet IV","Valor Minuet V",},

@@ -94,6 +94,7 @@ lua load autojoin
 lua load sparks
 lua load healbot
 lua load aecho;
+send Threechix lua load automb;
 send Onechix lua load singer;
 send Onechix sing off;
 send Onechix awm slave on;

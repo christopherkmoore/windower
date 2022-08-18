@@ -30,7 +30,7 @@ default_settings = {
     strings = {
         default = "string.format('%d/%dXP %sMerits XP/hr:%.1fk %sJP CP/hr:%.1fk %d/%dEP EP/hr:%.1fk',xp.current,xp.tnl,max_color('%5.2f':format(math.floor(lp.current/lp.tnm*100)/100+lp.number_of_merits),lp.current/lp.tnm+lp.number_of_merits,lp.maximum_merits,58,147,191),math.floor(xp.rate/100)/10,max_color('%6.2f':format(math.floor(cp.current/cp.tnjp*100)/100+cp.number_of_job_points),cp.current/cp.tnjp+cp.number_of_job_points,500,58,147,191),math.floor(cp.rate/100)/10,ep.current,ep.tnml,math.floor(ep.rate/100)/10)",
         dynamis = "string.format('%d/%dXP %sMerits XP/hr:%.1fk %sJP CP/hr:%.1fk %d/%dEP %s  %s',xp.current,xp.tnl,max_color('%5.2f':format(math.floor(lp.current/lp.tnm*100)/100+lp.number_of_merits),lp.current/lp.tnm+lp.number_of_merits,lp.maximum_merits,58,147,191),math.floor(xp.rate/100)/10,max_color('%6.2f':format(math.floor(cp.current/cp.tnjp*100)/100+cp.number_of_job_points),cp.current/cp.tnjp+cp.number_of_job_points,500,58,147,191),math.floor(cp.rate/100)/10,ep.current,ep.tnml,dynamis.KIs,dynamis.time_remaining or 0)",
-        abyssea = "string.format('%d/%dXP %sMerits XP/hr:%.1fk %sJP CP/hr:%.1fk %d/%dEP Amber:%d Azure:%d Ruby:%d Pearl:%d Ebon:%d Silver: Gold:%d Time-Remaining:%d',xp.current,xp.tnl,max_color('%5.2f':format(math.floor(lp.current/lp.tnm*100)/100+lp.number_of_merits),lp.current/lp.tnm+lp.number_of_merits,lp.maximum_merits,58,147,191),math.floor(xp.rate/100)/10,max_color('%6.2f':format(math.floor(cp.current/cp.tnjp*100)/100+cp.number_of_job_points),cp.current/cp.tnjp+cp.number_of_job_points,500,58,147,191),math.floor(cp.rate/100)/10,ep.current,ep.tnml,abyssea.amber or 0,abyssea.azure or 0,abyssea.ruby or 0,abyssea.pearlescent or 0,abyssea.ebon or 0,abyssea.silvery or 0,abyssea.golden or 0,abyssea.time_remaining or 0)",
+        abyssea = "string.format('%d/%dXP %sMerits XP/hr:%.1fk %sJP CP/hr:%.1fk %d/%dEP Amber:%d Azure:%d Ruby:%d Pearl:%d Ebon:%d Silver:%d Gold:%d Time-Remaining:%d',xp.current,xp.tnl,max_color('%5.2f':format(math.floor(lp.current/lp.tnm*100)/100+lp.number_of_merits),lp.current/lp.tnm+lp.number_of_merits,lp.maximum_merits,58,147,191),math.floor(xp.rate/100)/10,max_color('%6.2f':format(math.floor(cp.current/cp.tnjp*100)/100+cp.number_of_job_points),cp.current/cp.tnjp+cp.number_of_job_points,500,58,147,191),math.floor(cp.rate/100)/10,ep.current,ep.tnml,abyssea.amber or 0,abyssea.azure or 0,abyssea.ruby or 0,abyssea.pearlescent or 0,abyssea.ebon or 0,abyssea.silvery or 0,abyssea.golden or 0,abyssea.time_remaining or 0)",
         },
     text_box_settings = {
         pos = {
@@ -60,10 +60,7 @@ default_settings = {
             green = 255,
             blue = 255
         }
-    },
-    options = {
-        message_printing = false,
-    },
+    }
 }
 
 -- Approved textbox commands:
@@ -81,7 +78,6 @@ other_table = {Crimson=10,Azure=10,Amber=10,Alabaster=10,Obsidian=20}
 dynamis_map = {[185]=city_table,[186]=city_table,[187]=city_table,[188]=city_table,
     [134]=other_table,[135]=other_table,[39]=other_table,[40]=other_table,[41]=other_table,[42]=other_table}
 
-    
 -- Not technically static, but sets the initial values for all features:
 function initialize()
     cp = {
@@ -101,6 +97,12 @@ function initialize()
         rate = 0,
         current = 0,
         tnl = 0,
+        job = 0,
+        job_abbr = 0,
+        job_level = 0,
+        sub_job = 0,
+        sub_job_abbr = 0,
+        sub_job_level = 0,
     }
     
     lp = {
@@ -116,6 +118,7 @@ function initialize()
         current = 0,
         rate = 0,
         tnml = 0,
+        master_level = 0,
     }
     
     sparks = {

@@ -68,7 +68,7 @@ function init_gear_sets()
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Psycloth Tiara",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
 		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                                                          --ring2="Lebeche Ring",
-		back="Perimede Cape",waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
+		back=gear.capeFC,waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
 
 	sets.precast.FC.Geomancy = set_combine(sets.precast.FC, {range="Dunna",ammo=empty})
 	

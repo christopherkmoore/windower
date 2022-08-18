@@ -37,4 +37,6 @@ send Chixslave hb debuff rm Paralyze;
 send Chixslave hb debuff rm Slow;
 send Chixslave hb debuff rm Addle;
 
+send Chixslave hb unignore_debuff everyone poison;
+
 send Chixslave amb off;

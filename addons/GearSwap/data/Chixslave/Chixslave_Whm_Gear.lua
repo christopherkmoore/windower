@@ -38,7 +38,7 @@ end
 -- Define sets and vars used by this job file.
 function init_gear_sets()
 
-	sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
+	sets.warp = set_combine(sets.idle, {ring1="Warp Ring"})
 
     --------------------------------------
     -- Start defining the sets
@@ -149,58 +149,58 @@ function init_gear_sets()
 	sets.midcast.Cure = {main="Queller Rod" ,sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Theo. Briault +2",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 		
 	sets.midcast.CureSolace = {main="Queller Rod",sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Ebers Bliaud +1",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.midcast.LightWeatherCure = {main="Chatoyant Staff",sub="Curatio Grip",ammo="Esper Stone +1",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Nourish. Earring +1",ear2="Glorious Earring",
 		body="Kaykaus Bliaut",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Lebeche Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.midcast.LightWeatherCureSolace = {main="Chatoyant Staff",sub="Curatio Grip",ammo="Esper Stone +1",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Ebers Bliaud +1",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Lebeche Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 		
 	sets.midcast.LightDayCureSolace = {main="Queller Rod",sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Ebers Bliaud +1",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.midcast.LightDayCure = {main="Queller Rod",sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Nourish. Earring +1",ear2="Glorious Earring",
 		body="Theo. Briault +2",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.midcast.Curaga = {main="Queller Rod",sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Theo. Briault +2",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 		
 	sets.midcast.LightWeatherCuraga = {main="Chatoyant Staff",sub="Curatio Grip",ammo="Esper Stone +1",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Nourish. Earring +1",ear2="Glorious Earring",
 		body="Kaykaus Bliaut",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Lebeche Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 		
 	sets.midcast.LightDayCuraga = {main="Queller Rod",sub="Sors Shield",ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Nourish. Earring +1",ear2="Glorious Earring",
 		body="Theo. Briault +2",hands="Theophany Mitts +3",ring1="Janniston Ring",ring2="Menelaus's Ring",
-		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Hachirin-no-Obi",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.midcast.Cure.DT = {main="Queller Rod",sub="Sors Shield",ammo="Staunch Tathlum +1",
 		head=gear.vanya_hood,neck="Loricate Torque +1",ear1="Nourish. Earring +1",ear2="Glorious Earring",
 		body="Ayanmo Corazza +2",hands="Gende. Gages +1",ring1="Defending Ring",ring2="Dark Ring",
-		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons",feet="Gende. Galosh. +1"}
+		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons +1",feet="Gende. Galosh. +1"}
 		
 	--Melee Curesets are used whenever your Weapons state is set to anything but None.
 	sets.midcast.MeleeCure = {ammo="Pemphredo Tathlum",
 		head=gear.vanya_hood,neck="Incanter's Torque",ear1="Regal Earring",ear2="Glorious Earring",
 		body="Theo. Briault +2",hands="Kaykaus Cuffs",ring1="Janniston Ring",ring2="Lebeche Ring",
-		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back=gear.cape_cure,waist="Luminary Sash",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 		
 	sets.midcast.MeleeCureSolace = set_combine(sets.midcast.MeleeCure, {body="Ebers Bliaud +1"})
 	sets.midcast.MeleeLightWeatherCure = set_combine(sets.midcast.MeleeCure, {waist="Hachirin-no-Obi"})
@@ -238,7 +238,7 @@ function init_gear_sets()
 	sets.midcast.StatusRemoval = {main=gear.grioavolr_fc_staff,sub="Clemency Grip",ammo="Hasty Pinion +1",
 		head="Ebers Cap +1",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
 		body="Inyanga Jubbah +2",hands="Fanatic Gloves",ring1="Kishar Ring",ring2="Prolix Ring",
-		back="Swith Cape +1",waist="Witful Belt",legs="Ebers Pantaloons",feet="Regal Pumps +1"}
+		back="Swith Cape +1",waist="Witful Belt",legs="Ebers Pantaloons +1",feet="Regal Pumps +1"}
 		
 	sets.midcast.Erase = set_combine(sets.midcast.StatusRemoval, {neck="Cleric's Torque"})
 
@@ -284,12 +284,12 @@ function init_gear_sets()
 	sets.midcast['Divine Magic'] = {main="Marin Staff +1",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="C. Palug Crown",neck="Incanter's Torque",ear1="Regal Earring",ear2="Digni. Earring",
 		body="Inyanga Jubbah +2",hands="Fanatic Gloves",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
-		back="Aurist's Cape +1",waist="Luminary Sash",legs="Chironic Hose",feet=gear.chironic_conserveMP}
+		back=gear.cape_Holy,waist="Luminary Sash",legs="Chironic Hose",feet=gear.chironic_conserveMP}
 		
 	sets.midcast.Holy = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="C. Palug Crown",neck="Baetyl Pendant",ear1="Regal Earring",ear2="Friomisi Earring",
 		body="Witching Robe",hands="Inyan. Dastanas +2",ring1="Metamor. Ring +1",ring2="Freke Ring",
-		back="Toro Cape",waist=gear.ElementalObi,legs="Gyve Trousers",feet=gear.chironic_conserveMP}
+		back=gear.cape_Holy,waist=gear.ElementalObi,legs="Gyve Trousers",feet=gear.chironic_conserveMP}
 
 	sets.midcast['Dark Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Befouled Crown",neck="Erra Pendant",ear1="Regal Earring",ear2="Digni. Earring",
@@ -376,7 +376,7 @@ function init_gear_sets()
 		body="Inyanga Jubbah +2",
 		hands="Inyan. Dastanas +2",
 		ring1="Inyanga Ring",
-		ring2="Stikini Ring +1",
+		-- ring2="Stikini Ring +1",
 		back=gear.cape_idle,
 		waist="Shinjutsu-no-Obi",
 		legs="Aya. Cosciales +2",
@@ -454,7 +454,7 @@ function init_gear_sets()
 	sets.HPCure = {main="Queller Rod",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Blistering Sallet +1",neck="Nodens Gorget",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Kaykaus Bliaut",hands="Kaykaus Cuffs",ring1="Kunaji Ring",ring2="Meridian Ring",
-		back="Alaunus's Cape",waist="Eschan Stone",legs="Ebers Pantaloons",feet=gear.vanya_clogs_CURE}
+		back="Alaunus's Cape",waist="Eschan Stone",legs="Ebers Pantaloons +1",feet=gear.vanya_clogs_CURE}
 
 	sets.buff.Doom = set_combine(sets.buff.Doom, {})
 

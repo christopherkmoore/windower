@@ -43,7 +43,7 @@ setting = T{
         aurorastorm = L{},
     },
     debuffs = L{},
-    debuffs = L{"Carnage Elegy","Pining Nocturne",},
+    debuffs = L{"Carnage Elegy","Light Threnody II",},
     dummy = L{},
     songs = L{"Advancing March","Victory March","Blade Madrigal","Sword Madrigal","Valor Minuet V",},
     song = {},

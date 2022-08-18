@@ -19,11 +19,11 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-send Chixslave hb buff Chixslave barfira;
+send Chixslave hb buff Chixslave barstonra;
 send Chixslave hb buff Chixslave baramnesra;
 
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff on;
+send Chixslave hb debuff off;
 send Chixslave hb debuff Dia II;
 
 send Onechix sing nightingale off;
@@ -33,5 +33,6 @@ send Onechix sing march 2;
 send Onechix sing minuet 1;
 
 send Threechix gs c set AutoBuffMode auto;
-send Threechix gs c autoindi Refresh;
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
 

@@ -1,2 +1,0 @@
-send @all lua load repeater;
-
