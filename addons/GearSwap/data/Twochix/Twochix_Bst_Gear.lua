@@ -24,6 +24,7 @@ function user_job_setup()
     -- INPUT PREFERRED JUG PETS HERE
     state.JugMode = M {
         ['description'] = 'Jug Mode',
+        'AmiableRoche'
         'WarlikePatrick',
         'GenerousArthur',
         'RhymingShizuna',

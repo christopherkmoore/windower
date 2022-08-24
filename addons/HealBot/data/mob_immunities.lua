@@ -36,6 +36,9 @@ return {
     ["Bozzetto Necronura"] = S{
         7
     },
+    ["Bozzetto Shiva"] = S{
+        6
+    },
     ["Bozzetto Stalwart"] = S{
         2
     },
@@ -48,6 +51,9 @@ return {
     },
     ["Cloud of Darkness"] = S{
         7
+    },
+    ["Corporal Tombstone"] = S{
+        2
     },
     ["Dark Gyves"] = S{
         194

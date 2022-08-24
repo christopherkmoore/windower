@@ -244,6 +244,19 @@ profiles['mog'] = S{
     'Twill Damask',
     'buburimu grape',
     'saffron blossom',
+    'Persikos',
+    'Dwarf Remora',
+    'Little Worm',
+    'Urunday Log',
+    'Titanictus',
+    'Adamantoise Shell',
+    'Derfland Pear',
+    'san d\'Or. Carrot',
+    'Super Ether',
+    'Ether',
+    'white rock',
+    'isleracea',
+    
 }
 
 return profiles

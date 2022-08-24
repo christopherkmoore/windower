@@ -11,4 +11,7 @@
         <Ranges />
         <Scale>1</Scale>
     </global>
+    <Twochix>
+        <Y>899</Y>
+    </Twochix>
 </settings>

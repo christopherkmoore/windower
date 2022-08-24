@@ -1,7 +1,0 @@
-send Onechix singer on;
-send Onechix singer debuffing on;
-
-send Onechix sing minuet 2;
-send Onechix sing march 1;
-
-send Onechix sing ws on;

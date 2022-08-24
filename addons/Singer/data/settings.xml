@@ -122,8 +122,6 @@
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
-        <nightingale>false</nightingale>
-        <pianissimo>true</pianissimo>
         <recast>
             <buff>
                 <max>10</max>

@@ -1,4 +1,4 @@
-send Onechix lua reload singer;
+//send @all lua load healbot;
 send Chixslave lua load automb
 send Threechix lua load singer;
 
@@ -28,22 +28,26 @@ send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff on;
+send Chixslave hb debuff off;
 send Chixslave hb debuff use Dia II;
 
-send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave barblindra;
+send Chixslave hb buff Chixslave barthundra;
+send Chixslave hb buff Chixslave barsleepra;
 
 send Onechix singer on;
 send Onechix sing pianissimo on;
 send Onechix sing Nightingale on;
 send Onechix sing Troubadour on
 send Onechix sing debuffing off;
-send Onechix sing minuet 2;
-send Onechix sing march 1;
 
-send Onechix sing ballad 1 Threechix;
-send Onechix sing ballad 1 Chixslave;
+send Onechix sing march 1;
+send Onechix sing minne 1;
+send Onechix sing ballad 1;
+
+send Onechix sing march Twochix on;
+
+//send Onechix sing ballad 1 Threechix;
+//send Onechix sing ballad 1 Chixslave;
 
 send Onechix sing ws on;
 
@@ -53,6 +57,9 @@ send Threechix sing haste Onechix on;
 send Threechix sing haste Chixslave on;
 send Threechix sing haste Threechix on;
 send Threechix sing refresh Threechix on;
+
+send Threechix sing refresh Gamtrex on;
+send Threechix sing refresh Pookums on;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
