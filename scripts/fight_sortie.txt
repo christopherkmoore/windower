@@ -43,7 +43,7 @@ send Chixslave hb debuff Blind;
 send Chixslave hb buff Chixslave barfira;
 send Chixslave hb buff Chixslave baramnesra;
 
-send Onechix sing ws off;
+send Onechix sing ws on;
 send Onechix sing pianissimo on;
 send Onechix sing Nightingale on;
 send Onechix sing Troubadour on;

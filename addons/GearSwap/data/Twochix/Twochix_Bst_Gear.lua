@@ -24,7 +24,7 @@ function user_job_setup()
     -- INPUT PREFERRED JUG PETS HERE
     state.JugMode = M {
         ['description'] = 'Jug Mode',
-        'AmiableRoche'
+        'AmiableRoche',
         'WarlikePatrick',
         'GenerousArthur',
         'RhymingShizuna',
@@ -77,7 +77,7 @@ function init_gear_sets()
     sets.warp = set_combine(sets.idle, {ring2="Warp Ring"})
 
     -- PRECAST SETS
-    sets.precast.JA['Killer Instinct'] = { body = "Nukumi Gausape +1", head="Ankusa Helm +2" } 
+    sets.precast.JA['Killer Instinct'] = { body = "Nukumi Gausape +2", head="Ankusa Helm +2" } 
     sets.precast.JA['Bestial Loyalty'] = {
         body = "Mirke Wardecors",
         hands = "Ankusa Gloves"
@@ -287,7 +287,7 @@ function init_gear_sets()
         ear1 = "Sherida Earring",
         ear2 = "Brutal Earring",
         body = "Tali'ah manteel +2",
-        hands = "Meg. Gloves +2",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Petrov Ring",
         ring2 = "Rajas Ring",
         waist = "Fotia Belt",          
@@ -422,7 +422,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = "Tali'ah Manteel +2",
-        hands = "Nukumi Manoplas +1",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Varar Ring +1",
         ring2 = "C. Palug Ring",
         back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10',}},
@@ -468,7 +468,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas +1",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -492,7 +492,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas +1",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -516,7 +516,7 @@ function init_gear_sets()
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
         body = gear.valorous_pet_body,
-        hands = "Nukumi Manoplas +1",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
@@ -540,7 +540,7 @@ function init_gear_sets()
         head = "Nukumi Cabasset"
     }
     sets.midcast.Pet.TPBonus = {
-        hands = "Nukumi Manoplas +1"
+        hands = "Nukumi Manoplas +2"
     }
 
     -- RESTING
@@ -749,7 +749,7 @@ function init_gear_sets()
     -- sets.defense.PetMEVA = sets.defense.PetMDT
 
     -- sets.defense.PKiller = set_combine(sets.defense.PDT, {
-    --     body = "Nukumi Gausape +1"
+    --     body = "Nukumi Gausape +2"
     -- })
     -- sets.defense.Reraise = set_combine(sets.defense.PDT, {
     --     head = "Twilight Helm",
@@ -788,7 +788,7 @@ function init_gear_sets()
     -- }
 
     -- sets.defense.MKiller = set_combine(sets.defense.MDT, {
-    --     body = "Nukumi Gausape +1 +1"
+    --     body = "Nukumi Gausape +2 +1"
     -- })
 
     -- sets.Kiting = {
@@ -1143,7 +1143,7 @@ function init_gear_sets()
     sets.engaged.DW.PetTank.Fodder = set_combine(sets.engaged.DW.Fodder, {})
 
     sets.buff['Killer Instinct'] = {
-        body = "Nukumi Gausape +1", head="Ankusa Helm +2"
+        body = "Nukumi Gausape +2", head="Ankusa Helm +2"
     }
     sets.buff.Doom = set_combine(sets.buff.Doom, {})
     sets.buff.Sleep = {
@@ -1419,7 +1419,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas +1",
+    --     hands = "Nukumi Manoplas +2",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",
@@ -1443,7 +1443,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas +1",
+    --     hands = "Nukumi Manoplas +2",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",
@@ -1467,7 +1467,7 @@ function init_gear_sets()
     --     ear1 = "Enmerkar Earring",
     --     ear2 = "Domesticator's Earring",
     --     body = gear.valorous_pet_body,
-    --     hands = "Nukumi Manoplas +1",
+    --     hands = "Nukumi Manoplas +2",
     --     ring1 = "Varar Ring +1",
     --     ring2 = "Varar Ring +1",
     --     back = "Artio's Mantle",

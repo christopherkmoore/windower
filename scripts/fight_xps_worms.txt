@@ -1,16 +1,21 @@
-send Threechix gs c set AutoBuffMode auto;
-send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
-send Threechix gs c set autowsmode on; 
-send Threechix gs c autows Moonlight;
+send Onechix lua reload singer;
+send Chixslave lua load automb
+send Threechix lua load singer;
 
-send Threechix lua load autoMB;
-send Threechix amb on;
-
+send @all exec cps;
+//wait 15;
 
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+send Onechix sing playlist clear;
+
+wait 1;
+
+send Chixslave amb on;
+send Chixslave amb c holy;
+
 send Chixslave gs c set AutoSubMode on;
 
 send Chixslave hb buff Chixslave Afflatus Solace;
@@ -22,38 +27,43 @@ send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 
-send Chixslave hb buff Chixslave Haste;
-send Chixslave hb buff Twochix Haste;
-send Chixslave hb buff Onechix Haste;
-
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
-send Chixslave hb debuff Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
+send Chixslave hb debuff use Dia II;
 
 send Chixslave hb buff Chixslave barfira;
-
-send Chixslave lua load automb;
-send Chixslave amb on;
-send Chixslave cast Holy II;
-
-
+send Chixslave hb buff Chixslave barvira;
 
 send Onechix singer on;
 send Onechix singer debuffing on;
-
-send Onechix gs c set autowsmode on;
-send Onechix gs c set autoshadowmode off;
-send Onechix gs c autows Savage Blade;
-
-// send Onechix sing pianissimo on;
-// send Onechix sing ballad 1 Threechix;
-// send Onechix sing ballad 1 Chixslave;
-
-send Onechix sing march 1;
+send Onechix sing pianissimo on;
+send Onechix sing Nightingale on;
+send Onechix sing Troubadour on
+send Onechix sing debuffing off;
 send Onechix sing minuet 2;
+send Onechix sing march 1;
 
+send Onechix sing ballad 1 Threechix;
+send Onechix sing ballad 1 Chixslave;
 
+send Onechix sing ws on;
+
+send Threechix sing on;
+send Threechix sing haste Twochix on;
+send Threechix sing haste Onechix on;
+send Threechix sing haste Chixslave on;
+send Threechix sing haste Threechix on;
+send Threechix sing refresh Threechix on;
+send Threechix sing refresh Twochix on;
+
+send Threechix gs c set AutoBuffMode auto;
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
+
+send Threechix amb on;
+send Threechix amb tier 3;
+send Threechix amb c spell;
+
+send Threechix haste renew on;
+send Threechix haste ornate on;
+send Threechix refresh renew on;

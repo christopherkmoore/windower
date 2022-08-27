@@ -116,7 +116,7 @@ function init_gear_sets()
 	sets.element.Dark = {head="Pixie Hairpin +1",ring2="Archon Ring"}
 
 	-- Pulse sets, different stats for different rune modes, stat aligned.
-    sets.precast.JA['Vivacious Pulse'] = {head="Erilaz Galea +1",neck="Incanter's Torque",ring1="Stikini Ring +1",ring2="Stikini Ring +1",legs="Rune. Trousers +1"}
+    sets.precast.JA['Vivacious Pulse'] = {head="Erilaz Galea +1",neck="Incanter's Torque",ring1="Stikini Ring +1",ring2="Stikini Ring +1",legs="Rune. Trousers +2"}
     sets.precast.JA['Vivacious Pulse']['Ignis'] = set_combine(sets.precast.JA['Vivacious Pulse'], {})
 	sets.precast.JA['Vivacious Pulse']['Gelus'] = set_combine(sets.precast.JA['Vivacious Pulse'], {})
 	sets.precast.JA['Vivacious Pulse']['Flabra'] = set_combine(sets.precast.JA['Vivacious Pulse'], {})
@@ -322,26 +322,26 @@ function init_gear_sets()
 	sets.defense.MEVA = {main="Aettir",sub="Utu Grip",ammo="Staunch Tathlum +1",
         head="Erilaz Galea +1",neck="Warder's Charm +1",ear1="Odnowa Earring +1",ear2="Sanare Earring",
         body="Runeist's Coat +2",hands="Erilaz Gauntlets +1",ring1="Purity Ring",ring2="Vengeful Ring",
-        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +1",feet="Erilaz Greaves +1"}
+        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +2",feet="Erilaz Greaves +1"}
 	sets.defense.MEVA_HP = {main="Aettir",sub="Utu Grip",ammo="Staunch Tathlum +1",
         head="Erilaz Galea +1",neck="Warder's Charm +1",ear1="Odnowa Earring +1",ear2="Sanare Earring",
         body="Runeist's Coat +2",hands="Erilaz Gauntlets +1",ring1="Gelatinous Ring +1",ring2="Moonlight Ring",
-        back="Moonlight Cape",waist="Engraved Belt",legs="Rune. Trousers +1",feet="Erilaz Greaves +1"}
+        back="Moonlight Cape",waist="Engraved Belt",legs="Rune. Trousers +2",feet="Erilaz Greaves +1"}
 		
 	sets.defense.Death = {main="Aettir",sub="Utu Grip",ammo="Staunch Tathlum +1",
         head="Erilaz Galea +1",neck="Warder's Charm +1",ear1="Odnowa Earring +1",ear2="Sanare Earring",
         body="Runeist's Coat +2",hands="Erilaz Gauntlets +1",ring1="Purity Ring",ring2="Vengeful Ring",
-        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +1",feet="Erilaz Greaves +1"}
+        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +2",feet="Erilaz Greaves +1"}
 
 	sets.defense.DTCharm = {main="Aettir",sub="Utu Grip",ammo="Staunch Tathlum +1",
         head="Erilaz Galea +1",neck="Unmoving Collar +1",ear1="Odnowa Earring +1",ear2="Sanare Earring",
         body="Runeist's Coat +2",hands="Erilaz Gauntlets +1",ring1="Defending Ring",ring2="Dark Ring",
-        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +1",feet="Erilaz Greaves +1"}
+        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +2",feet="Erilaz Greaves +1"}
 		
 	sets.defense.Charm = {main="Aettir",sub="Utu Grip",ammo="Staunch Tathlum +1",
         head="Erilaz Galea +1",neck="Unmoving Collar +1",ear1="Odnowa Earring +1",ear2="Sanare Earring",
         body="Runeist's Coat +2",hands="Erilaz Gauntlets +1",ring1="Purity Ring",ring2="Vengeful Ring",
-        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +1",feet="Erilaz Greaves +1"}
+        back=gear.enmity_jse_back,waist="Engraved Belt",legs="Rune. Trousers +2",feet="Erilaz Greaves +1"}
 	
 	-- Swap to these on Moonshade using WS if at 3000 TP
 	sets.MaxTP = {ear1="Brutal Earring"}

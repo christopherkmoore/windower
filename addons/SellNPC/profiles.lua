@@ -256,7 +256,12 @@ profiles['mog'] = S{
     'Ether',
     'white rock',
     'isleracea',
-    
+    'lizard egg',
+    'aurora bass',
+    'giant femur',
+    'head of grauberg lettuce',
+    'silver nuggets',
+    'bat wing',
 }
 
 return profiles

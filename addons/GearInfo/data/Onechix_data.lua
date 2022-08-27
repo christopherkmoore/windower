@@ -176,11 +176,11 @@ return {
         ["Parrying skill"]=242, 
         ["category"]="Weapon", 
         ["Sword skill"]=242, 
-        ["en"]="Pukulatmuj", 
+        ["item_level"]=119, 
         ["delay"]=231, 
         ["INT"]=15, 
         ["skill"]="Sword", 
-        ["item_level"]=119, 
+        ["en"]="Pukulatmuj", 
         ["jobs"]={
             [1]="WAR", 
             [5]="RDM", 
@@ -258,10 +258,10 @@ return {
         ["DEX"]=49, 
         ["Haste"]=4, 
         ["MND"]=33, 
-        ["en"]="Aya. Manopolas +1", 
-        ["discription"]="DEF:106 HP+22 MP+14 STR+16 DEX+49 VIT+30 AGI+11 INT+14 MND+33 CHR+19 Accuracy+37 Magic Accuracy+37 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +15 Damage taken -2%", 
-        ["item_level"]=119, 
         ["AGI"]=11, 
+        ["discription"]="DEF:106 HP+22 MP+14 STR+16 DEX+49 VIT+30 AGI+11 INT+14 MND+33 CHR+19 Accuracy+37 Magic Accuracy+37 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +15 Damage taken -2%", 
+        ["en"]="Aya. Manopolas +1", 
+        ["item_level"]=119, 
         ["HP"]=22, 
         ["id"]=25811, 
         ["Magic Accuracy"]=37, 
@@ -291,7 +291,7 @@ return {
         ["Haste"]=9, 
         ["id"]=25884, 
         ["MND"]=26, 
-        ["Fast Cast"]=6, 
+        ["AGI"]=34, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -318,8 +318,8 @@ return {
             }, 
             ["set id"]=96
         }, 
+        ["Fast Cast"]=6, 
         ["item_level"]=119, 
-        ["AGI"]=34, 
         ["HP"]=45, 
         ["Accuracy"]=45, 
         ["en"]="Aya. Cosciales +2", 
@@ -350,8 +350,8 @@ return {
         ["DEF"]=88, 
         ["MND"]=18, 
         ["id"]=25936, 
-        ["en"]="Aya. Gambieras +1", 
         ["AGI"]=46, 
+        ["en"]="Aya. Gambieras +1", 
         ["item_level"]=119, 
         ["HP"]=11, 
         ["Critical hit rate"]=5, 
@@ -408,12 +408,12 @@ return {
     }, 
     [13]={
         ["discription"]="Grants an additional song effect", 
-        ["en"]="Terpander", 
-        ["skill"]="Stringed Instrument", 
         ["id"]=21407, 
         ["slots"]={
             [2]="Range"
         }, 
+        ["en"]="Terpander", 
+        ["skill"]="Stringed Instrument", 
         ["category"]="Weapon", 
         ["jobs"]={
             [10]="BRD"
@@ -432,10 +432,10 @@ return {
         ["DEX"]=44, 
         ["Haste"]=4, 
         ["MND"]=27, 
-        ["en"]="Ayanmo Corazza +1", 
-        ["discription"]="DEF:148 HP+57 MP+59 STR+28 DEX+44 VIT+24 AGI+33 INT+21 MND+27 CHR+21 Accuracy+40 Magic Accuracy+40 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+6% Damage taken -5%", 
-        ["item_level"]=119, 
         ["AGI"]=33, 
+        ["discription"]="DEF:148 HP+57 MP+59 STR+28 DEX+44 VIT+24 AGI+33 INT+21 MND+27 CHR+21 Accuracy+40 Magic Accuracy+40 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+6% Damage taken -5%", 
+        ["en"]="Ayanmo Corazza +1", 
+        ["item_level"]=119, 
         ["HP"]=57, 
         ["id"]=25763, 
         ["Magic Accuracy"]=40, 
@@ -467,7 +467,7 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["en"]="Assiduity Pants", 
+        ["item_level"]=119, 
         ["DEF"]=104, 
         ["AGI"]=17, 
         ["HP"]=43, 
@@ -479,7 +479,7 @@ return {
         ["STR"]=25, 
         ["CHR"]=19, 
         ["INT"]=36, 
-        ["item_level"]=119
+        ["en"]="Assiduity Pants"
     }, 
     [16]={
         ["discription"]="DMG:156 Delay:240 DEX+10 INT+10 MND+10 Accuracy+35 Attack+25 Magic Accuracy+35 \"Magic Atk. Bonus\"+13 Magic Damage +217 Sword skill +242 Parrying skill +242 Magic Accuracy skill +242 Main hand: \"Savage Blade\" \"Savage Blade\" damage +15%", 
@@ -521,7 +521,7 @@ return {
     }, 
     [17]={
         ["MDT"]=-6, 
-        ["AGI"]=15, 
+        ["Fast Cast"]=10, 
         ["jobs"]={
             [3]="WHM", 
             [10]="BRD", 
@@ -534,15 +534,15 @@ return {
         ["MND"]=35, 
         ["Haste"]=2, 
         ["discription"]="DEF:119 HP+85 MP+90 STR+16 DEX+19 VIT+16 AGI+15 INT+40 MND+35 CHR+34 Magic Accuracy+28 Evasion+38 Magic Evasion+102 \"Magic Def. Bonus\"+11 Haste+2% \"Fast Cast\"+10% Magic damage taken -6%", 
-        ["Fast Cast"]=10, 
-        ["en"]="Inyanga Jubbah", 
+        ["AGI"]=15, 
+        ["item_level"]=119, 
         ["HP"]=85, 
         ["id"]=25751, 
         ["VIT"]=16, 
         ["DEF"]=119, 
         ["MP"]=90, 
         ["Evasion"]=38, 
-        ["item_level"]=119, 
+        ["en"]="Inyanga Jubbah", 
         ["STR"]=16, 
         ["CHR"]=34, 
         ["INT"]=40, 
@@ -591,16 +591,16 @@ return {
         ["CHR"]=29, 
         ["MND"]=44, 
         ["discription"]="DEF:83 HP+35 MP+40 STR+3 DEX+23 VIT+25 AGI+6 INT+31 MND+44 CHR+29 Magic Accuracy+37 Evasion+19 Magic Evasion+71 \"Magic Def. Bonus\"+5 Haste+4% All magic skills +18 Magic damage taken -3%", 
-        ["item_level"]=119, 
-        ["DEF"]=83, 
         ["AGI"]=6, 
+        ["DEF"]=83, 
+        ["en"]="Inyan. Dastanas +1", 
         ["HP"]=35, 
         ["id"]=25807, 
         ["VIT"]=25, 
         ["Haste"]=4, 
         ["MP"]=40, 
         ["Evasion"]=19, 
-        ["en"]="Inyan. Dastanas +1", 
+        ["item_level"]=119, 
         ["STR"]=3, 
         ["All magic skills"]=18, 
         ["INT"]=31, 
@@ -1002,9 +1002,9 @@ return {
     [33]={
         ["Evasion"]=15, 
         ["en"]="Eabani Earring", 
-        ["category"]="Armor", 
-        ["HP"]=45, 
         ["Dual Wield"]=4, 
+        ["HP"]=45, 
+        ["category"]="Armor", 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
@@ -1217,12 +1217,9 @@ return {
         ["discription"]="STR+2～5 DEX+2～5 \"Store TP\"+5 \"Subtle Blow\"+5", 
         ["en"]="Rajas Ring", 
         ["Store TP"]=5, 
-        ["slots"]={
-            [13]="Left Ring", 
-            [14]="Right Ring"
-        }, 
-        ["category"]="Armor", 
         ["DEX"]=2, 
+        ["category"]="Armor", 
+        ["STR"]=2, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -1248,7 +1245,10 @@ return {
             [22]="RUN"
         }, 
         ["id"]=15543, 
-        ["STR"]=2
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }
     }, 
     [40]={
         ["discription"]="DEF:48 CHR+8 Singing skill +8 Wind instrument skill +8 Increases song effect duration", 
@@ -1279,22 +1279,13 @@ return {
             [10]="BRD"
         }, 
         ["DEX"]=14, 
+        ["item_level"]=109, 
         ["en"]="Fili Hongreline", 
-        ["AGI"]=13, 
         ["discription"]="DEF:90 HP+25 MP+58 STR+12 DEX+14 VIT+13 AGI+13 INT+18 MND+17 CHR+25 Evasion+20 Magic Evasion+58 \"Magic Def. Bonus\"+3 Haste+2% Singing skill +12 Wind instrument skill +12 \"Minuet\"+1 Song effect duration +11% Set: Augments songs", 
         ["Singing skill"]=12, 
         ["HP"]=25, 
         ["DEF"]=90, 
-        ["Set Bonus"]={
-            ["set id"]=2, 
-            ["bonus"]={
-                [1]={}, 
-                [2]={}, 
-                [3]={}, 
-                [4]={}, 
-                [5]={}
-            }
-        }, 
+        ["AGI"]=13, 
         ["slots"]={
             [5]="Body"
         }, 
@@ -1305,16 +1296,19 @@ return {
         ["category"]="Armor", 
         ["CHR"]=25, 
         ["VIT"]=13, 
-        ["item_level"]=109
+        ["Set Bonus"]={
+            ["set id"]=2, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }
+        }
     }, 
     [42]={
         ["Evasion"]=11, 
-        ["MND"]=20, 
-        ["jobs"]={
-            [10]="BRD"
-        }, 
-        ["DEX"]=17, 
-        ["DEF"]=58, 
         ["Set Bonus"]={
             ["set id"]=2, 
             ["bonus"]={
@@ -1325,6 +1319,12 @@ return {
                 [5]={}
             }
         }, 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["DEX"]=17, 
+        ["DEF"]=58, 
+        ["MND"]=20, 
         ["en"]="Fili Manchettes", 
         ["item_level"]=109, 
         ["Singing skill"]=10, 
@@ -1346,12 +1346,12 @@ return {
     }, 
     [43]={
         ["discription"]="All songs +2", 
-        ["en"]="Eminent Flute", 
-        ["skill"]="Wind Instrument", 
         ["id"]=21405, 
         ["slots"]={
             [2]="Range"
         }, 
+        ["en"]="Eminent Flute", 
+        ["skill"]="Wind Instrument", 
         ["category"]="Weapon", 
         ["jobs"]={
             [10]="BRD"
@@ -1372,10 +1372,10 @@ return {
         ["DEX"]=48, 
         ["DEF"]=153, 
         ["MND"]=31, 
-        ["en"]="Ayanmo Corazza +2", 
-        ["discription"]="DEF:153 HP+57 MP+59 STR+28 DEX+48 VIT+24 AGI+33 INT+21 MND+31 CHR+21 Accuracy+46 Magic Accuracy+46 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+7% Damage taken -6% Set: Increases Strength, Vitality, and Mind", 
-        ["item_level"]=119, 
         ["AGI"]=33, 
+        ["discription"]="DEF:153 HP+57 MP+59 STR+28 DEX+48 VIT+24 AGI+33 INT+21 MND+31 CHR+21 Accuracy+46 Magic Accuracy+46 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+7% Damage taken -6% Set: Increases Strength, Vitality, and Mind", 
+        ["en"]="Ayanmo Corazza +2", 
+        ["item_level"]=119, 
         ["HP"]=57, 
         ["id"]=25795, 
         ["Set Bonus"]={
@@ -1492,14 +1492,14 @@ return {
             }
         }, 
         ["item_level"]=119, 
-        ["AGI"]=9, 
+        ["en"]="Inyan. Dastanas +2", 
         ["HP"]=35, 
         ["id"]=25831, 
         ["VIT"]=28, 
         ["Magic skills"]=20, 
         ["MP"]=40, 
         ["discription"]="DEF:88 HP+35 MP+40 STR+3 DEX+23 VIT+28 AGI+9 INT+34 MND+47 CHR+32 Magic Accuracy+43 Evasion+19 Magic Evasion+77 \"Magic Def. Bonus\"+5 Haste+4% Magic skills +20 Magic damage taken -4% Set: Enhances \"Refresh\" effect", 
-        ["en"]="Inyan. Dastanas +2", 
+        ["AGI"]=9, 
         ["Haste"]=4, 
         ["INT"]=34, 
         ["slots"]={
@@ -1622,12 +1622,19 @@ return {
             [16]="BLU", 
             [22]="RUN"
         }, 
-        ["item_level"]=119, 
+        ["en"]="Aya. Zucchetto +2", 
         ["DEX"]=39, 
         ["slots"]={
             [4]="Head"
         }, 
         ["id"]=25572, 
+        ["MND"]=25, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:128 HP+45 MP+29 STR+20 DEX+39 VIT+16 AGI+23 INT+15 MND+25 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+6% \"Store TP\"+6 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
+        ["Store TP"]=6, 
+        ["AGI"]=23, 
+        ["HP"]=45, 
+        ["Accuracy"]=44, 
         ["Set Bonus"]={
             ["set id"]=96, 
             ["bonus"]={
@@ -1654,13 +1661,6 @@ return {
                 }
             }
         }, 
-        ["en"]="Aya. Zucchetto +2", 
-        ["discription"]="DEF:128 HP+45 MP+29 STR+20 DEX+39 VIT+16 AGI+23 INT+15 MND+25 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+6% \"Store TP\"+6 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
-        ["Store TP"]=6, 
-        ["AGI"]=23, 
-        ["HP"]=45, 
-        ["Accuracy"]=44, 
-        ["MND"]=25, 
         ["STR"]=20, 
         ["DEF"]=128, 
         ["MP"]=29, 
@@ -1702,19 +1702,10 @@ return {
         ["DEX"]=7, 
         ["Haste"]=3, 
         ["AGI"]=21, 
-        ["item_level"]=109, 
+        ["en"]="Fili Cothurnes", 
         ["discription"]="DEF:46 HP+6 MP+14 STR+4 DEX+7 VIT+4 AGI+21 INT+12 MND+12 CHR+27 Evasion+29 Magic Evasion+73 \"Magic Def. Bonus\"+3 Haste+3% \"Regen\"+2 \"Scherzo\"+1 Movement speed +12% Set: Augments songs", 
         ["HP"]=6, 
-        ["Set Bonus"]={
-            ["set id"]=2, 
-            ["bonus"]={
-                [1]={}, 
-                [2]={}, 
-                [3]={}, 
-                [4]={}, 
-                [5]={}
-            }
-        }, 
+        ["item_level"]=109, 
         ["VIT"]=4, 
         ["DEF"]=46, 
         ["MP"]=14, 
@@ -1725,16 +1716,25 @@ return {
         ["CHR"]=27, 
         ["INT"]=12, 
         ["category"]="Armor", 
-        ["en"]="Fili Cothurnes"
+        ["Set Bonus"]={
+            ["set id"]=2, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }
+        }
     }, 
     [53]={
         ["discription"]="Grants one additional song effect All songs +2 \"Ballad\"+2 \"Lullaby\"+2", 
+        ["en"]="Blurred Harp +1", 
+        ["skill"]="Stringed Instrument", 
         ["id"]=21401, 
         ["slots"]={
             [2]="Range"
         }, 
-        ["en"]="Blurred Harp +1", 
-        ["skill"]="Stringed Instrument", 
         ["category"]="Weapon", 
         ["jobs"]={
             [10]="BRD"
@@ -1750,6 +1750,9 @@ return {
         ["DEX"]=11, 
         ["Haste"]=5, 
         ["AGI"]=9, 
+        ["item_level"]=109, 
+        ["discription"]="DEF:69 HP+17 MP+29 STR+9 DEX+11 VIT+8 AGI+9 INT+13 MND+12 CHR+23 Evasion+17 Magic Evasion+54 \"Magic Def. Bonus\"+3 Haste+5% Enmity-8 \"Madrigal\"+1 Song spellcasting time -13% Set: Augments songs", 
+        ["HP"]=17, 
         ["Set Bonus"]={
             ["set id"]=2, 
             ["bonus"]={
@@ -1760,9 +1763,6 @@ return {
                 [5]={}
             }
         }, 
-        ["discription"]="DEF:69 HP+17 MP+29 STR+9 DEX+11 VIT+8 AGI+9 INT+13 MND+12 CHR+23 Evasion+17 Magic Evasion+54 \"Magic Def. Bonus\"+3 Haste+5% Enmity-8 \"Madrigal\"+1 Song spellcasting time -13% Set: Augments songs", 
-        ["HP"]=17, 
-        ["en"]="Fili Calot", 
         ["VIT"]=8, 
         ["DEF"]=69, 
         ["MP"]=29, 
@@ -1773,7 +1773,7 @@ return {
         ["CHR"]=23, 
         ["INT"]=13, 
         ["category"]="Armor", 
-        ["item_level"]=109
+        ["en"]="Fili Calot"
     }, 
     [55]={
         ["Evasion"]=17, 
@@ -1793,12 +1793,12 @@ return {
         }, 
         ["STR"]=14, 
         ["en"]="Fili Rhingrave", 
-        ["item_level"]=109, 
+        ["AGI"]=12, 
         ["discription"]="DEF:77 HP+20 MP+26 STR+14 VIT+6 AGI+12 INT+21 MND+14 CHR+14 Magic Accuracy+17 Evasion+17 Magic Evasion+73 \"Magic Def. Bonus\"+3 Singing skill +15 Haste+4% \"Ballad\"+1 Song recast delay -7 Set: Augments songs", 
         ["Singing skill"]=15, 
         ["HP"]=20, 
         ["DEF"]=77, 
-        ["AGI"]=12, 
+        ["item_level"]=109, 
         ["slots"]={
             [7]="Legs"
         }, 
@@ -1825,6 +1825,11 @@ return {
         ["DEF"]=93, 
         ["MND"]=22, 
         ["id"]=25951, 
+        ["item_level"]=119, 
+        ["en"]="Aya. Gambieras +2", 
+        ["AGI"]=46, 
+        ["HP"]=11, 
+        ["Critical hit rate"]=6, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1851,11 +1856,6 @@ return {
             }, 
             ["set id"]=96
         }, 
-        ["en"]="Aya. Gambieras +2", 
-        ["AGI"]=46, 
-        ["HP"]=11, 
-        ["Critical hit rate"]=6, 
-        ["discription"]="DEF:93 HP+11 MP+14 STR+16 DEX+37 VIT+10 AGI+46 MND+22 CHR+26 Accuracy+42 Magic Accuracy+42 Evasion+60 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+3% Critical hit rate +6% Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
         ["slots"]={
             [8]="Feet"
         }, 
@@ -1865,7 +1865,7 @@ return {
         ["CHR"]=26, 
         ["VIT"]=10, 
         ["category"]="Armor", 
-        ["item_level"]=119, 
+        ["discription"]="DEF:93 HP+11 MP+14 STR+16 DEX+37 VIT+10 AGI+46 MND+22 CHR+26 Accuracy+42 Magic Accuracy+42 Evasion+60 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+3% Critical hit rate +6% Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
         ["Magic Accuracy"]=42, 
         ["DT"]=-3
     }, 
@@ -1882,7 +1882,7 @@ return {
         ["DEX"]=53, 
         ["Haste"]=4, 
         ["MND"]=37, 
-        ["AGI"]=11, 
+        ["item_level"]=119, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1909,8 +1909,8 @@ return {
             }, 
             ["set id"]=96
         }, 
+        ["AGI"]=11, 
         ["en"]="Aya. Manopolas +2", 
-        ["item_level"]=119, 
         ["HP"]=22, 
         ["id"]=25833, 
         ["discription"]="DEF:111 HP+22 MP+14 STR+16 DEX+53 VIT+30 AGI+11 INT+14 MND+37 CHR+19 Accuracy+43 Magic Accuracy+43 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +17 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
@@ -1954,7 +1954,7 @@ return {
     }, 
     [59]={
         ["MDT"]=-7, 
-        ["AGI"]=20, 
+        ["Fast Cast"]=13, 
         ["jobs"]={
             [3]="WHM", 
             [10]="BRD", 
@@ -1967,15 +1967,15 @@ return {
         ["MND"]=40, 
         ["Haste"]=2, 
         ["discription"]="DEF:124 HP+85 MP+90 STR+16 DEX+19 VIT+21 AGI+20 INT+45 MND+40 CHR+39 Magic Accuracy+40 Evasion+38 Magic Evasion+114 \"Magic Def. Bonus\"+11 Haste+2% \"Fast Cast\"+13% Magic damage taken -7%", 
-        ["Fast Cast"]=13, 
-        ["en"]="Inyanga Jubbah +1", 
+        ["AGI"]=20, 
+        ["item_level"]=119, 
         ["HP"]=85, 
         ["id"]=25752, 
         ["VIT"]=21, 
         ["DEF"]=124, 
         ["MP"]=90, 
         ["Evasion"]=38, 
-        ["item_level"]=119, 
+        ["en"]="Inyanga Jubbah +1", 
         ["STR"]=16, 
         ["CHR"]=39, 
         ["INT"]=45, 
@@ -2016,105 +2016,105 @@ return {
         ["category"]="Weapon", 
         ["en"]="Gjallarhorn", 
         ["Singing skill"]=10, 
-        ["skill"]="Wind Instrument", 
-        ["CHR"]=4, 
         ["slots"]={
             [2]="Range"
         }, 
+        ["CHR"]=4, 
+        ["skill"]="Wind Instrument", 
         ["jobs"]={
             [10]="BRD"
         }, 
+        ["id"]=18342, 
         ["augments"]={
             [1]="none", 
             [2]="none", 
             [3]="none", 
             [4]="none"
-        }, 
-        ["id"]=18342
+        }
     }, 
     [62]={
         ["discription"]="CHR+6 Singing skill +15 Wind instrument skill +15 All songs +2", 
         ["category"]="Weapon", 
         ["en"]="Gjallarhorn", 
         ["Singing skill"]=15, 
-        ["skill"]="Wind Instrument", 
-        ["CHR"]=6, 
         ["slots"]={
             [2]="Range"
         }, 
+        ["CHR"]=6, 
+        ["skill"]="Wind Instrument", 
         ["jobs"]={
             [10]="BRD"
         }, 
+        ["id"]=18577, 
         ["augments"]={
             [1]="none", 
             [2]="none", 
             [3]="none", 
             [4]="none"
-        }, 
-        ["id"]=18577
+        }
     }, 
     [63]={
         ["discription"]="CHR+8 Singing skill +20 Wind instrument skill +20 All songs +2", 
         ["category"]="Weapon", 
         ["en"]="Gjallarhorn", 
         ["Singing skill"]=20, 
+        ["id"]=18578, 
+        ["CHR"]=8, 
+        ["skill"]="Wind Instrument", 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
         ["augments"]={
             [1]="none", 
             [2]="none", 
             [3]="none", 
             [4]="none"
         }, 
-        ["CHR"]=8, 
         ["slots"]={
             [2]="Range"
-        }, 
-        ["jobs"]={
-            [10]="BRD"
-        }, 
-        ["id"]=18578, 
-        ["skill"]="Wind Instrument"
+        }
     }, 
     [64]={
         ["discription"]="CHR+8 Singing skill +20 Wind instrument skill +20 All songs +3", 
         ["category"]="Weapon", 
         ["en"]="Gjallarhorn", 
         ["Singing skill"]=20, 
+        ["id"]=18579, 
+        ["CHR"]=8, 
+        ["skill"]="Wind Instrument", 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
         ["augments"]={
             [1]="none", 
             [2]="none", 
             [3]="none", 
             [4]="none"
         }, 
-        ["CHR"]=8, 
         ["slots"]={
             [2]="Range"
-        }, 
-        ["jobs"]={
-            [10]="BRD"
-        }, 
-        ["id"]=18579, 
-        ["skill"]="Wind Instrument"
+        }
     }, 
     [65]={
         ["discription"]="CHR+10 Singing skill +25 Wind instrument skill +25 All songs +4", 
         ["category"]="Weapon", 
         ["en"]="Gjallarhorn", 
         ["Singing skill"]=25, 
+        ["id"]=18572, 
+        ["CHR"]=10, 
+        ["skill"]="Wind Instrument", 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
         ["augments"]={
             [1]="none", 
             [2]="none", 
             [3]="none", 
             [4]="none"
         }, 
-        ["CHR"]=10, 
         ["slots"]={
             [2]="Range"
-        }, 
-        ["jobs"]={
-            [10]="BRD"
-        }, 
-        ["id"]=18572, 
-        ["skill"]="Wind Instrument"
+        }
     }, 
     [66]={
         ["Evasion"]=44, 
@@ -2126,21 +2126,6 @@ return {
             [10]="BRD"
         }, 
         ["DEX"]=23, 
-        ["en"]="Fili Hongreline +1", 
-        ["AGI"]=21, 
-        ["discription"]="DEF:125 HP+54 MP+70 STR+19 DEX+23 VIT+21 AGI+21 INT+29 MND+28 CHR+37 Evasion+44 Magic Evasion+86 \"Magic Def. Bonus\"+7 Haste+3% Singing skill +14 Wind instrument skill +14 \"Minuet\"+1 Song effect duration +12% Set: Augments songs", 
-        ["Singing skill"]=14, 
-        ["HP"]=54, 
-        ["Haste"]=3, 
-        ["item_level"]=119, 
-        ["STR"]=19, 
-        ["DEF"]=125, 
-        ["MP"]=70, 
-        ["id"]=26917, 
-        ["INT"]=29, 
-        ["category"]="Armor", 
-        ["CHR"]=37, 
-        ["VIT"]=21, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2150,7 +2135,22 @@ return {
                 [5]={}
             }, 
             ["set id"]=2
-        }
+        }, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:125 HP+54 MP+70 STR+19 DEX+23 VIT+21 AGI+21 INT+29 MND+28 CHR+37 Evasion+44 Magic Evasion+86 \"Magic Def. Bonus\"+7 Haste+3% Singing skill +14 Wind instrument skill +14 \"Minuet\"+1 Song effect duration +12% Set: Augments songs", 
+        ["Singing skill"]=14, 
+        ["HP"]=54, 
+        ["Haste"]=3, 
+        ["AGI"]=21, 
+        ["STR"]=19, 
+        ["DEF"]=125, 
+        ["MP"]=70, 
+        ["id"]=26917, 
+        ["INT"]=29, 
+        ["category"]="Armor", 
+        ["CHR"]=37, 
+        ["VIT"]=21, 
+        ["en"]="Fili Hongreline +1"
     }, 
     [67]={
         ["discription"]="DEF:15 \"Madrigal\"+1 \"Prelude\"+1", 
@@ -2179,7 +2179,7 @@ return {
     [68]={
         ["discription"]="DMG:166 Delay:240 DEX+15 INT+15 MND+15 Accuracy+40 Attack+30 Magic Accuracy+40 \"Magic Atk. Bonus\"+16 Magic Damage+217 Sword skill +250 Parrying skill +250 Magic Accuracy skill +250 Main hand: \"Savage Blade\" \"Savage Blade\" damage +15% Weapon Skill: Attack Bonus based on the number of upgrades", 
         ["MND"]=15, 
-        ["skill"]="Sword", 
+        ["Attack"]=30, 
         ["jobs"]={
             [1]="WAR", 
             [5]="RDM", 
@@ -2195,10 +2195,10 @@ return {
             [17]="COR", 
             [22]="RUN"
         }, 
-        ["Attack"]=30, 
-        ["en"]="Naegling", 
-        ["item_level"]=119, 
         ["Magic Atk. Bonus"]=16, 
+        ["en"]="Naegling", 
+        ["skill"]="Sword", 
+        ["item_level"]=119, 
         ["delay"]=240, 
         ["DEX"]=15, 
         ["Accuracy"]=40, 
@@ -2213,5 +2213,168 @@ return {
         ["Sword skill"]=250, 
         ["Parrying skill"]=250, 
         ["Magic Accuracy"]=40
+    }, 
+    [69]={
+        ["Evasion"]=78, 
+        ["en"]="Fili Rhingrave +2", 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["STR"]=28, 
+        ["DEF"]=127, 
+        ["MND"]=33, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:127 HP+63 MP+52 STR+28 VIT+15 AGI+25 INT+39 MND+33 CHR+33 Accuracy+53 Magic Accuracy+53 Evasion+78 Magic Evasion+147 \"Magic Def. Bonus\"+9 Singing skill +23 Haste+5% \"Ballad\"+1 Song recast delay -9 Damage taken -12% Set: Augments songs", 
+        ["Singing skill"]=23, 
+        ["AGI"]=25, 
+        ["HP"]=63, 
+        ["id"]=23295, 
+        ["DT"]=-12, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["Haste"]=5, 
+        ["MP"]=52, 
+        ["Accuracy"]=53, 
+        ["INT"]=39, 
+        ["category"]="Armor", 
+        ["CHR"]=33, 
+        ["VIT"]=15, 
+        ["Magic Accuracy"]=53
+    }, 
+    [70]={
+        ["Evasion"]=63, 
+        ["MND"]=20, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["DEX"]=11, 
+        ["AGI"]=33, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:66 HP+13 MP+17 STR+7 DEX+11 VIT+7 AGI+33 INT+19 MND+20 CHR+41 Evasion+63 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+3% \"Regen\"+2 \"Scherzo\"+1 Movement speed +18% Set: Augments songs", 
+        ["DEF"]=66, 
+        ["HP"]=13, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }, 
+            ["set id"]=2
+        }, 
+        ["VIT"]=7, 
+        ["Haste"]=3, 
+        ["MP"]=17, 
+        ["id"]=27430, 
+        ["STR"]=7, 
+        ["CHR"]=41, 
+        ["INT"]=19, 
+        ["category"]="Armor", 
+        ["en"]="Fili Cothurnes +1"
+    }, 
+    [71]={
+        ["Evasion"]=38, 
+        ["MND"]=18, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["DEX"]=17, 
+        ["AGI"]=15, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:95 HP+36 MP+35 STR+13 DEX+17 VIT+12 AGI+15 INT+20 MND+18 CHR+32 Evasion+38 Magic Evasion+80 \"Magic Def. Bonus\"+6 Haste+6% Enmity-9 \"Madrigal\"+1 Song spellcasting time -14% Set: Augments songs", 
+        ["DEF"]=95, 
+        ["HP"]=36, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }, 
+            ["set id"]=2
+        }, 
+        ["VIT"]=12, 
+        ["Haste"]=6, 
+        ["MP"]=35, 
+        ["id"]=26759, 
+        ["STR"]=13, 
+        ["CHR"]=32, 
+        ["INT"]=20, 
+        ["category"]="Armor", 
+        ["en"]="Fili Calot +1"
+    }, 
+    [72]={
+        ["Evasion"]=84, 
+        ["AGI"]=28, 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["DEX"]=33, 
+        ["item_level"]=119, 
+        ["MND"]=38, 
+        ["discription"]="DEF:145 HP+74 MP+90 STR+24 DEX+33 VIT+26 AGI+28 INT+34 MND+38 CHR+43 Accuracy+54 Magic Accuracy+54 Evasion+84 Magic Evasion+126 \"Magic Def. Bonus\"+10 Singing skill +19 Wind instrument skill +19 Haste+3% \"Regen\"+4 \"Minuet\"+1 Song effect duration +13% Set: Augments songs", 
+        ["STR"]=24, 
+        ["Singing skill"]=19, 
+        ["en"]="Fili Hongreline +2", 
+        ["HP"]=74, 
+        ["id"]=23161, 
+        ["Haste"]=3, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["DEF"]=145, 
+        ["MP"]=90, 
+        ["Accuracy"]=54, 
+        ["INT"]=34, 
+        ["category"]="Armor", 
+        ["CHR"]=43, 
+        ["VIT"]=26, 
+        ["Magic Accuracy"]=54
+    }, 
+    [73]={
+        ["Evasion"]=24, 
+        ["AGI"]=7, 
+        ["jobs"]={
+            [10]="BRD"
+        }, 
+        ["DEX"]=28, 
+        ["Haste"]=3, 
+        ["MND"]=32, 
+        ["discription"]="DEF:84 HP+22 MP+17 STR+6 DEX+28 VIT+26 AGI+7 INT+19 MND+32 CHR+29 Magic Accuracy+30 Evasion+24 Magic Evasion+43 \"Magic Def. Bonus\"+3 Haste+3% Singing skill +12 String instrument skill +12 Wind instrument skill +12 \"March\"+1 Set: Augments songs", 
+        ["item_level"]=119, 
+        ["Singing skill"]=12, 
+        ["en"]="Fili Manchettes +1", 
+        ["HP"]=22, 
+        ["id"]=27071, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }, 
+            ["set id"]=2
+        }, 
+        ["STR"]=6, 
+        ["DEF"]=84, 
+        ["MP"]=17, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["INT"]=19, 
+        ["category"]="Armor", 
+        ["CHR"]=29, 
+        ["VIT"]=26, 
+        ["Magic Accuracy"]=30
     }
 }
