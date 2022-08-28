@@ -1,1 +1,4 @@
-setkey enter down;wait 0.1;setkey enter up
+setkey enter down;
+wait 0.3;
+setkey enter up;
+wait 0.3;

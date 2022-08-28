@@ -1,9 +1,7 @@
-//send @all lua load healbot;
-send Chixslave lua load automb
-send Threechix lua load singer;
+send Onechix lua reload singer;
+send Chixslave lua reload automb
+send Threechix lua reload singer;
 
-send @all exec cps;
-//wait 15;
 
 send Chixslave hb on; 
 send Chixslave hb reset buffs;
@@ -13,8 +11,7 @@ send Onechix sing playlist clear;
 
 wait 1;
 
-send Chixslave amb on;
-send Chixslave amb c holy;
+send Chixslave amb off;
 
 send Chixslave gs c set AutoSubMode on;
 
@@ -58,8 +55,6 @@ send Threechix sing haste Chixslave on;
 send Threechix sing haste Threechix on;
 send Threechix sing refresh Threechix on;
 
-send Threechix sing refresh Gamtrex on;
-send Threechix sing refresh Pookums on;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;

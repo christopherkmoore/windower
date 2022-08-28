@@ -99,10 +99,18 @@ return {
         13,
         194
     },
+    ["Lithicthrower Image"] = S{
+        2,
+        28
+    },
     ["Monolithic Boulder"] = S{
         4,
         13,
         194
+    },
+    ["Mu'Sha Effigy"] = S{
+        2,
+        28
     },
     ["Sabotender Dulce"] = S{
         4

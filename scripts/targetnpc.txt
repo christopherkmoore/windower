@@ -1,12 +1,14 @@
-send @others exec unfollow;
+send @all exec clear_target;
 wait 0.2;
+send @others exec unfollow;
+wait 0.7;
 send @all /targetnpc;
 wait 0.3;
-
 send Onechix exec enters;
-wait 0.1;
+wait 0.3;
 send Twochix exec enters;
-wait 0.1;
+wait 0.3;
 send Threechix exec enters;
-wait 0.1;
+wait 0.3;
 send Chixslave exec enters;
+wait 0.3;
