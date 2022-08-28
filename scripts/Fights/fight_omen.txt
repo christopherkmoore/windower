@@ -1,4 +1,13 @@
 ////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: Omen Midboss setup.
+// Nightengale / Troubadour disabled in case mid boss is the sucky upy buffs one.
+//
+////////////////////////////////
+
+////////////////////////////////
 // Reload Step
 ////////////////////////////////
 
@@ -51,8 +60,8 @@ send Chixslave hb debuff use Dia II;
 
 send Onechix singer on;
 send Onechix sing pianissimo on;
-send Onechix sing Nightingale on;
-send Onechix sing Troubadour on
+send Onechix sing Nightingale off;
+send Onechix sing Troubadour off
 send Onechix sing debuffing off;
 send Onechix sing minuet 2;
 send Onechix sing march 1;

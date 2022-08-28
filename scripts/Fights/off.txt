@@ -1,3 +1,10 @@
+////////////////////////////////
+// Notes:
+// Disables all fighting.
+//
+////////////////////////////////
+
+
 send Onechix singer off;
 send Onechix singer debuffing off;
 send Onechix sing pianissimo off;
