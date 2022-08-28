@@ -11,17 +11,16 @@ send Onechix gs c set autoshadowmode off;
 
 send Threechix gs c set AutoBuffMode off;
 send Threechix gs c set autowsmode off; 
-send Threechix gs c autows Hexa Strike;
-send Threechix amb off;
+
 
 send Threechix sing refresh Threechix off;
-send Threechix sing refresh Chixslave off;
 send Threechix sing haste Twochix off;
 send Threechix sing haste Onechix off;
 send Threechix sing haste Chixslave off;
 send Threechix sing haste Threechix off;
 
 send Threechix singer off;
+send Threechix amb off;
 
 
 send Chixslave healbot reload;

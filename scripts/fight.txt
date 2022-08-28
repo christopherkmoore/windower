@@ -4,7 +4,8 @@
 
 send Onechix lua reload singer;
 send Threechix lua reload singer;
-send Chixslave lua load automb
+send Chixslave lua reload automb;
+send Threechix lua reload automb;
 
 ////////////////////////////////
 // Reset Step
@@ -14,6 +15,8 @@ send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
 send Onechix sing playlist clear;
+
+wait 0.1;
 
 ////////////////////////////////
 // White Mage
@@ -32,6 +35,9 @@ send Chixslave hb buff Chixslave Shellra V;
 send Chixslave hb buff Chixslave Boost-STR;
 send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
+send Chixslave hb buff Chixslave Reraise IV; 
+//send Chixslave hb buff Chixslave Aquaveil; 
+
 send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
 
@@ -60,6 +66,7 @@ send Onechix sing ws on;
 ////////////////////////////////////
 // Geomancer
 ////////////////////////////////////
+
 send Threechix sing on;
 send Threechix sing haste Twochix on;
 send Threechix sing haste Onechix on;
