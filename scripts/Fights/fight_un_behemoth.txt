@@ -2,8 +2,12 @@
 // Notes:
 // Important to wait 0.1 after reset step, or send will fail sometimes.
 //
-// Fight Notes: Sortie - Ghatjot. Tank and spank.
-// Ghatjot is amorph, weak to Aquan - use Amiable Roche
+// Fight Notes: Unity NM Sovereign Behemoth
+// He fucks you pretty good.
+// Soft acc requirement: 1450
+//
+// plantoid / spicy cracker for killer.
+// trusts for damage.
 //
 ////////////////////////////////
 
@@ -48,16 +52,12 @@ send Chixslave hb buff Chixslave Aurorastorm;
 send Chixslave hb buff Chixslave Reraise IV; 
 //send Chixslave hb buff Chixslave Aquaveil; 
 
-send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave barsilencera;
+send Chixslave hb buff Chixslave barthundra;
+send Chixslave hb buff Chixslave baramnesra;
 
 send Chixslave hb assist Twochix;
 send Chixslave hb debuff on;
 send Chixslave hb debuff use Dia II;
-send Chixslave hb debuff Paralyze;
-send Chixslave hb debuff Slow;
-send Chixslave hb debuff Addle;
-send Chixslave hb debuff Blind;
 
 ////////////////////////////////////
 // Bard
@@ -68,14 +68,15 @@ send Onechix sing pianissimo on;
 send Onechix sing Nightingale on;
 send Onechix sing Troubadour on
 send Onechix sing debuffing off;
-send Onechix sing march 1;
-send Onechix sing minuet 1;
-send Onechix sing scherzo 1;
+send Onechix sing minuet 2;
+//send onechix sing march 0;
+send Onechix sing madrigal 1;
 
 send Onechix sing ballad 1 Threechix;
 send Onechix sing ballad 1 Chixslave;
 
-send Onechix sing ws off;
+send Onechix sing ws on;
+
 
 ////////////////////////////////////
 // Geomancer
@@ -88,12 +89,13 @@ send Threechix sing haste Chixslave on;
 send Threechix sing haste Threechix on;
 send Threechix sing refresh Threechix on;
 
-send Threechix sing haste Panik on;
+send Threechix sing haste Pookums;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
 send Threechix amb on;
-send Threechix amb tier 4;
+send Threechix amb tier 3;
 send Threechix amb c spell;
+

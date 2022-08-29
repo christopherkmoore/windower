@@ -3,6 +3,8 @@
 // Important to wait 0.1 after reset step, or send will fail sometimes.
 //
 // Fight Notes: Omen Gin
+// Hate becomes hard to manage near the end.
+// Purple aura (and eyes) around the monster seems to absorb light skill chain and magic.
 //
 ////////////////////////////////
 

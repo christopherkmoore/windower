@@ -88,11 +88,13 @@
                 <y>32</y>
             </pos>
         </box>
+        <clarion>true</clarion>
         <debuffing>false</debuffing>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
         <nightingale>false</nightingale>
+        <pianissimo>true</pianissimo>
         <recast>
             <buff>
                 <max>10</max>
@@ -100,6 +102,7 @@
             </buff>
         </recast>
         <troubadour>false</troubadour>
+        <use_ws>false</use_ws>
     </onechix>
     <threechix>
         <actions>false</actions>

@@ -118,6 +118,9 @@ return {
     ["Sere Stump"] = S{
         194
     },
+    ["Sovereign Behemoth"] = S{
+        10
+    },
     ["Wintry Cave"] = S{
         5,
         13

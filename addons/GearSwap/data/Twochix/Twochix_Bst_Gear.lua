@@ -24,6 +24,7 @@ function user_job_setup()
     -- INPUT PREFERRED JUG PETS HERE
     state.JugMode = M {
         ['description'] = 'Jug Mode',
+        'SweetCaroline',
         'AmiableRoche',
         'WarlikePatrick',
         'GenerousArthur',
@@ -91,7 +92,7 @@ function init_gear_sets()
     }
     sets.precast.JA.Spur = {
         back = "Artio's Mantle",
-        feet = "Nukumi Ocreae +1"
+        feet = "Nukumi Ocreae +2"
     }
     -- sets.SpurAxe = {
     --     main = "Skullrender"
@@ -292,7 +293,7 @@ function init_gear_sets()
         ring2 = "Rajas Ring",
         waist = "Fotia Belt",          
         legs = "Meg. Chausses +2",
-        feet = "Meg. Jam. +2",
+        feet = "Nukumi Ocreae +2",
         -- back = "Aptitude Mantle",
         back=gear.capeWS,
     }
@@ -310,7 +311,7 @@ function init_gear_sets()
         back = "Letalis Mantle",
         waist = "Fotia Belt",
         legs = "Meg. Chausses +2",
-        feet = "Amm Greaves"
+        feet = "Nukumi Ocreae +2"
     }
 
     sets.precast.WS.Acc = {
@@ -326,7 +327,7 @@ function init_gear_sets()
         back = "Letalis Mantle",
         waist = "Olseni Belt",
         legs = "Meg. Chausses +2",
-        feet = "Nukumi Ocreae +1"
+        feet = "Nukumi Ocreae +2"
     }
 
     sets.precast.WS.FullAcc = {
@@ -342,7 +343,7 @@ function init_gear_sets()
         back = "Ground. Mantle +1",
         waist = "Olseni Belt",
         legs = "Flamma Dirs +2",
-        feet = "Nukumi Ocreae +1"
+        feet = "Nukumi Ocreae +2"
     }
 
     sets.precast.WS.Fodder = {
@@ -358,7 +359,7 @@ function init_gear_sets()
         back = "Buquwik Cape",
         waist = "Fotia Belt",
         legs = "Meg. Chausses +2",
-        feet = "Nukumi Ocreae +1"
+        feet = "Nukumi Ocreae +2"
     }
 
     -- Specific weaponskill sets.
@@ -428,7 +429,7 @@ function init_gear_sets()
         back={ name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10',}},
         waist = "Incarnation Sash",
         legs = "Tali'ah Sera. +2",
-        feet = "Tali'ah Crackows +1"
+        feet = "Nukumi Ocreae +2"
     }
 
     sets.midcast.Pet.SomeAcc = set_combine(sets.midcast.Pet.WS, {
@@ -474,31 +475,23 @@ function init_gear_sets()
         back = "Artio's Mantle",
         waist = "Incarnation Sash",
         legs = gear.valorous_magical_pet_legs,
-        feet = gear.valorous_magical_pet_feet
+        feet = "Nukumi Ocreae +2"
     }
 
 	sets.midcast.Pet.DebuffReady = {
-        main = {
-            name = "Kumbhakarna",
-            augments = {'Pet: "Mag.Atk.Bns."+19', 'Pet: TP Bonus+160'}
-        },
-        sub = {
-            name = "Kumbhakarna",
-            augments = {'Pet: "Mag.Atk.Bns."+20', 'Pet: Phys. dmg. taken -4%', 'Pet: TP Bonus+200'}
-        },
         ammo = "Voluspa Tathlum",
         head = gear.valorous_pet_head,
         neck = "Adad Amulet",
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
-        body = gear.valorous_pet_body,
+        body = "Nukumi Gausape +2",
         hands = "Nukumi Manoplas +2",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
         waist = "Incarnation Sash",
         legs = gear.valorous_magical_pet_legs,
-        feet = gear.valorous_magical_pet_feet
+        feet = "Nukumi Ocreae +2"
     }
 
     sets.midcast.Pet.PhysicalDebuffReady = {
@@ -515,14 +508,14 @@ function init_gear_sets()
         neck = "Adad Amulet",
         ear1 = "Enmerkar Earring",
         ear2 = "Domesticator's Earring",
-        body = gear.valorous_pet_body,
+        body = "Nukumi Gausape +2",
         hands = "Nukumi Manoplas +2",
         ring1 = "Vertigo Ring",
         ring2 = "Varar Ring +1",
         back = "Artio's Mantle",
         waist = "Incarnation Sash",
         legs = gear.valorous_magical_pet_legs,
-        feet = gear.valorous_magical_pet_feet
+        feet = "Nukumi Ocreae +2"
     }
 
 
@@ -573,7 +566,7 @@ function init_gear_sets()
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
-        feet = "Meg. Jam. +2",
+        feet = "Nukumi Ocreae +2",
         neck = "Sanctity Necklace",
         -- waist = "Klouskap Sash",
         waist = "Sailfi Belt +1",
@@ -645,14 +638,14 @@ function init_gear_sets()
         neck = "Shulmanu Collar",
         ear1 = "Enmerkar Earring",
         ear2 = "Handler's Earring +1",
-        body = "Tot. Jackcoat +3",
-        hands = "Ankusa Gloves +1",
+        body = "Nukumi Gausape +2",
+        hands = "Nukumi Manoplas +2",
         ring1 = "Defending Ring",
         ring2 = "Vocane Ring",                                         -- ring2 = "C. Palug Ring",
         back = "Artio's Mantle",
         waist = "Isa Belt",
         legs = "Tali'ah Sera. +2",
-        feet = "Ankusa Gaiters +3"
+        feet = "Nukumi Ocreae +2"
     }
 
 	    sets.idle.Pet.Engaged.DW = {
@@ -711,7 +704,7 @@ function init_gear_sets()
     --     back = "Moonlight Cape",
     --     waist = "Flume Belt +1",
     --     legs = "Tali'ah Sera. +2",
-    --     feet = "Nukumi Ocreae +1"
+    --     feet = "Nukumi Ocreae +2"
     -- }
 
     -- sets.defense.PetPDT = {
@@ -769,7 +762,7 @@ function init_gear_sets()
     --     back = "Engulfer Cape +1",
     --     waist = "Engraved Belt",
     --     legs = "Tali'ah Sera. +2",
-    --     feet = "Nukumi Ocreae +1"
+    --     feet = "Nukumi Ocreae +2"
     -- }
 
     -- sets.defense.MEVA = {
@@ -868,7 +861,7 @@ function init_gear_sets()
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
-        feet = "Meg. Jam. +2",
+        feet = "Nukumi Ocreae +2",
         -- feet = "Meg. Jam. +2",
         neck = "Sanctity Necklace",
         -- waist = "Klouskap Sash",
@@ -894,7 +887,7 @@ function init_gear_sets()
         back = gear.capeTP,
         waist = "Windbuffet Belt +1",
         legs = "Malignance Tights",
-        feet = "Malignance Boots"
+        feet = "Nukumi Ocreae +2"
     }
 
     -- -- MELEE (SINGLE-WIELD) HYBRID SETS
@@ -1000,14 +993,12 @@ function init_gear_sets()
         ammo = "Voluspa Tathlum",
 
         -- ammo = "Livid Broth",
-        head = "Malignance Chapeau",  -- maybe change back to Tali'ah or Meg. +2
+        head = "Malignance Chapeau", 
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
-        -- feet={ name="Valorous Greaves", augments={'Accuracy+11 Attack+11','"Store TP"+8','DEX+4',}},
-        feet = "Meg. Jam. +2",
+        feet = "Nukumi Ocreae +2",
         neck = "Anu Torque",
-        -- waist = "Klouskap Sash",
         waist = "Sailfi Belt +1",
         left_ear = "Sherida Earring",
         right_ear = "Brutal Earring",
@@ -1069,11 +1060,9 @@ function init_gear_sets()
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Meg. Chausses +2",
-        feet = "Meg. Jam. +2",
-        -- feet = "Meg. Jam. +2",
+        feet = "Nukumi Ocreae +2",
         neck = "Sanctity Necklace",
-        -- waist = "Klouskap Sash",
-        waist = "Klouskap Sash",
+        waist = "Sailfi Belt +1",
         left_ear = "Eabani Earring",
         right_ear = "Assuage Earring",
         left_ring = "Petrov Ring",
