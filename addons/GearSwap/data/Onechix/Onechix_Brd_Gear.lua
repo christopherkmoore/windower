@@ -48,7 +48,7 @@ function init_gear_sets()
 
 	-- Fast cast sets for spells
 	sets.precast.FC = {main="Kali",sub="Clerisy Strap +1",ammo="Impatiens",
-		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
+		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah +1",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                              --ring2="Lebeche Ring",  
 		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Gende. Galosh. +1"}
 
@@ -58,7 +58,7 @@ function init_gear_sets()
 	sets.precast.FC.Dispelga = set_combine(sets.precast.FC, {main="Daybreak",sub="Genmei Shield"})
 	
 	sets.precast.FC.BardSong = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Gjallarhorn",ammo=empty,
-		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
+		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah +1",hands="Leyline Gloves",ring1="Kishar Ring", ring2="Weatherspoon Ring",                             -- ring2="Lebeche Ring",
 		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Telchine Pigaches"}
 
@@ -92,7 +92,7 @@ function init_gear_sets()
 	-- Weaponskill sets
 	-- Default set for any weaponskill that isn't any more specifically defined
 	sets.precast.WS = {ammo="Hasty Pinion +1",
-		head="Aya. Zucchetto +2",neck="Sanctity Necklace",ear1="Moonshade Earring",ear2="Ishvara Earring",
+		head="Fili Calot +2",neck="Sanctity Necklace",ear1="Moonshade Earring",ear2="Ishvara Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back="Ground. Mantle +1",waist="Grunfeld Rope",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 
@@ -127,7 +127,7 @@ function init_gear_sets()
 	sets.midcast['Horde Lullaby II'] = {range="Marsyas"}
 	sets.midcast['Horde Lullaby II'].Resistant = {range="Gjallarhorn"}
 	sets.midcast['Horde Lullaby II'].AoE = {range="Gjallarhorn"}
-	sets.midcast.Madrigal = {head="Fili Calot +1"}
+	sets.midcast.Madrigal = {head="Fili Calot +2"}
 	sets.midcast.Paeon = {}
 	sets.midcast.March = {hands="Fili Manchettes +2"}
 	sets.midcast['Honor March'] = set_combine(sets.midcast.March,{range="Marsyas"})
@@ -142,7 +142,7 @@ function init_gear_sets()
 
 	-- For song buffs (duration and AF3 set bonus)
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +1",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Brioso Slippers +1"}
 		
@@ -150,7 +150,7 @@ function init_gear_sets()
 
 	-- For song defbuffs (duration primary, accuracy secondary)
 	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
-		head="Inyanga Tiara",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Inyanga Crackows +1"}
 		
@@ -158,13 +158,13 @@ function init_gear_sets()
 
 	-- For song defbuffs (accuracy primary, duration secondary)
 	sets.midcast.SongDebuff.Resistant = {main="Daybreak",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
-		head="Inyanga Tiara +1",neck="Moonbow Whistle",ear1="Regal Earring",ear2="Digni. Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Regal Earring",ear2="Digni. Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                    --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Acuity Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 
 	-- Song-specific recast reduction
 	sets.midcast.SongRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Gjallarhorn",ammo=empty,
-		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
+		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Fili Hongreline +2",hands="Gendewitha Gages +1",ring1="Kishar Ring",ring2="Prolix Ring",
 		back=gear.capeFC,waist="Witful Belt",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 		
@@ -212,35 +212,35 @@ function init_gear_sets()
 
 	-- Resting sets
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",ammo="Staunch Tathlum +1",
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",                            --body="Respite Cloak" resting, idle, defense.PDT, defense.MDT repalced CKM
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",                            --body="Respite Cloak" resting, idle, defense.PDT, defense.MDT repalced CKM
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
 	
 	sets.idle = {sub="Genmei Shield",ammo="Staunch Tathlum +1",                                                           -- main="Daybreak" removed from idle, .NoRefresh and .DT
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Eabani Earring",ear2="Ethereal Earring",                                     
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Eabani Earring",ear2="Ethereal Earring",                                     
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
 		back=gear.capeTP,waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 		
 	sets.idle.NoRefresh = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Moonlight Cape",waist="Carrier's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +1"}
 
 	sets.idle.DT = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Moonlight Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Inyan. Crackows +2"}
 	
 	-- Defense sets
 
 	sets.defense.PDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
 
 	sets.defense.MDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
-		head="Aya. Zucchetto +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
+		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
 
 	sets.Kiting = {feet="Fili Cothurnes +1"}
@@ -256,19 +256,19 @@ function init_gear_sets()
 	-- EG: sets.engaged.Dagger.Accuracy.Evasion
 	
 	sets.engaged = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
-		head="Aya. Zucchetto +2",neck="Asperity Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Asperity Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Petrov Ring",ring2="Rajas Ring",
 		back=gear.capeTP,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                   -- back="Bleating Mantle"
 	sets.engaged.Acc = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
-		head="Aya. Zucchetto +2",neck="Combatant's Torque",ear1="Digni. Earring",ear2="Telos Earring",
+		head="Fili Calot +2",neck="Combatant's Torque",ear1="Digni. Earring",ear2="Telos Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Olseni Belt",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                        -- back="Letalis Mantle"
 	sets.engaged.DW = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",
-		head="Aya. Zucchetto +2",neck="Sanctity Necklace",ear1="Suppanomimi",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Sanctity Necklace",ear1="Suppanomimi",ear2="Brutal Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Rajas Ring",ring2="Ilabrat Ring",
 		back=gear.capeTP ,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                         -- back="Bleating Mantle"
 	sets.engaged.DW.Acc = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",
-		head="Aya. Zucchetto +2",neck="Combatant's Torque",ear1="Suppanomimi",ear2="Telos Earring",
+		head="Fili Calot +2",neck="Combatant's Torque",ear1="Suppanomimi",ear2="Telos Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Reiki Yotai",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 
