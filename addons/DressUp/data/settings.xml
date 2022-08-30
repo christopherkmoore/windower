@@ -33,13 +33,26 @@
 
         </chixslave>
         <onechix>
-
+            <body>8483</body>
+            <feet>20771</feet>
+            <hands>12579</hands>
+            <head>4387</head>
+            <legs>16675</legs>
         </onechix>
         <others>
 
         </others>
         <profiles>
+            <>
 
+            </>
+            <bard>
+                <body>8483</body>
+                <feet>20771</feet>
+                <hands>12579</hands>
+                <head>4387</head>
+                <legs>16675</legs>
+            </bard>
         </profiles>
         <replacements>
             <body>
