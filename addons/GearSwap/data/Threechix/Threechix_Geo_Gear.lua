@@ -362,9 +362,8 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Seidr Cotehardie"}
 	
 	-- Gear for Magic Burst mode.
-    sets.MagicBurst = set_combine(sets.midcast['Elemental Magic'], 
-	{ main=gear.grioavolr_MB,sub="Alber Strap",head="Ea Hat",neck="Sanctity Necklace", back = gear.capeMB,                                     --neck="Mizu. Kubikazari"
-	body="Ea Houppelande", hands = "Ea Cuffs", ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"})
+    sets.MagicBurst = { main=gear.grioavolr_MB,sub="Alber Strap",head="Ea Hat",neck="Sanctity Necklace", back = gear.capeMB,                                     --neck="Mizu. Kubikazari"
+	body="Ea Houppelande", hands = "Ea Cuffs", ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 
 	sets.ResistantMagicBurst = {main=gear.grioavolr_MB,sub="Enki Strap", back = gear.capeMB,
 	head="Ea Hat",neck="Mizu. Kubikazari", hands = "Ea Cuffs", body="Ea Houppelande",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}

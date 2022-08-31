@@ -4,5 +4,5 @@ send Onechix exec clear_target;
 wait 0.1;
 
 send Twochix sat youtarget Onechix;
-wait 0.5;
+wait 0.6;
 send Onechix /ma "Carnage Elegy" <t>

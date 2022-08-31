@@ -71,6 +71,7 @@ function job_setup()
 	last_geo = nil
 	blazelocked = false
 	used_ecliptic = false
+	bursting = false
 
 	state.ShowDistance = M(true, 'Show Geomancy Buff/Debuff distance')
 	state.AutoEntrust = M(false, 'AutoEntrust Mode')
@@ -181,13 +182,12 @@ function job_post_precast(spell, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, spellMap, eventArgs)
-
 	if spell.skill == 'Elemental Magic' then
-		if state.CastingMode.value:contains('Resistant') and sets.ResistantMagicBurst then
-			equip(sets.ResistantMagicBurst)
-		else
+		if bursting then 
+			add_to_chat(123, "bursting midcast swap")
 			equip(sets.MagicBurst)
 		end
+
 		if spell.element == world.weather_element or spell.element == world.day_element then
 			if state.CastingMode.value == 'Fodder' then
 				-- if item_available('Twilight Cape') and not LowTierNukes:contains(spell.english) and not state.Capacity.value then
@@ -205,20 +205,6 @@ function job_post_midcast(spell, spellMap, eventArgs)
 
 		if spell.element and sets.element[spell.element] then
 			equip(sets.element[spell.element])
-		end
-
-		if state.RecoverMode.value ~= 'Never' and (state.RecoverMode.value == 'Always' or tonumber(state.RecoverMode.value:sub(1, -2)) > player.mpp) then
-			if state.MagicBurstMode.value ~= 'Off' then
-				if state.CastingMode.value:contains('Resistant') and sets.ResistantRecoverBurst then
-					equip(sets.ResistantRecoverBurst)
-				elseif sets.RecoverBurst then
-					equip(sets.RecoverBurst)
-				elseif sets.RecoverMP then
-					equip(sets.RecoverMP)
-				end
-			elseif sets.RecoverMP then
-				equip(sets.RecoverMP)
-			end
 		end
 
     elseif spell.skill == 'Geomancy' then
@@ -412,6 +398,15 @@ function job_self_command(commandArgs, eventArgs)
 	elseif lowerCommand == 'elemental' then
 		handle_elemental(commandArgs)
 		eventArgs.handled = true
+	elseif lowerCommand == "bursting" then
+		-- CKM: added this to toggle bursting sets
+		bursting = true
+		windower.send_command('gs c set MagicBurstMode Single')
+
+	elseif lowerCommand == "notbursting" then
+		-- CKM: added this to toggle bursting sets
+		windower.send_command('gs c set MagicBurstMode Off')
+		bursting = false
 	end
 end
 
@@ -425,8 +420,7 @@ function handle_elemental(cmdParams)
         add_to_chat(123,'Error: No elemental command given.')
         return
     end
-    local command = cmdParams[2]:lower()
-
+    local command = cmdParams[2]:lower()	
 	if command == 'spikes' then
 		windower.chat.input('/ma "'..data.elements.spikes_of[state.ElementalMode.value]..' Spikes" <me>')
 		return

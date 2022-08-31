@@ -87,11 +87,6 @@
                 <x>1332</x>
                 <y>32</y>
             </pos>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
         </box>
         <clarion>true</clarion>
         <debuffing>false</debuffing>
@@ -110,7 +105,6 @@
         <use_ws>false</use_ws>
     </onechix>
     <threechix>
-        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
@@ -121,6 +115,11 @@
                 <x>1320</x>
                 <y>0</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <clarion>true</clarion>
         <debuffing>false</debuffing>

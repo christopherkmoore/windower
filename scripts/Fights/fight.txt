@@ -87,6 +87,7 @@ send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
 send Threechix amb on;
-send Threechix amb tier 3;
+send Threechix amb tier 4;
 send Threechix amb c spell;
+send Threechix amb gearswap;
 
