@@ -199,6 +199,7 @@ function update_job_states()
 		PetWSGear = "PetWSGear",
 		DanceStance = "DanceStance",
 		Stance = "Stance",
+		AutoConvertMode = "Auto Convert: "..state.AutoConvertMode.value.."",
     }
 
     stateBox:clear()
@@ -367,6 +368,10 @@ function update_job_states()
 		elseif n == 'Stance' then
 			if state.Stance.value ~= "None" then
 				stateBox:append(string.format("%sStance: %s%s    ", clr.w, clr.h, state.Stance.value))
+			end
+		elseif n == "AutoConvertMode" then 
+			if state.AutoConvertMode.value ~= 'Off' then
+				stateBox:append(string.format("%sAuto Convert: %s%s    ", clr.w, clr.h, state.AutoConvertMode.value))
 			end
 		else
 			stateBox:append(string.format("%s%s: ${%s}    ", clr.w, labels[n], n))

@@ -81,7 +81,7 @@ function job_setup()
     indi_timer = ''
     indi_duration = 180
 
-	init_job_states({"Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode"},{"AutoBuffMode","Weapons","OffenseMode","WeaponskillMode","IdleMode","Passive","RuneElement","RecoverMode","ElementalMode","CastingMode","TreasureMode",})
+	init_job_states({"AutoConvertMode", "Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode"},{"AutoBuffMode","Weapons","OffenseMode","WeaponskillMode","IdleMode","Passive","RuneElement","RecoverMode","ElementalMode","CastingMode","TreasureMode",})
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -539,6 +539,18 @@ function job_tick()
 	if check_geo() then return true end
 	-- if check_buff() then return true end
 	-- if check_buffup() then return true end
+	if check_convert() then return true end
+
+	return false
+end
+
+function check_convert() 
+	local needsMP = player.mpp < 15 
+
+	if needsMP and player.sub_job == 'RDM' and state.AutoConvertMode.Auto then
+		windower.chat.input('/ja "Convert" <me>')
+		return true
+	end
 
 	return false
 end

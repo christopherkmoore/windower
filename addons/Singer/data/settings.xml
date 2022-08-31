@@ -105,6 +105,7 @@
         <use_ws>false</use_ws>
     </onechix>
     <threechix>
+        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
