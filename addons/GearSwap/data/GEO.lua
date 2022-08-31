@@ -545,9 +545,20 @@ function job_tick()
 end
 
 function check_convert() 
-	local needsMP = player.mpp < 15 
 
-	if needsMP and player.sub_job == 'RDM' and state.AutoConvertMode.Auto then
+	if state.AutoConvertMode.value == "Off" then 
+		return false
+	end
+
+	local needsMP = player.mpp < 15
+
+	if not needsMP then return false end
+
+	local convertRecast = windower.ffxi.get_ability_recasts()[49]
+	local onCooldown = convertRecast ~= 0
+
+	if needsMP and player.sub_job == 'RDM' and state.AutoConvertMode.value == "Auto" and not onCooldown then
+		add_to_chat(123, "Converting")
 		windower.chat.input('/ja "Convert" <me>')
 		return true
 	end

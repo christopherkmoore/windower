@@ -105,7 +105,6 @@
         <use_ws>false</use_ws>
     </onechix>
     <threechix>
-        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
@@ -113,8 +112,8 @@
         </aoe>
         <box>
             <pos>
-                <x>1320</x>
-                <y>0</y>
+                <x>1317</x>
+                <y>1</y>
             </pos>
             <text>
                 <fonts>
