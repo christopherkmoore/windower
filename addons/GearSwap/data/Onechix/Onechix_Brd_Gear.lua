@@ -50,7 +50,7 @@ function init_gear_sets()
 	sets.precast.FC = {main="Kali",sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah +1",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                              --ring2="Lebeche Ring",  
-		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Gende. Galosh. +1"}
+		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Fili Cothurnes +2"}
 
 	sets.precast.FC.Cure = set_combine(sets.precast.FC, {feet="Vanya Clogs"})
 
@@ -60,7 +60,7 @@ function init_gear_sets()
 	sets.precast.FC.BardSong = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah +1",hands="Leyline Gloves",ring1="Kishar Ring", ring2="Weatherspoon Ring",                             -- ring2="Lebeche Ring",
-		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Telchine Pigaches"}
+		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Fili Cothurnes +2"}
 
 	sets.precast.FC.SongDebuff = set_combine(sets.precast.FC.BardSong,{range="Marsyas"})
 	sets.precast.FC.SongDebuff.Resistant = set_combine(sets.precast.FC.BardSong,{range="Gjallarhorn"})
@@ -94,7 +94,7 @@ function init_gear_sets()
 	sets.precast.WS = {ammo="Hasty Pinion +1",
 		head="Fili Calot +2",neck="Sanctity Necklace",ear1="Moonshade Earring",ear2="Ishvara Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
-		back="Ground. Mantle +1",waist="Grunfeld Rope",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
+		back="Ground. Mantle +1",waist="Grunfeld Rope",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 
 	sets.precast["Savage Blade"] = set_combine(sets.precast.WS, {
@@ -134,7 +134,7 @@ function init_gear_sets()
 	sets.midcast.Minuet = {body="Fili Hongreline +2"}
 	sets.midcast.Minne = {}
 	sets.midcast.Carol = {}
-	sets.midcast["Sentinel's Scherzo"] = {feet="Fili Cothurnes +1"}
+	sets.midcast["Sentinel's Scherzo"] = {feet="Fili Cothurnes +2"}
 	sets.midcast['Magic Finale'] = {range="Gjallarhorn"}
 	sets.midcast.Mazurka = {range="Marsyas"}
 	sets.midcast["Knight's Minne"] = set_combine(sets.precast.FC.BardSong, sets.precast.DaurdablaDummy)
@@ -144,7 +144,7 @@ function init_gear_sets()
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Brioso Slippers +1"}
+		back=gear.capeFC,waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Fili Cothurnes +2"}
 		
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
 
@@ -152,7 +152,7 @@ function init_gear_sets()
 	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Inyanga Crackows +1"}
+		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 		
 	sets.midcast.SongDebuff.DW = {main="Kali",sub="Kali"}
 
@@ -160,13 +160,13 @@ function init_gear_sets()
 	sets.midcast.SongDebuff.Resistant = {main="Daybreak",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Regal Earring",ear2="Digni. Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                    --ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Acuity Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
+		back=gear.capeFC,waist="Acuity Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 	-- Song-specific recast reduction
 	sets.midcast.SongRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Fili Hongreline +2",hands="Gendewitha Gages +1",ring1="Kishar Ring",ring2="Prolix Ring",
-		back=gear.capeFC,waist="Witful Belt",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
+		back=gear.capeFC,waist="Witful Belt",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 		
 	sets.midcast.SongDebuff.DW = {}
 
@@ -214,36 +214,36 @@ function init_gear_sets()
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",ammo="Staunch Tathlum +1",
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",                            --body="Respite Cloak" resting, idle, defense.PDT, defense.MDT repalced CKM
-		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
+		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 	
 	sets.idle = {sub="Genmei Shield",ammo="Staunch Tathlum +1",                                                           -- main="Daybreak" removed from idle, .NoRefresh and .DT
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Eabani Earring",ear2="Ethereal Earring",                                     
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
-		back=gear.capeTP,waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
+		back=gear.capeTP,waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 		
 	sets.idle.NoRefresh = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
-		back="Moonlight Cape",waist="Carrier's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +1"}
+		back="Moonlight Cape",waist="Carrier's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 	sets.idle.DT = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
-		back="Moonlight Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Inyan. Crackows +2"}
+		back="Moonlight Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 	
 	-- Defense sets
 
 	sets.defense.PDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
-		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
+		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 	sets.defense.MDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
 		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
-		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet=gear.chironic_refresh_feet}
+		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
-	sets.Kiting = {feet="Fili Cothurnes +1"}
+	sets.Kiting = {feet="Fili Cothurnes +2"}
 	sets.latent_refresh = {waist="Fucho-no-obi"}
 	sets.latent_refresh_grip = {sub="Oneiros Grip"}
 	sets.TPEat = {neck="Chrys. Torque"}
@@ -272,7 +272,7 @@ function init_gear_sets()
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Reiki Yotai",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 
-		sets.moving = { feet="Fili Cothurnes +1" }
+		sets.moving = { feet="Fili Cothurnes +2" }
 
 end
 

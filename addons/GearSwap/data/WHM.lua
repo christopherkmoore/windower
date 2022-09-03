@@ -61,6 +61,8 @@ function job_setup()
 		
 	autows = 'Mystic Boon'
 	autofood = 'Miso Ramen'
+
+	bursting = false
 	
 	state.ElementalMode = M{['description'] = 'Elemental Mode','Light','Dark','Fire','Ice','Wind','Earth','Lightning','Water',}
 
@@ -228,6 +230,12 @@ end
 
 function job_post_midcast(spell, spellMap, eventArgs)
     -- Apply Divine Caress boosting items as highest priority over other gear, if applicable.
+	if spell.skill == 'Divine Magic' then --CKM block added for magic bursting.
+		if bursting and sets.MagicBurst then 
+			equip(sets.MagicBurst)
+		end
+	end
+
     if spellMap == 'StatusRemoval' then
 		if state.Buff['Divine Caress'] then
 			equip(sets.buff['Divine Caress'])
@@ -388,6 +396,12 @@ function job_self_command(commandArgs, eventArgs)
 	elseif commandArgs[1]:lower() == 'elemental' then
 		handle_elemental(commandArgs)
 		eventArgs.handled = true
+	elseif lowerCommand == "bursting" then
+		-- CKM: added this to toggle bursting sets
+		bursting = true
+	elseif lowerCommand == "notbursting" then
+		-- CKM: added this to toggle bursting sets
+		bursting = false
 	end
 end
 

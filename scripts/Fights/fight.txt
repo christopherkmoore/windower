@@ -34,6 +34,7 @@ wait 0.1;
 send Chixslave hb on;
 send Chixslave amb on;
 send Chixslave amb c holy;
+send Chixslave amb gearswap;
 send Chixslave gs c set AutoSubMode on;
 
 send Chixslave hb buff Chixslave Afflatus Solace;
@@ -66,7 +67,7 @@ send Onechix sing debuffing off;
 send Onechix sing minuet 2;
 send Onechix sing march 1;
 
-send Onechix sing ballad 1 Threechix;
+send Onechix sing ballad 1 Chixslave;
 
 send Onechix sing ws on;
 
@@ -85,6 +86,8 @@ send Threechix sing refresh Threechix on;
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
+
+send Threechix gs c set AutoConvertMode Auto
 
 send Threechix amb on;
 send Threechix amb tier 4;

@@ -37,6 +37,7 @@ return {
         7
     },
     ["Bozzetto Shiva"] = S{
+        2,
         6
     },
     ["Bozzetto Stalwart"] = S{
@@ -99,6 +100,9 @@ return {
         13,
         194
     },
+    ["Kyou"] = S{
+        28
+    },
     ["Lithicthrower Image"] = S{
         2,
         28
@@ -119,7 +123,8 @@ return {
         194
     },
     ["Sovereign Behemoth"] = S{
-        10
+        10,
+        28
     },
     ["Wintry Cave"] = S{
         5,

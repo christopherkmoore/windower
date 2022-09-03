@@ -49,4 +49,12 @@
             </text>
         </text_box_settings>
     </global>
+    <twochix>
+        <text_box_settings>
+            <pos>
+                <x>682</x>
+                <y>-2</y>
+            </pos>
+        </text_box_settings>
+    </twochix>
 </settings>

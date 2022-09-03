@@ -58,10 +58,11 @@ bind !f5 input /ta <a24>
 bind !f6 input /ta <a25>
 
 alias party exec party;
-alias xps exec xps;
-alias cps exec cps;
 alias warps exec warps;
 alias mounts exec mounts;
+alias dem send Chixslave input /ma "Teleport-Dem" <me>
+alias mea send Chixslave input /ma "Teleport-Mea" <me>
+alias holla send Chixslave input /ma "Teleport-Holla" <me>
 alias si exec si;
 
 NEXTGames Edits:
@@ -102,6 +103,7 @@ send Threechix lua load automb;
 send Chixslave lua load automb;
 send Onechix awm slave on;
 send Twochix awm master on;
+send Onechix dressup l bard;
 
 bind ^f send @others /follow Twochix
 bind ^u send @others exec unfollow

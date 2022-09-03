@@ -1000,6 +1000,7 @@ function init_gear_sets()
         feet = "Nukumi Ocreae +2",
         neck = "Anu Torque",
         waist = "Sailfi Belt +1",
+        -- left_ear = "Dominance Earring",
         left_ear = "Nukumi Earring",
         right_ear = "Sherida Earring",
         left_ring = "Petrov Ring",

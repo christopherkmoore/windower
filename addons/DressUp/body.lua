@@ -161,7 +161,8 @@ models.body[11089] = { name = "Raider's Vest +2" , enl = "raider's vest +2", mod
 models.body[11090] = { name = "Creed Cuirass +2" , enl = "creed cuirass +2", model = 8480} 
 models.body[11091] = { name = "Bale Cuirass +2" , enl = "bale cuirass +2", model = 8481} 
 models.body[11092] = { name = "Ferine Gausape +2" , enl = "ferine gausape +2", model = 8482} 
-models.body[11093] = { name = "Aoidos' Hngrln. +2" , enl = "aoidos' hongreline +2", model = 8483} 
+models.body[11093] = { name = "Aoidos' Hngrln. +2" , enl = "aoidos' hongreline +2", model = 8483}
+models.body[11093] = { name = "Fili Hongreline +2" , enl = "fili hongreline +2", model = 8483} 
 models.body[11094] = { name = "Sylvan Caban +2" , enl = "sylvan caban +2", model = 8484} 
 models.body[11095] = { name = "Unkai Domaru +2" , enl = "unkai domaru +2", model = 8485} 
 models.body[11096] = { name = "Iga Ningi +2" , enl = "iga ningi +2", model = 8486} 

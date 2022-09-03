@@ -65,7 +65,6 @@ send Onechix sing debuffing off;
 send Onechix sing minuet 2;
 send Onechix sing march 1;
 
-send Onechix sing ballad 1 Threechix;
 send Onechix sing ballad 1 Chixslave;
 
 send Onechix sing ws on;
@@ -87,6 +86,6 @@ send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
 send Threechix amb on;
-send Threechix amb tier 3;
+send Threechix amb tier 4;
 send Threechix amb c spell;
 

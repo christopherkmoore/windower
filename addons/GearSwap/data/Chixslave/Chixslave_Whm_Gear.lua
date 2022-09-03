@@ -135,7 +135,8 @@ function init_gear_sets()
 	sets.midcast.Teleport = sets.ConserveMP
 	
 	-- Gear for Magic Burst mode.
-    sets.MagicBurst = {main="Marin Staff +1", sub="Enki Strap",neck="Mizu. Kubikazari",legs="Ebers Pantaloons +2",ring1="Mujin Band",ring2="Locus Ring"}
+    sets.MagicBurst = {main="Daybreak", sub="Enki Strap",neck="Mizu. Kubikazari",legs="Ebers Pantaloons +2", ear1="Malignance Earring", 
+	ring1="Weatherspoon Ring",ring2="Locus Ring"}
 	
     sets.midcast.FastRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Hasty Pinion +1",
 		head="Nahtirah Hat",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
@@ -252,7 +253,8 @@ function init_gear_sets()
 
 	sets.midcast.Auspice = set_combine(sets.midcast['Enhancing Magic'], {feet="Ebers Duckbills +1"})
 
-	sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], {main="Vadose Rod",sub="Ammurapi Shield",hands="Regal Cuffs",waist="Emphatikos Rope",legs="Shedir Seraweels"})
+	sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], {main="Vadose Rod",sub="Ammurapi Shield",
+	hands="Regal Cuffs",waist="Emphatikos Rope",legs="Shedir Seraweels"})
 
 	sets.midcast.Regen = set_combine(sets.midcast['Enhancing Magic'], {head = "Inyanga Tiara +2", hands="Ebers Mitts +1",legs="Th. Pant. +3",})
 	

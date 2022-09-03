@@ -110,7 +110,7 @@ function init_gear_sets()
 	sets.midcast.Geomancy = {main="Solstice",sub="Genmei Shield",range="Dunna",
 		head="Azimuth Hood +2",neck="Bagua Charm +1",ear1="Gna Earring",ear2="Fulla Earring",           -- neck="Incanter's Torque" ,ear1="Gifted Earring",ear2="Malignance Earring",  
 		body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Defending Ring",ring2="Dark Ring",
-		back="Solemnity Cape",waist="Austerity Belt",legs="Azimuth Tights +1",feet="Azimuth Gaiters +2"}
+		back="Solemnity Cape",waist="Austerity Belt",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 
 
 	--Extra Indi duration as long as you can keep your 900 skill cap.
@@ -142,47 +142,47 @@ function init_gear_sets()
 	sets.midcast['Elemental Magic'] = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
 		head="Azimuth Hood +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace           ear1="Crematio Earring"
 		body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri ring",
-		back=gear.capeMB,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+		back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 
     sets.midcast['Elemental Magic'].Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",                     -- ear1="Regal Earring"
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].Proc = {main=empty,sub=empty,ammo="Impatiens",
         head="Azimuth Hood +2",neck="Loricate Torque",ear1="Gifted Earring",ear2="Loquac. Earring",                             --head="Nahtirah Hat"
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Kishar Ring",ring2="Prolix Ring",
-        back="Swith Cape +1",waist="Witful Belt",legs="Jhakri Slops +2",feet="Regal Pumps"}
+        back="Swith Cape +1",waist="Witful Belt",legs="Azimuth Tights +2",feet="Regal Pumps"}
 		
     sets.midcast['Elemental Magic'].Fodder = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
         head="Azimuth Hood +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.capeMB,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Baetyl Pendant", ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.capeMB,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke.Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 
 	sets.midcast['Elemental Magic'].HighTierNuke.Fodder = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Quanpur necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Jhakri Ring",
-        back=gear.capeMB,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Dark Magic'] = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head=gear.merlinic_nuke_head,neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Amalric Gages +1",ring1="Metamor. Ring +1",ring2="Stikini Ring +1",
-        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Merlinic Shalwar",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast.Drain = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head="Pixie Hairpin +1",neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Amalric Gages +1",ring1="Excelsis Ring",ring2="Evanescence Ring",
-        back=gear.capeMB,waist="Fucho-no-obi",legs="Merlinic Shalwar",feet="Azimuth Gaiters +2"}
+        back=gear.capeMB,waist="Fucho-no-obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
     
     sets.midcast.Aspir = sets.midcast.Drain
 		

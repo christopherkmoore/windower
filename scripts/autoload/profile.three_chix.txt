@@ -35,5 +35,4 @@ lua load send;
 lua load shortcuts;
 lua load thtracker;
 lua load TParty;
-lua load Trusts;
 exec init.txt;
