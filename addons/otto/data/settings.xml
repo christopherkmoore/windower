@@ -7,5 +7,6 @@
     </global>
     <threechix>
         <enabled>true</enabled>
+        <tier>2</tier>
     </threechix>
 </settings>

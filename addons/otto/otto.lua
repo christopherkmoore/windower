@@ -9,6 +9,8 @@ _addon.lastUpdate = '6/11/2020'
 _addon.commands = { 'otto' }
 
 require('luau')
+require('actions')
+local files = require('files')
 
 local otto = {}
 
@@ -19,6 +21,7 @@ otto.defaults.casting_mp = 100
 
 otto.events = require('otto_windower_events')
 otto.logging = require('otto_logging')
+otto.settings = require('otto_settings')
 otto.events.logger = otto.logging
 otto.events.settings = settings
 
@@ -34,6 +37,9 @@ local magic_tiers = {
 
 settings = config.load(defaults)
 
+local immunities = otto.settings.load('data/mob_immunities.lua')
+table.vprint(immunities)
+
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -47,7 +53,7 @@ function otto.cast_spell(spell)
 end
 
 function otto.parse_spell(spell) 
-    
+
     if settings.tier > 1 then
         return spell..' '..magic_tiers[settings.tier].suffix
     end
@@ -66,17 +72,17 @@ function otto.should_cast()
     local mob = windower.ffxi.get_mob_by_index(player.target_index)
     -- is already casting
     if otto.events.is_busy > 0 then return false end
+    
+    -- is claimed
     if mob.claim_id == 0 then return false end
-    otto.logging.log(mob.claim_id)
+    
+    -- mob has mp
+    if immunities[mob.name] == false then return false end
+
     -- is a valid target
     if mob.is_npc and mob.valid_target and mob.distance < 510 and settings.casting_mp < player.vitals.mpp then 
         return true
     end
-
-    -- walking
-    -- is casting
-    -- has target
-    -- mp < 80 %
 
     return true
 end
@@ -108,6 +114,35 @@ function otto.check_aspir()
 
 end
 
+function action_handler(raw_actionpacket)
+    local actionpacket = ActionPacket.new(raw_actionpacket)
+    
+    if actionpacket:get_category_string() == 'spell_finish' then
+        for target in actionpacket:get_targets() do -- target iterator
+            for action in target:get_actions() do -- subaction iterator
+                if action.message == 228 then -- aspir seems to have message 228 
+                    local message = string.format("%s hit %s for %d damage",
+                    actionpacket:get_actor_name(), target:get_name(), action.param)
+                    update_DB(target:get_name(), action.param)
+                    otto.logging.log(action.param)
+                end
+            end
+        end
+    end
+end
+
+-- update the db with records of monsters who actually can be aspir'd.
+function update_DB(actor, damage)
+    if immunities[actor] ~= nil then return end
+
+    local hasMP = damage ~= 0 
+    immunities[actor] = hasMP
+
+    otto.settings.save(immunities)
+
+end
+
+ActionPacket.open_listener(action_handler)
 
 windower.register_event('prerender', function(...)
     if settings.enabled then otto.check_aspir() end 
@@ -124,112 +159,3 @@ windower.register_event('addon command', otto.events.addon_command)
 
 
 return otto
--- function event_action(act)
---     action = Action(act) -- constructor
-
---     -- print out all melee hits to the console
---     if actionpacket:get_category_string() == 'melee' then
---         for target in actionpacket:get_targets() do -- target iterator
---             for action in target:get_actions() do -- subaction iterator
---                 if action.message == 1 then -- 1 is the code for messages
---                     print(string.format("%s hit %s for %d damage",
---                         actionpacket:get_actor_name(), target:get_name(), action.param))
---                 end
---             end
---         end
---     end
--- end
-
--- windower.register_event('action message', event_action(args...)
-
--- )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- local offense = {
---     immunities=config.load('data/mob_immunities.lua'),
---     assist={active = false, engage = false},
---     debuffs={}, ignored={}, mobs={}, dispel={},
---     debuffing_active = true
--- }
-
--- function offense.assistee_and_target()
---     if offense.assist.active and (offense.assist.name ~= nil) then
---         local partner = windower.ffxi.get_mob_by_name(offense.assist.name)
---         if partner then
---             local targ = windower.ffxi.get_mob_by_index(partner.target_index)
---             if (targ ~= nil) and targ.is_npc then
---                 return partner, targ
---             end
---         end
---     end
---     return nil
--- end
-
--- function offense.cleanup()
---     local mob_ids = table.keys(offense.mobs)
---     if mob_ids then
---         for _,id in pairs(mob_ids) do
---             local mob = windower.ffxi.get_mob_by_id(id)
---             if mob == nil or mob.hpp == 0 then
---                 offense.mobs[id] = nil
---             end
---         end
---     end
--- end
-
-
--- function offense.registerMob(mob, forget)
---     mob = offense.normalized_mob(mob)
---     if not mob then return end
-
---     if forget then
---         offense.mobs[mob.id] = nil
---         atcd(('Forgetting mob: %s [%s]'):format(mob.name, mob.id))
---     else
---         if offense.mobs[mob.id] ~= nil then
---             atcd(('Attempted to register already known mob: %s[%s]'):format(mob.name, mob.id))
---         else
---             atcd(('Registering new mob: %s[%s]'):format(mob.name, mob.id))
---         end
---         offense.mobs[mob.id] = offense.mobs[mob.id] or {}
---     end
--- end
-
-
--- function offense.normalized_mob(mob)
---     if istable(mob) then
---         return mob
---     elseif isnum(mob) then
---         return windower.ffxi.get_mob_by_id(mob)
---     end
---     return mob
--- end
-
--- function offense.register_immunity(mob, debuff)
---     offense.immunities[mob.name] = S(offense.immunities[mob.name]) or S{}
---     offense.immunities[mob.name]:add(debuff.id)
---     offense.immunities:save()
--- end
-
--- local settings = config.load(defaults)

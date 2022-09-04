@@ -1,9 +1,10 @@
 
-local events =S { }
+local events = S{ }
 settings = T{}
 
 Logger = require('otto_logging')
 require('pack')
+local files = require('files')
 
 events.is_busy = 0
 events.last_check_time = os.clock()
@@ -14,6 +15,27 @@ events.aspir = {}
 -- Movement Handling
 lastlocation = 'fff':pack(0,0,0)
 events.moving = false
+
+
+function events.on_load()
+
+    local file = files.new('data/mob_immunities.lua')
+
+    file:write('Something')
+    file:append('... or other')
+
+    file:exists()
+
+    lines = file:readlines()
+    lines2 = files.readlines('test.txt')
+
+    require('tables')
+
+    if lines:equals(lines2) then
+        lines2:append('last line')
+        file:writelines(lines2)
+    end
+end
 
 function events.determine_movement(id, data, modified, is_injected, is_blocked)
 
@@ -40,6 +62,8 @@ function events.prerender(...)
 end
 
 
+
+-- addon load. parses commands passed to otto
 function events.addon_command(...)
     local allowed = S{'r', 'reload', 'tier', 't', 'on', 'enabled', 'start'}
     arg = { ... }
