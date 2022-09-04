@@ -38,6 +38,12 @@ function logging.log_with_title(title, message)
 
     if type(message) == 'table' then
         table.print(message)
+    elseif type(message) == 'boolean' then 
+        if message == true then
+            windower.add_to_chat(color, prefix .. tostring(true))
+        else
+            windower.add_to_chat(color, prefix .. tostring(false))
+        end
     else
         windower.add_to_chat(color, prefix .. message)
     end

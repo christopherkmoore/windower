@@ -15,6 +15,7 @@ local otto = {}
 otto.defaults = T{}
 otto.defaults.tier = 0
 otto.defaults.enabled = true
+otto.defaults.casting_mp = 100
 
 otto.events = require('otto_windower_events')
 otto.logging = require('otto_logging')
@@ -40,25 +41,6 @@ local spell = {
 }
 
 
--- Movement Handling
-lastlocation = 'fff'
-lastlocation = lastlocation:pack(0,0,0)
-moving = false
-wasmoving = false
-
-
-windower.register_event('outgoing chunk', function(id,data,modified,is_injected,is_blocked)
-    if id == 0x015 then
-        local update = lastlocation ~= modified:sub(5, 16) 
-        moving = update
-
-        lastlocation = modified:sub(5, 16)
-		wasmoving = moving
-    end
-
-end)
-
-
 function otto.cast_spell(spell)
     local parsed = otto.parse_spell(spell)
     windower.send_command('input /ma "'..parsed..'" <t>')
@@ -73,16 +55,21 @@ function otto.parse_spell(spell)
     return spell
 end
 
-function otto.should_cast() 
-    local player = windower.ffxi.get_player()
-    if not player.target_index then return false end
-    otto.logging.log(moving)
-    local mob = windower.ffxi.get_mob_by_index(player.target_index)
-
-    if otto.events.is_busy > 0 then return false end
+function otto.should_cast()
+    -- is moving
     if otto.events.moving then return false end
-    
-    if mob.is_npc and mob.valid_target then 
+
+    local player = windower.ffxi.get_player()
+    -- no target
+    if not player.target_index then return false end
+
+    local mob = windower.ffxi.get_mob_by_index(player.target_index)
+    -- is already casting
+    if otto.events.is_busy > 0 then return false end
+    if mob.claim_id == 0 then return false end
+    otto.logging.log(mob.claim_id)
+    -- is a valid target
+    if mob.is_npc and mob.valid_target and mob.distance < 510 and settings.casting_mp < player.vitals.mpp then 
         return true
     end
 
@@ -126,6 +113,10 @@ windower.register_event('prerender', function(...)
     if settings.enabled then otto.check_aspir() end 
 end)
 
+
+
+
+windower.register_event('outgoing chunk', otto.events.determine_movement)
 windower.register_event('prerender', otto.events.prerender)
 
 windower.register_event('addon command', otto.events.addon_command)

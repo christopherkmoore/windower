@@ -11,7 +11,20 @@ events.recast = 0
 
 events.aspir = {}
 
+-- Movement Handling
+lastlocation = 'fff':pack(0,0,0)
+events.moving = false
 
+function events.determine_movement(id, data, modified, is_injected, is_blocked)
+
+    if id == 0x015 then
+        local update = lastlocation ~= modified:sub(5, 16) 
+        events.moving = update
+        lastlocation = modified:sub(5, 16)
+
+    end
+
+end
 
 function events.prerender(...)
 	local time = os.clock()
@@ -60,6 +73,19 @@ function events.addon_command(...)
     elseif command == 'off' or command == 'disable' == command == 'stop' then 
         settings.enabled = false
         settings:save()
+
+    elseif command == 'mp' then 
+        if (#arg >= 2) then
+            local casting_mp = tonumber(arg[2])
+
+            if (casting_mp > 0 and casting_mp < 101) then
+                settings.casting_mp = casting_mp
+            end
+            
+            windower.add_to_chat(123, 'updated spells to cast below '..settings.casting_mp..' mp')
+            settings:save()
+            return
+        end
     else 
         Logger.log("that's not a command")
     end
