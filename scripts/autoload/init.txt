@@ -116,4 +116,6 @@ bind ^t exec targetnpc
 block_mouseinput 1;
 
 wait 3
+
+send Twochix exec ui-show;
 hb reload;

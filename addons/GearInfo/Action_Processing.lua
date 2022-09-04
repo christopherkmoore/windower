@@ -401,7 +401,7 @@ windower.register_event('action', function(act)
 end)
 
 function check_player_movement(player)
-	if player.position == nul then
+	if player.position == null then
 		player.position = T{} 
 		player.position = {x = 0, y = 0, x = 0} 
 	end
@@ -418,6 +418,6 @@ function check_player_movement(player)
 		player.position.y = current_pos_y
 		player.position.z = current_pos_z
 	end
-	
+
 	return player.is_moving
 end
