@@ -2,9 +2,7 @@
 local events = S{ }
 settings = T{}
 
-Logger = require('otto_logging')
 require('pack')
-local files = require('files')
 
 events.is_busy = 0
 events.last_check_time = os.clock()
@@ -13,29 +11,9 @@ events.recast = 0
 events.aspir = {}
 
 -- Movement Handling
-lastlocation = 'fff':pack(0,0,0)
+local lastlocation = 'fff'
+lastlocation = lastlocation:pack(0,0,0)
 events.moving = false
-
-
-function events.on_load()
-
-    local file = files.new('data/mob_immunities.lua')
-
-    file:write('Something')
-    file:append('... or other')
-
-    file:exists()
-
-    lines = file:readlines()
-    lines2 = files.readlines('test.txt')
-
-    require('tables')
-
-    if lines:equals(lines2) then
-        lines2:append('last line')
-        file:writelines(lines2)
-    end
-end
 
 function events.determine_movement(id, data, modified, is_injected, is_blocked)
 
@@ -43,7 +21,6 @@ function events.determine_movement(id, data, modified, is_injected, is_blocked)
         local update = lastlocation ~= modified:sub(5, 16) 
         events.moving = update
         lastlocation = modified:sub(5, 16)
-
     end
 
 end
@@ -65,7 +42,7 @@ end
 
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
-    local allowed = S{'r', 'reload', 'tier', 't', 'on', 'enabled', 'start'}
+    local allowed = S{'r', 'reload', 'tier', 't', 'on', 'enabled', 'start', 'all'}
     arg = { ... }
     local command = 'help'
 
@@ -97,7 +74,8 @@ function events.addon_command(...)
     elseif command == 'off' or command == 'disable' == command == 'stop' then 
         settings.enabled = false
         settings:save()
-
+        
+        return 
     elseif command == 'mp' then 
         if (#arg >= 2) then
             local casting_mp = tonumber(arg[2])
@@ -110,8 +88,20 @@ function events.addon_command(...)
             settings:save()
             return
         end
+    elseif command == 'all' then 
+        settings.casts_all = true
+
+        windower.add_to_chat(123, 'Will now cast all aspir spells')
+        settings:save()
+        return 
+    elseif command == 'single' then 
+        settings.casts_all = false
+
+        windower.add_to_chat(123, 'Will not just cast Aspir '..settings.tier)
+        settings:save()
+        return 
     else 
-        Logger.log("that's not a command")
+        windower.add_to_chat(123, "that's not a command")
     end
 end
 

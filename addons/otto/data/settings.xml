@@ -2,11 +2,11 @@
 <settings>
     <global>
         <casting_mp>100</casting_mp>
+        <casts_all>true</casts_all>
         <enabled>false</enabled>
         <tier>3</tier>
     </global>
     <threechix>
         <enabled>true</enabled>
-        <tier>2</tier>
     </threechix>
 </settings>

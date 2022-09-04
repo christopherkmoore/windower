@@ -2,7 +2,7 @@
 -- All rights reserved.
 -- want beef.
 
-_addon.version = '0.0.1'
+_addon.version = '1.0.0'
 _addon.name = 'otto'
 _addon.author = 'Twochix'
 _addon.lastUpdate = '6/11/2020'
@@ -10,17 +10,15 @@ _addon.commands = { 'otto' }
 
 require('luau')
 require('actions')
-local files = require('files')
-
 local otto = {}
 
 otto.defaults = T{}
 otto.defaults.tier = 0
 otto.defaults.enabled = true
 otto.defaults.casting_mp = 100
+otto.defaults.casts_all = false 
 
 otto.events = require('otto_windower_events')
-otto.logging = require('otto_logging')
 otto.settings = require('otto_settings')
 otto.events.logger = otto.logging
 otto.events.settings = settings
@@ -38,7 +36,6 @@ local magic_tiers = {
 settings = config.load(defaults)
 
 local immunities = otto.settings.load('data/mob_immunities.lua')
-table.vprint(immunities)
 
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -96,20 +93,21 @@ function otto.check_aspir()
     local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
 
-    if aspir_cooldown == 0 and settings.tier == 1 then
+    if aspir_cooldown == 0 and (settings.tier == 1 or settings.casts_all) then
         otto.cast_spell('Aspir')
         otto.events.is_busy = spell.aspir.cast_time
     end
 
-    if aspir2_cooldown == 0 and settings.tier == 2 then
+    if aspir2_cooldown == 0 and (settings.tier == 2 or settings.casts_all) then
         otto.cast_spell('Aspir')
         otto.events.is_busy = spell.aspir.cast_time
     end
 
-    if aspir3_cooldown == 0 and settings.tier == 3 then
+    if aspir3_cooldown == 0 and (settings.tier == 3 or settings.casts_all) then
         otto.cast_spell('Aspir')
         otto.events.is_busy = spell.aspir.cast_time
     end
+
 
 
 end
@@ -121,10 +119,7 @@ function action_handler(raw_actionpacket)
         for target in actionpacket:get_targets() do -- target iterator
             for action in target:get_actions() do -- subaction iterator
                 if action.message == 228 then -- aspir seems to have message 228 
-                    local message = string.format("%s hit %s for %d damage",
-                    actionpacket:get_actor_name(), target:get_name(), action.param)
                     update_DB(target:get_name(), action.param)
-                    otto.logging.log(action.param)
                 end
             end
         end
