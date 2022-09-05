@@ -1,44 +1,18 @@
 
 local events = S{ }
-settings = T{}
+utilities = require('otto_utilities')
+settings = T{assist = {active = false, engage = false}}
+state = T{}
 
-require('pack')
 
-events.is_busy = 0
-events.last_check_time = os.clock()
-events.recast = 0
-
-events.aspir = {}
-
--- Movement Handling
-local lastlocation = 'fff'
-lastlocation = lastlocation:pack(0,0,0)
-events.moving = false
-
-function events.determine_movement(id, data, modified, is_injected, is_blocked)
-
-    if id == 0x015 then
-        local update = lastlocation ~= modified:sub(5, 16) 
-        events.moving = update
-        lastlocation = modified:sub(5, 16)
-    end
-
+function events.outgoing_chuck(...)
+    events.state.determine_movement(...)
 end
+
 
 function events.prerender(...)
-	local time = os.clock()
-	local delta_time = time - events.last_check_time
-    
-    events.recast = events.recast + delta_time
-
-	events.last_check_time = time
-
-	if (events.is_busy > 0) then
-		events.is_busy = (events.is_busy - delta_time) < 0 and 0 or (events.is_busy - delta_time)
-	end
+    events.state.determine_is_busy(...)
 end
-
-
 
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
@@ -55,7 +29,7 @@ function events.addon_command(...)
     -- elseif command == 'r' or command == 'reload' then -- To Do 
     --     refresh_user_env()
     elseif command == 't' or command == 'tier' then 
-        if (#arg >= 2) then
+        if (#arg > 1) then
             local tier = tonumber(arg[2])
 
             if (tier > 0 and tier < 4) then
@@ -77,7 +51,7 @@ function events.addon_command(...)
         
         return 
     elseif command == 'mp' then 
-        if (#arg >= 2) then
+        if (#arg > 1) then
             local casting_mp = tonumber(arg[2])
 
             if (casting_mp > 0 and casting_mp < 101) then
@@ -99,6 +73,19 @@ function events.addon_command(...)
 
         windower.add_to_chat(123, 'Will now just cast Aspir '..settings.tier)
         settings:save()
+        return 
+    elseif command == 'assist' then
+        -- TODO left off here.
+        if (#arg > 1) then
+            local asistee = arg[2]
+
+            local result = utilities.register_assistee(asistee)
+            log(result)
+            settings.assist.active = result.active
+            settings.assist.engate = result.engage
+            settings.assist.name = result.name
+            settings:save()
+        end
         return 
     else
         windower.add_to_chat(123, "that's not a command")

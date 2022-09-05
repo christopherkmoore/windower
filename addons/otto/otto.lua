@@ -12,21 +12,21 @@ require('luau')
 require('actions')
 local otto = {}
 
-otto.events = require('otto_events')
-otto.settings = require('otto_settings')
--- otto.state = require('otto_state')
-otto.utilities = require('otto_utilities')
-
-otto.events.settings = settings
-
-
 otto.defaults = T{}
 otto.defaults.tier = 3
 otto.defaults.enabled = true
 otto.defaults.casting_mp = 80
 otto.defaults.casts_all = false 
 
-settings = config.load(defaults)
+local settings = config.load(defaults)
+local state = require('otto_state')
+
+otto.events = require('otto_events')
+otto.settings = require('otto_settings')
+otto.utilities = require('otto_utilities')
+
+otto.events.settings = settings
+otto.events.state = state 
 
 local immunities = otto.settings.load('data/mob_immunities.lua')
 
@@ -40,8 +40,6 @@ local magic_tiers = {
 	[6] = {suffix='VI'}
 }
 
-
-
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -52,13 +50,13 @@ local spell = {
 function otto.cast_spell(spell, castingTime)
     windower.send_command('input /ma "'..spell..'" <t>')
 
-    otto.events.is_busy = castingTime
+    state.is_busy = castingTime
 end
 
 
 function otto.should_cast()
     -- is moving
-    if otto.events.moving then return false end
+    if state.moving then return false end
 
     local player = windower.ffxi.get_player()
     -- no target
@@ -66,7 +64,7 @@ function otto.should_cast()
 
     local mob = windower.ffxi.get_mob_by_index(player.target_index)
     -- is already casting
-    if otto.events.is_busy > 0 then return false end
+    if state.is_busy > 0 then return false end
     
     -- is claimed
     if mob.claim_id == 0 then return false end
@@ -87,6 +85,7 @@ end
 
 
 function otto.check_aspir()
+    windower.send_command('input /ma "Dia II" <t>')
     if not otto.should_cast() then return end 
 
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
@@ -141,9 +140,8 @@ end)
 
 
 
-windower.register_event('outgoing chunk', otto.events.determine_movement)
+windower.register_event('outgoing chunk', otto.events.outgoing_chuck)
 windower.register_event('prerender', otto.events.prerender)
-
 windower.register_event('addon command', otto.events.addon_command)
 
 
