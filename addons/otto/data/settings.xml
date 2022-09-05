@@ -1,12 +1,14 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <casting_mp>100</casting_mp>
-        <casts_all>true</casts_all>
-        <enabled>false</enabled>
+        <active>true</active>
+        <assistee>Twochix</assistee>
+        <casting_mp>80</casting_mp>
+        <casts_all>false</casts_all>
+        <enabled>true</enabled>
         <tier>3</tier>
     </global>
     <threechix>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
     </threechix>
 </settings>

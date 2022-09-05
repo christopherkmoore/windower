@@ -82,7 +82,7 @@ send Onechix sing ws on;
 ////////////////////////////////////
 
 send Threechix hb on;
-send Threechix hb assit Twochix;
+send Threechix hb assist Twochix;
 send Threechix hb disable curing;
 send Threechix hb enable buffing;
 send Threechix hb enable debuffing;

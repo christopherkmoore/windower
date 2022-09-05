@@ -85,7 +85,6 @@ end
 
 
 function otto.check_aspir()
-    windower.send_command('input /ma "Dia II" <t>')
     if not otto.should_cast() then return end 
 
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
@@ -134,7 +133,18 @@ end
 ActionPacket.open_listener(action_handler)
 
 windower.register_event('prerender', function(...)
-    if settings.enabled then otto.check_aspir() end 
+    local player = windower.ffxi.get_player()
+    local partner, targ = utilities.assistee_and_target(settings)
+
+    if not settings.enabled then return end 
+
+    otto.check_aspir()
+
+    if not state.moving and state.is_busy == 0 then 
+        if (partner.target_index ~= nil) and player.target_index ~= partner.target_index then
+            windower.send_command('input /as '..settings.assistee)
+        end
+    end
 end)
 
 

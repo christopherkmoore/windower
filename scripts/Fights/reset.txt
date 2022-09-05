@@ -1,0 +1,13 @@
+////////////////////////////////
+// Reset Step
+////////////////////////////////
+
+send Chixslave hb reset buffs;
+send Chixslave hb reset debuffs;
+send Chixslave hb wipebuffs;
+
+send Threechix hb reset buffs;
+send Threechix hb reset debuffs;
+send Threechix hb wipebuffs;
+
+send Onechix sing playlist clear;

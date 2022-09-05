@@ -33,6 +33,10 @@ return {
     ["Bozzetto Hunter"] = S{
         2
     },
+    ["Bozzetto Leviathan"] = S{
+        4,
+        13
+    },
     ["Bozzetto Necronura"] = S{
         7
     },

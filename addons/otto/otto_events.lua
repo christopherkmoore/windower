@@ -1,7 +1,7 @@
 
 local events = S{ }
 utilities = require('otto_utilities')
-settings = T{assist = {active = false, engage = false}}
+events.settings = T{ }
 state = T{}
 
 
@@ -33,21 +33,21 @@ function events.addon_command(...)
             local tier = tonumber(arg[2])
 
             if (tier > 0 and tier < 4) then
-                settings.tier = tier
+                events.settings.tier = tier
             end
             
-            windower.add_to_chat(123, "updated tier to "..settings.tier)
-            settings:save()
+            windower.add_to_chat(123, "updated tier to "..events.settings.tier)
+            events.settings:save()
             return
         end
     elseif command == 'on' or command == 'enabled' or command == 'start' then 
-        settings.enabled = true
-        settings:save()
+        events.settings.enabled = true
+        events.settings:save()
         
         return
     elseif command == 'off' or command == 'disable' == command == 'stop' then 
-        settings.enabled = false
-        settings:save()
+        events.settings.enabled = false
+        events.settings:save()
         
         return 
     elseif command == 'mp' then 
@@ -55,36 +55,39 @@ function events.addon_command(...)
             local casting_mp = tonumber(arg[2])
 
             if (casting_mp > 0 and casting_mp < 101) then
-                settings.casting_mp = casting_mp
+                events.settings.casting_mp = casting_mp
             end
             
-            windower.add_to_chat(123, 'updated spells to cast below '..settings.casting_mp..' mp')
-            settings:save()
+            windower.add_to_chat(123, 'updated spells to cast below '..events.settings.casting_mp..' mp')
+            events.settings:save()
             return
         end
     elseif command == 'all' then 
-        settings.casts_all = true
+        events.settings.casts_all = true
 
         windower.add_to_chat(123, 'Will now cast all aspir spells')
-        settings:save()
+        events.settings:save()
         return 
     elseif command == 'single' then 
-        settings.casts_all = false
+        events.settings.casts_all = false
 
-        windower.add_to_chat(123, 'Will now just cast Aspir '..settings.tier)
-        settings:save()
+        windower.add_to_chat(123, 'Will now just cast Aspir '..events.settings.tier)
+        events.settings:save()
         return 
     elseif command == 'assist' then
         -- TODO left off here.
         if (#arg > 1) then
             local asistee = arg[2]
 
-            local result = utilities.register_assistee(asistee)
-            log(result)
-            settings.assist.active = result.active
-            settings.assist.engate = result.engage
-            settings.assist.name = result.name
-            settings:save()
+            local pname = utilities.getPlayerName(asistee)
+            if (pname ~= nil) then
+                events.settings.assistee = pname
+                events.settings.active = true
+                windower.add_to_chat(123, 'Now assisting '..pname)
+            else
+                windower.add_to_chat(123,'Error: Invalid name provided as an assist target: '..arg[2])
+            end        
+            events.settings:save()
         end
         return 
     else
