@@ -6,29 +6,7 @@
 //
 ////////////////////////////////
 
-
-////////////////////////////////
-// Reload Step
-////////////////////////////////
-
-send Onechix lua reload singer;
-send Threechix lua reload singer;
-send Chixslave lua reload automb;
-send Threechix lua reload automb;
-
-////////////////////////////////
-// Reset Step
-////////////////////////////////
-
-send Chixslave hb reset buffs;
-send Chixslave hb reset debuffs;
-send Chixslave hb wipebuffs;
-
-send Threechix hb reset buffs;
-send Threechix hb reset debuffs;
-send Threechix hb wipebuffs;
-
-send Onechix sing playlist clear;
+send @all exec fights/reset
 
 wait 0.1;
 
@@ -36,79 +14,31 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
-send Chixslave hb on;
-send Chixslave amb on;
-send Chixslave amb c holy;
-send Chixslave amb gearswap;
-send Chixslave gs c set AutoSubMode on;
-
-send Chixslave hb buff Chixslave Afflatus Solace;
-send Chixslave hb buff Chixslave Sublimation;
-
-send Chixslave hb buff Chixslave Protectra V;
-send Chixslave hb buff Chixslave Shellra V;
-send Chixslave hb buff Chixslave Boost-STR;
-send Chixslave hb buff Chixslave Auspice;
-send Chixslave hb buff Chixslave Aurorastorm;
-send Chixslave hb buff Chixslave Reraise IV; 
-//send Chixslave hb buff Chixslave Aquaveil; 
+send Chixslave exec fights/auto_whm
 
 send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
-
-send Chixslave hb assist Twochix;
-send Chixslave hb debuff off;
-
 
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
 
-send Onechix singer on;
-send Onechix sing pianissimo on;
-send Onechix sing Nightingale on;
-send Onechix sing Troubadour on
-send Onechix sing debuffing off;
+send Onechix exec fights/auto_brd
+
 send Onechix sing minuet 2;
 send Onechix sing march 1;
-
-send Onechix sing ballad 1 Chixslave;
-
-send Onechix sing ws on;
-
 
 ////////////////////////////////////
 // Geomancer
 ////////////////////////////////////
 
-send Threechix hb on;
-send Threechix hb assist Twochix;
-send Threechix hb disable curing;
-send Threechix hb enable buffing;
-send Threechix hb enable debuffing;
+send Threechix exec fights/auto_geo
 
-send Threechix hb buff Twochix haste;
-send Threechix hb buff Threechix haste;
-send Threechix hb buff Chixslave haste;
-send Threechix hb buff Onechix haste;
-
-send Threechix hb buff Threechix refresh;
-send Threechix hb debuff use Dia II;
-send Threechix hb debuff use Paralyze;
-send Threechix hb debuff use Slow;
-
-send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
-send Threechix gs c set AutoConvertMode Auto
+////////////////////////////////////
+// Guests
+////////////////////////////////////
 
-send Threechix amb on;
-send Threechix amb tier 4;
-send Threechix amb c spell;
-send Threechix amb gearswap;
-
-send Threechix otto t 3;
-send Threechix otto single;
-send Threechix otto on;
 

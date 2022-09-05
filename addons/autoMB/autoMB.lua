@@ -64,9 +64,9 @@ defaults.double_burst = false -- Not implemented yet
 defaults.double_burst_delay = 1 -- Time from when first spell starts casting to when second spell starts casting
 defaults.mp = 100 -- Don't burst if it will leave you below this mark
 defaults.cast_type = 'spell' -- Type of MB spell|jutsu|helix|ga|ja|ra
-defaults.cast_tier = 1 -- What tier should we try to cast
+defaults.cast_tier = 2 -- What tier should we try to cast
 defaults.step_down = 0 -- Step down a tier for double bursts (0: Never, 1: If target changed, 2: Always)
-defaults.gearswap = false -- Tell gearswap when we're bursting
+defaults.gearswap = true -- Tell gearswap when we're bursting
 defaults.change_target = true -- Swap targets automatically for MBs
 
 -- Newly added setting

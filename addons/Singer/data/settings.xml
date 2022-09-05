@@ -116,11 +116,6 @@
                 <x>1320</x>
                 <y>44</y>
             </pos>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
         </box>
         <clarion>true</clarion>
         <debuffing>false</debuffing>

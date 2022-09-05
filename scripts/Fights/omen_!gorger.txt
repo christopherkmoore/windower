@@ -2,12 +2,9 @@
 // Notes:
 // Important to wait 0.1 after reset step, or send will fail sometimes.
 //
-// Fight Notes: Omen Boss Kyou
-// Group will wipe a bunch so use hymnus
-// maybe silence to stop meteor spam? otherwise whm gets mp low.
-//
-// other ideas dark carol x 2 march 2 geo vex / attunement to mitigate 
-// most of the meteor spam and cursna 
+// Fight Notes: Omen Midboss for the fights that aren't gorger. 
+// One of them does big dam, so use 
+// Scherzo to mitigate critical damage. 
 //
 ////////////////////////////////
 
@@ -22,8 +19,7 @@ wait 0.1;
 send Chixslave exec fights/auto_whm
 
 send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave baramnesra;
-
+send Chixslave hb buff Chixslave barblindra;
 
 ////////////////////////////////////
 // Bard
@@ -32,10 +28,10 @@ send Chixslave hb buff Chixslave baramnesra;
 send Onechix exec fights/auto_brd
 
 send Onechix sing march 1;
+send Onechix sing scherzo 1;
 send Onechix sing madrigal 1;
-send Onechix sing hymnus 1;
 
-send Onechix sing ballad 1 Threechix;
+send Onechix sing ballad 1 Chixslave;
 
 ////////////////////////////////////
 // Geomancer
@@ -50,4 +46,4 @@ send Threechix gs c autogeo Fury;
 // Guests
 ////////////////////////////////////
 
-send Threechix sing haste panik on;
+

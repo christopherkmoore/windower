@@ -1,0 +1,10 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: Omen boss Kin. Does really nasty things when player emnity
+// is consitantly higher than other players, so don't bring a tank!
+//
+////////////////////////////////
+
+exec fights/fight
