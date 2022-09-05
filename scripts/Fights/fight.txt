@@ -23,6 +23,11 @@ send Threechix lua reload automb;
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
+
+send Threechix hb reset buffs;
+send Threechix hb reset debuffs;
+send Threechix hb wipebuffs;
+
 send Onechix sing playlist clear;
 
 wait 0.1;
@@ -52,8 +57,8 @@ send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
 
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff on;
-send Chixslave hb debuff use Dia II;
+send Chixslave hb debuff off;
+
 
 ////////////////////////////////////
 // Bard
@@ -76,12 +81,21 @@ send Onechix sing ws on;
 // Geomancer
 ////////////////////////////////////
 
-send Threechix sing on;
-send Threechix sing haste Twochix on;
-send Threechix sing haste Onechix on;
-send Threechix sing haste Chixslave on;
-send Threechix sing haste Threechix on;
-send Threechix sing refresh Threechix on;
+send Threechix hb on;
+send Threechix hb assit Twochix;
+send Threechix hb disable curing;
+send Threechix hb enable buffing;
+send Threechix hb enable debuffing;
+
+send Threechix hb buff Twochix haste;
+send Threechix hb buff Threechix haste;
+send Threechix hb buff Chixslave haste;
+send Threechix hb buff Onechix haste;
+
+send Threechix hb buff Threechix refresh;
+send Threechix hb debuff use Dia II;
+send Threechix hb debuff use Paralyze;
+send Threechix hb debuff use Slow;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c autoindi Frailty;
@@ -93,4 +107,8 @@ send Threechix amb on;
 send Threechix amb tier 4;
 send Threechix amb c spell;
 send Threechix amb gearswap;
+
+send Threechix otto t 3;
+send Threechix otto single;
+send Threechix otto on;
 

@@ -12,16 +12,24 @@ require('luau')
 require('actions')
 local otto = {}
 
+otto.events = require('otto_events')
+otto.settings = require('otto_settings')
+-- otto.state = require('otto_state')
+otto.utilities = require('otto_utilities')
+
+otto.events.settings = settings
+
+
 otto.defaults = T{}
-otto.defaults.tier = 0
+otto.defaults.tier = 3
 otto.defaults.enabled = true
-otto.defaults.casting_mp = 100
+otto.defaults.casting_mp = 80
 otto.defaults.casts_all = false 
 
-otto.events = require('otto_windower_events')
-otto.settings = require('otto_settings')
-otto.events.logger = otto.logging
-otto.events.settings = settings
+settings = config.load(defaults)
+
+local immunities = otto.settings.load('data/mob_immunities.lua')
+
 
 local magic_tiers = {
 	[1] = {suffix=''},
@@ -33,9 +41,6 @@ local magic_tiers = {
 }
 
 
-settings = config.load(defaults)
-
-local immunities = otto.settings.load('data/mob_immunities.lua')
 
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -44,19 +49,12 @@ local spell = {
 }
 
 
-function otto.cast_spell(spell)
-    local parsed = otto.parse_spell(spell)
-    windower.send_command('input /ma "'..parsed..'" <t>')
+function otto.cast_spell(spell, castingTime)
+    windower.send_command('input /ma "'..spell..'" <t>')
+
+    otto.events.is_busy = castingTime
 end
 
-function otto.parse_spell(spell) 
-
-    if settings.tier > 1 then
-        return spell..' '..magic_tiers[settings.tier].suffix
-    end
-
-    return spell
-end
 
 function otto.should_cast()
     -- is moving
@@ -76,8 +74,11 @@ function otto.should_cast()
     -- mob has mp
     if immunities[mob.name] == false then return false end
 
+    -- is casters mpp at threshold mpp?
+    if settings.casting_mp < player.vitals.mpp then return false end
+    
     -- is a valid target
-    if mob.is_npc and mob.valid_target and mob.distance < 510 and settings.casting_mp < player.vitals.mpp then 
+    if mob.is_npc and mob.valid_target and mob.distance < 510 then 
         return true
     end
 
@@ -86,30 +87,25 @@ end
 
 
 function otto.check_aspir()
-
     if not otto.should_cast() then return end 
 
-    local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
-    local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
-
-    if aspir_cooldown == 0 and (settings.tier == 1 or settings.casts_all) then
-        otto.cast_spell('Aspir')
-        otto.events.is_busy = spell.aspir.cast_time
-    end
-
-    if aspir2_cooldown == 0 and (settings.tier == 2 or settings.casts_all) then
-        otto.cast_spell('Aspir')
-        otto.events.is_busy = spell.aspir.cast_time
-    end
-
     if aspir3_cooldown == 0 and (settings.tier == 3 or settings.casts_all) then
-        otto.cast_spell('Aspir')
-        otto.events.is_busy = spell.aspir.cast_time
+        otto.cast_spell(spell.aspir3.en, spell.aspir3.cast_time)
+        return
     end
 
+    local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
+    if aspir2_cooldown == 0 and (settings.tier == 2 or settings.casts_all) then
+        otto.cast_spell(spell.aspir2.en, spell.aspir2.cast_time)
+        return
+    end
 
-
+    local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
+    if aspir_cooldown == 0 and (settings.tier == 1 or settings.casts_all) then
+        otto.cast_spell(spell.aspir.en, spell.aspir.cast_time)
+        return
+    end
 end
 
 function action_handler(raw_actionpacket)
@@ -134,7 +130,6 @@ function update_DB(actor, damage)
     immunities[actor] = hasMP
 
     otto.settings.save(immunities)
-
 end
 
 ActionPacket.open_listener(action_handler)

@@ -97,10 +97,10 @@ function events.addon_command(...)
     elseif command == 'single' then 
         settings.casts_all = false
 
-        windower.add_to_chat(123, 'Will not just cast Aspir '..settings.tier)
+        windower.add_to_chat(123, 'Will now just cast Aspir '..settings.tier)
         settings:save()
         return 
-    else 
+    else
         windower.add_to_chat(123, "that's not a command")
     end
 end

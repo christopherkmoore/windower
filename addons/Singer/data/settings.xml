@@ -113,9 +113,14 @@
         </aoe>
         <box>
             <pos>
-                <x>1338</x>
-                <y>4</y>
+                <x>1320</x>
+                <y>45</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <clarion>true</clarion>
         <debuffing>false</debuffing>

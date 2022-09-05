@@ -28,6 +28,8 @@ send Threechix sing haste Threechix off;
 
 send Threechix singer off;
 send Threechix amb off;
+send Threechix otto off;
+send Threechix hb off;
 
 
 send Chixslave healbot reload;
