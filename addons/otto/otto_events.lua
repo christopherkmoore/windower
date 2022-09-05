@@ -16,7 +16,7 @@ end
 
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
-    local allowed = S{'r', 'reload', 'tier', 't', 'on', 'enabled', 'start', 'all'}
+    local allowed = S{'r', 'reload', 'tier', 't', 'on', 'enable', 'start', 'all', 'single', 'assist'}
     arg = { ... }
     local command = 'help'
 
@@ -40,7 +40,7 @@ function events.addon_command(...)
             events.settings:save()
             return
         end
-    elseif command == 'on' or command == 'enabled' or command == 'start' then 
+    elseif command == 'on' or command == 'enable' or command == 'start' then 
         events.settings.enabled = true
         events.settings:save()
         
