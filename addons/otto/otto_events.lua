@@ -34,7 +34,7 @@ local function aspir_command(arg)
     end
 
     events.should_update_settings = true 
-    
+
     if command == 'help' or command == '' or command == nil then
         windower.add_to_chat(123, 'Allowed commands for aspir are '..table.concat(allowed, ', '))
         return
@@ -136,18 +136,18 @@ local function magic_burst_command(arg)
 	elseif (command == 'on') then
 		windower.add_to_chat(207, 'AutoMB activating')
 		player = windower.ffxi.get_player()
-		magic_burst.settings.magic_burst_enabled = true
+		events.settings.magic_burst.enabled = true
         return
     elseif (command == 'off') then
         windower.add_to_chat(207, 'AutoMB deactivating')
-        magic_burst.settings.magic_burst_enabled = false
+        events.settings.magic_burst.enabled = false
 		return
 	elseif (command == 'cast' or command == 'c') then
 		if (#arg < 2) then
 			windower.add_to_chat(207, "Usage: autoMB cast spell|helix|jutsu\nTells AutoMB what magic type to try to cast if the default is not what you want.")
 		end
 		if (T(magic_burst.cast_types):contains(arg[2]:lower())) then
-			settings.cast_type = arg[2]:lower()
+			events.settings.magic_burst.cast_type = arg[2]:lower()
 		end
 		settings:save()
 		return
@@ -157,17 +157,17 @@ local function magic_burst_command(arg)
 			return
 		end
 		local t = tonumber(arg[2])
-		if (settings.cast_type == 'jutsu') then
-			if (settings.cast_tier > 0 and settings.cast_tier < 4) then
-				settings.cast_tier = t
+		if (events.settings.magic_burst.cast_type == 'jutsu') then
+			if (events.settings.magic_burst.cast_tier > 0 and events.settings.magic_burst.cast_tier < 4) then
+				events.settings.magic_burst.cast_tier = t
 			end
 		else
 			if (t > 0 and t < 7) then
-				settings.cast_tier = t
+				events.settings.magic_burst.cast_tier = t
 			end		
 		end
 		settings:save()
-		windower.add_to_chat(123, "Cast Tier set to: "..t.." ["..(settings.cast_type == 'jutsu' and jutsu_tiers[settings.cast_tier].suffix or magic_tiers[settings.cast_tier].suffix).."]")
+		windower.add_to_chat(123, "Cast Tier set to: "..t)
 		return
 	elseif (command == 'mp') then
 		local n = tonumber(arg[2])
@@ -175,7 +175,7 @@ local function magic_burst_command(arg)
 			windower.add_to_chat(207, "Usage: autoMB mp #")
 			return
 		end
-		settings.mp = n
+		events.settings.magic_burst.mp = n
 		settings:save()
 		return
 	elseif (command == 'delay' or command == 'd') then
@@ -184,7 +184,7 @@ local function magic_burst_command(arg)
 			windower.add_to_chat(207, "Usage: autoMB delay #")
 			return
 		end
-		settings.cast_delay = n
+		events.settings.magic_burst.cast_delay = n
 		settings:save()
 		return
 	elseif (command == 'frequency' or command == 'f') then
@@ -193,11 +193,11 @@ local function magic_burst_command(arg)
 			windower.add_to_chat(207, "Usage: autoMB (f)requency #")
 			return
 		end
-		settings.frequency = n
+		events.settings.magic_burst.frequency = n
 		settings:save()
 		return
 	elseif (command == 'doubleburst' or command == 'double' or command == 'dbl') then
-		settings.double_burst = not settings.double_burst
+		events.settings.magic_burst.double_burst = not events.settings.magic_burst.double_burst
 		settings:save()
 		return
 	elseif (command == 'doubleburstdelay' or command == 'doubledelay' or command == 'dbldelay' or command == 'dbld') then
@@ -206,15 +206,15 @@ local function magic_burst_command(arg)
 			windower.add_to_chat(207, "Usage: autoMB doubleburstdelay [-10..10]")
 			return
 		end
-		settings.double_burst_delay = n
+		events.settings.magic_burst.double_burst_delay = n
 		settings:save()
 		return
 	elseif (command == 'weather') then
-		settings.check_weather = not settings.check_weather
-		windower.add_to_chat(123, 'Will'..(settings.check_weather and ' ' or ' not ')..'use current weather bonuses')
+		events.settings.magic_burst.check_weather = not events.settings.magic_burst.check_weather
+		windower.add_to_chat(123, 'Will'..(events.settings.magic_burst.check_weather and ' ' or ' not ')..'use current weather bonuses')
 	elseif (command == 'day') then
-		settings.check_day = not settings.check_day
-		windower.add_to_chat(123, 'Will'..(settings.check_day and ' ' or ' not ')..'use current day bonuses')
+		events.settings.magic_burst.check_day = not events.settings.magic_burst.check_day
+		windower.add_to_chat(123, 'Will'..(events.settings.magic_burst.check_day and ' ' or ' not ')..'use current day bonuses')
 	elseif (command == 'toggle' or command == 'tog') then
 		local what = 'all'
 		local toggle = 'toggle'
@@ -230,52 +230,52 @@ local function magic_burst_command(arg)
 		-- Show/Hide skillchain name/elements and spell(s) to be cast
 		if (what == 'skillchain' or what == 'sc' or what == 'all') then
 			if (toggle == '' or toggle == 'toggle') then
-				settings.show_skillchain = not settings.show_skillchain
+				events.settings.magic_burst.show_skillchain = not events.settings.magic_burst.show_skillchain
 			else
-				settings.show_skillchain = (toggle == 'on')
+				events.settings.magic_burst.show_skillchain = (toggle == 'on')
 			end
-			windower.add_to_chat(207, 'AutoMB: Skillchain info will be '..(settings.show_skillchain == true and 'shown' or 'hidden'))
+			windower.add_to_chat(207, 'AutoMB: Skillchain info will be '..(events.settings.magic_burst.show_skillchain == true and 'shown' or 'hidden'))
         end
 		
 		if (what == 'elements' or what == 'element' or what == 'all') then
 			if (toggle == 'toggle') then
-				settings.show_elements = not settings.show_elements
+				events.settings.magic_burst.show_elements = not events.settings.magic_burst.show_elements
 			else
-				settings.show_elements = (toggle == 'on')
+				events.settings.magic_burst.show_elements = (toggle == 'on')
 			end
-			windower.add_to_chat(207, 'AutoMB: Skillchain element info will be '..(settings.show_elements == true and 'shown' or 'hidden'))
+			windower.add_to_chat(207, 'AutoMB: Skillchain element info will be '..(events.settings.magic_burst.show_elements == true and 'shown' or 'hidden'))
         end
 
 		if (what == 'weather' or what == 'bonus' or what == 'all') then
 			if (toggle == 'toggle') then
-				settings.show_bonus_elements = not settings.show_bonus_elements
+				events.settings.magic_burst.show_bonus_elements = not events.settings.magic_burst.show_bonus_elements
 			else
-				settings.show_bonus_elements = (toggle == 'on')
+				events.settings.magic_burst.show_bonus_elements = (toggle == 'on')
 			end
-			windower.add_to_chat(207, 'AutoMB: Day/Weather element info will be '..(settings.show_bonus_elements == true and 'shown' or 'hidden'))
+			windower.add_to_chat(207, 'AutoMB: Day/Weather element info will be '..(events.settings.magic_burst.show_bonus_elements == true and 'shown' or 'hidden'))
         end
 
 		if (what == 'spell' or what == 'sp' or what == 'all') then
 			if (toggle == 'toggle') then
-				settings.show_spell = not settings.show_spell
+				events.settings.magic_burst.show_spell = not events.settings.magic_burst.show_spell
 			else
-				settings.show_spell = (toggle == 'on')
+				events.settings.magic_burst.show_spell = (toggle == 'on')
 			end
-			windower.add_to_chat(207, 'AutoMB: Spell info will be '..(settings.show_spell == true and 'shown' or 'hidden'))
+			windower.add_to_chat(207, 'AutoMB: Spell info will be '..(events.settings.magic_burst.show_spell == true and 'shown' or 'hidden'))
 		end
 
 		settings:save()
 		return
 	elseif (command == 'stepdown' or command == 'sd') then
 		local txt = ''
-		if (settings.step_down == 0) then
-			settings.step_down = 1
+		if (events.settings.magic_burst.step_down == 0) then
+			events.settings.magic_burst.step_down = 1
 			txt = 'on target change'
-		elseif (settings.step_down == 1) then
-			settings.step_down = 2
+		elseif (events.settings.magic_burst.step_down == 1) then
+			events.settings.magic_burst.step_down = 2
 			txt = 'always'
 		else
-			settings.step_down = 0
+			events.settings.magic_burst.step_down = 0
 			txt = 'never'
 		end
 		settings:save()
@@ -286,38 +286,38 @@ local function magic_burst_command(arg)
 			toggle = arg[2]:lower()
 		end
 
-		if (settings.gearswap) and toggle then
+		if (events.settings.magic_burst.gearswap) and toggle then
 			if toggle == "on" then 
-				settings.gearswap = true
+				events.settings.magic_burst.gearswap = true
 				windower.add_to_chat(123, "Will use 'gs c bursting' and 'gs c notbursting'")
 				return
 			end
 
 			if toggle == "off" then
-				settings.gearswap = false
+				events.settings.magic_burst.gearswap = false
 				windower.add_to_chat(123, "Will not use 'gs c bursting' and 'gs c notbursting'")
 				return 
 			end
 		end
 
-		if (settings.gearswap) then
-			settings.gearswap = false
+		if (events.settings.magic_burst.gearswap) then
+			events.settings.magic_burst.gearswap = false
 		else
-			settings.gearswap = true
+			events.settings.magic_burst.gearswap = true
 		end
-		windower.add_to_chat(123, "Will "..(settings.gearswap and '' or ' not ').."use 'gs c bursting' and 'gs c notbursting'")
+		windower.add_to_chat(123, "Will "..(events.settings.magic_burst.gearswap and '' or ' not ').."use 'gs c bursting' and 'gs c notbursting'")
 		settings:save()
 		return
 	elseif (command == 'target' or command == 'tgt') then
-		if (settings.change_target == nil) then
-			settings.change_target = false
+		if (events.settings.magic_burst.change_target == nil) then
+			events.settings.magic_burst.change_target = false
 		end
-		settings.change_target = not settings.change_target
-		windower.add_to_chat(123, "Auto target swapping "..(settings.change_target and 'enabled' or 'disabled')..".")
+		events.settings.magic_burst.change_target = not events.settings.magic_burst.change_target
+		windower.add_to_chat(123, "Auto target swapping "..(events.settings.magic_burst.change_target and 'enabled' or 'disabled')..".")
 		settings:save()
 	elseif (command == 'zone' or command == 'z') then
-		settings.disable_on_zone = settings.disable_on_zone and (not settings.disable_on_zone) or true
-		windower.add_to_chat(123, "Auto MB will be "..(settings.disable_on_zone and 'enabled' or 'disabled').." when zoning.")
+		events.settings.magic_burst.disable_on_zone = events.settings.magic_burst.disable_on_zone and (not events.settings.magic_burst.disable_on_zone) or true
+		windower.add_to_chat(123, "Auto MB will be "..(events.settings.magic_burst.disable_on_zone and 'enabled' or 'disabled').." when zoning.")
 		settings:save()
     end
 end

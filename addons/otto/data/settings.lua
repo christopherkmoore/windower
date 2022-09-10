@@ -5,7 +5,7 @@ return {
         ["enabled"] = true,
         ["tier"] = 3
     },
-    ["load"] = "function: 3EF868E0",
+    ["load"] = "function: 3C32C770",
     ["magic_burst"] = {
         ["cast_delay"] = 0.25,
         ["cast_tier"] = 2,
@@ -15,7 +15,7 @@ return {
         ["check_weather"] = false,
         ["double_burst"] = false,
         ["double_burst_delay"] = 1,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_bonus_elements"] = false,
@@ -24,5 +24,5 @@ return {
         ["show_spell"] = false,
         ["step_down"] = 0
     },
-    ["save"] = "function: 32ADA858"
+    ["save"] = "function: 46B662D8"
 }

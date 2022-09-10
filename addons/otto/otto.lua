@@ -42,6 +42,7 @@ function otto.provide_state(...)
     end
 
     State = otto.events.Report()
+
     if otto.aspir:Update(Settings, State) then
         State.is_busy = otto.aspir.Report_state()
     end

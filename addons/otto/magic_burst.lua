@@ -22,7 +22,7 @@ function magic_burst.New(self, settings, state)
     self.state = state
 
 	local defaults = T{ magic_burst = {}}
-	defaults.magic_burst.enabled = false
+	defaults.magic_burst.enabled = true
 	defaults.magic_burst.show_skillchain = false -- Whether or not to show skillchain name
 	defaults.magic_burst.show_elements = false -- Whether or not to show skillchain element info
 	defaults.magic_burst.show_bonus_elements = false -- Whether or not to show Storm/Weather/Day elements
@@ -50,17 +50,13 @@ function magic_burst.Update(self, settings, state)
 end
 
 function magic_burst.Report_state()
+	log(magic_burst.state.is_busy)
     magic_burst.should_report_state = false
     return magic_burst.state.is_busy    
 end
 
 res = require('resources')
 packets = require('packets')
-
-
--- Newly added setting
-magic_burst.defaults.disable_on_zone = false -- Disable when zoning
--- Add missing settings
 
 local skillchains = {
 	[288] = {id=288,english='Light',elements={'Light','Thunder','Wind','Fire'}},
@@ -241,11 +237,10 @@ function cast_spell(spell_cmd, target)
 	if (magic_burst.settings.magic_burst.show_spell) then
 		windower.add_to_chat(123, "Casting - "..spell_cmd..' for the burst!')
 	end
-
-	local cast_time = res.spells:with('name', spell) and res.spells:with('name', spell).cast_time or nil
-	magic_burst.state.is_busy = cast_time
-
+	
 	windower.send_command('input /ma "'..spell_cmd..'" <t>')
+	magic_burst.should_report_state = true
+	magic_burst.state.is_busy = 3
 end
 
 function get_spell(skillchain, last_spell, second_burst, target_change)
@@ -426,7 +421,7 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 	if (id ~= 0x28 or not magic_burst.settings.magic_burst.enabled) then
 		return
 	end
-	
+
 	local actions_packet = windower.packets.parse_action(packet)
 	local mob_array = windower.ffxi.get_mob_array()
 	local valid = false
