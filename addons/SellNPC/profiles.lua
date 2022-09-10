@@ -260,8 +260,22 @@ profiles['mog'] = S{
     'aurora bass',
     'giant femur',
     'head of grauberg lettuce',
-    'silver nuggets',
+    'silver nugget',
     'bat wing',
+    'beetle shell',
+    'luminium ore',
+    'land crab meat',
+    'dhalmel meat',
+    'rotten meat',
+    'mercury',
+    'cactuar needle',
+    'magic pot shard',
+    'silk thread',
+    'antican pauldron',
+    'antican acid',
+    'red grass thread',
+    'shivite',
+    'carrier crab carapace'
 }
 
 return profiles

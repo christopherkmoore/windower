@@ -21,4 +21,16 @@
         <!--If set to true will automatically lock onto a target after engaging-->
         <BattleAutoTarget>false</BattleAutoTarget>
     </Onechix>
+    <Twochix>
+        <!--If set to true will automatically lock onto a target after engaging-->
+        <BattleAutoTarget>false</BattleAutoTarget>
+    </Twochix>
+    <Threechix>
+        <!--If set to true will automatically lock onto a target after engaging-->
+        <BattleAutoTarget>false</BattleAutoTarget>
+    </Threechix>
+    <Chixslave>
+        <!--If set to true will automatically lock onto a target after engaging-->
+        <BattleAutoTarget>false</BattleAutoTarget>
+    </Chixslave>
 </settings>

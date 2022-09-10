@@ -176,12 +176,12 @@ return {
     }, 
     [8]={
         ["discription"]="A traditional Tarutaru fishing rod,  made mainly of wood. ", 
-        ["en"]="Tarutaru F. Rod", 
-        ["skill"]="Fishing", 
         ["id"]=17387, 
         ["slots"]={
             [2]="Range"
         }, 
+        ["en"]="Tarutaru F. Rod", 
+        ["skill"]="Fishing", 
         ["category"]="Weapon", 
         ["jobs"]={
             [1]="WAR", 
@@ -266,12 +266,12 @@ return {
         ["jobs"]={
             [6]="THF"
         }, 
+        ["skill"]="Dagger", 
+        ["id"]=16764, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
-        ["id"]=16764, 
-        ["skill"]="Dagger", 
         ["damage"]=15
     }, 
     [12]={
@@ -571,9 +571,9 @@ return {
         }, 
         ["AGI"]=12, 
         ["Dual Wield"]=5, 
-        ["en"]="Thur. Chapeau +1", 
+        ["discription"]="DEF:74 HP+17 MP+19 STR+13 DEX+16 VIT+9 AGI+12 INT+9 MND+9 CHR+10 Accuracy+11 Evasion+20 Magic Evasion+36 \"Magic Def. Bonus\"+1 Haste+1% Enhances \"Dual Wield\" effect", 
         ["HP"]=17, 
-        ["item_level"]=109, 
+        ["en"]="Thur. Chapeau +1", 
         ["Accuracy"]=11, 
         ["STR"]=13, 
         ["Haste"]=1, 
@@ -583,7 +583,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=10, 
         ["VIT"]=9, 
-        ["discription"]="DEF:74 HP+17 MP+19 STR+13 DEX+16 VIT+9 AGI+12 INT+9 MND+9 CHR+10 Accuracy+11 Evasion+20 Magic Evasion+36 \"Magic Def. Bonus\"+1 Haste+1% Enhances \"Dual Wield\" effect"
+        ["item_level"]=109
     }, 
     [26]={
         ["Evasion"]=23, 
@@ -622,7 +622,7 @@ return {
     [27]={
         ["Evasion"]=11, 
         ["MND"]=19, 
-        ["item_level"]=109, 
+        ["en"]="Thur. Gloves +1", 
         ["jobs"]={
             [2]="MNK", 
             [6]="THF", 
@@ -635,7 +635,7 @@ return {
             [22]="RUN"
         }, 
         ["DEF"]=65, 
-        ["en"]="Thur. Gloves +1", 
+        ["AGI"]=16, 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -650,7 +650,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=11, 
         ["VIT"]=20, 
-        ["AGI"]=16
+        ["item_level"]=109
     }, 
     [28]={
         ["Evasion"]=17, 
@@ -672,9 +672,9 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["en"]="Thur. Tights +1", 
+        ["AGI"]=20, 
         ["HP"]=22, 
-        ["discription"]="DEF:82 HP+22 STR+18 VIT+10 AGI+20 INT+19 MND+11 CHR+7 Ranged Accuracy+18 Evasion+17 Magic Evasion+47 \"Magic Def. Bonus\"+2 Enmity-5 Haste+2%", 
+        ["en"]="Thur. Tights +1", 
         ["VIT"]=10, 
         ["STR"]=18, 
         ["DEF"]=82, 
@@ -682,7 +682,7 @@ return {
         ["INT"]=19, 
         ["category"]="Armor", 
         ["CHR"]=7, 
-        ["AGI"]=20
+        ["discription"]="DEF:82 HP+22 STR+18 VIT+10 AGI+20 INT+19 MND+11 CHR+7 Ranged Accuracy+18 Evasion+17 Magic Evasion+47 \"Magic Def. Bonus\"+2 Enmity-5 Haste+2%"
     }, 
     [29]={
         ["Evasion"]=33, 
@@ -699,8 +699,8 @@ return {
             [19]="DNC", 
             [22]="RUN"
         }, 
+        ["item_level"]=109, 
         ["en"]="Thur. Boots +1", 
-        ["AGI"]=23, 
         ["DEF"]=53, 
         ["slots"]={
             [8]="Feet"
@@ -710,11 +710,11 @@ return {
         ["id"]=28321, 
         ["STR"]=8, 
         ["Haste"]=4, 
-        ["discription"]="DEF:53 HP+6 STR+8 DEX+15 VIT+16 AGI+23 MND+16 CHR+19 Evasion+33 Magic Evasion+47 \"Magic Def. Bonus\"+2 Haste+4% Physical damage taken -3%", 
+        ["AGI"]=23, 
         ["CHR"]=19, 
         ["PDT"]=-3, 
         ["category"]="Armor", 
-        ["item_level"]=109
+        ["discription"]="DEF:53 HP+6 STR+8 DEX+15 VIT+16 AGI+23 MND+16 CHR+19 Evasion+33 Magic Evasion+47 \"Magic Def. Bonus\"+2 Haste+4% Physical damage taken -3%"
     }, 
     [30]={
         ["discription"]="DMG:85 Delay:183 Accuracy+24 Evasion+24 Dagger skill +203 Parrying skill +203 Magic Accuracy skill +167 Latent effect: DMG:89 Accuracy+39 Attack+10", 
@@ -773,7 +773,6 @@ return {
             [22]="RUN"
         }, 
         ["DEX"]=22, 
-        ["MND"]=20, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -786,12 +785,13 @@ return {
             }, 
             ["set id"]=111
         }, 
-        ["item_level"]=117, 
+        ["MND"]=20, 
+        ["en"]="Espial Cap", 
         ["slots"]={
             [4]="Head"
         }, 
+        ["item_level"]=117, 
         ["AGI"]=22, 
-        ["en"]="Espial Cap", 
         ["HP"]=32, 
         ["id"]=27741, 
         ["Critical hit damage"]=10, 
@@ -831,20 +831,6 @@ return {
         ["Haste"]=3, 
         ["MND"]=22, 
         ["id"]=27882, 
-        ["AGI"]=27, 
-        ["item_level"]=117, 
-        ["en"]="Espial Gambison", 
-        ["HP"]=53, 
-        ["Critical hit rate"]=10, 
-        ["discription"]="DEF:122 HP+53 MP+28 STR+22 DEX+27 VIT+21 AGI+27 INT+22 MND+22 CHR+22 Accuracy+6 Evasion+49 Magic Evasion+60 \"Magic Def. Bonus\"+5 Haste+3% Set: Critical hit rate +10%", 
-        ["STR"]=22, 
-        ["DEF"]=122, 
-        ["MP"]=28, 
-        ["Accuracy"]=6, 
-        ["INT"]=22, 
-        ["category"]="Armor", 
-        ["CHR"]=22, 
-        ["VIT"]=21, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -856,7 +842,21 @@ return {
                 }
             }, 
             ["set id"]=111
-        }
+        }, 
+        ["AGI"]=27, 
+        ["en"]="Espial Gambison", 
+        ["HP"]=53, 
+        ["Critical hit rate"]=10, 
+        ["item_level"]=117, 
+        ["STR"]=22, 
+        ["DEF"]=122, 
+        ["MP"]=28, 
+        ["Accuracy"]=6, 
+        ["INT"]=22, 
+        ["category"]="Armor", 
+        ["CHR"]=22, 
+        ["VIT"]=21, 
+        ["discription"]="DEF:122 HP+53 MP+28 STR+22 DEX+27 VIT+21 AGI+27 INT+22 MND+22 CHR+22 Accuracy+6 Evasion+49 Magic Evasion+60 \"Magic Def. Bonus\"+5 Haste+3% Set: Critical hit rate +10%"
     }, 
     [33]={
         ["Evasion"]=24, 
@@ -879,7 +879,6 @@ return {
             [22]="RUN"
         }, 
         ["DEX"]=33, 
-        ["MND"]=28, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -892,12 +891,13 @@ return {
             }, 
             ["set id"]=111
         }, 
-        ["item_level"]=117, 
+        ["MND"]=28, 
+        ["en"]="Espial Bracers", 
         ["slots"]={
             [6]="Hands"
         }, 
+        ["item_level"]=117, 
         ["AGI"]=8, 
-        ["en"]="Espial Bracers", 
         ["HP"]=22, 
         ["id"]=28030, 
         ["Critical hit damage"]=10, 
@@ -947,7 +947,7 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["en"]="Espial Hose", 
+        ["AGI"]=21, 
         ["item_level"]=117, 
         ["discription"]="DEF:105 HP+42 MP+14 STR+27 VIT+14 AGI+21 INT+28 MND+16 CHR+10 Accuracy+5 Evasion+39 Magic Evasion+90 \"Magic Def Bonus\"+5 Haste+5% Set: Critical hit damage +10%", 
         ["HP"]=42, 
@@ -961,7 +961,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=10, 
         ["VIT"]=14, 
-        ["AGI"]=21
+        ["en"]="Espial Hose"
     }, 
     [35]={
         ["Evasion"]=69, 
@@ -989,19 +989,6 @@ return {
             [8]="Feet"
         }, 
         ["AGI"]=33, 
-        ["en"]="Espial Socks", 
-        ["discription"]="DEF:65 HP+12 MP+8 STR+10 DEX+20 VIT+10 AGI+33 MND+10 CHR+26 Accuracy+4 Evasion+69  Magic Evasion+90 \"Magic Def. Bonus\"+3 Haste+3% Set: Critical hit damage +10%", 
-        ["HP"]=12, 
-        ["item_level"]=117, 
-        ["Accuracy"]=4, 
-        ["STR"]=10, 
-        ["Haste"]=3, 
-        ["MP"]=8, 
-        ["id"]=28307, 
-        ["CHR"]=26, 
-        ["VIT"]=10, 
-        ["category"]="Armor", 
-        ["Critical hit damage"]=10, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1013,7 +1000,20 @@ return {
                 }
             }, 
             ["set id"]=111
-        }
+        }, 
+        ["discription"]="DEF:65 HP+12 MP+8 STR+10 DEX+20 VIT+10 AGI+33 MND+10 CHR+26 Accuracy+4 Evasion+69  Magic Evasion+90 \"Magic Def. Bonus\"+3 Haste+3% Set: Critical hit damage +10%", 
+        ["HP"]=12, 
+        ["en"]="Espial Socks", 
+        ["Accuracy"]=4, 
+        ["STR"]=10, 
+        ["Haste"]=3, 
+        ["MP"]=8, 
+        ["id"]=28307, 
+        ["CHR"]=26, 
+        ["VIT"]=10, 
+        ["category"]="Armor", 
+        ["Critical hit damage"]=10, 
+        ["item_level"]=117
     }, 
     [36]={
         ["id"]=15122, 
@@ -1032,7 +1032,7 @@ return {
     [37]={
         ["Evasion"]=51, 
         ["MND"]=22, 
-        ["item_level"]=119, 
+        ["en"]="Shned. Chapeau +1", 
         ["jobs"]={
             [2]="MNK", 
             [6]="THF", 
@@ -1047,7 +1047,7 @@ return {
         ["slots"]={
             [4]="Head"
         }, 
-        ["en"]="Shned. Chapeau +1", 
+        ["AGI"]=26, 
         ["DEF"]=101, 
         ["discription"]="DEF:101 HP+36 MP+23 STR+22 DEX+26 VIT+22 AGI+26 INT+22 MND+22 CHR+23 Evasion+51 Magic Evasion+53 \"Magic Def. Bonus\"+2 Haste+8%", 
         ["HP"]=36, 
@@ -1060,12 +1060,12 @@ return {
         ["CHR"]=23, 
         ["INT"]=22, 
         ["category"]="Armor", 
-        ["AGI"]=26
+        ["item_level"]=119
     }, 
     [38]={
         ["Evasion"]=49, 
         ["MND"]=28, 
-        ["item_level"]=119, 
+        ["en"]="Shned. Tabard +1", 
         ["jobs"]={
             [2]="MNK", 
             [6]="THF", 
@@ -1081,7 +1081,7 @@ return {
         ["slots"]={
             [5]="Body"
         }, 
-        ["en"]="Shned. Tabard +1", 
+        ["AGI"]=33, 
         ["DEF"]=131, 
         ["discription"]="DEF:131 HP+59 MP+44 STR+29 DEX+34 VIT+29 AGI+33 INT+28 MND+28 CHR+28 Accuracy+17 Evasion+49 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+6%", 
         ["HP"]=59, 
@@ -1094,12 +1094,12 @@ return {
         ["CHR"]=28, 
         ["INT"]=28, 
         ["category"]="Armor", 
-        ["AGI"]=33
+        ["item_level"]=119
     }, 
     [39]={
         ["Evasion"]=24, 
         ["MND"]=30, 
-        ["AGI"]=5, 
+        ["discription"]="DEF:89 HP+48 STR+11 DEX+35 VIT+32 AGI+5 INT+12 MND+30 CHR+17 Ranged Accuracy+12 Evasion+24 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5%", 
         ["jobs"]={
             [2]="MNK", 
             [6]="THF", 
@@ -1112,7 +1112,7 @@ return {
             [22]="RUN"
         }, 
         ["Ranged Accuracy"]=12, 
-        ["item_level"]=119, 
+        ["en"]="Shned. Gloves +1", 
         ["Haste"]=5, 
         ["STR"]=11, 
         ["HP"]=48, 
@@ -1122,12 +1122,12 @@ return {
             [6]="Hands"
         }, 
         ["DEF"]=89, 
-        ["en"]="Shned. Gloves +1", 
+        ["item_level"]=119, 
         ["INT"]=12, 
         ["category"]="Armor", 
         ["CHR"]=17, 
         ["VIT"]=32, 
-        ["discription"]="DEF:89 HP+48 STR+11 DEX+35 VIT+32 AGI+5 INT+12 MND+30 CHR+17 Ranged Accuracy+12 Evasion+24 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5%"
+        ["AGI"]=5
     }, 
     [40]={
         ["Evasion"]=38, 
@@ -1145,7 +1145,7 @@ return {
             [22]="RUN"
         }, 
         ["DEF"]=113, 
-        ["en"]="Shned. Tights +1", 
+        ["item_level"]=119, 
         ["STR"]=29, 
         ["AGI"]=20, 
         ["HP"]=47, 
@@ -1159,7 +1159,7 @@ return {
         ["INT"]=30, 
         ["category"]="Armor", 
         ["CHR"]=11, 
-        ["item_level"]=119
+        ["en"]="Shned. Tights +1"
     }, 
     [41]={
         ["Evasion"]=72, 
@@ -1177,7 +1177,7 @@ return {
             [22]="RUN"
         }, 
         ["DEF"]=71, 
-        ["item_level"]=119, 
+        ["AGI"]=37, 
         ["slots"]={
             [8]="Feet"
         }, 
@@ -1187,7 +1187,7 @@ return {
         ["id"]=28290, 
         ["STR"]=12, 
         ["Haste"]=4, 
-        ["AGI"]=37, 
+        ["item_level"]=119, 
         ["CHR"]=30, 
         ["VIT"]=12, 
         ["category"]="Armor", 
@@ -1946,10 +1946,10 @@ return {
         }, 
         ["category"]="Armor", 
         ["en"]="Commodore Frac", 
+        ["STR"]=3, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["STR"]=3, 
         ["id"]=11295, 
         ["DEF"]=45, 
         ["Accuracy"]=8, 
@@ -2143,15 +2143,15 @@ return {
         ["discription"]="DEF:19 HP+12 STR+3 AGI+3 Adds \"Regen\" effect Automaton: Adds \"Regen\" effect", 
         ["category"]="Armor", 
         ["en"]="Pantin Taj", 
-        ["slots"]={
-            [4]="Head"
-        }, 
+        ["STR"]=3, 
         ["HP"]=12, 
         ["jobs"]={
             [18]="PUP"
         }, 
         ["DEF"]=19, 
-        ["STR"]=3, 
+        ["slots"]={
+            [4]="Head"
+        }, 
         ["id"]=11471, 
         ["AGI"]=3
     }, 
@@ -2335,9 +2335,7 @@ return {
     }, 
     [103]={
         ["VIT"]=2, 
-        ["slots"]={
-            [0]="Main"
-        }, 
+        ["DEX"]=2, 
         ["CHR"]=2, 
         ["INT"]=2, 
         ["category"]="Weapon", 
@@ -2368,9 +2366,11 @@ return {
             [21]="GEO", 
             [22]="RUN"
         }, 
-        ["skill"]="Staff", 
+        ["slots"]={
+            [0]="Main"
+        }, 
         ["discription"]="DMG:35 Delay:356 STR+2 DEX+2 VIT+2 AGI+2 INT+2 MND+2 CHR+2 +20 \"Cure\" potency +10% Additional effect: Light damage", 
-        ["DEX"]=2, 
+        ["skill"]="Staff", 
         ["MND"]=2, 
         ["id"]=17558, 
         ["STR"]=2, 
@@ -2396,9 +2396,7 @@ return {
         ["CHR"]=4, 
         ["category"]="Armor", 
         ["en"]="Aisance Mantle", 
-        ["slots"]={
-            [15]="Back"
-        }, 
+        ["DEX"]=4, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -2418,7 +2416,9 @@ return {
             [22]="RUN"
         }, 
         ["DEF"]=12, 
-        ["DEX"]=4, 
+        ["slots"]={
+            [15]="Back"
+        }, 
         ["id"]=10966, 
         ["AGI"]=4
     }, 
@@ -2505,12 +2505,12 @@ return {
             [9]="BST", 
             [22]="RUN"
         }, 
+        ["skill"]="Axe", 
+        ["id"]=16660, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
-        ["id"]=16660, 
-        ["skill"]="Axe", 
         ["damage"]=51
     }, 
     [110]={
@@ -2568,12 +2568,12 @@ return {
     }, 
     [113]={
         ["discription"]="Calls Lucky Lulush.", 
-        ["en"]="L. Carrot Broth", 
-        ["skill"]="(N/A)", 
         ["id"]=17878, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="L. Carrot Broth", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -2627,12 +2627,12 @@ return {
             [9]="BST", 
             [22]="RUN"
         }, 
+        ["skill"]="Axe", 
+        ["id"]=16660, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
-        ["id"]=16660, 
-        ["skill"]="Axe", 
         ["damage"]=51
     }, 
     [116]={
@@ -2667,12 +2667,12 @@ return {
     }, 
     [118]={
         ["discription"]="Calls Courier Carrie.", 
-        ["en"]="Fish Oil Broth", 
-        ["skill"]="(N/A)", 
         ["id"]=17877, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="Fish Oil Broth", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -2680,12 +2680,12 @@ return {
     }, 
     [119]={
         ["discription"]="Calls Courier Carrie.", 
-        ["en"]="Fish Oil Broth", 
-        ["skill"]="(N/A)", 
         ["id"]=17877, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="Fish Oil Broth", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -2902,18 +2902,18 @@ return {
     }, 
     [127]={
         ["discription"]="DMG:100 Delay:195 DEX+5 Evasion+19 Dagger skill +215 Parrying skill +215 Magic Accuracy skill +167 \"Subtle Blow\"+3", 
+        ["Parrying skill"]=215, 
         ["DEX"]=5, 
-        ["slots"]={
-            [0]="Main", 
-            [1]="Sub"
-        }, 
         ["category"]="Weapon", 
         ["en"]="Nanti Knife", 
         ["item_level"]=117, 
         ["delay"]=195, 
-        ["Evasion"]=19, 
+        ["slots"]={
+            [0]="Main", 
+            [1]="Sub"
+        }, 
         ["skill"]="Dagger", 
-        ["Parrying skill"]=215, 
+        ["Evasion"]=19, 
         ["jobs"]={
             [1]="WAR", 
             [6]="THF", 
@@ -2946,13 +2946,13 @@ return {
         ["DEX"]=28, 
         ["Haste"]=8, 
         ["MND"]=14, 
-        ["AGI"]=23, 
+        ["discription"]="DEF:105 HP+37 MP+20 STR+20 DEX+28 VIT+16 AGI+23 INT+15 MND+14 CHR+17 Accuracy+26 Ranged Accuracy+26 Magic Accuracy+26 Evasion+63 Magic Evasion+75 \"Magic Def. Bonus\"+3 Haste+8% Potency of \"Waltz\" effects received +5% Critical hit rate +2%", 
         ["Ranged Accuracy"]=26, 
         ["id"]=25581, 
-        ["item_level"]=119, 
+        ["en"]="Mummu Bonnet", 
         ["HP"]=37, 
         ["Critical hit rate"]=2, 
-        ["en"]="Mummu Bonnet", 
+        ["item_level"]=119, 
         ["slots"]={
             [4]="Head"
         }, 
@@ -2962,7 +2962,7 @@ return {
         ["INT"]=15, 
         ["category"]="Armor", 
         ["CHR"]=17, 
-        ["discription"]="DEF:105 HP+37 MP+20 STR+20 DEX+28 VIT+16 AGI+23 INT+15 MND+14 CHR+17 Accuracy+26 Ranged Accuracy+26 Magic Accuracy+26 Evasion+63 Magic Evasion+75 \"Magic Def. Bonus\"+3 Haste+8% Potency of \"Waltz\" effects received +5% Critical hit rate +2%", 
+        ["AGI"]=23, 
         ["VIT"]=16, 
         ["Magic Accuracy"]=26
     }, 
@@ -2980,13 +2980,13 @@ return {
         ["DEX"]=26, 
         ["Haste"]=4, 
         ["MND"]=11, 
-        ["AGI"]=46, 
+        ["discription"]="DEF:75 HP+30 MP+10 STR+16 DEX+26 VIT+10 AGI+46 MND+11 CHR+29 Accuracy+24 Ranged Accuracy+24 Magic Accuracy+24 Evasion+88 Magic Evasion+107 \"Magic Def. Bonus\"+5 Haste+4% \"Subtle Blow\"+5 Critical hit rate +2%", 
         ["Ranged Accuracy"]=24, 
         ["id"]=25942, 
-        ["en"]="Mummu Gamashes", 
+        ["item_level"]=119, 
         ["HP"]=30, 
         ["Critical hit rate"]=2, 
-        ["item_level"]=119, 
+        ["en"]="Mummu Gamashes", 
         ["slots"]={
             [8]="Feet"
         }, 
@@ -2996,7 +2996,7 @@ return {
         ["CHR"]=29, 
         ["VIT"]=10, 
         ["category"]="Armor", 
-        ["discription"]="DEF:75 HP+30 MP+10 STR+16 DEX+26 VIT+10 AGI+46 MND+11 CHR+29 Accuracy+24 Ranged Accuracy+24 Magic Accuracy+24 Evasion+88 Magic Evasion+107 \"Magic Def. Bonus\"+5 Haste+4% \"Subtle Blow\"+5 Critical hit rate +2%", 
+        ["AGI"]=46, 
         ["Magic Accuracy"]=24
     }, 
     [130]={
@@ -3013,13 +3013,13 @@ return {
         ["DEX"]=42, 
         ["Haste"]=5, 
         ["MND"]=26, 
-        ["AGI"]=11, 
+        ["discription"]="DEF:96 HP+45 MP+15 STR+16 DEX+42 VIT+30 AGI+11 INT+14 MND+26 CHR+21 Accuracy+25 Ranged Accuracy+25 Magic Accuracy+25 Evasion+49 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Double Attack\"+3% Critical hit rate +3%", 
         ["Ranged Accuracy"]=25, 
         ["id"]=25820, 
-        ["item_level"]=119, 
+        ["en"]="Mummu Wrists", 
         ["HP"]=45, 
         ["Critical hit rate"]=3, 
-        ["en"]="Mummu Wrists", 
+        ["item_level"]=119, 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -3029,7 +3029,7 @@ return {
         ["INT"]=14, 
         ["category"]="Armor", 
         ["CHR"]=21, 
-        ["discription"]="DEF:96 HP+45 MP+15 STR+16 DEX+42 VIT+30 AGI+11 INT+14 MND+26 CHR+21 Accuracy+25 Ranged Accuracy+25 Magic Accuracy+25 Evasion+49 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Double Attack\"+3% Critical hit rate +3%", 
+        ["AGI"]=11, 
         ["VIT"]=30, 
         ["Magic Accuracy"]=25
     }, 
@@ -3037,15 +3037,15 @@ return {
         ["Parrying skill"]=5, 
         ["category"]="Armor", 
         ["en"]="Beast Gloves", 
-        ["slots"]={
-            [6]="Hands"
-        }, 
+        ["DEX"]=3, 
         ["HP"]=11, 
         ["jobs"]={
             [9]="BST"
         }, 
         ["DEF"]=12, 
-        ["DEX"]=3, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
         ["id"]=13969, 
         ["discription"]="DEF:12 HP+11 DEX+3  Parrying skill +5 \"Charm\"+3"
     }, 
@@ -3083,20 +3083,20 @@ return {
     }, 
     [134]={
         ["discription"]="DMG:64 Delay:294 AGI+5 +15 Throwing skill +242 Critical hit rate +1% Unity Ranking: DEX+1～5", 
-        ["en"]="Wingcutter", 
+        ["item_level"]=119, 
         ["Throwing skill"]=242, 
         ["category"]="Weapon", 
         ["slots"]={
             [2]="Range"
         }, 
-        ["item_level"]=119, 
+        ["AGI"]=5, 
         ["delay"]=294, 
         ["jobs"]={
             [6]="THF", 
             [13]="NIN"
         }, 
         ["skill"]="Throwing", 
-        ["AGI"]=5, 
+        ["en"]="Wingcutter", 
         ["Unity Ranking Bonus Applied"]="DEX + 5", 
         ["Critical hit rate"]=1, 
         ["DEX"]=5, 
@@ -3129,7 +3129,7 @@ return {
     }, 
     [136]={
         ["Evasion"]=55, 
-        ["en"]="Mummu Kecks", 
+        ["item_level"]=119, 
         ["jobs"]={
             [2]="MNK", 
             [6]="THF", 
@@ -3143,7 +3143,7 @@ return {
         ["MND"]=15, 
         ["id"]=25875, 
         ["Ranged Accuracy"]=27, 
-        ["item_level"]=119, 
+        ["en"]="Mummu Kecks", 
         ["AGI"]=34, 
         ["HP"]=52, 
         ["Critical hit rate"]=4, 
@@ -3178,13 +3178,13 @@ return {
         ["Haste"]=4, 
         ["id"]=25781, 
         ["MND"]=20, 
-        ["en"]="Mummu Jacket", 
+        ["item_level"]=119, 
         ["Ranged Accuracy"]=28, 
         ["Store TP"]=3, 
-        ["AGI"]=33, 
+        ["en"]="Mummu Jacket", 
         ["HP"]=60, 
         ["Accuracy"]=28, 
-        ["Critical hit rate"]=5, 
+        ["AGI"]=33, 
         ["STR"]=28, 
         ["DEF"]=131, 
         ["MP"]=35, 
@@ -3192,7 +3192,7 @@ return {
         ["INT"]=21, 
         ["category"]="Armor", 
         ["CHR"]=24, 
-        ["item_level"]=119, 
+        ["Critical hit rate"]=5, 
         ["VIT"]=24, 
         ["Magic Accuracy"]=28
     }, 
@@ -3262,12 +3262,12 @@ return {
     }, 
     [140]={
         ["discription"]="A biscuit created by the legendary beastmaster Moui.  It contains all the nutrients a beast  needs for a healthy diet.", 
-        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["id"]=17022, 
+        ["skill"]="(N/A)", 
         ["en"]="Pet Food Eta", 
+        ["id"]=17022, 
         ["category"]="Weapon", 
         ["jobs"]={
             [1]="WAR", 
@@ -3308,12 +3308,12 @@ return {
             [11]="RNG", 
             [22]="RUN"
         }, 
-        ["skill"]="Axe", 
-        ["id"]=18537, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
+        ["id"]=18537, 
+        ["skill"]="Axe", 
         ["damage"]=61
     }, 
     [142]={
@@ -3359,12 +3359,12 @@ return {
     }, 
     [144]={
         ["discription"]="Calls Warlike Patrick.", 
+        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["skill"]="(N/A)", 
-        ["en"]="Livid Broth", 
         ["id"]=21444, 
+        ["en"]="Livid Broth", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -3393,7 +3393,7 @@ return {
     [146]={
         ["Evasion"]=33, 
         ["MND"]=12, 
-        ["en"]="Gorney Morion +1", 
+        ["AGI"]=23, 
         ["jobs"]={
             [1]="WAR", 
             [7]="PLD", 
@@ -3405,7 +3405,7 @@ return {
         ["slots"]={
             [4]="Head"
         }, 
-        ["AGI"]=23, 
+        ["item_level"]=119, 
         ["DEF"]=113, 
         ["discription"]="DEF:113 HP+41 MP+23 STR+29 DEX+23 VIT+29 AGI+23 INT+12 MND+12 CHR+12 Evasion+33 Magic Evasion+32 \"Magic Def. Bonus\"+2 Haste+7%", 
         ["HP"]=41, 
@@ -3418,12 +3418,12 @@ return {
         ["CHR"]=12, 
         ["INT"]=12, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["en"]="Gorney Morion +1"
     }, 
     [147]={
         ["Evasion"]=41, 
         ["MND"]=24, 
-        ["en"]="Gorney Haubert +1", 
+        ["AGI"]=24, 
         ["jobs"]={
             [1]="WAR", 
             [7]="PLD", 
@@ -3436,7 +3436,7 @@ return {
         ["slots"]={
             [5]="Body"
         }, 
-        ["AGI"]=24, 
+        ["item_level"]=119, 
         ["DEF"]=143, 
         ["discription"]="DEF:143 HP+63 MP+35 STR+34 DEX+24 VIT+34 AGI+24 INT+24 MND+24 CHR+24 Accuracy+17 Evasion+41 Magic Evasion+48 \"Magic Def. Bonus\"+4 Haste+3% \"Double Attack\"+2%", 
         ["HP"]=63, 
@@ -3449,7 +3449,7 @@ return {
         ["CHR"]=24, 
         ["INT"]=24, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["en"]="Gorney Haubert +1"
     }, 
     [148]={
         ["Evasion"]=22, 
@@ -3489,7 +3489,7 @@ return {
             [7]="Legs"
         }, 
         ["AGI"]=16, 
-        ["en"]="Gor. Brayettes +1", 
+        ["item_level"]=119, 
         ["HP"]=66, 
         ["jobs"]={
             [1]="WAR", 
@@ -3506,7 +3506,7 @@ return {
         ["INT"]=25, 
         ["category"]="Armor", 
         ["CHR"]=10, 
-        ["item_level"]=119
+        ["en"]="Gor. Brayettes +1"
     }, 
     [150]={
         ["Evasion"]=49, 
@@ -3526,9 +3526,9 @@ return {
         ["slots"]={
             [8]="Feet"
         }, 
-        ["en"]="Gor. Sollerets +1", 
+        ["discription"]="DEF:83 HP+40 STR+20 DEX+16 VIT+17 AGI+29 MND+10 CHR+26 Accuracy+14 Attack+14 Evasion+49 Magic Evasion+64 \"Magic Def. Bonus\"+2 Haste+3% Physical damage taken -3%", 
         ["HP"]=40, 
-        ["item_level"]=119, 
+        ["en"]="Gor. Sollerets +1", 
         ["Accuracy"]=14, 
         ["STR"]=20, 
         ["Haste"]=3, 
@@ -3536,7 +3536,7 @@ return {
         ["CHR"]=26, 
         ["VIT"]=17, 
         ["category"]="Armor", 
-        ["discription"]="DEF:83 HP+40 STR+20 DEX+16 VIT+17 AGI+29 MND+10 CHR+26 Accuracy+14 Attack+14 Evasion+49 Magic Evasion+64 \"Magic Def. Bonus\"+2 Haste+3% Physical damage taken -3%", 
+        ["item_level"]=119, 
         ["Attack"]=14
     }, 
     [151]={
@@ -3546,7 +3546,7 @@ return {
         ["discription"]="DMG:115 Delay:220 Evasion+22 Dagger skill +242 Parrying skill +242 Magic Accuracy skill +188", 
         ["HP"]=12, 
         ["Store TP"]=3, 
-        ["item_level"]=119, 
+        ["en"]="Ipetam", 
         ["delay"]=220, 
         ["jobs"]={
             [5]="RDM", 
@@ -3570,7 +3570,7 @@ return {
         ["damage"]=115, 
         ["Accuracy"]=15, 
         ["Parrying skill"]=242, 
-        ["en"]="Ipetam"
+        ["item_level"]=119
     }, 
     [152]={
         ["discription"]="DEF:18 \"Reward\"+30 \"Spur\"+10", 
@@ -3656,13 +3656,13 @@ return {
         ["DEX"]=49, 
         ["DEF"]=101, 
         ["MND"]=26, 
-        ["AGI"]=18, 
+        ["en"]="Mummu Wrists +1", 
         ["Ranged Accuracy"]=37, 
         ["Critical hit rate"]=5, 
-        ["item_level"]=119, 
+        ["AGI"]=18, 
         ["HP"]=45, 
         ["id"]=25821, 
-        ["discription"]="DEF:101 HP+45 MP+15 STR+16 DEX+49 VIT+30 AGI+18 INT+14 MND+26 CHR+21 Accuracy+37 Ranged Accuracy+37 Magic Accuracy+37 Evasion+49 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Double Attack\"+5% Critical hit rate +5%", 
+        ["item_level"]=119, 
         ["STR"]=16, 
         ["Haste"]=5, 
         ["MP"]=15, 
@@ -3670,7 +3670,7 @@ return {
         ["INT"]=14, 
         ["category"]="Armor", 
         ["CHR"]=21, 
-        ["en"]="Mummu Wrists +1", 
+        ["discription"]="DEF:101 HP+45 MP+15 STR+16 DEX+49 VIT+30 AGI+18 INT+14 MND+26 CHR+21 Accuracy+37 Ranged Accuracy+37 Magic Accuracy+37 Evasion+49 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Double Attack\"+5% Critical hit rate +5%", 
         ["VIT"]=30, 
         ["Magic Accuracy"]=37
     }, 
@@ -3758,11 +3758,11 @@ return {
         ["MND"]=14, 
         ["STR"]=19, 
         ["Ranged Accuracy"]=30, 
-        ["Ranged Attack"]=26, 
+        ["en"]="Meghanada Visor", 
         ["item_level"]=119, 
         ["HP"]=25, 
         ["id"]=25661, 
-        ["discription"]="DEF:101 HP+25 STR+19 DEX+25 VIT+15 AGI+23 INT+12 MND+14 CHR+15 Accuracy+30 Attack+26 Ranged Accuracy+30 Ranged Attack+26 Evasion+49 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+4% \"Dead Aim\"+7 Physical damage taken -3%", 
+        ["AGI"]=23, 
         ["INT"]=12, 
         ["slots"]={
             [4]="Head"
@@ -3772,8 +3772,8 @@ return {
         ["CHR"]=15, 
         ["PDT"]=-3, 
         ["category"]="Armor", 
-        ["en"]="Meghanada Visor", 
-        ["AGI"]=23, 
+        ["Ranged Attack"]=26, 
+        ["discription"]="DEF:101 HP+25 STR+19 DEX+25 VIT+15 AGI+23 INT+12 MND+14 CHR+15 Accuracy+30 Attack+26 Ranged Accuracy+30 Ranged Attack+26 Evasion+49 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+4% \"Dead Aim\"+7 Physical damage taken -3%", 
         ["Attack"]=26
     }, 
     [159]={
@@ -3788,14 +3788,14 @@ return {
         }, 
         ["DEF"]=123, 
         ["DEX"]=37, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:123 HP+40 STR+26 DEX+37 VIT+23 AGI+33 INT+19 MND+20 CHR+21 Accuracy+32 Attack+28 Ranged Accuracy+32 Ranged Attack+28 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +3% Physical damage taken -6%", 
         ["id"]=25747, 
         ["MND"]=20, 
         ["slots"]={
             [5]="Body"
         }, 
         ["Ranged Accuracy"]=32, 
-        ["en"]="Meghanada Cuirie", 
+        ["item_level"]=119, 
         ["AGI"]=33, 
         ["HP"]=40, 
         ["Accuracy"]=32, 
@@ -3803,9 +3803,9 @@ return {
         ["INT"]=19, 
         ["STR"]=26, 
         ["Haste"]=2, 
-        ["Evasion"]=55, 
+        ["en"]="Meghanada Cuirie", 
         ["CHR"]=21, 
-        ["discription"]="DEF:123 HP+40 STR+26 DEX+37 VIT+23 AGI+33 INT+19 MND+20 CHR+21 Accuracy+32 Attack+28 Ranged Accuracy+32 Ranged Attack+28 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +3% Physical damage taken -6%", 
+        ["Evasion"]=55, 
         ["category"]="Armor", 
         ["PDT"]=-6, 
         ["VIT"]=23, 
@@ -3827,11 +3827,11 @@ return {
         ["MND"]=26, 
         ["STR"]=15, 
         ["Ranged Accuracy"]=29, 
-        ["Ranged Attack"]=25, 
+        ["en"]="Meghanada Gloves", 
         ["item_level"]=119, 
         ["HP"]=30, 
         ["id"]=25802, 
-        ["discription"]="DEF:88 HP+30 STR+15 DEX+42 VIT+29 AGI+11 INT+11 MND+26 CHR+19 Accuracy+29 Attack+25 Ranged Accuracy+29 Ranged Attack+25 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +3% Physical damage taken -2%", 
+        ["AGI"]=11, 
         ["INT"]=11, 
         ["slots"]={
             [6]="Hands"
@@ -3841,8 +3841,8 @@ return {
         ["CHR"]=19, 
         ["PDT"]=-2, 
         ["category"]="Armor", 
-        ["en"]="Meghanada Gloves", 
-        ["AGI"]=11, 
+        ["Ranged Attack"]=25, 
+        ["discription"]="DEF:88 HP+30 STR+15 DEX+42 VIT+29 AGI+11 INT+11 MND+26 CHR+19 Accuracy+29 Attack+25 Ranged Accuracy+29 Ranged Attack+25 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +3% Physical damage taken -2%", 
         ["Attack"]=25
     }, 
     [161]={
@@ -3859,13 +3859,13 @@ return {
         ["Haste"]=4, 
         ["PDT"]=-4, 
         ["MND"]=15, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:105 HP+35 STR+32 VIT+15 AGI+34 INT+26 MND+15 CHR+10 Accuracy+31 Attack+27 Ranged Accuracy+31 Ranged Attack+27 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+3% Physical damage taken -4%", 
         ["Ranged Accuracy"]=31, 
-        ["en"]="Meg. Chausses", 
+        ["item_level"]=119, 
         ["AGI"]=34, 
         ["HP"]=35, 
         ["id"]=25860, 
-        ["Evasion"]=41, 
+        ["en"]="Meg. Chausses", 
         ["INT"]=26, 
         ["slots"]={
             [7]="Legs"
@@ -3875,7 +3875,7 @@ return {
         ["CHR"]=10, 
         ["VIT"]=15, 
         ["category"]="Armor", 
-        ["discription"]="DEF:105 HP+35 STR+32 VIT+15 AGI+34 INT+26 MND+15 CHR+10 Accuracy+31 Attack+27 Ranged Accuracy+31 Ranged Attack+27 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+3% Physical damage taken -4%", 
+        ["Evasion"]=41, 
         ["Attack"]=27
     }, 
     [162]={
@@ -3947,9 +3947,9 @@ return {
     [164]={
         ["Evasion"]=15, 
         ["en"]="Eabani Earring", 
-        ["category"]="Armor", 
-        ["HP"]=45, 
         ["Dual Wield"]=4, 
+        ["HP"]=45, 
+        ["category"]="Armor", 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
@@ -3997,11 +3997,11 @@ return {
         ["MND"]=31, 
         ["STR"]=20, 
         ["Ranged Accuracy"]=41, 
-        ["AGI"]=16, 
-        ["en"]="Meg. Gloves +1", 
+        ["Ranged Attack"]=37, 
+        ["item_level"]=119, 
         ["HP"]=30, 
         ["id"]=25803, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:93 HP+30 STR+20 DEX+47 VIT+29 AGI+16 INT+11 MND+31 CHR+24 Accuracy+41 Attack+37 Ranged Accuracy+41 Ranged Attack+37 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +5% Physical damage taken -3%", 
         ["INT"]=11, 
         ["slots"]={
             [6]="Hands"
@@ -4011,8 +4011,8 @@ return {
         ["CHR"]=24, 
         ["PDT"]=-3, 
         ["category"]="Armor", 
-        ["Ranged Attack"]=37, 
-        ["discription"]="DEF:93 HP+30 STR+20 DEX+47 VIT+29 AGI+16 INT+11 MND+31 CHR+24 Accuracy+41 Attack+37 Ranged Accuracy+41 Ranged Attack+37 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +5% Physical damage taken -3%", 
+        ["en"]="Meg. Gloves +1", 
+        ["AGI"]=16, 
         ["Attack"]=37
     }, 
     [166]={
@@ -4059,12 +4059,12 @@ return {
     }, 
     [167]={
         ["discription"]="A biscuit created by the legendary beastmaster Moui.  It contains all the nutrients a beast  needs for a healthy diet.", 
-        ["en"]="Pet Food Theta", 
-        ["skill"]="(N/A)", 
         ["id"]=17023, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="Pet Food Theta", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [1]="WAR", 
@@ -4093,7 +4093,7 @@ return {
     }, 
     [168]={
         ["discription"]="DMG:102 Delay:200 AGI+10 Evasion+22 Dagger skill +242 Parrying skill +242 Magic Accuracy skill +188 Enmity-10 \"Treasure Hunter\"+1 Weapon skill damage +5", 
-        ["Evasion"]=22, 
+        ["item_level"]=119, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
@@ -4102,9 +4102,9 @@ return {
         ["en"]="Sandung", 
         ["AGI"]=10, 
         ["delay"]=200, 
-        ["Parrying skill"]=242, 
+        ["Evasion"]=22, 
         ["skill"]="Dagger", 
-        ["item_level"]=119, 
+        ["Parrying skill"]=242, 
         ["jobs"]={
             [6]="THF"
         }, 
@@ -4116,12 +4116,9 @@ return {
         ["discription"]="STR+2～5 DEX+2～5 \"Store TP\"+5 \"Subtle Blow\"+5", 
         ["en"]="Rajas Ring", 
         ["Store TP"]=5, 
-        ["slots"]={
-            [13]="Left Ring", 
-            [14]="Right Ring"
-        }, 
-        ["category"]="Armor", 
         ["DEX"]=2, 
+        ["category"]="Armor", 
+        ["STR"]=2, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -4147,7 +4144,10 @@ return {
             [22]="RUN"
         }, 
         ["id"]=15543, 
-        ["STR"]=2
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }
     }, 
     [170]={
         ["discription"]="Haste+8% \"Triple Attack\"+1% Unity Ranking: Attack+10～15", 
@@ -4194,11 +4194,11 @@ return {
         ["MND"]=19, 
         ["STR"]=24, 
         ["Ranged Accuracy"]=42, 
-        ["Ranged Attack"]=38, 
+        ["AGI"]=28, 
         ["en"]="Meghanada Visor +1", 
         ["HP"]=25, 
         ["id"]=25662, 
-        ["discription"]="DEF:106 HP+25 STR+24 DEX+30 VIT+15 AGI+28 INT+12 MND+19 CHR+20 Accuracy+42 Attack+38 Ranged Accuracy+42 Ranged Attack+38 Evasion+49 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+4% \"Dead Aim\"+10 Physical damage taken -4%", 
+        ["item_level"]=119, 
         ["INT"]=12, 
         ["slots"]={
             [4]="Head"
@@ -4208,8 +4208,8 @@ return {
         ["CHR"]=20, 
         ["PDT"]=-4, 
         ["category"]="Armor", 
-        ["AGI"]=28, 
-        ["item_level"]=119, 
+        ["Ranged Attack"]=38, 
+        ["discription"]="DEF:106 HP+25 STR+24 DEX+30 VIT+15 AGI+28 INT+12 MND+19 CHR+20 Accuracy+42 Attack+38 Ranged Accuracy+42 Ranged Attack+38 Evasion+49 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+4% \"Dead Aim\"+10 Physical damage taken -4%", 
         ["Attack"]=38
     }, 
     [172]={
@@ -4228,13 +4228,13 @@ return {
         ["DEF"]=110, 
         ["VIT"]=15, 
         ["MND"]=20, 
-        ["Evasion"]=41, 
+        ["AGI"]=39, 
         ["Ranged Accuracy"]=43, 
         ["item_level"]=119, 
         ["en"]="Meg. Chausses +1", 
         ["HP"]=35, 
         ["id"]=25861, 
-        ["discription"]="DEF:110 HP+35 STR+37 VIT+15 AGI+39 INT+26 MND+20 CHR+15 Accuracy+43 Attack+39 Ranged Accuracy+43 Ranged Attack+39 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+4% Physical damage taken -5%", 
+        ["Evasion"]=41, 
         ["INT"]=26, 
         ["STR"]=37, 
         ["Haste"]=4, 
@@ -4242,7 +4242,7 @@ return {
         ["CHR"]=15, 
         ["PDT"]=-5, 
         ["category"]="Armor", 
-        ["AGI"]=39, 
+        ["discription"]="DEF:110 HP+35 STR+37 VIT+15 AGI+39 INT+26 MND+20 CHR+15 Accuracy+43 Attack+39 Ranged Accuracy+43 Ranged Attack+39 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+4% Physical damage taken -5%", 
         ["Attack"]=39
     }, 
     [173]={
@@ -4251,9 +4251,9 @@ return {
         ["skill"]="Axe", 
         ["category"]="Weapon", 
         ["Magic Atk. Bonus"]=10, 
-        ["item_level"]=119, 
-        ["delay"]=288, 
         ["en"]="Eletta Axe", 
+        ["delay"]=288, 
+        ["item_level"]=119, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
@@ -4369,14 +4369,14 @@ return {
         }, 
         ["DEF"]=128, 
         ["DEX"]=42, 
-        ["en"]="Meg. Cuirie +1", 
+        ["discription"]="DEF:128 HP+40 STR+31 DEX+42 VIT+23 AGI+38 INT+19 MND+25 CHR+26 Accuracy+44 Attack+40 Ranged Accuracy+44 Ranged Attack+40 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +5% Physical damage taken -7%", 
         ["id"]=25748, 
         ["MND"]=25, 
         ["slots"]={
             [5]="Body"
         }, 
         ["Ranged Accuracy"]=44, 
-        ["AGI"]=38, 
+        ["en"]="Meg. Cuirie +1", 
         ["item_level"]=119, 
         ["HP"]=40, 
         ["Accuracy"]=44, 
@@ -4384,9 +4384,9 @@ return {
         ["INT"]=19, 
         ["STR"]=31, 
         ["Haste"]=2, 
-        ["Evasion"]=55, 
+        ["AGI"]=38, 
         ["CHR"]=26, 
-        ["discription"]="DEF:128 HP+40 STR+31 DEX+42 VIT+23 AGI+38 INT+19 MND+25 CHR+26 Accuracy+44 Attack+40 Ranged Accuracy+44 Ranged Attack+40 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +5% Physical damage taken -7%", 
+        ["Evasion"]=55, 
         ["category"]="Armor", 
         ["PDT"]=-7, 
         ["VIT"]=23, 
@@ -4418,12 +4418,12 @@ return {
     [179]={
         ["Evasion"]=11, 
         ["MND"]=19, 
-        ["AGI"]=10, 
+        ["discription"]="DEF:65 HP+11 STR+7 DEX+22 VIT+20 AGI+10 INT+8 MND+19 CHR+11 Evasion+11 Magic Evasion+25 \"Magic Def. Bonus\"+1 Haste+4% \"Charm\"+7 \"Call Beast\"+2 Pet: Physical damage taken -3%", 
         ["jobs"]={
             [9]="BST"
         }, 
         ["DEF"]=65, 
-        ["item_level"]=109, 
+        ["en"]="Ankusa Gloves", 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -4438,12 +4438,12 @@ return {
         ["id"]=26992, 
         ["STR"]=7, 
         ["Haste"]=4, 
-        ["en"]="Ankusa Gloves", 
+        ["item_level"]=109, 
         ["INT"]=8, 
         ["category"]="Armor", 
         ["CHR"]=11, 
         ["VIT"]=20, 
-        ["discription"]="DEF:65 HP+11 STR+7 DEX+22 VIT+20 AGI+10 INT+8 MND+19 CHR+11 Evasion+11 Magic Evasion+25 \"Magic Def. Bonus\"+1 Haste+4% \"Charm\"+7 \"Call Beast\"+2 Pet: Physical damage taken -3%"
+        ["AGI"]=10
     }, 
     [180]={
         ["discription"]="Enchantment: Teleport (Crag of Dem) Destination is close to the dimensional portal in Konschtat Highlands.", 
@@ -4527,14 +4527,9 @@ return {
     [183]={
         ["discription"]="DEF:29 STR+11 Attack+15 Critical hit rate +3% Enhances \"Sic\" and \"Ready\" effects Set: Attack occ. varies with pet's HP", 
         ["category"]="Armor", 
-        ["id"]=11112, 
+        ["Critical hit rate"]=3, 
         ["en"]="Frn. Manoplas +2", 
-        ["augments"]={
-            [1]="none", 
-            [2]="none", 
-            [3]="none", 
-            [4]="none"
-        }, 
+        ["id"]=11112, 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -4552,18 +4547,23 @@ return {
         ["jobs"]={
             [9]="BST"
         }, 
-        ["Critical hit rate"]=3, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="none", 
+            [4]="none"
+        }, 
         ["DEF"]=29, 
         ["Attack"]=15
     }, 
     [184]={
         ["discription"]="Calls Scissorleg Xerin.", 
+        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["skill"]="(N/A)", 
-        ["en"]="Spicy Broth", 
         ["id"]=17909, 
+        ["en"]="Spicy Broth", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -4581,10 +4581,18 @@ return {
             [6]="Hands"
         }, 
         ["item_level"]=109, 
-        ["AGI"]=4, 
+        ["discription"]="DEF:66 HP+12 STR+12 DEX+20 VIT+20 AGI+4 INT+4 MND+14 CHR+10 Attack+15 Evasion+11 Magic Evasion+21 Haste+3% Critical hit rate +3% \"Sic\" TP Bonus +550 \"Ready\" TP Bonus +550 Set: Attack occ. varies with pet's HP", 
         ["en"]="Nukumi Manoplas", 
         ["HP"]=12, 
         ["id"]=27068, 
+        ["AGI"]=4, 
+        ["INT"]=4, 
+        ["STR"]=12, 
+        ["DEF"]=66, 
+        ["Critical hit rate"]=3, 
+        ["CHR"]=10, 
+        ["VIT"]=20, 
+        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -4595,14 +4603,6 @@ return {
             }, 
             ["set id"]=35
         }, 
-        ["INT"]=4, 
-        ["STR"]=12, 
-        ["DEF"]=66, 
-        ["Critical hit rate"]=3, 
-        ["CHR"]=10, 
-        ["VIT"]=20, 
-        ["category"]="Armor", 
-        ["discription"]="DEF:66 HP+12 STR+12 DEX+20 VIT+20 AGI+4 INT+4 MND+14 CHR+10 Attack+15 Evasion+11 Magic Evasion+21 Haste+3% Critical hit rate +3% \"Sic\" TP Bonus +550 \"Ready\" TP Bonus +550 Set: Attack occ. varies with pet's HP", 
         ["Attack"]=15
     }, 
     [186]={
@@ -4629,12 +4629,12 @@ return {
     }, 
     [187]={
         ["discription"]="Calls Rhyming Shizuna.", 
+        ["en"]="Lyrical Broth", 
+        ["skill"]="(N/A)", 
         ["id"]=21445, 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["en"]="Lyrical Broth", 
-        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -4692,12 +4692,18 @@ return {
         ["DEF"]=98, 
         ["id"]=25829, 
         ["MND"]=34, 
-        ["en"]="Meg. Gloves +2", 
+        ["Ranged Attack"]=43, 
         ["Ranged Accuracy"]=47, 
-        ["AGI"]=19, 
+        ["en"]="Meg. Gloves +2", 
         ["item_level"]=119, 
         ["HP"]=30, 
         ["Accuracy"]=47, 
+        ["AGI"]=19, 
+        ["INT"]=11, 
+        ["STR"]=23, 
+        ["Haste"]=4, 
+        ["discription"]="DEF:98 HP+30 STR+23 DEX+50 VIT+29 AGI+19 INT+11 MND+34 CHR+27 Accuracy+47 Attack+43 Ranged Accuracy+47 Ranged Attack+43 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +7% Physical damage taken -4% Set: Enhances \"Regen\" effect", 
+        ["CHR"]=27, 
         ["Set Bonus"]={
             ["set id"]=59, 
             ["bonus"]={
@@ -4716,12 +4722,6 @@ return {
                 }
             }
         }, 
-        ["INT"]=11, 
-        ["STR"]=23, 
-        ["Haste"]=4, 
-        ["discription"]="DEF:98 HP+30 STR+23 DEX+50 VIT+29 AGI+19 INT+11 MND+34 CHR+27 Accuracy+47 Attack+43 Ranged Accuracy+47 Ranged Attack+43 Evasion+36 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Weapon skill damage +7% Physical damage taken -4% Set: Enhances \"Regen\" effect", 
-        ["CHR"]=27, 
-        ["Ranged Attack"]=43, 
         ["category"]="Armor", 
         ["PDT"]=-4, 
         ["VIT"]=29, 
@@ -4818,11 +4818,11 @@ return {
         ["category"]="Armor", 
         ["en"]="Petrov Ring", 
         ["Store TP"]=5, 
+        ["STR"]=3, 
         ["slots"]={
             [13]="Left Ring", 
             [14]="Right Ring"
         }, 
-        ["STR"]=3, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -4919,7 +4919,7 @@ return {
         ["DEX"]=45, 
         ["Haste"]=4, 
         ["MND"]=20, 
-        ["AGI"]=33, 
+        ["item_level"]=119, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -4946,8 +4946,8 @@ return {
             }, 
             ["set id"]=154
         }, 
+        ["AGI"]=33, 
         ["en"]="Tali'ah Manteel +2", 
-        ["item_level"]=119, 
         ["HP"]=70, 
         ["id"]=25796, 
         ["discription"]="DEF:129 HP+70 MP+73 STR+28 DEX+45 VIT+37 AGI+33 INT+21 MND+20 CHR+21 Accuracy+46 Magic Accuracy+46 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Triple Attack\"+6% Pet: Accuracy+46 Ranged Accuracy+46 Magic Accuracy+46 Set: Increases Dexterity, Vitality, and Charisma", 
@@ -4974,7 +4974,7 @@ return {
         ["DEX"]=34, 
         ["Haste"]=8, 
         ["MND"]=14, 
-        ["AGI"]=23, 
+        ["item_level"]=119, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -5001,8 +5001,8 @@ return {
             }, 
             ["set id"]=154
         }, 
+        ["AGI"]=23, 
         ["en"]="Tali'ah Turban +2", 
-        ["item_level"]=119, 
         ["HP"]=57, 
         ["id"]=25573, 
         ["discription"]="DEF:111 HP+57 MP+38 STR+20 DEX+34 VIT+30 AGI+23 INT+15 MND+14 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+8% Pet: Accuracy+42 Ranged Accuracy+42 Magic Accuracy+42 \"Store TP\"+7 Set: Increases Dexterity, Vitality, and Charisma", 
@@ -5157,14 +5157,14 @@ return {
     [204]={
         ["Evasion"]=23, 
         ["MND"]=14, 
-        ["en"]="Totemic Jackcoat", 
+        ["AGI"]=17, 
         ["jobs"]={
             [9]="BST"
         }, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["AGI"]=17, 
+        ["item_level"]=109, 
         ["DEF"]=94, 
         ["discription"]="DEF:94 HP+28 MP+36 STR+20 DEX+18 VIT+15 AGI+17 INT+14 MND+14 CHR+19 Evasion+23 Magic Evasion+43 \"Magic Def. Bonus\"+3 Haste+4% \"Charm\"+7 Enhances \"Reward\" effect Augments \"Reward\" III", 
         ["HP"]=28, 
@@ -5177,19 +5177,19 @@ return {
         ["CHR"]=19, 
         ["INT"]=14, 
         ["category"]="Armor", 
-        ["item_level"]=109
+        ["en"]="Totemic Jackcoat"
     }, 
     [205]={
         ["Evasion"]=49, 
         ["MND"]=23, 
-        ["en"]="Tot. Jackcoat +1", 
+        ["AGI"]=28, 
         ["jobs"]={
             [9]="BST"
         }, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["AGI"]=28, 
+        ["item_level"]=119, 
         ["DEF"]=132, 
         ["discription"]="DEF:132 HP+59 MP+44 STR+29 DEX+29 VIT+24 AGI+28 INT+23 MND+23 CHR+28 Evasion+49 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Charm\"+7 \"Reward\"+22 Augments \"Reward\" III", 
         ["HP"]=59, 
@@ -5202,16 +5202,16 @@ return {
         ["CHR"]=28, 
         ["INT"]=23, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["en"]="Tot. Jackcoat +1"
     }, 
     [206]={
         ["discription"]="Calls Generous Arthur.", 
+        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["skill"]="(N/A)", 
-        ["en"]="Dire Broth", 
         ["id"]=21449, 
+        ["en"]="Dire Broth", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -5234,9 +5234,9 @@ return {
         ["Haste"]=7, 
         ["MND"]=15, 
         ["id"]=26734, 
-        ["item_level"]=119, 
+        ["en"]="Acro Helm", 
         ["Store TP"]=3, 
-        ["AGI"]=16, 
+        ["item_level"]=119, 
         ["HP"]=38, 
         ["augments"]={
             [1]="Accuracy+23", 
@@ -5245,7 +5245,7 @@ return {
             [4]="none", 
             [5]="none"
         }, 
-        ["discription"]="DEF:101 HP+38 MP+23 STR+22 DEX+18 VIT+18 AGI+16 INT+15 MND+15 CHR+15 Attack+15 Evasion+33 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+7% \"Store TP\"+3", 
+        ["AGI"]=16, 
         ["STR"]=22, 
         ["DEF"]=101, 
         ["MP"]=23, 
@@ -5253,7 +5253,7 @@ return {
         ["INT"]=15, 
         ["category"]="Armor", 
         ["CHR"]=15, 
-        ["en"]="Acro Helm", 
+        ["discription"]="DEF:101 HP+38 MP+23 STR+22 DEX+18 VIT+18 AGI+16 INT+15 MND+15 CHR+15 Attack+15 Evasion+33 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+7% \"Store TP\"+3", 
         ["VIT"]=18, 
         ["Attack"]=15
     }, 
@@ -5332,6 +5332,20 @@ return {
         ["DEF"]=115, 
         ["VIT"]=15, 
         ["MND"]=23, 
+        ["discription"]="DEF:115 HP+35 STR+40 VIT+15 AGI+42 INT+26 MND+23 CHR+18 Accuracy+49 Attack+45 Ranged Accuracy+49 Ranged Attack+45 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+5% Physical damage taken -6% Set: Enhances \"Regen\" effect", 
+        ["Ranged Accuracy"]=49, 
+        ["item_level"]=119, 
+        ["AGI"]=42, 
+        ["HP"]=35, 
+        ["id"]=25880, 
+        ["en"]="Meg. Chausses +2", 
+        ["INT"]=26, 
+        ["STR"]=40, 
+        ["Haste"]=4, 
+        ["Accuracy"]=49, 
+        ["CHR"]=18, 
+        ["PDT"]=-6, 
+        ["category"]="Armor", 
         ["Set Bonus"]={
             ["set id"]=59, 
             ["bonus"]={
@@ -5350,21 +5364,7 @@ return {
                 }
             }
         }, 
-        ["Ranged Accuracy"]=49, 
-        ["item_level"]=119, 
-        ["AGI"]=42, 
-        ["HP"]=35, 
-        ["id"]=25880, 
         ["Evasion"]=41, 
-        ["INT"]=26, 
-        ["STR"]=40, 
-        ["Haste"]=4, 
-        ["Accuracy"]=49, 
-        ["CHR"]=18, 
-        ["PDT"]=-6, 
-        ["category"]="Armor", 
-        ["discription"]="DEF:115 HP+35 STR+40 VIT+15 AGI+42 INT+26 MND+23 CHR+18 Accuracy+49 Attack+45 Ranged Accuracy+49 Ranged Attack+45 Evasion+41 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Triple Attack\"+5% Physical damage taken -6% Set: Enhances \"Regen\" effect", 
-        ["en"]="Meg. Chausses +2", 
         ["Attack"]=45
     }, 
     [211]={
@@ -5630,7 +5630,7 @@ return {
         ["DEX"]=15, 
         ["DEF"]=94, 
         ["MND"]=12, 
-        ["AGI"]=12, 
+        ["en"]="Nukumi Gausape", 
         ["Set Bonus"]={
             ["set id"]=35, 
             ["bonus"]={
@@ -5641,8 +5641,8 @@ return {
                 [5]={}
             }
         }, 
+        ["AGI"]=12, 
         ["item_level"]=109, 
-        ["en"]="Nukumi Gausape", 
         ["HP"]=31, 
         ["id"]=26914, 
         ["discription"]="DEF:94 HP+31 STR+17 DEX+15 VIT+17 AGI+12 INT+12 MND+12 CHR+12 Accuracy+18 Attack+18 Evasion+38 Magic Evasion+40 \"Magic Def. Bonus\"+2 Haste+3% Axe skill +9 Augments \"Killer\" effects Set: Attack occ. varies with pet's HP", 
@@ -5688,6 +5688,11 @@ return {
         ["DEX"]=24, 
         ["discription"]="DEF:84 HP+11 STR+17 DEX+20 VIT+17 AGI+26 MND+6 CHR+20 Accuracy+12 Attack+12 Evasion+55 Magic Evasion+80 \"Magic Def. Bonus\"+2 Haste+3% \"Store TP\"+5 Critical hit damage +4% Magic damage taken -2%", 
         ["MND"]=6, 
+        ["en"]="Valorous Greaves", 
+        ["STR"]=17, 
+        ["Store TP"]=13, 
+        ["AGI"]=26, 
+        ["HP"]=11, 
         ["augments"]={
             [1]="Accuracy+11 Attack+11", 
             [2]="\"Store TP\"+8", 
@@ -5695,12 +5700,7 @@ return {
             [4]="none", 
             [5]="none"
         }, 
-        ["STR"]=17, 
-        ["Store TP"]=13, 
-        ["item_level"]=119, 
-        ["HP"]=11, 
         ["id"]=27495, 
-        ["AGI"]=26, 
         ["slots"]={
             [8]="Feet"
         }, 
@@ -5711,7 +5711,7 @@ return {
         ["VIT"]=17, 
         ["category"]="Armor", 
         ["Critical hit damage"]=4, 
-        ["en"]="Valorous Greaves", 
+        ["item_level"]=119, 
         ["Attack"]=23
     }, 
     [223]={
@@ -5726,25 +5726,6 @@ return {
         }, 
         ["discription"]="DEF:84 HP+11 STR+17 DEX+20 VIT+17 AGI+26 MND+6 CHR+20 Accuracy+12 Attack+12 Evasion+55 Magic Evasion+80 \"Magic Def. Bonus\"+2 Haste+3% \"Store TP\"+5 Critical hit damage +4% Magic damage taken -2%", 
         ["DEX"]=20, 
-        ["en"]="Valorous Greaves", 
-        ["id"]=27495, 
-        ["MND"]=6, 
-        ["slots"]={
-            [8]="Feet"
-        }, 
-        ["Haste"]=3, 
-        ["Store TP"]=5, 
-        ["item_level"]=119, 
-        ["HP"]=11, 
-        ["Accuracy"]=27, 
-        ["Critical hit damage"]=4, 
-        ["STR"]=17, 
-        ["DEF"]=84, 
-        ["Evasion"]=55, 
-        ["AGI"]=26, 
-        ["CHR"]=28, 
-        ["Magic Atk. Bonus"]=22, 
-        ["category"]="Armor", 
         ["augments"]={
             [1]="\"Mag.Atk.Bns.\"+22", 
             [2]="Magic dmg. taken -3%", 
@@ -5752,6 +5733,25 @@ return {
             [4]="Accuracy+15", 
             [5]="none"
         }, 
+        ["id"]=27495, 
+        ["MND"]=6, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["Haste"]=3, 
+        ["Store TP"]=5, 
+        ["AGI"]=26, 
+        ["HP"]=11, 
+        ["Accuracy"]=27, 
+        ["Critical hit damage"]=4, 
+        ["STR"]=17, 
+        ["DEF"]=84, 
+        ["Evasion"]=55, 
+        ["item_level"]=119, 
+        ["CHR"]=28, 
+        ["Magic Atk. Bonus"]=22, 
+        ["category"]="Armor", 
+        ["en"]="Valorous Greaves", 
         ["VIT"]=17, 
         ["Attack"]=12
     }, 
@@ -5925,8 +5925,11 @@ return {
         ["discription"]="Accuracy+4 Attack+4 Assault: STR+4 DEX+4 Adds \"Regen\" effect", 
         ["category"]="Armor", 
         ["en"]="Ulthalam's Ring", 
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }, 
         ["DEX"]=4, 
-        ["STR"]=4, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -5952,10 +5955,7 @@ return {
             [22]="RUN"
         }, 
         ["id"]=15808, 
-        ["slots"]={
-            [13]="Left Ring", 
-            [14]="Right Ring"
-        }, 
+        ["STR"]=4, 
         ["Accuracy"]=4, 
         ["Attack"]=4
     }, 
@@ -5983,11 +5983,11 @@ return {
         ["discription"]="DMG:297 Delay:504 Accuracy+15 Attack+15 Great Sword skill +242 Parrying skill +242 Magic Accuracy skill +188 \"Double Attack\"+2% Weapon skill damage +2%", 
         ["Parrying skill"]=242, 
         ["skill"]="Great Sword", 
-        ["Great Sword skill"]=242, 
+        ["category"]="Weapon", 
         ["en"]="Zulfiqar", 
         ["item_level"]=119, 
         ["delay"]=504, 
-        ["category"]="Weapon", 
+        ["Great Sword skill"]=242, 
         ["slots"]={
             [0]="Main"
         }, 
@@ -6068,14 +6068,14 @@ return {
     [234]={
         ["discription"]="DEF:91 HP+22 MP+35 STR+18 VIT+10 AGI+12 INT+19 MND+11 CHR+7 Eva.+17 Mag. Eva.+47 Div. mag. skl. +15 \"M. Def. B.\"+3 Enh. res. to all status ailments Haste+6% Phys. dmg. taken -3%", 
         ["MND"]=11, 
-        ["en"]="Runeist Trousers", 
+        ["item_level"]=109, 
         ["jobs"]={
             [22]="RUN"
         }, 
         ["slots"]={
             [7]="Legs"
         }, 
-        ["item_level"]=109, 
+        ["AGI"]=12, 
         ["VIT"]=10, 
         ["DEF"]=91, 
         ["HP"]=22, 
@@ -6087,7 +6087,7 @@ return {
         ["STR"]=18, 
         ["CHR"]=7, 
         ["INT"]=19, 
-        ["AGI"]=12
+        ["en"]="Runeist Trousers"
     }, 
     [235]={
         ["Attack"]=15, 
@@ -6122,14 +6122,14 @@ return {
     [236]={
         ["Evasion"]=23, 
         ["MND"]=14, 
-        ["en"]="Runeist Coat", 
+        ["AGI"]=17, 
         ["jobs"]={
             [22]="RUN"
         }, 
         ["slots"]={
             [5]="Body"
         }, 
-        ["AGI"]=17, 
+        ["item_level"]=109, 
         ["DEF"]=104, 
         ["discription"]="DEF:104 HP+108 MP+36 STR+15 DEX+18 VIT+15 AGI+17 INT+14 MND+14 CHR+14 Res. all ele.+30 Evasion+23 Mag. Eva.+43 Haste+3% \"Mag. Def. Bonus\"+3 Enh. \"Refresh\" ef. Enh. \"Valiance\" and \"Vallation\" effects", 
         ["HP"]=108, 
@@ -6142,17 +6142,17 @@ return {
         ["CHR"]=14, 
         ["INT"]=14, 
         ["category"]="Armor", 
-        ["item_level"]=109
+        ["en"]="Runeist Coat"
     }, 
     [237]={
         ["Evasion"]=49, 
         ["MND"]=23, 
-        ["AGI"]=28, 
+        ["item_level"]=119, 
         ["jobs"]={
             [22]="RUN"
         }, 
         ["STR"]=24, 
-        ["item_level"]=119, 
+        ["en"]="Runeist Coat +1", 
         ["Haste"]=4, 
         ["discription"]="DEF:135 HP+139 MP+44 STR+24 DEX+29 VIT+24 AGI+28 INT+23 MND+23 CHR+23 Resist all elements +33 Evasion+49 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Refresh\"+2 \"Valiance\" and \"Vallation\" effect duration +15", 
         ["HP"]=139, 
@@ -6167,15 +6167,15 @@ return {
         ["CHR"]=23, 
         ["INT"]=23, 
         ["category"]="Armor", 
-        ["en"]="Runeist Coat +1"
+        ["AGI"]=28
     }, 
     [238]={
         ["discription"]="DEF:75 HP+43 STR+12 DEX+24 VIT+12 AGI+37 MND+12 CHR+30 Evasion+92 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+4% \"Pflug\"+2", 
         ["Haste"]=4, 
         ["MND"]=12, 
-        ["item_level"]=119, 
-        ["STR"]=12, 
         ["en"]="Runeist Bottes +1", 
+        ["STR"]=12, 
+        ["item_level"]=119, 
         ["AGI"]=37, 
         ["HP"]=43, 
         ["jobs"]={
@@ -6209,9 +6209,9 @@ return {
         ["DT"]=-2
     }, 
     [240]={
-        ["Evasion"]=50, 
+        ["Parrying skill"]=242, 
         ["category"]="Weapon", 
-        ["discription"]="DMG:263 Delay:480 Great Sword skill +242 Parrying skill +242 Magic Accuracy skill +188 Enmity+10 \"Lunge\"+10 Physical damage taken II -5%", 
+        ["Evasion"]=50, 
         ["skill"]="Great Sword", 
         ["Great Sword skill"]=242, 
         ["item_level"]=119, 
@@ -6220,17 +6220,17 @@ return {
         ["jobs"]={
             [22]="RUN"
         }, 
-        ["PDT2"]=-5, 
-        ["Parrying skill"]=242, 
+        ["id"]=20761, 
+        ["discription"]="DMG:263 Delay:480 Great Sword skill +242 Parrying skill +242 Magic Accuracy skill +188 Enmity+10 \"Lunge\"+10 Physical damage taken II -5%", 
         ["slots"]={
             [0]="Main"
         }, 
+        ["PDT2"]=-5, 
         ["augments"]={
             [1]="Accuracy+70", 
             [2]="Mag. Evasion+50", 
             [3]="Weapon skill damage +10%"
         }, 
-        ["id"]=20761, 
         ["Accuracy"]=70, 
         ["damage"]=263
     }, 
@@ -6244,10 +6244,10 @@ return {
         ["DEX"]=25, 
         ["DEF"]=105, 
         ["AGI"]=25, 
-        ["discription"]="DEF:105 HP+66 MP+53 STR+21 DEX+25 VIT+21 AGI+25 INT+21 MND+21 CHR+22 Evasion+44 Magic Evasion+53 \"Magic Def. Bonus\"+2 Haste+8% \"Fast Cast\"+10% \"Regen\" effect duration +21", 
+        ["en"]="Rune. Bandeau +1", 
         ["item_level"]=119, 
         ["HP"]=66, 
-        ["Fast Cast"]=10, 
+        ["discription"]="DEF:105 HP+66 MP+53 STR+21 DEX+25 VIT+21 AGI+25 INT+21 MND+21 CHR+22 Evasion+44 Magic Evasion+53 \"Magic Def. Bonus\"+2 Haste+8% \"Fast Cast\"+10% \"Regen\" effect duration +21", 
         ["VIT"]=21, 
         ["Haste"]=8, 
         ["MP"]=53, 
@@ -6258,7 +6258,7 @@ return {
         ["CHR"]=22, 
         ["INT"]=21, 
         ["category"]="Armor", 
-        ["en"]="Rune. Bandeau +1"
+        ["Fast Cast"]=10
     }, 
     [242]={
         ["discription"]="Attack+13 \"Magic Atk. Bonus\"+5", 
@@ -6327,13 +6327,13 @@ return {
     }, 
     [245]={
         ["discription"]="DEX+3", 
+        ["en"]="Pixie Earring", 
+        ["DEX"]=3, 
         ["id"]=13415, 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
-        ["en"]="Pixie Earring", 
-        ["DEX"]=3, 
         ["category"]="Armor", 
         ["jobs"]={
             [1]="WAR", 
@@ -6409,9 +6409,9 @@ return {
         ["DEF"]=93, 
         ["AGI"]=5, 
         ["PDT"]=-2, 
-        ["en"]="Runeist Mitons +1", 
+        ["item_level"]=119, 
         ["HP"]=50, 
-        ["discription"]="DEF:93 HP+50 MP+25 STR+11 DEX+35 VIT+32 AGI+5 INT+12 MND+30 CHR+17 Evasion+24 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5% Enhancing magic skill +15 Physical damage taken -2% \"Gambit\" effect duration +12", 
+        ["en"]="Runeist Mitons +1", 
         ["VIT"]=32, 
         ["Haste"]=5, 
         ["MP"]=25, 
@@ -6422,7 +6422,7 @@ return {
         ["CHR"]=17, 
         ["INT"]=12, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["discription"]="DEF:93 HP+50 MP+25 STR+11 DEX+35 VIT+32 AGI+5 INT+12 MND+30 CHR+17 Evasion+24 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5% Enhancing magic skill +15 Physical damage taken -2% \"Gambit\" effect duration +12"
     }, 
     [249]={
         ["Evasion"]=38, 
@@ -6434,9 +6434,9 @@ return {
         ["DEF"]=117, 
         ["AGI"]=20, 
         ["PDT"]=-3, 
-        ["en"]="Rune. Trousers +1", 
+        ["item_level"]=119, 
         ["HP"]=47, 
-        ["discription"]="DEF:117 HP+47 MP+35 STR+29 VIT+16 AGI+20 INT+30 MND+17 CHR+11 Evasion+38 Magic Evasion+69 \"Magic Def. Bonus\"+5 Divine magic skill +15 Physical damage taken -3% Haste+6% Resistance to all status ailments +6", 
+        ["en"]="Rune. Trousers +1", 
         ["VIT"]=16, 
         ["Haste"]=6, 
         ["MP"]=35, 
@@ -6447,7 +6447,7 @@ return {
         ["CHR"]=11, 
         ["INT"]=30, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["discription"]="DEF:117 HP+47 MP+35 STR+29 VIT+16 AGI+20 INT+30 MND+17 CHR+11 Evasion+38 Magic Evasion+69 \"Magic Def. Bonus\"+5 Divine magic skill +15 Physical damage taken -3% Haste+6% Resistance to all status ailments +6"
     }, 
     [250]={
         ["Ranged Attack"]=46, 
@@ -6461,6 +6461,8 @@ return {
         }, 
         ["DEF"]=133, 
         ["DEX"]=45, 
+        ["discription"]="DEF:133 HP+40 STR+34 DEX+45 VIT+23 AGI+41 INT+19 MND+28 CHR+29 Accuracy+50 Attack+46 Ranged Accuracy+50 Ranged Attack+46 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +6% Physical damage taken -8% Set: Enhances \"Regen\" effect", 
+        ["id"]=25791, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -6479,12 +6481,10 @@ return {
             }, 
             ["set id"]=59
         }, 
-        ["id"]=25791, 
-        ["MND"]=28, 
-        ["en"]="Meg. Cuirie +2", 
-        ["Ranged Accuracy"]=50, 
-        ["AGI"]=41, 
         ["item_level"]=119, 
+        ["Ranged Accuracy"]=50, 
+        ["en"]="Meg. Cuirie +2", 
+        ["AGI"]=41, 
         ["HP"]=40, 
         ["Accuracy"]=50, 
         ["Critical hit damage"]=6, 
@@ -6492,10 +6492,10 @@ return {
         ["CHR"]=29, 
         ["STR"]=34, 
         ["Haste"]=2, 
-        ["Evasion"]=55, 
+        ["MND"]=28, 
         ["category"]="Armor", 
         ["PDT"]=-8, 
-        ["discription"]="DEF:133 HP+40 STR+34 DEX+45 VIT+23 AGI+41 INT+19 MND+28 CHR+29 Accuracy+50 Attack+46 Ranged Accuracy+50 Ranged Attack+46 Evasion+55 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+2% Critical hit damage +6% Physical damage taken -8% Set: Enhances \"Regen\" effect", 
+        ["Evasion"]=55, 
         ["slots"]={
             [5]="Body"
         }, 
@@ -6513,10 +6513,10 @@ return {
         ["DEX"]=11, 
         ["DEF"]=110, 
         ["MND"]=15, 
-        ["en"]="Tali'ah Sera. +2", 
-        ["discription"]="DEF:110 HP+57 MP+53 STR+33 DEX+11 VIT+30 AGI+34 INT+29 MND+15 CHR+10 Accuracy+45 Magic Accuracy+45 Evasion+24 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+6% Pet: Accuracy+45 Ranged Accuracy+45 Magic Accuracy+45 Damage taken -5% Set: Increases Dexterity, Vitality, and Charisma", 
-        ["item_level"]=119, 
         ["AGI"]=34, 
+        ["discription"]="DEF:110 HP+57 MP+53 STR+33 DEX+11 VIT+30 AGI+34 INT+29 MND+15 CHR+10 Accuracy+45 Magic Accuracy+45 Evasion+24 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+6% Pet: Accuracy+45 Ranged Accuracy+45 Magic Accuracy+45 Damage taken -5% Set: Increases Dexterity, Vitality, and Charisma", 
+        ["en"]="Tali'ah Sera. +2", 
+        ["item_level"]=119, 
         ["HP"]=57, 
         ["id"]=25885, 
         ["Set Bonus"]={
@@ -6613,14 +6613,14 @@ return {
     [254]={
         ["discription"]="STR+5 DEX+5 CHR+5 Accuracy+10 Attack+10 Pet: Accuracy+15 Ranged Accuracy+15 Magic Accuracy+15", 
         ["category"]="Weapon", 
+        ["STR"]=5, 
+        ["en"]="Voluspa Tathlum", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["en"]="Voluspa Tathlum", 
-        ["skill"]="(N/A)", 
         ["DEX"]=5, 
         ["CHR"]=5, 
-        ["STR"]=5, 
+        ["skill"]="(N/A)", 
         ["jobs"]={
             [2]="MNK", 
             [5]="RDM", 
@@ -6682,12 +6682,12 @@ return {
     }, 
     [256]={
         ["discription"]="Calls Blackbeard Randy.", 
+        ["en"]="Meaty Broth", 
+        ["skill"]="(N/A)", 
         ["id"]=17920, 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["en"]="Meaty Broth", 
-        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -6716,12 +6716,12 @@ return {
             [4]="Attack+15", 
             [5]="none"
         }, 
-        ["discription"]="DEF:116 HP+38 STR+28 DEX+24 VIT+23 AGI+18 INT+14 MND+14 CHR+14 Accuracy+13 Evasion+36 Magic Evasion+48 \"Magic Def. Bonus\"+2 Haste+7% \"Regain\"+3 Critical hit rate +2%", 
+        ["AGI"]=18, 
         ["item_level"]=119, 
         ["en"]="Valorous Mask", 
         ["HP"]=38, 
         ["id"]=25641, 
-        ["Critical hit rate"]=2, 
+        ["discription"]="DEF:116 HP+38 STR+28 DEX+24 VIT+23 AGI+18 INT+14 MND+14 CHR+14 Accuracy+13 Evasion+36 Magic Evasion+48 \"Magic Def. Bonus\"+2 Haste+7% \"Regain\"+3 Critical hit rate +2%", 
         ["INT"]=14, 
         ["STR"]=28, 
         ["Haste"]=7, 
@@ -6729,7 +6729,7 @@ return {
         ["CHR"]=14, 
         ["Magic Atk. Bonus"]=20, 
         ["category"]="Armor", 
-        ["AGI"]=18, 
+        ["Critical hit rate"]=2, 
         ["VIT"]=23, 
         ["Attack"]=15
     }, 
@@ -6756,12 +6756,12 @@ return {
             [4]="none", 
             [5]="none"
         }, 
-        ["discription"]="DEF:116 HP+38 STR+28 DEX+24 VIT+23 AGI+18 INT+14 MND+14 CHR+14 Accuracy+13 Evasion+36 Magic Evasion+48 \"Magic Def. Bonus\"+2 Haste+7% \"Regain\"+3 Critical hit rate +2%", 
+        ["AGI"]=18, 
         ["item_level"]=119, 
         ["en"]="Valorous Mask", 
         ["HP"]=38, 
         ["id"]=25641, 
-        ["Critical hit rate"]=2, 
+        ["discription"]="DEF:116 HP+38 STR+28 DEX+24 VIT+23 AGI+18 INT+14 MND+14 CHR+14 Accuracy+13 Evasion+36 Magic Evasion+48 \"Magic Def. Bonus\"+2 Haste+7% \"Regain\"+3 Critical hit rate +2%", 
         ["INT"]=14, 
         ["STR"]=28, 
         ["Haste"]=7, 
@@ -6769,7 +6769,7 @@ return {
         ["CHR"]=14, 
         ["Magic Atk. Bonus"]=23, 
         ["category"]="Armor", 
-        ["AGI"]=18, 
+        ["Critical hit rate"]=2, 
         ["VIT"]=23, 
         ["Attack"]=13
     }, 
@@ -6821,6 +6821,11 @@ return {
         ["DEF"]=104, 
         ["MND"]=30, 
         ["item_level"]=119, 
+        ["discription"]="DEF:104 HP+34 MP+8 STR+11 DEX+34 VIT+32 AGI+7 INT+16 MND+30 CHR+19 Accuracy+37 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% \"Store TP\"+7 Pet: Attack+35 \"Store TP\"+7 Set: Enhances \"Double Attack\" effect", 
+        ["Store TP"]=7, 
+        ["AGI"]=7, 
+        ["HP"]=34, 
+        ["id"]=27114, 
         ["Set Bonus"]={
             ["set id"]=241, 
             ["bonus"]={
@@ -6839,11 +6844,6 @@ return {
                 }
             }
         }, 
-        ["Store TP"]=7, 
-        ["AGI"]=7, 
-        ["HP"]=34, 
-        ["id"]=27114, 
-        ["en"]="Emi. Gauntlets +1", 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -6854,7 +6854,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=19, 
         ["VIT"]=32, 
-        ["discription"]="DEF:104 HP+34 MP+8 STR+11 DEX+34 VIT+32 AGI+7 INT+16 MND+30 CHR+19 Accuracy+37 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% \"Store TP\"+7 Pet: Attack+35 \"Store TP\"+7 Set: Enhances \"Double Attack\" effect"
+        ["en"]="Emi. Gauntlets +1"
     }, 
     [261]={
         ["Evasion"]=24, 
@@ -6877,6 +6877,19 @@ return {
         }, 
         ["MND"]=30, 
         ["Dual Wield"]=6, 
+        ["en"]="Emi. Gauntlets +1", 
+        ["Store TP"]=7, 
+        ["AGI"]=7, 
+        ["HP"]=34, 
+        ["Accuracy"]=62, 
+        ["item_level"]=119, 
+        ["STR"]=11, 
+        ["Haste"]=4, 
+        ["MP"]=8, 
+        ["id"]=27114, 
+        ["INT"]=16, 
+        ["category"]="Armor", 
+        ["CHR"]=19, 
         ["Set Bonus"]={
             ["set id"]=241, 
             ["bonus"]={
@@ -6895,31 +6908,18 @@ return {
                 }
             }
         }, 
-        ["Store TP"]=7, 
-        ["AGI"]=7, 
-        ["HP"]=34, 
-        ["Accuracy"]=62, 
-        ["discription"]="DEF:104 HP+34 MP+8 STR+11 DEX+34 VIT+32 AGI+7 INT+16 MND+30 CHR+19 Accuracy+37 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% \"Store TP\"+7 Pet: Attack+35 \"Store TP\"+7 Set: Enhances \"Double Attack\" effect", 
-        ["STR"]=11, 
-        ["Haste"]=4, 
-        ["MP"]=8, 
-        ["id"]=27114, 
-        ["INT"]=16, 
-        ["category"]="Armor", 
-        ["CHR"]=19, 
-        ["en"]="Emi. Gauntlets +1", 
         ["VIT"]=32, 
-        ["item_level"]=119
+        ["discription"]="DEF:104 HP+34 MP+8 STR+11 DEX+34 VIT+32 AGI+7 INT+16 MND+30 CHR+19 Accuracy+37 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% \"Store TP\"+7 Pet: Attack+35 \"Store TP\"+7 Set: Enhances \"Double Attack\" effect"
     }, 
     [262]={
         ["discription"]="DMG:140 Delay:288 STR+12 DEX+12 Axe skill +188 Parrying skill +188 Magic Accuracy skill +146 Pet: Accuracy+30 Haste+3%", 
+        ["skill"]="Axe", 
         ["DEX"]=12, 
-        ["STR"]=12, 
         ["category"]="Weapon", 
         ["en"]="Hunahpu", 
         ["item_level"]=115, 
         ["delay"]=288, 
-        ["Parrying skill"]=188, 
+        ["STR"]=12, 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
@@ -6929,7 +6929,7 @@ return {
             [9]="BST"
         }, 
         ["id"]=20826, 
-        ["skill"]="Axe", 
+        ["Parrying skill"]=188, 
         ["damage"]=140
     }, 
     [263]={
@@ -6949,6 +6949,12 @@ return {
         ["DEF"]=111, 
         ["id"]=25575, 
         ["MND"]=22, 
+        ["item_level"]=119, 
+        ["Ranged Accuracy"]=48, 
+        ["en"]="Meghanada Visor +2", 
+        ["AGI"]=31, 
+        ["HP"]=25, 
+        ["Accuracy"]=48, 
         ["Set Bonus"]={
             ["set id"]=59, 
             ["bonus"]={
@@ -6967,18 +6973,12 @@ return {
                 }
             }
         }, 
-        ["Ranged Accuracy"]=48, 
-        ["en"]="Meghanada Visor +2", 
-        ["AGI"]=31, 
-        ["HP"]=25, 
-        ["Accuracy"]=48, 
-        ["Ranged Attack"]=44, 
         ["INT"]=12, 
         ["STR"]=27, 
         ["Haste"]=4, 
         ["discription"]="DEF:111 HP+25 STR+27 DEX+33 VIT+15 AGI+31 INT+12 MND+22 CHR+23 Accuracy+48 Attack+44 Ranged Accuracy+48 Ranged Attack+44 Evasion+49 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+4% \"Dead Aim\"+12 Physical damage taken -5% Set: Enhances \"Regen\" effect", 
         ["CHR"]=23, 
-        ["item_level"]=119, 
+        ["Ranged Attack"]=44, 
         ["category"]="Armor", 
         ["PDT"]=-5, 
         ["VIT"]=15, 
@@ -7000,6 +7000,12 @@ return {
         ["DEX"]=34, 
         ["Haste"]=2, 
         ["MND"]=19, 
+        ["discription"]="DEF:78 HP+20 STR+23 DEX+34 VIT+8 AGI+54 MND+19 CHR+34 Accuracy+46 Attack+42 Ranged Accuracy+46 Ranged Attack+42 Evasion+74 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+2% \"Snapshot\"+10 Physical damage taken -3% Set: Enhances \"Regen\" effect", 
+        ["Ranged Accuracy"]=46, 
+        ["en"]="Meg. Jam. +2", 
+        ["AGI"]=54, 
+        ["HP"]=20, 
+        ["id"]=25947, 
         ["Set Bonus"]={
             ["set id"]=59, 
             ["bonus"]={
@@ -7018,19 +7024,13 @@ return {
                 }
             }
         }, 
-        ["Ranged Accuracy"]=46, 
-        ["en"]="Meg. Jam. +2", 
-        ["AGI"]=54, 
-        ["HP"]=20, 
-        ["id"]=25947, 
-        ["Evasion"]=74, 
         ["CHR"]=34, 
         ["STR"]=23, 
         ["DEF"]=78, 
         ["Accuracy"]=46, 
         ["category"]="Armor", 
         ["PDT"]=-3, 
-        ["discription"]="DEF:78 HP+20 STR+23 DEX+34 VIT+8 AGI+54 MND+19 CHR+34 Accuracy+46 Attack+42 Ranged Accuracy+46 Ranged Attack+42 Evasion+74 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+2% \"Snapshot\"+10 Physical damage taken -3% Set: Enhances \"Regen\" effect", 
+        ["Evasion"]=74, 
         ["item_level"]=119, 
         ["VIT"]=8, 
         ["Attack"]=42
@@ -7149,9 +7149,9 @@ return {
             [1]="Sub"
         }, 
         ["id"]=20618, 
+        ["en"]="Sandung", 
         ["item_level"]=119, 
         ["AGI"]=10, 
-        ["en"]="Sandung", 
         ["delay"]=200, 
         ["jobs"]={
             [6]="THF"
@@ -7213,13 +7213,13 @@ return {
         ["DEF"]=121, 
         ["id"]=23732, 
         ["MND"]=16, 
-        ["AGI"]=33, 
+        ["item_level"]=119, 
         ["Ranged Accuracy"]=50, 
         ["Store TP"]=8, 
-        ["item_level"]=119, 
+        ["en"]="Malignance Chapeau", 
         ["HP"]=45, 
         ["Accuracy"]=50, 
-        ["en"]="Malignance Chapeau", 
+        ["AGI"]=33, 
         ["slots"]={
             [4]="Head"
         }, 
@@ -7287,13 +7287,13 @@ return {
         ["DEF"]=108, 
         ["id"]=23734, 
         ["MND"]=42, 
-        ["en"]="Malignance Gloves", 
+        ["AGI"]=24, 
         ["Ranged Accuracy"]=50, 
         ["Store TP"]=12, 
-        ["AGI"]=24, 
+        ["item_level"]=119, 
         ["HP"]=57, 
         ["Accuracy"]=50, 
-        ["item_level"]=119, 
+        ["en"]="Malignance Gloves", 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -7309,7 +7309,7 @@ return {
     }, 
     [273]={
         ["Evasion"]=85, 
-        ["en"]="Malignance Tights", 
+        ["AGI"]=42, 
         ["jobs"]={
             [2]="MNK", 
             [5]="RDM", 
@@ -7325,7 +7325,7 @@ return {
         ["STR"]=28, 
         ["Haste"]=9, 
         ["MND"]=19, 
-        ["AGI"]=42, 
+        ["en"]="Malignance Tights", 
         ["Ranged Accuracy"]=50, 
         ["Store TP"]=10, 
         ["item_level"]=119, 
@@ -7388,9 +7388,9 @@ return {
         ["slots"]={
             [6]="Hands"
         }, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:90 HP+25 STR+9 DEX+33 VIT+30 AGI+3 INT+10 MND+28 CHR+24 Accuracy+15 Evasion+39 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5% Enmity+6 \"Treasure Hunter\"+3", 
         ["HP"]=25, 
-        ["en"]="Plun. Armlets +1", 
+        ["item_level"]=119, 
         ["Accuracy"]=15, 
         ["STR"]=9, 
         ["DEF"]=90, 
@@ -7404,7 +7404,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=24, 
         ["VIT"]=30, 
-        ["discription"]="DEF:90 HP+25 STR+9 DEX+33 VIT+30 AGI+3 INT+10 MND+28 CHR+24 Accuracy+15 Evasion+39 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+5% Enmity+6 \"Treasure Hunter\"+3"
+        ["en"]="Plun. Armlets +1"
     }, 
     [276]={
         ["discription"]="DMG:117 Delay:180 DEX+10 INT+10 MND+10 Accuracy+35 Attack+25 Magic Accuracy+35 \"Magic Atk. Bonus\"+13 Magic Damage +217 Dagger skill +242 Parrying skill +242 Magic Accuracy skill +242 Main hand: \"Evisceration\" \"Evisceration\" damage +50%", 
@@ -7459,13 +7459,13 @@ return {
         ["DEF"]=143, 
         ["id"]=23733, 
         ["MND"]=24, 
-        ["AGI"]=42, 
+        ["item_level"]=119, 
         ["Ranged Accuracy"]=50, 
         ["Store TP"]=11, 
-        ["item_level"]=119, 
+        ["en"]="Malignance Tabard", 
         ["HP"]=68, 
         ["Accuracy"]=50, 
-        ["en"]="Malignance Tabard", 
+        ["AGI"]=42, 
         ["slots"]={
             [5]="Body"
         }, 
@@ -7506,12 +7506,12 @@ return {
     }, 
     [279]={
         ["discription"]="Calls Vivacious Vickie.", 
-        ["en"]="Tant. Broth", 
-        ["skill"]="(N/A)", 
         ["id"]=17919, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="Tant. Broth", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -7730,7 +7730,7 @@ return {
         ["DEX"]=24, 
         ["DEF"]=133, 
         ["MND"]=19, 
-        ["AGI"]=19, 
+        ["en"]="Nukumi Gausape +1", 
         ["Set Bonus"]={
             ["set id"]=35, 
             ["bonus"]={
@@ -7741,8 +7741,8 @@ return {
                 [5]={}
             }
         }, 
+        ["AGI"]=19, 
         ["item_level"]=119, 
-        ["en"]="Nukumi Gausape +1", 
         ["HP"]=66, 
         ["id"]=26915, 
         ["discription"]="DEF:133 HP+66 STR+28 DEX+24 VIT+28 AGI+19 INT+19 MND+19 CHR+19 Accuracy+25 Attack+25 Evasion+69 Magic Evasion+59 \"Magic Def. Bonus\"+4 Haste+3% Axe skill +11 Augments \"Killer\" effects Set: Attack occ. varies with pet's HP", 
@@ -7790,6 +7790,10 @@ return {
             [6]="Hands"
         }, 
         ["item_level"]=119, 
+        ["AGI"]=7, 
+        ["en"]="Nukumi Manoplas +1", 
+        ["HP"]=27, 
+        ["id"]=27069, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -7800,10 +7804,6 @@ return {
             }, 
             ["set id"]=35
         }, 
-        ["en"]="Nukumi Manoplas +1", 
-        ["HP"]=27, 
-        ["id"]=27069, 
-        ["discription"]="DEF:92 HP+27 STR+15 DEX+32 VIT+32 AGI+7 INT+6 MND+23 CHR+16 Attack+25 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% Critical hit rate +4% \"Sic\" TP Bonus +600 \"Ready\" TP Bonus +600 Set: Attack occ. varies with pet's HP", 
         ["INT"]=6, 
         ["STR"]=15, 
         ["DEF"]=92, 
@@ -7811,7 +7811,7 @@ return {
         ["CHR"]=16, 
         ["VIT"]=32, 
         ["category"]="Armor", 
-        ["AGI"]=7, 
+        ["discription"]="DEF:92 HP+27 STR+15 DEX+32 VIT+32 AGI+7 INT+6 MND+23 CHR+16 Attack+25 Evasion+24 Magic Evasion+32 \"Magic Def. Bonus\"+1 Haste+4% Critical hit rate +4% \"Sic\" TP Bonus +600 \"Ready\" TP Bonus +600 Set: Attack occ. varies with pet's HP", 
         ["Attack"]=25
     }, 
     [292]={
@@ -7847,8 +7847,8 @@ return {
         ["Haste"]=8, 
         ["MND"]=20, 
         ["id"]=23071, 
-        ["item_level"]=119, 
         ["AGI"]=24, 
+        ["item_level"]=119, 
         ["en"]="Ankusa Helm +2", 
         ["HP"]=46, 
         ["augments"]={
@@ -7875,12 +7875,12 @@ return {
         ["discription"]="STR+5 DEX+5 \"Double Attack\"+5% \"Store TP\"+5 \"Subtle Blow II\"+5", 
         ["en"]="Sherida Earring", 
         ["Store TP"]=5, 
-        ["STR"]=5, 
-        ["category"]="Armor", 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
+        ["category"]="Armor", 
+        ["DEX"]=5, 
         ["jobs"]={
             [2]="MNK", 
             [5]="RDM", 
@@ -7892,7 +7892,7 @@ return {
             [22]="RUN"
         }, 
         ["id"]=26084, 
-        ["DEX"]=5
+        ["STR"]=5
     }, 
     [295]={
         ["discription"]="DEF:18 \"Reward\"+30 \"Spur\"+10", 
@@ -7922,14 +7922,14 @@ return {
         ["discription"]="DMG:172 Delay:489 Great Sword skill +108 Parrying skill +108 Magic Accuracy skill +96", 
         ["category"]="Weapon", 
         ["Great Sword skill"]=108, 
-        ["en"]="Trial Blade", 
+        ["item_level"]=109, 
         ["Parrying skill"]=108, 
         ["delay"]=489, 
         ["skill"]="Great Sword", 
         ["jobs"]={
             [22]="RUN"
         }, 
-        ["item_level"]=109, 
+        ["en"]="Trial Blade", 
         ["id"]=20749, 
         ["slots"]={
             [0]="Main"
@@ -7940,9 +7940,9 @@ return {
         ["discription"]="DEF:52 HP+6 STR+8 DEX+15 VIT+8 AGI+23 MND+8 CHR+19 Evasion+33 Magic Evasion+47 \"Magic Def. Bonus\"+2 Haste+4% \"Charm\"+3 Enhances \"Reward\" effect Pet: Accuracy+10 Attack+10", 
         ["Haste"]=4, 
         ["MND"]=8, 
-        ["item_level"]=109, 
-        ["STR"]=8, 
         ["en"]="Totemic Gaiters", 
+        ["STR"]=8, 
+        ["item_level"]=109, 
         ["AGI"]=23, 
         ["HP"]=6, 
         ["jobs"]={
@@ -7968,9 +7968,20 @@ return {
         }, 
         ["STR"]=34, 
         ["item_level"]=119, 
-        ["discription"]="DEF:124 HP+70 STR+34 VIT+21 AGI+25 INT+35 MND+22 CHR+16 Accuracy+39 Evasion+48 Magic Evasion+79 \"Magic Def. Bonus\"+5 Haste+6% \"Reward\" recast time -18 \"Killer\" effects +1 Pet: Attack+30 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["en"]="Tot. Trousers +2", 
         ["AGI"]=25, 
         ["HP"]=70, 
+        ["discription"]="DEF:124 HP+70 STR+34 VIT+21 AGI+25 INT+35 MND+22 CHR+16 Accuracy+39 Evasion+48 Magic Evasion+79 \"Magic Def. Bonus\"+5 Haste+6% \"Reward\" recast time -18 \"Killer\" effects +1 Pet: Attack+30 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["Accuracy"]=39, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["DEF"]=124, 
+        ["id"]=23249, 
+        ["INT"]=35, 
+        ["category"]="Armor", 
+        ["CHR"]=16, 
+        ["VIT"]=21, 
         ["Set Bonus"]={
             ["set id"]=46, 
             ["bonus"]={
@@ -7996,18 +8007,7 @@ return {
                     ["Magic Accuracy"]=60
                 }
             }
-        }, 
-        ["Accuracy"]=39, 
-        ["slots"]={
-            [7]="Legs"
-        }, 
-        ["DEF"]=124, 
-        ["id"]=23249, 
-        ["INT"]=35, 
-        ["category"]="Armor", 
-        ["CHR"]=16, 
-        ["VIT"]=21, 
-        ["en"]="Tot. Trousers +2"
+        }
     }, 
     [299]={
         ["Evasion"]=44, 
@@ -8027,10 +8027,10 @@ return {
         ["slots"]={
             [4]="Head"
         }, 
-        ["en"]="Fu. Bandeau +1", 
+        ["item_level"]=119, 
         ["HP"]=36, 
         ["PDT"]=-4, 
-        ["discription"]="DEF:104 HP+36 MP+68 STR+13 DEX+17 VIT+20 AGI+24 INT+13 MND+13 CHR+14 Evasion+44 Magic Evasion+53 \"Magic Def. Bonus\"+2 Haste+8% Physical damage taken -4% \"Phalanx\" received +5", 
+        ["en"]="Fu. Bandeau +1", 
         ["STR"]=13, 
         ["Haste"]=8, 
         ["MP"]=68, 
@@ -8039,7 +8039,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=14, 
         ["VIT"]=20, 
-        ["item_level"]=119
+        ["discription"]="DEF:104 HP+36 MP+68 STR+13 DEX+17 VIT+20 AGI+24 INT+13 MND+13 CHR+14 Evasion+44 Magic Evasion+53 \"Magic Def. Bonus\"+2 Haste+8% Physical damage taken -4% \"Phalanx\" received +5"
     }, 
     [300]={
         ["Evasion"]=49, 
@@ -8089,9 +8089,9 @@ return {
         ["Haste"]=4, 
         ["AGI"]=37, 
         ["STR"]=12, 
-        ["discription"]="DEF:75 HP+13 MP+30 STR+12 DEX+24 VIT+12 AGI+37 MND+12 CHR+30 Accuracy+18 Evasion+72 Magic Evasion+69 \"Magic Def. Bonus\"+5 Parrying skill +15 Haste+4% \"Tactical Parry\"+20", 
+        ["en"]="Futhark Boots +1", 
         ["HP"]=13, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:75 HP+13 MP+30 STR+12 DEX+24 VIT+12 AGI+37 MND+12 CHR+30 Accuracy+18 Evasion+72 Magic Evasion+69 \"Magic Def. Bonus\"+5 Parrying skill +15 Haste+4% \"Tactical Parry\"+20", 
         ["Accuracy"]=18, 
         ["slots"]={
             [8]="Feet"
@@ -8103,7 +8103,7 @@ return {
         ["VIT"]=12, 
         ["category"]="Armor", 
         ["Parrying skill"]=15, 
-        ["en"]="Futhark Boots +1"
+        ["item_level"]=119
     }, 
     [302]={
         ["Evasion"]=24, 
@@ -8265,19 +8265,6 @@ return {
         ["MND"]=20, 
         ["Dual Wield"]=6, 
         ["Ranged Accuracy"]=35, 
-        ["Ranged Attack"]=35, 
-        ["en"]="Adhemar Jacket +1", 
-        ["HP"]=63, 
-        ["Accuracy"]=35, 
-        ["discription"]="DEF:133 HP+63 STR+26 DEX+33 VIT+23 AGI+29 INT+20 MND+20 CHR+20 Accuracy+35 Attack+35 Ranged Accuracy+35 Ranged Attack+35 Evasion+55 Magic Evasion+69 \"Magic Def. Bonus\"+6 Haste+4% \"Triple Attack\"+4% Enmity-8 \"Dual Wield\"+6 Set: Increases rate of critical hits", 
-        ["INT"]=20, 
-        ["CHR"]=20, 
-        ["slots"]={
-            [5]="Body"
-        }, 
-        ["DEF"]=133, 
-        ["id"]=25687, 
-        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -8296,8 +8283,21 @@ return {
             }, 
             ["set id"]=11
         }, 
-        ["AGI"]=29, 
+        ["en"]="Adhemar Jacket +1", 
+        ["HP"]=63, 
+        ["Accuracy"]=35, 
         ["item_level"]=119, 
+        ["INT"]=20, 
+        ["CHR"]=20, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["DEF"]=133, 
+        ["id"]=25687, 
+        ["category"]="Armor", 
+        ["AGI"]=29, 
+        ["discription"]="DEF:133 HP+63 STR+26 DEX+33 VIT+23 AGI+29 INT+20 MND+20 CHR+20 Accuracy+35 Attack+35 Ranged Accuracy+35 Ranged Attack+35 Evasion+55 Magic Evasion+69 \"Magic Def. Bonus\"+6 Haste+4% \"Triple Attack\"+4% Enmity-8 \"Dual Wield\"+6 Set: Increases rate of critical hits", 
+        ["Ranged Attack"]=35, 
         ["VIT"]=23, 
         ["Attack"]=55
     }, 
@@ -8317,22 +8317,6 @@ return {
         ["DEX"]=44, 
         ["Haste"]=5, 
         ["MND"]=30, 
-        ["discription"]="DEF:93 HP+22 STR+15 DEX+44 VIT+29 AGI+7 INT+12 MND+30 CHR+17 Accuracy+32 Ranged Accuracy+32 Evasion+36 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Triple Attack\"+4% \"Store TP\"+7 Set: Increases rate of critical hits", 
-        ["Ranged Accuracy"]=32, 
-        ["Store TP"]=7, 
-        ["AGI"]=7, 
-        ["HP"]=22, 
-        ["id"]=27118, 
-        ["item_level"]=119, 
-        ["INT"]=12, 
-        ["slots"]={
-            [6]="Hands"
-        }, 
-        ["DEF"]=93, 
-        ["Accuracy"]=32, 
-        ["CHR"]=17, 
-        ["VIT"]=29, 
-        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -8351,7 +8335,23 @@ return {
             }, 
             ["set id"]=11
         }, 
-        ["en"]="Adhemar Wrist. +1"
+        ["Ranged Accuracy"]=32, 
+        ["Store TP"]=7, 
+        ["item_level"]=119, 
+        ["HP"]=22, 
+        ["id"]=27118, 
+        ["en"]="Adhemar Wrist. +1", 
+        ["INT"]=12, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["DEF"]=93, 
+        ["Accuracy"]=32, 
+        ["CHR"]=17, 
+        ["VIT"]=29, 
+        ["category"]="Armor", 
+        ["discription"]="DEF:93 HP+22 STR+15 DEX+44 VIT+29 AGI+7 INT+12 MND+30 CHR+17 Accuracy+32 Ranged Accuracy+32 Evasion+36 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Triple Attack\"+4% \"Store TP\"+7 Set: Increases rate of critical hits", 
+        ["AGI"]=7
     }, 
     [309]={
         ["Evasion"]=36, 
@@ -8365,14 +8365,10 @@ return {
             [19]="DNC", 
             [22]="RUN"
         }, 
-        ["discription"]="DEF:93 HP+22 STR+15 DEX+44 VIT+29 AGI+7 INT+12 MND+30 CHR+17 Accuracy+32 Ranged Accuracy+32 Evasion+36 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Triple Attack\"+4% \"Store TP\"+7 Set: Increases rate of critical hits", 
+        ["AGI"]=7, 
         ["DEX"]=44, 
         ["STR"]=15, 
-        ["augments"]={
-            [1]="Accuracy+20", 
-            [2]="Attack+20", 
-            [3]="\"Subtle Blow\"+8"
-        }, 
+        ["id"]=27118, 
         ["MND"]=30, 
         ["item_level"]=119, 
         ["Ranged Accuracy"]=32, 
@@ -8380,7 +8376,7 @@ return {
         ["en"]="Adhemar Wrist. +1", 
         ["HP"]=22, 
         ["Accuracy"]=52, 
-        ["id"]=27118, 
+        ["discription"]="DEF:93 HP+22 STR+15 DEX+44 VIT+29 AGI+7 INT+12 MND+30 CHR+17 Accuracy+32 Ranged Accuracy+32 Evasion+36 Magic Evasion+43 \"Magic Def. Bonus\"+2 Haste+5% \"Triple Attack\"+4% \"Store TP\"+7 Set: Increases rate of critical hits", 
         ["INT"]=12, 
         ["slots"]={
             [6]="Hands"
@@ -8388,7 +8384,11 @@ return {
         ["DEF"]=93, 
         ["Haste"]=5, 
         ["CHR"]=17, 
-        ["AGI"]=7, 
+        ["augments"]={
+            [1]="Accuracy+20", 
+            [2]="Attack+20", 
+            [3]="\"Subtle Blow\"+8"
+        }, 
         ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
@@ -8425,17 +8425,13 @@ return {
         }, 
         ["Haste"]=8, 
         ["DEX"]=33, 
-        ["Evasion"]=49, 
-        ["augments"]={
-            [1]="DEX+12", 
-            [2]="AGI+12", 
-            [3]="Accuracy+20"
-        }, 
+        ["discription"]="DEF:102 HP+41 STR+19 DEX+21 VIT+15 AGI+19 INT+14 MND+14 CHR+14 Attack+36 Ranged Attack+36 Evasion+49 Magic Evasion+59 \"Magic Def. Bonus\"+3 Haste+8% \"Triple Attack\"+4% \"Subtle Blow\"+8 Critical hit damage +6% Set: Increases rate of critical hits", 
+        ["id"]=25614, 
         ["MND"]=14, 
-        ["AGI"]=31, 
-        ["STR"]=19, 
-        ["item_level"]=119, 
         ["en"]="Adhemar Bonnet +1", 
+        ["STR"]=19, 
+        ["AGI"]=31, 
+        ["item_level"]=119, 
         ["HP"]=41, 
         ["Accuracy"]=20, 
         ["Critical hit damage"]=6, 
@@ -8444,9 +8440,13 @@ return {
             [4]="Head"
         }, 
         ["DEF"]=102, 
-        ["id"]=25614, 
+        ["Evasion"]=49, 
         ["CHR"]=14, 
-        ["discription"]="DEF:102 HP+41 STR+19 DEX+21 VIT+15 AGI+19 INT+14 MND+14 CHR+14 Attack+36 Ranged Attack+36 Evasion+49 Magic Evasion+59 \"Magic Def. Bonus\"+3 Haste+8% \"Triple Attack\"+4% \"Subtle Blow\"+8 Critical hit damage +6% Set: Increases rate of critical hits", 
+        ["augments"]={
+            [1]="DEX+12", 
+            [2]="AGI+12", 
+            [3]="Accuracy+20"
+        }, 
         ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
@@ -8481,9 +8481,19 @@ return {
             [5]="Body"
         }, 
         ["AGI"]=33, 
-        ["item_level"]=119, 
+        ["en"]="Runeist's Coat +2", 
         ["discription"]="DEF:145 HP+208 MP+66 STR+29 DEX+34 VIT+29 AGI+33 INT+28 MND+28 CHR+28 Accuracy+40 Res. all ele.+36 Evasion+59 Magic Evasion+84 \"Magic Def. Bonus\"+6 Haste+4% \"Valiance\" and \"Vallation\" effect duration +17 \"Refresh\"+2 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
         ["HP"]=208, 
+        ["item_level"]=119, 
+        ["Accuracy"]=40, 
+        ["STR"]=29, 
+        ["Haste"]=4, 
+        ["MP"]=66, 
+        ["id"]=23129, 
+        ["INT"]=28, 
+        ["category"]="Armor", 
+        ["CHR"]=28, 
+        ["VIT"]=29, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -8509,17 +8519,7 @@ return {
                 }
             }, 
             ["set id"]=88
-        }, 
-        ["Accuracy"]=40, 
-        ["STR"]=29, 
-        ["Haste"]=4, 
-        ["MP"]=66, 
-        ["id"]=23129, 
-        ["INT"]=28, 
-        ["category"]="Armor", 
-        ["CHR"]=28, 
-        ["VIT"]=29, 
-        ["en"]="Runeist's Coat +2"
+        }
     }, 
     [312]={
         ["discription"]="DMG:6 Delay:225", 
@@ -8693,12 +8693,12 @@ return {
     }, 
     [318]={
         ["discription"]="Calls Attentive Ibuki.", 
-        ["en"]="Salubrious Broth", 
-        ["skill"]="(N/A)", 
         ["id"]=17911, 
         ["slots"]={
             [3]="Ammo"
         }, 
+        ["en"]="Salubrious Broth", 
+        ["skill"]="(N/A)", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -8716,9 +8716,9 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:119 HP+87 STR+29 VIT+16 AGI+20 INT+30 MND+17 CHR+11 Evasion+38 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+6% Enhancing magic duration +20% Enhancing magic casting time -13%", 
         ["HP"]=87, 
-        ["en"]="Futhark Trousers +1", 
+        ["item_level"]=119, 
         ["VIT"]=16, 
         ["STR"]=29, 
         ["DEF"]=119, 
@@ -8731,7 +8731,7 @@ return {
         ["INT"]=30, 
         ["category"]="Armor", 
         ["CHR"]=11, 
-        ["discription"]="DEF:119 HP+87 STR+29 VIT+16 AGI+20 INT+30 MND+17 CHR+11 Evasion+38 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+6% Enhancing magic duration +20% Enhancing magic casting time -13%"
+        ["en"]="Futhark Trousers +1"
     }, 
     [320]={
         ["Evasion"]=52, 
@@ -8744,7 +8744,7 @@ return {
         ["DEX"]=30, 
         ["Haste"]=4, 
         ["MND"]=24, 
-        ["en"]="Erilaz Surcoat +1", 
+        ["AGI"]=29, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -8755,8 +8755,8 @@ return {
             }, 
             ["set id"]=25
         }, 
+        ["en"]="Erilaz Surcoat +1", 
         ["item_level"]=119, 
-        ["AGI"]=29, 
         ["HP"]=123, 
         ["id"]=26941, 
         ["discription"]="DEF:137 HP+123 MP+61 STR+28 DEX+30 VIT+23 AGI+29 INT+25 MND+24 CHR+24 Accuracy+28 Attack+28 Evasion+52 Magic Evasion+80 \"Magic Def. Bonus\"+6 Haste+4% Converts 6% of physical damage taken to MP  Boosts enmity retention when taking damage +12 Set: Occ. absorbs damage taken", 
@@ -8782,9 +8782,9 @@ return {
         ["Haste"]=6, 
         ["AGI"]=21, 
         ["VIT"]=15, 
-        ["discription"]="DEF:117 HP+80 MP+74 STR+33 VIT+15 AGI+21 INT+33 MND+17 CHR+12 Evasion+44 Magic Evasion+107 Haste+6% \"Magic Def. Bonus\"+6 Enmity+11 \"Inquartata\"+2 Physical damage taken -7% Set: Occasionally absorbs damage taken", 
+        ["en"]="Eri. Leg Guards +1", 
         ["HP"]=80, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:117 HP+80 MP+74 STR+33 VIT+15 AGI+21 INT+33 MND+17 CHR+12 Evasion+44 Magic Evasion+107 Haste+6% \"Magic Def. Bonus\"+6 Enmity+11 \"Inquartata\"+2 Physical damage taken -7% Set: Occasionally absorbs damage taken", 
         ["PDT"]=-7, 
         ["DEF"]=117, 
         ["MP"]=74, 
@@ -8793,7 +8793,7 @@ return {
         ["CHR"]=12, 
         ["INT"]=33, 
         ["category"]="Armor", 
-        ["en"]="Eri. Leg Guards +1"
+        ["item_level"]=119
     }, 
     [322]={
         ["Evasion"]=77, 
@@ -8806,19 +8806,19 @@ return {
             [8]="Feet"
         }, 
         ["AGI"]=38, 
-        ["discription"]="DEF:75 HP+18 MP+29 STR+17 DEX+26 VIT+16 AGI+38 MND+16 CHR+32 Resist all elements +25 Evasion+77 Magic Evasion+107 \"Magic Def. Bonus\"+5 Haste+4% Enmity+6 Physical damage taken -5% Set: Occasionally absorbs damage taken", 
+        ["en"]="Erilaz Greaves +1", 
         ["DEF"]=75, 
         ["HP"]=18, 
         ["DEX"]=26, 
         ["id"]=27454, 
         ["Haste"]=4, 
         ["MP"]=29, 
-        ["item_level"]=119, 
+        ["discription"]="DEF:75 HP+18 MP+29 STR+17 DEX+26 VIT+16 AGI+38 MND+16 CHR+32 Resist all elements +25 Evasion+77 Magic Evasion+107 \"Magic Def. Bonus\"+5 Haste+4% Enmity+6 Physical damage taken -5% Set: Occasionally absorbs damage taken", 
         ["STR"]=17, 
         ["category"]="Armor", 
         ["CHR"]=32, 
         ["PDT"]=-5, 
-        ["en"]="Erilaz Greaves +1"
+        ["item_level"]=119
     }, 
     [323]={
         ["Evasion"]=84, 
@@ -8831,10 +8831,10 @@ return {
         ["DEX"]=34, 
         ["DEF"]=153, 
         ["MND"]=29, 
-        ["AGI"]=29, 
-        ["discription"]="DEF:153 HP+86 STR+38 DEX+34 VIT+38 AGI+29 INT+29 MND+29 CHR+29 Accuracy+54 Attack+64 Magic Accuracy+54 Evasion+84 Magic Evasion+99 \"Magic Def. Bonus\"+7 Axe skill +16 Haste+3% Augments \"Killer\" effects Weapon skill damage +8% Pet: Accuracy+54 Ranged Accuracy+54 Magic Accuracy+54 Set: Attack occ. varies with pet's HP", 
-        ["en"]="Nukumi Gausape +2", 
         ["item_level"]=119, 
+        ["discription"]="DEF:153 HP+86 STR+38 DEX+34 VIT+38 AGI+29 INT+29 MND+29 CHR+29 Accuracy+54 Attack+64 Magic Accuracy+54 Evasion+84 Magic Evasion+99 \"Magic Def. Bonus\"+7 Axe skill +16 Haste+3% Augments \"Killer\" effects Weapon skill damage +8% Pet: Accuracy+54 Ranged Accuracy+54 Magic Accuracy+54 Set: Attack occ. varies with pet's HP", 
+        ["AGI"]=29, 
+        ["en"]="Nukumi Gausape +2", 
         ["HP"]=86, 
         ["id"]=23160, 
         ["Magic Accuracy"]=54, 
@@ -8860,12 +8860,12 @@ return {
         ["DEF"]=112, 
         ["MND"]=33, 
         ["Critical hit rate"]=5, 
+        ["en"]="Nukumi Manoplas +2", 
         ["AGI"]=17, 
         ["item_level"]=119, 
-        ["en"]="Nukumi Manoplas +2", 
         ["HP"]=47, 
         ["id"]=23227, 
-        ["Magic Accuracy"]=52, 
+        ["DT"]=-10, 
         ["INT"]=16, 
         ["STR"]=20, 
         ["Haste"]=4, 
@@ -8873,17 +8873,17 @@ return {
         ["CHR"]=26, 
         ["VIT"]=42, 
         ["category"]="Armor", 
-        ["Attack"]=62, 
-        ["DT"]=-10
+        ["Magic Accuracy"]=52, 
+        ["Attack"]=62
     }, 
     [325]={
         ["discription"]="Calls Amiable Roche.", 
-        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["id"]=21446, 
+        ["skill"]="(N/A)", 
         ["en"]="Airy Broth", 
+        ["id"]=21446, 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -8919,18 +8919,6 @@ return {
         ["DEX"]=20, 
         ["DEF"]=105, 
         ["AGI"]=20, 
-        ["en"]="Erilaz Galea +1", 
-        ["discription"]="DEF:105 HP+91 MP+35 STR+20 DEX+20 VIT+14 AGI+20 INT+19 MND+16 CHR+17 Evasion+47 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+8% \"Refresh\" potency +2 Augments \"Vivacious Pulse\" Enhancing magic duration +15% Set: Occ. absorbs damage taken", 
-        ["HP"]=91, 
-        ["item_level"]=119, 
-        ["VIT"]=14, 
-        ["Haste"]=8, 
-        ["MP"]=35, 
-        ["id"]=26783, 
-        ["STR"]=20, 
-        ["CHR"]=17, 
-        ["INT"]=19, 
-        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -8940,7 +8928,19 @@ return {
                 [5]={}
             }, 
             ["set id"]=25
-        }
+        }, 
+        ["discription"]="DEF:105 HP+91 MP+35 STR+20 DEX+20 VIT+14 AGI+20 INT+19 MND+16 CHR+17 Evasion+47 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+8% \"Refresh\" potency +2 Augments \"Vivacious Pulse\" Enhancing magic duration +15% Set: Occ. absorbs damage taken", 
+        ["HP"]=91, 
+        ["en"]="Erilaz Galea +1", 
+        ["VIT"]=14, 
+        ["Haste"]=8, 
+        ["MP"]=35, 
+        ["id"]=26783, 
+        ["STR"]=20, 
+        ["CHR"]=17, 
+        ["INT"]=19, 
+        ["category"]="Armor", 
+        ["item_level"]=119
     }, 
     [328]={
         ["discription"]="DMG:6 Delay:231", 
@@ -9033,12 +9033,12 @@ return {
     }, 
     [331]={
         ["discription"]="Calls Sweet Caroline. ", 
+        ["skill"]="(N/A)", 
         ["slots"]={
             [3]="Ammo"
         }, 
-        ["skill"]="(N/A)", 
-        ["en"]="Aged Humus", 
         ["id"]=21490, 
+        ["en"]="Aged Humus", 
         ["category"]="Weapon", 
         ["jobs"]={
             [9]="BST"
@@ -9099,19 +9099,12 @@ return {
             [16]="BLU", 
             [22]="RUN"
         }, 
-        ["en"]="Aya. Zucchetto +2", 
+        ["item_level"]=119, 
         ["DEX"]=39, 
         ["slots"]={
             [4]="Head"
         }, 
         ["id"]=25572, 
-        ["MND"]=25, 
-        ["item_level"]=119, 
-        ["discription"]="DEF:128 HP+45 MP+29 STR+20 DEX+39 VIT+16 AGI+23 INT+15 MND+25 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+6% \"Store TP\"+6 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
-        ["Store TP"]=6, 
-        ["AGI"]=23, 
-        ["HP"]=45, 
-        ["Accuracy"]=44, 
         ["Set Bonus"]={
             ["set id"]=96, 
             ["bonus"]={
@@ -9138,6 +9131,13 @@ return {
                 }
             }
         }, 
+        ["en"]="Aya. Zucchetto +2", 
+        ["discription"]="DEF:128 HP+45 MP+29 STR+20 DEX+39 VIT+16 AGI+23 INT+15 MND+25 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+6% \"Store TP\"+6 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
+        ["Store TP"]=6, 
+        ["AGI"]=23, 
+        ["HP"]=45, 
+        ["Accuracy"]=44, 
+        ["MND"]=25, 
         ["STR"]=20, 
         ["DEF"]=128, 
         ["MP"]=29, 
@@ -9164,10 +9164,10 @@ return {
         ["DEX"]=48, 
         ["DEF"]=153, 
         ["MND"]=31, 
-        ["item_level"]=119, 
-        ["discription"]="DEF:153 HP+57 MP+59 STR+28 DEX+48 VIT+24 AGI+33 INT+21 MND+31 CHR+21 Accuracy+46 Magic Accuracy+46 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+7% Damage taken -6% Set: Increases Strength, Vitality, and Mind", 
-        ["AGI"]=33, 
         ["en"]="Ayanmo Corazza +2", 
+        ["discription"]="DEF:153 HP+57 MP+59 STR+28 DEX+48 VIT+24 AGI+33 INT+21 MND+31 CHR+21 Accuracy+46 Magic Accuracy+46 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+7% Damage taken -6% Set: Increases Strength, Vitality, and Mind", 
+        ["item_level"]=119, 
+        ["AGI"]=33, 
         ["HP"]=57, 
         ["id"]=25795, 
         ["Set Bonus"]={
@@ -9217,10 +9217,35 @@ return {
         ["PDT"]=-4, 
         ["STR"]=34, 
         ["AGI"]=25, 
-        ["item_level"]=119, 
+        ["Set Bonus"]={
+            ["set id"]=88, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Magic Accuracy"]=15
+                }, 
+                [3]={
+                    ["Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Magic Accuracy"]=30
+                }, 
+                [4]={
+                    ["Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Magic Accuracy"]=45
+                }, 
+                [5]={
+                    ["Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Magic Accuracy"]=60
+                }
+            }
+        }, 
         ["discription"]="DEF:127 HP+70 MP+52 STR+34 VIT+21 AGI+25 INT+35 MND+23 CHR+16 Accuracy+39 Evasion+48 Magic Evasion+89 \"Magic Def. Bonus\"+5 Divine magic skill +17 Haste+6% Resistance to all status ailments +8 Physical damage taken -4% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
         ["HP"]=70, 
-        ["en"]="Rune. Trousers +2", 
+        ["item_level"]=119, 
         ["Accuracy"]=39, 
         ["slots"]={
             [7]="Legs"
@@ -9232,6 +9257,61 @@ return {
         ["category"]="Armor", 
         ["CHR"]=16, 
         ["VIT"]=21, 
+        ["en"]="Rune. Trousers +2"
+    }, 
+    [337]={
+        ["Evasion"]=79, 
+        ["Attack"]=53, 
+        ["jobs"]={
+            [22]="RUN"
+        }, 
+        ["STR"]=42, 
+        ["Haste"]=6, 
+        ["MND"]=27, 
+        ["AGI"]=26, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:137 HP+90 MP+84 STR+42 VIT+20 AGI+26 INT+38 MND+27 CHR+17 Accuracy+53 Attack+53 Magic Accuracy+53 Evasion+79 Magic Evasion+147 \"Magic Def. Bonus\"+9 Haste+6% Enmity+12 \"Inquartata\"+3 Damage taken -12% Set: Occ. absorbs damage taken", 
+        ["en"]="Eri. Leg Guards +2", 
+        ["HP"]=90, 
+        ["id"]=23307, 
+        ["Magic Accuracy"]=53, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["DEF"]=137, 
+        ["MP"]=84, 
+        ["Accuracy"]=53, 
+        ["INT"]=38, 
+        ["category"]="Armor", 
+        ["CHR"]=17, 
+        ["VIT"]=20, 
+        ["DT"]=-12
+    }, 
+    [338]={
+        ["Evasion"]=69, 
+        ["MND"]=33, 
+        ["Haste"]=4, 
+        ["jobs"]={
+            [22]="RUN"
+        }, 
+        ["DEX"]=39, 
+        ["STR"]=34, 
+        ["AGI"]=38, 
+        ["en"]="Runeist's Coat +3", 
+        ["discription"]="DEF:155 HP+218 MP+76 STR+34 DEX+39 VIT+34 AGI+38 INT+33 MND+33 CHR+33 Accuracy+50 Res. all ele.+39 Evasion+69 Magic Evasion+94 \"Magic Def. Bonus\"+7 Haste+4% \"Valiance\" and \"Vallation\" effect duration +19 \"Refresh\"+3 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["HP"]=218, 
+        ["item_level"]=119, 
+        ["Accuracy"]=50, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["DEF"]=155, 
+        ["MP"]=76, 
+        ["id"]=23464, 
+        ["INT"]=33, 
+        ["category"]="Armor", 
+        ["CHR"]=33, 
+        ["VIT"]=34, 
         ["Set Bonus"]={
             ["set id"]=88, 
             ["bonus"]={
@@ -9259,86 +9339,6 @@ return {
             }
         }
     }, 
-    [337]={
-        ["Evasion"]=79, 
-        ["Magic Accuracy"]=53, 
-        ["jobs"]={
-            [22]="RUN"
-        }, 
-        ["STR"]=42, 
-        ["Haste"]=6, 
-        ["MND"]=27, 
-        ["AGI"]=26, 
-        ["item_level"]=119, 
-        ["discription"]="DEF:137 HP+90 MP+84 STR+42 VIT+20 AGI+26 INT+38 MND+27 CHR+17 Accuracy+53 Attack+53 Magic Accuracy+53 Evasion+79 Magic Evasion+147 \"Magic Def. Bonus\"+9 Haste+6% Enmity+12 \"Inquartata\"+3 Damage taken -12% Set: Occ. absorbs damage taken", 
-        ["en"]="Eri. Leg Guards +2", 
-        ["HP"]=90, 
-        ["id"]=23307, 
-        ["DT"]=-12, 
-        ["slots"]={
-            [7]="Legs"
-        }, 
-        ["DEF"]=137, 
-        ["MP"]=84, 
-        ["Accuracy"]=53, 
-        ["INT"]=38, 
-        ["category"]="Armor", 
-        ["CHR"]=17, 
-        ["VIT"]=20, 
-        ["Attack"]=53
-    }, 
-    [338]={
-        ["Evasion"]=69, 
-        ["MND"]=33, 
-        ["Haste"]=4, 
-        ["jobs"]={
-            [22]="RUN"
-        }, 
-        ["DEX"]=39, 
-        ["STR"]=34, 
-        ["AGI"]=38, 
-        ["item_level"]=119, 
-        ["discription"]="DEF:155 HP+218 MP+76 STR+34 DEX+39 VIT+34 AGI+38 INT+33 MND+33 CHR+33 Accuracy+50 Res. all ele.+39 Evasion+69 Magic Evasion+94 \"Magic Def. Bonus\"+7 Haste+4% \"Valiance\" and \"Vallation\" effect duration +19 \"Refresh\"+3 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
-        ["HP"]=218, 
-        ["Set Bonus"]={
-            ["set id"]=88, 
-            ["bonus"]={
-                [1]={}, 
-                [2]={
-                    ["Accuracy"]=15, 
-                    ["Ranged Accuracy"]=15, 
-                    ["Magic Accuracy"]=15
-                }, 
-                [3]={
-                    ["Accuracy"]=30, 
-                    ["Ranged Accuracy"]=30, 
-                    ["Magic Accuracy"]=30
-                }, 
-                [4]={
-                    ["Accuracy"]=45, 
-                    ["Ranged Accuracy"]=45, 
-                    ["Magic Accuracy"]=45
-                }, 
-                [5]={
-                    ["Accuracy"]=60, 
-                    ["Ranged Accuracy"]=60, 
-                    ["Magic Accuracy"]=60
-                }
-            }
-        }, 
-        ["Accuracy"]=50, 
-        ["slots"]={
-            [5]="Body"
-        }, 
-        ["DEF"]=155, 
-        ["MP"]=76, 
-        ["id"]=23464, 
-        ["INT"]=33, 
-        ["category"]="Armor", 
-        ["CHR"]=33, 
-        ["VIT"]=34, 
-        ["en"]="Runeist's Coat +3"
-    }, 
     [339]={
         ["Evasion"]=112, 
         ["slots"]={
@@ -9350,13 +9350,13 @@ return {
         ["DEX"]=31, 
         ["DEF"]=95, 
         ["MND"]=26, 
-        ["AGI"]=43, 
-        ["discription"]="DEF:95 HP+38 MP+49 STR+26 DEX+31 VIT+16 AGI+43 MND+26 CHR+37 Resist all elements +30 Accuracy+50 Attack+50 Magic Accuracy+50 Evasion+112 Magic Evasion+147 \"Magic Def. Bonus\"+8 Haste+4% Enmity+7 Damage taken -10% Set: Occasionally absorbs damage taken", 
-        ["item_level"]=119, 
         ["en"]="Erilaz Greaves +2", 
+        ["discription"]="DEF:95 HP+38 MP+49 STR+26 DEX+31 VIT+16 AGI+43 MND+26 CHR+37 Resist all elements +30 Accuracy+50 Attack+50 Magic Accuracy+50 Evasion+112 Magic Evasion+147 \"Magic Def. Bonus\"+8 Haste+4% Enmity+7 Damage taken -10% Set: Occasionally absorbs damage taken", 
+        ["AGI"]=43, 
+        ["item_level"]=119, 
         ["HP"]=38, 
         ["id"]=23374, 
-        ["Attack"]=50, 
+        ["DT"]=-10, 
         ["STR"]=26, 
         ["Haste"]=4, 
         ["MP"]=49, 
@@ -9364,17 +9364,21 @@ return {
         ["CHR"]=37, 
         ["VIT"]=16, 
         ["category"]="Armor", 
-        ["Magic Accuracy"]=50, 
-        ["DT"]=-10
+        ["Attack"]=50, 
+        ["Magic Accuracy"]=50
     }, 
     [340]={
         ["discription"]="DEX+3 \"Resist Stun\"+10 Unity Ranking: Accuracy+1～5", 
         ["category"]="Armor", 
         ["en"]="Dominance Earring", 
+        ["DEX"]=3, 
+        ["Unity Ranking Bonus Applied"]="Accuracy + 5", 
+        ["id"]=27542, 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
+        ["Accuracy"]=5, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -9398,11 +9402,7 @@ return {
             [20]="SCH", 
             [21]="GEO", 
             [22]="RUN"
-        }, 
-        ["id"]=27542, 
-        ["DEX"]=3, 
-        ["Accuracy"]=5, 
-        ["Unity Ranking Bonus Applied"]="Accuracy + 5"
+        }
     }, 
     [341]={
         ["discription"]="DEF:8 HP+25 Damage taken -4% Pet: Magic Accuracy+20 \"Magic Atk. Bonus\"+10", 
@@ -9456,6 +9456,12 @@ return {
             [22]="RUN"
         }, 
         ["DEX"]=42, 
+        ["discription"]="DEF:94 HP+29 MP+17 STR+16 DEX+42 VIT+30 AGI+7 INT+16 MND+30 CHR+19 Evasion+33 Magic Evasion+37 \"Magic Def. Bonus\"+3 Great Sword skill +28 Haste+5% Resistance to all status ailments +6 Set: Occasionally absorbs damage taken", 
+        ["en"]="Erilaz Gauntlets +1", 
+        ["Great Sword skill"]=28, 
+        ["item_level"]=119, 
+        ["HP"]=29, 
+        ["DEF"]=94, 
         ["Set Bonus"]={
             ["set id"]=25, 
             ["bonus"]={
@@ -9466,12 +9472,6 @@ return {
                 [5]={}
             }
         }, 
-        ["AGI"]=7, 
-        ["Great Sword skill"]=28, 
-        ["item_level"]=119, 
-        ["HP"]=29, 
-        ["DEF"]=94, 
-        ["en"]="Erilaz Gauntlets +1", 
         ["slots"]={
             [6]="Hands"
         }, 
@@ -9482,7 +9482,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=19, 
         ["VIT"]=30, 
-        ["discription"]="DEF:94 HP+29 MP+17 STR+16 DEX+42 VIT+30 AGI+7 INT+16 MND+30 CHR+19 Evasion+33 Magic Evasion+37 \"Magic Def. Bonus\"+3 Great Sword skill +28 Haste+5% Resistance to all status ailments +6 Set: Occasionally absorbs damage taken"
+        ["AGI"]=7
     }, 
     [344]={
         ["Evasion"]=87, 
@@ -9491,12 +9491,12 @@ return {
             [22]="RUN"
         }, 
         ["DEX"]=35, 
-        ["AGI"]=34, 
-        ["MND"]=34, 
         ["Haste"]=4, 
-        ["Attack"]=64, 
-        ["item_level"]=119, 
+        ["MND"]=34, 
         ["Fast Cast"]=10, 
+        ["en"]="Erilaz Surcoat +2", 
+        ["AGI"]=34, 
+        ["item_level"]=119, 
         ["HP"]=133, 
         ["id"]=23173, 
         ["discription"]="DEF:157 HP+133 MP+81 STR+37 DEX+35 VIT+28 AGI+34 INT+30 MND+34 CHR+29 Accuracy+54 Attack+64 Magic Accuracy+54 Evasion+87 Magic Evasion+120 \"Magic Def. Bonus\"+9 Haste+4% \"Fast Cast\"+10% Converts 7% of physical damage taken to MP Boosts enmity retention when taking damage +13 Set: Occasionally absorbs damage taken", 
@@ -9509,8 +9509,92 @@ return {
         ["INT"]=30, 
         ["category"]="Armor", 
         ["CHR"]=29, 
-        ["en"]="Erilaz Surcoat +2", 
+        ["Attack"]=64, 
         ["VIT"]=28, 
         ["Magic Accuracy"]=54
+    }, 
+    [345]={
+        ["Evasion"]=64, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["jobs"]={
+            [9]="BST"
+        }, 
+        ["DEX"]=36, 
+        ["DEF"]=123, 
+        ["MND"]=25, 
+        ["augments"]={
+            [1]="none", 
+            [2]="none", 
+            [3]="Enhances \"Killer Instinct\" effect", 
+            [4]="none"
+        }, 
+        ["discription"]="DEF:123 HP+56 MP+43 STR+32 DEX+36 VIT+25 AGI+29 INT+25 MND+25 CHR+33 Accuracy+37 Attack+62 Magic Accuracy+37 Evasion+64 Magic Evasion+73 \"Magic Def. Bonus\"+4 Haste+8% \"Charm\"+14 \"Killer\" effects +5 Weapon skill damage +10% Pet: Haste+6%", 
+        ["en"]="Ankusa Helm +3", 
+        ["AGI"]=29, 
+        ["HP"]=56, 
+        ["id"]=23406, 
+        ["item_level"]=119, 
+        ["STR"]=32, 
+        ["Haste"]=8, 
+        ["MP"]=43, 
+        ["Accuracy"]=37, 
+        ["INT"]=25, 
+        ["category"]="Armor", 
+        ["CHR"]=33, 
+        ["Magic Accuracy"]=37, 
+        ["VIT"]=25, 
+        ["Attack"]=62
+    }, 
+    [346]={
+        ["Evasion"]=82, 
+        ["STR"]=29, 
+        ["jobs"]={
+            [22]="RUN"
+        }, 
+        ["DEX"]=25, 
+        ["AGI"]=25, 
+        ["MND"]=26, 
+        ["Attack"]=51, 
+        ["discription"]="DEF:125 HP+101 MP+55 STR+29 DEX+25 VIT+19 AGI+25 INT+24 MND+26 CHR+22 Accuracy+51 Attack+51 Magic Accuracy+51 Evasion+82 Magic Evasion+109 \"Magic Def. Bonus\"+8 Augments \"Vivacious Pulse\" Haste+8% \"Refresh\" potency +3 Enhancing magic duration +20% Spell interruption rate down 15% Set: Occasionally absorbs damage taken", 
+        ["Haste"]=8, 
+        ["item_level"]=119, 
+        ["HP"]=101, 
+        ["id"]=23106, 
+        ["en"]="Erilaz Galea +2", 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["DEF"]=125, 
+        ["MP"]=55, 
+        ["Accuracy"]=51, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=22, 
+        ["VIT"]=19, 
+        ["Magic Accuracy"]=51
+    }, 
+    [347]={
+        ["discription"]="Right ear: Magic Evasion+10 Potency of \"Regen\" effects received +10", 
+        ["category"]="Armor", 
+        ["en"]="Erilaz Earring", 
+        ["augments"]={
+            [1]="System: 1 ID: 1676 Val: 0", 
+            [2]="Accuracy+7", 
+            [3]="Mag. Acc.+7", 
+            [4]="none", 
+            [5]="none"
+        }, 
+        ["jobs"]={
+            [22]="RUN"
+        }, 
+        ["id"]=25546, 
+        ["slots"]={
+            [11]="Left Ear", 
+            [12]="Right Ear"
+        }, 
+        ["Accuracy"]=7, 
+        ["Magic Accuracy"]=7
     }
 }

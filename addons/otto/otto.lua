@@ -141,9 +141,11 @@ windower.register_event('prerender', function(...)
     otto.check_aspir()
 
     if not state.moving and state.is_busy == 0 then 
-        if (partner.target_index ~= nil) and player.target_index ~= partner.target_index then
-            windower.send_command('input /as '..settings.assistee)
-        end
+        if partner ~= nil then  
+            if (partner.target_index ~= nil) and player.target_index ~= partner.target_index then
+                windower.send_command('input /as '..settings.assistee)
+            end
+        end 
     end
 end)
 

@@ -2,10 +2,6 @@
 // Reload Step
 ////////////////////////////////
 
-send Onechix lua reload singer;
-send Chixslave lua reload automb;
-send Threechix lua reload automb;
-
 ////////////////////////////////
 // Reset Step
 ////////////////////////////////
@@ -13,9 +9,11 @@ send Threechix lua reload automb;
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
 send Chixslave hb wipebuffs;
+send Chixslave hb wipedebuffs;
 
 send Threechix hb reset buffs;
 send Threechix hb reset debuffs;
 send Threechix hb wipebuffs;
+send Threechix hb wipedebuffs;
 
 send Onechix sing playlist clear;

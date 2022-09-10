@@ -7,12 +7,12 @@
         <whitelist />
     </global>
     <chixslave>
-        <whitelist>Twochix</whitelist>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
     </chixslave>
     <onechix>
-        <whitelist>Twochix</whitelist>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
     </onechix>
     <threechix>
-        <whitelist>Twochix</whitelist>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
     </threechix>
 </settings>

@@ -42,6 +42,7 @@
 -- Setup functions for this job.  Generally should not be modified.
 -------------------------------------------------------------------------------------------------------------------
 
+
 -- Initialization function for this job file.
 function get_sets()    
     -- Load and initialize the include file.
@@ -54,6 +55,8 @@ function job_setup()
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
 	state.Buff['Divine Caress'] = buffactive['Divine Caress'] or false
+	state.Buff['Light Arts'] = buffactive['Light Arts'] or false
+	state.Buff['Regen'] = buffactive['Regen'] or false
 	
 	state.AutoCaress = M(true, 'Auto Caress Mode')
 	state.Gambanteinn = M(false, 'Gambanteinn Cursna Mode')
@@ -66,7 +69,7 @@ function job_setup()
 	
 	state.ElementalMode = M{['description'] = 'Elemental Mode','Light','Dark','Fire','Ice','Wind','Earth','Lightning','Water',}
 
-	init_job_states({"Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode"},
+	init_job_states({ "AutoRegenAgaMode", "Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode"},
 	{"AutoBuffMode","Weapons","OffenseMode","WeaponskillMode","IdleMode", "Passive","RuneElement","ElementalMode","CastingMode","TreasureMode",})
 	
 	function handle_smartcure(cmdParams)
@@ -399,14 +402,29 @@ function job_self_command(commandArgs, eventArgs)
 	elseif lowerCommand == "bursting" then
 		-- CKM: added this to toggle bursting sets
 		bursting = true
+		eventArgs.handled = true
 	elseif lowerCommand == "notbursting" then
 		-- CKM: added this to toggle bursting sets
 		bursting = false
+		eventArgs.handled = true
 	end
 end
 
 function job_tick()
+	-- add_to_chat(123, 'executing job tick')
+
 	if check_arts() then return true end
+	if check_regen() then return true end
+
+	return false
+end
+
+function check_regen() 
+	if not state.Buff['Regen'] and player.sub_job == 'SCH' and state.AutoRegenAgaMode.value == "Auto" then
+		windower.chat.input('/ja "Accession" <me>')
+		windower.chat.input:schedule(2, '/ma "Regen IV" <me>')
+		return true
+	end
 	return false
 end
 
@@ -419,12 +437,12 @@ function check_arts()
 			tickdelay = os.clock() + 1
 			return true
 
-		elseif player.sub_job == 'SCH' and not (state.Buff['SJ Restriction'] or arts_active()) and abil_recasts[228] < latency then
+		elseif player.sub_job == 'SCH' and not state.Buff['Light Arts'] and not (state.Buff['SJ Restriction'] or arts_active()) and abil_recasts[228] < latency then
 			send_command('@input /ja "Light Arts" <me>')
 			tickdelay = os.clock() + 1
 			return true
 		end
-		
+		return false
 	end
 
 	return false

@@ -776,6 +776,24 @@ windower.register_event('addon command', function(...)
 		message("Double burst Step Down set to "..txt)
 		return
 	elseif (cmd == 'gearswap' or cmd == 'gs') then
+		if (#arg >= 2) then
+			toggle = arg[2]:lower()
+		end
+
+		if (settings.gearswap) and toggle then
+			if toggle == "on" then 
+				settings.gearswap = true
+				message("Will use 'gs c bursting' and 'gs c notbursting'")
+				return
+			end
+
+			if toggle == "off" then
+				settings.gearswap = false
+				message("Will not use 'gs c bursting' and 'gs c notbursting'")
+				return 
+			end
+		end
+
 		if (settings.gearswap) then
 			settings.gearswap = false
 		else

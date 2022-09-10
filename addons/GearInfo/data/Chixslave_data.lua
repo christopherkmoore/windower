@@ -452,11 +452,11 @@ return {
         ["en"]="Eminent Wand", 
         ["delay"]=288, 
         ["INT"]=6, 
-        ["skill"]="Club", 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
+        ["skill"]="Club", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -498,9 +498,19 @@ return {
             [4]="Head"
         }, 
         ["AGI"]=19, 
-        ["item_level"]=117, 
+        ["en"]="Wayfarer Circlet", 
         ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
         ["HP"]=32, 
+        ["item_level"]=117, 
+        ["VIT"]=19, 
+        ["STR"]=19, 
+        ["Haste"]=6, 
+        ["MP"]=31, 
+        ["id"]=27742, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Magic Atk. Bonus"]=5, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -512,17 +522,7 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["VIT"]=19, 
-        ["STR"]=19, 
-        ["Haste"]=6, 
-        ["MP"]=31, 
-        ["id"]=27742, 
-        ["INT"]=24, 
-        ["category"]="Armor", 
-        ["CHR"]=24, 
-        ["Magic Atk. Bonus"]=5, 
-        ["en"]="Wayfarer Circlet"
+        }
     }, 
     [18]={
         ["Evasion"]=37, 
@@ -551,9 +551,19 @@ return {
             [5]="Body"
         }, 
         ["AGI"]=20, 
-        ["item_level"]=117, 
+        ["en"]="Wayfarer Robe", 
         ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
         ["HP"]=48, 
+        ["item_level"]=117, 
+        ["VIT"]=20, 
+        ["STR"]=20, 
+        ["Haste"]=3, 
+        ["MP"]=57, 
+        ["id"]=27883, 
+        ["INT"]=28, 
+        ["category"]="Armor", 
+        ["CHR"]=28, 
+        ["Magic Atk. Bonus"]=6, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -565,17 +575,7 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["VIT"]=20, 
-        ["STR"]=20, 
-        ["Haste"]=3, 
-        ["MP"]=57, 
-        ["id"]=27883, 
-        ["INT"]=28, 
-        ["category"]="Armor", 
-        ["CHR"]=28, 
-        ["Magic Atk. Bonus"]=6, 
-        ["en"]="Wayfarer Robe"
+        }
     }, 
     [19]={
         ["Evasion"]=19, 
@@ -667,7 +667,7 @@ return {
             ["set id"]=110
         }, 
         ["DEF"]=99, 
-        ["en"]="Wayfarer Slops", 
+        ["AGI"]=16, 
         ["item_level"]=117, 
         ["discription"]="DEF:99 HP+38 MP+28 STR+24 VIT+12 AGI+16 INT+32 MND+22 CHR+19 \"Magic Atk. Bonus\"+5 Evasion+24 Magic Evasion+100 \"Magic Def. Bonus\"+5 Haste+5% Set: \"Refresh\"+3", 
         ["HP"]=38, 
@@ -680,7 +680,7 @@ return {
         ["CHR"]=19, 
         ["INT"]=32, 
         ["category"]="Armor", 
-        ["AGI"]=16
+        ["en"]="Wayfarer Slops"
     }, 
     [21]={
         ["Evasion"]=49, 
@@ -737,17 +737,17 @@ return {
     }, 
     [22]={
         ["discription"]="DMG:117 Delay:216 INT+6 MND+6 \"Magic Atk. Bonus\"+16 Magic Damage+124 Club skill +242 Parrying skill +242 Magic Accuracy skill +215 Reives: \"Save TP\"+400 Occasionally attacks twice", 
-        ["skill"]="Club", 
+        ["slots"]={
+            [0]="Main", 
+            [1]="Sub"
+        }, 
         ["MND"]=6, 
         ["category"]="Weapon", 
         ["Magic Atk. Bonus"]=16, 
         ["en"]="Homestead Wand", 
         ["delay"]=216, 
         ["INT"]=6, 
-        ["slots"]={
-            [0]="Main", 
-            [1]="Sub"
-        }, 
+        ["skill"]="Club", 
         ["Parrying skill"]=242, 
         ["jobs"]={
             [3]="WHM", 
@@ -809,10 +809,10 @@ return {
         ["DEX"]=37, 
         ["Haste"]=4, 
         ["MND"]=20, 
-        ["en"]="Ayanmo Corazza", 
-        ["discription"]="DEF:143 HP+57 MP+59 STR+28 DEX+37 VIT+24 AGI+33 INT+21 MND+20 CHR+21 Accuracy+28 Magic Accuracy+28 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+4% Damage taken -4%", 
-        ["item_level"]=119, 
         ["AGI"]=33, 
+        ["discription"]="DEF:143 HP+57 MP+59 STR+28 DEX+37 VIT+24 AGI+33 INT+21 MND+20 CHR+21 Accuracy+28 Magic Accuracy+28 Evasion+38 Magic Evasion+64 \"Magic Def. Bonus\"+6 Haste+4% \"Double Attack\"+4% Damage taken -4%", 
+        ["en"]="Ayanmo Corazza", 
+        ["item_level"]=119, 
         ["HP"]=57, 
         ["id"]=25762, 
         ["Magic Accuracy"]=28, 
@@ -841,10 +841,10 @@ return {
         ["DEX"]=42, 
         ["Haste"]=4, 
         ["MND"]=26, 
-        ["en"]="Aya. Manopolas", 
-        ["discription"]="DEF:101 HP+22 MP+14 STR+16 DEX+42 VIT+30 AGI+11 INT+14 MND+26 CHR+19 Accuracy+25 Magic Accuracy+25 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +10 Damage taken -1%", 
-        ["item_level"]=119, 
         ["AGI"]=11, 
+        ["discription"]="DEF:101 HP+22 MP+14 STR+16 DEX+42 VIT+30 AGI+11 INT+14 MND+26 CHR+19 Accuracy+25 Magic Accuracy+25 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +10 Damage taken -1%", 
+        ["en"]="Aya. Manopolas", 
+        ["item_level"]=119, 
         ["HP"]=22, 
         ["id"]=25810, 
         ["Magic Accuracy"]=25, 
@@ -862,7 +862,7 @@ return {
     }, 
     [26]={
         ["Evasion"]=24, 
-        ["en"]="Ayanmo Cosciales", 
+        ["AGI"]=34, 
         ["jobs"]={
             [3]="WHM", 
             [5]="RDM", 
@@ -873,10 +873,10 @@ return {
         ["STR"]=33, 
         ["Haste"]=9, 
         ["MND"]=15, 
-        ["item_level"]=119, 
+        ["en"]="Ayanmo Cosciales", 
         ["discription"]="DEF:125 HP+45 MP+41 STR+33 VIT+16 AGI+34 INT+29 MND+15 CHR+10 Accuracy+27 Magic Accuracy+27 Evasion+24 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+9% \"Fast Cast\"+3% Damage taken -3%", 
         ["Fast Cast"]=3, 
-        ["AGI"]=34, 
+        ["item_level"]=119, 
         ["HP"]=45, 
         ["id"]=25869, 
         ["Magic Accuracy"]=27, 
@@ -906,8 +906,8 @@ return {
         ["DEF"]=83, 
         ["MND"]=11, 
         ["id"]=25935, 
-        ["AGI"]=46, 
         ["en"]="Aya. Gambieras", 
+        ["AGI"]=46, 
         ["item_level"]=119, 
         ["HP"]=11, 
         ["Critical hit rate"]=3, 
@@ -979,20 +979,20 @@ return {
         }, 
         ["id"]=21164, 
         ["Staff skill"]=242, 
-        ["skill"]="Staff", 
-        ["en"]="Ababinili", 
-        ["delay"]=366, 
-        ["Parrying skill"]=242, 
-        ["damage"]=198, 
         ["slots"]={
             [0]="Main"
         }, 
+        ["item_level"]=119, 
+        ["delay"]=366, 
+        ["Parrying skill"]=242, 
+        ["damage"]=198, 
+        ["skill"]="Staff", 
         ["MP"]=118, 
         ["Cure potency"]=10, 
         ["Unity Ranking Bonus Applied"]="Cure potency + 10", 
         ["Magic Atk. Bonus"]=24, 
         ["category"]="Weapon", 
-        ["item_level"]=119
+        ["en"]="Ababinili"
     }, 
     [30]={
         ["discription"]="DMG:199 Delay:356 MP+118 MND+12 \"Magic Atk. Bonus\"+24 Magic Damage+186 Staff skill +242 Parrying skill +242 Healing magic skill +11 Enhancing magic skill +11 Magic Accuracy skill +228 \"Cure\" potency +24% \"Cure\" spellcasting time -11% Unity Ranking: \"Cure\" potency +6～10%", 
@@ -1058,8 +1058,8 @@ return {
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
-        ["en"]="Nourish. Earring", 
         ["id"]=28484, 
+        ["en"]="Nourish. Earring", 
         ["category"]="Armor", 
         ["jobs"]={
             [3]="WHM", 
@@ -1080,8 +1080,8 @@ return {
         ["DEF"]=88, 
         ["MND"]=18, 
         ["id"]=25936, 
-        ["en"]="Aya. Gambieras +1", 
         ["AGI"]=46, 
+        ["en"]="Aya. Gambieras +1", 
         ["item_level"]=119, 
         ["HP"]=11, 
         ["Critical hit rate"]=5, 
@@ -1172,10 +1172,10 @@ return {
         ["DEX"]=49, 
         ["Haste"]=4, 
         ["MND"]=33, 
-        ["item_level"]=119, 
-        ["discription"]="DEF:106 HP+22 MP+14 STR+16 DEX+49 VIT+30 AGI+11 INT+14 MND+33 CHR+19 Accuracy+37 Magic Accuracy+37 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +15 Damage taken -2%", 
-        ["AGI"]=11, 
         ["en"]="Aya. Manopolas +1", 
+        ["discription"]="DEF:106 HP+22 MP+14 STR+16 DEX+49 VIT+30 AGI+11 INT+14 MND+33 CHR+19 Accuracy+37 Magic Accuracy+37 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +15 Damage taken -2%", 
+        ["item_level"]=119, 
+        ["AGI"]=11, 
         ["HP"]=22, 
         ["id"]=25811, 
         ["Magic Accuracy"]=37, 
@@ -1273,12 +1273,12 @@ return {
     }, 
     [40]={
         ["discription"]="MND+4 \"Cure\" potency +3% \"Cure\" spellcasting time -4% Unity Ranking: \"Cure\" potency +3～4%", 
-        ["en"]="Nourish. Earring +1", 
+        ["id"]=28485, 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
-        ["id"]=28485, 
+        ["en"]="Nourish. Earring +1", 
         ["MND"]=4, 
         ["category"]="Armor", 
         ["jobs"]={
@@ -1335,7 +1335,7 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["en"]="Assiduity Pants", 
+        ["item_level"]=119, 
         ["DEF"]=104, 
         ["AGI"]=17, 
         ["HP"]=43, 
@@ -1347,7 +1347,7 @@ return {
         ["STR"]=25, 
         ["CHR"]=19, 
         ["INT"]=36, 
-        ["item_level"]=119
+        ["en"]="Assiduity Pants"
     }, 
     [43]={
         ["Evasion"]=24, 
@@ -1364,10 +1364,10 @@ return {
         ["DEX"]=7, 
         ["DEF"]=130, 
         ["MND"]=22, 
-        ["Fast Cast"]=5, 
-        ["discription"]="DEF:130 HP+45 MP+41 STR+33 DEX+7 VIT+16 AGI+34 INT+29 MND+22 CHR+10 Accuracy+39 Magic Accuracy+39 Evasion+24 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+9% \"Fast Cast\"+5% Damage taken -4%", 
-        ["item_level"]=119, 
         ["AGI"]=34, 
+        ["discription"]="DEF:130 HP+45 MP+41 STR+33 DEX+7 VIT+16 AGI+34 INT+29 MND+22 CHR+10 Accuracy+39 Magic Accuracy+39 Evasion+24 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+9% \"Fast Cast\"+5% Damage taken -4%", 
+        ["Fast Cast"]=5, 
+        ["item_level"]=119, 
         ["HP"]=45, 
         ["id"]=25870, 
         ["en"]="Aya. Cosciales +1", 
@@ -1443,7 +1443,7 @@ return {
         ["slots"]={
             [7]="Legs"
         }, 
-        ["item_level"]=119, 
+        ["en"]="Assid. Pants +1", 
         ["DEF"]=105, 
         ["AGI"]=17, 
         ["HP"]=43, 
@@ -1456,7 +1456,7 @@ return {
         ["INT"]=36, 
         ["Unity Ranking Bonus Applied"]="Refresh + 2", 
         ["CHR"]=19, 
-        ["en"]="Assid. Pants +1"
+        ["item_level"]=119
     }, 
     [47]={
         ["Evasion"]=55, 
@@ -1479,9 +1479,9 @@ return {
         }, 
         ["AGI"]=33, 
         ["DEF"]=70, 
-        ["en"]="Vanya Clogs", 
+        ["item_level"]=119, 
         ["HP"]=13, 
-        ["discription"]="DEF:70 HP+13 MP+14 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +20 Haste+3% \"Cure\" potency +5% \"Cursna\"+5", 
+        ["en"]="Vanya Clogs", 
         ["VIT"]=10, 
         ["Haste"]=3, 
         ["MP"]=14, 
@@ -1492,7 +1492,7 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["item_level"]=119
+        ["discription"]="DEF:70 HP+13 MP+14 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +20 Haste+3% \"Cure\" potency +5% \"Cursna\"+5"
     }, 
     [48]={
         ["MDT"]=-2, 
@@ -1533,7 +1533,7 @@ return {
     }, 
     [49]={
         ["MDT"]=-6, 
-        ["AGI"]=15, 
+        ["Fast Cast"]=10, 
         ["jobs"]={
             [3]="WHM", 
             [10]="BRD", 
@@ -1546,15 +1546,15 @@ return {
         ["MND"]=35, 
         ["Haste"]=2, 
         ["discription"]="DEF:119 HP+85 MP+90 STR+16 DEX+19 VIT+16 AGI+15 INT+40 MND+35 CHR+34 Magic Accuracy+28 Evasion+38 Magic Evasion+102 \"Magic Def. Bonus\"+11 Haste+2% \"Fast Cast\"+10% Magic damage taken -6%", 
-        ["Fast Cast"]=10, 
-        ["en"]="Inyanga Jubbah", 
+        ["AGI"]=15, 
+        ["item_level"]=119, 
         ["HP"]=85, 
         ["id"]=25751, 
         ["VIT"]=16, 
         ["DEF"]=119, 
         ["MP"]=90, 
         ["Evasion"]=38, 
-        ["item_level"]=119, 
+        ["en"]="Inyanga Jubbah", 
         ["STR"]=16, 
         ["CHR"]=34, 
         ["INT"]=40, 
@@ -1575,16 +1575,16 @@ return {
         ["CHR"]=24, 
         ["MND"]=39, 
         ["discription"]="DEF:78 HP+35 MP+40 STR+3 DEX+23 VIT+20 AGI+1 INT+26 MND+39 CHR+24 Magic Accuracy+25 Evasion+19 Magic Evasion+59 \"Magic Def. Bonus\"+5 Haste+4% All magic skills +15 Magic damage taken -2%", 
-        ["item_level"]=119, 
-        ["DEF"]=78, 
         ["AGI"]=1, 
+        ["DEF"]=78, 
+        ["en"]="Inyanga Dastanas", 
         ["HP"]=35, 
         ["id"]=25806, 
         ["VIT"]=20, 
         ["Haste"]=4, 
         ["MP"]=40, 
         ["Evasion"]=19, 
-        ["en"]="Inyanga Dastanas", 
+        ["item_level"]=119, 
         ["STR"]=3, 
         ["All magic skills"]=15, 
         ["INT"]=26, 
@@ -1602,10 +1602,10 @@ return {
         ["DEX"]=19, 
         ["discription"]="DEF:129 HP+85 MP+90 STR+16 DEX+19 VIT+24 AGI+23 INT+48 MND+43 CHR+42 Magic Accuracy+46 Evasion+38 Magic Evasion+120 \"Magic Def. Bonus\"+11 Haste+2% \"Fast Cast\"+14% Magic damage taken -8% Set: Enhances \"Refresh\" effect", 
         ["MND"]=43, 
-        ["en"]="Inyanga Jubbah +2", 
-        ["AGI"]=23, 
-        ["item_level"]=119, 
         ["Fast Cast"]=14, 
+        ["AGI"]=23, 
+        ["en"]="Inyanga Jubbah +2", 
+        ["item_level"]=119, 
         ["HP"]=85, 
         ["id"]=25793, 
         ["Set Bonus"]={
@@ -1774,7 +1774,7 @@ return {
         ["Haste"]=9, 
         ["id"]=25884, 
         ["MND"]=26, 
-        ["Fast Cast"]=6, 
+        ["AGI"]=34, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1801,8 +1801,8 @@ return {
             }, 
             ["set id"]=96
         }, 
+        ["Fast Cast"]=6, 
         ["item_level"]=119, 
-        ["AGI"]=34, 
         ["HP"]=45, 
         ["Accuracy"]=45, 
         ["en"]="Aya. Cosciales +2", 
@@ -1885,10 +1885,10 @@ return {
             [8]="Feet"
         }, 
         ["AGI"]=33, 
-        ["en"]="Regal Pumps", 
+        ["Fast Cast"]=6, 
         ["item_level"]=119, 
         ["HP"]=13, 
-        ["discription"]="DEF:65 HP+13 MP+34 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +10 Enhancing magic skill +10 Haste+3% \"Fast Cast\"+3% Unity Ranking: \"Fast Cast\"+1～3%", 
+        ["en"]="Regal Pumps", 
         ["VIT"]=10, 
         ["STR"]=10, 
         ["DEF"]=65, 
@@ -1898,7 +1898,7 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["Fast Cast"]=6
+        ["discription"]="DEF:65 HP+13 MP+34 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +10 Enhancing magic skill +10 Haste+3% \"Fast Cast\"+3% Unity Ranking: \"Fast Cast\"+1～3%"
     }, 
     [60]={
         ["Evasion"]=55, 
@@ -1917,10 +1917,10 @@ return {
             [8]="Feet"
         }, 
         ["AGI"]=33, 
-        ["en"]="Regal Pumps +1", 
+        ["Fast Cast"]=7, 
         ["item_level"]=119, 
         ["HP"]=13, 
-        ["discription"]="DEF:66 HP+13 MP+39 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +11 Enhancing magic skill +11 Haste+3% \"Fast Cast\"+4% Unity Ranking: \"Fast Cast\"+1～3%", 
+        ["en"]="Regal Pumps +1", 
         ["VIT"]=10, 
         ["STR"]=10, 
         ["DEF"]=66, 
@@ -1930,7 +1930,7 @@ return {
         ["CHR"]=34, 
         ["INT"]=17, 
         ["category"]="Armor", 
-        ["Fast Cast"]=7
+        ["discription"]="DEF:66 HP+13 MP+39 STR+10 DEX+11 VIT+10 AGI+33 INT+17 MND+19 CHR+34 Evasion+55 Magic Evasion+107 \"Magic Def. Bonus\"+5 Healing magic skill +11 Enhancing magic skill +11 Haste+3% \"Fast Cast\"+4% Unity Ranking: \"Fast Cast\"+1～3%"
     }, 
     [61]={
         ["Evasion"]=12, 
@@ -1943,18 +1943,6 @@ return {
         }, 
         ["DEF"]=75, 
         ["item_level"]=109, 
-        ["en"]="Ebers Pantaloons", 
-        ["AGI"]=11, 
-        ["HP"]=19, 
-        ["discription"]="DEF:75 HP+19 MP+29 STR+15 VIT+8 AGI+11 INT+20 MND+22 CHR+10 Evasion+12 Magic Evasion+73 \"Magic Def. Bonus\"+3 Haste+4% \"Divine Benison\"+1 Converts 5% of \"Cure\" amount to MP Healing magic casting time -12%  Set: Augments elemental resistance spells", 
-        ["VIT"]=8, 
-        ["Haste"]=4, 
-        ["MP"]=29, 
-        ["id"]=27241, 
-        ["STR"]=15, 
-        ["CHR"]=10, 
-        ["INT"]=20, 
-        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1964,7 +1952,19 @@ return {
                 [5]={}
             }, 
             ["set id"]=93
-        }
+        }, 
+        ["AGI"]=11, 
+        ["HP"]=19, 
+        ["en"]="Ebers Pantaloons", 
+        ["VIT"]=8, 
+        ["Haste"]=4, 
+        ["MP"]=29, 
+        ["id"]=27241, 
+        ["STR"]=15, 
+        ["CHR"]=10, 
+        ["INT"]=20, 
+        ["category"]="Armor", 
+        ["discription"]="DEF:75 HP+19 MP+29 STR+15 VIT+8 AGI+11 INT+20 MND+22 CHR+10 Evasion+12 Magic Evasion+73 \"Magic Def. Bonus\"+3 Haste+4% \"Divine Benison\"+1 Converts 5% of \"Cure\" amount to MP Healing magic casting time -12%  Set: Augments elemental resistance spells"
     }, 
     [62]={
         ["MDT"]=-3, 
@@ -1980,16 +1980,16 @@ return {
         ["CHR"]=29, 
         ["MND"]=44, 
         ["discription"]="DEF:83 HP+35 MP+40 STR+3 DEX+23 VIT+25 AGI+6 INT+31 MND+44 CHR+29 Magic Accuracy+37 Evasion+19 Magic Evasion+71 \"Magic Def. Bonus\"+5 Haste+4% All magic skills +18 Magic damage taken -3%", 
-        ["en"]="Inyan. Dastanas +1", 
-        ["DEF"]=83, 
         ["item_level"]=119, 
+        ["DEF"]=83, 
+        ["AGI"]=6, 
         ["HP"]=35, 
         ["id"]=25807, 
         ["VIT"]=25, 
         ["Haste"]=4, 
         ["MP"]=40, 
         ["Evasion"]=19, 
-        ["AGI"]=6, 
+        ["en"]="Inyan. Dastanas +1", 
         ["STR"]=3, 
         ["All magic skills"]=18, 
         ["INT"]=31, 
@@ -2031,9 +2031,9 @@ return {
             [6]="Hands"
         }, 
         ["MND"]=47, 
-        ["AGI"]=9, 
-        ["DEF"]=88, 
         ["en"]="Inyan. Dastanas +2", 
+        ["DEF"]=88, 
+        ["AGI"]=9, 
         ["item_level"]=119, 
         ["HP"]=35, 
         ["id"]=25831, 
@@ -2136,12 +2136,12 @@ return {
     }, 
     [67]={
         ["discription"]="\"Fast Cast\"+5% \"Sublimation\"+3 Enhancing magic duration +10%", 
-        ["Fast Cast"]=5, 
+        ["id"]=26354, 
         ["slots"]={
             [10]="Waist"
         }, 
-        ["id"]=26354, 
         ["en"]="Embla Sash", 
+        ["Fast Cast"]=5, 
         ["category"]="Armor", 
         ["jobs"]={
             [3]="WHM", 
@@ -2156,7 +2156,7 @@ return {
     [68]={
         ["Evasion"]=38, 
         ["MND"]=29, 
-        ["item_level"]=119, 
+        ["en"]="Doyen Pants", 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -2170,7 +2170,7 @@ return {
             [22]="RUN"
         }, 
         ["STR"]=23, 
-        ["en"]="Doyen Pants", 
+        ["item_level"]=119, 
         ["Haste"]=5, 
         ["AGI"]=19, 
         ["HP"]=43, 
@@ -2266,7 +2266,7 @@ return {
             [10]="BRD", 
             [20]="SCH"
         }, 
-        ["AGI"]=26, 
+        ["item_level"]=119, 
         ["DEX"]=6, 
         ["STR"]=6, 
         ["augments"]={
@@ -2277,10 +2277,10 @@ return {
             [5]="\"Mag.Atk.Bns.\"+12"
         }, 
         ["MND"]=24, 
-        ["en"]="Chironic Slippers", 
+        ["AGI"]=26, 
         ["discription"]="DEF:70 HP+4 MP+23 STR+6 DEX+6 VIT+6 AGI+26 INT+23 MND+24 CHR+34 Attack+20 Evasion+60 Magic Evasion+118 \"Magic Atk. Bonus\"+20 \"Magic Def. Bonus\"+6 Divine magic skill +15 Haste+3% Enmity-5 Physical damage taken -2%", 
         ["id"]=27498, 
-        ["item_level"]=119, 
+        ["en"]="Chironic Slippers", 
         ["HP"]=4, 
         ["Haste"]=3, 
         ["Magic Accuracy"]=10, 
@@ -2438,10 +2438,6 @@ return {
             [16]="BLU", 
             [22]="RUN"
         }, 
-        ["MND"]=25, 
-        ["DEX"]=39, 
-        ["STR"]=20, 
-        ["id"]=25572, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2468,13 +2464,17 @@ return {
             }, 
             ["set id"]=96
         }, 
+        ["DEX"]=39, 
+        ["STR"]=20, 
+        ["id"]=25572, 
+        ["MND"]=25, 
         ["AGI"]=23, 
         ["discription"]="DEF:128 HP+45 MP+29 STR+20 DEX+39 VIT+16 AGI+23 INT+15 MND+25 CHR+15 Accuracy+44 Magic Accuracy+44 Evasion+33 Magic Evasion+53 \"Magic Def. Bonus\"+3 Haste+6% \"Store TP\"+6 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
         ["Store TP"]=6, 
-        ["item_level"]=119, 
+        ["en"]="Aya. Zucchetto +2", 
         ["HP"]=45, 
         ["Accuracy"]=44, 
-        ["en"]="Aya. Zucchetto +2", 
+        ["item_level"]=119, 
         ["slots"]={
             [4]="Head"
         }, 
@@ -2687,7 +2687,7 @@ return {
     [83]={
         ["Evasion"]=60, 
         ["MND"]=17, 
-        ["AGI"]=29, 
+        ["item_level"]=119, 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -2698,7 +2698,7 @@ return {
         }, 
         ["DEX"]=8, 
         ["STR"]=8, 
-        ["item_level"]=119, 
+        ["en"]="Inspirited Boots", 
         ["Haste"]=3, 
         ["discription"]="DEF:70 HP+9 MP+20 STR+8 DEX+8 VIT+8 AGI+29 INT+25 MND+17 CHR+32 \"Magic Atk. Bonus\"+20 Magic Damage+10 Evasion+60 Magic Evasion+118 \"Magic Def. Bonus\"+6 Haste+3% Duration of Refresh effects received +15", 
         ["HP"]=9, 
@@ -2713,7 +2713,7 @@ return {
         ["CHR"]=32, 
         ["INT"]=25, 
         ["category"]="Armor", 
-        ["en"]="Inspirited Boots"
+        ["AGI"]=29
     }, 
     [84]={
         ["discription"]="INT+8 MND+8 Magic Accuracy+10 \"Magic Atk. Bonus\"+8 \"Fast Cast\"+4%", 
@@ -2741,7 +2741,7 @@ return {
     }, 
     [85]={
         ["MDT"]=-3, 
-        ["AGI"]=33, 
+        ["item_level"]=119, 
         ["jobs"]={
             [3]="WHM", 
             [10]="BRD", 
@@ -2751,17 +2751,6 @@ return {
         ["slots"]={
             [8]="Feet"
         }, 
-        ["MND"]=33, 
-        ["DEF"]=70, 
-        ["discription"]="DEF:70 HP+25 MP+30 STR+6 DEX+6 VIT+14 AGI+33 INT+32 MND+33 CHR+46 Magic Accuracy+42 Evasion+60 Magic Evasion+147 \"Magic Def. Bonus\"+8 Haste+2% Magic damage taken -3% Avatar: \"Blood Pact\" damage +9 Set: Enhances \"Refresh\" effect", 
-        ["item_level"]=119, 
-        ["en"]="Inyan. Crackows +2", 
-        ["HP"]=25, 
-        ["id"]=25949, 
-        ["VIT"]=14, 
-        ["Haste"]=2, 
-        ["MP"]=30, 
-        ["Evasion"]=60, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2780,6 +2769,17 @@ return {
             }, 
             ["set id"]=16
         }, 
+        ["DEF"]=70, 
+        ["discription"]="DEF:70 HP+25 MP+30 STR+6 DEX+6 VIT+14 AGI+33 INT+32 MND+33 CHR+46 Magic Accuracy+42 Evasion+60 Magic Evasion+147 \"Magic Def. Bonus\"+8 Haste+2% Magic damage taken -3% Avatar: \"Blood Pact\" damage +9 Set: Enhances \"Refresh\" effect", 
+        ["AGI"]=33, 
+        ["en"]="Inyan. Crackows +2", 
+        ["HP"]=25, 
+        ["id"]=25949, 
+        ["VIT"]=14, 
+        ["Haste"]=2, 
+        ["MP"]=30, 
+        ["Evasion"]=60, 
+        ["MND"]=33, 
         ["STR"]=6, 
         ["CHR"]=46, 
         ["INT"]=32, 
@@ -2800,11 +2800,21 @@ return {
         ["DEF"]=93, 
         ["MND"]=22, 
         ["id"]=25951, 
+        ["discription"]="DEF:93 HP+11 MP+14 STR+16 DEX+37 VIT+10 AGI+46 MND+22 CHR+26 Accuracy+42 Magic Accuracy+42 Evasion+60 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+3% Critical hit rate +6% Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
         ["item_level"]=119, 
-        ["en"]="Aya. Gambieras +2", 
         ["AGI"]=46, 
         ["HP"]=11, 
         ["Critical hit rate"]=6, 
+        ["en"]="Aya. Gambieras +2", 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["Haste"]=3, 
+        ["MP"]=14, 
+        ["Accuracy"]=42, 
+        ["CHR"]=26, 
+        ["VIT"]=10, 
+        ["category"]="Armor", 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -2831,16 +2841,6 @@ return {
             }, 
             ["set id"]=96
         }, 
-        ["slots"]={
-            [8]="Feet"
-        }, 
-        ["Haste"]=3, 
-        ["MP"]=14, 
-        ["Accuracy"]=42, 
-        ["CHR"]=26, 
-        ["VIT"]=10, 
-        ["category"]="Armor", 
-        ["discription"]="DEF:93 HP+11 MP+14 STR+16 DEX+37 VIT+10 AGI+46 MND+22 CHR+26 Accuracy+42 Magic Accuracy+42 Evasion+60 Magic Evasion+69 \"Magic Def. Bonus\"+5 Haste+3% Critical hit rate +6% Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
         ["Magic Accuracy"]=42, 
         ["DT"]=-3
     }, 
@@ -2888,10 +2888,10 @@ return {
         ["DEX"]=53, 
         ["DEF"]=111, 
         ["MND"]=37, 
-        ["en"]="Aya. Manopolas +2", 
-        ["discription"]="DEF:111 HP+22 MP+14 STR+16 DEX+53 VIT+30 AGI+11 INT+14 MND+37 CHR+19 Accuracy+43 Magic Accuracy+43 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +17 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
-        ["item_level"]=119, 
         ["AGI"]=11, 
+        ["discription"]="DEF:111 HP+22 MP+14 STR+16 DEX+53 VIT+30 AGI+11 INT+14 MND+37 CHR+19 Accuracy+43 Magic Accuracy+43 Evasion+19 Magic Evasion+37 \"Magic Def. Bonus\"+2 Haste+4% Sword enhancement spell damage +17 Damage taken -3% Set: Increases Strength, Vitality, and Mind", 
+        ["en"]="Aya. Manopolas +2", 
+        ["item_level"]=119, 
         ["HP"]=22, 
         ["id"]=25833, 
         ["Set Bonus"]={
@@ -3036,10 +3036,19 @@ return {
         }, 
         ["Haste"]=5, 
         ["item_level"]=119, 
-        ["en"]="Ebers Pant. +1", 
+        ["Set Bonus"]={
+            ["set id"]=93, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={}
+            }
+        }, 
         ["AGI"]=17, 
         ["HP"]=41, 
-        ["discription"]="DEF:106 HP+41 MP+35 STR+24 VIT+12 AGI+17 INT+32 MND+33 CHR+16 Evasion+27 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+5% \"Divine Benison\"+2 Converts 6% of \"Cure\" amount to MP Healing magic casting time -13%  Set: Augments elemental resistance spells", 
+        ["en"]="Ebers Pant. +1", 
         ["VIT"]=12, 
         ["DEF"]=106, 
         ["MP"]=35, 
@@ -3050,16 +3059,7 @@ return {
         ["CHR"]=16, 
         ["INT"]=32, 
         ["category"]="Armor", 
-        ["Set Bonus"]={
-            ["set id"]=93, 
-            ["bonus"]={
-                [1]={}, 
-                [2]={}, 
-                [3]={}, 
-                [4]={}, 
-                [5]={}
-            }
-        }
+        ["discription"]="DEF:106 HP+41 MP+35 STR+24 VIT+12 AGI+17 INT+32 MND+33 CHR+16 Evasion+27 Magic Evasion+107 \"Magic Def. Bonus\"+6 Haste+5% \"Divine Benison\"+2 Converts 6% of \"Cure\" amount to MP Healing magic casting time -13%  Set: Augments elemental resistance spells"
     }, 
     [94]={
         ["en"]="Cleric's Torque", 
@@ -3162,12 +3162,12 @@ return {
         ["discription"]="STR+2～5 DEX+2～5 \"Store TP\"+5 \"Subtle Blow\"+5", 
         ["en"]="Rajas Ring", 
         ["Store TP"]=5, 
-        ["STR"]=2, 
-        ["category"]="Armor", 
         ["slots"]={
             [13]="Left Ring", 
             [14]="Right Ring"
         }, 
+        ["category"]="Armor", 
+        ["DEX"]=2, 
         ["jobs"]={
             [1]="WAR", 
             [2]="MNK", 
@@ -3193,6 +3193,221 @@ return {
             [22]="RUN"
         }, 
         ["id"]=15543, 
-        ["DEX"]=2
+        ["STR"]=2
+    }, 
+    [99]={
+        ["discription"]="DEF:21 MP+13 MND+4 +15 Enmity-1", 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["MND"]=4, 
+        ["category"]="Armor", 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["id"]=13855, 
+        ["DEF"]=21, 
+        ["MP"]=13, 
+        ["en"]="Healer's Cap"
+    }, 
+    [100]={
+        ["discription"]="DEF:14 MP+10 STR+5  Healing magic skill +15 Enmity-4", 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["category"]="Armor", 
+        ["en"]="Healer's Mitts", 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["id"]=13963, 
+        ["DEF"]=14, 
+        ["MP"]=10, 
+        ["STR"]=5
+    }, 
+    [101]={
+        ["discription"]="DEF:28 MP+15 VIT+3  Divine magic skill +15  Enmity-1", 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["category"]="Armor", 
+        ["en"]="Healer's Pantaln.", 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["id"]=14216, 
+        ["DEF"]=28, 
+        ["MP"]=15, 
+        ["VIT"]=3
+    }, 
+    [102]={
+        ["discription"]="DEF:12 MP+10 AGI+3  Spell interruption rate down 20%", 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["category"]="Armor", 
+        ["en"]="Healer's Duckbills", 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["id"]=14091, 
+        ["DEF"]=12, 
+        ["MP"]=10, 
+        ["AGI"]=3
+    }, 
+    [103]={
+        ["Evasion"]=65, 
+        ["MND"]=29, 
+        ["AGI"]=43, 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["DEX"]=16, 
+        ["discription"]="DEF:75 HP+64 MP+66 STR+15 DEX+16 VIT+15 AGI+43 INT+27 MND+29 CHR+39 Magic Accuracy+36 Evasion+65 Magic Evasion+117 \"Magic Def. Bonus\"+6 Enhancing magic skill +19 Enfeebling magic skill +19 Haste+3% Spell interruption rate down 27% Enhancing magic duration +5% Set: Inc. Acc., Ranged Acc., and Magic Acc.", 
+        ["en"]="Theo. Duckbills +2", 
+        ["item_level"]=119, 
+        ["DEF"]=75, 
+        ["HP"]=64, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=49
+        }, 
+        ["STR"]=15, 
+        ["Haste"]=3, 
+        ["MP"]=66, 
+        ["id"]=23310, 
+        ["INT"]=27, 
+        ["category"]="Armor", 
+        ["CHR"]=39, 
+        ["VIT"]=15, 
+        ["Magic Accuracy"]=36
+    }, 
+    [104]={
+        ["Evasion"]=32, 
+        ["MND"]=43, 
+        ["AGI"]=10, 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["DEX"]=33, 
+        ["discription"]="DEF:93 HP+33 MP+73 STR+16 DEX+33 VIT+30 AGI+10 INT+24 MND+43 CHR+24 Magic Accuracy+38 Evasion+32 Magic Evasion+47 \"Magic Def. Bonus\"+4 Healing magic skill +19 Haste+3% Enmity-6 \"Cure\" potency II +2% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["en"]="Theophany Mitts +2", 
+        ["item_level"]=119, 
+        ["DEF"]=93, 
+        ["HP"]=33, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=49
+        }, 
+        ["STR"]=16, 
+        ["Haste"]=3, 
+        ["MP"]=73, 
+        ["id"]=23176, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["VIT"]=30, 
+        ["Magic Accuracy"]=38
+    }, 
+    [105]={
+        ["Evasion"]=37, 
+        ["MND"]=29, 
+        ["AGI"]=22, 
+        ["jobs"]={
+            [3]="WHM"
+        }, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["discription"]="DEF:117 HP+64 MP+43 STR+30 VIT+17 AGI+22 INT+39 MND+29 CHR+24 Magic Accuracy+39 Evasion+37 Magic Evasion+117 \"Magic Def. Bonus\"+7 Divine magic skill +19 Haste+5% Enmity-5 \"Regen\" effect duration +21 \"Cursna\"+17 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["en"]="Th. Pantaloons +2", 
+        ["item_level"]=119, 
+        ["DEF"]=117, 
+        ["HP"]=64, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=49
+        }, 
+        ["VIT"]=17, 
+        ["Haste"]=5, 
+        ["MP"]=43, 
+        ["id"]=23243, 
+        ["STR"]=30, 
+        ["CHR"]=24, 
+        ["INT"]=39, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=39
     }
 }

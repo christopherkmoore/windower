@@ -2,6 +2,10 @@ return {
     ["Aggressor Antlion"] = S{
         194
     },
+    ["Agon Halo"] = S{
+        4,
+        13
+    },
     ["Amaranth Barrier"] = S{
         4,
         13,
@@ -22,6 +26,9 @@ return {
         194
     },
     ["Bozzeto Warder"] = S{
+        2
+    },
+    ["Bozzetto Carbuncle"] = S{
         2
     },
     ["Bozzetto Consul"] = S{
@@ -46,6 +53,10 @@ return {
     },
     ["Bozzetto Stalwart"] = S{
         2
+    },
+    ["Bozzetto Titan"] = S{
+        4,
+        13
     },
     ["Broadleaf Palm"] = S{
         2,

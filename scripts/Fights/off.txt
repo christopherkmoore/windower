@@ -6,6 +6,7 @@
 
 
 send Onechix singer off;
+send Onechix sing playlist clear;
 send Onechix singer debuffing off;
 send Onechix sing pianissimo off;
 send Onechix sing nightingale off;
@@ -19,6 +20,14 @@ send Onechix gs c set autoshadowmode off;
 send Threechix gs c set AutoBuffMode off;
 send Threechix gs c set autowsmode off; 
 
+
+send Threechix healbot reload;
+send Threechix hb off; 
+send Threechix hb reset buffs;
+send Threechix hb reset debuffs;
+send Threechix hb debuff off;
+send Threechix hb wipebuffs;
+send Threechix hb wipedebuffs;
 
 send Threechix sing refresh Threechix off;
 send Threechix sing haste Twochix off;
@@ -36,14 +45,10 @@ send Chixslave healbot reload;
 send Chixslave hb off; 
 send Chixslave hb reset buffs;
 send Chixslave hb reset debuffs;
-send Chixslave hb debuff on;
+send Chixslave hb debuff off;
 send Chixslave hb wipebuffs;
+send Chixslave hb wipedebuffs;
 send Chixslave hb follow off;
-
-send Chixslave hb debuff rm Dia II;
-send Chixslave hb debuff rm Paralyze;
-send Chixslave hb debuff rm Slow;
-send Chixslave hb debuff rm Addle;
 
 send Chixslave hb unignore_debuff everyone poison;
 

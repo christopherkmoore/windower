@@ -58,10 +58,11 @@ bind !f5 input /ta <a24>
 bind !f6 input /ta <a25>
 
 alias party exec party;
-alias xps exec xps;
-alias cps exec cps;
 alias warps exec warps;
 alias mounts exec mounts;
+alias dem send Chixslave input /ma "Teleport-Dem" <me>
+alias mea send Chixslave input /ma "Teleport-Mea" <me>
+alias holla send Chixslave input /ma "Teleport-Holla" <me>
 alias si exec si;
 
 NEXTGames Edits:
@@ -87,18 +88,21 @@ lua load Skillchains
 lua load findall
 lua load SellNPC
 lua load superwarp
-// removed SendAllTarget to try attackwithme
+// removed SendALlTarget to try attackwithme
 lua load SendAllTarget
 lua load attackwithme
 lua load autojoin
 lua load sparks
 lua load healbot
 lua load aecho;
-send Threechix lua load automb;
 send Onechix lua load singer;
 send Onechix sing off;
+send Threechix lua load automb;
+send Chixslave lua load automb;
 send Onechix awm slave on;
 send Twochix awm master on;
+send Onechix dressup l bard;
+send Threechix lua load otto;
 
 bind ^f send @others /follow Twochix
 bind ^u send @others exec unfollow
@@ -111,4 +115,6 @@ bind ^t exec targetnpc
 block_mouseinput 1;
 
 wait 3
+
+send Twochix exec ui-show;
 hb reload;

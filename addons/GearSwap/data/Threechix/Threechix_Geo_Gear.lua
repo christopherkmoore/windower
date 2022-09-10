@@ -266,7 +266,7 @@ function init_gear_sets()
 	-- Idle sets
 
 	sets.idle = {main="Malignance Pole",ammo="Staunch Tathlum +1",
-		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Azimuth Earring",
+		head="Azimuth Hood +2",neck="Bagua Charm +1",ear1="Genmei Earring",ear2="Azimuth Earring",
 		body="Azimuth Coat +2",hands="Bagua mitaines +1",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
 		back="Umbra Cape",waist="Shinjutsu-no-Obi",legs="Assid. Pants +1",feet="Azimuth Gaiters +2"}
 		

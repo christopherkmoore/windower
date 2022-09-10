@@ -4,6 +4,6 @@ send Onechix exec clear_target;
 wait 0.1;
 
 send Twochix sat youtarget Onechix;
-wait 0.6;
+wait 1;
 
 send Onechix /ma "Horde Lullaby II" <t>

@@ -212,34 +212,34 @@ function init_gear_sets()
 
 	-- Resting sets
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",ammo="Staunch Tathlum +1",
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",                            --body="Respite Cloak" resting, idle, defense.PDT, defense.MDT repalced CKM
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 	
 	sets.idle = {sub="Genmei Shield",ammo="Staunch Tathlum +1",                                                           -- main="Daybreak" removed from idle, .NoRefresh and .DT
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Eabani Earring",ear2="Ethereal Earring",                                     
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Eabani Earring",ear2="Ethereal Earring",                                     
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
 		back=gear.capeTP,waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 		
 	sets.idle.NoRefresh = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Etiolation Earring",ear2="Sanare Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Moonlight Cape",waist="Carrier's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 	sets.idle.DT = {sub="Genmei Shield",ammo="Staunch Tathlum +1",
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Moonlight Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 	
 	-- Defense sets
 
 	sets.defense.PDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
 	sets.defense.MDT = {main="Terra's Staff", sub="Umbra Strap",ammo="Staunch Tathlum +1",
-		head="Fili Calot +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
+		head="Fili Calot +2",neck="Loricate Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 
@@ -256,19 +256,19 @@ function init_gear_sets()
 	-- EG: sets.engaged.Dagger.Accuracy.Evasion
 	
 	sets.engaged = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Asperity Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Cessance Earring",ear2="Brutal Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Petrov Ring",ring2="Rajas Ring",
 		back=gear.capeTP,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                   -- back="Bleating Mantle"
 	sets.engaged.Acc = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Combatant's Torque",ear1="Digni. Earring",ear2="Telos Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Digni. Earring",ear2="Telos Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Olseni Belt",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                        -- back="Letalis Mantle"
 	sets.engaged.DW = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Sanctity Necklace",ear1="Suppanomimi",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Suppanomimi",ear2="Brutal Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Rajas Ring",ring2="Ilabrat Ring",
 		back=gear.capeTP ,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                         -- back="Bleating Mantle"
 	sets.engaged.DW.Acc = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Combatant's Torque",ear1="Suppanomimi",ear2="Telos Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Suppanomimi",ear2="Telos Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Reiki Yotai",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}
 

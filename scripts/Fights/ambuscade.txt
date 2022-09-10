@@ -14,9 +14,8 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
+send chixslave hb enable buffing;
 send Chixslave exec fights/auto_whm
-
-wait 0.3;
 
 send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
@@ -27,8 +26,6 @@ send Chixslave hb buff Chixslave barblindra;
 
 send Onechix exec fights/auto_brd
 
-wait 0.3;
-
 send Onechix sing minuet 2;
 send Onechix sing march 1;
 
@@ -38,8 +35,6 @@ send Onechix sing march 1;
 
 send Threechix exec fights/auto_geo
 
-wait 0.3;
-
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
 
@@ -48,7 +43,9 @@ send Threechix gs c autogeo Fury;
 ////////////////////////////////////
 
 
-send Threechix hb buff ornate haste
-send Threechix hb buff renew haste
-
-send Threechix hb buff Bryceb haste;
+send Chixslave hb buff ornate haste
+send Chixslave hb buff twochix haste
+send Chixslave hb buff threechix haste
+send Chixslave hb buff onechix  haste
+send Chixslave hb buff chixslave haste
+send Chixslave hb buff renew haste

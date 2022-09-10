@@ -159,6 +159,8 @@ function init_include()
 	state.CombatWeapon        = M{['description']='Combat Weapon', ['string']=''}
 	state.CombatForm          = M{['description']='Combat Form', ['string']=''}
 	state.AutoConvertMode     = M{['description']= 'Auto Convert Mode', 'Off', 'Auto'}
+	state.AutoRegenAgaMode    = M{['description']= 'Auto Regens Mode', 'Off', 'Auto'}
+
 	NotifyBuffs = S{}
 	
 	if data.jobs.mage_jobs:contains(player.main_job) then

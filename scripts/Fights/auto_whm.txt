@@ -2,17 +2,18 @@
 // White Mage
 ////////////////////////////////
 send Chixslave hb assist Twochix;
-send Chixslave hb debuff off;
+send Chixslave hb enable debuffing;
+send Chixslave hb debuff on
 
 send Chixslave hb on;
 send Chixslave amb on;
 send Chixslave amb t 2;
 send Chixslave amb c holy;
-send Chixslave amb gearswap;
+send Chixslave amb gearswap on;
 send Chixslave gs c set AutoSubMode on;
+send Chixslave gs c set AutoRegenAgaMode Auto;
 
 send Chixslave hb buff Chixslave Afflatus Solace;
-send Chixslave hb buff Chixslave Sublimation;
 
 send Chixslave hb buff Chixslave Protectra V;
 send Chixslave hb buff Chixslave Shellra V;
@@ -21,3 +22,4 @@ send Chixslave hb buff Chixslave Auspice;
 send Chixslave hb buff Chixslave Aurorastorm;
 send Chixslave hb buff Chixslave Reraise IV; 
 //send Chixslave hb buff Chixslave Aquaveil; 
+

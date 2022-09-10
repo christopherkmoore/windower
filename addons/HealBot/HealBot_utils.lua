@@ -176,6 +176,9 @@ function processCommand(command,...)
             utils.register_offensive_debuff(table.slice(args, 2), true)
         elseif S{'ls','list'}:contains(cmd) then
             pprint_tiered(offense.debuffs)
+
+        elseif S{'debug'}:contains(cmd) then 
+            table.vprint(offense)
         else
             if S{'use','set'}:contains(cmd) then
                 table.remove(args, 1)
@@ -241,6 +244,8 @@ function processCommand(command,...)
         buffs.registerNewBuff(args, false)
     elseif command == 'wipebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         utils.wipe_bufflist()
+    elseif command == 'wipedebuffs' then
+        utils.wipe_debufflist()
     elseif S{'bufflist','bl'}:contains(command) then
         if not validate(args, 1, 'Error: No argument specified for BuffList') then return end
         utils.apply_bufflist(args)
@@ -404,6 +409,10 @@ end
 
 function utils.wipe_bufflist()
     buffs.buffList = {}
+end
+
+function utils.wipe_debufflist()
+    offense.debuffs = {}
 end
 
 

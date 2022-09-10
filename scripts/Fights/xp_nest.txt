@@ -8,13 +8,16 @@
 
 send @all exec fights/reset
 
-wait 0.1;
+wait 0.3;
 
 ////////////////////////////////
 // White Mage
 ////////////////////////////////
 
 send Chixslave exec fights/auto_whm
+
+send Chixslave hb debuff use Paralyze;
+send Chixslave hb debuff use Slow;
 
 send Chixslave hb buff Chixslave barwatera;
 send Chixslave hb buff Chixslave barblindra;
@@ -25,7 +28,8 @@ send Chixslave hb buff Chixslave barblindra;
 
 send Onechix exec fights/auto_brd
 
-send Onechix sing minuet 2;
+send Onechix sing madrigal 1;
+send Onechix sing minuet 1;
 send Onechix sing march 1;
 
 ////////////////////////////////////
@@ -33,6 +37,10 @@ send Onechix sing march 1;
 ////////////////////////////////////
 
 send Threechix exec fights/auto_geo
+
+send Threechix hb debuff use Dia II;
+send Threechix hb debuff use Frazzle;
+send Threechix hb debuff use Distract;
 
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;

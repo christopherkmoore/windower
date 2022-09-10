@@ -3,10 +3,12 @@
 ////////////////////////////////////
 
 send Threechix hb on;
-send Threechix hb assist Twochix;
+
 send Threechix hb disable curing;
-send Threechix hb enable buffing;
+send Threechix hb assist Twochix;
 send Threechix hb enable debuffing;
+send Threechix hb debuff on;
+
 
 send Threechix hb buff Twochix haste;
 send Threechix hb buff Threechix haste;
@@ -14,20 +16,14 @@ send Threechix hb buff Chixslave haste;
 send Threechix hb buff Onechix haste;
 send Threechix hb buff Threechix refresh;
 
-send Threechix hb debuff use Dia II;
-send Threechix hb debuff use Paralyze;
-send Threechix hb debuff use Slow;
-
 send Threechix gs c set AutoBuffMode auto;
-send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
 
 send Threechix gs c set AutoConvertMode Auto
 
 send Threechix amb on;
 send Threechix amb tier 4;
 send Threechix amb c spell;
-send Threechix amb gearswap;
+send Threechix amb gearswap on;
 
 send Threechix otto t 3;
 send Threechix otto single;

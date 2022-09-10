@@ -200,6 +200,7 @@ function update_job_states()
 		DanceStance = "DanceStance",
 		Stance = "Stance",
 		AutoConvertMode = "Auto Convert: "..state.AutoConvertMode.value.."",
+		AutoRegenAgaMode = "Auto Regens: "..state.AutoRegenAgaMode.value.."",
     }
 
     stateBox:clear()
@@ -372,6 +373,11 @@ function update_job_states()
 		elseif n == "AutoConvertMode" then 
 			if state.AutoConvertMode.value ~= 'Off' then
 				stateBox:append(string.format("%sAuto Convert: %s%s    ", clr.w, clr.h, state.AutoConvertMode.value))
+			end
+		elseif n == "AutoRegenAgaMode" then
+			if state.AutoRegenAgaMode ~= 'Off' then
+				stateBox:append(string.format("%sAuto Regens Aga Mode: %s%s    ", clr.w, clr.h, state.AutoRegenAgaMode.value))
+
 			end
 		else
 			stateBox:append(string.format("%s%s: ${%s}    ", clr.w, labels[n], n))
