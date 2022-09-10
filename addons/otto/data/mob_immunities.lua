@@ -49,6 +49,7 @@ return {
     ["Desert Worm"] = true,
     ["Flavescent Slime"] = false,
     ["Ghatjot"] = true,
+    ["Killing Weapon"] = true,
     ["Knotted Root"] = true,
     ["Mimic"] = true,
     ["Nostos Bat"] = false,

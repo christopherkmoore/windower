@@ -2,13 +2,14 @@
 
 local files = require('files')
 require('luau')
+local settings = T{}
 
 local global = gearswap and gearswap._G or _G
 local no_quote_types = S{'number','boolean','nil'}
 local valid_classes = S{'List','Set','Table'}
 local converting = false
 
-local settings = {}
+
 --[[
     Load the settings file with the given path (relative to the calling addon's
     directory), and an optional table of default values.  If the file doesn't
@@ -18,7 +19,8 @@ function settings.load(filepath, defaults)
     if type(filepath) ~= 'string' then
         filepath, defaults = 'data/settings.lua', filepath
     end
-    
+
+
     local loaded = nil
     local fcontents = files.read(filepath)
     
@@ -192,8 +194,14 @@ function settings.save(settings_tbl, quiet, indent, line_end)
     line_end = (type(line_end) == 'string') and line_end or '\n'
     
     local m = getmetatable(settings_tbl)
-    log(m)
-    if m == nil or m.__settings_path == nil then
+    if m == nil then
+        m = {}
+        setmetatable(settings_tbl, m)
+    end
+    m.__settings_path = 'data/settings.lua'
+    m.__class = 'Settings'
+
+    if m == nil or m.__settings_path == nil then    
         error('Invalid argument passed to settings.save: '..tostring(settings_tbl))
         return
     end

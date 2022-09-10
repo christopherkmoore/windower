@@ -1,6 +1,6 @@
 require('luau')
 local utilities = { }
-
+settings = {}
 -- Movement Handling
 local lastlocation = 'fff'
 lastlocation = lastlocation:pack(0,0,0)
@@ -66,6 +66,5 @@ function class(obj)
     local m = getmetatable(obj)
     return m and (m.__class or m.__class__) or type(obj)
 end
-    
 
 return utilities

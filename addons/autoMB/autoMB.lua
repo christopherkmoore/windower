@@ -51,7 +51,6 @@ packets = require('packets')
 
 defaults = T{}
 defaults.debug = false -- Show debug output
-defaults.frequency = 1 -- How many times per second to update skillchain effects
 defaults.show_skillchain = false -- Whether or not to show skillchain name
 defaults.show_elements = false -- Whether or not to show skillchain element info
 defaults.show_bonus_elements = false -- Whether or not to show Storm/Weather/Day elements
@@ -154,7 +153,6 @@ local jutsu_users = {'NIN'}
 local helix_users = {'SCH'}
 
 local active = false
-local frequency = 1/settings.frequency
 local last_skillchain = nil
 
 local player = nil
