@@ -134,33 +134,29 @@ function actions.get_offensive_action(player)
     if target == nil then return nil end
     local action = {}
     
+    local nukeingQ = offense.getNukeQueue(target)
+    while not nukeingQ:empty() do 
+        local nukingAction = nukeingQ:pop()
+        
+        offense.nukes[nukingAction.action.id] = nil
+        local_queue_insert(nukingAction.action.en, nukingAction.name)
+        if (action.db == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
+            local_queue_disp()
+            return nukingAction
+        end
+    end
+
     --Prioritize debuffs over nukes/ws
     local dbuffq = offense.getDebuffQueue(player, target)
     while not dbuffq:empty() do
         local dbact = dbuffq:pop()
         local_queue_insert(dbact.action.en, target.name)
         if (action.db == nil) and actor:in_casting_range(target) and actor:ready_to_use(dbact.action) then
-            action.db = dbact
+            local_queue_disp()
+            return dbact
         end
     end
 
-    local nukeingQ = offense.getNukeQueue(target)
-    while not nukeingQ:empty() do 
-        local nukingAction = nukeingQ:pop()
-        
-        offense.nukes[nukingAction.action.id] = nil
-
-        local_queue_insert(nukingAction.action.en, target.name)
-        if (action.db == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
-            action.db = nukingAction
-        end
-    end
-    
-    local_queue_disp()
-    if action.db ~= nil then
-        return action.db
-    end
-    
     if (not settings.disable.ws) and (settings.ws ~= nil) and actor:ready_to_use(lor_res.action_for(settings.ws.name)) then
         local sign = settings.ws.sign or '>'
         local hp = settings.ws.hp or 0

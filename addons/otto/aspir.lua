@@ -3,8 +3,6 @@ local aspir = T{ defaults = {}, immunities = {} }
 require('luau')
 require('actions')
 
-aspir.should_report_state = false
-
 function aspir.init()
     aspir.immunities = lor_settings.load('data/maspir_immunities.lua')
         
@@ -15,18 +13,6 @@ function aspir.init()
   
     return defaults
 end
-
--- function aspir.Update(self, settings, state)
---     self.settings = settings
---     self.state = state
-
---     return aspir.should_report_state
--- end
-
--- function aspir.Report_state()
---     aspir.should_report_state = false
---     return aspir.state.is_busy    
--- end
 
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -64,7 +50,6 @@ function aspir.check_aspir()
 
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
     if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) then
-        log('adding to queue')
         if offense.nukes[spell.aspir3.id] == nil then
             offense.addToNukeingQueue(spell.aspir3, target)
         end

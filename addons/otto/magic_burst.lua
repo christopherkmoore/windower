@@ -214,6 +214,10 @@ function clear_skillchain()
 	last_skillchain = {}
 	last_skillchain.english = 'None'
 	last_skillchain.elements = {}
+
+	if user_settings.magic_burst.gearswap then
+		windower.send_command('gs c notbursting')
+	end
 end
 
 function cast_spell(spell) 
@@ -225,20 +229,15 @@ function cast_spell(spell)
 	offense.addToNukeingQueue(spell, target)
 end
 
-function get_spell(skillchain, last_spell, second_burst, target_change)
+function get_spell(skillchain, shouldStepDown)
 	local spell_element = ''
 	local weather_element, day_element = get_bonus_elements()
 	local spell = ''
 	local step_down = 0
 
-	if (not second_burst or last_spell == nil) then
-		last_spell = ''
-	end
-
-	if (second_burst) then
-		if (magic_burst.magic_burst.step_down == 2 or (magic_burst.magic_burst.step_down == 1 and target_change ~= nil and target_change > 0)) then
-			step_down = 1
-		end
+	if (shouldStepDown and user_settings.magic_burst.step_down == 0) then
+		-- user has double burst enabled but step down unconfigured. Fall back to default
+		step_down = 1
 	end
 
 	if (user_settings.magic_burst.check_weather and T(skillchain.elements):contains(weather_element)) then
@@ -327,7 +326,7 @@ function set_target(target)
 	return 1
 end
 
-function do_burst(target, skillchain, second_burst, last_spell)
+function do_burst(target, skillchain)
 	if user_settings.magic_burst.gearswap then
 		windower.send_command('gs c bursting')
 	end
@@ -343,7 +342,7 @@ function do_burst(target, skillchain, second_burst, last_spell)
 		target_delay = set_target(target)
 	end
 
-	local spell = get_spell(skillchain, last_spell, second_burst, target_delay >= 1)
+	local spell = get_spell(skillchain, false)
 
 	if (spell == nil or spell == '') then
 		if (user_settings.magic_burst.show_spell) then
@@ -361,33 +360,16 @@ function do_burst(target, skillchain, second_burst, last_spell)
 		return
 	end
 	
-	cast_spell(spell, target)
-	local d = spell.cast_time + user_settings.magic_burst.double_burst_delay + target_delay + 2
+	cast_spell(spell)
 
-	if (user_settings.magic_burst.double_burst and not second_burst) then
+	if (user_settings.magic_burst.double_burst) then
 		windower.add_to_chat(123, "Setting up double burst")
-		coroutine.schedule(finish_burst, d)
-
-		do_burst(target, skillchain, true, spell.name)
-		return 
-	else
-		local cast_time = res.spells:with('name', spell) and res.spells:with('name', spell).cast_time or nil
-		if (cast_time == nil) then
-			finish_burst(spell)
-			return
-		end
-		local d = cast_time + target_delay
-		finish_burst(spell)
-	end
-end
-
-function finish_burst(spell)
-	clear_skillchain()
-
-	if user_settings.magic_burst.gearswap then
-		windower.send_command('gs c notbursting')
+		local spell = get_spell(skillchain, true)
+		cast_spell(spell)
 	end
 
+	coroutine.schedule(clear_skillchain:pepare(), 10)
+	
 end
 
 -- MARK: Events
@@ -397,6 +379,7 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 		return
 	end
 
+	-- interrupted skillchain.
 	local actions_packet = windower.packets.parse_action(packet)
 	local mob_array = windower.ffxi.get_mob_array()
 	local valid = false
@@ -411,13 +394,15 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 		local effect, message = data:unpack('b17b10', 27, 6)
 		
 		if start_act:contains(category) then
+			if skillchains ~= nil then clear_skillchain() end
+
 			if param == 24931 then       
 				-- TODO CKM: hooks for adding mb with actions           -- Begin Casting/WS/Item/Range
 			elseif param == 28787 then              -- Failed Casting/WS/Item/Range
 			end
-		elseif category == 6 then                   -- Use Job Ability
-		elseif category == 4 then                   -- Finish Casting
-		elseif finish_act:contains(category) then   -- Finish Range/WS/Item Use
+			elseif category == 6 then                   -- Use Job Ability
+			elseif category == 4 then                   -- Finish Casting
+			elseif finish_act:contains(category) then   -- Finish Range/WS/Item Use
 		end
 	end
 
@@ -440,7 +425,7 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 				for _, action in pairs(target.actions) do
 					if (action.add_effect_message > 287 and action.add_effect_message < 302) then
 						last_skillchain = skillchains[action.add_effect_message]
-						coroutine.schedule(do_burst:prepare(t, last_skillchain, false, '', 0), user_settings.magic_burst.cast_delay)
+						do_burst(t, last_skillchain, false)
 					end
 				end
 			end

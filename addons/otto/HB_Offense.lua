@@ -145,7 +145,7 @@ function offense.getNukeQueue(target)
             end
         end
     end
-    table.vprint(nukeingQ)
+
     return nukeingQ:getQueue()
 end
 

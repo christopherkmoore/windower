@@ -35,6 +35,7 @@ function ActionQueue:enqueue(actionType, action, name, secondary, msg)
         local highestAbove = 999
         for index = 1, self.queue:length() do
             local qi = self.queue[index]
+            table.vprint(qi)
             local qprio = getPlayerPriority[qi.name]
             local higher = compFunc[actionType](-1, pprio, secondary, index, qprio, qi[secLabel])
             if (higher == -1) and (index < highestAbove) then
