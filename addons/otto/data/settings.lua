@@ -1,28 +1,48 @@
 return {
-    ["aspir"] = {
-        ["casting_mp"] = 80,
-        ["casts_all"] = false,
-        ["enabled"] = true,
-        ["tier"] = 3
+    ["activateOutdoors"] = false,
+    ["deactivateIndoors"] = true,
+    ["disable"] = {
+        ["curaga"] = false,
+        ["cure"] = false
+
     },
-    ["load"] = "function: 3C32C770",
-    ["magic_burst"] = {
-        ["cast_delay"] = 0.25,
-        ["cast_tier"] = 2,
-        ["cast_type"] = "spell",
-        ["change_target"] = true,
-        ["check_day"] = false,
-        ["check_weather"] = false,
-        ["double_burst"] = false,
-        ["double_burst_delay"] = 1,
-        ["enabled"] = true,
-        ["gearswap"] = true,
-        ["mp"] = 100,
-        ["show_bonus_elements"] = false,
-        ["show_elements"] = false,
-        ["show_skillchain"] = false,
-        ["show_spell"] = false,
-        ["step_down"] = 0
+    ["healing"] = {
+        ["curaga_min_targets"] = 2,
+        ["min"] = {
+            ["curaga"] = 0,
+            ["cure"] = 0,
+            ["waltz"] = 0,
+            ["waltzga"] = 0
+        }
     },
-    ["save"] = "function: 46B662D8"
+    ["ignoreTrusts"] = true,
+    ["spam"] = {
+        ["name"] = "Stone"
+    },
+    ["textBoxes"] = {
+        ["actionInfo"] = {
+            ["visible"] = true,
+            ["x"] = 0,
+            ["y"] = 0
+        },
+        ["actionQueue"] = {
+            ["font"] = "Arial",
+            ["size"] = 10,
+            ["visible"] = true,
+            ["x"] = -125,
+            ["y"] = 300
+        },
+        ["montoredBox"] = {
+            ["font"] = "Arial",
+            ["size"] = 10,
+            ["visible"] = true,
+            ["x"] = -150,
+            ["y"] = 600
+        },
+        ["moveInfo"] = {
+            ["visible"] = false,
+            ["x"] = 0,
+            ["y"] = 18
+        }
+    }
 }

@@ -37,7 +37,8 @@ send Threechix sing haste Threechix off;
 
 send Threechix singer off;
 send Threechix amb off;
-send Threechix otto off;
+send Threechix otto aspir off;
+send Threechix otto magicburst off;
 send Threechix hb off;
 
 

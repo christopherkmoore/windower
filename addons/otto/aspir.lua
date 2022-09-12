@@ -1,35 +1,32 @@
-local aspir = T{ settings = {}, state = {}, defaults = {}, immunities = {} }
+local aspir = T{ defaults = {}, immunities = {} }
 
 require('luau')
 require('actions')
 
 aspir.should_report_state = false
 
-function aspir.New(self, settings, state)
-    self.settings = settings
-    self.state = state
-    self.immunities = settings.load('data/mob_immunities.lua')
-    
-    local defaults = T{ aspir = {}}
-    defaults.aspir.tier = 3 -- the aspir tier to use.
-    defaults.aspir.enabled = true -- wether or not aspir will be used.
-    defaults.aspir.casting_mp = 80 -- the minimum mp at which to aspir
-    defaults.aspir.casts_all = false  -- wether to cast all tiers of aspir or a single. // TODO: TC - add single, double, all
+function aspir.init()
+    aspir.immunities = lor_settings.load('data/maspir_immunities.lua')
+        
+    aspir.defaults.tier = 3 -- the aspir tier to use.
+    aspir.defaults.enabled = true -- wether or not aspir will be used.
+    aspir.defaults.casting_mp = 80 -- the minimum mp at which to aspir
+    aspir.defaults.casts_all = false  -- wether to cast all tiers of aspir or a single. // TODO: TC - add single, double, all
   
     return defaults
 end
 
-function aspir.Update(self, settings, state)
-    self.settings = settings
-    self.state = state
+-- function aspir.Update(self, settings, state)
+--     self.settings = settings
+--     self.state = state
 
-    return aspir.should_report_state
-end
+--     return aspir.should_report_state
+-- end
 
-function aspir.Report_state()
-    aspir.should_report_state = false
-    return aspir.state.is_busy    
-end
+-- function aspir.Report_state()
+--     aspir.should_report_state = false
+--     return aspir.state.is_busy    
+-- end
 
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -37,35 +34,20 @@ local spell = {
     aspir3 = {id=881,en="Aspir III",ja="アスピルIII",cast_time=3,element=7,icon_id=657,icon_id_nq=15,levels={[4]=550,[21]=550},mp_cost=2,prefix="/magic",range=12,recast=26,recast_id=881,requirements=0,skill=37,targets=32,type="BlackMagic"},
 }
 
-
-function aspir.cast_spell(spell, castingTime)
-    windower.send_command('input /ma "'..spell..'" <t>')
-
-    aspir.state.is_busy = castingTime
-    aspir.should_report_state = true
-end
-
-
 function aspir.should_cast()
-    -- is moving
-    if aspir.state.moving then return false end
-
-    local player = windower.ffxi.get_player()
     -- no target
+    local player = windower.ffxi.get_player()
     if not player.target_index then return false end
-
-    local mob = windower.ffxi.get_mob_by_index(player.target_index)
-    -- is already casting
-    if aspir.state.is_busy > 0 then return false end
-    
+   
     -- is claimed
+    local mob = windower.ffxi.get_mob_by_index(player.target_index)
     if mob.claim_id == 0 then return false end
     
     -- mob has mp
     if aspir.immunities[mob.name] == false then return false end
 
     -- is casters mpp at threshold mpp?
-    if aspir.settings.aspir.casting_mp < player.vitals.mpp then return false end
+    if user_settings.aspir.casting_mp < player.vitals.mpp then return false end
 
     -- is a valid target
     if mob.is_npc and mob.valid_target and mob.distance < 510 then 
@@ -78,22 +60,29 @@ end
 function aspir.check_aspir()
     if not aspir.should_cast() then return end 
 
+	local target = windower.ffxi.get_mob_by_target()
+
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
-    if aspir3_cooldown == 0 and (aspir.settings.aspir.tier == 3 or aspir.settings.aspir.casts_all) then
-        aspir.cast_spell(spell.aspir3.en, spell.aspir3.cast_time)
+    if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) then
+        log('adding to queue')
+        if offense.nukes[spell.aspir3.id] == nil then
+            offense.addToNukeingQueue(spell.aspir3, target)
+        end
         return
     end
 
     local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
-    if aspir2_cooldown == 0 and (aspir.settings.aspir.tier == 2 or aspir.settings.aspir.casts_all) then
-        aspir.cast_spell(spell.aspir2.en, spell.aspir2.cast_time)
-        return
+    if aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) then
+        if offense.nukes[spell.aspir2.id] == nil then
+            offense.addToNukeingQueue(spell.aspir2, target)
+        end        return
     end
 
     local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
-    if aspir_cooldown == 0 and (aspir.settings.aspir.tier == 1 or aspir.settings.aspir.casts_all) then
-        aspir.cast_spell(spell.aspir.en, spell.aspir.cast_time)
-        return
+    if aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) then
+        if offense.nukes[spell.aspir] == nil then
+            offense.addToNukeingQueue(spell.aspir, target)
+        end        return
     end
 end
 
@@ -118,27 +107,11 @@ function aspir.update_DB(actor, damage)
     local hasMP = damage ~= 0 
     aspir.immunities[actor] = hasMP
 
-    aspir.settings.immunities.save(aspir.immunities)
+    user_settings.aspir.immunities.save(aspir.immunities)
 end
 
 ActionPacket.open_listener(action_handler)
 
-windower.register_event('prerender', function(...)
-    local player = windower.ffxi.get_player()
-    local partner, targ = utilities.assistee_and_target(settings)
-
-    if not aspir.settings.aspir.enabled then return end 
-
-    aspir.check_aspir()
-
-    if not aspir.state.moving and aspir.state.is_busy == 0 then 
-        if partner ~= nil then  
-            if (partner.target_index ~= nil) and player.target_index ~= partner.target_index then
-                windower.send_command('input /as '..aspir.settings.assistee)
-            end
-        end 
-    end
-end)
 
 
 return aspir

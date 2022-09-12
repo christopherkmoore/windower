@@ -15,7 +15,13 @@ Available commands\
 -- todo\ 
 buffs\
 debuffs\
-auto get\
+
+auto-geo\
+priority queues from HB\
+
+ws + skillchains\
+
+
 auto magic burst\
 auto convert\
 

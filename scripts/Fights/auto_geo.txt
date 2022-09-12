@@ -20,12 +20,11 @@ send Threechix gs c set AutoBuffMode auto;
 
 send Threechix gs c set AutoConvertMode Auto
 
-send Threechix amb on;
-send Threechix amb tier 4;
-send Threechix amb c spell;
-send Threechix amb gearswap on;
-
-send Threechix otto t 3;
-send Threechix otto single;
-send Threechix otto on;
+send Threechix otto aspir t 3;
+send Threechix otto aspir single;
+send Threechix otto aspir on;
+send Threechix otto magicburst on;
+send Threechix otto magicburst t 4;
+send Threechix otto hb disable cure;
+send Threechix otto hb assist Twochix;
 

@@ -1,83 +1,149 @@
 return {
-    ["Abject Hecteyes"] = true,
-    ["Abject Leech"] = false,
-    ["Acuex"] = true,
-    ["Agon Bruiser"] = false,
-    ["Agon Evoker"] = true,
-    ["Agon Halo"] = true,
-    ["Agon Lyricist"] = false,
-    ["Agon Magus"] = true,
-    ["Agon Marauder"] = false,
-    ["Agon Samurai"] = false,
-    ["Agon Shinobi"] = false,
-    ["Agon Spiritualist"] = true,
-    ["Agon Squire"] = true,
-    ["Antican Hoplomachus"] = true,
-    ["Antican Lanista"] = true,
-    ["Apex Blazer Elytra"] = true,
-    ["Apex Doom Scorpion"] = false,
-    ["Apex Dragonfly"] = false,
-    ["Apex Eruca"] = false,
-    ["Apex Helm Elytra"] = true,
-    ["Apex Hornfly"] = false,
-    ["Apex Lugcrawler"] = false,
-    ["Apex Matamata"] = true,
-    ["Apex Nest Elytra"] = true,
-    ["Apex Raptor"] = false,
-    ["Apex Soldier Lugcrawler"] = false,
-    ["Apex Water Elemental"] = true,
-    ["Apex Worker Lugcrawler"] = false,
-    ["Ascetic Leader"] = false,
-    ["Biune Porxie"] = true,
-    ["Bozzetto Carbuncle"] = true,
-    ["Bozzetto Doppelganger"] = true,
-    ["Bozzetto Fenrir"] = true,
-    ["Bozzetto Garuda"] = true,
-    ["Bozzetto Leviathan"] = true,
-    ["Bozzetto Ramuh"] = true,
-    ["Bozzetto Shiva"] = true,
-    ["Bozzetto Titan"] = true,
-    ["Chalybeous Slime"] = false,
-    ["Chixslave"] = true,
-    ["Demisang Black Mage"] = true,
-    ["Demisang Deleterious"] = false,
-    ["Demisang Red Mage"] = true,
-    ["Demisang White Mage"] = true,
-    ["Depthswalker Crab"] = true,
-    ["Desert Beetle"] = true,
-    ["Desert Dhalmel"] = false,
-    ["Desert Worm"] = true,
-    ["Flavescent Slime"] = false,
-    ["Ghatjot"] = true,
-    ["Killing Weapon"] = true,
-    ["Knotted Root"] = true,
-    ["Mimic"] = true,
-    ["Nostos Bat"] = false,
-    ["Nostos Beetle"] = true,
-    ["Nostos Bomb"] = true,
-    ["Nostos Crab"] = true,
-    ["Nostos Crawler"] = false,
-    ["Nostos Dhalmel"] = false,
-    ["Nostos Eft"] = false,
-    ["Nostos Evil Weapon"] = true,
-    ["Nostos Treant"] = false,
-    ["Nostos Vulture"] = false,
-    ["Nostos Wasp"] = false,
-    ["Onechix"] = true,
-    ["Prognosticator Leader"] = true,
-    ["Qohanyk"] = false,
-    ["Sprinkler"] = true,
-    ["Squadron Ascetic"] = false,
-    ["Squadron Champion"] = true,
-    ["Squadron Empath"] = false,
-    ["Squadron Hoplite"] = true,
-    ["Squadron Magian"] = true,
-    ["Squadron Minnesinger"] = false,
-    ["Squadron Orisha"] = true,
-    ["Squadron Prognosticator"] = true,
-    ["Squadron Ruffian"] = false,
-    ["Squadron Spy"] = true,
-    ["Threechix"] = true,
-    ["Twochix"] = true,
-    ["Unrelenting Eft"] = false
+    ["Aggressor Antlion"] = S{
+        194
+    },
+    ["Agon Halo"] = S{
+        4,
+        13
+    },
+    ["Amaranth Barrier"] = S{
+        4,
+        13,
+        194
+    },
+    ["Antaeus"] = S{
+        2
+    },
+    ["Asanbosam"] = S{
+        2
+    },
+    ["Atabex"] = S{
+        2
+    },
+    ["Bedrock Crag"] = S{
+        4,
+        13,
+        194
+    },
+    ["Bozzeto Warder"] = S{
+        2
+    },
+    ["Bozzetto Carbuncle"] = S{
+        2
+    },
+    ["Bozzetto Consul"] = S{
+        2
+    },
+    ["Bozzetto Devout"] = S{
+        2
+    },
+    ["Bozzetto Hunter"] = S{
+        2
+    },
+    ["Bozzetto Leviathan"] = S{
+        4,
+        13
+    },
+    ["Bozzetto Necronura"] = S{
+        7
+    },
+    ["Bozzetto Shiva"] = S{
+        2,
+        6
+    },
+    ["Bozzetto Stalwart"] = S{
+        2
+    },
+    ["Bozzetto Titan"] = S{
+        4,
+        13
+    },
+    ["Broadleaf Palm"] = S{
+        2,
+        194
+    },
+    ["Bugul Noz"] = S{
+        4
+    },
+    ["Cloud of Darkness"] = S{
+        7
+    },
+    ["Corporal Tombstone"] = S{
+        2
+    },
+    ["Dark Gyves"] = S{
+        194
+    },
+    ["Despot"] = S{
+        194
+    },
+    ["Dhorme Khimaira"] = S{
+        13
+    },
+    ["Diabolos Spade"] = S{
+        4
+    },
+    ["Dimensional Tether"] = S{
+        194
+    },
+    ["Dragua"] = S{
+        13,
+        194
+    },
+    ["Gaizkin"] = S{
+        4
+    },
+    ["Gnarled Rampart"] = S{
+        4,
+        13,
+        194
+    },
+    ["Heliotrope Barrier"] = S{
+        13,
+        194
+    },
+    ["Icy Palisade"] = S{
+        4,
+        13,
+        194
+    },
+    ["Incarnation Icon"] = S{
+        2
+    },
+    ["Knotted Root"] = S{
+        4,
+        13,
+        194
+    },
+    ["Kyou"] = S{
+        28
+    },
+    ["Lithicthrower Image"] = S{
+        2,
+        28
+    },
+    ["Monolithic Boulder"] = S{
+        4,
+        13,
+        194
+    },
+    ["Mu'Sha Effigy"] = S{
+        2,
+        28
+    },
+    ["Sabotender Dulce"] = S{
+        4
+    },
+    ["Sere Stump"] = S{
+        194
+    },
+    ["Sovereign Behemoth"] = S{
+        10,
+        28
+    },
+    ["Wintry Cave"] = S{
+        5,
+        13
+    },
+    ["_comment"] = "This file is automatically updated with buff IDs as immunities are discovered"
 }

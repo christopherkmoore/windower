@@ -15,7 +15,6 @@ local magic_burst = T{ defaults = {}, settings = {}, state = {} }
 require('luau')
 require('actions')
 
-magic_burst.should_report_state = false
 
 function magic_burst.New(self, settings, state)
     self.settings = settings
@@ -42,18 +41,6 @@ function magic_burst.New(self, settings, state)
 	return defaults
 end
 
-function magic_burst.Update(self, settings, state)
-    self.settings = settings
-    self.state = state
-
-    return magic_burst.should_report_state
-end
-
-function magic_burst.Report_state()
-	log(magic_burst.state.is_busy)
-    magic_burst.should_report_state = false
-    return magic_burst.state.is_busy    
-end
 
 res = require('resources')
 packets = require('packets')
@@ -142,10 +129,6 @@ local player = nil
 local finish_act = L{2,3,5}
 local start_act = L{7,8,9,12}
 
-local ability_delay = 1.3
-local after_cast_delay = 2
-local failed_cast_delay = 2
-
 function buff_active(id)
     if T(windower.ffxi.get_player().buffs):contains(id) == true then
         return true
@@ -185,7 +168,7 @@ function low_mp(spell)
 	end
 
 	local mp_cost = sp.mp_cost
-    if (mp_cost == nil or (player.vitals.mp - mp_cost <= magic_burst.settings.magic_burst.mp)) then
+    if (mp_cost == nil or (player.vitals.mp - mp_cost <= user_settings.magic_burst.mp)) then
         return true
     end
 
@@ -233,14 +216,13 @@ function clear_skillchain()
 	last_skillchain.elements = {}
 end
 
-function cast_spell(spell_cmd, target) 
-	if (magic_burst.settings.magic_burst.show_spell) then
-		windower.add_to_chat(123, "Casting - "..spell_cmd..' for the burst!')
+function cast_spell(spell) 
+	if (user_settings.magic_burst.show_spell) then
+		windower.add_to_chat(123, "Casting - "..spell.name..' for the burst!')
 	end
-	
-	windower.send_command('input /ma "'..spell_cmd..'" <t>')
-	magic_burst.should_report_state = true
-	magic_burst.state.is_busy = 3
+
+	local target = windower.ffxi.get_mob_by_target()
+	offense.addToNukeingQueue(spell, target)
 end
 
 function get_spell(skillchain, last_spell, second_burst, target_change)
@@ -259,9 +241,9 @@ function get_spell(skillchain, last_spell, second_burst, target_change)
 		end
 	end
 
-	if (magic_burst.settings.magic_burst.check_weather and T(skillchain.elements):contains(weather_element)) then
+	if (user_settings.magic_burst.check_weather and T(skillchain.elements):contains(weather_element)) then
 		spell_element = weather_element
-	elseif (magic_burst.settings.magic_burst.check_day and T(skillchain.elements):contains(day_element)) then
+	elseif (user_settings.magic_burst.check_day and T(skillchain.elements):contains(day_element)) then
 		spell_element = day_element
 	else
 		for i=1,#spell_priorities do
@@ -272,14 +254,14 @@ function get_spell(skillchain, last_spell, second_burst, target_change)
 		end
 	end
 
-	local tier = magic_burst.settings.magic_burst.cast_tier - step_down
+	local tier = user_settings.magic_burst.cast_tier - step_down
 	-- Find spell/helix/jutsu that will be best based on best element
-	if (elements[spell_element] ~= nil and elements[spell_element][magic_burst.settings.magic_burst.cast_type] ~= nil) then
-		spell = elements[spell_element][magic_burst.settings.magic_burst.cast_type]
+	if (elements[spell_element] ~= nil and elements[spell_element][user_settings.magic_burst.cast_type] ~= nil) then
+		spell = elements[spell_element][user_settings.magic_burst.cast_type]
 
 		tier = (tier >= 1 and tier or 1)
-		spell = spell..(magic_burst.settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
-		spell = spell..(magic_burst.settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
+		spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
+		spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
 
 		local recast = check_recast(spell)
 		if (recast > 0) then
@@ -289,12 +271,12 @@ function get_spell(skillchain, last_spell, second_burst, target_change)
 
 	if (spell == nil or spell == '') then
 		for _,element in pairs(skillchain.elements) do
-			if (elements[element] ~= nil and elements[element][magic_burst.settings.magic_burst.cast_type] ~= nil) then
-				spell = elements[element][magic_burst.settings.magic_burst.cast_type]
+			if (elements[element] ~= nil and elements[element][user_settings.magic_burst.cast_type] ~= nil) then
+				spell = elements[element][user_settings.magic_burst.cast_type]
 
 				tier = (tier >= 1 and tier or 1)
-				spell = spell..(magic_burst.settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
-				spell = spell..(magic_burst.settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
+				spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
+				spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
 			
 				local recast = check_recast(spell)
 				if (recast == 0) then
@@ -312,12 +294,14 @@ function get_spell(skillchain, last_spell, second_burst, target_change)
 		element_list = element_list..skillchain.elements[i]..(i<#skillchain.elements and ', ' or '')
 	end
 	
-	if (magic_burst.settings.magic_burst.show_skillchain) then sc_info = sc_info..'Skillchain effect '..skillchain.english..' ' end
-	if (magic_burst.settings.magic_burst.show_elements) then sc_info = sc_info..'['..element_list..'] ' end
-	if (magic_burst.settings.magic_burst.show_bonus_elements) then sc_info = sc_info..'Weather: '.. weather_element..' Day: '..day_element..' ' end
-	if (magic_burst.settings.magic_burst.show_skillchain or magic_burst.settings.magic_burst.show_elements or magic_burst.settings.magic_burst.show_bonus_elements) then windower.add_to_chat(207, sc_info) end
+	if (user_settings.magic_burst.show_skillchain) then sc_info = sc_info..'Skillchain effect '..skillchain.english..' ' end
+	if (user_settings.magic_burst.show_elements) then sc_info = sc_info..'['..element_list..'] ' end
+	if (user_settings.magic_burst.show_bonus_elements) then sc_info = sc_info..'Weather: '.. weather_element..' Day: '..day_element..' ' end
+	if (user_settings.magic_burst.show_skillchain or user_settings.magic_burst.show_elements or user_settings.magic_burst.show_bonus_elements) then windower.add_to_chat(207, sc_info) end
 
-	return spell
+	local resSpell = res.spells:with('name', spell)
+
+	return resSpell
 end
 
 function set_target(target)
@@ -344,7 +328,7 @@ function set_target(target)
 end
 
 function do_burst(target, skillchain, second_burst, last_spell)
-	if magic_burst.settings.magic_burst.gearswap then
+	if user_settings.magic_burst.gearswap then
 		windower.send_command('gs c bursting')
 	end
 
@@ -355,70 +339,61 @@ function do_burst(target, skillchain, second_burst, last_spell)
 	end
 
 	local target_delay = 0
-	if (magic_burst.settings.magic_burst.change_target) then
+	if (user_settings.magic_burst.change_target) then
 		target_delay = set_target(target)
 	end
 
 	local spell = get_spell(skillchain, last_spell, second_burst, target_delay >= 1)
 
 	if (spell == nil or spell == '') then
-		if (magic_burst.settings.magic_burst.show_spell) then
+		if (user_settings.magic_burst.show_spell) then
 			windower.add_to_chat(123, "No spell found for burst!")
 		end
-		if magic_burst.settings.magic_burst.gearswap then
+		if user_settings.magic_burst.gearswap then
 			windower.send_command('gs c notbursting')
 		end
 		return
 	elseif (disabled()) then
 		windower.add_to_chat(123, "Unable to cast, disabled!")
-		if magic_burst.settings.magic_burst.gearswap then
+		if user_settings.magic_burst.gearswap then
 			windower.send_command('gs c notbursting')
-		end		return
-	elseif (low_mp(spell)) then
-		windower.add_to_chat(123, "Not enough MP for MB!")
-		if magic_burst.settings.magic_burst.gearswap then
-			windower.send_command('gs c notbursting')
-		end		return
-	elseif (magic_burst.state.is_busy > 0) then
-		windower.add_to_chat(123, "Busy for "..magic_burst.state.is_busy.." seconds, delaying MB")
-		coroutine.schedule(do_burst:prepare(target, skillchain, second_burst, last_spell), magic_burst.state.is_busy)
+		end		
 		return
 	end
 	
-	local cast_delay = math.random(0.1, magic_burst.settings.magic_burst.cast_delay)
-	coroutine.schedule(cast_spell:prepare(spell, target), target_delay + cast_delay)
+	cast_spell(spell, target)
+	local d = spell.cast_time + user_settings.magic_burst.double_burst_delay + target_delay + 2
 
-	if (magic_burst.settings.magic_burst.double_burst and not second_burst) then
+	if (user_settings.magic_burst.double_burst and not second_burst) then
 		windower.add_to_chat(123, "Setting up double burst")
-		local cast_time = res.spells:with('name', spell) and res.spells:with('name', spell).cast_time or nil
-		if (cast_time == nil) then
-			finish_burst()
-			return
-		end
-		local d = cast_time + magic_burst.settings.magic_burst.double_burst_delay + target_delay + 2
-		coroutine.schedule(do_burst:prepare(target, skillchain, true, spell), d)
+		coroutine.schedule(finish_burst, d)
+
+		do_burst(target, skillchain, true, spell.name)
+		return 
 	else
 		local cast_time = res.spells:with('name', spell) and res.spells:with('name', spell).cast_time or nil
 		if (cast_time == nil) then
-			finish_burst()
+			finish_burst(spell)
 			return
 		end
 		local d = cast_time + target_delay
-		coroutine.schedule(finish_burst, d)
+		finish_burst(spell)
 	end
 end
 
-function finish_burst()
+function finish_burst(spell)
 	clear_skillchain()
-	if magic_burst.settings.magic_burst.gearswap then
+
+	if user_settings.magic_burst.gearswap then
 		windower.send_command('gs c notbursting')
 	end
+
 end
 
 -- MARK: Events
 
 windower.register_event('incoming chunk', function(id, packet, data, modified, is_injected, is_blocked)
-	if (id ~= 0x28 or not magic_burst.settings.magic_burst.enabled) then
+	if (id ~= 0x28 or not user_settings.magic_burst.enabled) then
 		return
 	end
 
@@ -436,14 +411,12 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 		local effect, message = data:unpack('b17b10', 27, 6)
 		
 		if start_act:contains(category) then
-			if param == 24931 then                  -- Begin Casting/WS/Item/Range
+			if param == 24931 then       
+				-- TODO CKM: hooks for adding mb with actions           -- Begin Casting/WS/Item/Range
 			elseif param == 28787 then              -- Failed Casting/WS/Item/Range
-				magic_burst.state.is_busy = failed_cast_delay
 			end
 		elseif category == 6 then                   -- Use Job Ability
-			magic_burst.state.is_busy = ability_delay
 		elseif category == 4 then                   -- Finish Casting
-			magic_burst.state.is_busy = after_cast_delay
 		elseif finish_act:contains(category) then   -- Finish Range/WS/Item Use
 		end
 	end
@@ -467,7 +440,7 @@ windower.register_event('incoming chunk', function(id, packet, data, modified, i
 				for _, action in pairs(target.actions) do
 					if (action.add_effect_message > 287 and action.add_effect_message < 302) then
 						last_skillchain = skillchains[action.add_effect_message]
-						coroutine.schedule(do_burst:prepare(t, last_skillchain, false, '', 0), magic_burst.settings.magic_burst.cast_delay)
+						coroutine.schedule(do_burst:prepare(t, last_skillchain, false, '', 0), user_settings.magic_burst.cast_delay)
 					end
 				end
 			end
@@ -482,22 +455,22 @@ windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lv
 	local sub = res.jobs[sub_id].english_short
 
 	-- Set magic_burst.cast_type to 'none' to stop casting if job/sub doesn't support casting
-	magic_burst.settings.magic_burst.cast_type = 'none'
+	user_settings.magic_burst.cast_type = 'none'
 
 	if (T(magic_burst.spell_users):contains(main)) then
-		magic_burst.settings.magic_burst.cast_type = 'spell'
+		user_settings.magic_burst.cast_type = 'spell'
 	elseif (T(magic_burst.jutsu_users):contains(main)) then
-		magic_burst.settings.magic_burst.cast_type = 'jutsu'
+		user_settings.magic_burst.cast_type = 'jutsu'
 	elseif (T(magic_burst.helix_users):contains(main)) then
-		magic_burst.settings.magic_burst.cast_type = 'helix'
+		user_settings.magic_burst.cast_type = 'helix'
 	elseif (T(magic_burst.spell_users):contains(sub)) then
-		magic_burst.settings.magic_burst.cast_type = 'spell'
+		user_settings.magic_burst.cast_type = 'spell'
 	elseif (T(magic_burst.jutsu_users):contains(sub)) then
-		magic_burst.settings.magic_burst.cast_type = 'jutsu'
+		user_settings.magic_burst.cast_type = 'jutsu'
 	elseif (T(magic_burst.helix_users):contains(sub)) then
-		magic_burst.settings.magic_burst.cast_type = 'helix'
+		user_settings.magic_burst.cast_type = 'helix'
 	end
-	windower.add_to_chat(123, '> Cast type set to: '..magic_burst.settings.magic_burst.cast_type)
+	windower.add_to_chat(123, '> Cast type set to: '..user_settings.magic_burst.cast_type)
 end)
 
 
