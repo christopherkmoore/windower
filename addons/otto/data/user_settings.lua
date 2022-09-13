@@ -1,7 +1,7 @@
 return {
     ["aspir"] = {
         ["casting_mp"] = 80,
-        ["casts_all"] = false,
+        ["casts_all"] = true,
         ["enabled"] = true,
         ["tier"] = 3
     },

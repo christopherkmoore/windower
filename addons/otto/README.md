@@ -1,4 +1,14 @@
+A note to anyone looking to add this.
 
+This is not at all in a stable state. If you want to know the commands available at any given time, you'll have a better time
+finding the most up-to-date version in otto_events until it stabilizes.
+
+In order to run, this requires lor/libs  https://github.com/lorand-ffxi/lor_libs
+
+Those should go one directory up into ../libs/lor_libs
+
+Dunno who the guy is but he wrote a lot of extremely useful code. Same with Ivaar. If I get anywhere near a stable version for this, it will be mostly 
+off of what he has done from those libs and healbot.
 
 Available commands\
     'reload', 'r'               -> reloads and resets to default settings.                otto r\

@@ -125,9 +125,25 @@ function offense.getDebuffQueue(player, target)
     return dbq:getQueue()
 end
 
+-- Nuke Queue
+-- This was patched in by TC, and mainly for the purpose of magic bursting and aspiring. 
+-- If additions are made at some point in the future, that's what was going on here.
 
-function offense.addToNukeingQueue(spell, target)
+-- Unlike the normal queues which are consantly populated by a buff or debuff map and then priorizied, 
+-- the nuking queue has things added and removed dynamically. I think this is more right since it's main priority is magic bursting.
+ 
+function offense.addToNukeingQueue(spell)
     offense.nukes[spell.id] = {spell = spell, res = spell.en, id = spell.id}
+end
+
+function offense.checkNukingQueueFor(spell)
+    if next(offense.nukes) == nil then return false end
+
+    if offense.nukes[spell.id] ~= nil then 
+        return true    
+    end
+
+    return false
 end
 
 

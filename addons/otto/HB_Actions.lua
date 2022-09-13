@@ -217,6 +217,10 @@ function actions.get_offensive_action(player)
 	return nil
 end
 
+
+-- Utility methods for managing the nukeing queue. The nuking queue is made as things are added and removed
+-- from offense.nukes. If you want to add something to the nuking queue, you add it to there, and then it pulls 
+-- everything from there and builds the queue.
 function actions.has_bursting_spells() 
     if offense.nukes:length() == 0 then return false end
 
