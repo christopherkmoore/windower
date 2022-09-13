@@ -70,7 +70,6 @@ function otto.init()
         otto.activate()
     end
 
-    otto.aspir.init()
 end
 
 function otto.provide_state(...)

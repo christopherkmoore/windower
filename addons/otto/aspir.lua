@@ -3,10 +3,6 @@ local aspir = T{ immunities = {} }
 require('luau')
 require('actions')
 
-function aspir.init(immunity_map)
-    aspir.immunities = immunity_map
-end
-
 local spell = { 
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
@@ -23,7 +19,7 @@ function aspir.should_cast()
     if mob.claim_id == 0 then return false end
     
     -- mob has mp
-    if aspir.immunities[mob.name] == false then return false end
+    if otto.config.maspir_immunities[mob.name] == false then return false end
 
     -- is casters mpp at threshold mpp?
     if user_settings.aspir.casting_mp < player.vitals.mpp then return false end
@@ -65,12 +61,12 @@ end
 
 -- update the db with records of monsters who actually can be aspir'd.
 local function update_DB(actor, damage)
-    if aspir.immunities[actor] ~= nil then return end
+    if otto.config.maspir_immunities[actor] ~= nil then return end
 
     local hasMP = damage ~= 0 
-    aspir.immunities[actor] = hasMP
+    otto.config.maspir_immunities[actor] = hasMP
 
-    user_settings.aspir.immunities.save(aspir.immunities)
+    otto.config.maspir_immunities.save(otto.config.maspir_immunities)
 end
 
 local function action_handler(raw_actionpacket)

@@ -51,6 +51,8 @@ return {
     ["Ghatjot"] = true,
     ["Killing Weapon"] = true,
     ["Knotted Root"] = true,
+    ["Locus Blazer Elytra"] = true,
+    ["Locus Dragonfly"] = false,
     ["Mimic"] = true,
     ["Nostos Bat"] = false,
     ["Nostos Beetle"] = true,
