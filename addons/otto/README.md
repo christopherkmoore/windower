@@ -13,8 +13,22 @@ Available commands\
 
 
 -- todo\ 
+singer?\
+    things I don't like about singer
+    when you die it completely fucks everything
+    very often gets out of whack from using timers
+    doesn't know when buffs miss
+    
+    things I like about singer
+    waits until everyone is in range.
+    good support for using an ability + an action (pianissimo + ballad)
+
 buffs\
 debuffs\
+
+parse out follow from healbot
+parse out ws from healbot
+parse out the ability to send target
 
 auto-geo\
 priority queues from HB\

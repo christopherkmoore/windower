@@ -1,17 +1,10 @@
-local aspir = T{ defaults = {}, immunities = {} }
+local aspir = T{ immunities = {} }
 
 require('luau')
 require('actions')
 
-function aspir.init()
-    aspir.immunities = lor_settings.load('data/maspir_immunities.lua')
-        
-    aspir.defaults.tier = 3 -- the aspir tier to use.
-    aspir.defaults.enabled = true -- wether or not aspir will be used.
-    aspir.defaults.casting_mp = 80 -- the minimum mp at which to aspir
-    aspir.defaults.casts_all = false  -- wether to cast all tiers of aspir or a single. // TODO: TC - add single, double, all
-  
-    return defaults
+function aspir.init(immunity_map)
+    aspir.immunities = immunity_map
 end
 
 local spell = { 
@@ -53,40 +46,25 @@ function aspir.check_aspir()
         if offense.nukes[spell.aspir3.id] == nil then
             offense.addToNukeingQueue(spell.aspir3, target)
         end
-        return
     end
 
     local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
     if aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) then
         if offense.nukes[spell.aspir2.id] == nil then
             offense.addToNukeingQueue(spell.aspir2, target)
-        end        return
+        end        
     end
 
     local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
     if aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) then
         if offense.nukes[spell.aspir] == nil then
             offense.addToNukeingQueue(spell.aspir, target)
-        end        return
-    end
-end
-
-function action_handler(raw_actionpacket)
-    local actionpacket = ActionPacket.new(raw_actionpacket)
-    
-    if actionpacket:get_category_string() == 'spell_finish' then
-        for target in actionpacket:get_targets() do -- target iterator
-            for action in target:get_actions() do -- subaction iterator
-                if action.message == 228 then -- aspir seems to have message 228 
-                    aspir.update_DB(target:get_name(), action.param)
-                end
-            end
-        end
+        end        
     end
 end
 
 -- update the db with records of monsters who actually can be aspir'd.
-function aspir.update_DB(actor, damage)
+local function update_DB(actor, damage)
     if aspir.immunities[actor] ~= nil then return end
 
     local hasMP = damage ~= 0 
@@ -95,8 +73,20 @@ function aspir.update_DB(actor, damage)
     user_settings.aspir.immunities.save(aspir.immunities)
 end
 
+local function action_handler(raw_actionpacket)
+    local actionpacket = ActionPacket.new(raw_actionpacket)
+    
+    if actionpacket:get_category_string() == 'spell_finish' then
+        for target in actionpacket:get_targets() do -- target iterator
+            for action in target:get_actions() do -- subaction iterator
+                if messages_aspir:contains(action.message) then -- aspir seems to have message 228 
+                    update_DB(target:get_name(), action.param)
+                end
+            end
+        end
+    end
+end
+
 ActionPacket.open_listener(action_handler)
-
-
 
 return aspir

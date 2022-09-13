@@ -578,6 +578,12 @@ function help_text()
     end
 end
 
+-- magic burst cast types
+function utils.cast_types()
+    return  T{'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white', 'holy'}
+end
+
+
 --======================================================================================================================
 --[[
 Copyright © 2016, Lorand

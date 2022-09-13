@@ -32,10 +32,15 @@ function ActionQueue:enqueue(actionType, action, name, secondary, msg)
     if self.queue:empty() then
         self.queue:insert(1,qable)
     else
+        if actionType == 'nuke_mob' then
+            -- don't assign or try to compare priority for nuking.
+            local last = self.queue:length()+1
+            self.queue:insert(last,qable)           
+             return
+        end
         local highestAbove = 999
         for index = 1, self.queue:length() do
             local qi = self.queue[index]
-            table.vprint(qi)
             local qprio = getPlayerPriority[qi.name]
             local higher = compFunc[actionType](-1, pprio, secondary, index, qprio, qi[secLabel])
             if (higher == -1) and (index < highestAbove) then

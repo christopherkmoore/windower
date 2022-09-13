@@ -2,6 +2,11 @@
     I am not the original author of this, credit goes to Ekrividus. All I've done is ported it, cleaned up a bit and consolidated.
     -- TC
 
+	-- todo add lock_element argument for forcing MB spell type (useful for resistances and bosses that absorb)
+
+	todo spells need to be removed as they're finished.
+	 
+
 	_addon.version = '0.7.0'
 	_addon.name = 'autoMB'
 	_addon.author = 'Ekrividus'
@@ -10,40 +15,35 @@
 	_addon.windower = '4'
 ]]
 
-local magic_burst = T{ defaults = {}, settings = {}, state = {} }
+local magic_burst = T{ }
 
 require('luau')
 require('actions')
 
-
-function magic_burst.New(self, settings, state)
-    self.settings = settings
-    self.state = state
-
-	local defaults = T{ magic_burst = {}}
-	defaults.magic_burst.enabled = true
-	defaults.magic_burst.show_skillchain = false -- Whether or not to show skillchain name
-	defaults.magic_burst.show_elements = false -- Whether or not to show skillchain element info
-	defaults.magic_burst.show_bonus_elements = false -- Whether or not to show Storm/Weather/Day elements
-	defaults.magic_burst.show_spell = false -- Whether or not to post the spell selection to chat
-	defaults.magic_burst.check_day = false -- Whether or not to use day bonus spell
-	defaults.magic_burst.check_weather = false -- Whether or not to use weather bonus, probably turn on if storms are being used
-	defaults.magic_burst.cast_delay = 0.25 -- Delay from when skillchain occurs to when first spell is cast
-	defaults.magic_burst.double_burst = false -- Not implemented yet
-	defaults.magic_burst.double_burst_delay = 1 -- Time from when first spell starts casting to when second spell starts casting
-	defaults.magic_burst.mp = 100 -- Don't burst if it will leave you below this mark
-	defaults.magic_burst.cast_type = 'spell' -- Type of MB spell|jutsu|helix|ga|ja|ra
-	defaults.magic_burst.cast_tier = 2 -- What tier should we try to cast
-	defaults.magic_burst.step_down = 0 -- Step down a tier for double bursts (0: Never, 1: If target changed, 2: Always)
-	defaults.magic_burst.gearswap = true -- Tell gearswap when we're bursting
-	defaults.magic_burst.change_target = true -- Swap targets automatically for MBs
-	
-	return defaults
-end
-
-
 res = require('resources')
 packets = require('packets')
+skills = require('skills')
+
+skillchain_ids = S{288,289,290,291,292,293,294,295,296,297,298,299,300,301,385,386,387,388,389,390,391,392,393,394,395,396,397,767,768,769,770}
+
+sc_info = {
+    Radiance = {'Fire','Wind','Lightning','Light', lvl=4},
+    Umbra = {'Earth','Ice','Water','Dark', lvl=4},
+    Light = {'Fire','Wind','Lightning','Light', Light={4,'Light','Radiance'}, lvl=3},
+    Darkness = {'Earth','Ice','Water','Dark', Darkness={4,'Darkness','Umbra'}, lvl=3},
+    Gravitation = {'Earth','Dark', Distortion={3,'Darkness'}, Fragmentation={2,'Fragmentation'}, lvl=2},
+    Fragmentation = {'Wind','Lightning', Fusion={3,'Light'}, Distortion={2,'Distortion'}, lvl=2},
+    Distortion = {'Ice','Water', Gravitation={3,'Darkness'}, Fusion={2,'Fusion'}, lvl=2},
+    Fusion = {'Fire','Light', Fragmentation={3,'Light'}, Gravitation={2,'Gravitation'}, lvl=2},
+    Compression = {'Darkness', Transfixion={1,'Transfixion'}, Detonation={1,'Detonation'}, lvl=1},
+    Liquefaction = {'Fire', Impaction={2,'Fusion'}, Scission={1,'Scission'}, lvl=1},
+    Induration = {'Ice', Reverberation={2,'Fragmentation'}, Compression={1,'Compression'}, Impaction={1,'Impaction'}, lvl=1},
+    Reverberation = {'Water', Induration={1,'Induration'}, Impaction={1,'Impaction'}, lvl=1},
+    Transfixion = {'Light', Scission={2,'Distortion'}, Reverberation={1,'Reverberation'}, Compression={1,'Compression'}, lvl=1},
+    Scission = {'Earth', Liquefaction={1,'Liquefaction'}, Reverberation={1,'Reverberation'}, Detonation={1,'Detonation'}, lvl=1},
+    Detonation = {'Wind', Compression={2,'Gravitation'}, Scission={1,'Scission'}, lvl=1},
+    Impaction = {'Lightning', Liquefaction={1,'Liquefaction'}, Detonation={1,'Detonation'}, lvl=1},
+}
 
 local skillchains = {
 	[288] = {id=288,english='Light',elements={'Light','Thunder','Wind','Fire'}},
@@ -119,15 +119,13 @@ local elements = {
 }
 
 magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white', 'holy'}
-magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO'}
+magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO', 'WHM'}
 magic_burst.jutsu_users = {'NIN'}
 magic_burst.helix_users = {'SCH'}
 
 local last_skillchain = nil
 local player = nil
-
-local finish_act = L{2,3,5}
-local start_act = L{7,8,9,12}
+local last_skillchain_tick = nil
 
 function buff_active(id)
     if T(windower.ffxi.get_player().buffs):contains(id) == true then
@@ -210,13 +208,23 @@ function get_bonus_elements()
 	return weather_element, day_element
 end
 
-function clear_skillchain()
-	last_skillchain = {}
-	last_skillchain.english = 'None'
-	last_skillchain.elements = {}
+function burst_window_close()
+	local now = os.clock()
+	-- the times aren't always accurate 0.5 seconds is a rounding to favor closing the bursting window
+	local bursting_window_close_time = last_skillchain_tick + 8.5 
 
-	if user_settings.magic_burst.gearswap then
-		windower.send_command('gs c notbursting')
+	log(''..now..' >'..bursting_window_close_time )
+	if now > bursting_window_close_time then -- CKM test this is working. Fucking coroutines failed me.
+		log('bursting window closed')
+		actions.remove_bursting_spells()
+		
+		last_skillchain = {}
+		last_skillchain.english = 'None'
+		last_skillchain.elements = {}
+	
+		if user_settings.magic_burst.gearswap then
+			windower.send_command('gs c notbursting')
+		end
 	end
 end
 
@@ -229,16 +237,10 @@ function cast_spell(spell)
 	offense.addToNukeingQueue(spell, target)
 end
 
-function get_spell(skillchain, shouldStepDown)
+function get_spell(skillchain, doubleBurst)
 	local spell_element = ''
 	local weather_element, day_element = get_bonus_elements()
 	local spell = ''
-	local step_down = 0
-
-	if (shouldStepDown and user_settings.magic_burst.step_down == 0) then
-		-- user has double burst enabled but step down unconfigured. Fall back to default
-		step_down = 1
-	end
 
 	if (user_settings.magic_burst.check_weather and T(skillchain.elements):contains(weather_element)) then
 		spell_element = weather_element
@@ -253,7 +255,9 @@ function get_spell(skillchain, shouldStepDown)
 		end
 	end
 
-	local tier = user_settings.magic_burst.cast_tier - step_down
+	local tier = user_settings.magic_burst.cast_tier 
+	if doubleBurst and tier - 1 ~= 0 then tier = tier - 1 end
+
 	-- Find spell/helix/jutsu that will be best based on best element
 	if (elements[spell_element] ~= nil and elements[spell_element][user_settings.magic_burst.cast_type] ~= nil) then
 		spell = elements[spell_element][user_settings.magic_burst.cast_type]
@@ -287,17 +291,11 @@ function get_spell(skillchain, shouldStepDown)
 
 	-- Display some skillchain/magic burst info, can show up whether auto bursts are on or not
 	local element_list = ''
-	local sc_info = _addon.name..': '
 
 	for i=1,#skillchain.elements do
 		element_list = element_list..skillchain.elements[i]..(i<#skillchain.elements and ', ' or '')
 	end
 	
-	if (user_settings.magic_burst.show_skillchain) then sc_info = sc_info..'Skillchain effect '..skillchain.english..' ' end
-	if (user_settings.magic_burst.show_elements) then sc_info = sc_info..'['..element_list..'] ' end
-	if (user_settings.magic_burst.show_bonus_elements) then sc_info = sc_info..'Weather: '.. weather_element..' Day: '..day_element..' ' end
-	if (user_settings.magic_burst.show_skillchain or user_settings.magic_burst.show_elements or user_settings.magic_burst.show_bonus_elements) then windower.add_to_chat(207, sc_info) end
-
 	local resSpell = res.spells:with('name', spell)
 
 	return resSpell
@@ -337,9 +335,8 @@ function do_burst(target, skillchain)
 		return
 	end
 
-	local target_delay = 0
 	if (user_settings.magic_burst.change_target) then
-		target_delay = set_target(target)
+		set_target(target)
 	end
 
 	local spell = get_spell(skillchain, false)
@@ -363,76 +360,76 @@ function do_burst(target, skillchain)
 	cast_spell(spell)
 
 	if (user_settings.magic_burst.double_burst) then
-		windower.add_to_chat(123, "Setting up double burst")
 		local spell = get_spell(skillchain, true)
 		cast_spell(spell)
 	end
 
-	coroutine.schedule(clear_skillchain:pepare(), 10)
-	
+	last_skillchain_tick = os.clock()
+	coroutine.schedule(burst_window_close:prepare(), 9)
+
 end
 
 -- MARK: Events
 
-windower.register_event('incoming chunk', function(id, packet, data, modified, is_injected, is_blocked)
-	if (id ~= 0x28 or not user_settings.magic_burst.enabled) then
-		return
-	end
-
-	-- interrupted skillchain.
-	local actions_packet = windower.packets.parse_action(packet)
-	local mob_array = windower.ffxi.get_mob_array()
-	local valid = false
-	local party = windower.ffxi.get_party()
-	local party_ids = T{}
-
-	player = windower.ffxi.get_player()
-
-	if (data:unpack('I', 6) == player.id) then 
-		local category, param = data:unpack( 'b4b16', 11, 3)
-		local recast, targ_id = data:unpack('b32b32', 15, 7)
-		local effect, message = data:unpack('b17b10', 27, 6)
-		
-		if start_act:contains(category) then
-			if skillchains ~= nil then clear_skillchain() end
-
-			if param == 24931 then       
-				-- TODO CKM: hooks for adding mb with actions           -- Begin Casting/WS/Item/Range
-			elseif param == 28787 then              -- Failed Casting/WS/Item/Range
-			end
-			elseif category == 6 then                   -- Use Job Ability
-			elseif category == 4 then                   -- Finish Casting
-			elseif finish_act:contains(category) then   -- Finish Range/WS/Item Use
-		end
-	end
-
-	-- Get ids of all current party member
-	for _, member in pairs (party) do
-		if (type(member) == 'table' and member.mob) then
-			party_ids:append(member.mob.id)
-		end
-	end
-
-	local cur_t = windower.ffxi.get_mob_by_target('t')
-	local bt = windower.ffxi.get_mob_by_target('bt')
+local function action_handler(raw_actionpacket)
 	
-	for _, target in pairs(actions_packet.targets) do
-		local t = windower.ffxi.get_mob_by_id(target.id)
+	if not user_settings.magic_burst.enabled then return end
+
+    local actionpacket = ActionPacket.new(raw_actionpacket)	
+	local category = actionpacket:get_category_string()
+	local categories = S{     
+		'weaponskill_finish',
+    	'mob_tp_finish',
+    	'avatar_tp_finish',
+	 }
+
+    if not categories:contains(category) or raw_actionpacket.param == 0 then
+        return
+    end
+
+    local actor = actionpacket:get_id()
+    local target = actionpacket:get_targets()()
+    local action = target:get_actions()()
+    local add_effect = action:get_add_effect()
+
+    if add_effect and skillchain_ids:contains(add_effect.message_id) then
+
+		actions.remove_bursting_spells()
+
+		local party = windower.ffxi.get_party()
+		local party_ids = T{}
+	
+		for _, member in pairs (party) do
+			if (type(member) == 'table' and member.mob) then
+				party_ids:append(member.mob.id)
+			end
+		end
+
+		last_skillchain = skillchains[add_effect.message_id]
+
+		local cur_t = windower.ffxi.get_mob_by_target('t')
+		local bt = windower.ffxi.get_mob_by_target('bt')
+		local target = windower.ffxi.get_mob_by_id(target.id)
+
 		-- Make sure the mob is claimed by our alliance then
-		if (t ~= nil and ((cur_t and cur_t.id == t.id) or (bt and bt.id == t.id) or party_ids:contains(t.claim_id))) then
+		if (target ~= nil and ((cur_t and cur_t.id == target.id) or (bt and bt.id == target.id) or party_ids:contains(target.claim_id))) then
 			-- Make sure the mob is a valid MB target
-			if (t and (t.is_npc and t.valid_target and not t.in_party and not t.charmed) and t.distance:sqrt() < 22) then
-				for _, action in pairs(target.actions) do
-					if (action.add_effect_message > 287 and action.add_effect_message < 302) then
-						last_skillchain = skillchains[action.add_effect_message]
-						do_burst(t, last_skillchain, false)
-					end
+			if (target and (target.is_npc and target.valid_target and not target.in_party and not target.charmed) and target.distance:sqrt() < 22) then
+				if not closed then
+					do_burst(target, last_skillchain, false)
+					return
 				end
 			end
 		end
+	else
+		if actions.has_bursting_spells() then			
+			actions.remove_bursting_spells()
+		end
 	end
-end)
+end
 
+
+ActionPacket.open_listener(action_handler)
 
 -- Change spell type based on job/sub
 windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lvl)

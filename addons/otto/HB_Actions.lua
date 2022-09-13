@@ -9,7 +9,11 @@ local actions = {queue=L()}
 local lor_res = _libs.lor.resources
 local ffxi = _libs.lor.ffxi
 
-
+--[[
+    All queues feed into the actions queue, but queues are sorted and priortizied before being added.
+    Hook for feeding into main occur from the 'defensive' actions and 'offensive' actions.
+    defensive actions are priortized higher than offensive ones
+--]]
 local function local_queue_reset()
     actions.queue = L()
 end
@@ -108,7 +112,12 @@ function actions.take_action(player, partner, targ)
                     if offense.assist.engage and partner_engaged and (not self_engaged) then
                         actor:send_cmd('input /attack on')
                     else
-                        actor:take_action(actions.get_offensive_action(player), '<t>')
+                        local action = actions.get_offensive_action(player)
+                        actor:take_action(action, '<t>')
+
+                        if action ~= nil and action.type == 'nuke_mob' then
+                            coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
+                        end
                     end
                 else                            --Different targets
                     if partner_engaged and (not self_engaged) then
@@ -116,7 +125,12 @@ function actions.take_action(player, partner, targ)
                     end
                 end
             elseif self_engaged and otto.modes.independent then
-                actor:take_action(actions.get_offensive_action(player), '<t>')
+                local action = actions.get_offensive_action(player)
+                actor:take_action(action, '<t>')
+
+                if action ~= nil and action.type == 'nuke_mob' then
+                    coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
+                end
             end
             offense.cleanup()
         end
@@ -138,11 +152,10 @@ function actions.get_offensive_action(player)
     while not nukeingQ:empty() do 
         local nukingAction = nukeingQ:pop()
         
-        offense.nukes[nukingAction.action.id] = nil
+        -- offense.nukes[nukingAction.action.id] = nil
         local_queue_insert(nukingAction.action.en, nukingAction.name)
-        if (action.db == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
-            local_queue_disp()
-            return nukingAction
+        if (action.nuke == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
+            action.nuke = nukingAction
         end
     end
 
@@ -152,10 +165,17 @@ function actions.get_offensive_action(player)
         local dbact = dbuffq:pop()
         local_queue_insert(dbact.action.en, target.name)
         if (action.db == nil) and actor:in_casting_range(target) and actor:ready_to_use(dbact.action) then
-            local_queue_disp()
-            return dbact
+            action.db = dbact
         end
     end
+
+    local_queue_disp()
+    if action.nuke ~= nil then        
+        return action.nuke
+    elseif action.db ~= nil then
+        return action.db
+    end
+    
 
     if (not settings.disable.ws) and (settings.ws ~= nil) and actor:ready_to_use(lor_res.action_for(settings.ws.name)) then
         local sign = settings.ws.sign or '>'
@@ -195,6 +215,35 @@ function actions.get_offensive_action(player)
     
     atcd('get_offensive_action: no offensive actions to perform')
 	return nil
+end
+
+function actions.has_bursting_spells() 
+    if offense.nukes:length() == 0 then return false end
+
+    for index, nuke in pairs(offense.nukes) do
+        if spells_damage:contains(index) then
+            return true
+        end
+    end
+
+    return false
+end
+
+function actions.remove_bursting_spells()
+
+    if next(offense.nukes) == nil then return end
+
+    for index, nukes in pairs(offense.nukes) do
+        spells_damage:contains(index)
+        offense.nukes[index] = nil
+    end
+
+end
+
+function actions.remove_offensive_action(id)
+    if next(offense.nukes) == nil then return end
+
+    offense.nukes[id] = nil
 end
 
 return actions

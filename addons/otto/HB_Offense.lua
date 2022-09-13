@@ -8,7 +8,7 @@
 local offense = {
     immunities=lor_settings.load('data/mob_immunities.lua'),
     assist={active = false, engage = false},
-    debuffs={}, ignored={}, mobs={}, dispel={}, nukes = {},
+    debuffs={}, ignored={}, mobs={}, dispel={}, nukes = T{},
     debuffing_active = true, nuking_active = true
 }
 
@@ -127,7 +127,7 @@ end
 
 
 function offense.addToNukeingQueue(spell, target)
-    offense.nukes[spell.id] = {spell = spell, res = {}, id = spell.id}
+    offense.nukes[spell.id] = {spell = spell, res = spell.en, id = spell.id}
 end
 
 
@@ -141,7 +141,7 @@ function offense.getNukeQueue(target)
         offense.mobs[target.id] = offense.mobs[target.id] or {}
         for id, nuke in pairs(offense.nukes) do
             if offense.mobs[target.id][id] == nil then
-                nukeingQ:enqueue('nuke_mob', nuke.spell, target.name, {}, (' (%s)'):format(nuke.spell.en))
+                nukeingQ:enqueue('nuke_mob', nuke.spell, target.name, nuke.res, (' (%s)'):format(nuke.spell.en))
             end
         end
     end

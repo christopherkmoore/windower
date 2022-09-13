@@ -33,7 +33,7 @@ otto = {
 
 action = T{}
 settings = {}
-user_settings = lor_settings.load('data/user_settings.lua')
+user_settings = T{}
 
 res = require('resources')
 config = require('config')
@@ -167,6 +167,7 @@ function otto.activate()
         if player.main_job ~= 'WHM' then
             utils.disableCommand('cure', true)
         end
+
         settings.healing.max = {}
         for _,cure_type in pairs(CureUtils.cure_types) do
             settings.healing.max[cure_type] = CureUtils.highest_tier(cure_type)
