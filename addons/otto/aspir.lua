@@ -31,18 +31,14 @@ function aspir.should_cast()
     return true
 end
 
-
-function aspir.check_aspir()
-    if offense.checkNukingQueueFor(spell.aspir) then return end
-    if offense.checkNukingQueueFor(spell.aspir2) then return end
-    if offense.checkNukingQueueFor(spell.aspir3) then return end
+-- Prerender entry point. Steps through with early returns for if aspir should be added to the
+-- offensive nuking queue.
+function aspir.prerender()
 
     if not aspir.should_cast() then return end 
 
-	local target = windower.ffxi.get_mob_by_target()
-
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
-    if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) then
+    if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
         if offense.nukes[spell.aspir3.id] == nil then
             offense.addToNukeingQueue(spell.aspir3)
             return
@@ -50,7 +46,7 @@ function aspir.check_aspir()
     end
 
     local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
-    if aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) then
+    if aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir2) then
         if offense.nukes[spell.aspir2.id] == nil then
             offense.addToNukeingQueue(spell.aspir2)
             return
@@ -58,7 +54,7 @@ function aspir.check_aspir()
     end
 
     local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
-    if aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) then
+    if aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
         if offense.nukes[spell.aspir] == nil then
             offense.addToNukeingQueue(spell.aspir)
             return
@@ -76,7 +72,7 @@ local function update_DB(actor, damage)
     otto.config.maspir_immunities.save(otto.config.maspir_immunities)
 end
 
-local function action_handler(raw_actionpacket)
+function aspir.action_handler(raw_actionpacket)
     local actionpacket = ActionPacket.new(raw_actionpacket)
     
     if actionpacket:get_category_string() == 'spell_finish' then
@@ -90,6 +86,5 @@ local function action_handler(raw_actionpacket)
     end
 end
 
-ActionPacket.open_listener(action_handler)
 
 return aspir

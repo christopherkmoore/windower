@@ -22,28 +22,8 @@ require('actions')
 
 res = require('resources')
 packets = require('packets')
-skills = require('skills')
 
 skillchain_ids = S{288,289,290,291,292,293,294,295,296,297,298,299,300,301,385,386,387,388,389,390,391,392,393,394,395,396,397,767,768,769,770}
-
-sc_info = {
-    Radiance = {'Fire','Wind','Lightning','Light', lvl=4},
-    Umbra = {'Earth','Ice','Water','Dark', lvl=4},
-    Light = {'Fire','Wind','Lightning','Light', Light={4,'Light','Radiance'}, lvl=3},
-    Darkness = {'Earth','Ice','Water','Dark', Darkness={4,'Darkness','Umbra'}, lvl=3},
-    Gravitation = {'Earth','Dark', Distortion={3,'Darkness'}, Fragmentation={2,'Fragmentation'}, lvl=2},
-    Fragmentation = {'Wind','Lightning', Fusion={3,'Light'}, Distortion={2,'Distortion'}, lvl=2},
-    Distortion = {'Ice','Water', Gravitation={3,'Darkness'}, Fusion={2,'Fusion'}, lvl=2},
-    Fusion = {'Fire','Light', Fragmentation={3,'Light'}, Gravitation={2,'Gravitation'}, lvl=2},
-    Compression = {'Darkness', Transfixion={1,'Transfixion'}, Detonation={1,'Detonation'}, lvl=1},
-    Liquefaction = {'Fire', Impaction={2,'Fusion'}, Scission={1,'Scission'}, lvl=1},
-    Induration = {'Ice', Reverberation={2,'Fragmentation'}, Compression={1,'Compression'}, Impaction={1,'Impaction'}, lvl=1},
-    Reverberation = {'Water', Induration={1,'Induration'}, Impaction={1,'Impaction'}, lvl=1},
-    Transfixion = {'Light', Scission={2,'Distortion'}, Reverberation={1,'Reverberation'}, Compression={1,'Compression'}, lvl=1},
-    Scission = {'Earth', Liquefaction={1,'Liquefaction'}, Reverberation={1,'Reverberation'}, Detonation={1,'Detonation'}, lvl=1},
-    Detonation = {'Wind', Compression={2,'Gravitation'}, Scission={1,'Scission'}, lvl=1},
-    Impaction = {'Lightning', Liquefaction={1,'Liquefaction'}, Detonation={1,'Detonation'}, lvl=1},
-}
 
 local skillchains = {
 	[288] = {id=288,english='Light',elements={'Light','Thunder','Wind','Fire'}},
@@ -134,28 +114,14 @@ function buff_active(id)
     return false
 end
 
+
 function disabled()
-    if (buff_active(0)) then -- KO
-        return true
-    elseif (buff_active(2)) then -- Sleep
-        return true
-    elseif (buff_active(6)) then -- Silence
-        return true
-    elseif (buff_active(7)) then -- Petrification
-        return true
-    elseif (buff_active(10)) then -- Stun
-        return true
-    elseif (buff_active(14)) then -- Charm
-        return true
-    elseif (buff_active(28)) then -- Terrorize
-        return true
-    elseif (buff_active(29)) then -- Mute
-        return true
-    elseif (buff_active(193)) then -- Lullaby
-        return true
-    elseif (buff_active(262)) then -- Omerta
-        return true
-    end
+	for _, disabled_id in pairs(cant_cast_states) do
+		if buff_active(disabled_id) then
+			return true
+		end
+	end
+	
     return false
 end
 
@@ -213,9 +179,7 @@ function burst_window_close()
 	-- the times aren't always accurate 0.5 seconds is a rounding to favor closing the bursting window
 	local bursting_window_close_time = last_skillchain_tick + 8.5 
 
-	log(''..now..' >'..bursting_window_close_time )
 	if now > bursting_window_close_time then -- CKM test this is working. Fucking coroutines failed me.
-		log('bursting window closed')
 		actions.remove_bursting_spells()
 		
 		last_skillchain = {}
@@ -234,7 +198,7 @@ function cast_spell(spell)
 	end
 
 	local target = windower.ffxi.get_mob_by_target()
-	offense.addToNukeingQueue(spell, target)
+	offense.addToNukeingQueue(spell)
 end
 
 function get_spell(skillchain, doubleBurst)
@@ -371,7 +335,7 @@ end
 
 -- MARK: Events
 
-local function action_handler(raw_actionpacket)
+function magic_burst.action_handler(raw_actionpacket)
 	
 	if not user_settings.magic_burst.enabled then return end
 
@@ -416,7 +380,7 @@ local function action_handler(raw_actionpacket)
 			-- Make sure the mob is a valid MB target
 			if (target and (target.is_npc and target.valid_target and not target.in_party and not target.charmed) and target.distance:sqrt() < 22) then
 				if not closed then
-					do_burst(target, last_skillchain, false)
+					do_burst(target, last_skillchain)
 					return
 				end
 			end

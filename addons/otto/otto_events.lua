@@ -18,6 +18,7 @@ local function aspir_command(arg)
 	end
 
 	local should_save = true 
+
     if command == 'help' or command == '' or command == nil then
         should_save = false
 		message = 'Allowed commands for aspir are '..table.concat(allowed, ', ')
@@ -70,7 +71,6 @@ local function aspir_command(arg)
 
 end
 
--- TODO still work to fix out parsing commands
 local function magic_burst_command(arg)
     local allowed = T{'test', 'help', 'status', 'show'}
     local message = ''
@@ -228,41 +228,13 @@ local function healbot_commands(args)
 		arg3 = args[3]:lower()
 	end
 
-    if S{'start','on'}:contains(command) then
-        otto.activate()
-    elseif S{'stop','end','off'}:contains(command) then
-        otto.active = false
-        utils.printStatus()
-    elseif S{'disable'}:contains(command) then
+    if S{'disable'}:contains(command) then
         if not validate(args, 2, 'Error: No argument specified for Disable') then return end
         utils.disableCommand(arg2, true)
     elseif S{'enable'}:contains(command) then
         if not validate(args, 2, 'Error: No argument specified for Enable') then return end 
         utils.disableCommand(args[2]:lower(), false)
-    elseif S{'assist','as'}:contains(command) then
-        local cmd = args[2] and args[2]:lower() or (offense.assist.active and 'off' or 'resume')
-        if S{'off','end','false','pause'}:contains(cmd) then
-            offense.assist.active = false
-            atc('Assist is now off.')
-        elseif S{'resume'}:contains(cmd) then
-            if (offense.assist.name ~= nil) then
-                offense.assist.active = true
-                atc('Now assisting '..offense.assist.name..'.')
-            else
-                atc(111,'Error: Unable to resume assist - no target set')
-            end
-        elseif S{'attack','engage'}:contains(cmd) then
-            local cmd2 = args[2] and args[2]:lower() or (offense.assist.engage and 'off' or 'resume')
-            if S{'off','end','false','pause'}:contains(cmd2) then
-                offense.assist.engage = false
-                atc('Will no longer enagage when assisting.')
-            else
-                offense.assist.engage = true
-                atc('Will now enagage when assisting.')
-            end
-        else    --args[2] is guaranteed to have a value if this is reached
-            offense.register_assistee(args[2])
-        end
+    
     elseif S{'ws','weaponskill'}:contains(command) then
         local lte,gte = string.char(0x81, 0x85),string.char(0x81, 0x86)
         local cmd = args[2] and args[2] or ''
@@ -405,35 +377,7 @@ local function healbot_commands(args)
         buffs.registerIgnoreDebuff(args, true)
     elseif command == 'unignore_debuff' then
         buffs.registerIgnoreDebuff(args, false)
-    elseif S{'follow','f'}:contains(command) then
-        local cmd = args[2] and args[2]:lower() or (settings.follow.active and 'off' or 'resume')
-        if S{'off','end','false','pause','stop','exit'}:contains(cmd) then
-            settings.follow.active = false
-        elseif S{'distance', 'dist', 'd'}:contains(cmd) then
-            local dist = tonumber(args[3])
-            if (dist ~= nil) and (0 < dist) and (dist < 45) then
-                settings.follow.distance = dist
-                atc('Follow distance set to '..settings.follow.distance)
-            else
-                atc('Error: Invalid argument specified for follow distance')
-            end
-        elseif S{'resume'}:contains(cmd) then
-            if (settings.follow.target ~= nil) then
-                settings.follow.active = true
-                atc('Now following '..settings.follow.target..'.')
-            else
-                atc(111,'Error: Unable to resume follow - no target set')
-            end
-        else    --args[1] is guaranteed to have a value if this is reached
-            local pname = utils.getPlayerName(args[2])
-            if (pname ~= nil) then
-                settings.follow.target = pname
-                settings.follow.active = true
-                atc('Now following '..settings.follow.target..'.')
-            else
-                atc(111,'Error: Invalid name provided as a follow target: '..tostring(args[2]))
-            end
-        end
+
     elseif S{'ignore', 'unignore', 'watch', 'unwatch'}:contains(command) then
         monitorCommand(command, args[2])
     elseif command == 'ignoretrusts' then
@@ -480,9 +424,145 @@ local function healbot_commands(args)
 end
 
 
+local function follow_commands(args)
+	local arg1 = ''
+	local arg2 = ''
+
+    if (#args > 0) then
+        arg1 = args[1]:lower()
+    end
+
+	if (#args > 1) then
+		arg2 = args[2]:lower()
+	end
+    
+    local should_save = true
+
+    if S{'off','end','false','pause','stop','exit'}:contains(arg1) then
+        user_settings.follow.active = false
+    elseif S{'distance', 'dist', 'd'}:contains(arg1) then
+        local dist = tonumber(arg2)
+        if (dist ~= nil) and (0 < dist) and (dist < 45) then
+            user_settings.follow.distance = dist
+            atc('Follow distance set to '..user_settings.follow.distance)
+        else
+            atc('Error: Invalid argument specified for follow distance')
+            return
+        end
+    elseif S{'resume', 'on'}:contains(arg1) then
+        if (user_settings.follow.target ~= nil) then
+            user_settings.follow.active = true
+            atc('Now following '..user_settings.follow.target..'.')
+        else
+            atc(111,'Error: Unable to resume follow - no target set')
+            return
+        end
+    else    --args[1] is guaranteed to have a value if this is reached
+        local pname = utils.getPlayerName(arg1)
+        if (pname ~= nil) then
+            user_settings.follow.target = pname
+            user_settings.follow.active = true
+            atc('Now following '..user_settings.follow.target..'.')
+        else
+            should_save = false
+            atc(111,'Error: Invalid name provided as a follow target: '..tostring(arg1))
+        end
+    end
+
+    if should_save then
+		user_settings:save()
+	end
+end
+
+local function assist_commands(args)
+    local allowed = T{'on | off | enabled | disable', 'yalmfightrange', 'role', 'master', 'slave'}
+    local command = 'help'
+	local message = ''
+	local arg2 = ''
+
+    if (#args > 0) then
+        command = args[1]
+    end
+
+	if (#args > 1) then
+		arg2 = args[2]
+	end
+
+	local should_save = true 
+    user_settings = lor_settings.load('data/user_settings.lua')
+    
+    if command == 'on' or command == 'enable' then
+        user_settings.assist.enabled = true
+        otto.assist.toggle_register_windower_events()
+        message = 'Assist is now on! Remember to set your role, yalmfightrange and master | slave'
+    elseif command == 'off' or command == 'disable' then
+        user_settings.assist.enabled = false
+        otto.assist.toggle_register_windower_events()
+        message = 'Assiting has been toggled off.'
+    elseif command == 'master' then
+        if arg2 == 'off' then
+            user_settings.assist.master = ''
+            windower(123, 'Assist not configured with a master')
+            user_settings:save()
+            return
+        end
+        user_settings.assist.master = windower.ffxi.get_player().name
+        message = 'Assist configured with '..user_settings.assist.master..' as master'
+    elseif command == 'slave' then
+        local name = windower.ffxi.get_player().name
+        local inSet = S(user_settings.assist.slaves):contains(name)
+        if inSet or arg2 == 'off' then
+            table.remove(user_settings.assist.slaves, name)
+            message = 'Assist is removing you as a slave... be free.'
+            windower.send_command('input /autotarget on')
+        elseif not inSet or arg2 == 'on' then 
+            table.insert(user_settings.assist.slaves, name)
+            message = 'Assist configured with '..name..' as a slave'
+            windower.send_command('input /autotarget off')
+        end	
+	elseif command == 'role' then
+		if arg2 == nil then
+            message = 'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
+            should_save = false
+        end
+
+        if arg2 == 'frontline' or arg2 == 'backline' then 
+            local name = windower.ffxi.get_player().name
+            user_settings.assist.slaves[name] = arg2:lower()
+            message = 'Assist role is selected as '..arg2..'. Setting a role means you are a slave.'
+        end
+    elseif command == 'yalmfightrange' or command == 'range' or command == 'yalm' or command == 'y' or command == 'r' then
+        if arg2 == nil or arg2 == '' then
+            windower.add_to_chat(123, 'You need to provide a range between 0-5')
+            return
+        end
+        local yalms = tonumber(arg2)
+        if yalms <= 0 or yalms >= 5 then
+            windower.add_to_chat(123, 'You need to provide a range between 0-5')
+            return
+        end
+
+        if yalms > 0 and yalms > 5 then
+            user_settings.assist.yalm_fight_range = yalms
+            message = 'Assists will engage at a distance of '..arg2..' yalms'
+        end
+    else
+        windower.add_to_chat(123, "That's not a command")
+		windower.add_to_chat(111, 'Allowed commands for assist are '..table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+		windower.add_to_chat(111, message)
+		user_settings:save()
+	end
+
+end
+
+
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
-    args = T { ... }
+    local args = T { ... }
     local command = 'help'
 
     if (#args > 0) then
@@ -491,6 +571,7 @@ function events.addon_command(...)
 
     if (#args > 1) then
         local newArgs = table.slice(args, 2)
+        -- MARK: commands to sub programs
         if command == 'aspir' then
             aspir_command(newArgs)
             return
@@ -500,16 +581,62 @@ function events.addon_command(...)
 		elseif command == 'healbot' or command == 'hb' or command == 'healer' then
 			healbot_commands(newArgs)
 			return
+        elseif command == 'follow' or command == 'f' then
+            follow_commands(newArgs)
+        elseif command == 'assist' or command == 'a' then
+            assist_commands(newArgs)
+            -- todo merge with awm
+        elseif S{'assist','as'}:contains(command) then
+            local cmd = args[2] and args[2]:lower() or (offense.assist.active and 'off' or 'resume')
+            if S{'off','end','false','pause'}:contains(cmd) then
+                offense.assist.active = false
+                atc('Assist is now off.')
+            elseif S{'resume'}:contains(cmd) then
+                if (offense.assist.name ~= nil) then
+                    offense.assist.active = true
+                    atc('Now assisting '..offense.assist.name..'.')
+                else
+                    atc(111,'Error: Unable to resume assist - no target set')
+                end
+            elseif S{'attack','engage'}:contains(cmd) then
+                local cmd2 = args[2] and args[2]:lower() or (offense.assist.engage and 'off' or 'resume')
+                if S{'off','end','false','pause'}:contains(cmd2) then
+                    offense.assist.engage = false
+                    atc('Will no longer enagage when assisting.')
+                else
+                    offense.assist.engage = true
+                    atc('Will now enagage when assisting.')
+                end
+            else    --args[2] is guaranteed to have a value if this is reached
+                offense.register_assistee(args[2])
+            end
+
+        -- MARK: commands to local otto
+
         end
     end
 
 	if (#args == 1) then
 		if command == 'refresh' then
 			utils.load_configs()
-		end
-		else
-	end
-
+        elseif S{'r','reload'}:contains(command) then
+            windower.send_command('lua reload otto')
+        elseif S{'help','man', '?'}:contains(command) then
+            windower.add_to_chat(144, 'Top level commands are:')
+            windower.add_to_chat(144, 'aspir - configure auto aspir!')
+            windower.add_to_chat(144, 'magicburst | mb - make things explody')
+            windower.add_to_chat(144, 'healbot | hb - your beloved healer -- and a white mage that will never talk back!')
+            windower.add_to_chat(144, 'follow | f - commands for following a master')
+        elseif S{'start','on'}:contains(command) then
+            otto.activate = true
+            windower.add_to_chat(144, 'Otto is live!')
+            user_settings:save()
+        elseif S{'stop','off'}:contains(command) then
+            otto.activate = true
+            windower.add_to_chat(144, 'Otto powering dooow--!')
+            user_settings:save()
+        end
+    end
 end
 
 return events

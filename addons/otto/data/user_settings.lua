@@ -1,9 +1,26 @@
 return {
     ["aspir"] = {
         ["casting_mp"] = 80,
-        ["casts_all"] = true,
+        ["casts_all"] = false,
         ["enabled"] = true,
         ["tier"] = 3
+    },
+    ["assist"] = {
+        ["enabled"] = true,
+        ["master"] = "Twochix",
+        ["role"] = "frontline",
+        ["slaves"] = {
+            ["Chixslave"] = "frontline",
+            ["Onechix"] = "frontline",
+            ["Threechix"] = "frontline"
+        },
+        ["yalm_fight_range"] = 3.5
+    },
+    ["follow"] = {
+        ["active"] = false,
+        ["delay"] = 0.2,
+        ["distance"] = 0.5,
+        ["target"] = "Twochix"
     },
     ["magic_burst"] = {
         ["cast_tier"] = 4,

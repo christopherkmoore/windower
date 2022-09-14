@@ -86,6 +86,11 @@
                 <x>1331</x>
                 <y>32</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <debuffing>false</debuffing>
         <delay>4</delay>

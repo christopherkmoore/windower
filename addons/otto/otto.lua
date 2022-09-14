@@ -7,8 +7,9 @@
 
     - libs/lor + queues + actions + Actor + so much stuff -- thank you!
 
-    - Aspir TC
+    - Aspir - TC
     - Magic Burst - Ekrividus
+    - Follow - pulled from HB
 --]]
 _addon.version = '1.0.0'
 _addon.name = 'otto'
@@ -61,6 +62,8 @@ local pm_keys = {
 otto.events = require('otto_events')
 otto.aspir = require('aspir')
 otto.magic_burst = require('magic_burst')
+otto.follow = require('follow')
+otto.assist = require('assist')
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -70,6 +73,8 @@ function otto.init()
         otto.activate()
     end
 
+    otto.follow.init()
+    otto.assist.init()
 end
 
 function otto.provide_state(...)
@@ -87,35 +92,10 @@ otto._events['render'] = windower.register_event('prerender', function()
 
     if (player ~= nil) and can_act_statuses:contains(player.status) then
         local partner, targ = offense.assistee_and_target()
-        otto.follow_target_exists()   --Attempts to prevent autorun problems
         
-        local follow = settings.follow
-        if otto.auto_movement_active() then
-            if ((now - actor.last_move_check) > follow.delay) then
-                local should_move = false
-                if (targ ~= nil) and (player.target_index == partner.target_index) then
-                    if offense.assist.engage and (partner.status == 1) then
-                        if actor:dist_from(targ.id) > 3 then
-                            should_move = true
-                            actor:move_towards(targ.id)
-                        end
-                    end
-                end
-                if (not should_move) and follow.active and (actor:dist_from(follow.target) > follow.distance) then
-                    should_move = true
-                    actor:move_towards(follow.target)
-                end
-                if (not should_move) then
-                    if follow.active then
-                        windower.ffxi.run(false)
-                    end
-                else
-                    moving = true
-                end
-                actor.last_move_check = now      --Refresh stored movement check time
-            end
-        end
-        
+        otto.follow.prerender()
+        otto.aspir.prerender()
+
         if otto.active and not (moving or acting) then
             --otto.active = false    --Quick stop when debugging
             if actor:action_delay_passed() then
@@ -123,7 +103,6 @@ otto._events['render'] = windower.register_event('prerender', function()
                 actions.take_action(player, partner, targ)
 
                 -- TODO CKM added for now
-                otto.aspir.check_aspir()
             end
         end
         
@@ -134,12 +113,17 @@ otto._events['render'] = windower.register_event('prerender', function()
     end
 end)
 
+otto._events['aspir_action_listener'] = ActionPacket.open_listener(otto.aspir.action_handler)
+otto._events['magic_burst_action_listener'] = ActionPacket.open_listener(otto.magic_burst.action_handler)
+
+
+
 otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
 
 otto._events['load'] = windower.register_event('load', function()
     if not _libs.lor then
-        local err_msg = 'HealBot ERROR: Missing core requirement: https://github.com/lorand-ffxi/lor_libs'
-        windower.add_to_chat(39, err_msg)
+        local err_msg = 'otto ERROR: Missing core requirement: https://github.com/lorand-ffxi/lor_libs'
+        windower.add_to_chat(123, err_msg)
         error(err_msg)
     end
 
@@ -156,7 +140,7 @@ end)
 
 
 otto._events['logout'] = windower.register_event('logout', function()
-    windower.send_command('lua unload healBot')
+    windower.send_command('lua unload otto')
 end)
 
 function otto.activate()
@@ -204,7 +188,6 @@ function otto.addPlayer(list, player)
     end
 end
 
-
 local function _getMonitoredPlayers()
     local pt = windower.ffxi.get_party()
     local my_zone = pt.p0.zone
@@ -239,26 +222,8 @@ local function _getMonitoredIds()
     end
     return ids
 end
+
 otto.getMonitoredIds = _libs.lor.advutils.tcached(1, _getMonitoredIds)
-
---todo CKM consider replacing follows scripts with this, toggling on / off?
-function otto.follow_target_exists()
-    if (settings.follow.target == nil) then return end
-    local ft = windower.ffxi.get_mob_by_name(settings.follow.target)
-    if settings.follow.active and (ft == nil) then
-        settings.follow.pause = true
-        settings.follow.active = false
-    elseif settings.follow.pause and (ft ~= nil) then
-        settings.follow.pause = nil
-        settings.follow.active = true
-    end
-end
-
-
-function otto.auto_movement_active()
-    return settings.follow.active or (offense.assist.active and offense.assist.engage)
-end
-
 
 function otto.isMoving()
     local timeAtPos = actor:time_at_pos()

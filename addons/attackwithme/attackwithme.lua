@@ -16,7 +16,7 @@ defaults = {
 	master = 'Twochix',
 	slaves = S{'Onechix'},
 	slaves_close_in = true,
-	slaves_close_in_distance = 2.6,
+	slaves_close_in_distance = 3.2,
 }
 local settings = config.load(defaults)
 
