@@ -147,9 +147,11 @@ function otto.activate()
     local player = windower.ffxi.get_player()
     if player ~= nil then
 
-        if player.main_job ~= 'WHM' then
-            utils.disableCommand('cure', true)
-        end
+        utils.disableCommand('cure', true) -- need to sort the healer stuff.
+
+        -- if player.main_job ~= 'WHM' then
+        --     utils.disableCommand('cure', true)
+        -- end
 
         settings.healing.max = {}
         for _,cure_type in pairs(CureUtils.cure_types) do
@@ -160,7 +162,7 @@ function otto.activate()
                 settings.healing.mode = 'waltz'
                 settings.healing.modega = 'waltzga'
             else
-                utils.disableCommand('cure', false)
+                -- utils.disableCommand('cure', false)
             end
         else
             settings.healing.mode = 'cure'

@@ -536,13 +536,15 @@ local function assist_commands(args)
             windower.add_to_chat(123, 'You need to provide a range between 0-5')
             return
         end
+
         local yalms = tonumber(arg2)
-        if yalms <= 0 or yalms >= 5 then
+        log(yalms)
+        if yalms < 0 or yalms > 5 then
             windower.add_to_chat(123, 'You need to provide a range between 0-5')
             return
         end
 
-        if yalms > 0 and yalms > 5 then
+        if yalms > 0 and yalms < 5 then
             user_settings.assist.yalm_fight_range = yalms
             message = 'Assists will engage at a distance of '..arg2..' yalms'
         end

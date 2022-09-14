@@ -13,7 +13,8 @@ return {
             ["cure"] = 0,
             ["waltz"] = 0,
             ["waltzga"] = 0
-        }
+        },
+        ["max"] = {},
     },
     ["ignoreTrusts"] = true,
     ["spam"] = {

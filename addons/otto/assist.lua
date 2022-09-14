@@ -9,6 +9,11 @@
 
     and modified to suit my needs.
     -TC
+
+    -- todo test actor:is_acting to make sure mobs moving isn't dragging people all over the place
+    -- add should_close_in() check to test that the master's yalm range is within a sensible distance to start running it down. 
+    Otherwise you look like a fucking idiot running into narnia...
+    -- when set as backline i don't want them to lock target or engage 
 ]]
 
 -- Commands related to targeting / engaging during battle
@@ -133,6 +138,8 @@ local function face_target(target_type) -- 't', 'bt'
 end
 
 local function close_in(target_type) -- 't', 'bt'
+    if actor:is_acting() then return end
+
     local name = windower.ffxi.get_player().name
     local role = user_settings.assist.slaves[name]
 
@@ -155,7 +162,7 @@ local function close_in(target_type) -- 't', 'bt'
 		face_target()
 	end
 	
-	while (mob and dist > user_settings.assist.fight_yalm_range) do
+	while (mob and dist > user_settings.assist.yalm_fight_range) do
 		windower.ffxi.run(heading_to(mob.x, mob.y))
 		coroutine.sleep(0.2)
 		mob = windower.ffxi.get_mob_by_target('t')
@@ -265,8 +272,8 @@ function assist.outgoing_chunk_handler(id, original)
     if id == 0x01A then
         local p = packets.parse('outgoing', original)
         if p['Category'] == 0x02 then
-            send_ipc_message_delay:schedule(1, 'attack on '..tostring(p['Target']))
-            log('Master: Attack On')
+            -- send_ipc_message_delay:schedule(1, 'attack on '..tostring(p['Target']))
+            -- log('Master: Attack On')
         elseif p['Category'] == 0x04 then
             windower.send_ipc_message('attack off')
             log('Master: Attack Off')

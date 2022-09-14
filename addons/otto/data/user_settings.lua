@@ -2,7 +2,7 @@ return {
     ["aspir"] = {
         ["casting_mp"] = 80,
         ["casts_all"] = false,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["tier"] = 3
     },
     ["assist"] = {
@@ -12,9 +12,9 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "frontline",
             ["Onechix"] = "frontline",
-            ["Threechix"] = "frontline"
+            ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 3.5
+        ["yalm_fight_range"] = 1
     },
     ["follow"] = {
         ["active"] = false,
@@ -29,7 +29,7 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
