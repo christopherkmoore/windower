@@ -1,8 +1,8 @@
 return {
     ["aspir"] = {
         ["casting_mp"] = 80,
-        ["casts_all"] = false,
-        ["enabled"] = false,
+        ["casts_all"] = true,
+        ["enabled"] = true,
         ["tier"] = 3
     },
     ["assist"] = {
@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["role"] = "frontline",
         ["slaves"] = {
-            ["Chixslave"] = "frontline",
+            ["Chixslave"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -29,7 +29,7 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false

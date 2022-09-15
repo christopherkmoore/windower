@@ -1,7 +1,0 @@
-send Onechix exec unfollow;
-wait 0.1;
-send Onechix exec clear_target;
-wait 0.1;
-
-send Threechix sat youtarget Onechix;
-wait 0.4;

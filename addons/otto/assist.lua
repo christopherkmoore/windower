@@ -94,6 +94,7 @@ local function attack_off()
 end
 
 local function switch_target(id)
+    log('switching target')
     local target = windower.ffxi.get_mob_by_id(id)
 
     if not target then
@@ -107,6 +108,35 @@ local function switch_target(id)
     })
 
     packets.inject(p)
+
+end
+
+local function target_master(player, id)
+    if not player or not id then return end
+
+    packets.inject(packets.new('incoming', 0x058, {
+        ['Player'] = player.id,
+        ['Target'] = id,
+        ['Player Index'] = player.index,
+    }))
+
+end
+
+local function all_target_master(id)
+
+    log(id)
+    if not id then
+        return
+    end
+
+    local player = windower.ffxi.get_player()
+
+    packets.inject(packets.new('incoming', 0x058, {
+        ['Player'] = player.id,
+        ['Target'] = id,
+        ['Player Index'] = player.index,
+    }))
+    
 
 end
 
@@ -177,6 +207,36 @@ local function close_in(target_type) -- 't', 'bt'
 	windower.ffxi.run(false)
 end
 
+function assist.targets()
+
+    if not is_master then return end
+
+    local target = windower.ffxi.get_mob_by_target('t')
+    local player_target = windower.ffxi.get_mob_by_id(target.id)
+		
+    if not player_target then
+		return
+    end
+
+    windower.send_ipc_message('target '..player_target.id)
+end
+
+-- targets something
+-- player 
+function assist.target(player)
+    if not player then return end
+
+    local target = windower.ffxi.get_mob_by_target('t')
+    local player_target = windower.ffxi.get_mob_by_id(target.id)
+		
+    if not player_target then
+		return
+    end
+
+    windower.send_ipc_message('target '..player_target.id..' '..player)
+end
+
+
 
 -- TODO register handlers in otto
 function assist.ipc_message_handler(message) 
@@ -211,7 +271,12 @@ function assist.ipc_message_handler(message)
             attack_on(id)
             target_lock_on:schedule(1)
         elseif msg[2] == 'off' then
-            attack_off()
+            local player = windower.ffxi.get_player()
+            local role = user_settings.assist.slaves[player.name]
+            
+            if role ~= nil and role == 'frontline' then
+                attack_off()
+            end
         end
     elseif msg[1] == 'change' then
         local id = tonumber(msg[2])
@@ -223,20 +288,21 @@ function assist.ipc_message_handler(message)
             return
         end
 
-        local retry_count = 0
-        repeat
-            switch_target(id)
-            coroutine.sleep(2)
-            player = windower.ffxi.get_player()
-            retry_count = retry_count + 1
-        until player.status == player_status['Engaged'] or retry_count > max_retry
 
-        target_lock_on:schedule(1)
-		
         local name = windower.ffxi.get_player().name
         local role = user_settings.assist.slaves[name]
 
 		if role == 'frontline' then
+            local retry_count = 0
+            repeat
+                switch_target(id)
+                coroutine.sleep(2)
+                player = windower.ffxi.get_player()
+                retry_count = retry_count + 1
+            until player.status == player_status['Engaged'] or retry_count > max_retry
+    
+            target_lock_on:schedule(1)
+            
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
 				if not closing_in then
@@ -245,8 +311,9 @@ function assist.ipc_message_handler(message)
 				coroutine.sleep(.5)
 				player = windower.ffxi.get_player()
 			end
-		end
-		
+        elseif role == 'backline' then
+            target_master(player, id)
+        end
     elseif msg[1] == 'follow' then
         local id = msg[2]
         local mob = windower.ffxi.get_mob_by_id(id)
@@ -254,6 +321,21 @@ function assist.ipc_message_handler(message)
             local index = mob.index
             windower.ffxi.follow(index)
         end
+
+    elseif msg[1] == 'target' then     
+        local targetId = tonumber(msg[2])
+
+        if msg[3] then
+            local player = windower.ffxi.get_player()
+            if player.name == msg[3] then
+                log('workign correct')
+                target_master(player, targetId)   
+                return
+            end
+            return
+        end
+
+        all_target_master(targetId)
     end
 end
 
@@ -271,12 +353,8 @@ function assist.outgoing_chunk_handler(id, original)
 
     if id == 0x01A then
         local p = packets.parse('outgoing', original)
-        if p['Category'] == 0x02 then
-            -- send_ipc_message_delay:schedule(1, 'attack on '..tostring(p['Target']))
-            -- log('Master: Attack On')
-        elseif p['Category'] == 0x04 then
+        if p['Category'] == 0x04 then -- Disengage
             windower.send_ipc_message('attack off')
-            log('Master: Attack Off')
         end
     end
 end
@@ -288,9 +366,9 @@ function assist.incoming_chunk_handler(id, original)
         return
     end
 
-    if id == 0x058 then
+    if id == 0x058 then -- -- Assist Response
         local p = packets.parse('incoming', original)
-        send_ipc_message_delay:schedule(0.5, 'change '..tostring(p['Target']))
+         send_ipc_message_delay:schedule(0.5, 'change '..tostring(p['Target']))
     end
 end
 

@@ -475,7 +475,7 @@ local function follow_commands(args)
 end
 
 local function assist_commands(args)
-    local allowed = T{'on | off | enabled | disable', 'yalmfightrange', 'role', 'master', 'slave'}
+    local allowed = T{'on | off | enabled | disable', 'yalmfightrange', 'role', 'master', 'slave', 'target'}
     local command = 'help'
 	local message = ''
 	local arg2 = ''
@@ -548,6 +548,14 @@ local function assist_commands(args)
             user_settings.assist.yalm_fight_range = yalms
             message = 'Assists will engage at a distance of '..arg2..' yalms'
         end
+    elseif command == 'targets' or command == 't' then 
+        if arg2 ~= nil and arg2 ~= '' then
+            otto.assist.target(arg2)
+            return
+        end
+
+        otto.assist.targets()
+        return
     else
         windower.add_to_chat(123, "That's not a command")
 		windower.add_to_chat(111, 'Allowed commands for assist are '..table.concat(allowed, ', '))
