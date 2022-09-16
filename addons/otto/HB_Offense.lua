@@ -26,8 +26,8 @@ end
 
 
 function offense.assistee_and_target()
-    if offense.assist.active and (offense.assist.name ~= nil) then
-        local partner = windower.ffxi.get_mob_by_name(offense.assist.name)
+    if user_settings.assist.master ~= nil then
+        local partner = windower.ffxi.get_mob_by_name(user_settings.assist.master)
         if partner then
             local targ = windower.ffxi.get_mob_by_index(partner.target_index)
             if (targ ~= nil) and targ.is_npc then
@@ -69,7 +69,7 @@ function offense.maintain_debuff(spell, cancel)
     else
         offense.debuffs[debuff.id] = {spell = nspell, res = debuff}
     end
-    table.vprint(offense.debuffs)
+
     local msg = cancel and 'no longer ' or ''
     atcf('Will %smaintain debuff on mobs: %s', msg, nspell.en)
 end

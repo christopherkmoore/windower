@@ -44,7 +44,6 @@ files = require('files')
 
 require('otto_utilities')
 require('HealBot_statics')
-CureUtils = require('HB_CureUtils')
 offense = require('HB_Offense')
 actions = require('HB_Actions')
 buffs = require('HealBot_buffHandling')
@@ -64,17 +63,17 @@ otto.aspir = require('aspir')
 otto.magic_burst = require('magic_burst')
 otto.follow = require('follow')
 otto.assist = require('assist')
+otto.healer = require('healer')
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
     utils.load_configs()
 
-    if otto.active then
-        otto.activate()
-    end
-
+    otto.aspir.init()
     otto.follow.init()
+    otto.magic_burst.init()
     otto.assist.init()
+    otto.healer.init()
 end
 
 function otto.provide_state(...)
@@ -83,7 +82,6 @@ end
 
 otto._events['render'] = windower.register_event('prerender', function()
     if not otto.configs_loaded then return end
-
     local now = os.clock()
     local moving = otto.isMoving()
     local acting = otto.isPerformingAction(moving)
@@ -94,7 +92,6 @@ otto._events['render'] = windower.register_event('prerender', function()
         local partner, targ = offense.assistee_and_target()
         
         otto.follow.prerender()
-        otto.aspir.prerender()
 
         if otto.active and not (moving or acting) then
             --otto.active = false    --Quick stop when debugging
@@ -113,12 +110,9 @@ otto._events['render'] = windower.register_event('prerender', function()
     end
 end)
 
-otto._events['aspir_action_listener'] = ActionPacket.open_listener(otto.aspir.action_handler)
-otto._events['magic_burst_action_listener'] = ActionPacket.open_listener(otto.magic_burst.action_handler)
-
-
 
 otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
+hb._events['inc'] = windower.register_event('incoming chunk', handle_incoming_chunk)
 
 otto._events['load'] = windower.register_event('load', function()
     if not _libs.lor then
@@ -128,7 +122,6 @@ otto._events['load'] = windower.register_event('load', function()
     end
 
     otto.init()
-    CureUtils.init_cure_potencies()
 end)
 
 
@@ -142,38 +135,6 @@ end)
 otto._events['logout'] = windower.register_event('logout', function()
     windower.send_command('lua unload otto')
 end)
-
-function otto.activate()
-    local player = windower.ffxi.get_player()
-    if player ~= nil then
-
-        utils.disableCommand('cure', true) -- need to sort the healer stuff.
-
-        -- if player.main_job ~= 'WHM' then
-        --     utils.disableCommand('cure', true)
-        -- end
-
-        settings.healing.max = {}
-        for _,cure_type in pairs(CureUtils.cure_types) do
-            settings.healing.max[cure_type] = CureUtils.highest_tier(cure_type)
-        end
-        if (settings.healing.max.cure == 0) then
-            if settings.healing.max.waltz > 0 then
-                settings.healing.mode = 'waltz'
-                settings.healing.modega = 'waltzga'
-            else
-                -- utils.disableCommand('cure', false)
-            end
-        else
-            settings.healing.mode = 'cure'
-            settings.healing.modega = 'curaga'
-        end
-        otto.active = true
-    end
-
-    utils.printStatus()
-end
-
 
 function otto.addPlayer(list, player)
     if (player == nil) or list:contains(player.name) or otto.ignoreList:contains(player.name) then return end

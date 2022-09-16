@@ -108,8 +108,8 @@ end
 
 
 function compFunc.cure(index1, prio1, hpp1, index2, prio2, hpp2)
-    local d1 = CureUtils.getDangerLevel(hpp1)
-    local d2 = CureUtils.getDangerLevel(hpp2)
+    local d1 = otto.healer.getDangerLevel(hpp1)
+    local d2 = otto.healer.getDangerLevel(hpp2)
     if (prio1 < prio2) then     --p1 is higher priority
         if (d2 > d1) then       --p2 is in more danger
             return index2

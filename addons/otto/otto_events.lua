@@ -210,6 +210,57 @@ local function magic_burst_command(arg)
 	end
 end
 
+local function healer_commands(args)
+    local command = 'help'
+    local allowed = T{'test', 'help', 'status', 'show'}
+    local message = ''
+	local arg2 = ''
+	local arg3 = ''
+
+    if (#args > 0) then
+        command = args[1]:lower()
+    end
+
+	if (#args > 1) then
+		arg2 = args[2]:lower()
+	end
+
+	if (#args > 2) then
+		arg3 = args[3]:lower()
+	end
+
+    local should_save = true
+
+    if command == 'on' or command == 'enable' then
+        user_settings.healer.enabled = true
+        message = 'Healing has been enabled'
+    elseif command == 'off' or command == 'disable' then 
+        user_settings.healer.enabled = false
+        message = 'Healing has been disabled'
+    elseif command == 'mincure' then
+        local val = tonumber(arg2)
+        if (val ~= nil) and (1 <= val) and (val <= 6) then
+            user_settings.healer.healing.min.cure = val
+            atc('Minimum cure tier set to '..val)
+        else
+            atc('Error: Invalid argument specified for minCure')
+        end
+    elseif command == 'mincuraga' then
+        local val = tonumber(arg2)
+        if (val ~= nil) and (1 <= val) and (val <= 6) then
+            user_settings.healer.healing.min.curaga = val
+            atc('Minimum curaga tier set to '..val)
+        else
+            atc('Error: Invalid argument specified for minCure')
+        end
+    end
+
+    if should_save then 
+        windower.add_to_chat(111, message)
+		user_settings:save()
+	end
+end
+
 -- TODO still work to do to fix out parsing commands
 local function healbot_commands(args)
 	local command = 'help'
@@ -307,24 +358,7 @@ local function healbot_commands(args)
 			utils.register_offensive_debuff(debuff, false)
 			-- table.remove(args, 3)
         end
-    elseif command == 'mincure' then
-        if not validate(args, 2, 'Error: No argument specified for minCure') then return end
-        local val = tonumber(args[2])
-        if (val ~= nil) and (1 <= val) and (val <= 6) then
-            settings.healing.min.cure = val
-            atc('Minimum cure tier set to '..val)
-        else
-            atc('Error: Invalid argument specified for minCure')
-        end
-    elseif command == 'mincuraga' then
-        if not validate(args, 2, 'Error: No argument specified for minCure') then return end
-        local val = tonumber(args[2])
-        if (val ~= nil) and (1 <= val) and (val <= 6) then
-            settings.healing.min.curaga = val
-            atc('Minimum curaga tier set to '..val)
-        else
-            atc('Error: Invalid argument specified for minCure')
-        end
+    
     elseif command == 'reset' then
         if not validate(args, 2, 'Error: No argument specified for reset') then return end
         local rcmd = args[3]:lower()
@@ -407,17 +441,17 @@ local function healbot_commands(args)
             local vstr = (type(v) == 'table') and tostring(T(v)) or tostring(v)
             atc(kstr:rpad(' ',15)..': '..vstr)
         end
-    elseif command == 'status' then
-        utils.printStatus()
-    elseif command == 'info' then
-        if not _libs.lor.exec then
-            atc(3,'Unable to parse info.  Windower/addons/libs/lor/lor_exec.lua was unable to be loaded.')
-            atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/lor_libs to download it.')
-            return
-        end
-        local cmd = args[2]     --Take the first element as the command
-        table.remove(args, 2)   --Remove the first from the list of args
-        _libs.lor.exec.process_input(cmd, args)
+    -- elseif command == 'info' then
+        -- local cmd = args[2]     --Take the first element as the command
+
+        -- if not _libs.lor.exec then
+        --     atc(3,'Unable to parse info.  Windower/addons/libs/lor/lor_exec.lua was unable to be loaded.')
+        --     atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/lor_libs to download it.')
+        --     return
+        -- end
+        -- local cmd = args[2]     --Take the first element as the command
+        -- table.remove(args, 2)   --Remove the first from the list of args
+        -- _libs.lor.exec.process_input(cmd, args)
     else
         atc('Error: Unknown command')
     end
@@ -489,15 +523,13 @@ local function assist_commands(args)
 	end
 
 	local should_save = true 
-    user_settings = lor_settings.load('data/user_settings.lua')
-    
+    local should_merge_saves = false    
+
     if command == 'on' or command == 'enable' then
         user_settings.assist.enabled = true
-        otto.assist.toggle_register_windower_events()
         message = 'Assist is now on! Remember to set your role, yalmfightrange and master | slave'
     elseif command == 'off' or command == 'disable' then
         user_settings.assist.enabled = false
-        otto.assist.toggle_register_windower_events()
         message = 'Assiting has been toggled off.'
     elseif command == 'master' then
         if arg2 == 'off' then
@@ -508,17 +540,21 @@ local function assist_commands(args)
         end
         user_settings.assist.master = windower.ffxi.get_player().name
         message = 'Assist configured with '..user_settings.assist.master..' as master'
+        should_merge_saves = true
     elseif command == 'slave' then
         local name = windower.ffxi.get_player().name
         local inSet = S(user_settings.assist.slaves):contains(name)
         if inSet or arg2 == 'off' then
-            table.remove(user_settings.assist.slaves, name)
+            user_settings.assist.slaves[name] = nil
+            
             message = 'Assist is removing you as a slave... be free.'
             windower.send_command('input /autotarget on')
+            should_merge_saves = true
         elseif not inSet or arg2 == 'on' then 
-            table.insert(user_settings.assist.slaves, name)
+            user_settings.assist.slaves[name] = ''
             message = 'Assist configured with '..name..' as a slave'
             windower.send_command('input /autotarget off')
+            should_merge_saves = true
         end	
 	elseif command == 'role' then
 		if arg2 == nil then
@@ -530,6 +566,7 @@ local function assist_commands(args)
             local name = windower.ffxi.get_player().name
             user_settings.assist.slaves[name] = arg2:lower()
             message = 'Assist role is selected as '..arg2..'. Setting a role means you are a slave.'
+            should_merge_saves = true 
         end
     elseif command == 'yalmfightrange' or command == 'range' or command == 'yalm' or command == 'y' or command == 'r' then
         if arg2 == nil or arg2 == '' then
@@ -564,7 +601,12 @@ local function assist_commands(args)
 
     if should_save then
 		windower.add_to_chat(111, message)
-		user_settings:save()
+
+        if should_merge_saves then 
+            utils.unionSettings()
+        else 
+            user_settings:save()
+        end
 	end
 
 end
@@ -588,64 +630,44 @@ function events.addon_command(...)
         elseif command == 'magicburst' or command == 'magic_burst' or command == 'mb' or command == 'amb' then
             magic_burst_command(newArgs)
             return
-		elseif command == 'healbot' or command == 'hb' or command == 'healer' then
+		elseif command == 'healbot' or command == 'hb' then
 			healbot_commands(newArgs)
 			return
         elseif command == 'follow' or command == 'f' then
             follow_commands(newArgs)
         elseif command == 'assist' or command == 'a' then
             assist_commands(newArgs)
-            -- todo merge with awm
-        elseif S{'assist','as'}:contains(command) then
-            local cmd = args[2] and args[2]:lower() or (offense.assist.active and 'off' or 'resume')
-            if S{'off','end','false','pause'}:contains(cmd) then
-                offense.assist.active = false
-                atc('Assist is now off.')
-            elseif S{'resume'}:contains(cmd) then
-                if (offense.assist.name ~= nil) then
-                    offense.assist.active = true
-                    atc('Now assisting '..offense.assist.name..'.')
-                else
-                    atc(111,'Error: Unable to resume assist - no target set')
-                end
-            elseif S{'attack','engage'}:contains(cmd) then
-                local cmd2 = args[2] and args[2]:lower() or (offense.assist.engage and 'off' or 'resume')
-                if S{'off','end','false','pause'}:contains(cmd2) then
-                    offense.assist.engage = false
-                    atc('Will no longer enagage when assisting.')
-                else
-                    offense.assist.engage = true
-                    atc('Will now enagage when assisting.')
-                end
-            else    --args[2] is guaranteed to have a value if this is reached
-                offense.register_assistee(args[2])
-            end
-
-        -- MARK: commands to local otto
-
+        elseif command == 'healer' or command == 'h' then
+            healer_commands(newArgs)
         end
+        -- MARK: commands to local otto
     end
 
-	if (#args == 1) then
-		if command == 'refresh' then
-			utils.load_configs()
-        elseif S{'r','reload'}:contains(command) then
-            windower.send_command('lua reload otto')
-        elseif S{'help','man', '?'}:contains(command) then
-            windower.add_to_chat(144, 'Top level commands are:')
-            windower.add_to_chat(144, 'aspir - configure auto aspir!')
-            windower.add_to_chat(144, 'magicburst | mb - make things explody')
-            windower.add_to_chat(144, 'healbot | hb - your beloved healer -- and a white mage that will never talk back!')
-            windower.add_to_chat(144, 'follow | f - commands for following a master')
-        elseif S{'start','on'}:contains(command) then
-            otto.activate = true
-            windower.add_to_chat(144, 'Otto is live!')
-            user_settings:save()
-        elseif S{'stop','off'}:contains(command) then
-            otto.activate = true
-            windower.add_to_chat(144, 'Otto powering dooow--!')
-            user_settings:save()
-        end
+    if command == 'refresh' then
+        utils.load_configs()
+    elseif S{'r','reload'}:contains(command) then
+        if args[2] ~= nil and args[2]:lower() == 'all' then
+            log('here')
+            for player, _ in pairs(otto.config.ipc_monitored_boxes) do
+                windower.send_command('send '..player..' otto r')
+                windower.add_to_chat(144, 'Refreshing '..player)
+            end
+        end 
+        windower.send_command('lua reload otto')
+    elseif S{'help','man', '?'}:contains(command) then
+        windower.add_to_chat(144, 'Top level commands are:')
+        windower.add_to_chat(144, 'aspir - configure auto aspir!')
+        windower.add_to_chat(144, 'magicburst | mb - make things explody')
+        windower.add_to_chat(144, 'healbot | hb - your beloved healer -- and a white mage that will never talk back!')
+        windower.add_to_chat(144, 'follow | f - commands for following a master')
+    elseif S{'start','on'}:contains(command) then
+        otto.activate = true
+        windower.add_to_chat(144, 'Otto is live!')
+    elseif S{'stop','off'}:contains(command) then
+        otto.activate = true
+        windower.add_to_chat(144, 'Otto powering dooow~~!')
+    elseif command == 'echo' then
+        table.vprint(user_settings)
     end
 end
 

@@ -33,9 +33,8 @@ end
 --]]
 function actions.get_defensive_action()
 	local action = {}
-	
-	if (not settings.disable.cure) then
-		local cureq = CureUtils.get_cure_queue()
+	if (not user_settings.healer.disable.cure) then
+		local cureq = otto.healer.get_cure_queue()
 		while (not cureq:empty()) do
 			local cact = cureq:pop()
             local_queue_insert(cact.action.en, cact.name)
@@ -44,28 +43,28 @@ function actions.get_defensive_action()
 			end
 		end
 	end
-	if (not settings.disable.na) then
-		local dbuffq = buffs.getDebuffQueue()
-		while (not dbuffq:empty()) do
-			local dbact = dbuffq:pop()
-            local_queue_insert(dbact.action.en, dbact.name)
-			if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
-				action.debuff = dbact
-			end
-		end
-	end
-	if (not settings.disable.buff) then
-		local buffq = buffs.getBuffQueue()
-		while (not buffq:empty()) do
-			local bact = buffq:pop()
-            if (bact.action ~= nil ) then 
-                local_queue_insert(bact.action.en, bact.name)
-                if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
-                    action.buff = bact
-                end
-            end
-		end
-	end
+	-- if (not settings.disable.na) then
+	-- 	local dbuffq = buffs.getDebuffQueue()
+	-- 	while (not dbuffq:empty()) do
+	-- 		local dbact = dbuffq:pop()
+    --         local_queue_insert(dbact.action.en, dbact.name)
+	-- 		if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
+	-- 			action.debuff = dbact
+	-- 		end
+	-- 	end
+	-- end
+	-- if (not settings.disable.buff) then
+	-- 	local buffq = buffs.getBuffQueue()
+	-- 	while (not buffq:empty()) do
+	-- 		local bact = buffq:pop()
+    --         if (bact.action ~= nil ) then 
+    --             local_queue_insert(bact.action.en, bact.name)
+    --             if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
+    --                 action.buff = bact
+    --             end
+    --         end
+	-- 	end
+	-- end
 	
 	local_queue_disp()
 	
@@ -103,37 +102,16 @@ function actions.take_action(player, partner, targ)
             buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
         end
         actor:take_action(action)
-    else                        --Otherwise, there may be an offensive action
-        if (targ ~= nil) or otto.modes.independent then
-            local self_engaged = (player.status == 1)
-            if (targ ~= nil) then
-                local partner_engaged = (partner.status == 1)
-                if (player.target_index == partner.target_index) then
-                    if offense.assist.engage and partner_engaged and (not self_engaged) then
-                        actor:send_cmd('input /attack on')
-                    else
-                        local action = actions.get_offensive_action(player)
-                        actor:take_action(action, '<t>')
+    else     
+        --Otherwise, there may be an offensive action
+        local action = actions.get_offensive_action(player)
+        if action == nil then return end
 
-                        if action ~= nil and action.type == 'nuke_mob' then
-                            coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
-                        end
-                    end
-                else                            --Different targets
-                    if partner_engaged and (not self_engaged) then
-                        actor:send_cmd('input /as '..offense.assist.name)
-                    end
-                end
-            elseif self_engaged and otto.modes.independent then
-                local action = actions.get_offensive_action(player)
-                actor:take_action(action, '<t>')
-
-                if action ~= nil and action.type == 'nuke_mob' then
-                    coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
-                end
-            end
-            offense.cleanup()
+        actor:take_action(action, '<t>')
+        if action ~= nil and action.type == 'nuke_mob' then
+            coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
         end
+        offense.cleanup()
     end
 end
 
@@ -152,7 +130,6 @@ function actions.get_offensive_action(player)
     while not nukeingQ:empty() do 
         local nukingAction = nukeingQ:pop()
         
-        -- offense.nukes[nukingAction.action.id] = nil
         local_queue_insert(nukingAction.action.en, nukingAction.name)
         if (action.nuke == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
             action.nuke = nukingAction

@@ -20,24 +20,24 @@ local parse_char_update = _libs.lor.packets.parse_char_update
 --]]
 function handle_incoming_chunk(id, data)
     if S{0x28,0x29}:contains(id) then   --Action / Action Message
-        local monitored_ids = hb.getMonitoredIds()
+        local monitored_ids = otto.getMonitoredIds()
         local ai = get_action_info(id, data)
-        healer:update_status(id, ai)
+        actor:update_status(id, ai)
         if id == 0x28 then
             processAction(ai, monitored_ids)
         elseif id == 0x29 then
             processMessage(ai, monitored_ids)
         end
     elseif (id == 0x037) then
-        if (healer.indi ~= nil and healer.indi.info ~= nil) then healer.indi.info = parse_char_update(data) end   
+        if (actor.indi ~= nil and actor.indi.info ~= nil) then actor.indi.info = parse_char_update(data) end   
     elseif (id == 0x0DD) then           --Party member update
         local parsed = packets.parse('incoming', data)
         local pmName = parsed.Name
         local pmJobId = parsed['Main job']
         local pmSubJobId = parsed['Sub job']
-        hb.partyMemberInfo[pmName] = hb.partyMemberInfo[pmName] or {}
-        hb.partyMemberInfo[pmName].job = res.jobs[pmJobId].ens
-        hb.partyMemberInfo[pmName].subjob = res.jobs[pmSubJobId].ens
+        otto.partyMemberInfo[pmName] = otto.partyMemberInfo[pmName] or {}
+        otto.partyMemberInfo[pmName].job = res.jobs[pmJobId].ens
+        otto.partyMemberInfo[pmName].subjob = res.jobs[pmSubJobId].ens
         --atc('Caught party member update packet for '..parsed.Name..' | '..parsed.ID)
     elseif (id == 0x0DF) then
         local player = windower.ffxi.get_player()
@@ -60,7 +60,7 @@ function processMessage(ai, monitored_ids)
         if not (messages_blacklist:contains(ai.message_id)) then
             local target = windower.ffxi.get_mob_by_id(ai.target_id)
             
-            if hb.modes.showPacketInfo then
+            if otto.modes.showPacketInfo then
                 local actor = windower.ffxi.get_mob_by_id(ai.actor_id)
                 local msg = res.action_messages[ai.message_id] or {en='???'}
                 local params = (', '):join(tostring(ai.param_1), tostring(ai.param_2), tostring(ai.param_3))
@@ -92,17 +92,17 @@ function processAction(ai, monitored_ids)
             
             for _,tact in pairs(targ.actions) do
                 if not messages_blacklist:contains(tact.message_id) then
-                    if (tact.message_id == 0) and (ai.actor_id == healer.id) then
+                    if (tact.message_id == 0) and (ai.actor_id == actor.id) then
                         if indi_spell_ids:contains(ai.param) then
-                            healer.indi.latest = {spell = res.spells[ai.param], landed = os.clock(), is_indi = true}
-                            buffs.register_buff(target, healer.indi.latest, true)
+                            actor.indi.latest = {spell = res.spells[ai.param], landed = os.clock(), is_indi = true}
+                            buffs.register_buff(target, actor.indi.latest, true)
                         elseif geo_spell_ids:contains(ai.param) then
-                            healer.geo.latest = {spell = res.spells[ai.param], landed = os.clock(), is_geo = true}
-                            buffs.register_buff(target, healer.geo.latest, true)
+                            actor.geo.latest = {spell = res.spells[ai.param], landed = os.clock(), is_geo = true}
+                            buffs.register_buff(target, actor.geo.latest, true)
                         end
                     end
                 
-                    -- if (tact.message_id == 0) and (actor.name == healer.name) then
+                    -- if (tact.message_id == 0) and (actor.name == actor.name) then
                         -- local spell = res.spells[ai.param]
                         -- if spell ~= nil then
                             -- if spell.type == 'Geomancy' then
@@ -111,7 +111,7 @@ function processAction(ai, monitored_ids)
                         -- end
                     -- end
                 
-                    if hb.modes.showPacketInfo then
+                    if otto.modes.showPacketInfo then
                         local msg = res.action_messages[tact.message_id] or {en='???'}
                         atcfs('[0x28]Action(%s): %s { %s } %s %s { %s } | %s', tact.message_id, actor.name, ai.param, rarr, target.name, tact.param, msg.en)
                     end
@@ -208,8 +208,8 @@ function registerEffect(ai, tact, actor, target, monitored_ids)
     elseif S{185}:contains(tact.message_id) then    --${actor} uses ${weapon_skill}.${lb}${target} takes ${number} points of damage.
         local mabil = res.monster_abilities[ai.param]
         if (mabil ~= nil) then
-            if (hb.config.mabil_debuffs[mabil.en] ~= nil) then
-                for dbf,_ in pairs(hb.config.mabil_debuffs[mabil.en]) do
+            if (otto.config.mabil_debuffs[mabil.en] ~= nil) then
+                for dbf,_ in pairs(otto.config.mabil_debuffs[mabil.en]) do
                     buffs.register_debuff(target, dbf, true)
                 end
             end

@@ -7,28 +7,26 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
-        ["master"] = "Twochix",
-        ["role"] = "frontline",
+        ["master"] = "",
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 1
+        ["yalm_fight_range"] = 5
     },
     ["follow"] = {
         ["active"] = false,
         ["delay"] = 0.2,
-        ["distance"] = 0.5,
-        ["target"] = "Twochix"
+        ["distance"] = 5
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 4,
+        ["cast_tier"] = 3,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = true,
+        ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

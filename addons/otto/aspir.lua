@@ -1,4 +1,4 @@
-local aspir = T{ immunities = {} }
+local aspir = T{ immunities = {}, _events = {} }
 
 require('luau')
 require('actions')
@@ -8,6 +8,22 @@ local spell = {
     aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir3 = {id=881,en="Aspir III",ja="アスピルIII",cast_time=3,element=7,icon_id=657,icon_id_nq=15,levels={[4]=550,[21]=550},mp_cost=2,prefix="/magic",range=12,recast=26,recast_id=881,requirements=0,skill=37,targets=32,type="BlackMagic"},
 }
+
+
+function aspir.init()
+
+    local defaults = { }
+	defaults.enabled = true       -- top level enable toggle. on | off
+	defaults.casting_mp = 80      -- stop bursting below this amount of mp%.
+	defaults.casts_all = true     -- cast single or all available aspirs
+    defaults.tier = 3             -- Aspir tier
+   
+    if user_settings.aspir == nil then
+        user_settings.aspir = defaults
+        user_settings:save()
+    end
+
+end
 
 function aspir.should_cast()
     -- no target
@@ -34,7 +50,6 @@ end
 -- Prerender entry point. Steps through with early returns for if aspir should be added to the
 -- offensive nuking queue.
 function aspir.prerender()
-
     if not aspir.should_cast() then return end 
 
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
@@ -86,5 +101,6 @@ function aspir.action_handler(raw_actionpacket)
     end
 end
 
+aspir._events['prerender'] = windower.register_event('prerender', aspir.prerender)
 
 return aspir

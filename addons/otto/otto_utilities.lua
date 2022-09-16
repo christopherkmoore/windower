@@ -369,13 +369,6 @@ function toRomanNumeral(val)
     return dec2roman[val]
 end
 
---==============================================================================
---          Output Handling Functions
---==============================================================================
-
-function utils.printStatus()
-    windower.add_to_chat(1, 'HealBot is now '..(otto.active and 'active' or 'off')..'.')
-end
 
 --==============================================================================
 --          Initialization Functions
@@ -388,14 +381,11 @@ function utils.load_configs()
             moveInfo={x=0,y=18,visible=false},
             actionInfo={x=0,y=0,visible=true},
             montoredBox={x=-150,y=600,font='Arial',size=10,visible=true}
-        },
-        spam = {name='Stone'},
-        healing = {min={cure=3,curaga=1,waltz=2,waltzga=1},curaga_min_targets=2},
-        disable = {curaga=false},
-        ignoreTrusts=true, deactivateIndoors=true, activateOutdoors=false
+        }
     }
     local loaded = lor_settings.load('data/settings.lua', defaults)
-    user_settings = lor_settings.load('data/user_settings.lua')
+    local player = windower.ffxi.get_player()
+    user_settings = lor_settings.load('data/'..player.name..'/user_settings.lua')
 
     utils.update_settings(loaded)
     utils.refresh_textBoxes()
@@ -415,8 +405,13 @@ function utils.load_configs()
         priorities = lor_settings.load('data/priorities.lua'),
         cure_potency = lor_settings.load('data/cure_potency.lua', cure_potency_defaults),
         maspir_immunities = lor_settings.load('data/maspir_immunities.lua'),
+        ipc_monitored_boxes = lor_settings.load('data/ipc_monitored_boxes.lua')
     }
 
+    if otto.config.ipc_monitored_boxes:empty() or not otto.config.ipc_monitored_boxes:contains(player) then
+        otto.config.ipc_monitored_boxes[player.name] = true
+        otto.config.ipc_monitored_boxes:save()
+    end
 
     otto.config.priorities.players =        otto.config.priorities.players or {}
     otto.config.priorities.jobs =           otto.config.priorities.jobs or {}
@@ -425,7 +420,6 @@ function utils.load_configs()
     otto.config.priorities.debuffs =        otto.config.priorities.debuffs or {}
     otto.config.priorities.dispel =         otto.config.priorities.dispel or {}     --not implemented yet
     otto.config.priorities.default =        otto.config.priorities.default or 5
-    
     --process_mabil_debuffs()
     local msg = otto.configs_loaded and 'Rel' or 'L'
     otto.configs_loaded = true
@@ -488,6 +482,50 @@ function utils.refresh_textBoxes()
     end
 end
 
+-- This ended up being some fucking jank. because each person has to hold their own state but know about updates
+-- from the other boxes, I added a setting to save all the boxes otto runs on, then I can iterate and update
+-- them all for changes and merge the tables for slaves together. That way a person using the CLI doesn't have to enter
+-- in the same commands multiple times. I also just duplicated the loop too because someone in my monitored boxes group was 
+-- empty after a single iteration.
+function utils.unionSettings(secondIteration) 
+    for player, _ in pairs(otto.config.ipc_monitored_boxes) do
+        if not (player == windower.ffxi.get_player().name) then 
+
+            local temp_settings = lor_settings.load('data/'..player..'/user_settings.lua')
+
+            -- look for a value in my settings and apply it to theirs. If they don't match, take mine
+            if temp_settings.assist.master == nil or temp_settings.assist.master == '' then
+                if user_settings.assist.master ~= nil or user_settings.assist.master ~= ''  then
+                    temp_settings.assist.master = user_settings.assist.master
+                end
+            elseif temp_settings.assist.master ~= user_settings.assist.master then
+                temp_settings.assist.master = user_settings.assist.master
+            end
+
+            if temp_settings.assist.slaves ~= nil and user_settings.assist.slaves ~= nil then
+                local new = merge(temp_settings.assist.slaves, user_settings.assist.slaves)
+                temp_settings.assist.slaves = new
+                user_settings.assist.slaves = new
+                user_settings:save()
+                temp_settings:save()
+            end
+        end
+    end
+
+    if secondIteration ~= nil and secondIteration then 
+        windower.send_command('otto r')
+        return 
+    end
+
+    utils.unionSettings(true)
+end
+
+function merge(a, b)
+    local c = {}
+    for k,v in pairs(a) do c[k] = v end
+    for k,v in pairs(b) do c[k] = v end
+    return c
+end
 
 --==============================================================================
 --          Table Functions

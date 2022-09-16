@@ -15,7 +15,7 @@
 	_addon.windower = '4'
 ]]
 
-local magic_burst = T{ }
+local magic_burst = T{ _events = { } }
 
 require('luau')
 require('actions')
@@ -98,7 +98,7 @@ local elements = {
 	['Earth'] = {spell='Stone',helix='Geohelix',ga='Stonega',ja='Stoneja',ra='Stonera',jutsu='Doton',white=nil,holy=nil},
 }
 
-magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white', 'holy'}
+magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white' }
 magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO', 'WHM'}
 magic_burst.jutsu_users = {'NIN'}
 magic_burst.helix_users = {'SCH'}
@@ -106,6 +106,27 @@ magic_burst.helix_users = {'SCH'}
 local last_skillchain = nil
 local player = nil
 local last_skillchain_tick = nil
+
+function magic_burst.init()
+    local defaults = { }
+	defaults.enabled = true         -- top level enable toggle. on | off
+	defaults.gearswap = true        -- You will have to add a hook into gearswap to use this, but it allows proper bursting sets to be used. see my geo gearswap if you'd like to see how it can be done.
+	defaults.mp = 100               -- stop bursting below this amount of mp. note that this is flat amount, not mp percent
+    defaults.cast_tier = 3          -- nuke tier to mb with
+    defaults.cast_type = "spell"    -- the spell type to cast with. values can be 'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white'
+    defaults.change_target = true   -- will attempt to burst other skillchains around you.
+    defaults.check_day = true       -- evaluates current vanadiel day
+	defaults.check_weather = true   -- default true, you probably just want this true
+	defaults.double_burst = false   -- single burst is false, double burst is true
+	defaults.show_spell = false     -- mostly debuging
+
+
+    if user_settings.magic_burst == nil then
+        user_settings.magic_burst = defaults
+        user_settings:save()
+    end
+
+end
 
 function buff_active(id)
     if T(windower.ffxi.get_player().buffs):contains(id) == true then
@@ -419,5 +440,6 @@ windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lv
 	windower.add_to_chat(123, '> Cast type set to: '..user_settings.magic_burst.cast_type)
 end)
 
+magic_burst._events['magic_burst_action_listener'] = ActionPacket.open_listener(magic_burst.action_handler)
 
 return magic_burst

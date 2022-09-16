@@ -25,6 +25,5 @@ send Threechix otto aspir single;
 send Threechix otto aspir on;
 send Threechix otto magicburst on;
 send Threechix otto magicburst t 4;
-send Threechix otto hb disable cure;
-send Threechix otto hb assist Twochix;
+
 

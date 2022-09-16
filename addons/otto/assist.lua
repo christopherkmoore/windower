@@ -13,7 +13,6 @@
     -- todo test actor:is_acting to make sure mobs moving isn't dragging people all over the place
     -- add should_close_in() check to test that the master's yalm range is within a sensible distance to start running it down. 
     Otherwise you look like a fucking idiot running into narnia...
-    -- when set as backline i don't want them to lock target or engage 
 ]]
 
 -- Commands related to targeting / engaging during battle
@@ -31,9 +30,8 @@ function assist.init()
         user_settings.assist = defaults
         user_settings:save()
     end
-    assist.toggle_register_windower_events()
-end
 
+end
 
 local closing_in = false
 
@@ -119,7 +117,6 @@ local function target_master(player, id)
         ['Target'] = id,
         ['Player Index'] = player.index,
     }))
-
 end
 
 local function all_target_master(id)
@@ -136,8 +133,6 @@ local function all_target_master(id)
         ['Target'] = id,
         ['Player Index'] = player.index,
     }))
-    
-
 end
 
 local function target_lock_on()
@@ -208,10 +203,12 @@ local function close_in(target_type) -- 't', 'bt'
 end
 
 function assist.targets()
-
     if not is_master then return end
 
     local target = windower.ffxi.get_mob_by_target('t')
+
+    if not target then return end
+
     local player_target = windower.ffxi.get_mob_by_id(target.id)
 		
     if not player_target then
@@ -227,6 +224,9 @@ function assist.target(player)
     if not player then return end
 
     local target = windower.ffxi.get_mob_by_target('t')
+    
+    if not target then return end
+
     local player_target = windower.ffxi.get_mob_by_id(target.id)
 		
     if not player_target then
@@ -324,7 +324,7 @@ function assist.ipc_message_handler(message)
 
     elseif msg[1] == 'target' then     
         local targetId = tonumber(msg[2])
-
+        log(targetId)
         if msg[3] then
             local player = windower.ffxi.get_player()
             if player.name == msg[3] then
@@ -372,32 +372,8 @@ function assist.incoming_chunk_handler(id, original)
     end
 end
 
-function assist.toggle_register_windower_events()
-    local name = windower.ffxi.get_player().name
-    local role = user_settings.assist.slaves[name]
-
-    if user_settings.assist.yalm_fight_range ~= nil or (role ~= nil or user_settings.assist.master ~= nil) then 
-    
-        if user_settings.assist.enabled then 
-            assist._events['incoming chunk'] = windower.register_event('incoming chunk', assist.incoming_chunk_handler)
-            assist._events['outgoing chunk'] = windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
-            assist._events['ipc message'] = windower.register_event('ipc message', assist.ipc_message_handler)
-            return
-        end
-
-        if not user_settings.assist.enabled then 
-            for _,event in pairs(assist._events) do
-                windower.unregister_event(event)
-            end
-            return
-        end
-    end
-
-    if role == nil then
-        error('To use assist, you need to configure yourself as either a slave, or master. If you are a slave, assign a role\n Assist is disabling itself you bufoon')
-    end
-
-    user_settings.assist.enabled = false
-end
+windower.register_event('incoming chunk', assist.incoming_chunk_handler)
+windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
+windower.register_event('ipc message', assist.ipc_message_handler)
 
 return assist
