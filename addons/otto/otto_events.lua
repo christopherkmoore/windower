@@ -210,7 +210,7 @@ local function magic_burst_command(arg)
 	end
 end
 
-local function healer_commands(args)\
+local function healer_commands(args)
     local command = 'help'
     local allowed = T{'test', 'help', 'status', 'show'}
     local message = ''
@@ -276,52 +276,56 @@ local function healer_commands(args)\
 end
 
 local function weaponskill_commands(args)
-
-    local allowed = T{'r', 'reload', 'tier', 't', 'on', 'enable', 'start', 'all', 'single', 'assist'}
     local command = 'help'
-	local message = ''
+    local allowed = T{'test', 'help', 'status', 'show'}
+    local message = ''
 	local arg2 = ''
+	local arg3 = ''
 
-    if (#arg > 0) then
-        command = arg[1]:lower()
+    if (#args > 0) then
+        command = args[1]:lower()
     end
 
-	if (#arg > 1) then
-		arg2 = arg[2]
+	if (#args > 1) then
+		arg2 = args[2]:lower()
 	end
 
-	local should_save = true 
+	if (#args > 2) then
+		arg3 = args[3]:lower()
+	end
 
-    local lte,gte = string.char(0x81, 0x85),string.char(0x81, 0x86)
-    local cmd = args[2] and args[2] or ''
+    local should_save = true
+
     if command == 'on' then
         user_settings.weaponskill.enabled = true
 
     elseif command == 'off' then
         user_settings.weaponskill.enabled = false
 
-    elseif (cmd == 'waitfor') then      --another player's TP
-        local partner = utils.getPlayerName(args[3])
+    elseif (command == 'partner') then      --another player's TP
+        if arg2 == 'off' then
+            user_settings.weaponskill.partner = 'none'
+            atc('Weaponskill partner removed.')
+            return
+        end
+
+        local partner = utils.getPlayerName(arg2)
         if (partner ~= nil) then
-            local partnertp = tonumber(args[3]) or 1000
-            settings.ws.partner = {name=partner,tp=partnertp}
-            atc("Will weaponskill when "..partner.."'s TP is "..gte.." "..partnertp)
+            local partnertp = tonumber(args3) or 1000
+            user_settings.weaponskill.partner = {name=partner,tp=partnertp}
+            atc("Will attempt to skillchain with "..partner.." when TP is "..partnertp)
         else
             atc(111,'Error: Invalid argument for ws waitfor: '..tostring(args[3]))
         end
-    elseif (cmd == 'nopartner') then
-        user_settings.weaponskill.partner = nil
-        atc('Weaponskill partner removed.')
-    elseif (cmd == 'hp') then       --Target's HP
-        local hp = tonumber(args[4])
+    elseif (command == 'hp') then       --Target's HP
+        local hp = tonumber(arg2)
         if (hp ~= nil) then
             user_settings.weaponskill.min_hp = hp
-            atc("Will weaponskill when the target's HP is "..sign.." "..hp.."%")
+            atc("Will weaponskill when the target's HP% is above "..hp.."%")
         else
-            atc(111,'Error: Invalid arguments for ws hp: '..tostring(args[3])..', '..tostring(args[4]))
+            atc(111,'Error: Invalid arguments for ws hp%: '..arg2)
         end
     else
-        table.remove(args, 1)
         utils.register_ws(args)
     end
 
@@ -350,7 +354,7 @@ local function healbot_commands(args)
 		arg3 = args[3]:lower()
 	end
 
-    elseif S{'spam','nuke'}:contains(command) then
+    if S{'spam','nuke'}:contains(command) then
         local cmd = args[2] and args[2]:lower() or (settings.spam.active and 'off' or 'on')
         if S{'on','true'}:contains(cmd) then
             settings.spam.active = true
@@ -626,6 +630,8 @@ function events.addon_command(...)
             buffs_commands(newArgs)
         elseif command == 'debuff' or command == 'd' then
             debuffs_commands(newArgs)
+        elseif command == 'weaponskill' or command == 'ws' then 
+            weaponskill_commands(newArgs)
         end
         -- MARK: commands to local otto
     end

@@ -56,6 +56,7 @@ return {
     ["Locus Hornfly"] = false,
     ["Locus Lugcrawler"] = false,
     ["Locus Nest Elytra"] = true,
+    ["Locus Worker Lugcrawler"] = false,
     ["Mimic"] = true,
     ["Nostos Bat"] = false,
     ["Nostos Beetle"] = true,

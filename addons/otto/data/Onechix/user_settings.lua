@@ -25,12 +25,17 @@ return {
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,
-            ["cure"] = false
+            ["cure"] = true
         },
         ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
-            ["max"] = {},
+            ["max"] = {
+                ["curaga"] = 0,
+                ["cure"] = 0,
+                ["waltz"] = 0,
+                ["waltzga"] = 0
+            },
             ["min"] = {
                 ["curaga"] = 3,
                 ["cure"] = 3,
@@ -51,5 +56,11 @@ return {
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
+    },
+    ["weaponskill"] = {
+        ["enabled"] = true,
+        ["min_hp"] = 15,
+        ["name"] = "Savage Blade",
+        ["partner"] = "none"
     }
 }

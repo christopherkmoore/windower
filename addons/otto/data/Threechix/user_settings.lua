@@ -2,7 +2,7 @@ return {
     ["aspir"] = {
         ["casting_mp"] = 80,
         ["casts_all"] = false,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["tier"] = 3
     },
     ["assist"] = {
@@ -54,9 +54,15 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
+    },
+    ["weaponskill"] = {
+        ["enabled"] = true,
+        ["min_hp"] = 80,
+        ["name"] = "Savage Blade",
+        ["partner"] = "none"
     }
 }

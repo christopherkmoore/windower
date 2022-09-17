@@ -58,5 +58,11 @@ return {
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
+    },
+    ["weaponskill"] = {
+        ["enable"] = true,
+        ["min_hp"] = 80,
+        ["name"] = "Savage Blade",
+        ["partner"] = "none"
     }
 }

@@ -133,7 +133,7 @@ function utils.register_ws(args)
     local wsname = utils.formatActionName(argstr)
     local ws = lor_res.action_for(wsname)
     if (ws ~= nil) then
-        settings.ws.name = ws.en
+        user_settings.weaponskill.name = ws.en
         atcfs('Will now use %s', ws.en)
     else
         atcfs(123,'Error: Invalid weaponskill name: %s', wsname)

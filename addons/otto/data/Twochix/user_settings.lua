@@ -27,7 +27,7 @@ return {
             ["curaga"] = false,
             ["cure"] = true
         },
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -58,5 +58,15 @@ return {
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
+    },
+    ["weaponskill"] = {
+        ["enabled"] = true,
+        ["min_hp"] = 15,
+        ["name"] = "Decimation",
+        ["partner"] = {
+            ["name"] = "Onechix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Savage Blade"
+        }
     }
 }
