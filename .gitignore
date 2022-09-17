@@ -10,6 +10,9 @@ addons/XIPivot/data/DATs/*
 addons/PartyBuffs/icons/*
 addons\PartyBuffs\icons\*
 
+addons/findAll/data/*
+addons\findAll\data\*
+
 *.png
 *.DAT
 *.au3
