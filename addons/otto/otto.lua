@@ -64,7 +64,7 @@ otto.follow = require('follow')
 otto.assist = require('assist')
 otto.healer = require('healer')
 otto.buffs = require('buffs')
-
+otto.weaponskill = require('weaponskill')
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -75,6 +75,7 @@ function otto.init()
     otto.magic_burst.init()
     otto.assist.init()
     otto.healer.init()
+    otto.weaponskill.init()
 
     otto.active = true
 end

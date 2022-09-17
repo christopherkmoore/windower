@@ -41,6 +41,7 @@ function otto_packets.action_handler(raw_actionpacket)
         end
     end
 
+    otto.weaponskill.action_handle(category, action, actor_id, add_effect, target)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto_packets.processAction(targets, actor_id, monitored_ids) 
 end
