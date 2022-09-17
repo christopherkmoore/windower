@@ -1,0 +1,89 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: General fight script for unspecific cases.
+//
+////////////////////////////////
+
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave otto healer on;
+send Chixslave otto magicburst on;
+send Chixslave otto magicburst t 2;
+send Chixslave otto magicburst c holy;
+send Chixslave otto magicburst gearswap on;
+send Chixslave gs c set AutoSubMode on;
+send Chixslave gs c set AutoRegenAgaMode Auto;
+
+send Chixslave otto buff Chixslave Afflatus Solace;
+
+send Chixslave otto buff Chixslave Protectra V on;
+send Chixslave otto buff Chixslave Shellra V on;
+send Chixslave otto buff Chixslave Boost-STR on;
+send Chixslave otto buff Chixslave Auspice on;
+send Chixslave otto buff Chixslave Aurorastorm on;
+send Chixslave otto buff Chixslave Reraise IV on; 
+//send Chixslave hb buff Chixslave Aquaveil on; 
+send Chixslave otto debuff Dia II on;
+send Chixslave otto debuff Slow on;
+send Chixslave otto debuff Paralyze on;
+
+send Chixslave otto buff Chixslave barwatera;
+send Chixslave otto buff Chixslave barblindra;
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix singer on;
+send Onechix sing pianissimo on;
+send Onechix sing Nightingale on;
+send Onechix sing Troubadour on
+send Onechix sing debuffing off;
+
+send Onechix sing ballad 1 Chixslave;
+
+send Onechix sing ws on;
+
+send Onechix sing minuet 2;
+send Onechix sing march 1;
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix otto buff Twochix haste on;
+send Threechix otto buff Threechix haste on;
+send Threechix otto buff Chixslave haste on;
+send Threechix otto buff Onechix haste on;
+send Threechix otto buff Threechix refresh on;
+
+send Threechix gs c set AutoBuffMode auto;
+
+send Threechix gs c set AutoConvertMode Auto
+
+send Threechix otto aspir t 3;
+send Threechix otto aspir single;
+send Threechix otto aspir on;
+send Threechix otto magicburst on;
+send Threechix otto magicburst t 4;
+
+send Threechix otto debuff Frazzle on;
+send Threechix otto debuff Distract on;
+
+send Threechix gs c autoindi Frailty;
+send Threechix gs c autogeo Fury;
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
+
+
+send Threechix hb buff ornate haste
+send Threechix hb buff renew haste
+
+send Threechix hb buff Bryceb haste;

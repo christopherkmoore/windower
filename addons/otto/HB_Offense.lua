@@ -52,7 +52,7 @@ function offense.cleanup()
 end
 
 
-function offense.maintain_debuff(spell, cancel)
+function offense.maintain_debuff(spell, maintain)
     local nspell = utils.normalize_action(spell, 'spells')
     if not nspell then
         atcfs(123, '[offense.maintain_debuff] Invalid spell: %s', spell)
@@ -64,13 +64,13 @@ function offense.maintain_debuff(spell, cancel)
         return
     end
     local debuff = res.buffs[debuff_id]
-    if cancel then
-        offense.debuffs[debuff.id] = nil
-    else
+    if maintain then
         offense.debuffs[debuff.id] = {spell = nspell, res = debuff}
+    else
+        offense.debuffs[debuff.id] = nil
     end
 
-    local msg = cancel and 'no longer ' or ''
+    local msg = maintain and '' or 'no longer '
     atcf('Will %smaintain debuff on mobs: %s', msg, nspell.en)
 end
 

@@ -25,24 +25,25 @@ function healer.init()
         user_settings:save()
     end
 
-    user_settings.healer.healing.max = {}
-        for _,cure_type in pairs(otto.healer.cure_types) do
-            user_settings.healer.healing.max[cure_type] = otto.healer.highest_tier(cure_type)
-        end
-        if (user_settings.healer.healing.max.cure == 0) then
-            if user_settings.healer.healing.max.waltz > 0 then
-                user_settings.healer.healing.mode = 'waltz'
-                user_settings.healer.healing.modega = 'waltzga'
-            else
-                utils.disableCommand('cure', false)
-            end
-        else
-            user_settings.healer.healing.mode = 'cure'
-            user_settings.healer.healing.modega = 'curaga'
-        end
-        otto.active = true
-
     healer.init_cure_potencies()
+
+    user_settings.healer.healing.max = {}
+
+    for _,cure_type in pairs(otto.healer.cure_types) do
+        user_settings.healer.healing.max[cure_type] = otto.healer.highest_tier(cure_type)
+    end
+    if (user_settings.healer.healing.max.cure == 0) then
+        if user_settings.healer.healing.max.waltz > 0 then
+            user_settings.healer.healing.mode = 'waltz'
+            user_settings.healer.healing.modega = 'waltzga'
+        else
+            utils.disableCommand('cure', true)
+        end
+    else
+        user_settings.healer.healing.mode = 'cure'
+        user_settings.healer.healing.modega = 'curaga'
+    end
+
 end
 
 --==============================================================================

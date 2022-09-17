@@ -233,9 +233,11 @@ local function healer_commands(args)
 
     if command == 'on' or command == 'enable' then
         user_settings.healer.enabled = true
+        utils.disableCommand('cure', false)
         message = 'Healing has been enabled'
     elseif command == 'off' or command == 'disable' then 
         user_settings.healer.enabled = false
+        utils.disableCommand('cure', true)
         message = 'Healing has been disabled'
     elseif command == 'mincure' then
         local val = tonumber(arg2)
@@ -253,6 +255,11 @@ local function healer_commands(args)
         else
             atc('Error: Invalid argument specified for minCure')
         end
+    -- elseif command == 'ignore_debuff' then
+    --     otto.buffs.registerIgnoreDebuff(args, true)
+    -- elseif command == 'unignore_debuff' then
+    --     otto.buffs.registerIgnoreDebuff(args, false)
+
     end
 
     if should_save then 
@@ -336,81 +343,6 @@ local function healbot_commands(args)
             end
             utils.register_spam_action(args)
         end
-    elseif S{'debuff', 'db'}:contains(command) then
-		log("in debuff")
-        if S{'on','true'}:contains(arg2) then
-            offense.debuffing_active = true
-            atc('Debuffing is now on.')
-        elseif S{'off','false'}:contains(arg2) then
-            offense.debuffing_active = false
-            atc('Debuffing is now off.')
-        elseif S{'rm','remove'}:contains(arg2) then
-			local debuff = table.slice(args, 3)
-
-            utils.register_offensive_debuff(debuff, true)
-        elseif S{'ls','list'}:contains(arg2) then
-            pprint_tiered(offense.debuffs)
-
-        elseif S{'debug'}:contains(arg2) then 
-            table.vprint(offense)
-        elseif S{'use','set'}:contains(arg2) then
-			local debuff = table.slice(args, 3)
-			utils.register_offensive_debuff(debuff, false)
-			-- table.remove(args, 3)
-        end
-    
-    elseif command == 'reset' then
-        if not validate(args, 2, 'Error: No argument specified for reset') then return end
-        local rcmd = args[3]:lower()
-        local b,d = false,false
-        if S{'all','both'}:contains(rcmd) then
-            b,d = true,true
-        elseif (rcmd == 'buffs') then
-            b = true
-        elseif (rcmd == 'debuffs') then
-            d = true
-        else
-            atc('Error: Invalid argument specified for reset: '..arg[1])
-            return
-        end
-        
-        local resetTarget
-        if (args[3] ~= nil) and (args[4] ~= nil) and (args[3]:lower() == 'on') then
-            local pname = utils.getPlayerName(args[4])
-            if (pname ~= nil) then
-                resetTarget = pname
-            else
-                atc(111,'Error: Invalid name provided as a reset target: '..tostring(args[4]))
-                return
-            end
-        end
-        resetTarget = resetTarget or 'ALL' 
-        local rtmsg = resetTarget or 'all monitored players'
-        if b then
-            buffs.resetBuffTimers(resetTarget)
-            atc(('Buff timers for %s were reset.'):format(rtmsg))
-        end
-        if d then
-            buffs.resetDebuffTimers(resetTarget)
-            atc(('Debuffs detected for %s were reset.'):format(rtmsg))
-        end
-    elseif command == 'buff' then
-        buffs.registerNewBuff(args, true)
-    elseif S{'cancelbuff','nobuff'}:contains(command) then
-        buffs.registerNewBuff(args, false)
-    elseif command == 'wipebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
-        utils.wipe_bufflist()
-    elseif command == 'wipedebuffs' then
-        utils.wipe_debufflist()
-    elseif S{'bufflist','bl'}:contains(command) then
-        if not validate(args, 2, 'Error: No argument specified for BuffList') then return end
-        utils.apply_bufflist(args)
-    elseif command == 'bufflists' then
-        pprint(otto.config.buff_lists)
-    elseif command == 'ignore_debuff' then
-        buffs.registerIgnoreDebuff(args, true)
-    elseif command == 'unignore_debuff' then
-        buffs.registerIgnoreDebuff(args, false)
 
     elseif S{'ignore', 'unignore', 'watch', 'unwatch'}:contains(command) then
         monitorCommand(command, args[2])
@@ -457,6 +389,35 @@ local function healbot_commands(args)
     end
 end
 
+local function buffs_commands(args)
+    local command = 'help'
+
+    if (#args > 0) then
+        command = args[1]:lower()
+    end
+
+
+
+    if command == 'wipebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
+        utils.wipe_bufflist()
+    else 
+        otto.buffs.registerNewBuff(args)
+    end
+end
+
+local function debuffs_commands(args)
+    local command = 'help'
+
+    if (#args > 0) then
+        command = args[1]:lower()
+    end
+
+    if command == 'wipedebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
+        utils.wipe_debufflist()
+    else 
+        utils.register_offensive_debuff(args)
+    end
+end
 
 local function follow_commands(args)
 	local arg1 = ''
@@ -612,6 +573,8 @@ local function assist_commands(args)
 end
 
 
+
+
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
     local args = T { ... }
@@ -639,6 +602,10 @@ function events.addon_command(...)
             assist_commands(newArgs)
         elseif command == 'healer' or command == 'h' then
             healer_commands(newArgs)
+        elseif command == 'buff' or command == 'b' then
+            buffs_commands(newArgs)
+        elseif command == 'debuff' or command == 'd' then
+            debuffs_commands(newArgs)
         end
         -- MARK: commands to local otto
     end
@@ -647,7 +614,6 @@ function events.addon_command(...)
         utils.load_configs()
     elseif S{'r','reload'}:contains(command) then
         if args[2] ~= nil and args[2]:lower() == 'all' then
-            log('here')
             for player, _ in pairs(otto.config.ipc_monitored_boxes) do
                 windower.send_command('send '..player..' otto r')
                 windower.add_to_chat(144, 'Refreshing '..player)

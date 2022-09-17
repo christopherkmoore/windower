@@ -268,7 +268,7 @@ logger.settings = config.load('../libs/logger.xml', logger.defaults)
 return logger
 
 --[[
-Copyright © 2013-2014, Windower
+Copyright ï¿½ 2013-2014, Windower
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

@@ -126,27 +126,38 @@ end
 --==============================================================================
 
 
-function buffs.registerNewBuff(args, use)
+function buffs.registerNewBuff(args)
+    local toggle = args[#args] 
+
+    if toggle == 'on' then 
+        toggle = true
+    elseif toggle == 'off' then
+        toggle = false
+    else
+        error('Could not determine buff on | off value in command. Please make sure the last word corresponds to on | off ')
+    end
+
+
     local targetName = args[1] and args[1] or ''
     table.remove(args, 1)
+    table.remove(args, #args)
     local arg_string = table.concat(args,' ')
     local snames = arg_string:split(',')
     for index,sname in pairs(snames) do
         if (tostring(index) ~= 'n') then
-            buffs.registerNewBuffName(targetName, sname:trim(), use)
+            buffs.registerNewBuffName(targetName, sname:trim(), toggle)
         end
     end
 end
 
 
-function buffs.registerNewBuffName(targetName, bname, use)
+function buffs.registerNewBuffName(targetName, bname, toggle)
     local spellName = utils.formatActionName(bname)
     if (spellName == nil) then
         atc('Error: Unable to parse spell name')
         return
     end
     
-    local me = windower.ffxi.get_player()
     local target = ffxi.get_target(targetName)
     if target == nil then
         atc('Unable to find buff target: '..targetName)
@@ -174,7 +185,7 @@ function buffs.registerNewBuffName(targetName, bname, use)
         return
     end
     
-    if use then
+    if toggle then
         buffs.buffList[target.name][action.en] = {['action']=action, ['maintain']=true, ['buff']=buff}
         if action.type == 'Geomancy' then
             if indi_spell_ids:contains(action.id) then
@@ -304,6 +315,7 @@ end
     that caused the debuff
 --]]
 function buffs.register_debuff(target, debuff, gain, action)
+    log('In register debuffs')
     debuff = utils.normalize_action(debuff, 'buffs')
     
     if debuff == nil then

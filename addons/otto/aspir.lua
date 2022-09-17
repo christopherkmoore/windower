@@ -78,7 +78,7 @@ function aspir.prerender()
 end
 
 -- update the db with records of monsters who actually can be aspir'd.
-local function update_DB(actor, damage)
+function aspir.update_DB(actor, damage)
     if otto.config.maspir_immunities[actor] ~= nil then return end
 
     local hasMP = damage ~= 0 
@@ -86,21 +86,5 @@ local function update_DB(actor, damage)
 
     otto.config.maspir_immunities.save(otto.config.maspir_immunities)
 end
-
-function aspir.action_handler(raw_actionpacket)
-    local actionpacket = ActionPacket.new(raw_actionpacket)
-    
-    if actionpacket:get_category_string() == 'spell_finish' then
-        for target in actionpacket:get_targets() do -- target iterator
-            for action in target:get_actions() do -- subaction iterator
-                if messages_aspir:contains(action.message) then -- aspir seems to have message 228 
-                    update_DB(target:get_name(), action.param)
-                end
-            end
-        end
-    end
-end
-
-aspir._events['prerender'] = windower.register_event('prerender', aspir.prerender)
 
 return aspir

@@ -164,7 +164,7 @@ getPlayerPriority = _libs.lor.advutils.scached(_getPlayerPriority)
 function getBuffPriority(buff)
 --local function _getBuffPriority(buff)
     --atcf('getBuffPriority(%s)', tostring(buff))
-    local nbuff = buffs.buff_for_action(buff)
+    local nbuff = otto.buffs.buff_for_action(buff)
     local prios = otto.config.priorities
 
     if nbuff == nil then

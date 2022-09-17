@@ -46,10 +46,7 @@ require('otto_utilities')
 require('HealBot_statics')
 offense = require('HB_Offense')
 actions = require('HB_Actions')
-buffs = require('HealBot_buffHandling')
-require('HealBot_packetHandling')
 require('HealBot_queues')
-require('HealBot_packetHandling')
 
 local can_act_statuses = S{0, 1, 5, 85}    --0/1/5/85 = idle/engaged/chocobo/other_mount
 local dead_statuses = S{2, 3}
@@ -59,11 +56,15 @@ local pm_keys = {
 }
 
 otto.events = require('otto_events')
+otto.packets = require('otto_packets')
+
 otto.aspir = require('aspir')
 otto.magic_burst = require('magic_burst')
 otto.follow = require('follow')
 otto.assist = require('assist')
 otto.healer = require('healer')
+otto.buffs = require('buffs')
+
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -74,6 +75,8 @@ function otto.init()
     otto.magic_burst.init()
     otto.assist.init()
     otto.healer.init()
+
+    otto.active = true
 end
 
 function otto.provide_state(...)
@@ -112,7 +115,7 @@ end)
 
 
 otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
-hb._events['inc'] = windower.register_event('incoming chunk', handle_incoming_chunk)
+otto._events['inc'] = windower.register_event('incoming chunk', otto.packets.handle_incoming_chunk)
 
 otto._events['load'] = windower.register_event('load', function()
     if not _libs.lor then
@@ -143,8 +146,8 @@ function otto.addPlayer(list, player)
     local status = player.mob and player.mob.status or player.status
     if dead_statuses:contains(status) or (player.hpp <= 0) then
         --Player is dead.  Reset their buff/debuff lists and don't include them in monitored list
-        buffs.resetDebuffTimers(player.name)
-        buffs.resetBuffTimers(player.name)
+        otto.buffs.resetDebuffTimers(player.name)
+        otto.buffs.resetBuffTimers(player.name)
     else
         player.trust = is_trust
         list[player.name] = player
@@ -211,7 +214,7 @@ function otto.isPerformingAction(moving)
         actor.zone_wait = true
     elseif actor.zone_wait then
         actor.zone_wait = false
-        buffs.resetBuffTimers('ALL', S{'Protect V', 'Shell V'})
+        otto.buffs.resetBuffTimers('ALL', S{'Protect V', 'Shell V'})
     elseif actor:buff_active('Sleep','Petrification','Charm','Terror','Lullaby','Stun','Silence','Mute') then
         acting = true
         status = 'is disabled'

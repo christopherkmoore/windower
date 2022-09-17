@@ -98,7 +98,7 @@ local elements = {
 	['Earth'] = {spell='Stone',helix='Geohelix',ga='Stonega',ja='Stoneja',ra='Stonera',jutsu='Doton',white=nil,holy=nil},
 }
 
-magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white' }
+magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white', 'holy' }
 magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO', 'WHM'}
 magic_burst.jutsu_users = {'NIN'}
 magic_burst.helix_users = {'SCH'}
@@ -356,26 +356,20 @@ end
 
 -- MARK: Events
 
-function magic_burst.action_handler(raw_actionpacket)
-	
+function magic_burst.action_handler(category, action, actor, add_effect, target)
+
 	if not user_settings.magic_burst.enabled then return end
 
-    local actionpacket = ActionPacket.new(raw_actionpacket)	
-	local category = actionpacket:get_category_string()
 	local categories = S{     
 		'weaponskill_finish',
     	'mob_tp_finish',
     	'avatar_tp_finish',
 	 }
 
-    if not categories:contains(category) or raw_actionpacket.param == 0 then
+    if not categories:contains(category) or action.param == 0 then
         return
     end
 
-    local actor = actionpacket:get_id()
-    local target = actionpacket:get_targets()()
-    local action = target:get_actions()()
-    local add_effect = action:get_add_effect()
 
     if add_effect and skillchain_ids:contains(add_effect.message_id) then
 
@@ -414,8 +408,6 @@ function magic_burst.action_handler(raw_actionpacket)
 end
 
 
-ActionPacket.open_listener(action_handler)
-
 -- Change spell type based on job/sub
 windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lvl)
 	local main = res.jobs[main_id].english_short
@@ -440,6 +432,6 @@ windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lv
 	windower.add_to_chat(123, '> Cast type set to: '..user_settings.magic_burst.cast_type)
 end)
 
-magic_burst._events['magic_burst_action_listener'] = ActionPacket.open_listener(magic_burst.action_handler)
+ActionPacket.open_listener(magic_burst.action_handler)
 
 return magic_burst

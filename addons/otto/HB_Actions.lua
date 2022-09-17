@@ -32,8 +32,10 @@ end
 	Builds an action queue for defensive actions.  Returns the action deemed most important at the time.
 --]]
 function actions.get_defensive_action()
-	local action = {}
-	if (not user_settings.healer.disable.cure) then
+	
+    local action = {}
+	
+    if (not user_settings.healer.disable.cure) then
 		local cureq = otto.healer.get_cure_queue()
 		while (not cureq:empty()) do
 			local cact = cureq:pop()
@@ -43,28 +45,30 @@ function actions.get_defensive_action()
 			end
 		end
 	end
-	-- if (not settings.disable.na) then
-	-- 	local dbuffq = buffs.getDebuffQueue()
-	-- 	while (not dbuffq:empty()) do
-	-- 		local dbact = dbuffq:pop()
-    --         local_queue_insert(dbact.action.en, dbact.name)
-	-- 		if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
-	-- 			action.debuff = dbact
-	-- 		end
-	-- 	end
-	-- end
-	-- if (not settings.disable.buff) then
-	-- 	local buffq = buffs.getBuffQueue()
-	-- 	while (not buffq:empty()) do
-	-- 		local bact = buffq:pop()
-    --         if (bact.action ~= nil ) then 
-    --             local_queue_insert(bact.action.en, bact.name)
-    --             if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
-    --                 action.buff = bact
-    --             end
-    --         end
-	-- 	end
-	-- end
+
+	if (not settings.disable.na) then
+		local dbuffq = otto.buffs.getDebuffQueue()
+		while (not dbuffq:empty()) do
+			local dbact = dbuffq:pop()
+            local_queue_insert(dbact.action.en, dbact.name)
+			if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
+				action.debuff = dbact
+			end
+		end
+	end
+    
+	if (not settings.disable.buff) then
+		local buffq = otto.buffs.getBuffQueue()
+		while (not buffq:empty()) do
+			local bact = buffq:pop()
+            if (bact.action ~= nil ) then 
+                local_queue_insert(bact.action.en, bact.name)
+                if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
+                    action.buff = bact
+                end
+            end
+		end
+	end
 	
 	local_queue_disp()
 	
@@ -90,16 +94,16 @@ end
 
 
 function actions.take_action(player, partner, targ)
-    buffs.checkOwnBuffs()
+    otto.buffs.checkOwnBuffs()
     local_queue_reset()
     local action = actions.get_defensive_action()
     if (action ~= nil) then         --If there's a defensive action to perform
         --Record attempt time for buffs/debuffs
-        buffs.buffList[action.name] = buffs.buffList[action.name] or {}
-        if (action.type == 'buff') and (buffs.buffList[action.name][action.buff]) then
-            buffs.buffList[action.name][action.buff].attempted = os.clock()
+        otto.buffs.buffList[action.name] = otto.buffs.buffList[action.name] or {}
+        if (action.type == 'buff') and (otto.buffs.buffList[action.name][action.buff]) then
+            otto.buffs.buffList[action.name][action.buff].attempted = os.clock()
         elseif (action.type == 'debuff') then
-            buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
+            otto.buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
         end
         actor:take_action(action)
     else     

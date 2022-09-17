@@ -30,19 +30,26 @@ return {
         ["enabled"] = true,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
-            ["max"] = {},
+            ["max"] = {
+                ["curaga"] = 5,
+                ["cure"] = 6,
+                ["waltz"] = 0,
+                ["waltzga"] = 0
+            },
             ["min"] = {
                 ["curaga"] = 3,
                 ["cure"] = 3,
                 ["waltz"] = 3,
                 ["waltzga"] = 2
-            }
+            },
+            ["mode"] = "cure",
+            ["modega"] = "curaga"
         },
         ["ignoreTrusts"] = true
     },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "spell",
+        ["cast_type"] = "holy",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

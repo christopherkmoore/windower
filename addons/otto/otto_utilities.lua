@@ -82,14 +82,26 @@ end
 utils.get_player_id = _libs.lor.advutils.scached(_get_player_id)
 
 
-function utils.register_offensive_debuff(args, cancel)
-    local argstr = table.concat(args,' ')
-    local spell_name = utils.formatActionName(argstr)
+function utils.register_offensive_debuff(args)
+
+    local maintain = args[#args] 
+
+    if maintain == 'on' then 
+        maintain = true
+    elseif maintain == 'off' then
+        maintain = false
+    else
+        error('Could not determine buff on | off value in command. Please make sure the last word corresponds to on | off ')
+    end
+
+    table.remove(args, #args) -- pop the toggle off the table
+    local arg_string = table.concat(args,' ')
+    local spell_name = utils.formatActionName(arg_string)
     local spell = lor_res.action_for(spell_name)
 
     if (spell ~= nil) then
         if actor:can_use(spell) then
-            offense.maintain_debuff(spell, cancel)
+            offense.maintain_debuff(spell, maintain)
         else
             atcfs(123,'Error: Unable to cast %s', spell.en)
         end
@@ -128,30 +140,8 @@ function utils.register_ws(args)
     end
 end
 
-
-function utils.apply_bufflist(args)
-    local mj = windower.ffxi.get_player().main_job
-    local sj = windower.ffxi.get_player().sub_job
-    local job = ('%s/%s'):format(mj, sj)
-    local bl_name = args[1]
-    local bl_target = args[2]
-    if bl_target == nil and bl_name == 'self' then
-        bl_target = 'me'
-    end
-    local buff_list = table.get_nested_value(otto.config.buff_lists, {job, job:lower(), mj, mj:lower()}, bl_name)
-    
-    buff_list = buff_list or otto.config.buff_lists[bl_name]
-    if buff_list ~= nil then
-        for _,buff in pairs(buff_list) do
-            buffs.registerNewBuff({bl_target, buff}, true)
-        end
-    else
-        atc('Error: Invalid argument specified for BuffList: '..bl_name)
-    end
-end
-
 function utils.wipe_bufflist()
-    buffs.buffList = {}
+    otto.buffs.buffList = {}
 end
 
 function utils.wipe_debufflist()
@@ -217,20 +207,22 @@ function utils.disableCommand(cmd, disable)
     local msg = ' is now '..(disable and 'disabled.' or 're-enabled.')
     if S{'cure','cures','curing'}:contains(cmd) then
         if (not disable) then
-            if (settings.maxCureTier == 0) then
-                settings.disable.cure = true
+            if (user_settings.healer.healing.max.cure == 0) then
+                user_settings.healer.disable.cure = true
                 atc(123,'Error: Unable to enable curing because you have no Cure spells available.')
                 return
             end
         end
-        settings.disable.cure = disable
+        user_settings.healer.disable.cure = disable
         atc('Curing'..msg)
     elseif S{'curaga'}:contains(cmd) then
-        settings.disable.curaga = disable
+        user_settings.healer.disable.curaga = disable
         atc('Curaga use'..msg)
     elseif S{'na','heal_debuff','cure_debuff'}:contains(cmd) then
-        settings.disable.na = disable
+        user_settings.healer.disable.na = disable
         atc('Removal of status effects'..msg)
+    
+    
     elseif S{'buff','buffs','buffing'}:contains(cmd) then
         settings.disable.buff = disable
         atc('Buffing'..msg)
@@ -394,14 +386,11 @@ function utils.load_configs()
         cure = {94,207,469,880,1110,1395},  curaga = {150,313,636,1125,1510},
         waltz = {157,325,581,887,1156},     waltzga = {160,521}
     }
-    local buff_lists_defaults = {       self = {'Haste II','Refresh II'},
-        whm = {self={'Haste','Refresh'}}, rdm = {self={'Haste II','Refresh II'}}
-    }
+
     
     otto.config = {
         aliases = config.load('../shortcuts/data/aliases.xml'),
         mabil_debuffs = lor_settings.load('data/mabil_debuffs.lua'),
-        buff_lists = lor_settings.load('data/buffLists.lua', buff_lists_defaults),
         priorities = lor_settings.load('data/priorities.lua'),
         cure_potency = lor_settings.load('data/cure_potency.lua', cure_potency_defaults),
         maspir_immunities = lor_settings.load('data/maspir_immunities.lua'),

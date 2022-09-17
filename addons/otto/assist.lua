@@ -92,7 +92,6 @@ local function attack_off()
 end
 
 local function switch_target(id)
-    log('switching target')
     local target = windower.ffxi.get_mob_by_id(id)
 
     if not target then
@@ -121,7 +120,6 @@ end
 
 local function all_target_master(id)
 
-    log(id)
     if not id then
         return
     end
@@ -240,13 +238,9 @@ end
 
 -- TODO register handlers in otto
 function assist.ipc_message_handler(message) 
-    log("in ipc handler, message: "..message)
     if not user_settings.assist.enabled then return end
 
     local msg = message:split(' ')
-
-    log(msg)
-
 
     if not is_slave then
         return
@@ -324,11 +318,9 @@ function assist.ipc_message_handler(message)
 
     elseif msg[1] == 'target' then     
         local targetId = tonumber(msg[2])
-        log(targetId)
         if msg[3] then
             local player = windower.ffxi.get_player()
             if player.name == msg[3] then
-                log('workign correct')
                 target_master(player, targetId)   
                 return
             end
