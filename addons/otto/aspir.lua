@@ -87,4 +87,6 @@ function aspir.update_DB(actor, damage)
     otto.config.maspir_immunities.save(otto.config.maspir_immunities)
 end
 
+aspir._events['prerender'] = windower.register_event('prerender', aspir.prerender)
+
 return aspir

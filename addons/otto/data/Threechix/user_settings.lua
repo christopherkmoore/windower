@@ -2,7 +2,7 @@ return {
     ["aspir"] = {
         ["casting_mp"] = 80,
         ["casts_all"] = false,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["tier"] = 3
     },
     ["assist"] = {
@@ -54,7 +54,7 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false

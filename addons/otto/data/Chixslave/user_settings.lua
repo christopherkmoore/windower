@@ -2,7 +2,7 @@ return {
     ["aspir"] = {
         ["casting_mp"] = 80,
         ["casts_all"] = true,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["tier"] = 3
     },
     ["assist"] = {

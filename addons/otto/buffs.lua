@@ -315,7 +315,6 @@ end
     that caused the debuff
 --]]
 function buffs.register_debuff(target, debuff, gain, action)
-    log('In register debuffs')
     debuff = utils.normalize_action(debuff, 'buffs')
     
     if debuff == nil then

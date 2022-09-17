@@ -104,7 +104,6 @@ end
 --]]
 function otto_packets.processAction(targets, actor_id, monitored_ids)
     for target in targets do
-        log(monitored_ids)
         if monitored_ids[actor_id] or monitored_ids[target.raw.id] then
             local a = windower.ffxi.get_mob_by_id(actor_id)
             local t = windower.ffxi.get_mob_by_id(target.raw.id)
@@ -143,6 +142,17 @@ end
     :param set monitored_ids: the IDs of PCs that are being monitored
 --]]
 function otto_packets.registerEffect(action, a, target)
+
+    -- for registering new items.
+        -- if action.param == 24 then
+        --     log('action: ')
+        --     table.vprint(action)
+        --     log('actor: ')
+        --     table.vprint(a)
+        --     log('target: ')
+        --     table.vprint(target)
+        -- end
+
     local targ_is_enemy = (target.spawn_type == 16)
     if messages_magicDamage:contains(action.message) then      --action_info.param: spell; tact.param: damage
         local spell = res.spells[action.param]
@@ -179,7 +189,7 @@ function otto_packets.registerEffect(action, a, target)
         end
     elseif messages_noEffect:contains(action.message) then     --action_info.param: spell; tact.param: buff/debuff
         --Spell had no effect on {target}
-        local spell = res.spells[action_info.param]
+        local spell = res.spells[action.param]
         if (spell ~= nil) then
             if spells_statusRemoval:contains(spell.id) then
                 --The debuff must have worn off or have been removed already
