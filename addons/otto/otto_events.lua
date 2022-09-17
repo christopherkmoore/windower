@@ -210,7 +210,7 @@ local function magic_burst_command(arg)
 	end
 end
 
-local function healer_commands(args)
+local function healer_commands(args)\
     local command = 'help'
     local allowed = T{'test', 'help', 'status', 'show'}
     local message = ''
@@ -260,12 +260,76 @@ local function healer_commands(args)
     -- elseif command == 'unignore_debuff' then
     --     otto.buffs.registerIgnoreDebuff(args, false)
 
+    -- elseif S{'disable'}:contains(command) then
+    --     if not validate(args, 2, 'Error: No argument specified for Disable') then return end
+    --     utils.disableCommand(arg2, true)
+    -- elseif S{'enable'}:contains(command) then
+    --     if not validate(args, 2, 'Error: No argument specified for Enable') then return end 
+    --     utils.disableCommand(args[2]:lower(), false)
+    
     end
 
     if should_save then 
         windower.add_to_chat(111, message)
 		user_settings:save()
 	end
+end
+
+local function weaponskill_commands(args)
+
+    local allowed = T{'r', 'reload', 'tier', 't', 'on', 'enable', 'start', 'all', 'single', 'assist'}
+    local command = 'help'
+	local message = ''
+	local arg2 = ''
+
+    if (#arg > 0) then
+        command = arg[1]:lower()
+    end
+
+	if (#arg > 1) then
+		arg2 = arg[2]
+	end
+
+	local should_save = true 
+
+    local lte,gte = string.char(0x81, 0x85),string.char(0x81, 0x86)
+    local cmd = args[2] and args[2] or ''
+    if command == 'on' then
+        user_settings.weaponskill.enabled = true
+
+    elseif command == 'off' then
+        user_settings.weaponskill.enabled = false
+
+    elseif (cmd == 'waitfor') then      --another player's TP
+        local partner = utils.getPlayerName(args[3])
+        if (partner ~= nil) then
+            local partnertp = tonumber(args[3]) or 1000
+            settings.ws.partner = {name=partner,tp=partnertp}
+            atc("Will weaponskill when "..partner.."'s TP is "..gte.." "..partnertp)
+        else
+            atc(111,'Error: Invalid argument for ws waitfor: '..tostring(args[3]))
+        end
+    elseif (cmd == 'nopartner') then
+        user_settings.weaponskill.partner = nil
+        atc('Weaponskill partner removed.')
+    elseif (cmd == 'hp') then       --Target's HP
+        local hp = tonumber(args[4])
+        if (hp ~= nil) then
+            user_settings.weaponskill.min_hp = hp
+            atc("Will weaponskill when the target's HP is "..sign.." "..hp.."%")
+        else
+            atc(111,'Error: Invalid arguments for ws hp: '..tostring(args[3])..', '..tostring(args[4]))
+        end
+    else
+        table.remove(args, 1)
+        utils.register_ws(args)
+    end
+
+    if should_save then
+		windower.add_to_chat(111, message)
+		user_settings:save()
+	end
+
 end
 
 -- TODO still work to do to fix out parsing commands
@@ -286,45 +350,6 @@ local function healbot_commands(args)
 		arg3 = args[3]:lower()
 	end
 
-    if S{'disable'}:contains(command) then
-        if not validate(args, 2, 'Error: No argument specified for Disable') then return end
-        utils.disableCommand(arg2, true)
-    elseif S{'enable'}:contains(command) then
-        if not validate(args, 2, 'Error: No argument specified for Enable') then return end 
-        utils.disableCommand(args[2]:lower(), false)
-    
-    elseif S{'ws','weaponskill'}:contains(command) then
-        local lte,gte = string.char(0x81, 0x85),string.char(0x81, 0x86)
-        local cmd = args[2] and args[2] or ''
-        settings.ws = settings.ws or {}
-        if (cmd == 'waitfor') then      --another player's TP
-            local partner = utils.getPlayerName(args[3])
-            if (partner ~= nil) then
-                local partnertp = tonumber(args[3]) or 1000
-                settings.ws.partner = {name=partner,tp=partnertp}
-                atc("Will weaponskill when "..partner.."'s TP is "..gte.." "..partnertp)
-            else
-                atc(111,'Error: Invalid argument for ws waitfor: '..tostring(args[3]))
-            end
-        elseif (cmd == 'nopartner') then
-            settings.ws.partner = nil
-            atc('Weaponskill partner removed.')
-        elseif (cmd == 'hp') then       --Target's HP
-            local sign = S{'<','>'}:contains(args[3]) and args[3] or nil
-            local hp = tonumber(args[4])
-            if (sign ~= nil) and (hp ~= nil) then
-                settings.ws.sign = sign
-                settings.ws.hp = hp
-                atc("Will weaponskill when the target's HP is "..sign.." "..hp.."%")
-            else
-                atc(111,'Error: Invalid arguments for ws hp: '..tostring(args[3])..', '..tostring(args[4]))
-            end
-        else
-            if S{'use','set'}:contains(cmd) then    -- ws name
-                table.remove(args, 1)
-            end
-            utils.register_ws(args)
-        end
     elseif S{'spam','nuke'}:contains(command) then
         local cmd = args[2] and args[2]:lower() or (settings.spam.active and 'off' or 'on')
         if S{'on','true'}:contains(cmd) then
@@ -365,14 +390,7 @@ local function healbot_commands(args)
         else
             utils.toggleVisible(boxName, args[2])
         end
-    elseif S{'help','--help'}:contains(command) then
-        help_text()
-    elseif command == 'settings' then
-        for k,v in pairs(settings) do
-            local kstr = tostring(k)
-            local vstr = (type(v) == 'table') and tostring(T(v)) or tostring(v)
-            atc(kstr:rpad(' ',15)..': '..vstr)
-        end
+
     -- elseif command == 'info' then
         -- local cmd = args[2]     --Take the first element as the command
 
@@ -396,10 +414,10 @@ local function buffs_commands(args)
         command = args[1]:lower()
     end
 
-
-
     if command == 'wipebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         utils.wipe_bufflist()
+    elseif command == 'help' then
+        error()
     else 
         otto.buffs.registerNewBuff(args)
     end
@@ -414,6 +432,8 @@ local function debuffs_commands(args)
 
     if command == 'wipedebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         utils.wipe_debufflist()
+    elseif command == 'help' then
+
     else 
         utils.register_offensive_debuff(args)
     end

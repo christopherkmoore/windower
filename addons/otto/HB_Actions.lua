@@ -150,48 +150,15 @@ function actions.get_offensive_action(player)
         end
     end
 
+    action.weaponskill = otto.weaponskill.action(target)
+
     local_queue_disp()
     if action.nuke ~= nil then        
         return action.nuke
+    elseif action.weaponskill ~= nil then
+        return action.weaponskill
     elseif action.db ~= nil then
         return action.db
-    end
-    
-
-    if (not settings.disable.ws) and (settings.ws ~= nil) and actor:ready_to_use(lor_res.action_for(settings.ws.name)) then
-        local sign = settings.ws.sign or '>'
-        local hp = settings.ws.hp or 0
-        local hp_ok = ((sign == '<') and (target.hpp <= hp)) or ((sign == '>') and (target.hpp >= hp))
-        
-        local partner_ok = true
-        if (settings.ws.partner ~= nil) then
-            local pname = settings.ws.partner.name
-            local partner = ffxi.get_party_member(pname)
-            if partner ~= nil then
-                partner_ok = partner.tp >= settings.ws.partner.tp
-                --partner_ok = partner.tp <= 500
-            else
-                partner_ok = false
-                atc(123,'Unable to locate weaponskill partner '..pname)
-            end
-        end
-        
-        if (hp_ok and partner_ok) then
-            return {action=lor_res.action_for(settings.ws.name),name='<t>'}
-        end
-    elseif (not settings.disable.spam) and settings.spam.active and (settings.spam.name ~= nil) then
-        local spam_action = lor_res.action_for(settings.spam.name)
-        if (target.hpp > 0) and actor:ready_to_use(spam_action) and actor:in_casting_range('<t>') then
-            local _p_ok = (player.vitals.mp >= spam_action.mp_cost)
-            if spam_action.tp_cost ~= nil then
-                _p_ok = (_p_ok and (player.vitals.tp >= spam_action.tp_cost))
-            end
-            if _p_ok then
-                return {action=spam_action,name='<t>'}
-            else
-                atcd('MP/TP not ok for '..settings.spam.name)
-            end
-        end
     end
     
     atcd('get_offensive_action: no offensive actions to perform')
