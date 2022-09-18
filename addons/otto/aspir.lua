@@ -25,6 +25,8 @@ function aspir.init()
 
 end
 
+local tick_delay = os.clock()
+
 function aspir.should_cast()
     -- no target
     local player = windower.ffxi.get_player()
@@ -50,8 +52,9 @@ end
 -- Prerender entry point. Steps through with early returns for if aspir should be added to the
 -- offensive nuking queue.
 function aspir.prerender()
+    if not user_settings.aspir.enabled then return end
     if not aspir.should_cast() then return end 
-
+    
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
     if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
         if offense.nukes[spell.aspir3.id] == nil then
@@ -86,7 +89,5 @@ function aspir.update_DB(actor, damage)
 
     otto.config.maspir_immunities.save(otto.config.maspir_immunities)
 end
-
-aspir._events['prerender'] = windower.register_event('prerender', aspir.prerender)
 
 return aspir

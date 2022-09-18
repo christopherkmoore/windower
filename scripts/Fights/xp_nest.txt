@@ -16,12 +16,11 @@ wait 0.3;
 
 send Chixslave exec fights/auto_whm
 
-send Chixslave hb debuff use Paralyze;
-send Chixslave hb debuff use Slow;
+send Chixslave otto debuff Paralyze on;
+send Chixslave otto debuff Slow on;
 
-send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave barblindra;
-
+send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave barblindra on;
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
@@ -38,9 +37,8 @@ send Onechix sing march 1;
 
 send Threechix exec fights/auto_geo
 
-send Threechix hb debuff use Dia II;
-send Threechix hb debuff use Frazzle;
-send Threechix hb debuff use Distract;
+send Threechix otto debuff Frazzle on;
+send Threechix otto debuff Distract on;
 
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;

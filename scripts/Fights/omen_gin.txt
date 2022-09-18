@@ -18,8 +18,8 @@ wait 0.1;
 
 send Chixslave exec fights/auto_whm
 
-send Chixslave hb buff Chixslave barstonra;
-send Chixslave hb buff Chixslave barpetra;
+send Chixslave otto buff Chixslave barstonra on;
+send Chixslave otto buff Chixslave barpetra on;
 
 ////////////////////////////////////
 // Bard

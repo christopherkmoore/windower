@@ -37,8 +37,8 @@ return {
                 ["waltzga"] = 0
             },
             ["min"] = {
-                ["curaga"] = 3,
-                ["cure"] = 3,
+                ["curaga"] = 1,
+                ["cure"] = 1,
                 ["waltz"] = 3,
                 ["waltzga"] = 2
             },

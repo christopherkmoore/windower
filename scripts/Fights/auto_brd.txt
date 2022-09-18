@@ -10,4 +10,4 @@ send Onechix sing debuffing off;
 
 send Onechix sing ballad 1 Chixslave;
 
-send Onechix sing ws on;
+send Onechix sing ws off;

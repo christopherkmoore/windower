@@ -20,6 +20,8 @@ local parse_char_update = _libs.lor.packets.parse_char_update
 
 
 function otto_packets.action_handler(raw_actionpacket)
+    if not otto.active then return end
+
     local monitored_ids = otto.getMonitoredIds()
 
     local actionpacket = ActionPacket.new(raw_actionpacket)
@@ -143,7 +145,7 @@ end
     :param set monitored_ids: the IDs of PCs that are being monitored
 --]]
 function otto_packets.registerEffect(action, a, target)
-
+    if target == nil then return end
     -- for registering new items.
         -- if action.param == 24 then
         --     log('action: ')

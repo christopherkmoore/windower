@@ -1,4 +1,8 @@
 
+-- Notes
+-- actor is stoping ws from happening during movement...
+-- the action function should be returning more than once. but it seems like only once?
+
 local lor_res = _libs.lor.resources
 local ffxi = _libs.lor.ffxi
 
@@ -49,7 +53,7 @@ end
 function weaponskill.open_window(for_target) 
     weaponskill.skillchain_active = true
     weaponskill.skillchain_start = os.clock() 
-    weaponskill.window_open = weaponskill.skillchain_start + 2
+    weaponskill.window_open = weaponskill.skillchain_start + 3
     weaponskill.window_close = weaponskill.window_open + 6
     weaponskill.target = for_target
 end
@@ -97,7 +101,6 @@ function weaponskill.action(target)
         
         if (weaponskill.should_weaponskill_to_close()) then
             log('in skillchain here')
-            weaponskill.can_skillchain = false
             return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
         end
     end
@@ -121,9 +124,12 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
     end
 
     weaponskill.close_and_reopen_window(target.id)
+    local ids = otto.getMonitoredIds()
+    local ws_is_from_teammate = ids:contains(actor)
 
-    if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255 then
+    if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255 and ws_is_from_teammate then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then
+            log('can ws')
             weaponskill.can_skillchain = true
         else 
             weaponskill.can_skillchain = false

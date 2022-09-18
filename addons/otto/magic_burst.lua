@@ -218,7 +218,6 @@ function cast_spell(spell)
 		windower.add_to_chat(123, "Casting - "..spell.name..' for the burst!')
 	end
 
-	local target = windower.ffxi.get_mob_by_target()
 	offense.addToNukeingQueue(spell)
 end
 

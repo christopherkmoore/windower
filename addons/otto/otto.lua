@@ -27,7 +27,7 @@ lor_settings = _libs.lor.settings
 serialua = _libs.lor.serialization
 
 otto = { 
-    active = true, configs_loaded = false, partyMemberInfo = {}, ignoreList = S{}, extraWatchList = S{},
+    active = false, configs_loaded = false, partyMemberInfo = {}, ignoreList = S{}, extraWatchList = S{},
     modes = {['showPacketInfo'] = false, ['debug'] = false, ['mob_debug'] = false, ['independent'] = false},
     _events = {}, txts = {}, config = {}, 
  }
@@ -103,6 +103,7 @@ otto._events['render'] = windower.register_event('prerender', function()
                 actor.last_action = now                    --Refresh stored action check time
                 actions.take_action(player, partner, targ)
 
+                otto.aspir.prerender()
                 -- TODO CKM added for now
             end
         end

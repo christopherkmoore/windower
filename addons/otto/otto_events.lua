@@ -656,8 +656,8 @@ function events.addon_command(...)
         otto.activate = true
         windower.add_to_chat(144, 'Otto is live!')
     elseif S{'stop','off'}:contains(command) then
-        otto.activate = true
-        windower.add_to_chat(144, 'Otto powering dooow~~!')
+        otto.activate = off
+        windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then
         table.vprint(user_settings)
     end

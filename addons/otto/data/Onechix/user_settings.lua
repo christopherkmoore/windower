@@ -13,7 +13,7 @@ return {
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 5
+        ["yalm_fight_range"] = 4
     },
     ["follow"] = {
         ["active"] = false,

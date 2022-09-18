@@ -1,25 +1,26 @@
 ////////////////////////////////
 // White Mage
 ////////////////////////////////
-send Chixslave hb assist Twochix;
-send Chixslave hb enable debuffing;
-send Chixslave hb debuff on
 
-send Chixslave hb on;
-send Chixslave amb on;
-send Chixslave amb t 2;
-send Chixslave amb c holy;
-send Chixslave amb gearswap on;
+send Chixslave otto healer on;
+send Chixslave otto magicburst on;
+send Chixslave otto magicburst t 2;
+send Chixslave otto magicburst c holy;
+send Chixslave otto magicburst gearswap on;
 send Chixslave gs c set AutoSubMode on;
 send Chixslave gs c set AutoRegenAgaMode Auto;
 
-send Chixslave hb buff Chixslave Afflatus Solace;
+send Chixslave otto buff Chixslave Afflatus Solace;
 
-send Chixslave hb buff Chixslave Protectra V;
-send Chixslave hb buff Chixslave Shellra V;
-send Chixslave hb buff Chixslave Boost-STR;
-send Chixslave hb buff Chixslave Auspice;
-send Chixslave hb buff Chixslave Aurorastorm;
-send Chixslave hb buff Chixslave Reraise IV; 
-//send Chixslave hb buff Chixslave Aquaveil; 
+send Chixslave otto buff Chixslave Protectra V on;
+send Chixslave otto buff Chixslave Shellra V on;
+send Chixslave otto buff Chixslave Boost-STR on;
+send Chixslave otto buff Chixslave Auspice on;
+send Chixslave otto buff Chixslave Aurorastorm on;
+send Chixslave otto buff Chixslave Reraise IV on; 
+//send Chixslave hb buff Chixslave Aquaveil on; 
+
+send Chixslave otto debuff Dia II on;
+send Chixslave otto debuff Slow on;
+// send Chixslave otto debuff Paralyze on;
 

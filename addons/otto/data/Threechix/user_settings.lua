@@ -1,7 +1,7 @@
 return {
     ["aspir"] = {
         ["casting_mp"] = 80,
-        ["casts_all"] = false,
+        ["casts_all"] = true,
         ["enabled"] = true,
         ["tier"] = 3
     },
@@ -53,7 +53,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = true,
+        ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

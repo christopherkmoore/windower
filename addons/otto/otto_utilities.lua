@@ -397,7 +397,7 @@ function utils.load_configs()
         ipc_monitored_boxes = lor_settings.load('data/ipc_monitored_boxes.lua')
     }
 
-    if otto.config.ipc_monitored_boxes:empty() or not otto.config.ipc_monitored_boxes:contains(player) then
+    if otto.config.ipc_monitored_boxes:empty() or otto.config.ipc_monitored_boxes[player.name] == nil then
         otto.config.ipc_monitored_boxes[player.name] = true
         otto.config.ipc_monitored_boxes:save()
     end

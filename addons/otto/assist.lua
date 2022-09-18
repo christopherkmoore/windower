@@ -171,24 +171,27 @@ local function close_in(target_type) -- 't', 'bt'
 	if not closes_in then return end
 	if not target_type then target_type = 't' end
 	
-	local mob = windower.ffxi.get_mob_by_target(target_type)
+	local mob = windower.ffxi.get_mob_by_target('t')
 	if not mob then
 		-- error
 		return
 	end
 	
 	local dist = math.sqrt(mob.distance)
-	if dist > user_settings.assist.yalm_fight_range then 
+    face_target()
+
+    if dist > user_settings.assist.yalm_fight_range then 
 		closing_in = true
 		log('Slave: Closing in ---> '..mob.name)
-	else
-		face_target()
 	end
 	
+    if dist > 14 then return end -- don't close in on super far away mobs
+
 	while (mob and dist > user_settings.assist.yalm_fight_range) do
 		windower.ffxi.run(heading_to(mob.x, mob.y))
 		coroutine.sleep(0.2)
 		mob = windower.ffxi.get_mob_by_target('t')
+
 		if mob then
 			dist = math.sqrt(mob.distance)
 		else

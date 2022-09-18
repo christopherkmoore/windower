@@ -16,8 +16,8 @@ wait 0.1;
 
 send Chixslave exec fights/auto_whm
 
-send Chixslave hb buff Chixslave barwatera;
-send Chixslave hb buff Chixslave barblindra;
+send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave barblindra on;
 
 ////////////////////////////////////
 // Bard
@@ -29,6 +29,7 @@ send Onechix sing minuet 2;
 send Onechix sing march 1;
 
 send Onechix sing ws off;
+send Onechix otto ws off;
 
 ////////////////////////////////////
 // Geomancer
@@ -43,5 +44,5 @@ send Threechix gs c autogeo Acumen;
 // Guests
 ////////////////////////////////////
 
-send Threechix hb buff Panik haste;
+send Threechix otto buff panik haste on;
 
