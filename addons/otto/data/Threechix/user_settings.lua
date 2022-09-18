@@ -7,7 +7,7 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
-        ["master"] = "",
+        ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Onechix"] = "frontline",
@@ -58,6 +58,10 @@ return {
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
+    },
+    ["pull"] = {
+        ["enabled"] = false,
+        ["with"] = ""
     },
     ["weaponskill"] = {
         ["enabled"] = true,

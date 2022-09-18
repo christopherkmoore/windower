@@ -1001,8 +1001,8 @@ function init_gear_sets()
         neck = "Anu Torque",
         waist = "Sailfi Belt +1",
         -- left_ear = "Dominance Earring",
-        left_ear = "Nukumi Earring",
-        right_ear = "Sherida Earring",
+        right_ear = "Nukumi Earring",
+        left_ear = "Sherida Earring",
         left_ring = "Petrov Ring",
         right_ring = "Vocane Ring",
         back=gear.capeTP

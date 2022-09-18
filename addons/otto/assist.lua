@@ -33,9 +33,14 @@ function assist.init()
         user_settings:save()
     end
 
+    if is_slave then 
+        windower.send_command('input /autotarget off')
+    end
+
 end
 
 local closing_in = false
+local locked_closing_in = false
 
 local player_status = {
     ['Idle'] = 0,
@@ -57,10 +62,13 @@ end
 
 local function is_master() 
     local player = windower.ffxi.get_player().name
+    
+    if user_settings.assist.master == "" then return false end 
+
     return  player == user_settings.assist.master
 end
 
-local function attack_on(id)
+function assist.attack_on(id)
     local target = windower.ffxi.get_mob_by_id(id)
 
     if not target then
@@ -75,6 +83,7 @@ local function attack_on(id)
     packets.inject(p)
 
 end
+
 
 local function attack_off()
     local player = windower.ffxi.get_player()
@@ -147,7 +156,7 @@ local function heading_to(x, y)
 	local p = windower.ffxi.get_mob_by_target('me')
 	local x = x - p.x
 	local y = y - p.y
-	local h = math.atan(x, y)
+	local h = math.atan2(x, y)
 	return h - 1.5708
 end
 
@@ -162,6 +171,7 @@ local function face_target(target_type) -- 't', 'bt'
 	
 	windower.ffxi.turn(heading_to(mob.x, mob.y))
 end
+
 
 local function close_in(target_type) -- 't', 'bt'
     if actor:is_acting() then return end
@@ -181,13 +191,16 @@ local function close_in(target_type) -- 't', 'bt'
 	end
 	
 	local dist = math.sqrt(mob.distance)
-    face_target()
 
     if dist > user_settings.assist.yalm_fight_range then 
 		closing_in = true
 		log('Slave: Closing in ---> '..mob.name)
+    else 
+        face_target()
 	end
-	
+    
+    if locked_closing_in then return end
+
     if dist > 14 then return end -- don't close in on super far away mobs
 
 	while (mob and dist > user_settings.assist.yalm_fight_range) do
@@ -240,13 +253,41 @@ function assist.target(player)
     windower.send_ipc_message('target '..player_target.id..' '..player)
 end
 
+function assist.master_target_no_close_in(id)
+    if not id then return end
+
+    locked_closing_in = true 
+
+    windower.send_ipc_message('master '..id)
+end
 
 
 -- TODO register handlers in otto
 function assist.ipc_message_handler(message) 
+    log('here')
     if not user_settings.assist.enabled then return end
 
     local msg = message:split(' ')
+
+    if msg[1] == 'master' then
+        locked_closing_in = true 
+        if not is_master then return end
+
+        local id = tonumber(msg[2])
+        local player = windower.ffxi.get_player()
+
+        assist.attack_on(id)
+
+        target_lock_on:schedule(1)
+
+        coroutine.sleep(1)
+
+        while player.status == player_status['Engaged'] do
+            face_target()
+            coroutine.sleep(.5)
+            player = windower.ffxi.get_player()
+        end
+    end
 
     if not is_slave then
         return
@@ -268,7 +309,7 @@ function assist.ipc_message_handler(message)
                 return
             end
 
-            attack_on(id)
+            assist.attack_on(id)
             target_lock_on:schedule(1)
         elseif msg[2] == 'off' then
             local player = windower.ffxi.get_player()
@@ -287,7 +328,6 @@ function assist.ipc_message_handler(message)
             log('Slave: Target not found!')
             return
         end
-
 
         local name = windower.ffxi.get_player().name
         local role = user_settings.assist.slaves[name]
@@ -313,6 +353,7 @@ function assist.ipc_message_handler(message)
 			end
         elseif role == 'backline' then
             target_master(player, id)
+            return
         end
     elseif msg[1] == 'follow' then
         local id = msg[2]

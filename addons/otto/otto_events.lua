@@ -596,6 +596,30 @@ local function assist_commands(args)
 
 end
 
+local function pull_commands(args) 
+
+    local command = 'help'
+
+    if (#args > 0) then
+        command = args[1]:lower()
+    end
+
+    if command == 'on' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
+        user_settings.pull.enabled = true
+        windower.add_to_chat(144, 'Auto pulling enabled')
+
+    elseif command == 'off' then 
+        user_settings.pull.enabled = false
+        windower.add_to_chat(144, 'Auto pulling disabled')
+    else 
+        local input = (' '):join(args)
+        log(input)
+        user_settings.pull.with = input
+        windower.add_to_chat(144, 'will attempt to pull with command '..input)
+    end
+
+    user_settings:save()
+end
 
 
 
@@ -613,13 +637,10 @@ function events.addon_command(...)
         -- MARK: commands to sub programs
         if command == 'aspir' then
             aspir_command(newArgs)
-            return
         elseif command == 'magicburst' or command == 'magic_burst' or command == 'mb' or command == 'amb' then
             magic_burst_command(newArgs)
-            return
 		elseif command == 'healbot' or command == 'hb' then
 			healbot_commands(newArgs)
-			return
         elseif command == 'follow' or command == 'f' then
             follow_commands(newArgs)
         elseif command == 'assist' or command == 'a' then
@@ -632,6 +653,8 @@ function events.addon_command(...)
             debuffs_commands(newArgs)
         elseif command == 'weaponskill' or command == 'ws' then 
             weaponskill_commands(newArgs)
+        elseif command == 'pull' or command == 'p' then
+            pull_commands(newArgs)
         end
         -- MARK: commands to local otto
     end
@@ -654,6 +677,7 @@ function events.addon_command(...)
         windower.add_to_chat(144, 'follow | f - commands for following a master')
     elseif S{'start','on'}:contains(command) then
         otto.activate = true
+        healer_commands('off')
         windower.add_to_chat(144, 'Otto is live!')
     elseif S{'stop','off'}:contains(command) then
         otto.activate = off

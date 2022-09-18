@@ -129,7 +129,6 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255 and ws_is_from_teammate then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then
-            log('can ws')
             weaponskill.can_skillchain = true
         else 
             weaponskill.can_skillchain = false

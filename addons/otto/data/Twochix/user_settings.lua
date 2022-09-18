@@ -33,8 +33,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 3,
-                ["waltzga"] = 1
+                ["waltz"] = 0,
+                ["waltzga"] = 0
             },
             ["min"] = {
                 ["curaga"] = 3,
@@ -59,10 +59,14 @@ return {
         ["mp"] = 100,
         ["show_spell"] = false
     },
+    ["pull"] = {
+        ["enabled"] = false,
+        ["with"] = ""
+    },
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 15,
-        ["name"] = "Decimation",
+        ["name"] = "Freezebite",
         ["partner"] = {
             ["name"] = "Onechix",
             ["tp"] = 1000,

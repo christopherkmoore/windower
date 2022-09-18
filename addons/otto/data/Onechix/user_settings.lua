@@ -57,6 +57,10 @@ return {
         ["mp"] = 100,
         ["show_spell"] = false
     },
+    ["pull"] = {
+        ["enabled"] = true,
+        ["with"] = "/ma \"Carnage Elegy\""
+    },
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 15,
