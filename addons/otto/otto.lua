@@ -65,6 +65,7 @@ otto.assist = require('assist')
 otto.healer = require('healer')
 otto.buffs = require('buffs')
 otto.weaponskill = require('weaponskill')
+otto.pull = require('pull')
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -76,6 +77,7 @@ function otto.init()
     otto.assist.init()
     otto.healer.init()
     otto.weaponskill.init()
+    otto.pull.init()
 
     otto.active = true
 end
@@ -104,6 +106,7 @@ otto._events['render'] = windower.register_event('prerender', function()
                 actions.take_action(player, partner, targ)
 
                 otto.aspir.prerender()
+                otto.pull.try_pulling()
                 -- TODO CKM added for now
             end
         end
