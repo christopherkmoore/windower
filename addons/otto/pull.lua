@@ -16,7 +16,6 @@ function pull.init()
     end
 end
 
-
 local function sort_closest_target(mobs) 
 
     local distance = nil

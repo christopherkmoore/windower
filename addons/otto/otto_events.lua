@@ -606,10 +606,12 @@ local function pull_commands(args)
 
     if command == 'on' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         user_settings.pull.enabled = true
+        otto.assist.locked_closing_in = true
         windower.add_to_chat(144, 'Auto pulling enabled')
 
     elseif command == 'off' then 
         user_settings.pull.enabled = false
+        otto.assist.locked_closing_in = false
         windower.add_to_chat(144, 'Auto pulling disabled')
     else 
         local input = (' '):join(args)
@@ -677,10 +679,12 @@ function events.addon_command(...)
         windower.add_to_chat(144, 'follow | f - commands for following a master')
     elseif S{'start','on'}:contains(command) then
         otto.activate = true
-        healer_commands('off')
         windower.add_to_chat(144, 'Otto is live!')
     elseif S{'stop','off'}:contains(command) then
         otto.activate = off
+        healer_commands('off')
+        buffs_commands('wipebuffs')
+        debuffs_commands('wipedebuffs')
         windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then
         table.vprint(user_settings)

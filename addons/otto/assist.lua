@@ -192,6 +192,9 @@ local function close_in(target_type) -- 't', 'bt'
 	
 	local dist = math.sqrt(mob.distance)
 
+    if locked_closing_in then face_target() return end
+
+
     if dist > user_settings.assist.yalm_fight_range then 
 		closing_in = true
 		log('Slave: Closing in ---> '..mob.name)
@@ -199,8 +202,6 @@ local function close_in(target_type) -- 't', 'bt'
         face_target()
 	end
     
-    if locked_closing_in then return end
-
     if dist > 14 then return end -- don't close in on super far away mobs
 
 	while (mob and dist > user_settings.assist.yalm_fight_range) do
@@ -345,7 +346,7 @@ function assist.ipc_message_handler(message)
             
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
-				if not closing_in then
+				if not closing_in and not locked_closing_in then
 					close_in()
 				end
 				coroutine.sleep(.5)

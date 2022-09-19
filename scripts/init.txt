@@ -88,21 +88,14 @@ lua load Skillchains
 lua load findall
 lua load SellNPC
 lua load superwarp
-// removed SendALlTarget to try attackwithme
-lua load SendAllTarget
-lua load attackwithme
 lua load autojoin
 lua load sparks
-lua load healbot
 lua load aecho;
 send Onechix lua load singer;
 send Onechix sing off;
-send Threechix lua load automb;
-send Chixslave lua load automb;
-send Onechix awm slave on;
-send Twochix awm master on;
 send Onechix dressup l bard;
-send Threechix lua load otto;
+
+lua load otto;
 
 bind ^f send @others /follow Twochix
 bind ^u send @others exec unfollow

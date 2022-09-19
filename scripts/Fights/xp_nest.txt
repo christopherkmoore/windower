@@ -40,8 +40,8 @@ send Threechix exec fights/auto_geo
 send Threechix otto debuff Frazzle on;
 send Threechix otto debuff Distract on;
 
-send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
+send Threechix gs c autoindi Malaise;
+send Threechix gs c autogeo Acumen;
 
 ////////////////////////////////////
 // Guests

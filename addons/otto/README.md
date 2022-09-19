@@ -33,27 +33,31 @@ singer?\
     waits until everyone is in range.
     good support for using an ability + an action (pianissimo + ballad)
 
-buffs\
-debuffs\
-
-parse out follow from healbot
-parse out ws from healbot
-parse out the ability to send target
-
-auto-geo\
-priority queues from HB\
-
-ws + skillchains\
-
-
-auto magic burst\
-auto convert\
-
-send commands to gearswap\
-send commands to hb?\
-send commands to singer?\
-
 -- added\
+aspir
+magicburst
+assist / targeting
+pulling
+buffs /debuffs
+healing
+weaponskill / skillchains
 
-auto aspir\
-assist\
+wants
+geo
+bard
+abilities
+compound actions
+dispels
+pass / lot
+
+Bugs
+
+skillchains do not work well when multiple party members are fighting different mobs.
+maybe otto off 
+clean up vprint logs
+sometimes puller thinks it has pulled when it hasn't?
+weaponskill / magicburst carries to new target.
+weaponskills will sometimes not close properly (action not being added to q in time?)
+otto pull on - first target always makes everyone close in.
+somethign wrong with targeting after long sessions. 'backline' roles will try to attack anything they target.
+make queue more efficient

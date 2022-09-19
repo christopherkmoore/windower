@@ -18,6 +18,7 @@ return {
     ["Apex Doom Scorpion"] = false,
     ["Apex Dragonfly"] = false,
     ["Apex Eruca"] = false,
+    ["Apex Fire Elemental"] = true,
     ["Apex Helm Elytra"] = true,
     ["Apex Hornfly"] = false,
     ["Apex Lugcrawler"] = false,
