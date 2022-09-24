@@ -2,11 +2,11 @@ return {
     ["aspir"] = {
         ["casting_mp"] = 80,
         ["casts_all"] = true,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["tier"] = 3
     },
     ["assist"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
@@ -15,7 +15,7 @@ return {
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 4
+        ["yalm_fight_range"] = 3.5
     },
     ["follow"] = {
         ["active"] = false,
@@ -34,7 +34,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 0,
+                ["cure"] = 3,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },
@@ -43,29 +43,31 @@ return {
                 ["cure"] = 3,
                 ["waltz"] = 3,
                 ["waltzga"] = 2
-            }
+            },
+            ["mode"] = "cure",
+            ["modega"] = "curaga"
         },
         ["ignoreTrusts"] = true
     },
     ["magic_burst"] = {
         ["cast_tier"] = 3,
-        ["cast_type"] = "jutsu",
+        ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = false,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
     },
     ["pull"] = {
         ["enabled"] = false,
-        ["with"] = "/ma \"Carnage Elegy\""
+        ["with"] = ""
     },
     ["weaponskill"] = {
         ["enabled"] = true,
-        ["min_hp"] = 15,
+        ["min_hp"] = 80,
         ["name"] = "Savage Blade",
         ["partner"] = "none"
     }

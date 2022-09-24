@@ -10,6 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
+            ["Fivechix"] = "frontline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -33,8 +35,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 0,
-                ["waltzga"] = 0
+                ["waltz"] = 3,
+                ["waltzga"] = 1
             },
             ["min"] = {
                 ["curaga"] = 3,
@@ -49,7 +51,7 @@ return {
     },
     ["magic_burst"] = {
         ["cast_tier"] = 3,
-        ["cast_type"] = "spell",
+        ["cast_type"] = "none",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

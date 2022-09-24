@@ -63,4 +63,20 @@
     <alwaysplaysound>false</alwaysplaysound>
     <alwaysenablegamepad>false</alwaysenablegamepad>
   </profile>
+  <profile name="four_chix">
+    <consolekey>Insert</consolekey>
+    <windowmode>Window</windowmode>
+    <uiscale>1.8</uiscale>
+    <hardwaremouse>false</hardwaremouse>
+    <alwaysplaysound>false</alwaysplaysound>
+    <alwaysenablegamepad>false</alwaysenablegamepad>
+  </profile>
+  <profile name="five_chix">
+    <consolekey>Insert</consolekey>
+    <windowmode>Window</windowmode>
+    <uiscale>1.8</uiscale>
+    <hardwaremouse>false</hardwaremouse>
+    <alwaysplaysound>false</alwaysplaysound>
+    <alwaysenablegamepad>false</alwaysenablegamepad>
+  </profile>
 </settings>

@@ -61,3 +61,12 @@ weaponskills will sometimes not close properly (action not being added to q in t
 otto pull on - first target always makes everyone close in.
 somethign wrong with targeting after long sessions. 'backline' roles will try to attack anything they target.
 make queue more efficient
+add checks -- aspir is targeting any target
+
+TODO
+
+aspir is targeting any target
+add global on / off
+add yalm range to monitored boxes
+figure fucking targeting out
+bug in assist for backline roles.

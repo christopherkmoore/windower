@@ -28,3 +28,6 @@ addons/findAll/data/Chixslave.lua
 addons/findAll/data/Onechix.lua
 addons/findAll/data/Threechix.lua
 addons/findAll/data/Twochix.lua
+*.bat
+addons/autojoin/data/settings.xml
+addons/findAll/data/Chixslave.lua

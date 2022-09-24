@@ -48,7 +48,8 @@ send Threechix gs c autogeo Fury;
 ////////////////////////////////////
 
 
-send Threechix hb buff ornate haste
-send Threechix hb buff renew haste
+send Threechix otto buff Ornate haste on
+send Threechix otto buff Renew haste on
 
-send Threechix hb buff Bryceb haste;
+send Threechix otto buff Bryceb haste on
+send Threechix otto buff Panik haste on

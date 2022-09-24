@@ -32,7 +32,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 4,
+                ["cure"] = 0,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },

@@ -683,8 +683,8 @@ function events.addon_command(...)
     elseif S{'stop','off'}:contains(command) then
         otto.activate = off
         healer_commands('off')
-        buffs_commands('wipebuffs')
-        debuffs_commands('wipedebuffs')
+        utils.wipe_bufflist()
+        utils.wipe_debufflist()
         windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then
         table.vprint(user_settings)

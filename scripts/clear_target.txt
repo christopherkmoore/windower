@@ -1,0 +1,4 @@
+setkey escape down;
+wait 0.3;
+setkey escape up;
+wait 0.3;

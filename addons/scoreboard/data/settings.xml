@@ -72,6 +72,14 @@
             </pos>
         </display>
     </chixslave>
+    <fourchix>
+        <display>
+            <pos>
+                <x>1513</x>
+                <y>289</y>
+            </pos>
+        </display>
+    </fourchix>
     <onechix>
         <display>
             <pos>
@@ -95,6 +103,5 @@
                 <y>332</y>
             </pos>
         </display>
-        <visible>true</visible>
     </twochix>
 </settings>

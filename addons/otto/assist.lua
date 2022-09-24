@@ -202,6 +202,7 @@ local function close_in(target_type) -- 't', 'bt'
         face_target()
 	end
     
+    
     if dist > 14 then return end -- don't close in on super far away mobs
 
 	while (mob and dist > user_settings.assist.yalm_fight_range) do
@@ -265,7 +266,6 @@ end
 
 -- TODO register handlers in otto
 function assist.ipc_message_handler(message) 
-    log('here')
     if not user_settings.assist.enabled then return end
 
     local msg = message:split(' ')

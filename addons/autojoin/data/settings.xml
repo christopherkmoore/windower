@@ -15,4 +15,10 @@
     <threechix>
         <whitelist>Twochix,Panik,Pounced</whitelist>
     </threechix>
+    <fourchix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </fourchix>
+    <fivechix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </fivechix>
 </settings>
