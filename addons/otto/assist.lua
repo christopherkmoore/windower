@@ -24,7 +24,7 @@ function assist.init()
     local defaults = { }
     defaults.enabled = true
     defaults.yalm_fight_range = 3.5
-    -- defaults.role = 'frontline' | 'backline' (will close the distance to auto, or stay at range.)
+    defaults.role =  'frontline' --'frontline' | 'backline' (will close the distance to auto, or stay at range.)
     defaults.master = ''
     defaults.slaves = {  } -- { ['Slave'] = 'role' }
 
@@ -300,7 +300,7 @@ function assist.ipc_message_handler(message)
                 return
             end
 
-            if math.sqrt(target.distance) > 29 then
+            if math.sqrt(target.distance) > 20 then
                 log('Slave: ['..target.name..']'..' found, but too far!')
                 return
             end

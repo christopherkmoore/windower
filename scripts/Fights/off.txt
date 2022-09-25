@@ -21,9 +21,7 @@ send Threechix gs c set AutoBuffMode off;
 send Threechix gs c set autowsmode off; 
 
 
-send @all otto off
-send @all otto buffs wipebuffs;
-send @all otto debuffs wipedebuffs;
+otto r all
 
 
 send Chixslave gs c set autoregenagamode off;
