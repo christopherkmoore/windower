@@ -3,20 +3,12 @@
 ////////////////////////////////////
 
 send Threechix otto on;
-send Threechix otto buff Twochix haste on;
-send Threechix otto buff Threechix haste on;
-send Threechix otto buff Chixslave haste on;
-send Threechix otto buff Onechix haste on;
-send Threechix otto buff Threechix refresh on;
 
 send Threechix otto aspir t 3;
 send Threechix otto aspir all;
 send Threechix otto aspir on;
 send Threechix otto magicburst on;
 send Threechix otto magicburst t 4;
-
-send Threechix otto debuff Frazzle on;
-send Threechix otto debuff Distract on;
 
 send Threechix gs c set AutoBuffMode auto;
 send Threechix gs c set AutoConvertMode Auto

@@ -309,7 +309,6 @@ function poke_npc(id, index)
             if state.loop_count > 0 then
                 state.loop_count = state.loop_count - 1
                 log("Timed out waiting for response from the poke. Retrying...")
-                log('here')
             else 
                 log("Timed out waiting for response from the poke.")
                 current_activity = nil

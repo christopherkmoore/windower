@@ -33,10 +33,8 @@ function assist.init()
         user_settings:save()
     end
 
-    if is_slave then 
-        windower.send_command('input /autotarget off')
-    end
-
+    windower.register_event('incoming chunk', assist.incoming_chunk_handler)
+    windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
 end
 
 local closing_in = false
@@ -174,7 +172,7 @@ end
 
 
 local function close_in(target_type) -- 't', 'bt'
-    if actor:is_acting() then return end
+    if locked_closing_in then face_target() return end
 
     local name = windower.ffxi.get_player().name
     local role = user_settings.assist.slaves[name]
@@ -191,9 +189,6 @@ local function close_in(target_type) -- 't', 'bt'
 	end
 	
 	local dist = math.sqrt(mob.distance)
-
-    if locked_closing_in then face_target() return end
-
 
     if dist > user_settings.assist.yalm_fight_range then 
 		closing_in = true
@@ -333,17 +328,17 @@ function assist.ipc_message_handler(message)
         local name = windower.ffxi.get_player().name
         local role = user_settings.assist.slaves[name]
 
-		if role == 'frontline' then
-            local retry_count = 0
-            repeat
-                switch_target(id)
-                coroutine.sleep(2)
-                player = windower.ffxi.get_player()
-                retry_count = retry_count + 1
-            until player.status == player_status['Engaged'] or retry_count > max_retry
-    
-            target_lock_on:schedule(1)
-            
+        local retry_count = 0
+        repeat
+            switch_target(id)
+            coroutine.sleep(2)
+            player = windower.ffxi.get_player()
+            retry_count = retry_count + 1
+        until player.status == player_status['Engaged'] or retry_count > max_retry
+
+        target_lock_on:schedule(1)
+        
+        if role == 'frontline' then
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
 				if not closing_in and not locked_closing_in then
@@ -412,8 +407,6 @@ function assist.incoming_chunk_handler(id, original)
     end
 end
 
-windower.register_event('incoming chunk', assist.incoming_chunk_handler)
-windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
 windower.register_event('ipc message', assist.ipc_message_handler)
 
 return assist

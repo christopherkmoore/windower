@@ -7,11 +7,11 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
-        ["master"] = "Fourchix",
+        ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -34,7 +34,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 3,
+                ["cure"] = 4,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },

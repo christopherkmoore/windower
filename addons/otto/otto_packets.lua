@@ -107,10 +107,11 @@ end
 --]]
 function otto_packets.processAction(targets, actor_id, monitored_ids)
     for target in targets do
-        if monitored_ids[actor_id] or monitored_ids[target.raw.id] then
+        log(actor_id)
+        local act = windower.ffxi.get_mob_by_id(actor_id)
+        if monitored_ids[act.name] or monitored_ids[target.raw.id] then
             local a = windower.ffxi.get_mob_by_id(actor_id)
             local t = windower.ffxi.get_mob_by_id(target.raw.id)
-            
             for _, action in pairs(target.raw.actions) do
                 if not messages_blacklist:contains(action.message) then
                     if (action.message == 0) and (actor_id == actor.id) then
@@ -145,16 +146,17 @@ end
     :param set monitored_ids: the IDs of PCs that are being monitored
 --]]
 function otto_packets.registerEffect(action, a, target)
+
     if target == nil then return end
     -- for registering new items.
-        -- if action.param == 24 then
-        --     log('action: ')
-        --     table.vprint(action)
-        --     log('actor: ')
-        --     table.vprint(a)
-        --     log('target: ')
-        --     table.vprint(target)
-        -- end
+        if action.param == 24 then
+            log('action: ')
+            table.vprint(action)
+            log('actor: ')
+            table.vprint(a)
+            log('target: ')
+            table.vprint(target)
+        end
 
     local targ_is_enemy = (target.spawn_type == 16)
     if messages_magicDamage:contains(action.message) then      --action_info.param: spell; tact.param: damage
@@ -162,7 +164,6 @@ function otto_packets.registerEffect(action, a, target)
         if S{230,231,232,233,234}:contains(action.param) then
             otto.buffs.register_debuff(target, 'Bio', true, spell)
         elseif S{23,24,25,26,27,33,34,35,36,37}:contains(action.param) then
-            log('Message processing and registering debuff')
             otto.buffs.register_debuff(target, 'Dia', true, spell)
         end
     elseif messages_gainEffect:contains(action.message) then   --action_info.param: spell; tact.param: buff/debuff

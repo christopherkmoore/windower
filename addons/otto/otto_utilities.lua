@@ -23,6 +23,7 @@ function utils.normalize_action(action, action_type)
     if istable(action) then return action end
     if action_type == nil then return nil end
     if isstr(action) then
+
         if tonumber(action) == nil then
             local naction = res[action_type]:with('en', action)
             if naction ~= nil then

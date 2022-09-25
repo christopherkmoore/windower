@@ -3,7 +3,7 @@ return {
         ["casting_mp"] = 80,
         ["casts_all"] = true,
         ["enabled"] = true,
-        ["tier"] = 3
+        ["tier"] = 1
     },
     ["assist"] = {
         ["enabled"] = false,
@@ -34,7 +34,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 3,
+                ["cure"] = 4,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },
@@ -50,12 +50,12 @@ return {
         ["ignoreTrusts"] = true
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 3,
+        ["cast_tier"] = 2,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = false,
+        ["double_burst"] = true,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

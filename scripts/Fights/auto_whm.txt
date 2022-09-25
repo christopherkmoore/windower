@@ -10,7 +10,7 @@ send Chixslave otto magicburst gearswap on;
 send Chixslave gs c set AutoSubMode on;
 send Chixslave gs c set AutoRegenAgaMode Auto;
 
-send Chixslave otto buff Chixslave Afflatus Solace;
+send Chixslave otto buff Chixslave Afflatus Solace on;
 
 send Chixslave otto buff Chixslave Protectra V on;
 send Chixslave otto buff Chixslave Shellra V on;

@@ -38,7 +38,7 @@ end
 -- Define sets and vars used by this job file.
 function init_gear_sets()
 
-	sets.warp = set_combine(sets.idle, {ring1="Warp Ring"})
+	sets.warp = set_combine(sets.idle, {ring1="Warp Ring", ring2="Warp Ring"})
 
     --------------------------------------
     -- Start defining the sets

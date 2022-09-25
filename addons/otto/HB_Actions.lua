@@ -156,7 +156,6 @@ function actions.get_offensive_action(player)
     if action.nuke ~= nil then        
         return action.nuke
     elseif action.weaponskill ~= nil then
-        table.vprint(action.weaponskill)
         return action.weaponskill
     elseif action.db ~= nil then
         return action.db

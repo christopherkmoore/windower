@@ -895,6 +895,10 @@ function default_filtered_action(spell, eventArgs)
 		useItemName = 'Warp Ring'
 		useItemSlot = 'ring2'
 		add_to_chat(217,"You can't cast warp, attempting to use Warp Ring instead, /heal to cancel.")
+		if sets.warp ~= nil then
+			equip(sets.warp)
+			
+		end
 		cancel_spell()
 		eventArgs.cancel = true
 	elseif spell.english == 'Retrace' then

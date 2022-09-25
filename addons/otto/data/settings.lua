@@ -41,9 +41,9 @@ return {
             ["y"] = 600
         },
         ["moveInfo"] = {
-            ["visible"] = false,
-            ["x"] = 0,
-            ["y"] = 18
+            ["visible"] = true,
+            ["x"] = -200,
+            ["y"] = 550
         }
     }
 }

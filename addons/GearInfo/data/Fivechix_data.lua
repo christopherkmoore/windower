@@ -138,13 +138,13 @@ return {
     [5]={
         ["discription"]="DMG:3 Delay:193", 
         ["en"]="Onion Dagger", 
-        ["skill"]="Dagger", 
-        ["delay"]=193, 
-        ["category"]="Weapon", 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
+        ["delay"]=193, 
+        ["category"]="Weapon", 
+        ["skill"]="Dagger", 
         ["jobs"]={
             [1]="WAR", 
             [4]="BLM", 
@@ -167,12 +167,12 @@ return {
     }, 
     [6]={
         ["discription"]="Enchantment: Warp", 
-        ["id"]=28540, 
+        ["en"]="Warp Ring", 
         ["slots"]={
             [13]="Left Ring", 
             [14]="Right Ring"
         }, 
-        ["en"]="Warp Ring", 
+        ["id"]=28540, 
         ["category"]="Armor", 
         ["jobs"]={
             [1]="WAR", 
@@ -198,5 +198,466 @@ return {
             [21]="GEO", 
             [22]="RUN"
         }
+    }, 
+    [7]={
+        ["discription"]="DMG:122 Delay:264 Sword skill +215 Parrying skill +215 Magic Accuracy skill +167 Latent effect: DMG:128 Accuracy+15 Attack+10", 
+        ["category"]="Weapon", 
+        ["Parrying skill"]=215, 
+        ["en"]="Eminent Scimitar", 
+        ["Sword skill"]=215, 
+        ["delay"]=264, 
+        ["item_level"]=117, 
+        ["jobs"]={
+            [1]="WAR", 
+            [5]="RDM", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [16]="BLU", 
+            [17]="COR", 
+            [22]="RUN"
+        }, 
+        ["skill"]="Sword", 
+        ["id"]=20726, 
+        ["slots"]={
+            [0]="Main", 
+            [1]="Sub"
+        }, 
+        ["damage"]=122
+    }, 
+    [8]={
+        ["Evasion"]=16, 
+        ["MND"]=17, 
+        ["AGI"]=13, 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=13, 
+        ["discription"]="DEF:70 HP+17 MP+26 STR+13 DEX+13 VIT+13 AGI+13 INT+17 MND+17 CHR+17 Evasion+16 Magic Accuracy+9 Magic Evasion+51 \"Magic Def. Bonus\"+2 Haste+1% MP recovered while healing +4", 
+        ["en"]="Orvail Corona +1", 
+        ["item_level"]=109, 
+        ["DEF"]=70, 
+        ["HP"]=17, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["VIT"]=13, 
+        ["Haste"]=1, 
+        ["MP"]=26, 
+        ["id"]=27754, 
+        ["STR"]=13, 
+        ["CHR"]=17, 
+        ["INT"]=17, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=9
+    }, 
+    [9]={
+        ["Evasion"]=19, 
+        ["MND"]=20, 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=16, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["item_level"]=109, 
+        ["discription"]="DEF:91 HP+25 MP+49 STR+16 DEX+16 VIT+16 AGI+16 INT+20 MND+20 CHR+20 Evasion+19 Magic Evasion+54 \"Magic Def. Bonus\"+3 Enmity-5 Adds \"Refresh\" effect", 
+        ["AGI"]=16, 
+        ["HP"]=25, 
+        ["id"]=27897, 
+        ["category"]="Armor", 
+        ["DEF"]=91, 
+        ["MP"]=49, 
+        ["VIT"]=16, 
+        ["STR"]=16, 
+        ["CHR"]=20, 
+        ["INT"]=20, 
+        ["en"]="Orvail Robe +1"
+    }, 
+    [10]={
+        ["Evasion"]=10, 
+        ["MND"]=22, 
+        ["AGI"]=3, 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=17, 
+        ["discription"]="DEF:61 HP+10 MP+12 STR+4 DEX+17 VIT+16 AGI+3 INT+12 MND+22 CHR+17 Evasion+10 Magic Accuracy+6 Magic Evasion+25 \"Magic Def. Bonus\"+1 Enmity-4 Haste+3%", 
+        ["en"]="Orvail Cuffs +1", 
+        ["item_level"]=109, 
+        ["DEF"]=61, 
+        ["HP"]=10, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["VIT"]=16, 
+        ["Haste"]=3, 
+        ["MP"]=12, 
+        ["id"]=28044, 
+        ["STR"]=4, 
+        ["CHR"]=17, 
+        ["INT"]=12, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=6
+    }, 
+    [11]={
+        ["Evasion"]=12, 
+        ["MND"]=15, 
+        ["AGI"]=11, 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["discription"]="DEF:78 HP+20 MP+24 STR+16 VIT+18 AGI+11 INT+21 MND+15 CHR+12 Evasion+12 Magic Accuracy+7 Magic Evasion+73 \"Magic Def. Bonus\"+3 Haste+1% Enhances \"Fast Cast\" effect", 
+        ["en"]="Orvail Pants +1", 
+        ["item_level"]=109, 
+        ["DEF"]=78, 
+        ["HP"]=20, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["VIT"]=18, 
+        ["Haste"]=1, 
+        ["MP"]=24, 
+        ["id"]=28184, 
+        ["STR"]=16, 
+        ["CHR"]=12, 
+        ["INT"]=21, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=7
+    }, 
+    [12]={
+        ["Evasion"]=25, 
+        ["MND"]=18, 
+        ["AGI"]=21, 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=7, 
+        ["discription"]="DEF:48 HP+6 MP+12 STR+6 DEX+7 VIT+6 AGI+21 INT+11 MND+18 CHR+21 Evasion+25 Magic Accuracy+10 Magic Evasion+73 \"Magic Def. Bonus\"+2 Enmity-5 Haste+1%", 
+        ["en"]="Orvail Souliers +1", 
+        ["item_level"]=109, 
+        ["DEF"]=48, 
+        ["HP"]=6, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["VIT"]=6, 
+        ["Haste"]=1, 
+        ["MP"]=12, 
+        ["id"]=28322, 
+        ["STR"]=6, 
+        ["CHR"]=21, 
+        ["INT"]=11, 
+        ["category"]="Armor", 
+        ["Magic Accuracy"]=10
+    }, 
+    [13]={
+        ["Evasion"]=32, 
+        ["MND"]=24, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [8]="DRK", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=19, 
+        ["AGI"]=19, 
+        ["item_level"]=117, 
+        ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
+        ["DEF"]=88, 
+        ["HP"]=32, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={
+                    ["Refresh"]=3
+                }
+            }, 
+            ["set id"]=110
+        }, 
+        ["VIT"]=19, 
+        ["STR"]=19, 
+        ["Haste"]=6, 
+        ["MP"]=31, 
+        ["id"]=27742, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Magic Atk. Bonus"]=5, 
+        ["en"]="Wayfarer Circlet"
+    }, 
+    [14]={
+        ["Evasion"]=37, 
+        ["MND"]=28, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [8]="DRK", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=20, 
+        ["AGI"]=20, 
+        ["item_level"]=117, 
+        ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
+        ["DEF"]=116, 
+        ["HP"]=48, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={
+                    ["Refresh"]=3
+                }
+            }, 
+            ["set id"]=110
+        }, 
+        ["VIT"]=20, 
+        ["STR"]=20, 
+        ["Haste"]=3, 
+        ["MP"]=57, 
+        ["id"]=27883, 
+        ["INT"]=28, 
+        ["category"]="Armor", 
+        ["CHR"]=28, 
+        ["Magic Atk. Bonus"]=6, 
+        ["en"]="Wayfarer Robe"
+    }, 
+    [15]={
+        ["Evasion"]=19, 
+        ["MND"]=32, 
+        ["AGI"]=4, 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [8]="DRK", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=26, 
+        ["discription"]="DEF:77 HP+20 MP+14 STR+6 DEX+26 VIT+24 AGI+4 INT+18 MND+32 CHR+18 Magic Accuracy+4 Evasion+19 Magic Evasion+35 \"Magic Def. Bonus\"+2 Haste+3% Set: \"Refresh\"+3", 
+        ["en"]="Wayfarer Cuffs", 
+        ["item_level"]=117, 
+        ["DEF"]=77, 
+        ["HP"]=20, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={
+                    ["Refresh"]=3
+                }
+            }, 
+            ["set id"]=110
+        }, 
+        ["STR"]=6, 
+        ["Haste"]=3, 
+        ["MP"]=14, 
+        ["id"]=28031, 
+        ["INT"]=18, 
+        ["category"]="Armor", 
+        ["CHR"]=18, 
+        ["VIT"]=24, 
+        ["Magic Accuracy"]=4
+    }, 
+    [16]={
+        ["Evasion"]=24, 
+        ["MND"]=22, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [8]="DRK", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={
+                    ["Refresh"]=3
+                }
+            }, 
+            ["set id"]=110
+        }, 
+        ["AGI"]=16, 
+        ["item_level"]=117, 
+        ["discription"]="DEF:99 HP+38 MP+28 STR+24 VIT+12 AGI+16 INT+32 MND+22 CHR+19 \"Magic Atk. Bonus\"+5 Evasion+24 Magic Evasion+100 \"Magic Def. Bonus\"+5 Haste+5% Set: \"Refresh\"+3", 
+        ["DEF"]=99, 
+        ["HP"]=38, 
+        ["id"]=28170, 
+        ["Magic Atk. Bonus"]=5, 
+        ["Haste"]=5, 
+        ["MP"]=28, 
+        ["VIT"]=12, 
+        ["STR"]=24, 
+        ["CHR"]=19, 
+        ["INT"]=32, 
+        ["category"]="Armor", 
+        ["en"]="Wayfarer Slops"
+    }, 
+    [17]={
+        ["Evasion"]=49, 
+        ["MND"]=18, 
+        ["AGI"]=31, 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [8]="DRK", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["DEX"]=10, 
+        ["discription"]="DEF:60 HP+12 MP+14 STR+9 DEX+10 VIT+9 AGI+31 INT+17 MND+18 CHR+32 Magic Accuracy+4 Evasion+49 Magic Evasion+100  \"Magic Def. Bonus\"+5 Haste+3% Set: \"Refresh\"+3", 
+        ["en"]="Wayfarer Clogs", 
+        ["item_level"]=117, 
+        ["DEF"]=60, 
+        ["HP"]=12, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={}, 
+                [3]={}, 
+                [4]={}, 
+                [5]={
+                    ["Refresh"]=3
+                }
+            }, 
+            ["set id"]=110
+        }, 
+        ["STR"]=9, 
+        ["Haste"]=3, 
+        ["MP"]=14, 
+        ["id"]=28308, 
+        ["INT"]=17, 
+        ["category"]="Armor", 
+        ["CHR"]=32, 
+        ["VIT"]=9, 
+        ["Magic Accuracy"]=4
     }
 }

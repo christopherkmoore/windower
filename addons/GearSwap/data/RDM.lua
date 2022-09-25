@@ -69,7 +69,7 @@ function job_setup()
 	enspell = ''
 	
 	update_melee_groups()
-	init_job_states({"Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode",},{"AutoBuffMode","AutoSambaMode","Weapons","OffenseMode","WeaponskillMode","IdleMode","Passive","RuneElement","RecoverMode","ElementalMode","CastingMode","TreasureMode",})
+	init_job_states({"AutoConvertMode", "Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode",},{"AutoBuffMode","AutoSambaMode","Weapons","OffenseMode","WeaponskillMode","IdleMode","Passive","RuneElement","RecoverMode","ElementalMode","CastingMode","TreasureMode",})
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -485,8 +485,32 @@ end
 
 function job_tick()
 	if check_arts() then return true end
-	if check_buff() then return true end
-	if check_buffup() then return true end
+	-- if check_buff() then return true end
+	-- if check_buffup() then return true end
+	if check_convert() then return true end
+
+	return false
+end
+
+function check_convert() 
+
+	if state.AutoConvertMode.value == "Off" then 
+		return false
+	end
+
+	local needsMP = player.mpp < 15
+
+	if not needsMP then return false end
+
+	local convertRecast = windower.ffxi.get_ability_recasts()[49]
+	local onCooldown = convertRecast ~= 0
+
+	if needsMP and state.AutoConvertMode.value == "Auto" and not onCooldown then
+		add_to_chat(123, "Converting")
+		windower.chat.input('/ja "Convert" <me>')
+		return true
+	end
+
 	return false
 end
 

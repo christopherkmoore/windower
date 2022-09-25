@@ -10,6 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
+            ["Fivechix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -21,7 +23,7 @@ return {
         ["distance"] = 5
     },
     ["healer"] = {
-        ["activateOutdoors"] = false,
+        ["activateOutdoors"] = true,
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,

@@ -233,6 +233,9 @@ local function healer_commands(args)
 
     if command == 'on' or command == 'enable' then
         user_settings.healer.enabled = true
+        user_settings.healer.disable.cure = false
+        user_settings.healer.disable.curaga = false
+
         utils.disableCommand('cure', false)
         message = 'Healing has been enabled'
     elseif command == 'off' or command == 'disable' then 
@@ -560,7 +563,6 @@ local function assist_commands(args)
         end
 
         local yalms = tonumber(arg2)
-        log(yalms)
         if yalms < 0 or yalms > 5 then
             windower.add_to_chat(123, 'You need to provide a range between 0-5')
             return
@@ -615,7 +617,6 @@ local function pull_commands(args)
         windower.add_to_chat(144, 'Auto pulling disabled')
     else 
         local input = (' '):join(args)
-        log(input)
         user_settings.pull.with = input
         windower.add_to_chat(144, 'will attempt to pull with command '..input)
     end
@@ -685,6 +686,7 @@ function events.addon_command(...)
         healer_commands('off')
         utils.wipe_bufflist()
         utils.wipe_debufflist()
+        otto.assist.locked_closing_in = false
         windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then
         table.vprint(user_settings)

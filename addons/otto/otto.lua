@@ -58,10 +58,10 @@ local pm_keys = {
 otto.events = require('otto_events')
 otto.packets = require('otto_packets')
 
+otto.assist = require('assist')
 otto.aspir = require('aspir')
 otto.magic_burst = require('magic_burst')
 otto.follow = require('follow')
-otto.assist = require('assist')
 otto.healer = require('healer')
 otto.buffs = require('buffs')
 otto.weaponskill = require('weaponskill')
@@ -74,10 +74,10 @@ function otto.init()
     otto.aspir.init()
     otto.follow.init()
     otto.magic_burst.init()
-    otto.assist.init()
     otto.healer.init()
     otto.weaponskill.init()
     otto.pull.init()
+    otto.assist.init()
 
     otto.active = true
 end
@@ -89,17 +89,17 @@ end
 otto._events['render'] = windower.register_event('prerender', function()
     if not otto.configs_loaded then return end
     local now = os.clock()
-    local moving = otto.isMoving()
+
+    otto.distances_from_master()
     local acting = otto.isPerformingAction(moving)
     local player = windower.ffxi.get_player()
     actor.name = player and player.name or 'Player'
-
     if (player ~= nil) and can_act_statuses:contains(player.status) then
         local partner, targ = offense.assistee_and_target()
         
         otto.follow.prerender()
-
         if otto.active and not (moving or acting) then
+
             --otto.active = false    --Quick stop when debugging
             if actor:action_delay_passed() then
                 actor.last_action = now                    --Refresh stored action check time
@@ -144,6 +144,57 @@ otto._events['logout'] = windower.register_event('logout', function()
     windower.send_command('lua unload otto')
 end)
 
+function otto.distances_from_master()
+    local targets = S{}
+    local show_red = false
+    if settings.textBoxes.moveInfo.visible then
+        if user_settings.assist.master ~= nil and user_settings.assist.master ~= "" then
+            local p = windower.ffxi.get_player()
+            if p.name == user_settings.assist.master then 
+                targets[p.name] = p.name
+                for player, _ in pairs(otto.config.ipc_monitored_boxes) do
+                    local added = false
+                    if player ~= user_settings.assist.master then 
+                        local mbox = windower.ffxi.get_mob_by_name(player)
+                        if mbox ~= nil then 
+                            local distance = math.sqrt(mbox.distance)
+                            local rounded = math.floor(distance)
+                            if distance > 30 then 
+                                show_red = true
+                            end
+
+                            if mbox.target_index ~= nil and mbox.target_index then
+                                local target = windower.ffxi.get_mob_by_index(mbox.target_index)
+                                if target ~= nil and target.valid_target and target.claim_id > 0 then
+                                    targets[player..' -> '..rounded..' yalms | Fighting: '..target.name] = player
+                                    added = true
+                                elseif target ~= nil and target.valid_target and target.claim_id == 0 and not added then
+                                    targets[player..' -> '..rounded..' yalms | target: '..target.name] = player
+                                    added = true    
+                                elseif target == nil and not added then
+                                    targets[player..' -> '..rounded..' yalms'] = player        
+                                    added = true
+                                end
+
+                            end
+                        end
+
+                    end
+                    if not added then 
+                        targets[player] = player
+                    end
+                end
+            end
+        end
+    end
+
+    targets = targets:sort()
+
+    otto.txts.moveInfo:text(getPrintable(targets, false))
+    otto.txts.moveInfo:visible(settings.textBoxes.moveInfo.visible)
+
+end
+
 function otto.addPlayer(list, player)
     if (player == nil) or list:contains(player.name) or otto.ignoreList:contains(player.name) then return end
     local is_trust = player.mob and player.mob.spawn_type == 14 or false    --13 = players; 14 = Trust NPC
@@ -173,41 +224,36 @@ local function _getMonitoredPlayers()
             end
         end
     end
+
     for extraName,_ in pairs(otto.extraWatchList) do
         otto.addPlayer(targets, windower.ffxi.get_mob_by_name(extraName))
     end
-    otto.txts.montoredBox:text(getPrintable(targets, true))
-    otto.txts.montoredBox:visible(settings.textBoxes.montoredBox.visible)
     return targets
 end
 otto.getMonitoredPlayers = _libs.lor.advutils.tcached(1, _getMonitoredPlayers)
 
 
 local function _getMonitoredIds()
-    local ids = S{}
-    for name, player in pairs(otto.getMonitoredPlayers()) do
-        local id = player.mob and player.mob.id or player.id or utils.get_player_id[name]
-        if id ~= nil then
-            ids[id] = true
+    local pt = windower.ffxi.get_party()
+    local my_zone = pt.p0.zone
+    local targets = S{}
+    for p = 1, #pt_keys do
+        for m = 1, pt[pt_keys[p]] do
+            local pt_member = pt[pm_keys[p][m]]
+            if my_zone == pt_member.zone then
+                if p == 1 or otto.extraWatchList:contains(pt_member.name) then
+                    otto.addPlayer(targets, pt_member)
+                end
+            end
         end
     end
-    return ids
+    for extraName,_ in pairs(otto.extraWatchList) do
+        otto.addPlayer(targets, windower.ffxi.get_mob_by_name(extraName))
+    end
+    return targets
 end
 
 otto.getMonitoredIds = _libs.lor.advutils.tcached(1, _getMonitoredIds)
-
-function otto.isMoving()
-    local timeAtPos = actor:time_at_pos()
-    if timeAtPos == nil then
-        otto.txts.moveInfo:hide()
-        return true
-    end
-    local moving = actor:is_moving()
-    otto.txts.moveInfo:text(('Time @ %s: %.1fs'):format(tostring(actor:pos()), timeAtPos))
-    otto.txts.moveInfo:visible(settings.textBoxes.moveInfo.visible)
-    return moving
-end
-
 
 function otto.isPerformingAction(moving)
     local acting = actor:is_acting()

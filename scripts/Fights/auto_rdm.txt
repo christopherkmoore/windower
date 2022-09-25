@@ -1,0 +1,37 @@
+////////////////////////////////
+// Red Mage
+////////////////////////////////
+
+send Fivechix otto healer off;
+send Fivechix otto magicburst on;
+send Fivechix otto magicburst t 2;
+send Fivechix otto magicburst c spell;
+send Fivechix otto magicburst doubleburst on;
+send Fivechix otto magicburst gearswap on;
+send Fivechix otto aspir on;
+send Fivechix otto aspir t 1;
+
+send Fivechix gs c set AutoConvertMode Auto;
+
+send Fivechix otto buff Fivechix Composure on;
+ 
+send Fivechix otto buff Twochix Phalanx II on;
+
+send Fivechix otto buff Chixslave Haste II on;
+send Fivechix otto buff Twochix Haste II on;
+send Fivechix otto buff Onechix Haste II on;
+send Fivechix otto buff Threechix Haste II on;
+send Fivechix otto buff Fourchix Haste II on;
+send Fivechix otto buff Fivechix Haste II on;
+
+send Fivechix otto buff Threechix Refresh II on;
+send Fivechix otto buff Fourchix Refresh II on;
+
+send Fivechix otto debuff Dia III on;
+send Fivechix otto debuff Slow II on;
+send Fivechix otto debuff Paralyze II on;
+send Fivechix otto debuff Frazzle II on;
+send Fivechix otto debuff Distract II on;
+send Fivechix otto debuff Addle on;
+send Fivechix otto debuff Blind II on;
+

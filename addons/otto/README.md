@@ -67,6 +67,6 @@ TODO
 
 aspir is targeting any target
 add global on / off
-add yalm range to monitored boxes
 figure fucking targeting out
 bug in assist for backline roles.
+gearswap not swapping rings.
