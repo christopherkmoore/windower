@@ -58,7 +58,7 @@ local function is_slave()
     return false
 end
 
-local function is_master() 
+function assist.is_master() 
     local player = windower.ffxi.get_player().name
     
     if user_settings.assist.master == "" then return false end 
@@ -181,7 +181,7 @@ local function close_in(target_type) -- 't', 'bt'
     
 	if not closes_in then return end
 	if not target_type then target_type = 't' end
-	
+
 	local mob = windower.ffxi.get_mob_by_target('t')
 	if not mob then
 		-- error
@@ -197,9 +197,6 @@ local function close_in(target_type) -- 't', 'bt'
         face_target()
 	end
     
-    
-    if dist > 14 then return end -- don't close in on super far away mobs
-
 	while (mob and dist > user_settings.assist.yalm_fight_range) do
 		windower.ffxi.run(heading_to(mob.x, mob.y))
 		coroutine.sleep(0.2)
@@ -217,7 +214,7 @@ local function close_in(target_type) -- 't', 'bt'
 end
 
 function assist.targets()
-    if not is_master then return end
+    if not assist.is_master then return end
 
     local target = windower.ffxi.get_mob_by_target('t')
 
@@ -267,7 +264,7 @@ function assist.ipc_message_handler(message)
 
     if msg[1] == 'master' then
         locked_closing_in = true 
-        if not is_master then return end
+        if not assist.is_master then return end
 
         local id = tonumber(msg[2])
         local player = windower.ffxi.get_player()
@@ -305,15 +302,8 @@ function assist.ipc_message_handler(message)
                 return
             end
 
-            assist.attack_on(id)
-            target_lock_on:schedule(1)
-        elseif msg[2] == 'off' then
-            local player = windower.ffxi.get_player()
-            local role = user_settings.assist.slaves[player.name]
-            
-            if role ~= nil and role == 'frontline' then
-                attack_off()
-            end
+        elseif msg[2] == 'off' then        
+            attack_off()
         end
     elseif msg[1] == 'change' then
         local id = tonumber(msg[2])
@@ -328,22 +318,28 @@ function assist.ipc_message_handler(message)
         local name = windower.ffxi.get_player().name
         local role = user_settings.assist.slaves[name]
 
-        local retry_count = 0
-        repeat
-            switch_target(id)
-            coroutine.sleep(2)
-            player = windower.ffxi.get_player()
-            retry_count = retry_count + 1
-        until player.status == player_status['Engaged'] or retry_count > max_retry
-
-        target_lock_on:schedule(1)
-        
         if role == 'frontline' then
+            local retry_count = 0
+            repeat
+                switch_target(id)
+                coroutine.sleep(2)
+                player = windower.ffxi.get_player()
+                retry_count = retry_count + 1
+            until player.status == player_status['Engaged'] or retry_count > max_retry
+    
+            if not locked_closing_in then 
+                target_lock_on:schedule(1)
+            end
+
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
 				if not closing_in and not locked_closing_in then
 					close_in()
 				end
+
+                if locked_closing_in then
+                    face_target()
+                end
 				coroutine.sleep(.5)
 				player = windower.ffxi.get_player()
 			end
@@ -382,7 +378,7 @@ end
 function assist.outgoing_chunk_handler(id, original)
     if not user_settings.assist.enabled then return end
 
-    if not is_master() then
+    if not assist.is_master() then
         return
     end
 
@@ -397,7 +393,7 @@ end
 function assist.incoming_chunk_handler(id, original)
     if not user_settings.assist.enabled then return end
 
-    if not is_master() then
+    if not assist.is_master() then
         return
     end
 

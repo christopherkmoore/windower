@@ -20,7 +20,5 @@ send Chixslave otto buff Chixslave Aurorastorm on;
 send Chixslave otto buff Chixslave Reraise IV on; 
 //send Chixslave hb buff Chixslave Aquaveil on; 
 
-send Chixslave otto debuff Dia II on;
-send Chixslave otto debuff Slow on;
-// send Chixslave otto debuff Paralyze on;
+
 

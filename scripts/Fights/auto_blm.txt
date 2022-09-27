@@ -1,26 +1,28 @@
-////////////////////////////////
-// White Mage
-////////////////////////////////
+////////////////////////////////////
+// Black Mage
+////////////////////////////////////
 
-send Chixslave otto healer on;
-send Chixslave otto magicburst on;
-send Chixslave otto magicburst t 2;
-send Chixslave otto magicburst c holy;
-send Chixslave otto magicburst gearswap on;
-send Chixslave gs c set AutoSubMode on;
-send Chixslave gs c set AutoRegenAgaMode Auto;
+send Fourchix otto healer off;
+send Fourchix otto magicburst on;
+send Fourchix otto magicburst t 2;
+send Fourchix otto magicburst c spell;
+send Fourchix otto magicburst doubleburst on;
+send Fourchix otto magicburst gearswap on;
+send Fourchix otto aspir on;
+send Fourchix otto aspir t 2;
+send Fourchix otto aspir all;
 
-send Chixslave otto buff Chixslave Afflatus Solace;
+send Fourchix gs c set autonuke Blizzard;
+send Fourchix gs c set autonukemode on;
+ 
 
-send Chixslave otto buff Chixslave Protectra V on;
-send Chixslave otto buff Chixslave Shellra V on;
-send Chixslave otto buff Chixslave Boost-STR on;
-send Chixslave otto buff Chixslave Auspice on;
-send Chixslave otto buff Chixslave Aurorastorm on;
-send Chixslave otto buff Chixslave Reraise IV on; 
-//send Chixslave hb buff Chixslave Aquaveil on; 
 
-send Chixslave otto debuff Dia II on;
-send Chixslave otto debuff Slow on;
-// send Chixslave otto debuff Paralyze on;
+send Fourchix otto debuff Shock on;
+send Fourchix otto debuff Burn on;
+send Fourchix otto debuff Choke on;
+
+
+// send Fourchix otto debuff Rasp on;
+// send Fourchix otto debuff Drown on;
+// send Fourchix otto debuff Frost on;
 

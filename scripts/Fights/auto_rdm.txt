@@ -17,21 +17,22 @@ send Fivechix otto buff Fivechix Composure on;
  
 send Fivechix otto buff Twochix Phalanx II on;
 
-send Fivechix otto buff Chixslave Haste II on;
-send Fivechix otto buff Twochix Haste II on;
-send Fivechix otto buff Onechix Haste II on;
-send Fivechix otto buff Threechix Haste II on;
-send Fivechix otto buff Fourchix Haste II on;
-send Fivechix otto buff Fivechix Haste II on;
+send Fivechix otto buff Chixslave Haste on;
+send Fivechix otto buff Twochix Haste on;
+send Fivechix otto buff Onechix Haste on;
+send Fivechix otto buff Threechix Haste on;
+send Fivechix otto buff Fourchix Haste on;
+send Fivechix otto buff Fivechix Haste on;
 
 send Fivechix otto buff Threechix Refresh II on;
 send Fivechix otto buff Fourchix Refresh II on;
+send Fivechix otto buff Fivechix Refresh II on;
 
 send Fivechix otto debuff Dia III on;
-send Fivechix otto debuff Slow II on;
-send Fivechix otto debuff Paralyze II on;
-send Fivechix otto debuff Frazzle II on;
-send Fivechix otto debuff Distract II on;
-send Fivechix otto debuff Addle on;
-send Fivechix otto debuff Blind II on;
+//send Fivechix otto debuff Slow on;
+//send Fivechix otto debuff Paralyze on;
+//send Fivechix otto debuff Frazzle on;
+//send Fivechix otto debuff Distract on;
+//send Fivechix otto debuff Addle on;
+//send Fivechix otto debuff Blind on;
 

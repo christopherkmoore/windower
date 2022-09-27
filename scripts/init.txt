@@ -95,10 +95,6 @@ send Onechix lua load singer;
 send Onechix sing off;
 send Onechix dressup l bard;
 
-// pre 99 for the new chix
-send Fourchix lua unload gearswap
-send Fivechix lua unload gearswap
-
 lua load otto;
 send Onechix bind ^f send @others /follow Onechix
 send Twochix bind ^f send @others /follow Twochix

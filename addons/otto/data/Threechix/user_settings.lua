@@ -10,12 +10,15 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "backline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
         ["yalm_fight_range"] = 3.5
+    },
+    ["dispel"] = {
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -56,7 +59,7 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false

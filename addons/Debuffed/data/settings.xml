@@ -63,6 +63,12 @@
             <y>527</y>
         </pos>
     </chixslave>
+    <fivechix>
+        <pos>
+            <x>1300</x>
+            <y>541</y>
+        </pos>
+    </fivechix>
     <onechix>
         <pos>
             <x>1290</x>

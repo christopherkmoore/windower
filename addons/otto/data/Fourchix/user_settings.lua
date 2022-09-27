@@ -3,19 +3,22 @@ return {
         ["casting_mp"] = 80,
         ["casts_all"] = true,
         ["enabled"] = true,
-        ["tier"] = 3
+        ["tier"] = 2
     },
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "backline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
         ["yalm_fight_range"] = 3.5
+    },
+    ["dispel"] = {
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -29,7 +32,7 @@ return {
             ["curaga"] = false,
             ["cure"] = true
         },
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -50,7 +53,7 @@ return {
         ["ignoreTrusts"] = true
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 3,
+        ["cast_tier"] = 2,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,

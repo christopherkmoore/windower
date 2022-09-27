@@ -21,6 +21,7 @@ send Threechix gs c set AutoBuffMode off;
 send Threechix gs c set autowsmode off; 
 
 
+send @all otto follow off;
 otto r all
 
 

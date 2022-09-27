@@ -83,9 +83,14 @@
         </aoe>
         <box>
             <pos>
-                <x>1331</x>
-                <y>32</y>
+                <x>1329</x>
+                <y>31</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <debuffing>false</debuffing>
         <delay>4</delay>
@@ -98,6 +103,7 @@
                 <min>5</min>
             </buff>
         </recast>
+        <use_ws>false</use_ws>
     </onechix>
     <threechix>
         <actions>false</actions>

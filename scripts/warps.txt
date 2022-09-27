@@ -1,5 +1,5 @@
 exec fights/off;
 wait 0.1;
 send @all warp;
-wait 2
+wait 4;
 send Chixslave warp;

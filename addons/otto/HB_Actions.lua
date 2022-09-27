@@ -107,13 +107,24 @@ function actions.take_action(player, partner, targ)
         end
         actor:take_action(action)
     else     
+
         --Otherwise, there may be an offensive action
         local action = actions.get_offensive_action(player)
         if action == nil then return end
 
-        actor:take_action(action, '<t>')
-        if action ~= nil and action.type == 'nuke_mob' then
-            coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
+        local master = windower.ffxi.get_mob_by_name(user_settings.assist.master)
+        local master_engaged = (master.status == 1)
+        local matching_targets_with_master = player.target_index == master.target_index
+
+        if user_settings.pull.enabled then 
+            actor:take_action(action, '<t>')
+        end
+
+        if master_engaged and (matching_targets_with_master or otto.assist.is_master) then 
+            actor:take_action(action, '<t>')
+            if action ~= nil and action.type == 'nuke_mob' then
+                coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
+            end
         end
         offense.cleanup()
     end

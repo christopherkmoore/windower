@@ -12,6 +12,7 @@ return {
     ["Agon Shinobi"] = false,
     ["Agon Spiritualist"] = true,
     ["Agon Squire"] = true,
+    ["Alluttu"] = false,
     ["Antican Hoplomachus"] = true,
     ["Antican Lanista"] = true,
     ["Apex Blazer Elytra"] = true,
@@ -54,6 +55,7 @@ return {
     ["Flavescent Slime"] = false,
     ["Fourchix"] = true,
     ["Ghatjot"] = true,
+    ["Hurricane Wyvern"] = false,
     ["Killing Weapon"] = true,
     ["Knotted Root"] = true,
     ["Lithicthrower Image"] = true,
@@ -108,6 +110,8 @@ return {
     ["Threechix"] = true,
     ["Twochix"] = true,
     ["Unrelenting Eft"] = false,
+    ["Volcanic Bomb"] = false,
+    ["Vouivre"] = false,
     ["Yagudo High Priest"] = true,
     ["Yagudo Templar"] = false
 }

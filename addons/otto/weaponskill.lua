@@ -92,8 +92,8 @@ end
 function weaponskill.action(target)
     if user_settings.weaponskill.enabled and (user_settings.weaponskill.name ~= nil) and actor:ready_to_use(lor_res.action_for(user_settings.weaponskill.name)) then
 
-        local hp = user_settings.weaponskill.min_hp or 0
-        local hp_ok = target.hpp >= hp
+        -- local hp = user_settings.weaponskill.min_hp or 0
+        -- local hp_ok = target.hpp >= hp
 
         if user_settings.weaponskill.partner == 'none' then
             return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}

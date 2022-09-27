@@ -21,7 +21,7 @@ local function sort_closest_target(mobs)
     local distance = nil
     local closest = nil
     for id, mob in pairs(mobs) do
-        if (mob.valid_target and mob.hpp == 100) and mob.distance ~= 0 and mob.is_npc then
+        if (mob.valid_target and mob.hpp == 100) and mob.distance ~= 0 and mob.is_npc and not mob.in_party and not mob.in_alliance and mob.spawn_type == 16 then
             if distance == nil then
                 distance = mob.distance
                 closest = mob
@@ -36,11 +36,21 @@ local function sort_closest_target(mobs)
 
     if math.sqrt(closest.distance) < 20 then return closest end
 
+
     return nil
 end
 
 
 function pull.try_pulling()
+
+    local player = windower.ffxi.get_player()
+
+    if player.status == 1 then
+        local mob = windower.ffxi.get_mob_by_index(player.target_index)
+        pull.target = mob
+        return
+    end
+
     if not user_settings.pull.enabled then return end
     if user_settings.pull.with == '' then return end 
 
@@ -57,21 +67,25 @@ function pull.try_pulling()
     if mob ~= nil then
         otto.assist.all_target_master(mob.id) -- doesn't actually all target, just the puller targets.
 
-        local player = windower.ffxi.get_player()
         
         if player.target_index == mob.index then 
             windower.chat.input(user_settings.pull.with.." <t>")
+            coroutine.sleep(2)
+
+            if pull.check_pull_success(mob) then
+                otto.assist.master_target_no_close_in(pull.target.id)
+            end
         end
 
     end
 
-    coroutine.sleep(0.5)
 
-    if pull.check_pull_success(mob) then 
-        coroutine.sleep(3)
-        otto.assist.master_target_no_close_in(mob.id)
-        return 
-    else pull.try_pulling() end
+    if pull.target ~= nil then 
+        if pull.target.hpp == 0 then
+            pull.target = nil
+           
+        end
+    end 
 
 end
 
@@ -88,7 +102,12 @@ end
 function pull.has_target_already() 
     local player = windower.ffxi.get_player()
 
-    if player.status == 1 then return true end
+    if player.status == 1 then 
+        return true 
+    else 
+        pull.target = nil
+    end
+
     if pull.target == nil then return false end
 
     if (pull.target.valid_target) and player.target_index == pull.target.index and pull.target.status == 1 then
@@ -100,10 +119,10 @@ function pull.has_target_already()
 end
 
 function pull.check_pull_success(mob) 
+    if pull.target ~= nil then return true end
     if mob == nil then return false end
-    local player = windower.ffxi.get_player()
 
-    if (mob.valid_target ) and player.target_index == mob.index and mob.status == 1 then 
+    if mob.status == 1 then 
         pull.target = mob
         return true
     end

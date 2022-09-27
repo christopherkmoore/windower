@@ -10,12 +10,15 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "backline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 4
+        ["yalm_fight_range"] = 3.5
+    },
+    ["dispel"] = {
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,
@@ -60,7 +63,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["with"] = "/ma \"Carnage Elegy\""
     },
     ["weaponskill"] = {

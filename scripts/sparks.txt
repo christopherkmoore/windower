@@ -1,0 +1,2 @@
+send @all sellnpc sparks
+send @all sparks buyall Acheron Shield

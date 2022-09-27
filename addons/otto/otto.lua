@@ -66,6 +66,7 @@ otto.healer = require('healer')
 otto.buffs = require('buffs')
 otto.weaponskill = require('weaponskill')
 otto.pull = require('pull')
+otto.dispel = require('dispel')
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -78,6 +79,7 @@ function otto.init()
     otto.weaponskill.init()
     otto.pull.init()
     otto.assist.init()
+    otto.dispel.init()
 
     otto.active = true
 end
@@ -107,6 +109,9 @@ otto._events['render'] = windower.register_event('prerender', function()
 
                 otto.aspir.prerender()
                 otto.pull.try_pulling()
+                if targ ~= nil and targ.id then
+                    otto.dispel.should_dispel(targ.id)
+                end
                 -- TODO CKM added for now
             end
         end
@@ -234,23 +239,14 @@ otto.getMonitoredPlayers = _libs.lor.advutils.tcached(1, _getMonitoredPlayers)
 
 
 local function _getMonitoredIds()
-    local pt = windower.ffxi.get_party()
-    local my_zone = pt.p0.zone
-    local targets = S{}
-    for p = 1, #pt_keys do
-        for m = 1, pt[pt_keys[p]] do
-            local pt_member = pt[pm_keys[p][m]]
-            if my_zone == pt_member.zone then
-                if p == 1 or otto.extraWatchList:contains(pt_member.name) then
-                    otto.addPlayer(targets, pt_member)
-                end
-            end
+    local ids = S{}
+    for name, player in pairs(otto.getMonitoredPlayers()) do
+        local id = player.mob and player.mob.id or player.id or utils.get_player_id[name]
+        if id ~= nil then
+            ids[id] = true
         end
     end
-    for extraName,_ in pairs(otto.extraWatchList) do
-        otto.addPlayer(targets, windower.ffxi.get_mob_by_name(extraName))
-    end
-    return targets
+    return ids
 end
 
 otto.getMonitoredIds = _libs.lor.advutils.tcached(1, _getMonitoredIds)

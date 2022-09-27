@@ -6,85 +6,76 @@
 //
 ////////////////////////////////
 
+send @all exec fights/reset
+
+wait 0.1;
 
 ////////////////////////////////
 // White Mage
 ////////////////////////////////
 
-send Chixslave otto healer on;
-send Chixslave otto magicburst on;
-send Chixslave otto magicburst t 2;
-send Chixslave otto magicburst c holy;
-send Chixslave otto magicburst gearswap on;
-send Chixslave gs c set AutoSubMode on;
-send Chixslave gs c set AutoRegenAgaMode Auto;
+send Chixslave exec fights/auto_whm
 
-send Chixslave otto buff Chixslave Afflatus Solace;
+wait 0.3;
 
-send Chixslave otto buff Chixslave Protectra V on;
-send Chixslave otto buff Chixslave Shellra V on;
-send Chixslave otto buff Chixslave Boost-STR on;
-send Chixslave otto buff Chixslave Auspice on;
-send Chixslave otto buff Chixslave Aurorastorm on;
-send Chixslave otto buff Chixslave Reraise IV on; 
-//send Chixslave hb buff Chixslave Aquaveil on; 
-send Chixslave otto debuff Dia II on;
-send Chixslave otto debuff Slow on;
-send Chixslave otto debuff Paralyze on;
-
-send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto follow on;
+send Chixslave otto buff Chixslave barfira on;
 send Chixslave otto buff Chixslave barblindra on;
 
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
 
-send Onechix singer on;
-send Onechix sing pianissimo on;
-send Onechix sing Nightingale on;
-send Onechix sing Troubadour on
-send Onechix sing debuffing off;
+send Onechix exec fights/auto_brd
 
-send Onechix sing ballad 1 Chixslave;
+wait 0.3;
 
-send Onechix sing ws off;
+send Onechix sing minuet 1;
+send Onechix sing march 2;
 
-send Onechix sing madrigal 1;
-send Onechix sing minuet ;
-send Onechix sing march 1;
+send Onechix sing ballad 1 Fourchix;
 
 ////////////////////////////////////
 // Geomancer
 ////////////////////////////////////
 
-send Threechix otto buff Twochix haste on;
-send Threechix otto buff Threechix haste on;
-send Threechix otto buff Chixslave haste on;
-send Threechix otto buff Onechix haste on;
-send Threechix otto buff Threechix refresh on;
+send Threechix exec fights/auto_geo
 
-send Threechix gs c set AutoBuffMode auto;
+wait 0.3;
 
-send Threechix gs c set AutoConvertMode Auto
-
-send Threechix otto aspir t 3;
-send Threechix otto aspir all;
-send Threechix otto aspir on;
-send Threechix otto magicburst on;
-send Threechix otto magicburst t 4;
-
-send Threechix otto debuff Frazzle on;
-send Threechix otto debuff Distract on;
-
+send Threechix otto mb off;
+send Threechix otto follow on;
 send Threechix gs c autoindi Frailty;
 send Threechix gs c autogeo Fury;
+
+////////////////////////////////////
+// Red Mage
+////////////////////////////////////
+
+send Fivechix exec fights/auto_rdm
+
+wait 0.3
+
+send Fivechix otto buff Fivechix enfire on;
+
+////////////////////////////////////
+// Black Mage
+////////////////////////////////////
+
+send Fourchix exec fights/auto_blm
+
+wait 0.3
+
+send Fourchix otto follow on;
 
 ////////////////////////////////////
 // Guests
 ////////////////////////////////////
 
 
-send Threechix hb buff ornate haste
-send Threechix hb buff renew haste
 
-send Threechix hb buff Bryceb haste;
+send Threechix otto buff Ornate haste on
+send Threechix otto buff Renew haste on
+
+send Threechix otto buff Bryceb haste on
+send Threechix otto buff Panik haste on

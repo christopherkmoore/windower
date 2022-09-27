@@ -70,3 +70,4 @@ add global on / off
 figure fucking targeting out
 bug in assist for backline roles.
 gearswap not swapping rings.
+sometimes na gets caught on repeat (maybe messages no effect needs to be packet handled.)

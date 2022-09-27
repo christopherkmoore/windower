@@ -10,12 +10,15 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "backline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
         ["yalm_fight_range"] = 3.5
+    },
+    ["dispel"] = {
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,

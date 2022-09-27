@@ -46,6 +46,7 @@ function offense.cleanup()
             local mob = windower.ffxi.get_mob_by_id(id)
             if mob == nil or mob.hpp == 0 then
                 offense.mobs[id] = nil
+                offense.dispel[id] = nil
             end
         end
     end

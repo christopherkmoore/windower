@@ -49,6 +49,14 @@
             </text>
         </text_box_settings>
     </global>
+    <fivechix>
+        <text_box_settings>
+            <pos>
+                <x>787</x>
+                <y>3</y>
+            </pos>
+        </text_box_settings>
+    </fivechix>
     <twochix>
         <text_box_settings>
             <pos>
