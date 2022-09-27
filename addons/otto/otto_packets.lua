@@ -45,7 +45,7 @@ function otto_packets.action_handler(raw_actionpacket)
     local action = target:get_actions()()
     local actions = target:get_actions()
     local add_effect = action:get_add_effect()
-    -- local action_basic_info = action:get_basic_info()
+    local action_basic_info = action:get_basic_info()
 
     if category == 'spell_finish' then
         if messages_aspir:contains(action.message) then -- aspir seems to have message 228 
@@ -54,6 +54,7 @@ function otto_packets.action_handler(raw_actionpacket)
     end
 
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
+    otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto_packets.processAction(targets, actor_id, monitored_ids) 
 end
@@ -124,22 +125,6 @@ end
 --]]
 function otto_packets.processAction(targets, actor_id, monitored_ids)
     for target in targets do
-        if monitored_ids[target.raw.id] == nil and monitored_ids[actor_id] == nil then
-            local mob = windower.ffxi.get_mob_by_id(actor_id)
-            log(mob.name)
-            if mob.spawn_type == 16 then
-                for _, action in pairs(target.raw.actions) do
-                    table.vprint(action)
-                    if action.message == 194 then 
-                        if dispellable_monster_ja:contains(action.top_level_param) then
-                            offense.dispel[target.raw.id] = true
-                        end
-                    end
-                end
-            end
-            
-        end
-        
         if monitored_ids[actor_id] or monitored_ids[target.raw.id] then
             local a = windower.ffxi.get_mob_by_id(actor_id)
             local t = windower.ffxi.get_mob_by_id(target.raw.id)

@@ -395,7 +395,8 @@ function utils.load_configs()
         priorities = lor_settings.load('data/priorities.lua'),
         cure_potency = lor_settings.load('data/cure_potency.lua', cure_potency_defaults),
         maspir_immunities = lor_settings.load('data/maspir_immunities.lua'),
-        ipc_monitored_boxes = lor_settings.load('data/ipc_monitored_boxes.lua')
+        ipc_monitored_boxes = lor_settings.load('data/ipc_monitored_boxes.lua'),
+        monster_ability_dispelables = lor_settings.load('data/monster_ability_dispelables.lua')
     }
 
     if otto.config.ipc_monitored_boxes:empty() or otto.config.ipc_monitored_boxes[player.name] == nil then

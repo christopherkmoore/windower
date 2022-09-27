@@ -41,13 +41,13 @@ pulling
 buffs /debuffs
 healing
 weaponskill / skillchains
+dispel
 
 wants
 geo
 bard
 abilities
 compound actions
-dispels
 pass / lot
 
 Bugs
@@ -64,6 +64,7 @@ make queue more efficient
 add checks -- aspir is targeting any target
 
 TODO
+with the addition of dispelling, nuke queue now needs triage... or does it. Nuke queue is added to and ephemeral and always prioritized first so... maybe not.
 
 aspir is targeting any target
 add global on / off

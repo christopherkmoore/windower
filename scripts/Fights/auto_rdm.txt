@@ -30,9 +30,10 @@ send Fivechix otto buff Fivechix Refresh II on;
 
 send Fivechix otto debuff Dia III on;
 //send Fivechix otto debuff Slow on;
-//send Fivechix otto debuff Paralyze on;
-//send Fivechix otto debuff Frazzle on;
-//send Fivechix otto debuff Distract on;
+send Fivechix otto debuff Paralyze on;
+send Fivechix otto debuff Frazzle II on;
+send Fivechix otto debuff Distract II on;
+send Fivechix otto debuff Inundation on;
 //send Fivechix otto debuff Addle on;
 //send Fivechix otto debuff Blind on;
 

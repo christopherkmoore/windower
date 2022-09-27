@@ -18,7 +18,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["dispel"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,

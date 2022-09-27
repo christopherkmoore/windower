@@ -1,7 +1,10 @@
 
 -- Notes
--- actor is stoping ws from happening during movement...
--- the action function should be returning more than once. but it seems like only once?
+-- would be cool to add a user_settings property for step, which allows partners to wait until a certain step to ws.
+-- ex step 1 something
+-- ex step 2 something > Liquification
+-- ex step 3 something > Light
+-- skillchains addons has code for steps I believe.
 
 local lor_res = _libs.lor.resources
 local ffxi = _libs.lor.ffxi

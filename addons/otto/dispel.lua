@@ -1,9 +1,10 @@
 -- for the time being this is super primitive. Ideally i'm thinking action handlers for categories mob finsih tp or mob finish spell to scan for stuff
 -- that needs to be edispelled. 
 
--- when dispel is added and resolved, scan to confirm removal. Then add to mob_ability_dispellables to track which can be dispelled.
+-- when dispel is added and resolved, scan to confirm removal. Then add to mob_ability_dispellables to track which can be dispelled. Aint no way
+-- I'm gunna add all that shit in manually.
 
-local dispel = {}
+local dispel = { monster_ability_dispelables = {},}
 
 local dispels = { 
     dispel = {id=260,en="Dispel",ja="ディスペル",cast_time=3,element=7,icon_id=316,icon_id_nq=15,levels={[5]=32,[20]=32},mp_cost=25,prefix="/magic",range=12,recast=10,recast_id=260,requirements=6,skill=35,targets=32,type="BlackMagic"},
@@ -14,8 +15,11 @@ local dispels = {
     dark_shot = {id=132,en="Dark Shot",ja="ダークショット",element=7,icon_id=495,mp_cost=1,prefix="/jobability",range=12,recast_id=195,targets=32,tp_cost=0,type="CorsairShot"},
 }
 
-local jobs_can_dispel = S{ 'BRD', 'RDM', 'BLU', 'COR'}
+local dispel_jobs = S{ 'BRD', 'RDM', 'BLU', 'COR'}
 
+local dispel_ids = S{ 260, 360, 462, 592, 605, 132 }
+local action_messages = S{ 186, 194, 205, 230, 266, 280, 319 }
+local dispel_message_successful = S { 341, 342}
 
 function dispel.init()
 
@@ -29,17 +33,16 @@ function dispel.init()
 
 end
 
+-- evaluate if a dispel action should be added to the queue.
 function dispel.should_dispel(id)
     if not user_settings.dispel.enabled then return end
 
     local player = windower.ffxi.get_player()
-    local can_dispel = jobs_can_dispel:contains(player.main_job) 
+    local can_dispel = dispel_jobs:contains(player.main_job) 
 
     if not can_dispel then return end
 
-    if offense.dispel ~= nil and offense.dispel[id] ~= nil and offense.dispel[id] == true then
-        table.vprint(offense.dispel)
-
+    if offense.dispel ~= nil and offense.dispel[id] ~= nil then
         if player.main_job == 'BRD' and not offense.checkNukingQueueFor(dispels.finale) then
             offense.addToNukeingQueue(dispels.finale)
         elseif player.main_job == 'RDM' and not offense.checkNukingQueueFor(dispels.dispel) then
@@ -49,10 +52,77 @@ function dispel.should_dispel(id)
         elseif player.main_job == 'COR' and not offense.checkNukingQueueFor(dispels.dark_shot) then 
             offense.addToNukeingQueue(dispels.dark_shot)
         end
+    end
+end
 
-        offense.dispel[id] = nil -- proimitive removal (should scan messages or actions for removal confirmation.)
+function dispel.action_handler(category, action, actor_id, target, monitored_ids, basic_info)
+
+	if not user_settings.dispel.enabled then return end
+
+	local categories = S{     
+    	'mob_tp_finish',
+        'spell_finish',
+    	'avatar_tp_finish',
+	 }
+
+    if not categories:contains(category) or action.param == 0 then
+        return
     end
 
+    if monitored_ids[target.raw.id] == nil and monitored_ids[actor_id] == nil then
+        local mob = windower.ffxi.get_mob_by_id(actor_id)
+        if mob.spawn_type == 16 then
+            for _, action in pairs(target.raw.actions) do
+                if action_messages:contains(action.message) then 
+
+                    -- stub a false dispel in the config. check later as dispel resovles if it can be saved as dispelable
+                    if otto.config.monster_ability_dispelables == nil or otto.config.monster_ability_dispelables[action.top_level_param] == nil then
+                        otto.config.monster_ability_dispelables[action.top_level_param] = false
+                        otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
+                        offense.dispel[target.raw.id] = action.top_level_param
+                    end
+
+                    -- immediately add for known dispelables
+                    if otto.config.monster_ability_dispelables[action.top_level_param] == true then
+                        offense.dispel[target.raw.id] = action.top_level_param
+                    end
+                end
+            end
+        end 
+    end
+
+
+    if dispel_ids:contains(basic_info.spell_id) then
+        -- log('basic info')
+        -- table.vprint(basic_info)
+        -- log('action')
+        -- table.vprint(action)
+        
+        if dispel_message_successful:contains(action.message) then
+            -- log('targets')
+            -- table.vprint(offense.dispel)
+            if offense.dispel[target.raw.id] ~= nil then
+                local monster_buff = offense.dispel[target.raw.id]
+
+                -- save new dispellable abilities
+                if otto.config.monster_ability_dispelables[monster_buff] == false then 
+                    otto.config.monster_ability_dispelables[monster_buff] = true
+                    otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
+                end
+                
+                offense.dispel[target.raw.id] = nil 
+                
+                -- cleanup queue if someone else dispeled
+                for _, spell_to_remove in pairs(dispels) do
+                    if offense.checkNukingQueueFor(spell_to_remove) then
+                        actions.remove_offensive_action(spell_to_remove.id)
+                    end
+                end
+            end
+        end 
+    end 
+
+    dispel.should_dispel(target.raw.id)
 end
 
 return dispel

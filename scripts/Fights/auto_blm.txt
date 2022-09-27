@@ -12,10 +12,6 @@ send Fourchix otto aspir on;
 send Fourchix otto aspir t 2;
 send Fourchix otto aspir all;
 
-send Fourchix gs c set autonuke Blizzard;
-send Fourchix gs c set autonukemode on;
- 
-
 
 send Fourchix otto debuff Shock on;
 send Fourchix otto debuff Burn on;

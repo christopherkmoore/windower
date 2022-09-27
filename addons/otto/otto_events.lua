@@ -606,7 +606,7 @@ local function pull_commands(args)
         command = args[1]:lower()
     end
 
-    if command == 'on' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
+    if command == 'on' then
         user_settings.pull.enabled = true
         otto.assist.locked_closing_in = true
         windower.add_to_chat(144, 'Auto pulling enabled')
@@ -624,7 +624,28 @@ local function pull_commands(args)
     user_settings:save()
 end
 
+local function dispel_commands(args)
+    local command = 'help'
 
+    if (#args > 0) then
+        command = args[1]:lower()
+    end
+
+    if command == 'on' then
+        user_settings.dispel.enabled = true
+        user_settings:save()
+        windower.add_to_chat(144, 'Auto dispel enabled')
+
+    elseif command == 'off' then 
+        user_settings.dispel.enabled = false
+        user_settings:save()
+        windower.add_to_chat(144, 'Auto dispel disabled')
+    else
+        windower.add_to_chat(144, 'There is just one command to toggle on | off and you are fucking it up.')
+    end
+
+
+end
 
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
@@ -658,6 +679,8 @@ function events.addon_command(...)
             weaponskill_commands(newArgs)
         elseif command == 'pull' or command == 'p' then
             pull_commands(newArgs)
+        elseif command == 'dispel' then
+            dispel_commands(newArgs)
         end
         -- MARK: commands to local otto
     end
