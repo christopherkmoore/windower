@@ -10,6 +10,14 @@
 
 local geomancer = { }
 
+-- Idle bubbles should be recast whenever they dissapear or are out of range.
+local idle_bubbles = S {798, 800, 810, 812, 813, 814, 816 }
+
+-- Active bubbles are ones where the spell's target should be engaged
+local active_bubbles = S{ 799, 801, 802, 803, 804, 805, 806, 807, 808, 809, 811, 815, 817, 
+818, 819, 820, 821, 822, 823, 824, 825, 826, 827}
+
+
 function geomancer.init()
     local defaults = { }
     defaults.blow_cooldowns = false
@@ -23,6 +31,7 @@ end
 
 geomancer.indi = { latest = {}, info = {} }
 geomancer.geo = { latest = {} }
+geomancer.entrust = { latest = {}, info = {}
 
 function geomancer.check_buffs(bufflist)
     local geo = windower.ffxi.get_player()
@@ -37,8 +46,13 @@ function geomancer.check_buffs(bufflist)
                 local should_recast_from_distance = geomancer.check_bubble_out_of_range(player, loupan) 
 
                 if loupan == nil then
-                    
-                    otto.buffs.register_buff(player, geomancer.geo.latest, false)
+                    if idle_bubbles:contains(buff.action.id) then 
+                        otto.buffs.register_buff(player, geomancer.geo.latest, false)
+                    end
+
+                    if active_bubbles:contains(buff.action.id) player.status == 1 then 
+                        otto.buffs.register_buff(player, geomancer.geo.latest, false)
+                    end
                 else
                     if should_recast_from_distance then
                         geomancer.use_full_circle()
