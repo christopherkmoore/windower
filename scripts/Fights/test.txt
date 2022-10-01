@@ -45,8 +45,8 @@ wait 0.3;
 
 send Threechix otto mb off;
 send Threechix otto follow on;
-send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
+send Threechix otto buff indi-Frailty on;
+send Threechix otto buff geo-fury on;
 
 ////////////////////////////////////
 // Red Mage

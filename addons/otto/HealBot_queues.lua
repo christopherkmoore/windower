@@ -42,8 +42,8 @@ function ActionQueue:enqueue(actionType, action, name, secondary, msg)
         for index = 1, self.queue:length() do
             local qi = self.queue[index]
             local qprio = getPlayerPriority[qi.name]
-            local higher = compFunc[actionType](-1, pprio, secondary, index, qprio, qi[secLabel])
-            if (higher == -1) and (index < highestAbove) then
+            local higher = compFunc[actionType](-1, pprio, secondary, index, qprio, qi[secLabel])  -- CKM i understand this now. it's a function call... lol explains why additiosn to nuke
+            if (higher == -1) and (index < highestAbove) then                                      -- Q were originally broken. I should add functions for this to compare nuke priority.
                 highestAbove = index
             end
         end

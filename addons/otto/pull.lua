@@ -34,9 +34,7 @@ local function sort_closest_target(mobs)
         end
     end
 
-    if math.sqrt(closest.distance) < 20 then return closest end
-
-
+    if closest ~= nil and math.sqrt(closest.distance) < 20 then return closest end
     return nil
 end
 
@@ -45,7 +43,7 @@ function pull.try_pulling()
 
     local player = windower.ffxi.get_player()
 
-    if player.status == 1 then
+    if player.status == 1 and player.target_index then
         local mob = windower.ffxi.get_mob_by_index(player.target_index)
         pull.target = mob
         return

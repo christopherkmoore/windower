@@ -84,6 +84,7 @@ return {
     ["Prognosticator Leader"] = true,
     ["Qohanyk"] = false,
     ["Shadow Lord"] = true,
+    ["Siren"] = true,
     ["Sprinkler"] = true,
     ["Squadron Ascetic"] = false,
     ["Squadron Balladeer"] = false,

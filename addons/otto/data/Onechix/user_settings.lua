@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "backline",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -50,6 +50,7 @@ return {
         },
         ["ignoreTrusts"] = true
     },
+    ["job"] = {},
     ["magic_burst"] = {
         ["cast_tier"] = 3,
         ["cast_type"] = "jutsu",
@@ -63,8 +64,8 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
-        ["with"] = "/ma \"Carnage Elegy\""
+        ["enabled"] = false,
+        ["with"] = "offo"
     },
     ["weaponskill"] = {
         ["enabled"] = true,

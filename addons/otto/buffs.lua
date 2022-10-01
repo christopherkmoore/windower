@@ -37,32 +37,9 @@ function buffs.review_active_buffs(player, buff_list)
                 buffs.register_buff(player, buff, true)
             end
         end
-        
-        --Double check the list of what should be active
-        local checklist = buffs.buffList[player.name] or {}
-        local active = S(buff_list)
-        for bname,binfo in pairs(checklist) do
-            if binfo.is_geo or binfo.is_indi then
-                if binfo.is_geo and binfo.action then
-                    local pet = windower.ffxi.get_mob_by_target('pet')
-                    actor.geo.latest = actor.geo.latest or {}
-                    if pet == nil then
-                        buffs.register_buff(player, actor.geo.latest, false)
-                    else
-                        buffs.register_buff(player, actor.geo.latest, true)
-                    end
-                elseif binfo.is_indi and binfo.action then
-                    actor.indi.info = actor.indi.info or {}
-                    actor.indi.latest = actor.indi.latest or {}
-                    buffs.register_buff(player, actor.indi.latest, actor.indi.info.active)
-                end
-            else
-                if binfo.buff then                                              -- FIXME: Temporary fix for geo error
-                    if not active:contains(binfo.buff.id) then
-                        buffs.register_buff(player, res.buffs[binfo.buff.id], false)
-                    end
-                end
-            end
+
+        if player.main_job == "GEO" then
+            otto.geomancer.check_buffs(buffs.buffList)
         end
     end
 end

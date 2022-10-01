@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "backline",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -51,6 +51,11 @@ return {
             ["modega"] = "curaga"
         },
         ["ignoreTrusts"] = true
+    },
+    ["job"] = {
+        ["geomancer"] = {
+            ["entrust"] = {}
+        }
     },
     ["magic_burst"] = {
         ["cast_tier"] = 4,

@@ -81,10 +81,21 @@ function otto.init()
     otto.assist.init()
     otto.dispel.init()
 
+    otto.check_jobs()
     otto.active = true
 end
 
-function otto.provide_state(...)
+function otto.check_jobs()
+    local player = windower.ffxi.get_player()
+
+    if user_settings.job == nil then
+        user_settings.job = {}
+        user_settings:save()
+    end
+    if player.main_job == "GEO" then
+        otto.geomancer = require('jobs/geomancer')
+        otto.geomancer.init()
+    end
 end
 
 

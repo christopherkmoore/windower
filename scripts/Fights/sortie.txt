@@ -37,8 +37,13 @@ send Onechix otto ws off;
 
 send Threechix exec fights/auto_geo
 
-send Threechix gs c autoindi Malaise;
-send Threechix gs c autogeo Acumen;
+wait 0.1;
+
+send Threechix otto buff Threechix indi-frailty off;
+send Threechix otto buff Twochix geo-fury off;
+
+send Threechix otto buff Threechix indi-malaise on;
+send Threechix otto buff Twochix geo-acumen on;
 
 ////////////////////////////////////
 // Guests

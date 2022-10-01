@@ -71,7 +71,8 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
 
     if monitored_ids[target.raw.id] == nil and monitored_ids[actor_id] == nil then
         local mob = windower.ffxi.get_mob_by_id(actor_id)
-        if mob.spawn_type == 16 then
+
+        if mob and mob.spawn_type == 16 and monitored_ids[mob.claim_id] ~= nil then
             for _, action in pairs(target.raw.actions) do
                 if action_messages:contains(action.message) then 
 

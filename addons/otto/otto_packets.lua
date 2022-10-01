@@ -73,7 +73,9 @@ function otto_packets.handle_incoming_chunk(id, data)
             otto_packets.processMessage(action_info, monitored_ids)
         end
     elseif (id == 0x037) then -- character update
-        if (actor.indi ~= nil and actor.indi.info ~= nil) then actor.indi.info = parse_char_update(data) end   
+        if otto.geomancer and (otto.geomancer.indi ~= nil and otto.geomancer.indi.info ~= nil) then 
+            otto.geomancer.indi.info = parse_char_update(data) 
+        end   
     elseif (id == 0x0DD) then  --Party member update
         otto_packets.register_party_members_changed(data)
     elseif (id == 0x0DF) then -- Char Update
@@ -130,16 +132,17 @@ function otto_packets.processAction(targets, actor_id, monitored_ids)
             local t = windower.ffxi.get_mob_by_id(target.raw.id)
             for _, action in pairs(target.raw.actions) do
                 if not messages_blacklist:contains(action.message) then
-                    if (action.message == 0) and (actor_id == actor.id) then
+                    if otto.geomancer then 
                         if indi_spell_ids:contains(action.param) then
-                            actor.indi.latest = {spell = res.spells[action.param], landed = os.clock(), is_indi = true}
-                            otto.buffs.register_buff(t, actor.indi.latest, true)
+                            otto.geomancer.indi.latest = {spell = res.spells[action.param], landed = os.clock(), is_indi = true}
+                            otto.buffs.register_buff(t, otto.geomancer.indi.latest, true)
                         elseif geo_spell_ids:contains(action.param) then
-                            actor.geo.latest = {spell = res.spells[action.param], landed = os.clock(), is_geo = true}
-                            otto.buffs.register_buff(t, actor.geo.latest, true)
+                            otto.geomancer.geo.latest = {spell = res.spells[action.param], landed = os.clock(), is_geo = true}
+                            otto.buffs.register_buff(t, otto.geomancer.geo.latest, true)
                         end
                     end
 
+                    
                     if otto.modes.showPacketInfo then
                         local msg = res.action_messages[action.message] or {en='???'}
                         atcfs('[0x28]Action(%s): %s { %s } %s %s { %s } | %s', action.message, actor.name, action.param, rarr, t.name, action.param, msg.en)

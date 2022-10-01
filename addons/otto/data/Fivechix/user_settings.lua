@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "backline",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -52,13 +52,14 @@ return {
         },
         ["ignoreTrusts"] = true
     },
+    ["job"] = {},
     ["magic_burst"] = {
         ["cast_tier"] = 2,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = true,
+        ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

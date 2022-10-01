@@ -28,12 +28,12 @@ send Fivechix otto buff Threechix Refresh II on;
 send Fivechix otto buff Fourchix Refresh II on;
 send Fivechix otto buff Fivechix Refresh II on;
 
-send Fivechix otto debuff Dia III on;
-//send Fivechix otto debuff Slow on;
-send Fivechix otto debuff Paralyze on;
+send Fivechix otto debuff Bio II on;
+//send Fivechix otto debuff Slow II on;
+send Fivechix otto debuff Paralyze II on;
 send Fivechix otto debuff Frazzle II on;
 send Fivechix otto debuff Distract II on;
 send Fivechix otto debuff Inundation on;
-//send Fivechix otto debuff Addle on;
-//send Fivechix otto debuff Blind on;
+send Fivechix otto debuff Addle on;
+send Fivechix otto debuff Blind II on;
 

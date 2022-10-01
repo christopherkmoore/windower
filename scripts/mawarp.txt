@@ -1,0 +1,12 @@
+send Fourchix input /ma "Warp II" Threechix
+send Fivechix input /ma "Warp II" Onechix
+
+wait 13
+
+send Fourchix input /ma "Warp II" Chixslave
+send Fivechix input /ma "Warp II" Twochix
+
+wait 8
+
+send Fourchix input /ma "Warp" Fourchix
+send Fivechix input /ma "Warp" Fivechix

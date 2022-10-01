@@ -52,14 +52,12 @@ pass / lot
 
 Bugs
 
+dispel is barfing on other pts claimed mobs because nuke q uses 't' to assign target.
 skillchains do not work well when multiple party members are fighting different mobs.
 maybe otto off 
 clean up vprint logs
-sometimes puller thinks it has pulled when it hasn't?
 weaponskill / magicburst carries to new target.
 weaponskills will sometimes not close properly (action not being added to q in time?)
-otto pull on - first target always makes everyone close in.
-somethign wrong with targeting after long sessions. 'backline' roles will try to attack anything they target.
 make queue more efficient
 add checks -- aspir is targeting any target
 
