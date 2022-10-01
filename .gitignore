@@ -31,3 +31,4 @@ addons/findAll/data/Twochix.lua
 *.bat
 addons/autojoin/data/settings.xml
 addons/findAll/data/Chixslave.lua
+addons/Skillchains/data/settings.xml

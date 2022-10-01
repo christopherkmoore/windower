@@ -58,13 +58,13 @@ return {
         }
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 4,
+        ["cast_tier"] = 3,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = true,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
