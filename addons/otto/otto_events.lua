@@ -643,8 +643,103 @@ local function dispel_commands(args)
     else
         windower.add_to_chat(144, 'There is just one command to toggle on | off and you are fucking it up.')
     end
+end
 
 
+-- TODO this was added quickly, I should go back and account for entry errors and return errors.
+-- TODO add indi command
+local function geomancer(args)
+    local allowed = T{'on | off | enabled | disable', 'bubble', 'entrust', 'cooldowns'}
+    local command = 'help'
+	local message = ''
+	local arg2 = ''
+    local arg3 = ''
+    local arg4 = 8 -- default bubble recast distance.
+
+    if (#args > 0) then
+        command = args[1]
+    end
+
+	if (#args > 1) then
+		arg2 = args[2]
+	end
+
+    if (#args > 2) then
+        arg3 = args[3]
+    end
+
+    if (#args > 3) then
+        arg4 = args[4]
+    end
+
+	local should_save = true 
+    local should_merge_saves = false    
+
+    if command == 'on' or command == 'enable' then
+        user_settings.job.geomancer.enabled = true
+        message = 'Geomancer on.'
+    elseif command == 'off' or command == 'disable' then
+        user_settings.job.geomancer.enabled = false
+        message = 'Geomancer off.'
+    elseif command == 'cooldowns' then
+        if arg2 == 'on' then
+            user_settings.job.geomancer.cooldowns = true
+            message = 'Geomancer will blow cooldowns.'
+        end
+
+        if arg2 == 'off' then
+            user_settings.job.geomancer.cooldowns = false
+            message = 'Geomancer will save cooldowns.'
+        end
+    elseif command == 'bubble' then
+        if arg2 == 'off' then
+            user_settings.job.geomancer.geo = false
+            message = 'Will stop using Geo-spells .'
+        end
+
+        if arg2 and arg2 ~= 'off' then
+            user_settings.job.geomancer.bubble.target = arg2
+        end
+
+        local action = utils.normalize_action(arg3, 'spells')
+        
+        if action then
+            user_settings.job.geomancer.geo = action.en
+            message = 'Will use '..action.en
+        end
+
+        if arg4 then
+            user_settings.job.geomancer.bubble.distance = tonumber(arg4)
+        end
+	elseif command == 'entrust' then
+		if arg2 then
+            user_settings.job.geomancer.entrust.target = arg2
+        end
+
+        if arg3 then
+            local action = utils.normalize_action(arg3, 'spells')
+            if action then
+                user_settings.job.geomancer.entrust.indi = action.en
+                message = 'Will entrust '..action.en..' on '..arg2
+            else
+                log('ERROR: registering entrust indi spell')
+            end
+        end
+    else
+        windower.add_to_chat(123, "That's not a command")
+		windower.add_to_chat(111, 'Allowed commands for assist are '..table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+		windower.add_to_chat(111, message)
+
+        if should_merge_saves then 
+            utils.unionSettings()
+        else 
+            user_settings:save()
+        end
+	end
 end
 
 -- addon load. parses commands passed to otto
@@ -681,6 +776,8 @@ function events.addon_command(...)
             pull_commands(newArgs)
         elseif command == 'dispel' then
             dispel_commands(newArgs)
+        elseif command == 'geo' or command == 'geomancer' then
+            geomancer(newArgs)
         end
         -- MARK: commands to local otto
     end

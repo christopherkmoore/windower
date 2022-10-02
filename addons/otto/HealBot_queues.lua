@@ -10,13 +10,51 @@ ActionQueue = {}
 
 
 function ActionQueue.new()
-    local self = {queue=Q({})}
+    local self = {queue=Q({}), priority_queue = Q({})}
     return setmetatable(self, {__index = ActionQueue})
 end
 
 
 function ActionQueue:getQueue()
+    if not self.priority_queue:empty() then 
+        return self.priority_queue
+    end
+
     return self.queue
+end
+
+
+-- Right now I can't think of a reason you'd want to not target self with a preaction.
+-- I'm thinking of things like this:
+-- ability + spell (pianissimo + ballad, or entrust + geo bubble)
+function ActionQueue:insert_with_preaction(actionType, action1, action2, action2_target)
+
+    local player = windower.ffxi.get_player()
+
+    local q_item1 = {['type']=actionType,['action']=action1,['name']=player.name}
+    local q_item2 = {['type']=actionType,['action']=action2,['name']=action2_target }
+
+    if self.priority_queue:empty() then 
+        self.priority_queue:insert(1, q_item1)
+
+        self.priority_queue:insert(2, q_item2)
+    else 
+        local last = self.priority_queue:length()+1
+
+        self.priority_queue:insert(last, q_item1)
+        self.priority_queue:insert(last + 1, q_item2)
+    end
+end
+
+function ActionQueue:enqueue_action(actionType, action, name)
+    local queue_item = {['type']=actionType,['action']=action,['name']=name}
+
+    if self.queue:empty() then
+        self.queue:insert(1, queue_item)
+    else
+        local last = self.queue:length()+1
+        self.queue:insert(last, queue_item)       
+    end
 end
 
 

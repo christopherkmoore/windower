@@ -39,7 +39,7 @@ function buffs.review_active_buffs(player, buff_list)
         end
 
         if player.main_job == "GEO" then
-            otto.geomancer.check_buffs(buffs.buffList)
+            otto.geomancer.check_buffs()
         end
     end
 end
@@ -146,8 +146,10 @@ function buffs.registerNewBuffName(targetName, bname, toggle)
         return
     end
     if not ffxi.target_is_valid(action, target) then
-        atc(target.name..' is an invalid target for '..action.en)
-        return
+        if action.type ~= 'Geomancy' then
+            atc(target.name..' is an invalid target for '..action.en)
+            return
+        end
     end
     
     local monitoring = otto.getMonitoredPlayers()

@@ -39,11 +39,10 @@ send Threechix exec fights/auto_geo
 
 wait 0.1;
 
-send Threechix otto buff Threechix indi-frailty off;
-send Threechix otto buff Twochix geo-fury off;
+send Threechix otto buff Threechix indi-fury off;
 
-send Threechix otto buff Threechix indi-malaise on;
-send Threechix otto buff Twochix geo-acumen on;
+send Threechix otto buff Threechix indi-acumen on;
+send Threechix otto geo bubble Twochix geo-malaise 8;
 
 ////////////////////////////////////
 // Guests

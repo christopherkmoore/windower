@@ -33,8 +33,6 @@ send Onechix sing march 1;
 
 send Threechix exec fights/auto_geo
 
-send Threechix gs c autoindi Frailty;
-send Threechix gs c autogeo Fury;
 
 ////////////////////////////////////
 // Guests

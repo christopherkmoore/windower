@@ -105,6 +105,7 @@ function actions.take_action(player, partner, targ)
         elseif (action.type == 'debuff') then
             otto.buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
         end
+        
         actor:take_action(action)
     else     
 
@@ -112,15 +113,27 @@ function actions.take_action(player, partner, targ)
         local action = actions.get_offensive_action(player)
         if action == nil then return end
 
+        local monitored_players = otto.getMonitoredPlayers()
+        if (action.type == 'preaction' and monitored_players[action.name] ~= nil) or action.type == 'ability'  then
+            if action.type == 'bubble' then
+                actor:take_action(action, '<t>')
+                return
+            end
+
+            actor:take_action(action, action.name)
+        end
+
         if user_settings.pull.enabled then 
             actor:take_action(action, '<t>')
         end
+
 
         local master = windower.ffxi.get_mob_by_name(user_settings.assist.master)
         if master == nil then return end
 
         local master_engaged = (master.status == 1)
         local matching_targets_with_master = player.target_index == master.target_index
+
 
         if master_engaged and (matching_targets_with_master or otto.assist.is_master) then 
             actor:take_action(action, '<t>')
@@ -142,6 +155,18 @@ function actions.get_offensive_action(player)
 	local target = windower.ffxi.get_mob_by_target()
     if target == nil then return nil end
     local action = {}
+
+    local job_queue = actions.check_job_actions()
+    
+    if job_queue then
+        while not job_queue:empty() do
+            local preaction = job_queue:pop()
+            local_queue_insert(preaction.action.en, preaction.name)
+            if (action.preaction == nil) and actor:in_casting_range(preaction.name) and actor:ready_to_use(preaction.action) then
+                action.preaction = preaction
+            end
+        end 
+    end
     
     local nukeingQ = offense.getNukeQueue(target)
     while not nukeingQ:empty() do 
@@ -166,7 +191,9 @@ function actions.get_offensive_action(player)
     action.weaponskill = otto.weaponskill.action(target)
 
     local_queue_disp()
-    if action.nuke ~= nil then        
+    if action.preaction ~= nil then 
+        return action.preaction
+    elseif action.nuke ~= nil then        
         return action.nuke
     elseif action.weaponskill ~= nil then
         return action.weaponskill
@@ -176,6 +203,12 @@ function actions.get_offensive_action(player)
     
     atcd('get_offensive_action: no offensive actions to perform')
 	return nil
+end
+
+function actions.check_job_actions()
+    if otto.geomancer then
+        return otto.geomancer.geo_geomancy_queue() 
+    end
 end
 
 
