@@ -42,17 +42,15 @@ buffs /debuffs
 healing
 weaponskill / skillchains
 dispel
+pre actions
+jobs/geo
 
 wants
-geo
 bard
-abilities
-compound actions
 pass / lot
 
 Bugs
-
-dispel is barfing on other pts claimed mobs because nuke q uses 't' to assign target.
+fix whm erase-ga (it's breaking buffs because of prioritization.) -- maybe fixed?
 skillchains do not work well when multiple party members are fighting different mobs.
 maybe otto off 
 clean up vprint logs
@@ -60,13 +58,12 @@ weaponskill / magicburst carries to new target.
 weaponskills will sometimes not close properly (action not being added to q in time?)
 make queue more efficient
 add checks -- aspir is targeting any target
+maybe curaga deciding could use a bit of touch up?
+
 
 TODO
-with the addition of dispelling, nuke queue now needs triage... or does it. Nuke queue is added to and ephemeral and always prioritized first so... maybe not.
-
 aspir is targeting any target
 add global on / off
 figure fucking targeting out
 bug in assist for backline roles.
 gearswap not swapping rings.
-sometimes na gets caught on repeat (maybe messages no effect needs to be packet handled.)

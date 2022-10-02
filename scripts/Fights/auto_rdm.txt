@@ -3,6 +3,7 @@
 ////////////////////////////////
 
 send Fivechix otto healer off;
+send Threechix otto geo on;
 send Fivechix otto magicburst on;
 send Fivechix otto magicburst t 2;
 send Fivechix otto magicburst c spell;
@@ -17,12 +18,12 @@ send Fivechix otto buff Fivechix Composure on;
  
 send Fivechix otto buff Twochix Phalanx II on;
 
-send Fivechix otto buff Chixslave Haste on;
-send Fivechix otto buff Twochix Haste on;
-send Fivechix otto buff Onechix Haste on;
-send Fivechix otto buff Threechix Haste on;
-send Fivechix otto buff Fourchix Haste on;
-send Fivechix otto buff Fivechix Haste on;
+send Fivechix otto buff Chixslave Haste II on;
+send Fivechix otto buff Twochix Haste II on;
+send Fivechix otto buff Onechix Haste II on;
+send Fivechix otto buff Threechix Haste II on;
+send Fivechix otto buff Fourchix Haste II on;
+send Fivechix otto buff Fivechix Haste II on;
 
 send Fivechix otto buff Threechix Refresh II on;
 send Fivechix otto buff Fourchix Refresh II on;

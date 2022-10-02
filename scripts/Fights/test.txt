@@ -43,7 +43,7 @@ send Threechix exec fights/auto_geo
 
 wait 0.3;
 
-
+send Threechix otto geo cooldowns on;
 
 ////////////////////////////////////
 // Red Mage

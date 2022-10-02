@@ -3,6 +3,7 @@
 ////////////////////////////////////
 
 send Threechix otto on;
+send Threechix otto geo on;
 
 send Threechix otto aspir t 3;
 send Threechix otto aspir all;
@@ -10,9 +11,9 @@ send Threechix otto aspir on;
 send Threechix otto magicburst on;
 send Threechix otto magicburst t 4;
 
-send Threechix otto buff Threechix indi-fury on;
 
 send Threechix otto geo entrust Twochix indi-precision;
+send Threechix otto geo indi indi-fury;
 send Threechix otto geo bubble Twochix geo-frailty 8;
 
 send Threechix gs c set AutoConvertMode Auto

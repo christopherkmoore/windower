@@ -120,6 +120,7 @@ otto._events['render'] = windower.register_event('prerender', function()
 
                 otto.aspir.prerender()
                 otto.pull.try_pulling()
+                
                 if targ ~= nil and targ.id then
                     otto.dispel.should_dispel(targ.id)
                 end

@@ -8,17 +8,14 @@ function user_job_setup()
 	state.MagicalDefenseMode:options('MDT', 'NukeLock')
 	state.ResistDefenseMode:options('MEVA')
 	state.Weapons:options('None','Nehushtan','DualWeapons')
-
-	gear.nuke_jse_back = {name="Nantosuelta's Cape",augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10'}}
-	gear.idle_jse_back = {name="Nantosuelta's Cape",augments={'HP+60','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10'}}
 	
 	gear.obi_cure_back = "Tempered Cape +1"
 	gear.obi_cure_waist = "Witful Belt"
 
-	gear.obi_low_nuke_back = gear.nuke_jse_back
+	gear.obi_low_nuke_back = gear.capeMB
 	gear.obi_low_nuke_waist = "Sekhmet Corset"
 
-	gear.obi_high_nuke_back = gear.nuke_jse_back
+	gear.obi_high_nuke_back = gear.capeMB
 	gear.obi_high_nuke_waist = "Refoccilation Stone"
 	
 	autoindi = "Haste"
@@ -52,7 +49,7 @@ function init_gear_sets()
 
 	-- Precast sets to enhance JAs
 	sets.precast.JA.Bolster = {body="Bagua Tunic +1"}
-	sets.precast.JA['Life Cycle'] = {body="Geo. Tunic +1",back=gear.idle_jse_back}
+	sets.precast.JA['Life Cycle'] = {body="Geo. Tunic +1",back=gear.cape_loupan_idle}
 	sets.precast.JA['Radial Arcana'] = {feet="Bagua Sandals +1"}
 	sets.precast.JA['Mending Halation'] = {legs="Bagua Pants +1"}
 	sets.precast.JA['Full Circle'] = {head="Azimuth Hood +2",hands="Bagua Mitaines +1"}
@@ -114,7 +111,7 @@ function init_gear_sets()
 
 
 	--Extra Indi duration as long as you can keep your 900 skill cap.
-	sets.midcast.Geomancy.Indi = set_combine(sets.midcast.Geomancy, {back=gear.idle_jse_back,legs="Bagua Pants +1",feet="Azimuth Gaiters +2"})
+	sets.midcast.Geomancy.Indi = set_combine(sets.midcast.Geomancy, {back=gear.cape_loupan_idle,legs="Bagua Pants +1",feet="Azimuth Gaiters +2"})
 		
     sets.midcast.Cure = {main=gear.gada_healing_club,sub="Sors Shield",ammo="Hasty Pinion +1",
         head="Amalric Coif +1",neck="Incanter's Torque",ear1="Gifted Earring",ear2="Etiolation Earring",
@@ -211,12 +208,12 @@ function init_gear_sets()
 	sets.midcast['Enfeebling Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Regal Earring",ear2="Azimuth Earring",
 		body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Etana Ring",ring2="Weatherspoon Ring",
-		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
+		back=gear.capeMB,waist="Luminary Sash",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
 		head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Regal Earring",ear2="Azimuth Earring",
 		body="Azimuth Coat +2",hands="Regal Cuffs",ring1="Etana Ring",ring2="Weatherspoon Ring",
-		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
+		back=gear.capeMB,waist="Luminary Sash",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast.ElementalEnfeeble = set_combine(sets.midcast['Enfeebling Magic'], {head="Amalric Coif +1",ear2="Azimuth Earring",waist="Acuity Belt +1"})
     sets.midcast.ElementalEnfeeble.Resistant = set_combine(sets.midcast['Enfeebling Magic'].Resistant, {head="Amalric Coif +1",ear2="Azimuth Earring",waist="Acuity Belt +1"})
@@ -279,12 +276,12 @@ function init_gear_sets()
 	sets.idle.Pet = {main="Sucellus",sub="Genmei Shield",range="Dunna",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Handler's Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
-		back=gear.idle_jse_back,waist="Isa Belt",legs="Psycloth Lappas",feet="Azimuth Gaiters +2"}
+		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Psycloth Lappas",feet="Bagua Sandals +1"}
 
 	sets.idle.PDT.Pet = {main="Malignance Pole",sub="Umbra Strap",range="Dunna",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Handler's Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
-		back=gear.idle_jse_back,waist="Isa Belt",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}
+		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Hagondes Pants +1",feet="Bagua Sandals +1"}
 
 	-- .Indi sets are for when an Indi-spell is active.
 	sets.idle.Indi = set_combine(sets.idle, {})
@@ -312,7 +309,7 @@ function init_gear_sets()
     sets.defense.MEVA = {main="Malignance Pole",sub="Enki Strap",ammo="Staunch Tathlum +1",
         head="Azimuth Hood +2",neck="Warder's Charm +1",ear1="Etiolation Earring",ear2="Sanare Earring",
 		body="Azimuth Coat +2",hands="Telchine Gloves",ring1="Vengeful Ring",Ring2="Purity Ring",
-        back=gear.idle_jse_back,waist="Luminary Sash",legs="Telchine Braconi",feet="Azimuth Gaiters +2"}
+        back=gear.cape_loupan_idle,waist="Luminary Sash",legs="Telchine Braconi",feet="Azimuth Gaiters +2"}
 		
 	sets.defense.PetPDT = sets.idle.PDT.Pet
 		
@@ -347,7 +344,7 @@ function init_gear_sets()
 	sets.engaged = {main="Solstice", sub="Harpy Shield", ammo="Hasty Pinion +1",
 		head="Befouled Crown",neck="Asperity Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
 		body="Azimuth Coat +2",hands="Gazu Bracelet +1",ring1="Ramuh Ring +1",ring2="Ramuh Ring +1",
-		back="Kayapa Cape",waist="Witful Belt",legs="Assid. Pants +1",feet="Battlecast Gaiters"}
+		back="Kayapa Cape",waist="Witful Belt",legs="Assid. Pants +1",feet="Bagua Sandals +1"}
 		
 	sets.engaged.DW = {ammo="Hasty Pinion +1",
 		head="Befouled Crown",neck="Asperity Necklace",ear1="Dudgeon Earring",ear2="Heartseeker Earring",

@@ -8,6 +8,7 @@
 
 otto buffs wipebuffs;
 otto debuffs wipedebuffs;
+
 otto on;
 
 send Onechix sing playlist clear;

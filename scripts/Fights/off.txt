@@ -17,8 +17,8 @@ send Onechix sing clarion off;
 send Onechix gs c set autowsmode off; 
 send Onechix gs c set autoshadowmode off;
 
-send Threechix gs c set AutoBuffMode off;
-send Threechix gs c set autowsmode off; 
+send Threechix otto geo off;
+send Threechix otto geo cooldowns off;
 
 
 send @all otto follow off;

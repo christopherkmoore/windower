@@ -64,6 +64,9 @@ return {
         [311] = 288,
         [856] = 288
     },
+    ["BloodPactRage"] = {
+        [518] = 518
+    },
     ["BloodPactWard"] = {
         [526] = 113
     },

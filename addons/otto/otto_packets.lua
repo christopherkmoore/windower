@@ -73,7 +73,7 @@ function otto_packets.handle_incoming_chunk(id, data)
             otto_packets.processMessage(action_info, monitored_ids)
         end
     elseif (id == 0x037) then -- character update
-        if otto.geomancer and (otto.geomancer.indi ~= nil and otto.geomancer.indi.info ~= nil) then 
+        if otto.geomancer then 
             otto.geomancer.indi.info = parse_char_update(data) 
         end   
     elseif (id == 0x0DD) then  --Party member update
@@ -136,13 +136,9 @@ function otto_packets.processAction(targets, actor_id, monitored_ids)
                         if indi_spell_ids:contains(action.param) then
                             otto.geomancer.indi.latest = {spell = res.spells[action.param], landed = os.clock(), is_indi = true}
                             otto.buffs.register_buff(t, otto.geomancer.indi.latest, true)
-                        elseif geo_spell_ids:contains(action.param) then
-                            otto.geomancer.geo.latest = {spell = res.spells[action.param], landed = os.clock(), is_geo = true}
-                            otto.buffs.register_buff(t, otto.geomancer.geo.latest, true)
                         end
                     end
-
-                    
+                      
                     if otto.modes.showPacketInfo then
                         local msg = res.action_messages[action.message] or {en='???'}
                         atcfs('[0x28]Action(%s): %s { %s } %s %s { %s } | %s', action.message, actor.name, action.param, rarr, t.name, action.param, msg.en)

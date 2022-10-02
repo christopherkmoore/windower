@@ -38,6 +38,17 @@ function buffs.review_active_buffs(player, buff_list)
             end
         end
 
+        --Double check the list of what should be active
+        local checklist = buffs.buffList[player.name] or {}
+        local active = S(buff_list)
+        for bname,binfo in pairs(checklist) do
+            if binfo.buff then                                              
+                if not active:contains(binfo.buff.id) then
+                    buffs.register_buff(player, res.buffs[binfo.buff.id], false)
+                end
+            end
+        end
+
         if player.main_job == "GEO" then
             otto.geomancer.check_buffs()
         end
@@ -78,6 +89,7 @@ function buffs.getDebuffQueue()
     local now = os.clock()
     for targ, debuffs in pairs(buffs.debuffList) do
         for id, info in pairs(debuffs) do
+            -- table.vprint(buffs.debuffList[targ])
             local debuff = res.buffs[id]
             local removalSpellName = debuff_map[debuff.en]
             if (removalSpellName ~= nil) then
@@ -89,6 +101,10 @@ function buffs.getDebuffQueue()
                             dbq:enqueue('debuff', spell, targ, debuff, ' ('..debuff.en..')')
                         end
                     end
+                end
+                --CKM added to try to fix whm erasega bug... maybe it messes up debuffs tho?
+                if (info.times_attempted ~= nil) and info.times_attempted > 3 then
+                    buffs.debuffList[targ][id] = nil
                 end
             else
                 buffs.debuffList[targ][id] = nil
@@ -364,19 +380,6 @@ function buffs.register_buff(target, buff, gain, action)
     if not target then return end
 --local function _register_buff(target, buff, gain, action)
     --atcfs("%s -> %s [gain: %s]", buff, target.name, gain)
-    if not isstr(buff) then
-        if buff.is_indi or buff.is_geo then
-            buffs.buffList[target.name] = buffs.buffList[target.name] or {}
-            buffs.buffList[target.name][buff.spell.en] = buffs.buffList[target.name][buff.spell.en] or {}
-            buffs.buffList[target.name][buff.spell.en] = buffs.buffList[target.name][buff.spell.en] or {}
-            if gain then
-                buffs.buffList[target.name][buff.spell.en].landed = os.clock()
-            else
-                buffs.buffList[target.name][buff.spell.en].landed = nil
-            end
-            return
-        end
-    end
     
     local nbuff = utils.normalize_action(buff, 'buffs')
     if nbuff == nil then

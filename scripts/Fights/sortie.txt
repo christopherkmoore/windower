@@ -39,7 +39,7 @@ send Threechix exec fights/auto_geo
 
 wait 0.1;
 
-send Threechix otto buff Threechix indi-fury off;
+send Threechix otto geo indi indi-acumen;
 
 send Threechix otto buff Threechix indi-acumen on;
 send Threechix otto geo bubble Twochix geo-malaise 8;

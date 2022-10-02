@@ -104,6 +104,11 @@ function actions.take_action(player, partner, targ)
             otto.buffs.buffList[action.name][action.buff].attempted = os.clock()
         elseif (action.type == 'debuff') then
             otto.buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
+            if otto.buffs.debuffList[action.name][action.debuff.id].times_attempted and otto.buffs.debuffList[action.name][action.debuff.id].times_attempted > 0 then
+                otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = otto.buffs.debuffList[action.name][action.debuff.id].times_attempted + 1
+            else
+                otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = 1
+            end
         end
         
         actor:take_action(action)
@@ -117,7 +122,6 @@ function actions.take_action(player, partner, targ)
         if (action.type == 'preaction' and monitored_players[action.name] ~= nil) or action.type == 'ability'  then
             if action.type == 'bubble' then
                 actor:take_action(action, '<t>')
-                return
             end
 
             actor:take_action(action, action.name)
@@ -126,7 +130,6 @@ function actions.take_action(player, partner, targ)
         if user_settings.pull.enabled then 
             actor:take_action(action, '<t>')
         end
-
 
         local master = windower.ffxi.get_mob_by_name(user_settings.assist.master)
         if master == nil then return end
@@ -157,8 +160,8 @@ function actions.get_offensive_action(player)
     local action = {}
 
     local job_queue = actions.check_job_actions()
-    
-    if job_queue then
+
+    if job_queue ~= nil then
         while not job_queue:empty() do
             local preaction = job_queue:pop()
             local_queue_insert(preaction.action.en, preaction.name)
@@ -207,7 +210,7 @@ end
 
 function actions.check_job_actions()
     if otto.geomancer then
-        return otto.geomancer.geo_geomancy_queue() 
+        return otto.geomancer.geo_geomancy_queue()
     end
 end
 

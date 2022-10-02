@@ -98,7 +98,7 @@ function weaponskill.action(target)
         -- local hp = user_settings.weaponskill.min_hp or 0
         -- local hp_ok = target.hpp >= hp
 
-        if user_settings.weaponskill.partner == 'none' then
+        if user_settings.weaponskill.partner == 'none' and not weaponskill.skillchain_active then
             return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
         end
         
@@ -126,11 +126,15 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
         return
     end
 
-    weaponskill.close_and_reopen_window(target.id)
     local ids = otto.getMonitoredIds()
     local ws_is_from_teammate = ids:contains(actor)
+    if not ws_is_from_teammate then return end
+    
+    weaponskill.close_and_reopen_window(target.id)
 
-    if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255 and ws_is_from_teammate then
+    log('here')
+
+    if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then
             weaponskill.can_skillchain = true
         else 

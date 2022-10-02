@@ -691,9 +691,22 @@ local function geomancer(args)
             user_settings.job.geomancer.cooldowns = false
             message = 'Geomancer will save cooldowns.'
         end
+    elseif command == 'indi' then
+        if arg2 == 'off' then
+            user_settings.job.geomancer.indi = ''
+            message = 'Will stop using Geo-spells .'
+        end
+
+        local action = utils.normalize_action(arg2, 'spells')
+        
+        if action then
+            user_settings.job.geomancer.indi = action.en
+            message = 'Will use '..action.en
+        end
+
     elseif command == 'bubble' then
         if arg2 == 'off' then
-            user_settings.job.geomancer.geo = false
+            user_settings.job.geomancer.geo = ''
             message = 'Will stop using Geo-spells .'
         end
 
@@ -705,12 +718,15 @@ local function geomancer(args)
         
         if action then
             user_settings.job.geomancer.geo = action.en
-            message = 'Will use '..action.en
+            message = 'Will use '..action.en..' using'..arg2..' to determine Full Circle usage at yalm distance of ~'..arg4
         end
 
         if arg4 then
             user_settings.job.geomancer.bubble.distance = tonumber(arg4)
         end
+
+        otto.geomancer.should_full_circle = true
+
 	elseif command == 'entrust' then
 		if arg2 then
             user_settings.job.geomancer.entrust.target = arg2

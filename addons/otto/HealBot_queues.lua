@@ -46,6 +46,17 @@ function ActionQueue:insert_with_preaction(actionType, action1, action2, action2
     end
 end
 
+function ActionQueue:enqueue_preaction(actionType, action, name)
+    local queue_item = {['type']=actionType,['action']=action,['name']=name}
+
+    if self.queue:empty() then
+        self.queue:insert(1, queue_item)
+    else
+        local last = self.queue:length()+1
+        self.queue:insert(last, queue_item)       
+    end
+end
+
 function ActionQueue:enqueue_action(actionType, action, name)
     local queue_item = {['type']=actionType,['action']=action,['name']=name}
 

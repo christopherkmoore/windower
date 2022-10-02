@@ -54,21 +54,22 @@ return {
     },
     ["job"] = {
         ["geomancer"] = {
-            ["blow_cooldowns"] = false,
             ["bubble"] = {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
+            ["cooldowns"] = true,
             ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
             },
-            ["geo"] = "Geo-Frailty"
+            ["geo"] = "Geo-Frailty",
+            ["indi"] = "Indi-Fury"
         }
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 4,
+        ["cast_tier"] = 3,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,

@@ -60,6 +60,7 @@ return {
     ["Knotted Root"] = true,
     ["Lithicthrower Image"] = true,
     ["Locus Blazer Elytra"] = true,
+    ["Locus Dire Bat"] = false,
     ["Locus Dragonfly"] = false,
     ["Locus Hornfly"] = false,
     ["Locus Lugcrawler"] = false,
