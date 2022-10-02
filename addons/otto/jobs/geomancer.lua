@@ -1,13 +1,4 @@
--- Currently under construction.
--- TODO
--- I would like to add a new queue for geomancy since so many of the spells require actions. 
--- a geomancer should user the actors time at pos to know when it's a good idea to burn cooldowns.
--- loupan should almost always be fraily or malaise since the bonuses with coupled abilities are so good, and you're basically already at att cap with bard.
-
--- needs entrust, Queue, priority, q action triage based on priority, blow protection CDS on buffed loupan. Maybe send gs c ProtectLoupan  that locks certain gear in place while
--- a buffed loupan is active?
-
--- add the ability to pre-action cardinal chant with mb
+-- otto geo by TC
 
 local geomancer = { }
 

@@ -3,6 +3,8 @@
 	Author: Ragnarok.Lorand
 	HealBot action handling functions
 --]]
+
+-- expanded and modified by TC
 --==============================================================================
 
 local actions = {queue=L()}

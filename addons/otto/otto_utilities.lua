@@ -3,6 +3,8 @@
     Author: Ragnarok.Lorand
     HealBot utility functions that don't belong anywhere else
 --]]
+
+-- modified and edited by TC
 --==============================================================================
 --          Input Handling Functions
 --==============================================================================

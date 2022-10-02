@@ -1,4 +1,6 @@
 
+-- Weaponskills by TC
+
 -- Notes
 -- would be cool to add a user_settings property for step, which allows partners to wait until a certain step to ws.
 -- ex step 1 something

@@ -3,6 +3,8 @@
     Author: Ragnarok.Lorand
     HealBot offense handling functions
 --]]
+
+-- expanded and modified by TC
 --==============================================================================
 
 local offense = {

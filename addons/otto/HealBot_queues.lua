@@ -3,6 +3,8 @@
     Author: Ragnarok.Lorand
     HealBot action queue building & handling functions
 --]]
+
+-- expanded and modified by TC
 --==============================================================================
 
 local compFunc = {}

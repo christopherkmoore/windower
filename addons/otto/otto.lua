@@ -1,20 +1,14 @@
 --[[
-    Alot of this code is simply consolidated from other places. What I wanted to build together was an entire job setup (with queues and 
-    prorities) rather than depending on 3 or 9 different addons doing different things and not using shared state or communicating with each other.
-    I have made changes / updates / modifications for my own playstyle.
-    Original credit for a huge portion of this codebase is thanks to Lorand and healbot -- it is by far the best and most sophisticated 
-    at doing everything from all addons I use.
-
-    - libs/lor + queues + actions + Actor + so much stuff -- thank you!
-
-    - Aspir - TC
-    - Magic Burst - Ekrividus
-    - Follow - pulled from HB
+    If you have somehow stumbled upon this and begun using it, please for the love of god don't message me
+    in game about it. Create a github issue or find me on disc. If you cannot figure out 
+    Thank you to Lorand for a huge amount of the code from Healbot, which was adapted for otto. 
+    The thing that sets healbot above other addons is the queues, which is something I wanted in 
+    every addon I used outside of healbot... So I made it.
 --]]
 _addon.version = '1.0.0'
 _addon.name = 'otto'
-_addon.author = 'Twochix'
-_addon.lastUpdate = '6/11/2020'
+_addon.author = 'TC'
+_addon.lastUpdate = '10/02/22'
 _addon.commands = { 'otto' }
 
 require('luau')

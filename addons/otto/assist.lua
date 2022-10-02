@@ -9,12 +9,6 @@
 
     and modified to suit my needs.
     -TC
-
-    -- todo test actor:is_acting to make sure mobs moving isn't dragging people all over the place
-    -- add should_close_in() check to test that the master's yalm range is within a sensible distance to start running it down. 
-    Otherwise you look like a fucking idiot running into narnia...
-
-    -- maybe add retry to target master. in busy places i think the congestion drops injected packets.
 ]]
 
 -- Commands related to targeting / engaging during battle

@@ -1,8 +1,4 @@
--- for the time being this is super primitive. Ideally i'm thinking action handlers for categories mob finsih tp or mob finish spell to scan for stuff
--- that needs to be edispelled. 
-
--- when dispel is added and resolved, scan to confirm removal. Then add to mob_ability_dispellables to track which can be dispelled. Aint no way
--- I'm gunna add all that shit in manually.
+-- dispels by TC
 
 local dispel = { monster_ability_dispelables = {},}
 

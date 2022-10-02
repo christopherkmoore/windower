@@ -3,6 +3,8 @@
     Author: Ragnarok.Lorand
     HealBot buff handling functions
 --]]
+
+-- modifications made by TC
 --==============================================================================
 
 local buffs = {

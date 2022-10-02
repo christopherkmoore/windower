@@ -3,6 +3,8 @@
     Author: Ragnarok.Lorand
     HealBot packet handling functions
 --]]
+
+-- edited and modified by TC
 --==============================================================================
 local otto_packets = { }
 local messages_blacklist = _libs.lor.packets.messages_blacklist

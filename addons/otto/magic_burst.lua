@@ -1,11 +1,5 @@
 --[[
-    I am not the original author of this, credit goes to Ekrividus. All I've done is ported it, cleaned up a bit and consolidated.
-    -- TC
-
-	-- todo add lock_element argument for forcing MB spell type (useful for resistances and bosses that absorb)
-
-	todo spells need to be removed as they're finished.
-	 
+	original credit goes to
 
 	_addon.version = '0.7.0'
 	_addon.name = 'autoMB'
@@ -13,6 +7,11 @@
 	_addon.commands = {'autoMB','amb'}
 	_addon.lastUpdate = '6/11/2020'
 	_addon.windower = '4'
+
+	modified and edited by TC
+
+	TODO: maybe open / close window from ws? use to know when to burst.
+	filtering burst targets by if window was opened by a teammate?
 ]]
 
 local magic_burst = T{ _events = { } }
