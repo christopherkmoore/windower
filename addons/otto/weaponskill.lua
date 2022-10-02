@@ -129,10 +129,8 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
     local ids = otto.getMonitoredIds()
     local ws_is_from_teammate = ids:contains(actor)
     if not ws_is_from_teammate then return end
-    
-    weaponskill.close_and_reopen_window(target.id)
 
-    log('here')
+    weaponskill.close_and_reopen_window(target.id)
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then
