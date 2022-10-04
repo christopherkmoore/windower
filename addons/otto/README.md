@@ -46,24 +46,57 @@ pre actions
 jobs/geo
 
 wants
+sub-job
+whm regens
+rdm 
 bard
 pass / lot
 
 Bugs
 fix whm erase-ga (it's breaking buffs because of prioritization.) -- maybe fixed?
-skillchains do not work well when multiple party members are fighting different mobs.
-maybe otto off 
 clean up vprint logs
 weaponskill / magicburst carries to new target.
-weaponskills will sometimes not close properly (action not being added to q in time?)
 make queue more efficient
 add checks -- aspir is targeting any target
 maybe curaga deciding could use a bit of touch up?
 
-
 TODO
-aspir is targeting any target
+aspir is targeting any target -- offensive action need better conditions for performing
 add global on / off
-figure fucking targeting out
-bug in assist for backline roles.
+bug in assist for backline roles. -- offensive action need better conditions for performing
 gearswap not swapping rings.
+
+ALTS 
+always -
+    Coalitions
+    Ambu for a while
+    XP
+    Domain Invasion
+
+Missions -
+    Finish ZM
+    Finish CoP
+    FInish ToAH 
+    finish Wings
+    finish Adoulin 
+    finish Rhapsodies
+    Finish voracious 
+
+Gear -
+    RDM AF - Empy - Relic
+    BLM AF - Empy - Relic - MB set
+
+Weapons
+    RDM - enspell sword, MB staff? Enfeeble + enhance weapon
+    BLM - MB weapon
+Accessories
+
+Random-
+    Finish Dyna
+
+
+Later -
+Dyna D
+Ody
+Omen
+Lillith
