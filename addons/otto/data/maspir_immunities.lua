@@ -60,6 +60,7 @@ return {
     ["Knotted Root"] = true,
     ["Lithicthrower Image"] = true,
     ["Locus Blazer Elytra"] = true,
+    ["Locus Cutlass Scorpion"] = false,
     ["Locus Dire Bat"] = false,
     ["Locus Dragonfly"] = false,
     ["Locus Hornfly"] = false,
@@ -115,5 +116,6 @@ return {
     ["Volcanic Bomb"] = false,
     ["Vouivre"] = false,
     ["Yagudo High Priest"] = true,
-    ["Yagudo Templar"] = false
+    ["Yagudo Templar"] = false,
+    ["Zansure"] = false
 }

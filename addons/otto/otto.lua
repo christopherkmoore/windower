@@ -104,18 +104,30 @@ otto._events['render'] = windower.register_event('prerender', function()
     if (player ~= nil) and can_act_statuses:contains(player.status) then
         local partner, targ = offense.assistee_and_target()
         
-        otto.follow.prerender()
+        if user_settings.follow.enabled then
+            otto.follow.prerender()
+        end
+
         if otto.active and not (moving or acting) then
 
-            --otto.active = false    --Quick stop when debugging
             if actor:action_delay_passed() then
-                actor.last_action = now                    --Refresh stored action check time
+                actor.last_action = now   
+
                 actions.take_action(player, partner, targ)
 
-                otto.aspir.prerender()
-                otto.pull.try_pulling()
+                if user_settings.aspir.enabled then
+                    otto.aspir.prerender()
+                end
+
+                if user_settings.pull.enabled then
+                    -- if dead_statuses:contains(player.status) or (player.hpp <= 0) then
+                    --     user_settings.pull.enabled = false
+                    -- end
+
+                    otto.pull.try_pulling()
+                end
                 
-                if targ ~= nil and targ.id then
+                if targ ~= nil and targ.id and user_settings.dispel.enabled then
                     otto.dispel.should_dispel(targ.id)
                 end
                 -- TODO CKM added for now

@@ -1,4 +1,6 @@
 -- Pull by TC
+-- maybe add sleeps with pull, and continuous pull?
+-- add normalize on pull.with + insert into queue
 local pull = { }
 
 pull.target = nil
@@ -23,6 +25,7 @@ local function sort_closest_target(mobs)
     local closest = nil
     for id, mob in pairs(mobs) do
         if (mob.valid_target and mob.hpp == 100) and mob.distance ~= 0 and mob.is_npc and not mob.in_party and not mob.in_alliance and mob.spawn_type == 16 then
+
             if distance == nil then
                 distance = mob.distance
                 closest = mob
@@ -35,15 +38,16 @@ local function sort_closest_target(mobs)
         end
     end
 
-    if closest ~= nil and math.sqrt(closest.distance) < 20 then return closest end
+    if closest ~= nil and math.sqrt(closest.distance) < 21 then return closest end
+
     return nil
 end
 
 
 function pull.try_pulling()
-
+    log('start')
     local player = windower.ffxi.get_player()
-
+  
     if player.status == 1 and player.target_index then
         local mob = windower.ffxi.get_mob_by_index(player.target_index)
         pull.target = mob
@@ -62,14 +66,13 @@ function pull.try_pulling()
     if pull.has_target_already() then return end
 
     local mob = pull.find_target()
-
+    
     if mob ~= nil then
         otto.assist.all_target_master(mob.id) -- doesn't actually all target, just the puller targets.
-
-        
         if player.target_index == mob.index then 
+
             windower.chat.input(user_settings.pull.with.." <t>")
-            coroutine.sleep(2)
+            coroutine.sleep(0.5)
 
             if pull.check_pull_success(mob) then
                 otto.assist.master_target_no_close_in(pull.target.id)
@@ -82,7 +85,6 @@ function pull.try_pulling()
     if pull.target ~= nil then 
         if pull.target.hpp == 0 then
             pull.target = nil
-           
         end
     end 
 
