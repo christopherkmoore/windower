@@ -15,6 +15,7 @@ send Fivechix otto aspir t 1;
 send Fivechix gs c set AutoConvertMode Auto;
 
 send Fivechix otto buff Fivechix Composure on;
+send Fivechix otto buff Fivechix Temper II on;
  
 send Fivechix otto buff Twochix Phalanx II on;
 
@@ -25,16 +26,16 @@ send Fivechix otto buff Threechix Haste II on;
 send Fivechix otto buff Fourchix Haste II on;
 send Fivechix otto buff Fivechix Haste II on;
 
-send Fivechix otto buff Threechix Refresh II on;
-send Fivechix otto buff Fourchix Refresh II on;
-send Fivechix otto buff Fivechix Refresh II on;
+send Fivechix otto buff Threechix Refresh III on;
+send Fivechix otto buff Fourchix Refresh III on;
+send Fivechix otto buff Fivechix Refresh III on;
 
-send Fivechix otto debuff Bio II on;
+send Fivechix otto debuff Dia III on;
 //send Fivechix otto debuff Slow II on;
-send Fivechix otto debuff Paralyze II on;
-send Fivechix otto debuff Frazzle II on;
-send Fivechix otto debuff Distract II on;
+//send Fivechix otto debuff Paralyze II on;
+send Fivechix otto debuff Frazzle III on;
+send Fivechix otto debuff Distract III on;
 send Fivechix otto debuff Inundation on;
-send Fivechix otto debuff Addle on;
-send Fivechix otto debuff Blind II on;
+//send Fivechix otto debuff Addle II on;
+//send Fivechix otto debuff Blind II on;
 

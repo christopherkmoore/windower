@@ -69,7 +69,7 @@ return {
         }
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 3,
+        ["cast_tier"] = 4,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
@@ -82,7 +82,7 @@ return {
     },
     ["pull"] = {
         ["enabled"] = false,
-        ["with"] = ""
+        ["with"] = "/ma Poison"
     },
     ["weaponskill"] = {
         ["enabled"] = true,

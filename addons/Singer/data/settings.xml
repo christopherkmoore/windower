@@ -76,7 +76,6 @@
         <use_ws>true</use_ws>
     </global>
     <onechix>
-        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>

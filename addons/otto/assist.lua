@@ -127,6 +127,7 @@ function assist.all_target_master(id)
         return
     end
 
+    log('herearadf')
     local player = windower.ffxi.get_player()
 
     packets.inject(packets.new('incoming', 0x058, {
@@ -157,10 +158,9 @@ local function face_target(target_type) -- 't', 'bt'
 	
 	local mob = windower.ffxi.get_mob_by_target(target_type)
 	if not mob then
-		-- error
 		return 
 	end
-	
+
 	windower.ffxi.turn(heading_to(mob.x, mob.y))
 end
 
@@ -258,25 +258,28 @@ function assist.ipc_message_handler(message)
 
     if msg[1] == 'master' then
         locked_closing_in = true 
-        if not assist.is_master then return end
+        if not assist.is_master then return end          -- maybe bug here? don't think I want to return since the rest of the commands are below.
 
         local id = tonumber(msg[2])
         local player = windower.ffxi.get_player()
 
-        assist.attack_on(id)
+        while player.status == player_status["Idle"] do
+            assist.attack_on(id)
+            target_lock_on:schedule(1)
+            coroutine.sleep(1)
 
-        target_lock_on:schedule(1)
-
-        coroutine.sleep(1)
+            player = windower.ffxi.get_player()
+        end
 
         while player.status == player_status['Engaged'] do
             face_target()
             coroutine.sleep(.5)
+
             player = windower.ffxi.get_player()
         end
     end
 
-    if not is_slave then
+    if not is_slave then                                            -- check this too.
         return
     end
 
