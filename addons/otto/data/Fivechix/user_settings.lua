@@ -23,7 +23,8 @@ return {
     ["follow"] = {
         ["active"] = false,
         ["delay"] = 0.2,
-        ["distance"] = 5
+        ["distance"] = 1,
+        ["target"] = "Twochix"
     },
     ["healer"] = {
         ["activateOutdoors"] = false,
@@ -59,7 +60,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = false,
+        ["double_burst"] = true,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

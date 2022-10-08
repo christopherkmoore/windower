@@ -367,7 +367,10 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
     if not categories:contains(category) or action.param == 0 then
         return
     end
-
+	
+    local ids = otto.getMonitoredIds()
+    local ws_is_from_teammate = ids:contains(actor)
+    if not ws_is_from_teammate then return end
 
     if add_effect and skillchain_ids:contains(add_effect.message_id) then
 

@@ -25,5 +25,5 @@ send @all otto follow off;
 otto r all
 
 
-send Chixslave gs c set autoregenagamode off;
+send Chixslave gs c set AutoRegenAgaMode Off;
 

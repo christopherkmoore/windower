@@ -8,19 +8,6 @@ profiles['sparks'] = S{
     'prize powder'
 }
 
--- //sellnpc ore
-profiles['ore'] = S{
-    'iron ore',
-    'copper ore',
-    'tin ore',
-    }
-
--- //sellnpc junk
-profiles['junk'] = S{
-    'chestnut',
-    'san d\'Or. carrot',
-    }
-
 profiles['mog'] = S{
     'Beehive chip',
     'Kazham Peppers',
@@ -47,7 +34,11 @@ profiles['mog'] = S{
     'kukuru bean',
     'frost turnip',
     'napa',
-
+    'Revival Root',
+    'Merrow Scale',
+    'Colibri Beak',
+    'Chimera Blood',
+    'Mohbwa Cloth',
     'iron ore',
     'copper ore',
     'tin ore',
@@ -73,7 +64,7 @@ profiles['mog'] = S{
     'gold ore',
     'mythril ore',
     'rock salt',
-
+    'warthog meat',
     'maple log',
     'arrowwood log',
     'walnut log',
@@ -123,7 +114,7 @@ profiles['mog'] = S{
     'puffball',
     'winterflower',
     'pugil scales',
-
+    'Voay Staff -1',
     'soil geode',
     'ifritite',
     'titanite',
@@ -275,7 +266,12 @@ profiles['mog'] = S{
     'antican acid',
     'red grass thread',
     'shivite',
-    'carrier crab carapace'
+    'carrier crab carapace',
+    'bomb ash',
+    'fiend blood', 
+    'beastman blood',
+    'wyvern wing', 'wyvern scales', 'wyvern skull', 'wyvern skin', 'Velkk Necklace', 'Velkk Mask', 'Tulfaire Feather',
+    'Cotton Cloth', 'Colibri Feather', 'Gnat wing', 'Matamata Shell', 'Gelid Aggregate', 'Raptor Skin', 'Wivre maul'
 }
 
 return profiles

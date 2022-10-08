@@ -65,6 +65,8 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
         return
     end
 
+    -- add check here to determine that the mob is claimed by pt. mob.target_index == monitored ids?
+
     if monitored_ids[target.raw.id] == nil and monitored_ids[actor_id] == nil then
         local mob = windower.ffxi.get_mob_by_id(actor_id)
 

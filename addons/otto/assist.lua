@@ -121,20 +121,42 @@ local function target_master(player, id)
     }))
 end
 
-function assist.all_target_master(id)
+function assist.puller_target_and_cast(mob)
 
-    if not id then
+    if not mob then
         return
     end
 
-    log('herearadf')
     local player = windower.ffxi.get_player()
+    -- packets.inject(packets.new('incoming', 0x058, {
+    --     ['Player'] = player.id,
+    --     ['Target'] = id,
+    --     ['Player Index'] = player.index,
+    -- }))
+    table.vprint(mob)
+    local elegy_recast = windower.ffxi.get_spell_recasts()[422]
+    if elegy_recast == 0 then
+        local p = packets.new('outgoing', 0x01A, {
+            ["Target"] = mob.id,
+            ["Target Index"] = mob.index,
+            ["Category"] = 0x03, -- spell cast
+            ["Param"] = 422
+        })
+        log('in point')
+        packets.inject(p)
 
-    packets.inject(packets.new('incoming', 0x058, {
-        ['Player'] = player.id,
-        ['Target'] = id,
-        ['Player Index'] = player.index,
-    }))
+        coroutine.sleep(1)
+
+        local p = packets.new('incoming', 0x058, {
+            ['Player'] = player.id,
+            ['Target'] = mob.id,
+            ['Player Index'] = player.index,
+        })
+    
+        packets.inject(p)
+    
+    end
+
 
 end
 

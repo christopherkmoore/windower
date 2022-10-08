@@ -240,7 +240,7 @@ local function _getMonitoredPlayers()
     for p = 1, #pt_keys do
         for m = 1, pt[pt_keys[p]] do
             local pt_member = pt[pm_keys[p][m]]
-            if my_zone == pt_member.zone then
+            if pt_member and my_zone == pt_member.zone then
                 if p == 1 or otto.extraWatchList:contains(pt_member.name) then
                     otto.addPlayer(targets, pt_member)
                 end

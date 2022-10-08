@@ -40,6 +40,8 @@ geomancer.blaze_active = false
 geomancer.ecliptic_attrition_active = false
 
 function geomancer.check_geo()
+    if not user_settings.job.geomancer.enabled then return end
+    
     local action = utils.normalize_action(user_settings.job.geomancer.geo, 'spells')
     local loupan = windower.ffxi.get_mob_by_target('pet')
     local bubble_target = windower.ffxi.get_mob_by_name(user_settings.job.geomancer.bubble.target)
@@ -51,7 +53,7 @@ function geomancer.check_geo()
             geomancer.bubble_action = action
         end
 
-        if debuff_bubbles:contains(action.id) and bubble_target.status == 1 then
+        if bubble_target and debuff_bubbles:contains(action.id) and bubble_target.status == 1 then
             geomancer.bubble_should_cast = true
             geomancer.bubble_target = '<t>' -- bug here... 
             geomancer.bubble_action = action

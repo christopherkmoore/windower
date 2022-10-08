@@ -1,0 +1,9 @@
+send Chixslave /ja "Accession" Chixslave
+wait 2
+send Chixslave /ma "Sneak" Chixslave
+
+wait 5
+
+send Chixslave /ja "Accession" Chixslave
+wait 2
+send Chixslave /ma "Invisible" Chixslave

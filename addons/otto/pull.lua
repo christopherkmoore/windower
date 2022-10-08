@@ -68,15 +68,13 @@ function pull.try_pulling()
     local mob = pull.find_target()
     
     if mob ~= nil then
-        otto.assist.all_target_master(mob.id) -- doesn't actually all target, just the puller targets.
-        if player.target_index == mob.index then 
+    
+        otto.assist.puller_target_and_cast(mob) -- hard coded to elegy
+        
+        coroutine.sleep(1)
 
-            windower.chat.input(user_settings.pull.with.." <t>")
-            coroutine.sleep(0.5)
-
-            if pull.check_pull_success(mob) then
-                otto.assist.master_target_no_close_in(pull.target.id)
-            end
+        if pull.check_pull_success(mob) then
+            otto.assist.master_target_no_close_in(pull.target.id)
         end
 
     end

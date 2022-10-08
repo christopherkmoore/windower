@@ -23,7 +23,8 @@ return {
     ["follow"] = {
         ["active"] = false,
         ["delay"] = 0.2,
-        ["distance"] = 5
+        ["distance"] = 1,
+        ["target"] = "Twochix"
     },
     ["healer"] = {
         ["activateOutdoors"] = false,
@@ -58,8 +59,8 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = true,
-            ["enabled"] = true,
+            ["cooldowns"] = false,
+            ["enabled"] = false,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"

@@ -23,7 +23,8 @@ return {
     ["follow"] = {
         ["active"] = false,
         ["delay"] = 0.2,
-        ["distance"] = 5
+        ["distance"] = 1,
+        ["target"] = "Twochix"
     },
     ["healer"] = {
         ["activateOutdoors"] = false,
@@ -64,8 +65,8 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
-        ["with"] = "/ma Carnage Elegy"
+        ["enabled"] = false,
+        ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
         ["enabled"] = true,

@@ -57,8 +57,10 @@ function aspir.prerender()
     if not user_settings.aspir.enabled then return end
     if not aspir.should_cast() then return end 
     
+    local spells = windower.ffxi.get_spells()
+
     local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
-    if aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
+    if spells[spell.aspir3.id] == true and aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
         if offense.nukes[spell.aspir3.id] == nil then
             offense.addToNukeingQueue(spell.aspir3)
             return
@@ -66,7 +68,7 @@ function aspir.prerender()
     end
 
     local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
-    if aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir2) then
+    if spells[spell.aspir2.id] == true and aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir2) then
         if offense.nukes[spell.aspir2.id] == nil then
             offense.addToNukeingQueue(spell.aspir2)
             return
@@ -74,7 +76,7 @@ function aspir.prerender()
     end
 
     local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
-    if aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
+    if spells[spell.aspir.id] == true and aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
         if offense.nukes[spell.aspir] == nil then
             offense.addToNukeingQueue(spell.aspir)
             return
