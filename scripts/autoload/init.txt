@@ -104,6 +104,7 @@ bind ^d send @all exec dismounts
 bind ^a sat allattack
 bind ^w exec warps
 bind ^t exec targetnpc
+bind ^s exec stuns
 
 block_mouseinput 1;
 

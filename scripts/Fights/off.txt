@@ -13,6 +13,7 @@ send Onechix sing nightingale off;
 send Onechix sing troubadour off; 
 send Onechix sing soul_voice off,
 send Onechix sing clarion off;
+send Onechix otto pull off;
 
 send Onechix gs c set autowsmode off; 
 send Onechix gs c set autoshadowmode off;

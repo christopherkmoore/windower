@@ -172,7 +172,7 @@ function init_gear_sets()
         back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Dark Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Gna Earring",ear2="Friomisi Earring",
+        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
@@ -262,8 +262,8 @@ function init_gear_sets()
 
 	-- Idle sets
 
-	sets.idle = {main="Malignance Pole",ammo="Staunch Tathlum +1",
-		head="Azimuth Hood +2",neck="Bagua Charm +1",ear1="Genmei Earring",ear2="Azimuth Earring",
+	sets.idle = {main="Malignance Pole",sub="Irenic Strap",ammo="Staunch Tathlum +1",
+		head="Azimuth Hood +2",neck="Bagua Charm +1",ear1="Eabani Earring",ear2="Azimuth Earring",
 		body="Azimuth Coat +2",hands="Bagua mitaines +1",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
 		back="Umbra Cape",waist="Shinjutsu-no-Obi",legs="Assid. Pants +1",feet="Azimuth Gaiters +2"}
 		
@@ -301,7 +301,7 @@ function init_gear_sets()
 		body="Azimuth Coat +2",hands="Hagondes Cuffs +1",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flax Sash",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}
 
-	sets.defense.MDT = {main="Malignance Pole",sub="Umbra Strap",ammo="Staunch Tathlum +1",
+	sets.defense.MDT = {main="Malignance Pole",sub="Irenic Strap",ammo="Staunch Tathlum +1",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Hagondes Cuffs +1",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flax Sash",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}

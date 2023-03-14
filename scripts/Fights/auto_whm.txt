@@ -3,7 +3,7 @@
 ////////////////////////////////
 
 send Chixslave otto healer on;
-send Chixslave otto magicburst on;
+send Chixslave otto magicburst off;
 send Chixslave otto magicburst t 2;
 send Chixslave otto magicburst c holy;
 send Chixslave otto magicburst gearswap on;

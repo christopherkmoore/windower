@@ -23,7 +23,8 @@ return {
     ["follow"] = {
         ["active"] = false,
         ["delay"] = 0.2,
-        ["distance"] = 5
+        ["distance"] = 5,
+        ["target"] = "Twochix"
     },
     ["healer"] = {
         ["activateOutdoors"] = false,

@@ -41,3 +41,6 @@ send Threechix exec fights/auto_geo
 // Guests
 ////////////////////////////////////
 
+send Threechix otto buff Twochix Haste on;
+send Threechix otto buff Onechix Haste on;
+send Threechix otto buff Chaosblast on;

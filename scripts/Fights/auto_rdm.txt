@@ -3,13 +3,12 @@
 ////////////////////////////////
 
 send Fivechix otto healer off;
-send Threechix otto geo on;
-send Fivechix otto magicburst on;
+send Fivechix otto magicburst off;
 send Fivechix otto magicburst t 2;
 send Fivechix otto magicburst c spell;
 send Fivechix otto magicburst doubleburst on;
 send Fivechix otto magicburst gearswap on;
-send Fivechix otto aspir on;
+send Fivechix otto aspir off;
 send Fivechix otto aspir t 1;
 
 send Fivechix gs c set AutoConvertMode Auto;

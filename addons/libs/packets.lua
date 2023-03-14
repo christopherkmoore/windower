@@ -433,10 +433,8 @@ function packets.inject(packet)
 
     if packet._dir == 'incoming' then
         windower.packets.inject_incoming(packet._id, packet._raw)
-
     elseif packet._dir == 'outgoing' then
         windower.packets.inject_outgoing(packet._id, packet._raw)
-
     else
         error('Error sending packet, no direction specified. Please specify \'incoming\' or \'outgoing\'.')
     end

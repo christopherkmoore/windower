@@ -55,7 +55,7 @@ return {
     },
     ["job"] = {},
     ["magic_burst"] = {
-        ["cast_tier"] = 2,
+        ["cast_tier"] = 3,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,

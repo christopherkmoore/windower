@@ -1,22 +1,30 @@
 <settings>
     <global>
-        <X>2900</X>
-        <Y>900</Y>
+        <Ranges />
+        <Scale>1</Scale>
+        <X>2599</X>
+        <Y>830</Y>
         <Opacity>75</Opacity>
         <ShowPC>true</ShowPC>
         <ShowNPC>true</ShowNPC>
         <ShowMob>true</ShowMob>
         <ShowMarker>true</ShowMarker>
         <ShowTargetLine>true</ShowTargetLine>
-        <Ranges />
-        <Scale>1</Scale>
     </global>
-    <Twochix>
-        <Y>527</Y>
-        <X>2618</X>
-    </Twochix>
+    <Threechix>
+        <X>2565</X>
+        <Y>827</Y>
+    </Threechix>
+    <Chixslave>
+        <X>2606</X>
+        <Y>840</Y>
+    </Chixslave>
     <Fourchix>
-        <X>2792</X>
-        <Y>811</Y>
+        <X>2581</X>
+        <Y>849</Y>
     </Fourchix>
+    <Twochix>
+        <X>2605</X>
+        <Y>165</Y>
+    </Twochix>
 </settings>

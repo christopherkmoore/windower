@@ -4,9 +4,9 @@
 
 send Fourchix otto healer off;
 send Fourchix otto magicburst on;
-send Fourchix otto magicburst t 2;
+send Fourchix otto magicburst t 3;
 send Fourchix otto magicburst c spell;
-send Fourchix otto magicburst doubleburst on;
+send Fourchix otto magicburst doubleburst off;
 send Fourchix otto magicburst gearswap on;
 send Fourchix otto aspir on;
 send Fourchix otto aspir t 2;

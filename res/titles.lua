@@ -1059,6 +1059,11 @@ return {
     [1066] = {id=1066,en="Ongo Obliterator",ja="オンゴオブリテレーター"},
     [1067] = {id=1067,en="Arepati Assaulter",ja="アレバティアソルター"},
     [1068] = {id=1068,en="Bumba Befouler",ja="バンバビファウラー"},
+    [1069] = {id=1069,en="Dhartok Defiler",ja="ダートックデファイラー"},
+    [1070] = {id=1070,en="Gartell Grinder",ja="ガーテルグラインダー"},
+    [1071] = {id=1071,en="Triboulex Terrorizer",ja="トリブレックステロライザー"},
+    [1072] = {id=1072,en="Aita Abnegater",ja="アイタアブネガーター"},
+    [1073] = {id=1073,en="Aminon Apprehender",ja="アミノンアプリヘンダー"},
     [1116] = {id=1116,en="Raptor Wrangler",ja="爆速ラプトルライダー"},
     [1117] = {id=1117,en="Gardener for the Ages",ja="疾走ガーデンライダー"},
     [1118] = {id=1118,en="Lagoon Explorer",ja="伝説ラグーンライダー"},
@@ -1089,10 +1094,12 @@ return {
     [1143] = {id=1143,en="Parter of the Veil",ja="悪魔を見抜きし者"},
     [1144] = {id=1144,en="Demonic Dreamer",ja="デモニカル・ドリーマーズ"},
     [1145] = {id=1145,en="Searcher of the Voracious",ja="蝕む魂を求めるもの"},
+    [1146] = {id=1146,en="Another Psyche",ja="アナザー・プシュケー"},
+    [1147] = {id=1147,en="Sender of Shadow",ja="闇の王を見送りし者"},
 }, {"id", "en", "ja"}
 
 --[[
-Copyright © 2013-2022, Windower
+Copyright © 2013-2023, Windower
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

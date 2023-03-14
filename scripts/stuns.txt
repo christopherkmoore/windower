@@ -1,0 +1,2 @@
+send Fourchix /ma "Stun" <t>
+send Fivechix /ma "Stun" <t>

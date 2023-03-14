@@ -60,7 +60,7 @@ return {
                 ["target"] = "Twochix"
             },
             ["cooldowns"] = false,
-            ["enabled"] = false,
+            ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
@@ -75,7 +75,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = true,
+        ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

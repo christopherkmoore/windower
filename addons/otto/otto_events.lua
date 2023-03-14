@@ -258,10 +258,6 @@ local function healer_commands(args)
         else
             atc('Error: Invalid argument specified for minCure')
         end
-    -- elseif command == 'ignore_debuff' then
-    --     otto.buffs.registerIgnoreDebuff(args, true)
-    -- elseif command == 'unignore_debuff' then
-    --     otto.buffs.registerIgnoreDebuff(args, false)
 
     -- elseif S{'disable'}:contains(command) then
     --     if not validate(args, 2, 'Error: No argument specified for Disable') then return end
@@ -439,6 +435,12 @@ local function debuffs_commands(args)
 
     if command == 'wipedebuffs' then                              -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
         utils.wipe_debufflist()
+    elseif command == 'ignore' then
+        table.remove(args, 1)
+        otto.buffs.registerIgnoreDebuff(args, true)
+    elseif command == 'unignore' then
+        table.remove(args, 1)
+        otto.buffs.registerIgnoreDebuff(args, false)
     elseif command == 'help' then
 
     else 
@@ -811,9 +813,19 @@ function events.addon_command(...)
     elseif S{'help','man', '?'}:contains(command) then
         windower.add_to_chat(144, 'Top level commands are:')
         windower.add_to_chat(144, 'aspir - configure auto aspir!')
-        windower.add_to_chat(144, 'magicburst | mb - make things explody')
-        windower.add_to_chat(144, 'healbot | hb - your beloved healer -- and a white mage that will never talk back!')
-        windower.add_to_chat(144, 'follow | f - commands for following a master')
+        windower.add_to_chat(144, 'magicburst | mb - make things explody.')
+        windower.add_to_chat(144, 'healbot | hb - leftover healbot commands')
+        windower.add_to_chat(144, 'follow | f - commands for following.')
+        windower.add_to_chat(144, 'assist | f - set an alts role to either engage or support master\'s target.')
+        windower.add_to_chat(144, 'healer | f - your beloved healer -- and a white mage that will never talk back!')
+        windower.add_to_chat(144, 'buff | f - buffs across multiple jobs')
+        windower.add_to_chat(144, 'debuff | f - debuffs...')
+        windower.add_to_chat(144, 'weaponskill | f - sets up weaponskills / skillchains.')
+        windower.add_to_chat(144, 'dispel | f - similar to aspir, toggle auto-dispeling under the right conditions.')
+        windower.add_to_chat(144, 'pull | f - an otto puller')
+        windower.add_to_chat(144, 'geo | f - otto geo.')
+
+
     elseif S{'start','on'}:contains(command) then
         otto.activate = true
         windower.add_to_chat(144, 'Otto is live!')
