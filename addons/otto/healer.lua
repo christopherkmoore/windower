@@ -8,7 +8,7 @@ local ffxi = _libs.lor.ffxi
 function healer.init() 
     local defaults = { healing = { min = {}, max = {}}, disable = {} }
     defaults.enabled = true         -- top level enable toggle. on | off
-    defaults.healing.curaga_min_targets = 3
+    defaults.healing.curaga_min_targets = 5
     defaults.healing.min.cure = 3
     defaults.healing.min.curaga = 3
     defaults.healing.min.waltz = 3
@@ -154,7 +154,9 @@ function healer.get_weighted_curaga_hp(members_info, names)
     return missing / c, hp / c
 end
 
-
+-- CKM Notes: I think inured_pt_members should also return the amount, and this should determine 
+-- if an aga is reasonable by determining the spread between HPs of members
+-- ex: mem1: 900, mem2: 50, mem3: 50, mem4: 100 -> probably don't aga.
 function healer.pick_best_curaga_possibility()
     local too_few = user_settings.healer.healing.curaga_min_targets
     local members = healer.injured_pt_members()

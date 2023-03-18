@@ -60,7 +60,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = true,
+        ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

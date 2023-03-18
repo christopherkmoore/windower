@@ -11,4 +11,5 @@ otto debuffs wipedebuffs;
 
 otto on;
 
+send Onechix lua reload singer;
 send Onechix sing playlist clear;

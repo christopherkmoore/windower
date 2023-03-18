@@ -60,7 +60,7 @@ return {
                 ["target"] = "Twochix"
             },
             ["cooldowns"] = false,
-            ["enabled"] = true,
+            ["enabled"] = false,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"

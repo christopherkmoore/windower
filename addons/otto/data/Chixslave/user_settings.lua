@@ -35,7 +35,7 @@ return {
         },
         ["enabled"] = true,
         ["healing"] = {
-            ["curaga_min_targets"] = 3,
+            ["curaga_min_targets"] = 5,
             ["max"] = {
                 ["curaga"] = 5,
                 ["cure"] = 6,
