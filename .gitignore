@@ -32,3 +32,17 @@ addons/findAll/data/Twochix.lua
 addons/autojoin/data/settings.xml
 addons/findAll/data/Chixslave.lua
 addons/Skillchains/data/settings.xml
+addons/findAll/data/Chixslave.lua
+addons\findAll\data\*
+addons\otto\data\*
+addons\otto\data\Chixslave\user_settings.lua
+addons/findAll/data/Chixslave.lua
+addons/findAll/data/Onechix.lua
+addons/findAll/data/Threechix.lua
+addons/findAll/data/Twochix.lua
+addons/otto/data/Chixslave/user_settings.lua
+addons/otto/data/Fivechix/user_settings.lua
+addons/otto/data/Fourchix/user_settings.lua
+addons/otto/data/Onechix/user_settings.lua
+addons/otto/data/Threechix/user_settings.lua
+addons/otto/data/Twochix/user_settings.lua
