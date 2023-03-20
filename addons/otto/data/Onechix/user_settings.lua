@@ -65,7 +65,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
