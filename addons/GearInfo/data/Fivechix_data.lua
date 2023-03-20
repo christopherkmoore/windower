@@ -202,8 +202,8 @@ return {
     [7]={
         ["discription"]="DMG:122 Delay:264 Sword skill +215 Parrying skill +215 Magic Accuracy skill +167 Latent effect: DMG:128 Accuracy+15 Attack+10", 
         ["category"]="Weapon", 
-        ["en"]="Eminent Scimitar", 
         ["item_level"]=117, 
+        ["en"]="Eminent Scimitar", 
         ["Sword skill"]=215, 
         ["delay"]=264, 
         ["slots"]={
@@ -275,8 +275,8 @@ return {
             [22]="RUN"
         }, 
         ["DEX"]=16, 
-        ["item_level"]=109, 
         ["en"]="Orvail Robe +1", 
+        ["item_level"]=109, 
         ["STR"]=16, 
         ["AGI"]=16, 
         ["HP"]=25, 
@@ -421,6 +421,9 @@ return {
         ["DEX"]=19, 
         ["STR"]=19, 
         ["AGI"]=19, 
+        ["item_level"]=117, 
+        ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
+        ["HP"]=32, 
         ["Set Bonus"]={
             ["set id"]=110, 
             ["bonus"]={
@@ -433,9 +436,6 @@ return {
                 }
             }
         }, 
-        ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
-        ["HP"]=32, 
-        ["en"]="Wayfarer Circlet", 
         ["VIT"]=19, 
         ["slots"]={
             [4]="Head"
@@ -447,7 +447,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=24, 
         ["Magic Atk. Bonus"]=5, 
-        ["item_level"]=117
+        ["en"]="Wayfarer Circlet"
     }, 
     [14]={
         ["Evasion"]=37, 
@@ -474,6 +474,9 @@ return {
         ["DEX"]=20, 
         ["STR"]=20, 
         ["AGI"]=20, 
+        ["item_level"]=117, 
+        ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
+        ["HP"]=48, 
         ["Set Bonus"]={
             ["set id"]=110, 
             ["bonus"]={
@@ -486,9 +489,6 @@ return {
                 }
             }
         }, 
-        ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
-        ["HP"]=48, 
-        ["en"]="Wayfarer Robe", 
         ["VIT"]=20, 
         ["slots"]={
             [5]="Body"
@@ -500,7 +500,7 @@ return {
         ["category"]="Armor", 
         ["CHR"]=28, 
         ["Magic Atk. Bonus"]=6, 
-        ["item_level"]=117
+        ["en"]="Wayfarer Robe"
     }, 
     [15]={
         ["Evasion"]=19, 
@@ -577,9 +577,9 @@ return {
             [21]="GEO", 
             [22]="RUN"
         }, 
-        ["AGI"]=16, 
-        ["Haste"]=5, 
         ["en"]="Wayfarer Slops", 
+        ["Haste"]=5, 
+        ["AGI"]=16, 
         ["item_level"]=117, 
         ["discription"]="DEF:99 HP+38 MP+28 STR+24 VIT+12 AGI+16 INT+32 MND+22 CHR+19 \"Magic Atk. Bonus\"+5 Evasion+24 Magic Evasion+100 \"Magic Def. Bonus\"+5 Haste+5% Set: \"Refresh\"+3", 
         ["HP"]=38, 
@@ -870,7 +870,7 @@ return {
         ["discription"]="DMG:130 Delay:240 Sword skill +215 Parrying skill +215 Magic Accuracy skill +215", 
         ["category"]="Weapon", 
         ["Parrying skill"]=215, 
-        ["item_level"]=119, 
+        ["en"]="Tokko Sword", 
         ["Sword skill"]=215, 
         ["delay"]=240, 
         ["skill"]="Sword", 
@@ -889,7 +889,7 @@ return {
             [17]="COR", 
             [22]="RUN"
         }, 
-        ["en"]="Tokko Sword", 
+        ["item_level"]=119, 
         ["id"]=21617, 
         ["slots"]={
             [0]="Main", 
@@ -959,14 +959,14 @@ return {
     }, 
     [28]={
         ["discription"]="DMG:140 Delay:240 Accuracy+20 Magic Accuracy+20 Sword skill +223 Parrying skill +223 Magic Accuracy skill +223", 
-        ["item_level"]=119, 
+        ["en"]="Ajja Sword", 
         ["slots"]={
             [0]="Main", 
             [1]="Sub"
         }, 
         ["category"]="Weapon", 
         ["Sword skill"]=223, 
-        ["en"]="Ajja Sword", 
+        ["item_level"]=119, 
         ["delay"]=240, 
         ["Parrying skill"]=223, 
         ["skill"]="Sword", 
@@ -1100,7 +1100,10 @@ return {
         ["DEX"]=33, 
         ["DEF"]=119, 
         ["MND"]=32, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:119 STR+37 DEX+33 VIT+14 AGI+16 INT+50 MND+32 CHR+30 Accuracy+46 Attack+46 Magic Accuracy+46 Evasion+33 Magic Evasion+53 \"Magic Atk. Bonus\"+43 \"Magic Def. Bonus\"+5 Haste+1% \"Refresh\"+4 Set: Enhances \"Fast Cast\"", 
         ["en"]="Jhakri Robe +2", 
+        ["AGI"]=16, 
         ["Set Bonus"]={
             ["set id"]=138, 
             ["bonus"]={
@@ -1119,9 +1122,6 @@ return {
                 }
             }
         }, 
-        ["item_level"]=119, 
-        ["AGI"]=16, 
-        ["discription"]="DEF:119 STR+37 DEX+33 VIT+14 AGI+16 INT+50 MND+32 CHR+30 Accuracy+46 Attack+46 Magic Accuracy+46 Evasion+33 Magic Evasion+53 \"Magic Atk. Bonus\"+43 \"Magic Def. Bonus\"+5 Haste+1% \"Refresh\"+4 Set: Enhances \"Fast Cast\"", 
         ["id"]=25794, 
         ["Magic Accuracy"]=46, 
         ["INT"]=50, 
@@ -1288,9 +1288,9 @@ return {
     [37]={
         ["Evasion"]=15, 
         ["en"]="Eabani Earring", 
-        ["category"]="Armor", 
-        ["HP"]=45, 
         ["Dual Wield"]=4, 
+        ["HP"]=45, 
+        ["category"]="Armor", 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
@@ -1373,7 +1373,10 @@ return {
         ["DEX"]=27, 
         ["DEF"]=90, 
         ["MND"]=21, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:90 STR+31 DEX+27 VIT+7 AGI+1 INT+36 MND+21 CHR+20 Accuracy+44 Attack+44 Magic Accuracy+44 Evasion+24 Magic Evasion+37 \"Magic Atk. Bonus\"+41 \"Magic Def. Bonus\"+2 Haste+3% \"Skillchain Bonus\"+7 Set: Enhances \"Fast Cast\"", 
         ["en"]="Jhakri Coronal +2", 
+        ["AGI"]=1, 
         ["Set Bonus"]={
             ["set id"]=138, 
             ["bonus"]={
@@ -1392,9 +1395,6 @@ return {
                 }
             }
         }, 
-        ["item_level"]=119, 
-        ["AGI"]=1, 
-        ["discription"]="DEF:90 STR+31 DEX+27 VIT+7 AGI+1 INT+36 MND+21 CHR+20 Accuracy+44 Attack+44 Magic Accuracy+44 Evasion+24 Magic Evasion+37 \"Magic Atk. Bonus\"+41 \"Magic Def. Bonus\"+2 Haste+3% \"Skillchain Bonus\"+7 Set: Enhances \"Fast Cast\"", 
         ["id"]=25578, 
         ["Magic Accuracy"]=44, 
         ["INT"]=36, 
@@ -1487,8 +1487,8 @@ return {
         ["STR"]=47, 
         ["DEF"]=101, 
         ["MND"]=26, 
-        ["discription"]="DEF:101 STR+47 VIT+3 AGI+14 INT+52 MND+26 CHR+20 Accuracy+45 Attack+45 Magic Accuracy+45 Evasion+13 Magic Evasion+69 \"Magic Atk. Bonus\"+42 \"Magic Def. Bonus\"+4 Haste+2% \"Store TP\"+9 Set: Enhances \"Fast Cast\"", 
         ["en"]="Jhakri Slops +2", 
+        ["discription"]="DEF:101 STR+47 VIT+3 AGI+14 INT+52 MND+26 CHR+20 Accuracy+45 Attack+45 Magic Accuracy+45 Evasion+13 Magic Evasion+69 \"Magic Atk. Bonus\"+42 \"Magic Def. Bonus\"+4 Haste+2% \"Store TP\"+9 Set: Enhances \"Fast Cast\"", 
         ["Store TP"]=9, 
         ["AGI"]=14, 
         ["item_level"]=119, 
@@ -1624,21 +1624,15 @@ return {
     }, 
     [46]={
         ["Evasion"]=46, 
-        ["item_level"]=119, 
+        ["slots"]={
+            [4]="Head"
+        }, 
         ["jobs"]={
             [5]="RDM"
         }, 
         ["DEX"]=24, 
-        ["AGI"]=24, 
-        ["MND"]=32, 
         ["Haste"]=6, 
-        ["discription"]="DEF:106 HP+54 MP+48 STR+24 DEX+24 VIT+24 AGI+24 INT+32 MND+32 CHR+29 Magic Accuracy+44 Evasion+46 Magic Evasion+85 \"Magic Def. Bonus\"+6 Elemental magic skill +15 Haste+6% Magic burst damage +5 \"Fast Cast\"+14% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
-        ["slots"]={
-            [4]="Head"
-        }, 
-        ["Fast Cast"]=14, 
-        ["HP"]=54, 
-        ["id"]=23044, 
+        ["MND"]=32, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1665,6 +1659,12 @@ return {
             }, 
             ["set id"]=7
         }, 
+        ["AGI"]=24, 
+        ["item_level"]=119, 
+        ["Fast Cast"]=14, 
+        ["HP"]=54, 
+        ["id"]=23044, 
+        ["discription"]="DEF:106 HP+54 MP+48 STR+24 DEX+24 VIT+24 AGI+24 INT+32 MND+32 CHR+29 Magic Accuracy+44 Evasion+46 Magic Evasion+85 \"Magic Def. Bonus\"+6 Elemental magic skill +15 Haste+6% Magic burst damage +5 \"Fast Cast\"+14% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
         ["STR"]=24, 
         ["DEF"]=106, 
         ["MP"]=48, 
@@ -1679,12 +1679,12 @@ return {
         ["discription"]="STR+5 DEX+5 \"Double Attack\"+5% \"Store TP\"+5 \"Subtle Blow II\"+5", 
         ["en"]="Sherida Earring", 
         ["Store TP"]=5, 
-        ["STR"]=5, 
-        ["category"]="Armor", 
         ["slots"]={
             [11]="Left Ear", 
             [12]="Right Ear"
         }, 
+        ["category"]="Armor", 
+        ["DEX"]=5, 
         ["jobs"]={
             [2]="MNK", 
             [5]="RDM", 
@@ -1696,29 +1696,16 @@ return {
             [22]="RUN"
         }, 
         ["id"]=26084, 
-        ["DEX"]=5
+        ["STR"]=5
     }, 
     [48]={
         ["Evasion"]=51, 
-        ["AGI"]=26, 
+        ["Haste"]=3, 
         ["jobs"]={
             [5]="RDM"
         }, 
         ["DEX"]=26, 
-        ["slots"]={
-            [5]="Body"
-        }, 
-        ["MND"]=38, 
         ["discription"]="DEF:136 HP+81 MP+88 STR+26 DEX+26 VIT+26 AGI+26 INT+38 MND+38 CHR+34 Magic Accuracy+45 Evasion+51 Magic Evasion+90 \"Magic Atk. Bonus\"+15 \"Magic Def. Bonus\"+7 Enfeebling magic skill +19 Haste+3% \"Refresh\" potency +1 \"Refresh\"+2 Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
-        ["item_level"]=119, 
-        ["Haste"]=3, 
-        ["en"]="Atrophy Tabard +2", 
-        ["HP"]=81, 
-        ["id"]=23111, 
-        ["VIT"]=26, 
-        ["STR"]=26, 
-        ["DEF"]=136, 
-        ["MP"]=88, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -1745,10 +1732,148 @@ return {
             }, 
             ["set id"]=7
         }, 
+        ["en"]="Atrophy Tabard +2", 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["AGI"]=26, 
+        ["item_level"]=119, 
+        ["HP"]=81, 
+        ["id"]=23111, 
+        ["VIT"]=26, 
+        ["STR"]=26, 
+        ["DEF"]=136, 
+        ["MP"]=88, 
+        ["MND"]=38, 
         ["INT"]=38, 
         ["category"]="Armor", 
         ["CHR"]=34, 
         ["Magic Atk. Bonus"]=15, 
         ["Magic Accuracy"]=45
+    }, 
+    [49]={
+        ["Evasion"]=32, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["jobs"]={
+            [5]="RDM"
+        }, 
+        ["DEX"]=38, 
+        ["DEF"]=94, 
+        ["MND"]=38, 
+        ["item_level"]=119, 
+        ["Set Bonus"]={
+            ["set id"]=7, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Magic Accuracy"]=15
+                }, 
+                [3]={
+                    ["Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Magic Accuracy"]=30
+                }, 
+                [4]={
+                    ["Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Magic Accuracy"]=45
+                }, 
+                [5]={
+                    ["Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Magic Accuracy"]=60
+                }
+            }
+        }, 
+        ["en"]="Atrophy Gloves +2", 
+        ["AGI"]=10, 
+        ["HP"]=33, 
+        ["id"]=23178, 
+        ["discription"]="DEF:94 HP+33 MP+21 STR+16 DEX+38 VIT+30 AGI+10 INT+24 MND+38 CHR+24 Accuracy+43 Attack+20 Evasion+32 Magic Evasion+47 \"Magic Def. Bonus\"+4 Parrying skill +19 Haste+3% Weapon skill damage +3% Enhancing magic duration+18% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["STR"]=16, 
+        ["Haste"]=3, 
+        ["MP"]=21, 
+        ["Accuracy"]=43, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Parrying skill"]=19, 
+        ["VIT"]=30, 
+        ["Attack"]=20
+    }, 
+    [50]={
+        ["discription"]="DEF:1 While in Adoulin: Movement speed +25%", 
+        ["DEF"]=1, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["en"]="Councilor's Garb", 
+        ["id"]=27923, 
+        ["category"]="Armor", 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }
+    }, 
+    [51]={
+        ["discription"]="Magic Accuracy+10 \"Fast Cast\"+5% \"Quick Magic\"+3% Light elemental \"Magic Atk. Bonus\"+10", 
+        ["en"]="Weather. Ring", 
+        ["Magic Atk. Bonus"]=10, 
+        ["Fast Cast"]=5, 
+        ["category"]="Armor", 
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }, 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["id"]=27582, 
+        ["Magic Accuracy"]=10
     }
 }

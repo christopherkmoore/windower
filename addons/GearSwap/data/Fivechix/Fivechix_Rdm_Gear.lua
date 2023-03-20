@@ -70,7 +70,7 @@ function init_gear_sets()
 	
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range=empty,ammo="Impatiens",
 		head="Atrophy Chapeau +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
-		body="Viti. Tabard +3",hands="Gende. Gages +1",ring1="Kishar Ring",ring2="Lebeche Ring",
+		body="Viti. Tabard +3",hands="Gende. Gages +1",ring1="Kishar Ring",ring2="Weatherspoon Ring",
 		back="Perimede Cape",waist="Witful Belt",legs="Psycloth Lappas",feet=gear.merlinic_aspir_feet}
 		
 	sets.precast.FC.Impact = set_combine(sets.precast.FC, {head=empty,body="Twilight Cloak"})
@@ -129,7 +129,8 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Seidr Cotehardie"}
 	
 	-- Gear for Magic Burst mode.
-    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Alber Strap",head="Ea Hat",neck="Mizu. Kubikazari",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
+    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Alber Strap",head="Ea Hat",neck="Mizu. Kubikazari",body="Ea Houppelande",hands="Amalric Gages +1",
+	ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
 	
 	sets.midcast.FastRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range=empty,ammo="Hasty Pinion +1",
 		head="Atrophy Chapeau +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
@@ -174,7 +175,8 @@ function init_gear_sets()
 		
 	--Red Mage enhancing sets are handled in a different way from most, layered on due to the way Composure works
 	--Don't set combine a full set with these spells, they should layer on Enhancing Set > Composure (If Applicable) > Spell
-	sets.EnhancingSkill = {main="Pukulatmuj +1",head="Befouled Crown",neck="Incanter's Torque",ear2="Mimir Earring",hands="Viti. Gloves +3",back="Ghostfyre Cape",waist="Olympus Sash",legs="Atrophy Tights +3"}
+	sets.EnhancingSkill = {main="Pukulatmuj +1",head="Befouled Crown",neck="Incanter's Torque",
+	ear2="Mimir Earring",hands="Viti. Gloves +3",back="Ghostfyre Cape",waist="Olympus Sash",legs="Atrophy Tights +2"}
 	sets.midcast.Refresh = {head="Amalric Coif +1",body="Atrophy Tabard +2",legs="Leth. Fuseau +1"}
 	sets.midcast.Aquaveil = {head="Amalric Coif +1",hands="Regal Cuffs",waist="Emphatikos Rope",legs="Shedir Seraweels"}
 	sets.midcast.BarElement = {legs="Shedir Seraweels"}
@@ -189,12 +191,12 @@ function init_gear_sets()
 	
 	sets.midcast['Enfeebling Magic'] = {main="Daybreak",sub="Ammurapi Shield",range=empty,ammo="Regal Gem",
 		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
-		body="Lethargy Sayon +1",hands="Regal Cuffs",ring1="Kishar Ring",ring2="Stikini Ring +1",
+		body="Lethargy Sayon +1",hands="Regal Cuffs",ring1="Kishar Ring",ring2="Weatherspoon Ring",
 		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Daybreak",sub="Ammurapi Shield",range="Kaja Bow",ammo=empty,
 		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
-		body="Atrophy Tabard +2",hands=gear.chironic_enfeeble_hands,ring1="Metamor. Ring +1",ring2="Stikini Ring +1",
+		body="Atrophy Tabard +2",hands=gear.chironic_enfeeble_hands,ring1="Metamor. Ring +1",ring2="Weatherspoon Ring",
 		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		
 	sets.midcast.DurationOnlyEnfeebling = set_combine(sets.midcast['Enfeebling Magic'], {body="Atrophy Tabard +2",range="Kaja Bow"})
@@ -313,7 +315,7 @@ function init_gear_sets()
 		
 	sets.idle = {main="Bolelabunga",sub="Sacro Bulwark",range=empty,ammo="Homiliary",
 		head="Atrophy Chapeau +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
-		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Stikini Ring +1",ring2="Stikini Ring +1",
+		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Etana Ring",ring2="Stikini Ring +1",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Lengo Pants",feet=gear.merlinic_refresh_feet}
 
 	sets.idle.PDT = {main="Terra's Staff",sub="Oneiros Grip",range=empty,ammo="Staunch Tathlum +1",
