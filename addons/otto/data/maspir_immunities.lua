@@ -14,6 +14,7 @@ return {
     ["Agon Spiritualist"] = true,
     ["Agon Squire"] = true,
     ["Alluttu"] = false,
+    ["Amaranth Barrier"] = true,
     ["Antican Hoplomachus"] = true,
     ["Antican Lanista"] = true,
     ["Apex Blazer Elytra"] = true,
@@ -86,6 +87,7 @@ return {
     ["Glassy Thinker"] = true,
     ["Gnarled Rampart"] = true,
     ["Grand Marquis Chomiel"] = false,
+    ["Hades"] = true,
     ["Hurricane Wyvern"] = false,
     ["Hyohh the Conchblower"] = false,
     ["Icy Palisade"] = true,
@@ -195,6 +197,7 @@ return {
     ["Threechix"] = true,
     ["Transcended Bats"] = false,
     ["Transcended Beetle"] = true,
+    ["Transcended Fly"] = false,
     ["Transcended Hippogryph"] = true,
     ["Transcended Lizard"] = false,
     ["Transcended Panopt"] = true,
@@ -213,5 +216,6 @@ return {
     ["Yagudo High Priest"] = true,
     ["Yagudo Templar"] = false,
     ["Yarr the Pearleyed"] = true,
+    ["Yumcax"] = true,
     ["Zansure"] = false
 }

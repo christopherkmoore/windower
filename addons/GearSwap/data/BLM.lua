@@ -68,6 +68,7 @@ function job_setup()
 
 	autows = 'Vidohunir'
 	autofood = 'Pear Crepe'
+	bursting = false
 	
 	init_job_states({"Capacity","AutoRuneMode","AutoTrustMode","AutoNukeMode","AutoManawell","AutoWSMode","AutoShadowMode","AutoFoodMode","AutoStunMode","AutoDefenseMode"},{"AutoBuffMode","Weapons","OffenseMode","WeaponskillMode","IdleMode","Passive","RuneElement","RecoverMode","ElementalMode","CastingMode","TreasureMode",})
 end
@@ -146,10 +147,11 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_midcast(spell, action, spellMap, eventArgs)
-
 end
 
 function job_post_midcast(spell, spellMap, eventArgs)
+
+
 	if spell.action_type == 'Magic' then
 		if state.DeathMode.value ~= 'Off' and spell.english ~= 'Death' then
 			if sets.midcast[spell.english] and sets.midcast[spell.english].Death then
@@ -216,6 +218,15 @@ function job_post_midcast(spell, spellMap, eventArgs)
 			equip(sets.buff['Mana Wall'])
 		end
 	end
+
+	if spell.skill == 'Elemental Magic' then
+		local player = windower.ffxi.get_player()
+		if bursting and player.vitals.mpp < 80 then 
+			equip(sets.MagicBurstMP)
+		else
+			equip(sets.MagicBurst)
+		end
+	end 
 end
 
 function job_aftercast(spell, spellMap, eventArgs)
@@ -336,10 +347,21 @@ function display_current_job_state(eventArgs)
 end
 
 function job_self_command(commandArgs, eventArgs)
-		if commandArgs[1]:lower() == 'elemental' then
-			handle_elemental(commandArgs)
-			eventArgs.handled = true			
-		end
+	local lowerCommand = commandArgs[1]:lower()
+
+	if lowerCommand == 'elemental' then
+		handle_elemental(commandArgs)
+		eventArgs.handled = true	
+	elseif lowerCommand == "bursting" then
+		-- CKM: added this to toggle bursting sets
+		bursting = true
+		windower.send_command('gs c set MagicBurstMode Single')
+	elseif lowerCommand == "notbursting" then
+		-- CKM: added this to toggle bursting sets
+		windower.send_command('gs c set MagicBurstMode Off')
+		bursting = false
+	end
+
 end
 
 function job_tick()
@@ -359,9 +381,7 @@ function check_arts()
 			tickdelay = os.clock() + 1
 			return true
 		end
-
 	end
-	
 	return false
 end
 

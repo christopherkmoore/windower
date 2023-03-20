@@ -53,9 +53,14 @@ return {
         },
         ["ignoreTrusts"] = true
     },
-    ["job"] = {},
+    ["job"] = {
+        ["blackmage"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = true
+        }
+    },
     ["magic_burst"] = {
-        ["cast_tier"] = 3,
+        ["cast_tier"] = 6,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,

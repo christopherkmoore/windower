@@ -183,24 +183,24 @@ function init_gear_sets()
 
     sets.midcast['Dark Magic'] = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head="Amalric Coif +1",neck="Erra Pendant",ear1="Malignance Earring",ear2="Regal Earring",
-        body="Spaekona's Coat +2",hands="Amalric Gages +1",ring1="Stikini Ring +1",ring2="Metamor. Ring +1",
+        body="Jhakri robe +2",hands="Amalric Gages +1",ring1="Stikini Ring +1",ring2="Metamor. Ring +1",
         back=gear.nuke_jse_back,waist="Acuity Belt +1",legs="Spaekona's Tonban +2",feet=gear.merlinic_aspir_feet}
 
     sets.midcast.Drain = {main="Rubicundity",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head="Pixie Hairpin +1",neck="Erra Pendant",ear1="Malignance Earring",ear2="Regal Earring",
-        body="Spaekona's Coat +2",hands="Amalric Gages +1",ring1="Evanescence Ring",ring2="Archon Ring",
+        body="Jhakri robe +2",hands="Amalric Gages +1",ring1="Evanescence Ring",ring2="Archon Ring",
         back=gear.nuke_jse_back,waist="Fucho-no-obi",legs="Spaekona's Tonban +2",feet=gear.merlinic_aspir_feet}
     
     sets.midcast.Aspir = sets.midcast.Drain
 	
 	sets.midcast.Aspir.Death = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",ammo="Pemphredo Tathlum",
         head="Pixie Hairpin +1",neck="Erra Pendant",ear1="Malignance Earring",ear2="Regal Earring",
-        body="Spaekona's Coat +2",hands="Amalric Gages +1",ring1="Evanescence Ring",ring2="Archon Ring",
+        body="Jhakri robe +2",hands="Amalric Gages +1",ring1="Evanescence Ring",ring2="Archon Ring",
         back=gear.nuke_jse_back,waist="Fucho-no-obi",legs="Spaekona's Tonban +2",feet=gear.merlinic_aspir_feet}
 	
 	sets.midcast.Death = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",ammo="Pemphredo Tathlum",
         head="Pixie Hairpin +1",neck="Mizu. Kubikazari",ear1="Malignance Earring",ear2="Etiolation Earring",
-        body="Spaekona's Coat +2",hands="Amalric Gages +1",ring1="Mujin Band",ring2="Archon Ring",
+        body="Jhakri robe +2",hands="Amalric Gages +1",ring1="Mujin Band",ring2="Archon Ring",
         back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Spaekona's Tonban +2",feet=gear.merlinic_nuke_feet}
 
     sets.midcast.Stun = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Hasty Pinion +1",
@@ -241,7 +241,7 @@ function init_gear_sets()
         back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet=gear.merlinic_nuke_feet}
 
 	sets.midcast['Elemental Magic'].HighTierNuke = set_combine(sets.midcast['Elemental Magic'], 
-    {main="Lathi",sub="Enki Strap",ammo="Pemphredo Tathlum",ear1="Malignance Earring",ear2="Regal Earring",
+    {main="Lathi",sub="Enki Strap",ammo="Pemphredo Tathlum",ear1="Malignance Earring",ear2="Regal Earring", 
     hands="Amalric Gages +1",ring2="Metamor. Ring +1",back=gear.nuke_jse_back,feet=gear.merlinic_nuke_feet})
 	
     sets.midcast['Elemental Magic'].HighTierNuke.Resistant = set_combine(sets.midcast['Elemental Magic'].Resistant, 
@@ -344,7 +344,10 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Spaekona's Coat +2"}
 	-- Gear for Magic Burst mode.
     -- sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
-    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Spaekona's gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
+    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",
+    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
+    sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Spaekona's Coat +2",
+    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
 
     sets.ResistantMagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
 	

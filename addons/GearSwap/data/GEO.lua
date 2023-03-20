@@ -184,7 +184,6 @@ end
 function job_post_midcast(spell, spellMap, eventArgs)
 	if spell.skill == 'Elemental Magic' then
 		if bursting then 
-			add_to_chat(123, "bursting midcast swap")
 			equip(sets.MagicBurst)
 		end
 

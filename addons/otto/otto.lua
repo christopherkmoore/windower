@@ -86,10 +86,15 @@ function otto.check_jobs()
         user_settings.job = {}
         user_settings:save()
     end
+
     if player.main_job == "GEO" then
         otto.geomancer = require('jobs/geomancer')
         otto.geomancer.init()
+    elseif player.main_job == "BLM" then
+        otto.blackmage = require('jobs/blackmage')
+        otto.blackmage.init()
     end
+
 end
 
 

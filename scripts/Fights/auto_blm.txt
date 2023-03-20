@@ -4,7 +4,7 @@
 
 send Fourchix otto healer off;
 send Fourchix otto magicburst on;
-send Fourchix otto magicburst t 3;
+send Fourchix otto magicburst t 6;
 send Fourchix otto magicburst c spell;
 send Fourchix otto magicburst doubleburst off;
 send Fourchix otto magicburst gearswap on;
@@ -12,10 +12,13 @@ send Fourchix otto aspir on;
 send Fourchix otto aspir t 2;
 send Fourchix otto aspir all;
 
+send Fourchix otto blm on;
 
-send Fourchix otto debuff Shock on;
-send Fourchix otto debuff Burn on;
-send Fourchix otto debuff Choke on;
+
+// ckm this shit grabs too much hate, disable it.
+// send Fourchix otto debuff Shock on;
+// send Fourchix otto debuff Burn on;
+// send Fourchix otto debuff Choke on;
 
 
 // send Fourchix otto debuff Rasp on;

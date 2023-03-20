@@ -114,11 +114,11 @@ function actions.take_action(player, partner, targ)
         end
         
         actor:take_action(action)
-    else     
+    else 
 
         --Otherwise, there may be an offensive action
         local action = actions.get_offensive_action(player)
-        if action == nil then return end
+        if action == nil then actions.check_job() return end
 
         local monitored_players = otto.getMonitoredPlayers()
         if (action.type == 'preaction' and monitored_players[action.name] ~= nil) or action.type == 'ability'  then
@@ -148,6 +148,7 @@ function actions.take_action(player, partner, targ)
         end
         offense.cleanup()
     end
+
 end
 
 
@@ -213,6 +214,14 @@ end
 function actions.check_job_actions()
     if otto.geomancer then
         return otto.geomancer.geo_geomancy_queue()
+    elseif otto.blackmage then
+        return otto.blackmage.blm_queue()
+    end
+end
+
+function actions.check_job()
+    if otto.blackmage then
+        otto.blackmage.check_blm()
     end
 end
 

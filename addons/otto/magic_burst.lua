@@ -363,14 +363,18 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
     	'mob_tp_finish',
     	'avatar_tp_finish',
 	 }
-
+	
     if not categories:contains(category) or action.param == 0 then
         return
     end
 	
-    local ids = otto.getMonitoredIds()
-    local ws_is_from_teammate = ids:contains(actor)
-    if not ws_is_from_teammate then return end
+	-- CKM I think I brought this over from skillchains
+	-- CKM but it's breaking MB from alliances.
+
+    -- local ids = otto.getMonitoredIds()
+	-- log(ids)
+    -- local ws_is_from_teammate = ids:contains(actor)
+    -- if not ws_is_from_teammate then return end
 
     if add_effect and skillchain_ids:contains(add_effect.message_id) then
 
@@ -394,7 +398,7 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
 		-- Make sure the mob is claimed by our alliance then
 		if (target ~= nil and ((cur_t and cur_t.id == target.id) or (bt and bt.id == target.id) or party_ids:contains(target.claim_id))) then
 			-- Make sure the mob is a valid MB target
-			if (target and (target.is_npc and target.valid_target and not target.in_party and not target.charmed) and target.distance:sqrt() < 22) then
+			if (target and (target.is_npc and target.valid_target and not target.in_party and not target.charmed) and target.hpp ~= 0 and target.distance:sqrt() < 22) then
 				if not closed then
 					do_burst(target, last_skillchain)
 					return

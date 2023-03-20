@@ -99,9 +99,10 @@
     <twochix>
         <display>
             <pos>
-                <x>1448</x>
-                <y>358</y>
+                <x>1450</x>
+                <y>356</y>
             </pos>
         </display>
+        <visible>true</visible>
     </twochix>
 </settings>
