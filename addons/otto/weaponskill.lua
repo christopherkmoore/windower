@@ -99,13 +99,19 @@ function weaponskill.action(target)
 
         -- local hp = user_settings.weaponskill.min_hp or 0
         -- local hp_ok = target.hpp >= hp
+        local player = windower.ffxi.get_player().name
+        local should_open_ws = (user_settings.weaponskill.partner == 'none' or user_settings.weaponskill.partner.name == player)
 
-        if user_settings.weaponskill.partner == 'none' and not weaponskill.skillchain_active then
-            return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
+        if  should_open_ws and not weaponskill.skillchain_active then
+            if user_settings.weaponskill.partner == 'none' then 
+                return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
+            else 
+                return {action=lor_res.action_for(user_settings.weaponskill.partner.weaponskill),name='<t>'}
+            end
+
         end
         
         if (weaponskill.should_weaponskill_to_close()) then
-            log('in skillchain here')
             return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
         end
     end
