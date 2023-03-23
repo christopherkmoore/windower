@@ -18,7 +18,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["dispel"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -65,7 +65,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

@@ -55,6 +55,8 @@ add comments for names on the resists?
 
 Bugs
 dispel false isn't working for first time on new mobs
+dispel is spamming when 'no effect' happens
+backline roles are drawing weapons using pull
 fix whm erase-ga (it's breaking buffs because of prioritization.) -- maybe fixed?
 clean up vprint logs
 weaponskill / magicburst carries to new target.

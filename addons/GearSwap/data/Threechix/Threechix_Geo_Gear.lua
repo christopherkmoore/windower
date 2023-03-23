@@ -172,19 +172,19 @@ function init_gear_sets()
         back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Dark Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Friomisi Earring",
+        head="Azimuth Hood +2",neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast.Drain = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring", --head="Pixie Hairpin +1"
+        head="Azimuth Hood +2",neck="Erra Pendant",ear1="Malignance earring",ear2="Azimuth Earring", --head="Pixie Hairpin +1"
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Fucho-no-obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
     
     sets.midcast.Aspir = sets.midcast.Drain
 		
 	sets.midcast.Stun = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Hasty Pinion +1",
-		head="Amalric Coif +1",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance earring",
+		head="Amalric Coif +1",neck="Erra Pendant",ear1="Enchntr. Earring +1",ear2="Malignance earring",
 		body="Zendik Robe",hands="Volte Gloves",ring1="Metamor. Ring +1",ring2="Stikini Ring +1",
 		back="Lifestream Cape",waist="Witful Belt",legs="Psycloth Lappas",feet="Regal Pumps"}
 		

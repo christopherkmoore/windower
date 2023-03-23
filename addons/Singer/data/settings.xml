@@ -76,6 +76,7 @@
         <use_ws>true</use_ws>
     </global>
     <onechix>
+        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
@@ -91,13 +92,14 @@
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
-        <pianissimo>true</pianissimo>
+        <nightingale>false</nightingale>
         <recast>
             <buff>
                 <max>10</max>
                 <min>5</min>
             </buff>
         </recast>
+        <troubadour>false</troubadour>
         <use_ws>false</use_ws>
     </onechix>
     <threechix>
