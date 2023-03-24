@@ -95,7 +95,7 @@ function init_gear_sets()
 	sets.precast.WS["Ascetic's Fury"]  = set_combine(sets.precast.WS, {neck="Caro Necklace",body="Abnoba Kaftan",hands="Ryuo Tekko",ring2="Begrudging Ring",waist="Grunfeld Rope",feet=gear.herculean_wsd_feet})
 	sets.precast.WS["Victory Smite"]   = set_combine(sets.precast.WS, {ear1="Moonshade Earring",body="Abnoba Kaftan",hands="Ryuo Tekko",ring2="Begrudging Ring",legs="Mummu Kecks +2",feet="Mummu Gamash. +2"})
 	sets.precast.WS['Shijin Spiral']   = set_combine(sets.precast.WS, 
-	{ammo="Knobkierrie", head="Malignance Chapeau", body="Malignance Tabard", hands="Malignance Gloves", waist="Moonbow Belt"})
+	{ammo="Knobkierrie", head="Malignance Chapeau", body="Malignance Tabard", hands="Malignance Gloves", waist="Fotia Belt"})
 	sets.precast.WS['Dragon Kick']     = set_combine(sets.precast.WS, {waist="Grunfeld Rope"})
 	sets.precast.WS['Tornado Kick']    = set_combine(sets.precast.WS, {})
 	sets.precast.WS['Spinning Attack'] = set_combine(sets.precast.WS, {waist="Grunfeld Rope"})
@@ -210,24 +210,24 @@ function init_gear_sets()
 
 	-- Normal melee sets
 	--Upgrade: Gere Ring
-	sets.engaged = {ammo="Aurgelmir Orb +1",
-		head="Adhemar Bonnet +1",neck="Sanctity Necklace",ear1="Brutal Earring",ear2="Sherida Earring",
+	sets.engaged = {ammo="Voluspa Tathlum",
+		head="Adhemar Bonnet +1",neck="Anu Torque",ear1="Brutal Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Adhemar Wrist. +1",ring1="Niqmaddu Ring",ring2="Petrov Ring",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Malignance Tights",feet=gear.herculean_ta_feet}
-	sets.engaged.SomeAcc = {ammo="Falcon Eye",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Brutal Earring",ear2="Sherida Earring",
+	sets.engaged.SomeAcc = {ammo="Voluspa Tathlum",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Brutal Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Adhemar Wrist. +1",ring1="Niqmaddu Ring",ring2="Petrov Ring",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Malignance Tights",feet=gear.herculean_ta_feet}
-	sets.engaged.Acc = {ammo="Falcon Eye",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Cessance Earring",ear2="Sherida Earring",
+	sets.engaged.Acc = {ammo="Falcon EyeVoluspa Tathlum",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Cessance Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Ryuo Tekko",ring1="Niqmaddu Ring",ring2="Ramuh Ring +1",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Mummu Kecks +2",feet="Malignance Boots"}
-	sets.engaged.FullAcc = {ammo="Falcon Eye",
-		head="Mummu Bonnet +2",neck="Sanctity Necklace",ear1="Mache Earring +1",ear2="Telos Earring",
+	sets.engaged.FullAcc = {ammo="Voluspa Tathlum",
+		head="Mummu Bonnet +2",neck="Anu Torque",ear1="Mache Earring +1",ear2="Telos Earring",
 		body="Malignance Tabard",hands="Ryuo Tekko",ring1="Ramuh Ring +1",ring2="Ramuh Ring +1",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Hiza. Hizayoroi +2",feet="Malignance Boots"}
 	sets.engaged.Fodder = {ammo="Aurgelmir Orb +1",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Brutal Earring",ear2="Sherida Earring",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Brutal Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Adhemar Wrist. +1",ring1="Niqmaddu Ring",ring2="Petrov Ring",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Malignance Tights",feet=gear.herculean_ta_feet}
 
@@ -237,15 +237,15 @@ function init_gear_sets()
 		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Dark Ring",
 		back="Moonlight Cape",waist="Moonbow Belt",legs="Malignance Tights",feet="Hippo. Socks +1"}
 	sets.engaged.SomeAcc.PDT = {ammo="Falcon Eye",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Brutal Earring",ear2="Sherida Earring",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Brutal Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Dark Ring",
 		back="Moonlight Cape",waist="Moonbow Belt",legs="Malignance Tights",feet="Hippo. Socks +1"}
 	sets.engaged.Acc.PDT = {ammo="Falcon Eye",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Cessance Earring",ear2="Sherida Earring",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Cessance Earring",ear2="Sherida Earring",
 		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Patricius Ring",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Malignance Tights",feet="Hippo. Socks +1"}
 	sets.engaged.FullAcc.PDT = {ammo="Falcon Eye",
-		head="Malignance Chapeau",neck="Sanctity Necklace",ear1="Mache Earring +1",ear2="Telos Earring",
+		head="Malignance Chapeau",neck="Anu Torque",ear1="Mache Earring +1",ear2="Telos Earring",
 		body="Malignance Tabard",hands="Hesychast's Gloves +1",ring1="Defending Ring",ring2="Patricius Ring",
 		back=gear.cape_TP_MNK,waist="Moonbow Belt",legs="Malignance Tights",feet="Hippo. Socks +1"}
 	sets.engaged.Fodder.PDT = {ammo="Staunch Tathlum +1",

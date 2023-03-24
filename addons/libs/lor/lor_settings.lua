@@ -243,7 +243,7 @@ function lor_settings.save(settings_tbl, quiet, indent, line_end)
     f:close()
     
     if not quiet then
-        windower.add_to_chat(1, 'Saved settings to: '..filepath)
+        -- windower.add_to_chat(1, 'Saved settings to: '..filepath)
     end
 end
 

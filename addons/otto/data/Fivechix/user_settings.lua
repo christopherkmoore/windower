@@ -18,7 +18,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["dispel"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,
@@ -71,7 +71,7 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["min_hp"] = 80,
         ["name"] = "Savage Blade",
         ["partner"] = "none"

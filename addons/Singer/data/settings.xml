@@ -76,7 +76,6 @@
         <use_ws>true</use_ws>
     </global>
     <onechix>
-        <actions>false</actions>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
@@ -84,22 +83,26 @@
         </aoe>
         <box>
             <pos>
-                <x>1329</x>
-                <y>31</y>
+                <x>1340</x>
+                <y>23</y>
             </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
         </box>
         <debuffing>false</debuffing>
         <delay>4</delay>
         <interval>0.1</interval>
         <min_ws>20</min_ws>
-        <nightingale>false</nightingale>
+        <pianissimo>true</pianissimo>
         <recast>
             <buff>
                 <max>10</max>
                 <min>5</min>
             </buff>
         </recast>
-        <troubadour>false</troubadour>
         <use_ws>false</use_ws>
     </onechix>
     <threechix>

@@ -1926,5 +1926,52 @@ return {
         ["INT"]=39, 
         ["category"]="Armor", 
         ["en"]="Atrophy Tights +2"
+    }, 
+    [53]={
+        ["discription"]="\"Fast Cast\"+5% \"Sublimation\"+3 Enhancing magic duration +10%", 
+        ["id"]=26354, 
+        ["slots"]={
+            [10]="Waist"
+        }, 
+        ["en"]="Embla Sash", 
+        ["Fast Cast"]=5, 
+        ["category"]="Armor", 
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [10]="BRD", 
+            [15]="SMN", 
+            [20]="SCH", 
+            [21]="GEO"
+        }
+    }, 
+    [54]={
+        ["discription"]="DEF:7 MP+35 INT+6 Unity Ranking: INT+3～7", 
+        ["jobs"]={
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [7]="PLD", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [18]="PUP", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["INT"]=13, 
+        ["category"]="Armor", 
+        ["en"]="Acuity Belt +1", 
+        ["slots"]={
+            [10]="Waist"
+        }, 
+        ["id"]=28430, 
+        ["DEF"]=7, 
+        ["MP"]=35, 
+        ["Unity Ranking Bonus Applied"]="INT + 7"
     }
 }

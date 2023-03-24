@@ -344,12 +344,12 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Spaekona's Coat +2"}
 	-- Gear for Magic Burst mode.
     -- sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
-    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",
-    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
-    sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Spaekona's Coat +2",
-    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
+    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat", ear1="Friomisi Earring", body="Ea Houppelande",
+    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
+    sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat", ear1="Friomisi Earring", body="Spaekona's Coat +2",
+    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 
-    sets.ResistantMagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
+    sets.ResistantMagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 	
 	-- Gear for specific elemental nukes.
 	sets.element.Dark = {head="Pixie Hairpin +1",ring2="Archon Ring"}

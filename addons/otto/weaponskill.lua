@@ -59,7 +59,7 @@ function weaponskill.open_window(for_target)
     weaponskill.skillchain_active = true
     weaponskill.skillchain_start = os.clock() 
     weaponskill.window_open = weaponskill.skillchain_start + 3
-    weaponskill.window_close = weaponskill.window_open + 6
+    weaponskill.window_close = weaponskill.window_open + 7
     weaponskill.target = for_target
 end
 

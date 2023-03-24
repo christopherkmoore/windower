@@ -28,7 +28,7 @@ local function aspir_command(arg)
             user_settings.aspir.tier = tier
             message = 'Aspir updated tier to ' .. user_settings.aspir.tier
         else
-            windower.add_to_chat(123, 'Aspir tier ' .. user_settings.aspir.tier .. ' is out of bounds')
+            windower.add_to_chat(3, 'Aspir tier ' .. user_settings.aspir.tier .. ' is out of bounds')
         end
     elseif command == 'on' or command == 'enable' or command == 'start' then
         user_settings.aspir.enabled = true
@@ -38,7 +38,7 @@ local function aspir_command(arg)
         message = 'Aspiring is disabled'
     elseif command == 'mp' then
         if arg2 == nil or arg2 == '' then
-            windower.add_to_chat(123, 'otto aspir mp requires a mp percent')
+            windower.add_to_chat(3, 'otto aspir mp requires a mp percent')
             return
         end
 
@@ -48,7 +48,7 @@ local function aspir_command(arg)
             user_settings.aspir.casting_mp = casting_mp
             message = 'Aspir updated for casting below ' .. user_settings.aspir.casting_mp .. '% mp'
         else
-            windower.add_to_chat(123, 'Aspir mp percent range ' .. casting_mp .. ' is out of bounds between 0 - 100%')
+            windower.add_to_chat(3, 'Aspir mp percent range ' .. casting_mp .. ' is out of bounds between 0 - 100%')
         end
     elseif command == 'all' then
         user_settings.aspir.casts_all = true
@@ -58,12 +58,12 @@ local function aspir_command(arg)
         message = 'Aspir Will now just cast Aspir ' .. user_settings.aspir.tier
     else
         should_save = false
-        windower.add_to_chat(123, "That's not a command")
-        windower.add_to_chat(111, 'Allowed commands for aspir are ' .. table.concat(allowed, ', '))
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for aspir are ' .. table.concat(allowed, ', '))
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(3, message)
         user_settings:save()
     end
 end
@@ -83,26 +83,26 @@ local function magic_burst_command(arg)
     end
 
     function show_help()
-        windower.add_to_chat(207,
+        windower.add_to_chat(2,
         _addon.name ..
         ': magic burst on|off - turn auto magic bursting on or off\n magic bursts show on|off - display messages about skillchains|magic bursts')
-        windower.add_to_chat(207,
+        windower.add_to_chat(2,
         _addon.name .. ': Auto Bursts: \t\t' .. (user_settings.magic_burst.enabled and 'On' or 'Off'))
-        windower.add_to_chat(207,
+        windower.add_to_chat(2,
         _addon.name ..
         ': Magic Burst Type: \t' ..
         user_settings.magic_burst.cast_type .. ' Tier: \t' .. (user_settings.magic_burst.cast_tier))
-        windower.add_to_chat(207, _addon.name .. ': Min MP: \t\t' .. user_settings.magic_burst.mp)
-        windower.add_to_chat(207,
+        windower.add_to_chat(2, _addon.name .. ': Min MP: \t\t' .. user_settings.magic_burst.mp)
+        windower.add_to_chat(2,
         _addon.name ..
         ': Double Burst: ' ..
         (user_settings.magic_burst.double_burst and ('On' .. ' delay ' .. user_settings.magic_burst.double_burst_delay .. ' seconds') or 'Off'))
-        windower.add_to_chat(207,
+        windower.add_to_chat(2,
         _addon.name ..
         ': Check Elements - Day: ' ..
         (user_settings.magic_burst.check_day and 'On' or 'Off') ..
         ' Weather: ' .. (user_settings.magic_burst.check_weather and 'On' or 'Off'))
-        windower.add_to_chat(207,
+        windower.add_to_chat(2,
         _addon.name .. ': Show Spell: \t' .. (user_settings.magic_burst.show_spell and 'On' or 'Off'))
     end
 
@@ -120,7 +120,7 @@ local function magic_burst_command(arg)
         user_settings.magic_burst.enabled = false
     elseif (command == 'cast' or command == 'c') then
         if arg2 == nil or arg2 == '' then
-            windower.add_to_chat(123,
+            windower.add_to_chat(3,
             "Usage: otto mb cast spell|helix|jutsu Tells AutoMB what magic type to try to cast if the default is not what you want.")
             return
         end
@@ -129,12 +129,12 @@ local function magic_burst_command(arg)
             user_settings.magic_burst.cast_type = arg2:lower()
             message = 'Spell (c)ast set to ' .. arg2
         else
-            windower.add_to_chat(123, 'Unsupported spell type ' .. arg2)
+            windower.add_to_chat(3, 'Unsupported spell type ' .. arg2)
             return
         end
     elseif (command == 'tier' or command == 't') then
         if arg2 == nil or arg2 == '' or not tonumber(arg2) then
-            windower.add_to_chat(123,
+            windower.add_to_chat(3,
             "Usage: tier 1~6 tells autoMB what tier spell to use for Ninjutsu 1~3 will become ichi|ni|san.")
             return
         end
@@ -148,12 +148,12 @@ local function magic_burst_command(arg)
             user_settings.magic_burst.cast_tier = t
             message = 'magic burst (t)ier updated to ' .. arg2
         elseif (t < 0 or t > 7) then
-            windower.add_to_chat(123, 'Provide a tier in the appropriate range.')
+            windower.add_to_chat(3, 'Provide a tier in the appropriate range.')
             return
         end
     elseif (command == 'mp') then
         if arg2 == nil or arg2 == '' or not tonumber(arg2) then
-            windower.add_to_chat(123, "provide a threshold mp at which to stop nuking.")
+            windower.add_to_chat(3, "provide a threshold mp at which to stop nuking.")
             should_save = false
             return
         end
@@ -161,12 +161,25 @@ local function magic_burst_command(arg)
         local n = tonumber(arg2)
         user_settings.magic_burst.mp = n
         message = 'Threshold mp set to' .. arg2
-    elseif (command == 'doubleburst' or command == 'double' or command == 'dbl') then
+    elseif (command == 'doubleburst' or command == 'double' or command == 'dbl' or command == 'db') then
         local parsed = ' not'
         if not user_settings.magic_burst.double_burst then
             parsed = ''
         end
-        user_settings.magic_burst.double_burst = not user_settings.magic_burst.double_burst
+
+        if arg2 == nil or arg2 == '' then
+            windower.add_to_chat(3, 'Provide an additional on | off for this command.')
+            return
+        end
+
+        if arg2 == 'off' then
+            user_settings.magic_burst.double_burst = false
+            parsed = ' not'
+        elseif arg2 == 'on' then
+            user_settings.magic_burst.double_burst = true
+            parsed = ''
+        end
+
         message = 'Will' .. parsed .. ' use double bursting.'
     elseif (command == 'weather') then
         local parsed = ' not'
@@ -185,12 +198,12 @@ local function magic_burst_command(arg)
         message = 'Will' .. parsed .. ' use current day bonuses'
     elseif (command == 'gearswap' or command == 'gs') then
         if arg2 == nil or arg2 == '' then
-            windower.add_to_chat(123, 'Provide an additional on | off for this command.')
+            windower.add_to_chat(3, 'Provide an additional on | off for this command.')
             return
         end
 
         if not T { 'on', 'off' }:contains(arg2) then
-            windower.add_to_chat(123, 'Provide the command on | off for this command instead of ' .. arg2)
+            windower.add_to_chat(3, 'Provide the command on | off for this command instead of ' .. arg2)
             return
         end
 
@@ -217,7 +230,7 @@ local function magic_burst_command(arg)
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
         user_settings:save()
     end
 end
@@ -280,7 +293,7 @@ local function healer_commands(args)
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
         user_settings:save()
     end
 end
@@ -323,7 +336,7 @@ local function weaponskill_commands(args)
             user_settings.weaponskill.partner = { name = partner, tp = partnertp }
             atc("Will attempt to skillchain with " .. partner .. " when TP is " .. partnertp)
         else
-            atc(111, 'Error: Invalid argument for ws waitfor: ' .. tostring(args[3]))
+            atc(6, 'Error: Invalid argument for ws waitfor: ' .. tostring(args[3]))
         end
     elseif (command == 'hp') then --Target's HP
         local hp = tonumber(arg2)
@@ -331,14 +344,14 @@ local function weaponskill_commands(args)
             user_settings.weaponskill.min_hp = hp
             atc("Will weaponskill when the target's HP% is above " .. hp .. "%")
         else
-            atc(111, 'Error: Invalid arguments for ws hp%: ' .. arg2)
+            atc(6, 'Error: Invalid arguments for ws hp%: ' .. arg2)
         end
     else
         utils.register_ws(args)
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
         user_settings:save()
     end
 end
@@ -485,7 +498,7 @@ local function follow_commands(args)
             user_settings.follow.active = true
             atc('Now following ' .. user_settings.follow.target .. '.')
         else
-            atc(111, 'Error: Unable to resume follow - no target set')
+            atc(6, 'Error: Unable to resume follow - no target set')
             return
         end
     else --args[1] is guaranteed to have a value if this is reached
@@ -496,7 +509,7 @@ local function follow_commands(args)
             atc('Now following ' .. user_settings.follow.target .. '.')
         else
             should_save = false
-            atc(111, 'Error: Invalid name provided as a follow target: ' .. tostring(arg1))
+            atc(6, 'Error: Invalid name provided as a follow target: ' .. tostring(arg1))
         end
     end
 
@@ -531,7 +544,7 @@ local function assist_commands(args)
     elseif command == 'master' then
         if arg2 == 'off' then
             user_settings.assist.master = ''
-            windower(123, 'Assist not configured with a master')
+            windower(3, 'Assist not configured with a master')
             user_settings:save()
             return
         end
@@ -568,13 +581,13 @@ local function assist_commands(args)
         end
     elseif command == 'yalmfightrange' or command == 'range' or command == 'yalm' or command == 'y' or command == 'r' then
         if arg2 == nil or arg2 == '' then
-            windower.add_to_chat(123, 'You need to provide a range between 0-5')
+            windower.add_to_chat(3, 'You need to provide a range between 0-5')
             return
         end
 
         local yalms = tonumber(arg2)
         if yalms < 0 or yalms > 5 then
-            windower.add_to_chat(123, 'You need to provide a range between 0-5')
+            windower.add_to_chat(3, 'You need to provide a range between 0-5')
             return
         end
 
@@ -591,13 +604,13 @@ local function assist_commands(args)
         otto.assist.targets()
         return
     else
-        windower.add_to_chat(123, "That's not a command")
-        windower.add_to_chat(111, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(6, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
         should_save = false
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
 
         if should_merge_saves then
             utils.unionSettings()
@@ -617,15 +630,15 @@ local function pull_commands(args)
     if command == 'on' then
         user_settings.pull.enabled = true
         otto.assist.locked_closing_in = true
-        windower.add_to_chat(144, 'Auto pulling enabled')
+        windower.add_to_chat(6, 'Auto pulling enabled')
     elseif command == 'off' then
         user_settings.pull.enabled = false
         otto.assist.locked_closing_in = false
-        windower.add_to_chat(144, 'Auto pulling disabled')
+        windower.add_to_chat(6, 'Auto pulling disabled')
     else
         local input = (' '):join(args)
         user_settings.pull.with = input
-        windower.add_to_chat(144, 'will attempt to pull with command ' .. input)
+        windower.add_to_chat(6, 'will attempt to pull with command ' .. input)
     end
 
     user_settings:save()
@@ -641,13 +654,13 @@ local function dispel_commands(args)
     if command == 'on' then
         user_settings.dispel.enabled = true
         user_settings:save()
-        windower.add_to_chat(144, 'Auto dispel enabled')
+        windower.add_to_chat(6, 'Auto dispel enabled')
     elseif command == 'off' then
         user_settings.dispel.enabled = false
         user_settings:save()
-        windower.add_to_chat(144, 'Auto dispel disabled')
+        windower.add_to_chat(6, 'Auto dispel disabled')
     else
-        windower.add_to_chat(144, 'There is just one command to toggle on | off and you are fucking it up.')
+        windower.add_to_chat(6, 'There is just one command to toggle on | off and you are fucking it up.')
     end
 end
 
@@ -747,13 +760,13 @@ local function geomancer(args)
             end
         end
     else
-        windower.add_to_chat(123, "That's not a command")
-        windower.add_to_chat(111, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
         should_save = false
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
 
         if should_merge_saves then
             utils.unionSettings()
@@ -800,13 +813,13 @@ local function blackmage(args)
             message = 'Blackmage will save cooldowns.'
         end
     else
-        windower.add_to_chat(123, "That's not a command")
-        windower.add_to_chat(111, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
         should_save = false
     end
 
     if should_save then
-        windower.add_to_chat(111, message)
+        windower.add_to_chat(6, message)
         user_settings:save()
     end
 end
@@ -859,27 +872,27 @@ function events.addon_command(...)
         if args[2] ~= nil and args[2]:lower() == 'all' then
             for player, _ in pairs(otto.config.ipc_monitored_boxes) do
                 windower.send_command('send ' .. player .. ' otto r')
-                windower.add_to_chat(144, 'Refreshing ' .. player)
+                windower.add_to_chat(5, 'Refreshing ' .. player)
             end
         end
         windower.send_command('lua reload otto')
     elseif S { 'help', 'man', '?' }:contains(command) then
-        windower.add_to_chat(144, 'Top level commands are:')
-        windower.add_to_chat(144, 'aspir - configure auto aspir!')
-        windower.add_to_chat(144, 'magicburst | mb - make things explody.')
-        windower.add_to_chat(144, 'healbot | hb - leftover healbot commands')
-        windower.add_to_chat(144, 'follow | f - commands for following.')
-        windower.add_to_chat(144, 'assist | f - set an alts role to either engage or support master\'s target.')
-        windower.add_to_chat(144, 'healer | f - your beloved healer -- and a white mage that will never talk back!')
-        windower.add_to_chat(144, 'buff | f - buffs across multiple jobs')
-        windower.add_to_chat(144, 'debuff | f - debuffs...')
-        windower.add_to_chat(144, 'weaponskill | f - sets up weaponskills / skillchains.')
-        windower.add_to_chat(144, 'dispel | f - similar to aspir, toggle auto-dispeling under the right conditions.')
-        windower.add_to_chat(144, 'pull | f - an otto puller')
-        windower.add_to_chat(144, 'geo | f - otto geo.')
+        windower.add_to_chat(6, 'Top level commands are:')
+        windower.add_to_chat(6, 'aspir - configure auto aspir!')
+        windower.add_to_chat(6, 'magicburst | mb - make things explody.')
+        windower.add_to_chat(6, 'healbot | hb - leftover healbot commands')
+        windower.add_to_chat(6, 'follow | f - commands for following.')
+        windower.add_to_chat(6, 'assist | f - set an alts role to either engage or support master\'s target.')
+        windower.add_to_chat(6, 'healer | f - your beloved healer -- and a white mage that will never talk back!')
+        windower.add_to_chat(6, 'buff | f - buffs across multiple jobs')
+        windower.add_to_chat(6, 'debuff | f - debuffs...')
+        windower.add_to_chat(6, 'weaponskill | f - sets up weaponskills / skillchains.')
+        windower.add_to_chat(6, 'dispel | f - similar to aspir, toggle auto-dispeling under the right conditions.')
+        windower.add_to_chat(6, 'pull | f - an otto puller')
+        windower.add_to_chat(6, 'geo | f - otto geo.')
     elseif S { 'start', 'on' }:contains(command) then
         otto.activate = true
-        windower.add_to_chat(144, 'Otto is live!')
+        windower.add_to_chat(5, 'Otto is live!')
     elseif S { 'stop', 'off' }:contains(command) then
         otto.activate = off
         healer_commands('off')
