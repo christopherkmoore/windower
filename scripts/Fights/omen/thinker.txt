@@ -1,0 +1,77 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: Pain sync will fuck your ass. Disable all auto ws for this
+// and be sure to wait until after the monster has TP'd to do Skillchains.
+//
+////////////////////////////////
+
+send @all exec fights/reset
+
+wait 0.1;
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave exec fights/auto_whm
+
+wait 0.3;
+
+send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave barblindra on;
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix exec fights/auto_brd
+
+wait 0.3;
+
+send Onechix sing minuet 2;
+send Onechix sing march 1;
+
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix exec fights/auto_geo
+
+wait 0.3;
+
+send Threechix otto geo cooldowns on;
+
+////////////////////////////////////
+// Red Mage
+////////////////////////////////////
+
+send Fivechix exec fights/auto_rdm
+
+wait 0.3
+
+send Fivechix otto buff Fivechix enfire II on;
+
+
+send Fivechix otto debuff Slow II on;
+send Fivechix otto debuff Paralyze II on;
+send Fivechix otto debuff Addle II on;
+send Fivechix otto debuff Blind II on;
+
+
+////////////////////////////////////
+// Black Mage
+////////////////////////////////////
+
+send Fourchix exec fights/auto_blm
+
+wait 0.3
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
+
+send Onechix otto assist role backline;
+send Fivechix otto assist role backline;

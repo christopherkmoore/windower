@@ -118,7 +118,6 @@ end)
 
 windower.register_event('unhandled command', function(command, ...)
     local args = L{...}:map(string.lower)
-
     if command == 'get' or command == 'put' or command == 'gets' or command == 'puts' then
         local count
         if command == 'gets' or command == 'puts' then

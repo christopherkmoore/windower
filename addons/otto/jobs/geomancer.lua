@@ -201,13 +201,11 @@ function geomancer.geo_geomancy_queue()
     -- cast the geo bubble, blowing blaze if you can
     if geomancer.bubble_should_cast and geomancer.bubble_action and geomancer.bubble_target then
         if blaze_recast == 0 and user_settings.job.geomancer.cooldowns then
-            log('enqueuing buffed bubble')
 
             local blaze = {id=350,en="Blaze of Glory",ja="グローリーブレイズ",duration=60,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=247,status=569,targets=1,tp_cost=0,type="JobAbility"}
             geo_queue:insert_with_preaction('preaction', blaze, geomancer.bubble_action, geomancer.bubble_target)    
             geomancer.blaze_active = true
         else
-            log('enqueuing bubble')
             geo_queue:enqueue_action('bubble', geomancer.bubble_action, geomancer.bubble_target)
             geomancer.blaze_active = false
             geomancer.ecliptic_attrition_active = false

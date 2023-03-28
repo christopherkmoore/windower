@@ -166,9 +166,10 @@ function actions.get_offensive_action(player)
 
     if job_queue ~= nil then
         while not job_queue:empty() do
-            local preaction = job_queue:pop()
+            local preaction = job_queue:pop() 
             local_queue_insert(preaction.action.en, preaction.name)
-            if (action.preaction == nil) and actor:in_casting_range(preaction.name) and actor:ready_to_use(preaction.action) then
+            if action.preaction == nil and actor:ready_to_use(preaction.action) then
+                log(action.preaction)
                 action.preaction = preaction
             end
         end 
@@ -180,6 +181,8 @@ function actions.get_offensive_action(player)
         
         local_queue_insert(nukingAction.action.en, nukingAction.name)
         if (action.nuke == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
+            log('nuke')
+            log(nukingAction)
             action.nuke = nukingAction
         end
     end

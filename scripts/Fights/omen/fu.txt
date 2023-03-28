@@ -1,0 +1,88 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: Will absorb buffs and fuck you.
+//
+// Not even close to a solved fight. He opens up with a move that takes all my buffs.
+// then immediately kills me with WaterV ~3k damage. 
+//
+////////////////////////////////
+
+send @all exec fights/reset
+
+wait 0.1;
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave otto healer on;
+
+send Chixslave otto healer on;
+send Chixslave otto magicburst off;
+send Chixslave otto magicburst t 2;
+send Chixslave otto magicburst c holy;
+send Chixslave otto magicburst gearswap on;
+send Chixslave gs c set AutoSubMode off;
+send Chixslave gs c set AutoRegenAgaMode off;
+
+send Chixslave otto buff Chixslave Shellra V on;
+
+wait 0.3;
+
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix exec fights/auto_brd
+
+wait 0.3;
+
+send Onechix sing march 2;
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix exec fights/auto_geo
+
+wait 0.3;
+
+send Threechix otto geo cooldowns on;
+
+////////////////////////////////////
+// Red Mage
+////////////////////////////////////
+
+
+send Fivechix otto healer off;
+send Fivechix otto magicburst off;
+send Fivechix otto magicburst t 2;
+send Fivechix otto magicburst c spell;
+send Fivechix otto magicburst doubleburst on;
+send Fivechix otto magicburst gearswap on;
+send Fivechix otto aspir off;
+send Fivechix otto aspir t 1;
+
+send Fivechix gs c set AutoConvertMode Auto;
+
+
+send Fivechix otto debuff Dia III on;
+wait 0.3
+
+
+////////////////////////////////////
+// Black Mage
+////////////////////////////////////
+
+send Fourchix exec fights/auto_blm
+
+wait 0.3
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
+
+send Fivechix otto assist role backline;

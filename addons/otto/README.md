@@ -10,17 +10,6 @@ Those should go one directory up into ../libs/lor_libs
 Dunno who the guy is but he wrote a lot of extremely useful code. Same with Ivaar. If I get anywhere near a stable version for this, it will be mostly 
 off of what he has done from those libs and healbot.
 
-Available commands\
-    'reload', 'r'               -> reloads and resets to default settings.                otto r\
-    'tier', 't' + some tier     -> sets aspir tier.                                       otto t 3\
-    'mp' + some mp              -> sets the mp percent threshhold to begin aspiring at.   otto mp 80\
-    'on', 'enable', 'start',    -> starts otto.                                           otto on / otto enable / otto start\
-    'off', 'disable', 'stop',   -> stops otto.                                            otto off / otto disable / otto stop\
-    'all', 'single',            -> a single Aspir, or cast recursively 
-                                   until they're all on cooldown. otto all                otto single\
-    'assist' + some target      -> sets a battle assist target.                           otto assist twochix \
-
-
 
 -- todo\ 
 singer?\
@@ -54,6 +43,7 @@ pass / lot
 add comments for names on the resists?
 
 Bugs
+geo-preactions are fucking up magic bursts.
 dispel false isn't working for first time on new mobs
 dispel is spamming when 'no effect' happens
 backline roles are drawing weapons using pull
@@ -69,6 +59,7 @@ aspir is targeting any target -- offensive action need better conditions for per
 add global on / off
 bug in assist for backline roles. -- offensive action need better conditions for performing
 gearswap not swapping rings.
+white should tick faster (cure is too slow sometimes seems like ~3-4 second delay)
 
 ALTS 
 always -
@@ -78,12 +69,8 @@ always -
     Domain Invasion
 
 Missions -
-    Finish ZM
-    Finish CoP
     FInish ToAH 
     finish Wings
-    finish Adoulin 
-    finish Rhapsodies
     Finish voracious 
 
 Gear -
@@ -93,14 +80,23 @@ Gear -
 Weapons
     RDM - enspell sword, MB staff? Enfeeble + enhance weapon
     BLM - MB weapon
+
+    WHM / RDM Oranyan -> Enhancing magic +10% Duration
 Accessories
 
 Random-
     Finish Dyna
+    -> Bastok   x RDM / COR / BLM relic x
+    -> WIndurst 
+    -> Sandy    
+    -> Jeuno    
+    -> Outlands + tav 
 
+Finish Omen stuff. 
+BLM
+Nefarious Collar +1
+Halasz earring
+Niobid strap
 
-Later -
-Dyna D
-Ody
-Omen
-Lillith
+JSE Cape GEO => Indi Duration
+JSE Cape RDM -> Enhancing magic duration.

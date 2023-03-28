@@ -142,15 +142,15 @@ function init_gear_sets()
 
 	-- For song buffs (duration and AF3 set bonus)
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Harfner's Sash",legs="Inyanga Shalwar +2",feet="Fili Cothurnes +2"}
+		back=gear.capeFC,waist="Witful Belt",legs="Inyanga Shalwar +2",feet="Fili Cothurnes +2"}
 		
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
 
 	-- For song defbuffs (duration primary, accuracy secondary)
 	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 		
@@ -158,7 +158,7 @@ function init_gear_sets()
 
 	-- For song defbuffs (accuracy primary, duration secondary)
 	sets.midcast.SongDebuff.Resistant = {main="Daybreak",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +2",neck="Moonbow Whistle",ear1="Regal Earring",ear2="Digni. Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Regal Earring",ear2="Digni. Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                    --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Acuity Belt +1",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
 

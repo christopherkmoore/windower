@@ -71,7 +71,7 @@ function init_gear_sets()
     sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Amalric Coif +1",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
 		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",
-		back="Perimede Cape",waist="Witful Belt",legs="Psycloth Lappas",feet="Regal Pumps +1"}
+		back="Perimede Cape",waist="Embla Sash",legs="Psycloth Lappas",feet="Regal Pumps +1"}
 		
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {waist="Siegel Sash"})
 	
@@ -224,11 +224,11 @@ function init_gear_sets()
 		back=gear.nuke_jse_back,waist="Acuity Belt +1",legs="Spaekona's Tonban +2",feet=gear.merlinic_aspir_feet}
 		
     -- Elemental Magic sets
-    
+    --gear.ElementalObi
     sets.midcast['Elemental Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Dosis Tathlum",
         head=gear.merlinic_nuke_head,neck="Saevus Pendant +1",ear1="Crematio Earring",ear2="Friomisi Earring",
         body="Spaekona's Coat +2",hands="Spaekona's gloves +2",ring1="Freke Ring",ring2="Shiva Ring +1",
-        back=gear.nuke_jse_back,waist=gear.ElementalObi,legs="Jhakri Slops +2",feet=gear.merlinic_nuke_feet}
+        back=gear.nuke_jse_back,waist="Acuity Belt +1",legs="Jhakri Slops +2",feet=gear.merlinic_nuke_feet}
 		
     sets.midcast['Elemental Magic'].Resistant = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head=gear.merlinic_nuke_head,neck="Sanctity Necklace",ear1="Malignance Earring",ear2="Regal Earring",
@@ -344,9 +344,13 @@ function init_gear_sets()
 	sets.RecoverMP = {body="Spaekona's Coat +2"}
 	-- Gear for Magic Burst mode.
     -- sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
-    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat", ear1="Friomisi Earring", body="Ea Houppelande",
-    hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
-    sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat", ear1="Friomisi Earring", body="Spaekona's Coat +2",
+    sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",
+    head="Ea Hat", ear1="Friomisi Earring", body="Ea Houppelande",
+    waist ="Acuity Belt +1",hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
+
+    sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",
+    head="Ea Hat", ear1="Friomisi Earring", body="Spaekona's Coat +2",
+    waist="cuity Belt +1",
     hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 
     sets.ResistantMagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}

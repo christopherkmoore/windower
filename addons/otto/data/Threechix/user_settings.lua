@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "backline",
             ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -59,8 +59,8 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = true,
-            ["enabled"] = true,
+            ["cooldowns"] = false,
+            ["enabled"] = false,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
@@ -70,7 +70,7 @@ return {
         }
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 4,
+        ["cast_tier"] = 5,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
@@ -79,6 +79,7 @@ return {
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
+        ["nuke_wall_offest"] = 1,
         ["show_spell"] = false
     },
     ["pull"] = {

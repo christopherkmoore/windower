@@ -225,6 +225,15 @@ local function magic_burst_command(arg)
 
         user_settings.magic_burst.change_target = not user_settings.magic_burst.change_target
         message = "Auto target swapping " .. (user_settings.magic_burst.change_target and 'enabled' or 'disabled') .. "."
+    elseif command == "nukewall" then
+        if arg2 == nil or arg2 == '' then
+            windower.add_to_chat(3, 'Provide an integer 1-5.')
+            return
+        end
+        local n = tonumber(arg2)
+
+        user_settings.magic_burst.nuke_wall_offest = n
+        message = 'Nuke wall offest set to '..n
     else
         should_save = false
     end

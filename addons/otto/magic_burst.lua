@@ -119,6 +119,7 @@ function magic_burst.init()
 	defaults.double_burst = false   -- single burst is false, double burst is true
 	defaults.show_spell = false     -- mostly debuging
 
+	defaults.nuke_wall_offest = 0       -- CKM todo add this to avoid bursting same element (to avoid nuke wall penalties)
 
     if user_settings.magic_burst == nil then
         user_settings.magic_burst = defaults
