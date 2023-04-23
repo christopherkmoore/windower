@@ -65,8 +65,8 @@ return {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
             },
-            ["geo"] = "Geo-Frailty",
-            ["indi"] = "Indi-Fury"
+            ["geo"] = "Geo-Malaise",
+            ["indi"] = "Indi-Acumen"
         }
     },
     ["magic_burst"] = {
@@ -76,7 +76,7 @@ return {
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = false,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["nuke_wall_offest"] = 1,

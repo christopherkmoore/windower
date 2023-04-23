@@ -370,7 +370,11 @@ function init_gear_sets()
     sets.precast.WS['Ruinator'].WSMidAcc = set_combine(sets.precast.WS.WSMidAcc, {})
     sets.precast.WS['Ruinator'].WSHighAcc = set_combine(sets.precast.WS.WSHighAcc, {})
 
-    sets.precast.WS['Onslaught'] = set_combine(sets.precast.WS, { head = "Ankusa Helm +3", back=gear.capeWS_Onslaught})
+    sets.precast.WS['Onslaught'] = set_combine(
+        sets.precast.WS, { 
+            head = "Ankusa Helm +3", back=gear.capeWS_Onslaught,waist = "Sailfi Belt", body = "Nukumi Gausape +2", 
+            hands = "Totemic Gloves +2", legs = "Malignance Tights"
+})
     sets.precast.WS['Onslaught'].WSMidAcc = set_combine(sets.precast.WSMidAcc, {})
     sets.precast.WS['Onslaught'].WSHighAcc = set_combine(sets.precast.WSHighAcc, {})
 

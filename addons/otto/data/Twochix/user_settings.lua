@@ -39,8 +39,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 0,
-                ["waltzga"] = 0
+                ["waltz"] = 3,
+                ["waltzga"] = 1
             },
             ["min"] = {
                 ["curaga"] = 3,
@@ -73,11 +73,11 @@ return {
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 15,
-        ["name"] = "Shijin Spiral",
+        ["name"] = "Onslaught",
         ["partner"] = {
-            ["name"] = "Onechix",
+            ["name"] = "Twochix",
             ["tp"] = 1000,
-            ["weaponskill"] = "Savage Blade"
+            ["weaponskill"] = "Onslaught"
         }
     }
 }

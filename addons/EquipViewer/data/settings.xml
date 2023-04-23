@@ -34,11 +34,17 @@
         </icon>
         <left_justify>false</left_justify>
         <pos>
-            <x>1500</x>
-            <y>545</y>
+            <x>1800</x>
+            <y>900</y>
         </pos>
         <show_ammo_count>true</show_ammo_count>
         <show_encumbrance>true</show_encumbrance>
         <size>32</size>
     </global>
+    <twochix>
+        <pos>
+            <x>1800</x>
+            <y>900</y>
+        </pos>
+    </twochix>
 </settings>

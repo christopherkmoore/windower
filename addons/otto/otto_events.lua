@@ -181,6 +181,26 @@ local function magic_burst_command(arg)
         end
 
         message = 'Will' .. parsed .. ' use double bursting.'
+    elseif (command == 'death') then
+        local parsed = ' not'
+        if not user_settings.magic_burst.death then
+            parsed = ''
+        end
+
+        if arg2 == nil or arg2 == '' then
+            windower.add_to_chat(3, 'Provide an additional on | off for this command.')
+            return
+        end
+
+        if arg2 == 'off' then
+            user_settings.magic_burst.death = false
+            parsed = ' not'
+        elseif arg2 == 'on' then
+            user_settings.magic_burst.death = true
+            parsed = ''
+        end
+
+        message = 'Will' .. parsed .. ' burst death.'
     elseif (command == 'weather') then
         local parsed = ' not'
         if not user_settings.magic_burst.check_weather then

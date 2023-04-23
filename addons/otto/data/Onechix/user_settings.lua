@@ -69,7 +69,7 @@ return {
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["min_hp"] = 15,
         ["name"] = "Savage Blade",
         ["partner"] = "none"

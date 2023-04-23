@@ -181,9 +181,7 @@ function actions.get_offensive_action(player)
         
         local_queue_insert(nukingAction.action.en, nukingAction.name)
         if (action.nuke == nil) and actor:in_casting_range(target) and actor:ready_to_use(nukingAction.action) then
-            log('nuke')
-            log(nukingAction)
-            action.nuke = nukingAction
+            action.nuke = nukingAction  
         end
     end
 

@@ -38,7 +38,8 @@ local skillchains = {
 	[298] = {id=298,english='Transfixion', elements={'Light'}},
 	[299] = {id=299,english='Scission',elements={'Earth'}},
 	[300] = {id=300,english='Detonation',elements={'Wind'}},
-	[301] = {id=301,english='Impaction',elements={'Thunder'}}
+	[301] = {id=301,english='Impaction',elements={'Thunder'}},
+	[385] = {id=385, english='Light',elements={'Light','Thunder','Wind','Fire'}} -- CKM added because this is the absorbs message.
 }
 
 local magic_tiers = {
@@ -118,6 +119,7 @@ function magic_burst.init()
 	defaults.check_weather = true   -- default true, you probably just want this true
 	defaults.double_burst = false   -- single burst is false, double burst is true
 	defaults.show_spell = false     -- mostly debuging
+	defaults.death = false
 
 	defaults.nuke_wall_offest = 0       -- CKM todo add this to avoid bursting same element (to avoid nuke wall penalties)
 
@@ -226,7 +228,7 @@ function get_spell(skillchain, doubleBurst)
 	local weather_element, day_element = get_bonus_elements()
 	local spell = ''
 
-	if (user_settings.magic_burst.check_weather and T(skillchain.elements):contains(weather_element)) then
+	if (user_settings.magic_burst.check_weather and skillchain ~= nil and T(skillchain.elements):contains(weather_element)) then
 		spell_element = weather_element
 	elseif (user_settings.magic_burst.check_day and T(skillchain.elements):contains(day_element)) then
 		spell_element = day_element
@@ -244,6 +246,7 @@ function get_spell(skillchain, doubleBurst)
 
 	-- Find spell/helix/jutsu that will be best based on best element
 	if (elements[spell_element] ~= nil and elements[spell_element][user_settings.magic_burst.cast_type] ~= nil) then
+
 		spell = elements[spell_element][user_settings.magic_burst.cast_type]
 
 		tier = (tier >= 1 and tier or 1)
@@ -279,10 +282,28 @@ function get_spell(skillchain, doubleBurst)
 	for i=1,#skillchain.elements do
 		element_list = element_list..skillchain.elements[i]..(i<#skillchain.elements and ', ' or '')
 	end
-	
+
+
 	local resSpell = res.spells:with('name', spell)
+	
+	if should_cast_death(skillchain) then
+		resSpell = res.spells:with('name', "Death")
+	end
 
 	return resSpell
+end
+
+function should_cast_death(skillchain) 
+	local job = windower.ffxi.get_player().main_job
+	local death = res.spells:with('name', "Death")
+	local knowsDeath = windower.ffxi.get_spells()[death.id]
+	local deathRecast = check_recast(death.name)
+	
+	if skillchain.english == 'Darkness' and job == 'BLM' and knowsDeath and deathRecast == 0 and user_settings.magic_burst.death then
+		return true
+	end
+
+	return false
 end
 
 function set_target(target)

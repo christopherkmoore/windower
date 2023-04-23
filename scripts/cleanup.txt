@@ -1,3 +1,4 @@
 send @all put *kindred crest case all;
 send @all put *Card case all;
 send @all put Rem's* case all;
+send @all put Copper Voucher case all;

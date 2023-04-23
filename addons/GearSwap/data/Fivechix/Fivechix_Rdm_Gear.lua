@@ -71,7 +71,7 @@ function init_gear_sets()
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",range=empty,ammo="Impatiens",
 		head="Atrophy Chapeau +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance Earring",
 		body="Viti. Tabard +3",hands="Gende. Gages +1",ring1="Kishar Ring",ring2="Weatherspoon Ring",
-		back="Perimede Cape",waist="Witful Belt",legs="Psycloth Lappas",feet=gear.merlinic_aspir_feet}
+		back=gear.capeINT,waist="Witful Belt",legs="Psycloth Lappas",feet=gear.merlinic_aspir_feet}
 		
 	sets.precast.FC.Impact = set_combine(sets.precast.FC, {head=empty,body="Twilight Cloak"})
 	sets.precast.FC.Dispelga = set_combine(sets.precast.FC, {main="Daybreak",sub="Sacro Bulwark"})
@@ -193,12 +193,12 @@ function init_gear_sets()
 	sets.midcast['Enfeebling Magic'] = {main="Marin Staff +1",sub="Enki Strap",range=empty,ammo="Regal Gem",
 		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
 		body="Lethargy Sayon +1",hands="Regal Cuffs",ring1="Kishar Ring",ring2="Weatherspoon Ring",
-		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
+		back=gear.capeINT,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Marin Staff +1",sub="Enki Strap",range="Kaja Bow",ammo=empty,
 		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
 		body="Atrophy Tabard +2",hands=gear.chironic_enfeeble_hands,ring1="Metamor. Ring +1",ring2="Weatherspoon Ring",
-		back=gear.nuke_jse_back,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
+		back=gear.capeINT,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		
 	sets.midcast.DurationOnlyEnfeebling = set_combine(sets.midcast['Enfeebling Magic'], {body="Atrophy Tabard +2",range="Kaja Bow"})
 		
@@ -305,7 +305,7 @@ function init_gear_sets()
 	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",range=empty,ammo="Impatiens",
 		head="Viti. Chapeau +3",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Defending Ring",ring2="Sheltered Ring",
-		back="Umbra Cape",waist="Flume Belt +1",legs="Lengo Pants",feet=gear.chironic_refresh_feet}
+		back=gear.capeINT,waist="Flume Belt +1",legs="Lengo Pants",feet=gear.chironic_refresh_feet}
 	
 
 	-- Idle sets
@@ -314,22 +314,22 @@ function init_gear_sets()
 	-- 	body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Stikini Ring +1",ring2="Stikini Ring +1",
 	-- 	back="Umbra Cape",waist="Flume Belt +1",legs="Lengo Pants",feet=gear.merlinic_refresh_feet}
 		
-	sets.idle = {main="Kaja Sword",sub="Sacro Bulwark",range=empty,ammo="Homiliary",
+	sets.idle = {main="Kaja Sword",sub="Beatific Shield +1",range=empty,ammo="Homiliary",
 		head="Atrophy Chapeau +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Etana Ring",ring2="Stikini Ring +1",
-		back="Umbra Cape",waist="Flume Belt +1",legs="Lengo Pants",feet=gear.merlinic_refresh_feet}
+		back=gear.capeINT,waist="Flume Belt +1",legs="Lengo Pants",feet=gear.merlinic_refresh_feet}
 
 	sets.idle.PDT = {main="Terra's Staff",sub="Oneiros Grip",range=empty,ammo="Staunch Tathlum +1",
 		head="Malignance Chapeau",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Dark Ring",
 		back="Moonlight Cape",waist="Flume Belt +1",legs="Malignance Tights",feet="Malignance Boots"}
 		
-	sets.idle.MDT = {main="Daybreak",sub="Sacro Bulwark",range=empty,ammo="Staunch Tathlum +1",
+	sets.idle.MDT = {main="Daybreak",sub="Beatific Shield +1",range=empty,ammo="Staunch Tathlum +1",
 		head="Malignance Chapeau",neck="Warder's Charm +1",ear1="Etiolation Earring",ear2="Sanare Earring",
 		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Moonlight Cape",waist="Carrier's Sash",legs="Malignance Tights",feet="Malignance Boots"}
 		
-	sets.idle.Weak = {main="Bolelabunga",sub="Sacro Bulwark",range=empty,ammo="Homiliary",
+	sets.idle.Weak = {main="Bolelabunga",sub="Beatific Shield +1",range=empty,ammo="Homiliary",
 		head="Viti. Chapeau +3",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Sanare Earring",
 		body="Jhakri Robe +2",hands=gear.merlinic_refresh_hands,ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flume Belt +1",legs="Lengo Pants",feet=gear.chironic_refresh_feet}
@@ -393,10 +393,10 @@ function init_gear_sets()
 --		body="Ayanmo Corazza +2",hands="Aya. Manopolas +2",ring1="Petrov Ring",ring2="Ilabrat Ring",
 --		back=gear.stp_jse_back,waist="Windbuffet Belt +1",legs="Carmine Cuisses +1",feet="Carmine Greaves +1"}
 
-	sets.engaged = {ammo="Aurgelmir Orb +1", main="Kaja Sword",
+	sets.engaged = {ammo="Aurgelmir Orb +1", main="Kaja Sword", sub="Beatific Shield +1",
 		head="Malignance Chapeau",neck="Asperity Necklace",ear1="Brutal Earring",ear2="Sherida Earring",
 		body="Ayanmo Corazza +2",hands="Malignance Gloves",ring1="Petrov Ring",ring2="Ilabrat Ring",
-		back=gear.stp_jse_back,waist="Windbuffet Belt +1",legs="Malignance Tights",feet="Carmine Greaves +1"}
+		back=gear.capeINT,waist="Windbuffet Belt +1",legs="Malignance Tights",feet="Carmine Greaves +1"}
 		
 	sets.engaged.EnspellOnly = {
 		head="Malignance Chapeau",neck="Dls. Torque +2",ear1="Suppanomimi",ear2="Digni. Earring",

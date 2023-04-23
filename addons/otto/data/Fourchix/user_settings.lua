@@ -65,6 +65,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
+        ["death"] = false,
         ["double_burst"] = false,
         ["enabled"] = true,
         ["gearswap"] = true,

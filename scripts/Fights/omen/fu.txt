@@ -4,6 +4,12 @@
 //
 // Fight Notes: Will absorb buffs and fuck you.
 //
+// Absolutely no buffs to fight, because he will ALWAYS open by absorbing your buffs,
+// giving him extra power -- enough to one shot you.
+// 
+// Activate the script I guess after fight open?
+//
+//
 // Not even close to a solved fight. He opens up with a move that takes all my buffs.
 // then immediately kills me with WaterV ~3k damage. 
 //

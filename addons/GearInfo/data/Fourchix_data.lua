@@ -418,6 +418,19 @@ return {
             [4]="Head"
         }, 
         ["AGI"]=19, 
+        ["en"]="Wayfarer Circlet", 
+        ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
+        ["HP"]=32, 
+        ["item_level"]=117, 
+        ["VIT"]=19, 
+        ["STR"]=19, 
+        ["Haste"]=6, 
+        ["MP"]=31, 
+        ["id"]=27742, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Magic Atk. Bonus"]=5, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -429,20 +442,7 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["discription"]="DEF:88 HP+32 MP+31 STR+19 DEX+19 VIT+19 AGI+19 INT+24 MND+24 CHR+24 \"Magic Atk. Bonus\"+5 Evasion+32 Magic Evasion+70 \"Magic Def. Bonus\"+5 Haste+6% Set: \"Refresh\"+3", 
-        ["HP"]=32, 
-        ["en"]="Wayfarer Circlet", 
-        ["VIT"]=19, 
-        ["STR"]=19, 
-        ["Haste"]=6, 
-        ["MP"]=31, 
-        ["id"]=27742, 
-        ["INT"]=24, 
-        ["category"]="Armor", 
-        ["CHR"]=24, 
-        ["Magic Atk. Bonus"]=5, 
-        ["item_level"]=117
+        }
     }, 
     [14]={
         ["Evasion"]=37, 
@@ -471,6 +471,19 @@ return {
             [5]="Body"
         }, 
         ["AGI"]=20, 
+        ["en"]="Wayfarer Robe", 
+        ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
+        ["HP"]=48, 
+        ["item_level"]=117, 
+        ["VIT"]=20, 
+        ["STR"]=20, 
+        ["Haste"]=3, 
+        ["MP"]=57, 
+        ["id"]=27883, 
+        ["INT"]=28, 
+        ["category"]="Armor", 
+        ["CHR"]=28, 
+        ["Magic Atk. Bonus"]=6, 
         ["Set Bonus"]={
             ["bonus"]={
                 [1]={}, 
@@ -482,20 +495,7 @@ return {
                 }
             }, 
             ["set id"]=110
-        }, 
-        ["discription"]="DEF:116 HP+48 MP+57 STR+20 DEX+20 VIT+20 AGI+20 INT+28 MND+28 CHR+28 \"Magic Atk. Bonus\"+6 Evasion+37 Magic Evasion+75 \"Magic Def. Bonus\"+6 Haste+3% Set: \"Refresh\"+3", 
-        ["HP"]=48, 
-        ["en"]="Wayfarer Robe", 
-        ["VIT"]=20, 
-        ["STR"]=20, 
-        ["Haste"]=3, 
-        ["MP"]=57, 
-        ["id"]=27883, 
-        ["INT"]=28, 
-        ["category"]="Armor", 
-        ["CHR"]=28, 
-        ["Magic Atk. Bonus"]=6, 
-        ["item_level"]=117
+        }
     }, 
     [15]={
         ["Evasion"]=19, 
@@ -2005,12 +2005,12 @@ return {
     }, 
     [57]={
         ["discription"]="\"Fast Cast\"+5% \"Sublimation\"+3 Enhancing magic duration +10%", 
-        ["Fast Cast"]=5, 
+        ["en"]="Embla Sash", 
         ["slots"]={
             [10]="Waist"
         }, 
+        ["Fast Cast"]=5, 
         ["id"]=26354, 
-        ["en"]="Embla Sash", 
         ["category"]="Armor", 
         ["jobs"]={
             [3]="WHM", 
@@ -2053,7 +2053,7 @@ return {
     [59]={
         ["discription"]="DMG:199 Delay:356 INT+12 MND+12 Magic Accuracy+15 \"Magic Atk. Bonus\"+28 Magic Damage+217 Staff skill +242 Parrying skill +242 Magic Accuracy skill +228 \"Fast Cast\"+3% Wind Elemental \"Magic Atk. Bonus\"+11 Unity Ranking: INT+10～15", 
         ["MND"]=12, 
-        ["skill"]="Staff", 
+        ["Fast Cast"]=3, 
         ["jobs"]={
             [3]="WHM", 
             [4]="BLM", 
@@ -2063,7 +2063,7 @@ return {
             [20]="SCH", 
             [21]="GEO"
         }, 
-        ["Fast Cast"]=3, 
+        ["skill"]="Staff", 
         ["en"]="Marin Staff +1", 
         ["Staff skill"]=242, 
         ["item_level"]=119, 
@@ -2079,5 +2079,176 @@ return {
         ["Magic Atk. Bonus"]=11, 
         ["category"]="Weapon", 
         ["Magic Accuracy"]=15
+    }, 
+    [60]={
+        ["jobs"]={
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }, 
+        ["id"]=26030, 
+        ["DEF"]=6, 
+        ["slots"]={
+            [9]="Neck"
+        }, 
+        ["category"]="Armor", 
+        ["discription"]="DEF:6 Magic Accuracy+17 Dark magic skill +10 \"Absorb\" effect +5% \"Drain\" and \"Aspir\" potency +5", 
+        ["en"]="Erra Pendant", 
+        ["Magic Accuracy"]=17
+    }, 
+    [61]={
+        ["discription"]="DEF:15 Magic burst damage +5 \"Mana Wall\"+10%", 
+        ["jobs"]={
+            [4]="BLM"
+        }, 
+        ["category"]="Armor", 
+        ["en"]="Taranus's Cape", 
+        ["Fast Cast"]=10, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["id"]=26249, 
+        ["DEF"]=15, 
+        ["MP"]=66, 
+        ["augments"]={
+            [1]="MP+60", 
+            [2]="Eva.+20 /Mag. Eva.+20", 
+            [3]="MP+6", 
+            [4]="\"Fast Cast\"+10", 
+            [5]="none"
+        }
+    }, 
+    [62]={
+        ["Evasion"]=60, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["jobs"]={
+            [4]="BLM", 
+            [5]="RDM", 
+            [15]="SMN", 
+            [20]="SCH", 
+            [21]="GEO"
+        }, 
+        ["DEX"]=6, 
+        ["DEF"]=67, 
+        ["MND"]=23, 
+        ["augments"]={
+            [1]="Mag. Acc.+26", 
+            [2]="\"Drain\" and \"Aspir\" potency +5", 
+            [3]="INT+7", 
+            [4]="\"Mag.Atk.Bns.\"+11", 
+            [5]="none"
+        }, 
+        ["en"]="Merlinic Crackows", 
+        ["item_level"]=119, 
+        ["AGI"]=26, 
+        ["HP"]=4, 
+        ["id"]=27497, 
+        ["discription"]="DEF:67 HP+4 MP+20 STR+6 DEX+6 VIT+6 AGI+26 INT+24 MND+23 CHR+35 Evasion+60 Magic Evasion+118 \"Magic Atk. Bonus\"+15 \"Magic Def. Bonus\"+6 Haste+3% \"Fast Cast\"+5% \"Conserve MP\"+4 \"Drain\" and \"Aspir\" potency +7", 
+        ["STR"]=6, 
+        ["Haste"]=3, 
+        ["MP"]=20, 
+        ["Fast Cast"]=5, 
+        ["INT"]=31, 
+        ["category"]="Armor", 
+        ["CHR"]=35, 
+        ["VIT"]=6, 
+        ["Magic Atk. Bonus"]=26, 
+        ["Magic Accuracy"]=26
+    }, 
+    [63]={
+        ["Evasion"]=65, 
+        ["DEF"]=73, 
+        ["jobs"]={
+            [4]="BLM"
+        }, 
+        ["DEX"]=16, 
+        ["Set Bonus"]={
+            ["set id"]=89, 
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Magic Accuracy"]=15
+                }, 
+                [3]={
+                    ["Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Magic Accuracy"]=30
+                }, 
+                [4]={
+                    ["Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Magic Accuracy"]=45
+                }, 
+                [5]={
+                    ["Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Magic Accuracy"]=60
+                }
+            }
+        }, 
+        ["MND"]=24, 
+        ["item_level"]=119, 
+        ["STR"]=15, 
+        ["en"]="Spae. Sabots +2", 
+        ["AGI"]=38, 
+        ["HP"]=31, 
+        ["id"]=23311, 
+        ["VIT"]=15, 
+        ["slots"]={
+            [8]="Feet"
+        }, 
+        ["Haste"]=3, 
+        ["MP"]=33, 
+        ["discription"]="DEF:73 HP+31 MP+33 STR+15 DEX+16 VIT+15 AGI+38 INT+27 MND+24 CHR+39 Magic Accuracy+44 Magic Damage+30 Evasion+65 Magic Evasion+117 \"Magic Atk. Bonus\"+21 \"Magic Def. Bonus\"+5 Haste+3% Magic burst damage +5 Elemental magic casting time -5% Set: Inc. Acc., Ranged Acc., and Magic Acc.", 
+        ["INT"]=27, 
+        ["category"]="Armor", 
+        ["CHR"]=39, 
+        ["Magic Atk. Bonus"]=21, 
+        ["Magic Accuracy"]=44
+    }, 
+    [64]={
+        ["discription"]="Skillchain Bonus+5 Magic burst damage II +5", 
+        ["id"]=11672, 
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }, 
+        ["en"]="Mujin Band", 
+        ["category"]="Armor", 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }
     }
 }
