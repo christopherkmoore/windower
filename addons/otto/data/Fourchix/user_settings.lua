@@ -11,11 +11,11 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 3.5
+        ["yalm_fight_range"] = 3
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -38,7 +38,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 4,
+                ["cure"] = 0,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },
@@ -67,7 +67,7 @@ return {
         ["check_weather"] = true,
         ["death"] = false,
         ["double_burst"] = false,
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false
@@ -79,7 +79,11 @@ return {
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 80,
-        ["name"] = "Savage Blade",
-        ["partner"] = "none"
+        ["name"] = "Leaden Salute",
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Tachi: Gekko"
+        }
     }
 }

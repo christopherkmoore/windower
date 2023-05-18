@@ -57,6 +57,14 @@
             </pos>
         </text_box_settings>
     </fivechix>
+    <fourchix>
+        <text_box_settings>
+            <pos>
+                <x>568</x>
+                <y>-1</y>
+            </pos>
+        </text_box_settings>
+    </fourchix>
     <twochix>
         <text_box_settings>
             <pos>

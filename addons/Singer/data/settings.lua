@@ -3,16 +3,16 @@ return {
     ["debuffs"] = L{"Carnage Elegy","Light Threnody II",},
     ["playlist"] = T{
         ["clear"] = L{},
-        ["lizards"] = L{"Victory March","Valor Minuet IV","Valor Minuet V",},
+        ["lizards"] = L{"Valor Minuet IV","Valor Minuet V","Victory March"},
     },
     ["buffs"] = T{
-        ["refresh"] = L{"Chixslave", "Threechix"},
-        ["haste"] = L{"Twochix", "Onechix", "Chixslave", "Threechix"},
+        ["refresh"] = L{},
+        ["haste"] = L{},
         ["aurorastorm"] = L{},
         ["firestorm"] = L{},
     },
     ["song"] = T{
         ["Chixslave"] = L{"Mage's Ballad III",},
     },
-    ["songs"] = L{"Victory March","Valor Minuet IV","Valor Minuet V",},
+    ["songs"] = L{"Valor Minuet IV","Valor Minuet V","Victory March"},
 }

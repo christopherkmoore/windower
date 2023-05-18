@@ -96,6 +96,8 @@ send Onechix sing off;
 send Onechix dressup l bard;
 
 lua load otto;
+send Fourchix lua load autocor;
+
 send Onechix bind ^f send @others /follow Onechix
 send Twochix bind ^f send @others /follow Twochix
 send Threechix bind ^f send @others /follow Threechix 

@@ -94,6 +94,7 @@ lua load aecho;
 send Onechix lua load singer;
 send Onechix sing off;
 send Onechix dressup l bard;
+send Fourchix lua load autocor;
 
 lua load otto;
 

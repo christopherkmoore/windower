@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -38,7 +38,7 @@ return {
             ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 0,
-                ["cure"] = 0,
+                ["cure"] = 4,
                 ["waltz"] = 0,
                 ["waltzga"] = 0
             },
@@ -47,14 +47,16 @@ return {
                 ["cure"] = 3,
                 ["waltz"] = 3,
                 ["waltzga"] = 2
-            }
+            },
+            ["mode"] = "cure",
+            ["modega"] = "curaga"
         },
         ["ignoreTrusts"] = true
     },
     ["job"] = {},
     ["magic_burst"] = {
         ["cast_tier"] = 3,
-        ["cast_type"] = "jutsu",
+        ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
@@ -69,7 +71,7 @@ return {
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["min_hp"] = 15,
         ["name"] = "Savage Blade",
         ["partner"] = "none"

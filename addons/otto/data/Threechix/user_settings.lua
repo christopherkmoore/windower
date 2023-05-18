@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -54,6 +54,10 @@ return {
         ["ignoreTrusts"] = true
     },
     ["job"] = {
+        ["blackmage"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = false
+        },
         ["geomancer"] = {
             ["bubble"] = {
                 ["distance"] = 8,
@@ -65,18 +69,18 @@ return {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
             },
-            ["geo"] = "Geo-Malaise",
-            ["indi"] = "Indi-Acumen"
+            ["geo"] = "Geo-Frailty",
+            ["indi"] = "Indi-Fury"
         }
     },
     ["magic_burst"] = {
-        ["cast_tier"] = 5,
+        ["cast_tier"] = 4,
         ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
         ["double_burst"] = false,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["nuke_wall_offest"] = 1,

@@ -11,14 +11,14 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
-        ["yalm_fight_range"] = 3.5
+        ["yalm_fight_range"] = 3
     },
     ["dispel"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -31,9 +31,9 @@ return {
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,
-            ["cure"] = true
+            ["cure"] = false
         },
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -56,7 +56,7 @@ return {
     ["job"] = {},
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "spell",
+        ["cast_type"] = "none",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
@@ -73,7 +73,7 @@ return {
     ["weaponskill"] = {
         ["enabled"] = false,
         ["min_hp"] = 80,
-        ["name"] = "Savage Blade",
+        ["name"] = "Swift Blade",
         ["partner"] = "none"
     }
 }

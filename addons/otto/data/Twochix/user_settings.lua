@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -39,8 +39,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 3,
-                ["waltzga"] = 1
+                ["waltz"] = 0,
+                ["waltzga"] = 0
             },
             ["min"] = {
                 ["curaga"] = 3,
@@ -55,7 +55,7 @@ return {
     },
     ["job"] = {},
     ["magic_burst"] = {
-        ["cast_tier"] = 3,
+        ["cast_tier"] = 2,
         ["cast_type"] = "none",
         ["change_target"] = true,
         ["check_day"] = true,
@@ -73,11 +73,11 @@ return {
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 15,
-        ["name"] = "Onslaught",
+        ["name"] = "Tachi: Gekko",
         ["partner"] = {
-            ["name"] = "Twochix",
+            ["name"] = "Onechix",
             ["tp"] = 1000,
-            ["weaponskill"] = "Onslaught"
+            ["weaponskill"] = "Savage Blade"
         }
     }
 }

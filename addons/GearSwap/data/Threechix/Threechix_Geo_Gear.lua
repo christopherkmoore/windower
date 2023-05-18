@@ -65,7 +65,7 @@ function init_gear_sets()
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Psycloth Tiara",neck="Voltsurge Torque",ear1="Malignance earring",ear2="Azimuth Earring",
 		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                                                          --ring2="Lebeche Ring",
-		back=gear.capeFC,waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
+		back=gear.capeFC,waist="Witful Belt",legs="Geo. Pants +2",feet="Regal Pumps"}
 
 	sets.precast.FC.Geomancy = set_combine(sets.precast.FC, {range="Dunna",ammo=empty})
 	
@@ -86,7 +86,7 @@ function init_gear_sets()
 	sets.precast.FC.Impact = {ammo="Impatiens",
 		head=empty,neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance earring",
 		body="Twilight Cloak",hands="Volte Gloves",ring1="Kishar Ring",ring2="Lebeche Ring",
-		back="Lifestream Cape",waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
+		back="Lifestream Cape",waist="Witful Belt",legs="Geo. Pants +2",feet="Regal Pumps"}
 		
 	sets.precast.FC.Dispelga = set_combine(sets.precast.FC, {main="Daybreak",sub="Genmei Shield"})
 	
@@ -102,7 +102,7 @@ function init_gear_sets()
     sets.midcast.FastRecast = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",
 		head="Amalric Coif +1",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Malignance earring",
 		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Prolix Ring",
-		back="Lifestream Cape",waist="Witful Belt",legs="Geo. Pants +1",feet="Regal Pumps"}
+		back="Lifestream Cape",waist="Witful Belt",legs="Geo. Pants +2",feet="Regal Pumps"}
 
 	sets.midcast.Geomancy = {main="Solstice",sub="Genmei Shield",range="Dunna",
 		head="Azimuth Hood +2",neck="Bagua Charm +1",ear1="Gna Earring",ear2="Fulla Earring",           -- neck="Incanter's Torque" ,ear1="Gifted Earring",ear2="Malignance earring",  
@@ -111,23 +111,23 @@ function init_gear_sets()
 
 
 	--Extra Indi duration as long as you can keep your 900 skill cap.
-	sets.midcast.Geomancy.Indi = set_combine(sets.midcast.Geomancy, {back=gear.cape_loupan_idle,legs="Bagua Pants +1",feet="Azimuth Gaiters +2"})
+	sets.midcast.Geomancy.Indi = set_combine(sets.midcast.Geomancy, {back="Lifestream Cape",legs="Bagua Pants +1",feet="Azimuth Gaiters +2"})
 		
     sets.midcast.Cure = {main=gear.gada_healing_club,sub="Sors Shield",ammo="Hasty Pinion +1",
         head="Amalric Coif +1",neck="Incanter's Torque",ear1="Gifted Earring",ear2="Etiolation Earring",
         body="Zendik Robe",hands="Telchine Gloves",ring1="Janniston Ring",ring2="Menelaus's Ring",
-        back="Tempered Cape +1",waist="Witful Belt",legs="Geo. Pants +1",feet="Vanya Clogs"}
+        back="Tempered Cape +1",waist="Witful Belt",legs="Geo. Pants +2",feet="Vanya Clogs"}
 		
-    sets.midcast.LightWeatherCure = {main="Chatoyant Staff",sub="Curatio Grip",ammo="Hasty Pinion +1",
+    sets.midcast.LightWeatherCure = {main="Chatoyant Staff",sub="Kaja Grip",ammo="Hasty Pinion +1",
         head="Amalric Coif +1",neck="Phalaina Locket",ear1="Gifted Earring",ear2="Etiolation Earring",
         body="Vrikodara Jupon",hands="Telchine Gloves",ring1="Janniston Ring",ring2="Menelaus's Ring",
-        back="Twilight Cape",waist="Hachirin-no-Obi",legs="Geo. Pants +1",feet="Vanya Clogs"}
+        back="Twilight Cape",waist="Hachirin-no-Obi",legs="Geo. Pants +2",feet="Vanya Clogs"}
 		
 		--Cureset for if it's not light weather but is light day.
     sets.midcast.LightDayCure = {main=gear.gada_healing_club,sub="Sors Shield",ammo="Hasty Pinion +1",
         head="Amalric Coif +1",neck="Incanter's Torque",ear1="Gifted Earring",ear2="Etiolation Earring",
         body="Zendik Robe",hands="Telchine Gloves",ring1="Janniston Ring",ring2="Lebeche Ring",
-        back="Twilight Cape",waist="Hachirin-no-Obi",legs="Geo. Pants +1",feet="Vanya Clogs"}
+        back="Twilight Cape",waist="Hachirin-no-Obi",legs="Geo. Pants +2",feet="Vanya Clogs"}
 
     sets.midcast.Curaga = set_combine(sets.midcast.Cure, {main="Daybreak",sub="Sors Shield"})
 
@@ -255,19 +255,19 @@ function init_gear_sets()
 	--------------------------------------
 
 	-- Resting sets
-	sets.resting = {main="Chatoyant Staff",sub="Oneiros Grip",
+	sets.resting = {main="Chatoyant Staff",sub="Kaja Grip",
 		head="Azimuth Hood +2",neck="Chrys. Torque",ear1="Etiolation Earring",ear2="Ethereal Earring",
 		body="Jhakri Robe +2",hands="Bagua mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",legs="Assid. Pants +1",feet="Azimuth Gaiters +2"}
 
 	-- Idle sets
 
-	sets.idle = {main="Malignance Pole",sub="Irenic Strap",ammo="Staunch Tathlum +1",
+	sets.idle = {main="Malignance Pole",sub="Kaja Grip",ammo="Staunch Tathlum +1",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Eabani Earring",ear2="Azimuth Earring",
 		body="Azimuth Coat +2",hands="Bagua mitaines +1",ring1="Stikini Ring +1",ring2="Stikini Ring +1",
-		back="Umbra Cape",waist="Shinjutsu-no-Obi",legs="Assid. Pants +1",feet="Azimuth Gaiters +2"}
+		back=gear.cape_loupan_idle,waist="Shinjutsu-no-Obi",legs="Assid. Pants +1",feet="Azimuth Gaiters +2"}
 		
-	sets.idle.PDT = {main="Malignance Pole",sub="Umbra Strap",ammo="Staunch Tathlum +1",
+	sets.idle.PDT = {main="Malignance Pole",sub="Kaja Grip",ammo="Staunch Tathlum +1",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Ethereal Earring",
 		body="Azimuth Coat +2",hands="Hagondes Cuffs +1",ring1="Defending Ring",ring2="Shadow Ring",
 		back="Shadow Mantle",waist="Flax Sash",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}
@@ -278,7 +278,7 @@ function init_gear_sets()
 		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
 		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Psycloth Lappas",feet="Bagua Sandals +1"}
 
-	sets.idle.PDT.Pet = {main="Malignance Pole",sub="Umbra Strap",range="Dunna",
+	sets.idle.PDT.Pet = {main="Malignance Pole",sub="Kaja Grip",range="Dunna",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Handler's Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
 		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Hagondes Pants +1",feet="Bagua Sandals +1"}
@@ -296,12 +296,12 @@ function init_gear_sets()
 
 	-- Defense sets
 	
-	sets.defense.PDT = {main="Malignance Pole",sub="Umbra Strap",ammo="Staunch Tathlum +1",
+	sets.defense.PDT = {main="Malignance Pole",sub="Kaja Grip",ammo="Staunch Tathlum +1",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Hagondes Cuffs +1",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flax Sash",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}
 
-	sets.defense.MDT = {main="Malignance Pole",sub="Irenic Strap",ammo="Staunch Tathlum +1",
+	sets.defense.MDT = {main="Malignance Pole",sub="Kaja Grip",ammo="Staunch Tathlum +1",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Handler's Earring +1",
 		body="Azimuth Coat +2",hands="Hagondes Cuffs +1",ring1="Defending Ring",ring2="Dark Ring",
 		back="Umbra Cape",waist="Flax Sash",legs="Hagondes Pants +1",feet="Azimuth Gaiters +2"}

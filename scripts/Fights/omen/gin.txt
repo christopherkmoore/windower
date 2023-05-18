@@ -40,7 +40,6 @@ send Onechix sing ballad 1 Threechix;
 send Threechix exec fights/auto_geo
 
 
-
 ////////////////////////////////////
 // Red Mage
 ////////////////////////////////////
@@ -72,8 +71,4 @@ wait 0.3
 
 send Onechix otto assist role backline;
 send Fivechix otto assist role backline;
-
-////////////////////////////////////
-// Guests
-////////////////////////////////////
 

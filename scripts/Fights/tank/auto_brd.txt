@@ -1,0 +1,13 @@
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix singer on;
+send Onechix sing pianissimo on;
+send Onechix sing Nightingale on;
+send Onechix sing Troubadour on
+send Onechix sing debuffing off;
+
+send Onechix sing ballad 1 Chixslave;
+
+send Onechix sing ws off;

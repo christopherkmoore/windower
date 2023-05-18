@@ -76,6 +76,8 @@
         <use_ws>true</use_ws>
     </global>
     <onechix>
+        <actions>false</actions>
+        <active>false</active>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>
@@ -83,8 +85,8 @@
         </aoe>
         <box>
             <pos>
-                <x>1340</x>
-                <y>23</y>
+                <x>1364</x>
+                <y>15</y>
             </pos>
         </box>
         <debuffing>false</debuffing>

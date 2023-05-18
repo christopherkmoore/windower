@@ -1,0 +1,32 @@
+////////////////////////////////
+// Notes:
+// Disables all fighting.
+//
+////////////////////////////////
+
+
+send Fivechix otto healer off;
+
+send Onechix singer off;
+send Onechix sing playlist clear;
+send Onechix singer debuffing off;
+send Onechix sing pianissimo off;
+send Onechix sing nightingale off;
+send Onechix sing troubadour off; 
+send Onechix sing soul_voice off,
+send Onechix sing clarion off;
+send Onechix otto pull off;
+
+send Onechix gs c set autowsmode off; 
+send Onechix gs c set autoshadowmode off;
+
+send Threechix otto geo off;
+send Threechix otto geo cooldowns off;
+
+
+send @all otto follow off;
+otto r all
+
+
+send Chixslave gs c set AutoRegenAgaMode Off;
+

@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "backline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
         },
@@ -51,7 +51,7 @@ return {
             ["mode"] = "cure",
             ["modega"] = "curaga"
         },
-        ["ignoreTrusts"] = true
+        ["ignoreTrusts"] = false
     },
     ["job"] = {},
     ["magic_burst"] = {

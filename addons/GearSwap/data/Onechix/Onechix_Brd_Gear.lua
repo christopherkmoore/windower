@@ -144,7 +144,7 @@ function init_gear_sets()
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Witful Belt",legs="Inyanga Shalwar +2",feet="Fili Cothurnes +2"}
+		back=gear.capeFC,waist="Witful Belt",legs="Inyanga Shalwar +2",feet="Brioso Slippers +3"}
 		
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
 
@@ -152,7 +152,7 @@ function init_gear_sets()
 	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
-		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Fili Cothurnes +2"}
+		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Brioso Slippers +3"}
 		
 	sets.midcast.SongDebuff.DW = {main="Kali",sub="Kali"}
 

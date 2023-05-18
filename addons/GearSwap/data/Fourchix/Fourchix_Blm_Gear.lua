@@ -226,7 +226,7 @@ function init_gear_sets()
     -- Elemental Magic sets
     --gear.ElementalObi
     sets.midcast['Elemental Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Dosis Tathlum",
-        head=gear.merlinic_nuke_head,neck="Sanctity Necklace",ear1="Crematio Earring",ear2="Friomisi Earring",
+        head=gear.merlinic_nuke_head,neck="Sanctity Necklace",ear1="Novio Earring",ear2="Friomisi Earring",
         body="Spaekona's Coat +2",hands="Spaekona's gloves +2",ring1="Freke Ring",ring2="Shiva Ring +1",
         back=gear.capeNuke,waist="Acuity Belt +1",legs="Jhakri Slops +2",feet=gear.merlinic_nuke_feet}
 		
@@ -345,11 +345,11 @@ function init_gear_sets()
 	-- Gear for Magic Burst mode.
     -- sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",head="Ea Hat",body="Ea Houppelande",hands="Amalric Gages +1",ring1="Mujin Band",legs="Ea Slops",feet="Jhakri Pigaches +2"}
     sets.MagicBurst = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",
-    head="Ea Hat", neck= "Sanctity Necklace", ear1="Friomisi Earring", body="Ea Houppelande",
+    head="Ea Hat", neck= "Sanctity Necklace", ear1="Friomisi Earring", ear2="Novio Earring", body="Ea Houppelande",
     back=gear.capeNuke, waist ="Acuity Belt +1",hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 
     sets.MagicBurstMP = {main=gear.grioavolr_nuke_staff,sub="Enki Strap",
-    head="Ea Hat", ear1="Friomisi Earring", body="Spaekona's Coat +2",
+    head="Ea Hat", ear1="Friomisi Earring", ear2="Novio Earring", body="Spaekona's Coat +2",
     waist="cuity Belt +1", back=gear.capeNuke,
     hands="Spae. gloves +2",ring1="Mujin Band",legs="Ea Slops",feet="Ea Pigaches"}
 

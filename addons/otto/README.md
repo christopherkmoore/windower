@@ -86,10 +86,6 @@ Accessories
 
 Random-
     Finish Dyna
-    -> Bastok   x RDM / COR / BLM relic x
-    -> WIndurst 
-    -> Sandy    
-    -> Jeuno    
     -> Outlands + tav 
 
 Finish Omen stuff. 
@@ -98,5 +94,8 @@ Nefarious Collar +1
 Halasz earring
 Niobid strap
 
-JSE Cape GEO => Indi Duration
+JSE Cape GEO => Indi Duration (percent bonus is better than duration bonus, maybe?)
 JSE Cape RDM -> Enhancing magic duration.
+
+*voidwatch so I can get tachi: fudo.... 
+*do af quests COR, PLD, BRD (feet), SAM

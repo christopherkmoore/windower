@@ -1,0 +1,10 @@
+send @all exec unfollow;
+send Fourchix input /ma "Warp II" Chixslave
+send Fivechix input /ma "Warp II" Onechix
+send Threechix input /ma "Warp II" Twochix
+
+wait 8
+
+send Threechix input /ma "Warp" Threechix
+send Fourchix input /ma "Warp" Fourchix
+send Fivechix input /ma "Warp" Fivechix

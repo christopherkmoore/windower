@@ -156,7 +156,7 @@ function actions.get_offensive_action(player)
         
         local partner_ok = true
         if (settings.ws.partner ~= nil) then
-            local pname = settings.ws.partner.name
+            local pname = settings.ws.partner.name or 'none'
             local partner = ffxi.get_party_member(pname)
             if partner ~= nil then
                 partner_ok = partner.tp >= settings.ws.partner.tp

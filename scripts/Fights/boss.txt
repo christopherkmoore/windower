@@ -18,7 +18,7 @@ send Chixslave exec fights/auto_whm
 
 wait 0.3;
 
-send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave barfira on;
 send Chixslave otto buff Chixslave barblindra on;
 
 ////////////////////////////////////
@@ -29,8 +29,9 @@ send Onechix exec fights/auto_brd
 
 wait 0.3;
 
-send Onechix sing minuet 2;
+send Onechix sing minuet 1;
 send Onechix sing march 1;
+send Onechix sing madrigal 1;
 
 ////////////////////////////////////
 // Geomancer
@@ -53,11 +54,17 @@ wait 0.3
 
 send Fivechix otto buff Fivechix enfire II on;
 
+send Fivechix otto debuff Slow II on;
+send Fivechix otto debuff Paralyze II on;
+send Fivechix otto debuff Addle II on;
+send Fivechix otto debuff Blind II on;
+
+
 ////////////////////////////////////
 // Black Mage
 ////////////////////////////////////
 
-send Fourchix exec fights/auto_blm
+send Fourchix exec fights/tank/auto_cor
 
 wait 0.3
 
@@ -65,9 +72,3 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
-
-send Threechix otto buff Ornate haste on
-send Threechix otto buff Renew haste on
-
-send Threechix otto buff Bryceb haste on
-send Threechix otto buff Panik haste on
