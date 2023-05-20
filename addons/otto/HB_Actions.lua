@@ -217,12 +217,16 @@ function actions.check_job_actions()
         return otto.geomancer.geo_geomancy_queue()
     elseif otto.blackmage then
         return otto.blackmage.blm_queue()
+    elseif otto.paladin then
+        return otto.paladin.pld_queue()
     end
 end
 
 function actions.check_job()
     if otto.blackmage then
         otto.blackmage.check_blm()
+    elseif otto.paladin then
+        otto.paladin.check_pld()
     end
 end
 

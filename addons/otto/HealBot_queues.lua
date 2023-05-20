@@ -61,7 +61,6 @@ end
 
 function ActionQueue:enqueue_action(actionType, action, name)
     local queue_item = {['type']=actionType,['action']=action,['name']=name}
-
     if self.queue:empty() then
         self.queue:insert(1, queue_item)
     else

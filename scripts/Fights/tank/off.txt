@@ -6,6 +6,7 @@
 
 
 send Fivechix otto healer off;
+send Fivechix otto pld off;
 
 send Onechix singer off;
 send Onechix sing playlist clear;

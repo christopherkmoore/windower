@@ -31,9 +31,9 @@ return {
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,
-            ["cure"] = true
+            ["cure"] = false
         },
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -53,7 +53,12 @@ return {
         },
         ["ignoreTrusts"] = true
     },
-    ["job"] = {},
+    ["job"] = {
+        ["paladin"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = true
+        }
+    },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
         ["cast_type"] = "spell",

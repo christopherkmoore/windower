@@ -45,7 +45,8 @@ wait 0.3;
 // Paladin
 ////////////////////////////////////
 
-send Fivechix exec fights/tank/auto_pld
+send Fivechix otto pld on;
+send Fivechix otto healer on;
 send Onechix sing ballad 1 Fivechix;
 
 wait 0.3

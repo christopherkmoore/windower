@@ -103,5 +103,6 @@
                 <y>338</y>
             </pos>
         </display>
+        <visible>true</visible>
     </twochix>
 </settings>

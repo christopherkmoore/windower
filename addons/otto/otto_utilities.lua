@@ -21,7 +21,7 @@ end
 
 
 function utils.normalize_action(action, action_type)
-    --atcf('utils.normalize_action(%s, %s)', tostring(action), tostring(action_type))
+    -- atcf('utils.normalize_action(%s, %s)', tostring(action), tostring(action_type))
     if istable(action) then return action end
     if action_type == nil then return nil end
     if isstr(action) then

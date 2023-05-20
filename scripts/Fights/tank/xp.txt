@@ -51,7 +51,7 @@ wait 0.3;
 // Paladin
 ////////////////////////////////////
 
-send Fivechix exec fights/tank/auto_pld
+send Fivechix otto pld on;
 
 wait 0.3
 
@@ -70,9 +70,9 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
-
-send Threechix otto buff Ornate haste on
-send Threechix otto buff Renew haste on
-
-send Threechix otto buff Bryceb haste on
-send Threechix otto buff Panik haste on
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

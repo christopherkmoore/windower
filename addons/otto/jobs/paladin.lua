@@ -2,55 +2,86 @@
 
 local paladin = { }
 
+paladin.bufflist = {
+    [855] = {id=855,en="Enlight II",ja="エンライトII",cast_time=3,duration=180,element=6,icon_id=337,icon_id_nq=6,levels={[7]=100},mp_cost=36,prefix="/magic",range=0,recast=30,recast_id=855,requirements=0,skill=32,status=274,targets=1,type="WhiteMagic"},
+    [97] = {id=97,en="Reprisal",ja="リアクト",cast_time=1,duration=60,element=6,icon_id=196,icon_id_nq=6,levels={[7]=61},mp_cost=24,prefix="/magic",range=0,recast=52,recast_id=97,requirements=0,skill=34,status=403,targets=1,type="WhiteMagic"},
+    -- [52] = {id=52,en="Shell V",ja="シェルV",cast_time=2,duration=1800,element=6,icon_id=132,icon_id_nq=6,levels={[3]=76,[5]=87,[20]=90,[22]=90},mp_cost=93,overwrites={48,49,50,51},prefix="/magic",range=12,recast=6,recast_id=52,requirements=1,skill=34,status=41,targets=29,type="WhiteMagic"},
+    -- [47] = {id=47,en="Protect V",ja="プロテスV",cast_time=2,duration=1800,element=6,icon_id=122,icon_id_nq=6,levels={[3]=76,[5]=77,[7]=90,[20]=80},mp_cost=84,overwrites={43,44,45,46},prefix="/magic",range=12,recast=6,recast_id=47,requirements=1,skill=34,status=40,targets=29,type="WhiteMagic"},
+    [476] = {id=476,en="Crusade",ja="クルセード",cast_time=3,duration=300,element=7,icon_id=552,icon_id_nq=7,levels={[7]=88,[22]=88},mp_cost=18,prefix="/magic",range=12,recast=10,recast_id=476,requirements=0,skill=34,status=289,targets=1,type="WhiteMagic"},
+    [106] = {id=106,en="Phalanx",ja="ファランクス",cast_time=3,duration=180,element=6,icon_id=186,icon_id_nq=6,levels={[5]=33,[7]=77,[22]=68},mp_cost=21,prefix="/magic",range=12,recast=10,recast_id=106,requirements=1,skill=34,status=116,targets=1,type="WhiteMagic"}
+}
+paladin.debufflist = {
+    [112] = {id=112,en="Flash",ja="フラッシュ",cast_time=0.5,element=6,icon_id=158,icon_id_nq=6,levels={[3]=45,[7]=37,[22]=45},mp_cost=25,prefix="/magic",range=12,recast=45,recast_id=112,requirements=0,skill=32,targets=32,type="WhiteMagic"}
+}
+
+paladin.jalist = { 
+    [46] = {id=46,en="Shield Bash",ja="シールドバッシュ",element=4,icon_id=406,mp_cost=0,prefix="/jobability",range=2,recast_id=73,targets=32,tp_cost=0,type="JobAbility"},
+    [92] = {id=92,en="Rampart",ja="ランパート",duration=30,element=3,icon_id=409,mp_cost=0,prefix="/jobability",range=0,recast_id=77,status=93,targets=1,tp_cost=0,type="JobAbility"},
+    [48] = {id=48,en="Sentinel",ja="センチネル",duration=30,element=3,icon_id=407,mp_cost=0,prefix="/jobability",range=0,recast_id=75,status=62,targets=1,tp_cost=0,type="JobAbility"},
+}
+
 function paladin.init()
-    local defaults = { enabled = false }
-    defaults.enabled = false
+    local defaults = { enabled = true }
+    defaults.enabled = true
     defaults.cooldowns = true
 
     if user_settings.job.paladin == nil then
         user_settings.job.paladin = defaults
         user_settings:save()
     end
+    
+    paladin.create_bufflist()
 end
 
--- The BLM main function.
+function paladin.create_bufflist()
+    local player = windower.ffxi.get_player()
+
+    if player.sub_job == "BLU" then
+        paladin.bufflist[547] = {id=547,en="Cocoon",ja="コクーン",blu_points=1,cast_time=1.75,duration=90,element=15,icon_id=-1,icon_id_nq=59,levels={[16]=8},mp_cost=10,prefix="/magic",range=0,recast=60,recast_id=547,requirements=0,skill=43,status=93,targets=1,type="BlueMagic"}
+        paladin.debufflist[592] = {id=592,en="Blank Gaze",ja="ブランクゲイズ",blu_points=2,cast_time=3,element=6,icon_id=-1,icon_id_nq=62,levels={[16]=38},mp_cost=25,prefix="/magic",range=9,recast=10,recast_id=592,requirements=0,skill=43,targets=32,type="BlueMagic"}
+    end
+
+    for _, spell in pairs(paladin.bufflist) do
+        windower.send_command('otto buff '..player.name..' '..spell.en..' on')
+    end
+end 
+
+
+-- The pld main function.
 function paladin.check_pld()
     if not user_settings.job.paladin.enabled then return end
 
 end
 
-function paladin.should_drain()
-    
+function paladin.pld_queue()
+    if not user_settings.job.paladin.enabled then return end
+
+    local pld_queue = ActionQueue.new()
+    local target = windower.ffxi.get_mob_by_target('t')
+    local player = windower.ffxi.get_player()
+
+    for _, ja in pairs(paladin.jalist) do
+        local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
+        
+        if actor:can_use(ja) and recast == 0 and not actor:is_acting() then
+            if ja.range == 0 then
+                pld_queue:enqueue_action('ability', ja, player.name)
+            else 
+                pld_queue:enqueue_action('ability', ja, target.name)
+            end
+
+        end
+    end
+
+    for _, spell in pairs(paladin.debufflist) do
+        local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
+        
+        if actor:can_use(spell) and recast == 0 and not actor:is_acting() then
+            pld_queue:enqueue_action('debuff', spell, target.name)
+        end
+    end
+
+    return pld_queue:getQueue()
 end
-
--- -- not used for now. under construction
--- function paladin.pld_queue()
---     if not user_settings.job.paladin.enabled then return end
-
---     local blm_queue = ActionQueue.new()
---     local player = windower.ffxi.get_player()
---     local buffs = S(player.buffs)
-    
---     if player.vitals.hpp < 60 then
---         local manawall = {id=254,en="Mana Wall",ja="マナウォール",duration=300,element=7,icon_id=388,mp_cost=0,prefix="/jobability",range=0,recast_id=39,status=437,targets=1,tp_cost=0,type="JobAbility"}
---         local manawall_recast = windower.ffxi.get_ability_recasts()[manawall.recast_id]
-
---         if manawall_recast == 0 and not buffs:contains(manawall.status) then 
---             blm_queue:enqueue('ability', manawall, player.name)
---         end
---     end
-
---     if user_settings.job.paladin.cooldowns then
-
---         local cascade = {id=388,en="Cascade",ja="カスケード",duration=60,element=7,icon_id=661,mp_cost=0,prefix="/jobability",range=0,recast_id=12,status=598,targets=1,tp_cost=0,type="JobAbility"}
---         local cascade_recast = windower.ffxi.get_ability_recasts()[cascade.recast_id]
-
---         if player.vitals.tp >= 1000 and cascade_recast == 0 and not buffs:contains(cascade.status) then
---             blm_queue:enqueue_preaction('ability', cascade, player.name)
---         end
---     end
-
---     return blm_queue:getQueue()
--- end
 
 return paladin

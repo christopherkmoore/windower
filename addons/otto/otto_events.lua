@@ -805,6 +805,40 @@ local function geomancer(args)
     end
 end
 
+local function paladin(args)
+    local allowed = T { 'on | off | enabled | disable'}
+    local command = 'help'
+    local message = ''
+    local should_save = true
+    local arg2 = ''
+    local arg3 = ''
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if (#args > 1) then
+        arg2 = args[2]
+    end
+
+    if command == 'on' or command == 'enable' then
+        user_settings.job.paladin.enabled = true
+        message = 'Paladin on.'
+        otto.paladin.init()
+    elseif command == 'off' or command == 'disable' then
+        user_settings.job.paladin.enabled = false
+        message = 'Paladin off.'
+    else
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        windower.add_to_chat(6, message)
+        user_settings:save()
+    end
+end
+
 -- TODO this was added quickly, I should go back and account for entry errors and return errors.
 -- TODO add indi command
 -- copied from geomancer for BLM
@@ -891,6 +925,8 @@ function events.addon_command(...)
             geomancer(newArgs)
         elseif command == 'blm' or command == 'blackmage' then
             blackmage(newArgs)
+        elseif command == 'pld' or command == 'paladin' then
+            paladin(newArgs)
         end
         -- MARK: commands to local otto
     end

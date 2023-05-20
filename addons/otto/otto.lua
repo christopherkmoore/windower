@@ -109,6 +109,7 @@ otto._events['render'] = windower.register_event('prerender', function()
     local acting = otto.isPerformingAction(moving)
     local player = windower.ffxi.get_player()
     actor.name = player and player.name or 'Player'
+
     if (player ~= nil) and can_act_statuses:contains(player.status) then
         local partner, targ = offense.assistee_and_target()
         
@@ -141,11 +142,6 @@ otto._events['render'] = windower.register_event('prerender', function()
                 -- TODO CKM added for now
             end
         end
-        
-        -- if otto.active and ((now - actor.last_ipc_sent) > actor.ipc_delay) then
-        --     windower.send_ipc_message(ipc_req)
-        --     actor.last_ipc_sent = now
-        -- end
     end
 end)
 
@@ -178,7 +174,6 @@ end)
 
 function otto.distances_from_master()
     local targets = S{}
-    local show_red = false
     if settings.textBoxes.moveInfo.visible then
         if user_settings.assist.master ~= nil and user_settings.assist.master ~= "" then
             local p = windower.ffxi.get_player()
@@ -191,9 +186,6 @@ function otto.distances_from_master()
                         if mbox ~= nil then 
                             local distance = math.sqrt(mbox.distance)
                             local rounded = math.floor(distance)
-                            if distance > 30 then 
-                                show_red = true
-                            end
 
                             if mbox.target_index ~= nil and mbox.target_index then
                                 local target = windower.ffxi.get_mob_by_index(mbox.target_index)
