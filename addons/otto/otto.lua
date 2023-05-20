@@ -93,6 +93,9 @@ function otto.check_jobs()
     elseif player.main_job == "BLM" then
         otto.blackmage = require('jobs/blackmage')
         otto.blackmage.init()
+    elseif player.main_job == "PLD" then 
+        otto.paladin = require('jobs/paladin')
+        otto.paladin.init()
     end
 
 end
@@ -149,6 +152,7 @@ end)
 
 otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
 otto._events['inc'] = windower.register_event('incoming chunk', otto.packets.handle_incoming_chunk)
+otto._events['job change'] = windower.register_event('job change', otto.check_jobs)
 
 otto._events['load'] = windower.register_event('load', function()
     if not _libs.lor then

@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "backline",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -31,9 +31,9 @@ return {
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,
-            ["cure"] = false
+            ["cure"] = true
         },
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -56,7 +56,7 @@ return {
     ["job"] = {},
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "none",
+        ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

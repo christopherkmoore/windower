@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "backline",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "frontline",
             ["Threechix"] = "backline"
@@ -39,8 +39,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 0,
-                ["waltzga"] = 0
+                ["waltz"] = 3,
+                ["waltzga"] = 1
             },
             ["min"] = {
                 ["curaga"] = 3,

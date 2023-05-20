@@ -67,7 +67,7 @@ return {
         ["check_weather"] = true,
         ["death"] = false,
         ["double_burst"] = false,
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,
         ["show_spell"] = false

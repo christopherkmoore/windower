@@ -45,7 +45,8 @@ wait 0.3;
 // Paladin
 ////////////////////////////////////
 
-send Fivechix exec fights/auto_pld
+send Fivechix exec fights/tank/auto_pld
+send Onechix sing ballad 1 Fivechix;
 
 wait 0.3
 
@@ -53,7 +54,7 @@ wait 0.3
 // Corsair
 ////////////////////////////////////
 
-send Fourchix exec fights/auto_cor
+send Fourchix exec fights/tank/auto_cor
 
 send Fourchix cor roll 1 Samurai Roll;
 send Fourchix cor roll 2 Chaos Roll;
