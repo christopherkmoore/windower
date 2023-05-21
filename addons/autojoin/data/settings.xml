@@ -1,0 +1,24 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <autodecline>false</autodecline>
+        <blacklist />
+        <mode>whitelist</mode>
+        <whitelist />
+    </global>
+    <chixslave>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </chixslave>
+    <onechix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </onechix>
+    <threechix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </threechix>
+    <fourchix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </fourchix>
+    <fivechix>
+        <whitelist>Twochix,Panik,Pounced</whitelist>
+    </fivechix>
+</settings>
