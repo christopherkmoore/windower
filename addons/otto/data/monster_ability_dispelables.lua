@@ -11,6 +11,7 @@ return {
     [103] = false,
     [106] = true,
     [108] = true,
+    [249] = true,
     [250] = true,
     [251] = true,
     [277] = false,
@@ -36,6 +37,7 @@ return {
     [448] = false,
     [450] = false,
     [453] = true,
+    [454] = false,
     [461] = false,
     [493] = true,
     [509] = false,
@@ -57,8 +59,11 @@ return {
     [1176] = false,
     [1233] = false,
     [2102] = true,
+    [2196] = true,
     [3132] = true,
     [3968] = false,
+    [3971] = true,
+    [3975] = true,
     [4033] = false,
     [4035] = false
 }

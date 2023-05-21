@@ -47,7 +47,7 @@ function init_gear_sets()
 	-- Precast Sets
 
 	-- Fast cast sets for spells
-	sets.precast.FC = {main="Kali",sub="Clerisy Strap +1",ammo="Impatiens",
+	sets.precast.FC = {sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Fili Calot +2",neck="Voltsurge Torque",ear1="Enchntr. Earring +1",ear2="Loquac. Earring",
 		body="Inyanga Jubbah +1",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                              --ring2="Lebeche Ring",  
 		back=gear.capeFC,waist="Witful Belt",legs="Aya. Cosciales +2",feet="Fili Cothurnes +2"}
@@ -149,7 +149,7 @@ function init_gear_sets()
 	sets.midcast.SongEffect.DW = {main="Kali",sub="Kali"}
 
 	-- For song defbuffs (duration primary, accuracy secondary)
-	sets.midcast.SongDebuff = {main="Kali",sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
+	sets.midcast.SongDebuff = {sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
 		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Brioso Slippers +3"}

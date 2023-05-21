@@ -356,6 +356,7 @@ local function weaponskill_commands(args)
         if arg2 == 'off' then
             user_settings.weaponskill.partner = 'none'
             atc('Weaponskill partner removed.')
+            user_settings:save()
             return
         end
 
@@ -827,6 +828,9 @@ local function paladin(args)
     elseif command == 'off' or command == 'disable' then
         user_settings.job.paladin.enabled = false
         message = 'Paladin off.'
+        utils.wipe_debufflist()
+        utils.wipe_bufflist()
+        otto.paladin.deinit()
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))

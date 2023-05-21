@@ -1,0 +1,17 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Pretty solved.
+// Fight Notes: Soloable with TC Monk. Terror at 50% and ~20-25% which is annoying but
+// livable.
+// 
+// Absorbs damage during ws and casting, which goes bananas ~20%.
+// best time to do damage is during auto animation forward. (seems)
+// disable ws and manually use them to skillchain.
+//
+////////////////////////////////
+
+exec fights/tank/fight
+
+send Onechix sing ballad 1 Fivechix;

@@ -2684,5 +2684,111 @@ return {
         ["INT"]=19, 
         ["category"]="Armor", 
         ["DT"]=-9
+    }, 
+    [77]={
+        ["Evasion"]=51, 
+        ["STR"]=34, 
+        ["jobs"]={
+            [7]="PLD"
+        }, 
+        ["DEX"]=24, 
+        ["AGI"]=24, 
+        ["MND"]=24, 
+        ["Haste"]=3, 
+        ["discription"]="DEF:159 HP+244 MP+52 STR+34 DEX+24 VIT+34 AGI+24 INT+24 MND+24 CHR+24 Magic Accuracy+40 Evasion+51 Magic Evasion+58 \"Magic Def. Bonus\"+4 Divine magic skill +15 Haste+3% Enmity+9 \"Fast Cast\"+5% Damage taken -10% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["Fast Cast"]=5, 
+        ["item_level"]=119, 
+        ["HP"]=244, 
+        ["id"]=23113, 
+        ["en"]="Rev. Surcoat +2", 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["DEF"]=159, 
+        ["MP"]=52, 
+        ["Magic Accuracy"]=40, 
+        ["INT"]=24, 
+        ["category"]="Armor", 
+        ["CHR"]=24, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=87
+        }, 
+        ["VIT"]=34, 
+        ["DT"]=-10
+    }, 
+    [78]={
+        ["Evasion"]=32, 
+        ["MND"]=17, 
+        ["slots"]={
+            [7]="Legs"
+        }, 
+        ["jobs"]={
+            [7]="PLD"
+        }, 
+        ["VIT"]=26, 
+        ["AGI"]=21, 
+        ["en"]="Rev. Breeches +2", 
+        ["discription"]="DEF:141 HP+153 MP+75 STR+40 VIT+26 AGI+21 INT+30 MND+17 CHR+15 Accuracy+39 Evasion+32 Magic Evasion+74 \"Magic Def. Bonus\"+3 Enhancing magic skill +17 Haste+5% Enmity+6 Physical damage taken -5% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["Haste"]=5, 
+        ["HP"]=153, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=87
+        }, 
+        ["Accuracy"]=39, 
+        ["STR"]=40, 
+        ["DEF"]=141, 
+        ["MP"]=75, 
+        ["id"]=23247, 
+        ["INT"]=30, 
+        ["category"]="Armor", 
+        ["CHR"]=15, 
+        ["PDT"]=-5, 
+        ["item_level"]=119
     }
 }

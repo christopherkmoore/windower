@@ -1,14 +1,14 @@
 send @all exec unfollow;
 
 send Threechix input /ma "Warp II" Twochix
-wait 9
+wait 10
 send Threechix input /ma "Warp II" Chixslave
-wait 9
+wait 10
 send Threechix input /ma "Warp II" Onechix
-wait 9
+wait 10
 send Threechix input /ma "Warp II" Fourchix
-wait 9
+wait 10
 send Threechix input /ma "Warp II" Fivechix
-wait 6
+wait 7
 
 send Threechix input /ma "Warp" Threechix

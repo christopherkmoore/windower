@@ -100,7 +100,7 @@ function weaponskill.action(target)
         -- local hp = user_settings.weaponskill.min_hp or 0
         -- local hp_ok = target.hpp >= hp
         local player = windower.ffxi.get_player().name
-        local should_open_ws = (user_settings.weaponskill.partner == 'none' or user_settings.weaponskill.partner.name == player)
+        local should_open_ws = (user_settings.weaponskill.partner == 'none' or user_settings.weaponskill.partner == '' or user_settings.weaponskill.partner.name == player)
 
         if  should_open_ws and not weaponskill.skillchain_active then
             if user_settings.weaponskill.partner == 'none' then 

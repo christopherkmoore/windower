@@ -6,7 +6,9 @@
 
 
 send Fivechix otto healer off;
-send Fivechix otto pld off;
+
+
+send Fourchix cor off;
 
 send Onechix singer off;
 send Onechix sing playlist clear;
@@ -18,9 +20,6 @@ send Onechix sing soul_voice off,
 send Onechix sing clarion off;
 send Onechix otto pull off;
 
-send Onechix gs c set autowsmode off; 
-send Onechix gs c set autoshadowmode off;
-
 send Threechix otto geo off;
 send Threechix otto geo cooldowns off;
 
@@ -28,6 +27,8 @@ send Threechix otto geo cooldowns off;
 send @all otto follow off;
 otto r all
 
+wait 0.3;
+send Fivechix otto pld off;
 
 send Chixslave gs c set AutoRegenAgaMode Off;
 

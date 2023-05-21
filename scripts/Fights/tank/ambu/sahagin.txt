@@ -3,6 +3,10 @@
 // Important to wait 0.1 after reset step, or send will fail sometimes.
 //
 // Fight Notes: General fight script for unspecific cases.
+// 
+// Debuff songstress x4 then silence. Keep rdm on for this while others fight.
+// fight at about ~10 yalm distance from songstress
+// ignore the bio aura
 //
 ////////////////////////////////
 
@@ -14,7 +18,7 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
-send Chixslave exec fights/tank/auto_whm
+send Chixslave exec fights/auto_whm
 
 wait 0.3;
 
@@ -25,44 +29,37 @@ send Chixslave otto buff Chixslave barblindra on;
 // Bard
 ////////////////////////////////////
 
-send Onechix exec fights/tank/auto_brd
-
-send Onechix otto pull on;
-send Onechix sing ballad 1 Fivechix;
+send Onechix exec fights/auto_brd
 
 wait 0.3;
 
-send Onechix sing march 1;
 send Onechix sing minuet 2;
-
+send Onechix sing march 1;
 
 ////////////////////////////////////
 // Geomancer
 ////////////////////////////////////
 
-send Threechix exec fights/tank/auto_geo
-
-send Threechix otto geo cooldowns on
+send Threechix exec fights/auto_geo
 
 wait 0.3;
 
 
 ////////////////////////////////////
-// Paladin
+// Red Mage
 ////////////////////////////////////
 
-send Fivechix otto pld on;
+send Fivechix exec fights/auto_rdm
 
 wait 0.3
 
+send Fivechix otto buff Fivechix enfire II on;
+
 ////////////////////////////////////
-// Corsair
+// Black Mage
 ////////////////////////////////////
 
-send Fourchix exec fights/tank/auto_cor
-
-send Fourchix cor roll 1 Samurai Roll;
-send Fourchix cor roll 2 Corsair's Roll;
+send Fourchix exec fights/auto_blm
 
 wait 0.3
 
@@ -70,9 +67,6 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
-send Chixslave otto buff Onechix haste on;
-send Chixslave otto buff Twochix haste on;
-send Chixslave otto buff Threechix haste on;
-send Chixslave otto buff Fourchix haste on;
-send Chixslave otto buff Fivechix haste on;
-send Chixslave otto buff Chixslave haste on;
+send Fivechix otto debuff Silence on;
+send Chixslave otto debuff ignore all bio;
+send Chixslave otto mb off;

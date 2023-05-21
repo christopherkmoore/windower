@@ -9,8 +9,7 @@ send Threechix otto aspir t 3;
 send Threechix otto aspir all;
 send Threechix otto aspir on;
 send Threechix otto magicburst on;
-send Threechix otto magicburst t 3;
-send Threechix otto mb nukewall 1;
+send Threechix otto magicburst t 4;
 
 
 send Threechix otto geo entrust Twochix indi-precision;

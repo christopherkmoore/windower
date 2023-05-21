@@ -33,6 +33,11 @@ function paladin.init()
     paladin.create_bufflist()
 end
 
+function paladin.deinit() 
+    utils.wipe_debufflist()
+    utils.wipe_bufflist()
+end
+
 function paladin.create_bufflist()
     local player = windower.ffxi.get_player()
 
@@ -63,7 +68,7 @@ function paladin.pld_queue()
     for _, ja in pairs(paladin.jalist) do
         local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
         
-        if actor:can_use(ja) and recast == 0 and not actor:is_acting() then
+        if actor:can_use(ja) and recast == 0 and not actor:is_acting() and target ~= nil then
             if ja.range == 0 then
                 pld_queue:enqueue_action('ability', ja, player.name)
             else 

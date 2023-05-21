@@ -95,7 +95,6 @@ function otto.check_jobs()
         otto.blackmage.init()
     elseif player.main_job == "PLD" then 
         otto.paladin = require('jobs/paladin')
-        otto.paladin.init()
     end
 
 end

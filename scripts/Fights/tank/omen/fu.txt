@@ -1,0 +1,85 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: Will absorb buffs and fuck you.
+//
+// Absolutely no buffs to fight, because he will ALWAYS open by absorbing your buffs,
+// giving him extra power -- enough to one shot you.
+// 
+// Activate the script I guess after fight open?
+//
+//
+// Not even close to a solved fight. He opens up with a move that takes all my buffs.
+// then immediately kills me with WaterV ~3k damage. 
+//
+////////////////////////////////
+
+send @all exec fights/reset
+
+wait 0.1;
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave otto healer on;
+
+send Chixslave otto healer on;
+send Chixslave otto magicburst off;
+send Chixslave otto magicburst t 2;
+send Chixslave otto magicburst c holy;
+send Chixslave otto magicburst gearswap on;
+send Chixslave gs c set AutoSubMode off;
+send Chixslave gs c set AutoRegenAgaMode off;
+
+send Chixslave otto buff Chixslave Shellra V on;
+
+wait 0.3;
+
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix exec fights/auto_brd
+
+wait 0.3;
+
+send Onechix sing march 2;
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix exec fights/auto_geo
+
+wait 0.3;
+
+send Threechix otto geo cooldowns on;
+
+////////////////////////////////////
+// Paladin
+////////////////////////////////////
+
+send Fivechix otto pld on;
+
+wait 0.5
+send Fivechix otto buff Fivechix Crusade off;
+send Fivechix otto buff Fivechix Reprisal off;
+send Fivechix otto buff Fivechix Enlight II off:
+send Fivechix otto buff Fivechix Phalanx off;
+
+wait 0.3
+
+////////////////////////////////////
+// Corsair
+////////////////////////////////////
+
+send Fourchix cor on
+
+wait 0.3
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
