@@ -1,0 +1,96 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <autoupdate>false</autoupdate>
+        <blinking>
+            <all>
+                <always>true</always>
+                <combat>true</combat>
+                <target>true</target>
+            </all>
+            <follow>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </follow>
+            <others>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </others>
+            <party>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </party>
+            <self>
+                <always>true</always>
+                <combat>false</combat>
+                <target>false</target>
+            </self>
+        </blinking>
+        <chixslave>
+
+        </chixslave>
+        <onechix>
+            <body>8483</body>
+            <feet>20771</feet>
+            <hands>12579</hands>
+            <head>4387</head>
+            <legs>16675</legs>
+        </onechix>
+        <others>
+
+        </others>
+        <profiles>
+            <>
+
+            </>
+            <bard>
+                <body>8483</body>
+                <feet>20771</feet>
+                <hands>12579</hands>
+                <head>4387</head>
+                <legs>16675</legs>
+            </bard>
+        </profiles>
+        <replacements>
+            <body>
+
+            </body>
+            <face>
+
+            </face>
+            <feet>
+
+            </feet>
+            <hands>
+
+            </hands>
+            <head>
+
+            </head>
+            <legs>
+
+            </legs>
+            <main>
+
+            </main>
+            <race>
+
+            </race>
+            <ranged>
+
+            </ranged>
+            <sub>
+
+            </sub>
+        </replacements>
+        <threechix>
+
+        </threechix>
+        <twochix>
+
+        </twochix>
+    </global>
+</settings>

@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.globals": [
+        "_addon"
+    ],
+    "Lua.diagnostics.disable": [
+        "undefined-field",
+        "undefined-global"
+    ]
+}
