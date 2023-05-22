@@ -58,12 +58,15 @@ return {
     [1060] = false,
     [1176] = false,
     [1233] = false,
+    [1382] = false,
     [2102] = true,
     [2196] = true,
+    [2423] = false,
     [3132] = true,
     [3968] = false,
     [3971] = true,
     [3975] = true,
+    [3978] = true,
     [4033] = false,
     [4035] = false
 }

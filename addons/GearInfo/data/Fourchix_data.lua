@@ -3395,5 +3395,137 @@ return {
         ["CHR"]=16, 
         ["Magic Atk. Bonus"]=20, 
         ["Attack"]=25
+    }, 
+    [97]={
+        ["discription"]="DMG:166 Delay:240 DEX+15 INT+15 MND+15 Accuracy+40 Attack+30 Magic Accuracy+40 \"Magic Atk. Bonus\"+16 Magic Damage+217 Sword skill +250 Parrying skill +250 Magic Accuracy skill +250 Main hand: \"Savage Blade\" \"Savage Blade\" damage +15% Weapon Skill: Attack Bonus based on the number of upgrades", 
+        ["MND"]=15, 
+        ["skill"]="Sword", 
+        ["jobs"]={
+            [1]="WAR", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [16]="BLU", 
+            [17]="COR", 
+            [22]="RUN"
+        }, 
+        ["Attack"]=30, 
+        ["en"]="Naegling", 
+        ["item_level"]=119, 
+        ["Magic Atk. Bonus"]=16, 
+        ["delay"]=240, 
+        ["DEX"]=15, 
+        ["Accuracy"]=40, 
+        ["INT"]=15, 
+        ["slots"]={
+            [0]="Main", 
+            [1]="Sub"
+        }, 
+        ["id"]=21621, 
+        ["category"]="Weapon", 
+        ["damage"]=166, 
+        ["Sword skill"]=250, 
+        ["Parrying skill"]=250, 
+        ["Magic Accuracy"]=40
+    }, 
+    [98]={
+        ["discription"]="DEF:16 \"Phantom Roll\" effect duration +30 \"Triple Shot\"+5%", 
+        ["category"]="Armor", 
+        ["PDT"]=-10, 
+        ["en"]="Camulus's Mantle", 
+        ["DEX"]=20, 
+        ["id"]=26262, 
+        ["jobs"]={
+            [17]="COR"
+        }, 
+        ["DEF"]=16, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["Accuracy"]=29, 
+        ["augments"]={
+            [1]="DEX+20", 
+            [2]="Accuracy+20 Attack+20", 
+            [3]="Accuracy+9", 
+            [4]="\"Dbl.Atk.\"+10", 
+            [5]="Phys. dmg. taken-10%"
+        }, 
+        ["Attack"]=20
+    }, 
+    [99]={
+        ["discription"]="DEF:16 \"Phantom Roll\" effect duration +30 \"Triple Shot\"+5%", 
+        ["category"]="Armor", 
+        ["en"]="Camulus's Mantle", 
+        ["STR"]=30, 
+        ["id"]=26262, 
+        ["jobs"]={
+            [17]="COR"
+        }, 
+        ["DEF"]=16, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["Accuracy"]=20, 
+        ["augments"]={
+            [1]="STR+20", 
+            [2]="Accuracy+20 Attack+20", 
+            [3]="STR+10", 
+            [4]="Weapon skill damage +10%", 
+            [5]="none"
+        }, 
+        ["Attack"]=20
+    }, 
+    [100]={
+        ["discription"]="DEF:16 \"Phantom Roll\" effect duration +30 \"Triple Shot\"+5%", 
+        ["category"]="Armor", 
+        ["DEX"]=20, 
+        ["en"]="Camulus's Mantle", 
+        ["Store TP"]=10, 
+        ["id"]=26262, 
+        ["PDT"]=-10, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["Accuracy"]=30, 
+        ["jobs"]={
+            [17]="COR"
+        }, 
+        ["augments"]={
+            [1]="DEX+20", 
+            [2]="Accuracy+20 Attack+20", 
+            [3]="Accuracy+10", 
+            [4]="\"Store TP\"+10", 
+            [5]="Phys. dmg. taken-10%"
+        }, 
+        ["DEF"]=16, 
+        ["Attack"]=20
+    }, 
+    [101]={
+        ["discription"]="DEF:16 \"Phantom Roll\" effect duration +30 \"Triple Shot\"+5%", 
+        ["category"]="Armor", 
+        ["en"]="Camulus's Mantle", 
+        ["id"]=26262, 
+        ["AGI"]=21, 
+        ["jobs"]={
+            [17]="COR"
+        }, 
+        ["DEF"]=16, 
+        ["slots"]={
+            [15]="Back"
+        }, 
+        ["augments"]={
+            [1]="AGI+20", 
+            [2]="Mag. Acc+20 /Mag. Dmg.+20", 
+            [3]="AGI+1", 
+            [4]="Weapon skill damage +10%", 
+            [5]="none"
+        }, 
+        ["Magic Accuracy"]=20
     }
 }

@@ -14,7 +14,7 @@ send Chixslave otto buff Chixslave Afflatus Solace on;
 
 send Chixslave otto buff Chixslave Protectra V on;
 send Chixslave otto buff Chixslave Shellra V on;
-send Chixslave otto buff Chixslave Boost-STR on;
+//send Chixslave otto buff Chixslave Boost-STR on;
 send Chixslave otto buff Chixslave Auspice on;
 send Chixslave otto buff Chixslave Aurorastorm on;
 send Chixslave otto buff Chixslave Reraise IV on; 

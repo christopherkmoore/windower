@@ -133,7 +133,7 @@ function assist.puller_target_and_cast(mob)
     --     ['Target'] = id,
     --     ['Player Index'] = player.index,
     -- }))
-    table.vprint(mob)
+    -- table.vprint(mob)
     local elegy_recast = windower.ffxi.get_spell_recasts()[422]
     if elegy_recast == 0 then
         local p = packets.new('outgoing', 0x01A, {

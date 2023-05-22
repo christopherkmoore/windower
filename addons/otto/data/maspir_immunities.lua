@@ -271,6 +271,7 @@ return {
     ["Transcended Mandragora"] = false,
     ["Transcended Panopt"] = true,
     ["Transcended Pugil"] = false,
+    ["Transcended Rabbit"] = false,
     ["Transcended Slime"] = false,
     ["Transcended Tiger"] = false,
     ["Transcended Toad"] = false,

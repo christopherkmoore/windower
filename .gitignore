@@ -46,11 +46,3 @@ addons/otto/data/Fourchix/user_settings.lua
 addons/otto/data/Onechix/user_settings.lua
 addons/otto/data/Threechix/user_settings.lua
 addons/otto/data/Twochix/user_settings.lua
-addons/findAll/data/Chixslave.lua
-addons/findAll/data/Onechix.lua
-addons/findAll/data/Threechix.lua
-addons/findAll/data/Twochix.lua
-addons/GearInfo/data/Fivechix_data.lua
-addons/GearInfo/data/Fourchix_data.lua
-addons/GearInfo/data/Twochix_data.lua
-updates/resources.xml
