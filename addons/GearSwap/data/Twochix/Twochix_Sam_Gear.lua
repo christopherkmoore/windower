@@ -53,11 +53,11 @@ function init_gear_sets()
         body="Sakonji Domaru +3",hands=gear.valorous_wsd_hands,ring1="Niqmaddu Ring",ring2="Regal Ring",
         back=gear.ws_jse_back,waist="Sailfi Belt +1",legs="Wakido Haidate +2",feet=gear.valorous_wsd_feet}
     
-    sets.precast.WS.SomeAcc = set_combine(sets.precast.WS, {feet="Wakido Sune. +3"})
-	sets.precast.WS.Acc = set_combine(sets.precast.WS, {head="Wakido Kabuto +1",body="Sakonji Domaru +3",feet="Wakido Sune. +3"})
+    sets.precast.WS.SomeAcc = set_combine(sets.precast.WS, {feet="Wakido Sune. +2"})
+	sets.precast.WS.Acc = set_combine(sets.precast.WS, {head="Wakido Kabuto +1",body="Sakonji Domaru +3",feet="Wakido Sune. +2"})
     sets.precast.WS.FullAcc = set_combine(sets.precast.WS, 
     {head="Wakido Kabuto +1",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",
-    ear2="Telos Earring",body="Sakonji Domaru +3",hands="Wakido Kote +2",ring1="Ramuh Ring +1",feet="Wakido Sune. +3"})
+    ear2="Telos Earring",body="Sakonji Domaru +3",hands="Wakido Kote +2",ring1="Ramuh Ring +1",feet="Wakido Sune. +2"})
     sets.precast.WS.Fodder = set_combine(sets.precast.WS, {})
 	
 	sets.precast.WS.Proc = {ammo="Hasty Pinion +1",
@@ -120,7 +120,7 @@ function init_gear_sets()
     sets.precast.WS['Apex Arrow'] = {
         head="Ynglinga Sallet",neck="Fotia Gorget",ear1="Clearview Earring",ear2="Moonshade Earring",
         body="Kyujutsugi",hands="Buremte Gloves",ring1="Ilabrat Ring",ring2="Regal Ring",
-        back=gear.ws_jse_back,waist="Fotia Belt",legs="Wakido Haidate +2",feet="Wakido Sune. +3"}
+        back=gear.ws_jse_back,waist="Fotia Belt",legs="Wakido Haidate +2",feet="Wakido Sune. +2"}
 		
     sets.precast.WS['Apex Arrow'].SomeAcc = set_combine(sets.precast.WS['Apex Arrow'], {})
     sets.precast.WS['Apex Arrow'].Acc = set_combine(sets.precast.WS['Apex Arrow'], {})
@@ -149,12 +149,12 @@ function init_gear_sets()
     sets.midcast.RA = {
         head="Flam. Zucchetto +2",neck="Combatant's Torque",ear1="Clearview Earring",ear2="Neritic Earring",
         body="Kyujutsugi",hands="Buremte Gloves",ring1="Ilabrat Ring",ring2="Regal Ring",
-        back="Buquwik Cape",waist="Flax Sash",legs="Wakido Haidate +2",feet="Wakido Sune. +3"}
+        back="Buquwik Cape",waist="Flax Sash",legs="Wakido Haidate +2",feet="Wakido Sune. +2"}
 
     sets.midcast.RA.Acc = {
         head="Flam. Zucchetto +2",neck="Combatant's Torque",ear1="Clearview Earring",ear2="Neritic Earring",
         body="Kyujutsugi",hands="Buremte Gloves",ring1="Ilabrat Ring",ring2="Regal Ring",
-        back="Buquwik Cape",waist="Flax Sash",legs="Wakido Haidate +2",feet="Wakido Sune. +3"}
+        back="Buquwik Cape",waist="Flax Sash",legs="Wakido Haidate +2",feet="Wakido Sune. +2"}
 
 
     -- Sets to return to when not performing an action.
@@ -239,7 +239,7 @@ function init_gear_sets()
     sets.engaged.FullAcc = {ammo="Aurgelmir Orb +1",
         head="Wakido Kabuto +1",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",ear2="Telos Earring",
         body="Ken. Samue",hands="Wakido Kote +2",ring1="Ramuh Ring +1",ring2="Regal Ring",
-        back=gear.stp_jse_back,waist="Olseni Belt",legs="Wakido Haidate +2",feet="Wakido Sune. +3"}
+        back=gear.stp_jse_back,waist="Olseni Belt",legs="Wakido Haidate +2",feet="Wakido Sune. +2"}
 
     sets.engaged.Fodder = {ammo="Aurgelmir Orb +1",
         head="Flam. Zucchetto +2",neck="Samurai's Nodowa +2",ear1="Dedition Earring",ear2="Brutal Earring",

@@ -2917,5 +2917,56 @@ return {
         }, 
         ["id"]=28437, 
         ["PDT"]=-4
+    }, 
+    [83]={
+        ["MDT"]=-6, 
+        ["MND"]=30, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=87
+        }, 
+        ["jobs"]={
+            [7]="PLD"
+        }, 
+        ["DEX"]=34, 
+        ["slots"]={
+            [6]="Hands"
+        }, 
+        ["item_level"]=119, 
+        ["discription"]="DEF:117 HP+103 STR+15 DEX+34 VIT+38 INT+13 MND+30 CHR+24 Accuracy+38 Evasion+32 Magic Evasion+36 \"Magic Def. Bonus\"+1 Haste+4% Enmity+5 \"Shield Mastery\"+1 Magic damage taken -6% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["DEF"]=117, 
+        ["HP"]=103, 
+        ["id"]=23180, 
+        ["VIT"]=38, 
+        ["Haste"]=4, 
+        ["Evasion"]=32, 
+        ["Accuracy"]=38, 
+        ["STR"]=15, 
+        ["CHR"]=24, 
+        ["INT"]=13, 
+        ["category"]="Armor", 
+        ["en"]="Rev. Gauntlets +2"
     }
 }
