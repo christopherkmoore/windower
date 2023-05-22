@@ -20,6 +20,9 @@ paladin.jalist = {
     [48] = {id=48,en="Sentinel",ja="センチネル",duration=30,element=3,icon_id=407,mp_cost=0,prefix="/jobability",range=0,recast_id=75,status=62,targets=1,tp_cost=0,type="JobAbility"},
 }
 
+paladin.job_tick = 5
+paladin.next_tick = os.clock()
+
 function paladin.init()
     local defaults = { enabled = true }
     defaults.enabled = true
@@ -29,7 +32,7 @@ function paladin.init()
         user_settings.job.paladin = defaults
         user_settings:save()
     end
-    
+    paladin.next_tick = os.clock()
     paladin.create_bufflist()
 end
 
@@ -56,18 +59,38 @@ end
 function paladin.check_pld()
     if not user_settings.job.paladin.enabled then return end
 
+    if os.clock() > paladin.next_tick then 
+        paladin.next_tick = os.clock() + paladin.job_tick
+    end
 end
+
 
 function paladin.pld_queue()
     if not user_settings.job.paladin.enabled then return end
+    local now = os.clock()
+    if now > paladin.next_tick  then return end
+    paladin.next_tick = now + paladin.job_tick
 
-    local pld_queue = ActionQueue.new()
     local target = windower.ffxi.get_mob_by_target('t')
+
+    if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
+    
+    local pld_queue = ActionQueue.new()
     local player = windower.ffxi.get_player()
+    local buffs = S(player.buffs)
+
+    local sleep = {id=253,en="Sleep",ja="スリプル",cast_time=2.5,duration=60,element=7,icon_id=310,icon_id_nq=15,levels={[4]=20,[5]=25,[8]=30,[20]=30,[21]=35},mp_cost=19,prefix="/magic",range=12,recast=30,recast_id=253,requirements=6,skill=35,status=2,targets=32,type="BlackMagic"}
+    -- can't cast this if youre slept
+    if buffs:contains(sleep.status) then 
+        print("JUST WOKE UP SLEEP ERASE ME")
+        local cure = {id=1,en="Cure",ja="ケアル",cast_time=2,element=6,icon_id=86,icon_id_nq=6,levels={[3]=1,[5]=3,[7]=5,[20]=5},mp_cost=8,prefix="/magic",range=12,recast=5,recast_id=1,requirements=1,skill=33,targets=63,type="WhiteMagic"}
+        pld_queue:enqueue_action('cure', cure, player.name)
+        return
+    end
 
     for _, ja in pairs(paladin.jalist) do
         local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
-        
+
         if actor:can_use(ja) and recast == 0 and not actor:is_acting() and target ~= nil then
             if ja.range == 0 then
                 pld_queue:enqueue_action('ability', ja, player.name)
@@ -80,7 +103,7 @@ function paladin.pld_queue()
 
     for _, spell in pairs(paladin.debufflist) do
         local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
-        
+
         if actor:can_use(spell) and recast == 0 and not actor:is_acting() then
             pld_queue:enqueue_action('debuff', spell, target.name)
         end

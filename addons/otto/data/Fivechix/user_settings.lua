@@ -31,9 +31,9 @@ return {
         ["deactivateIndoors"] = true,
         ["disable"] = {
             ["curaga"] = false,
-            ["cure"] = false
+            ["cure"] = true
         },
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {

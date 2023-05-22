@@ -63,7 +63,7 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = false,
+            ["cooldowns"] = true,
             ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
