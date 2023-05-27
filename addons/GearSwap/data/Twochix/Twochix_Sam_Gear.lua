@@ -34,8 +34,8 @@ function init_gear_sets()
     
     -- Precast Sets
     -- Precast sets to enhance JAs
-    sets.precast.JA.Meditate = {head="Wakido Kabuto +1",hands="Sakonji Kote +1",back=gear.ws_jse_back}
-    sets.precast.JA['Warding Circle'] = {head="Wakido Kabuto +1"}
+    sets.precast.JA.Meditate = {head="Wakido Kabuto +2",hands="Sakonji Kote +1",back=gear.ws_jse_back}
+    sets.precast.JA['Warding Circle'] = {head="Wakido Kabuto +2"}
     sets.precast.JA['Blade Bash'] = {hands="Sakonji Kote +1"}
 	sets.precast.JA['Sekkanoki'] = {hands="Kasuga Kote +1"}
 	sets.precast.JA['Sengikori'] = {feet="Kas. Sune-Ate +1"}
@@ -54,9 +54,9 @@ function init_gear_sets()
         back=gear.ws_jse_back,waist="Sailfi Belt +1",legs="Wakido Haidate +2",feet=gear.valorous_wsd_feet}
     
     sets.precast.WS.SomeAcc = set_combine(sets.precast.WS, {feet="Wakido Sune. +2"})
-	sets.precast.WS.Acc = set_combine(sets.precast.WS, {head="Wakido Kabuto +1",body="Sakonji Domaru +3",feet="Wakido Sune. +2"})
+	sets.precast.WS.Acc = set_combine(sets.precast.WS, {head="Wakido Kabuto +2",body="Sakonji Domaru +3",feet="Wakido Sune. +2"})
     sets.precast.WS.FullAcc = set_combine(sets.precast.WS, 
-    {head="Wakido Kabuto +1",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",
+    {head="Wakido Kabuto +2",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",
     ear2="Telos Earring",body="Sakonji Domaru +3",hands="Wakido Kote +2",ring1="Ramuh Ring +1",feet="Wakido Sune. +2"})
     sets.precast.WS.Fodder = set_combine(sets.precast.WS, {})
 	
@@ -232,12 +232,12 @@ function init_gear_sets()
         back=gear.stp_jse_back,waist="Ioskeha Belt",legs="Flamma Dirs +2",feet="Flam. Gambieras +2"}
 
     sets.engaged.Acc = {ammo="Aurgelmir Orb +1",
-        head="Wakido Kabuto +1",neck="Samurai's Nodowa +2",ear1="Digni. Earring",ear2="Telos Earring",
+        head="Wakido Kabuto +2",neck="Samurai's Nodowa +2",ear1="Digni. Earring",ear2="Telos Earring",
         body="Ken. Samue",hands="Wakido Kote +2",ring1="Niqmaddu Ring",ring2="Regal Ring",
         back=gear.stp_jse_back,waist="Ioskeha Belt",legs="Wakido Haidate +2",feet="Flam. Gambieras +2"}
 
     sets.engaged.FullAcc = {ammo="Aurgelmir Orb +1",
-        head="Wakido Kabuto +1",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",ear2="Telos Earring",
+        head="Wakido Kabuto +2",neck="Samurai's Nodowa +2",ear1="Mache Earring +1",ear2="Telos Earring",
         body="Ken. Samue",hands="Wakido Kote +2",ring1="Ramuh Ring +1",ring2="Regal Ring",
         back=gear.stp_jse_back,waist="Olseni Belt",legs="Wakido Haidate +2",feet="Wakido Sune. +2"}
 

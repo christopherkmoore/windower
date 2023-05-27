@@ -16,6 +16,7 @@ paladin.debufflist = {
 
 paladin.jalist = { 
     [46] = {id=46,en="Shield Bash",ja="シールドバッシュ",element=4,icon_id=406,mp_cost=0,prefix="/jobability",range=2,recast_id=73,targets=32,tp_cost=0,type="JobAbility"},
+    [394] = {id=394,en="Majesty",ja="マジェスティ",duration=180,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=150,status=621,targets=1,tp_cost=0,type="JobAbility"},
     [92] = {id=92,en="Rampart",ja="ランパート",duration=30,element=3,icon_id=409,mp_cost=0,prefix="/jobability",range=0,recast_id=77,status=93,targets=1,tp_cost=0,type="JobAbility"},
     [48] = {id=48,en="Sentinel",ja="センチネル",duration=30,element=3,icon_id=407,mp_cost=0,prefix="/jobability",range=0,recast_id=75,status=62,targets=1,tp_cost=0,type="JobAbility"},
 }
@@ -45,7 +46,7 @@ function paladin.create_bufflist()
     local player = windower.ffxi.get_player()
 
     if player.sub_job == "BLU" then
-        paladin.bufflist[547] = {id=547,en="Cocoon",ja="コクーン",blu_points=1,cast_time=1.75,duration=90,element=15,icon_id=-1,icon_id_nq=59,levels={[16]=8},mp_cost=10,prefix="/magic",range=0,recast=60,recast_id=547,requirements=0,skill=43,status=93,targets=1,type="BlueMagic"}
+        -- paladin.bufflist[547] = {id=547,en="Cocoon",ja="コクーン",blu_points=1,cast_time=1.75,duration=90,element=15,icon_id=-1,icon_id_nq=59,levels={[16]=8},mp_cost=10,prefix="/magic",range=0,recast=60,recast_id=547,requirements=0,skill=43,status=93,targets=1,type="BlueMagic"}
         paladin.debufflist[592] = {id=592,en="Blank Gaze",ja="ブランクゲイズ",blu_points=2,cast_time=3,element=6,icon_id=-1,icon_id_nq=62,levels={[16]=38},mp_cost=25,prefix="/magic",range=9,recast=10,recast_id=592,requirements=0,skill=43,targets=32,type="BlueMagic"}
     end
 

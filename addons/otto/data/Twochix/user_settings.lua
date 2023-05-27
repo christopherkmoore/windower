@@ -39,8 +39,8 @@ return {
             ["max"] = {
                 ["curaga"] = 0,
                 ["cure"] = 0,
-                ["waltz"] = 3,
-                ["waltzga"] = 1
+                ["waltz"] = 0,
+                ["waltzga"] = 0
             },
             ["min"] = {
                 ["curaga"] = 3,
@@ -53,10 +53,15 @@ return {
         },
         ["ignoreTrusts"] = true
     },
-    ["job"] = {},
+    ["job"] = {
+        ["blackmage"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = false
+        }
+    },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "none",
+        ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

@@ -24,8 +24,6 @@ send Chixslave otto magicburst gearswap on;
 send Chixslave gs c set AutoSubMode off;
 send Chixslave gs c set AutoRegenAgaMode off;
 
-send Chixslave otto buff Chixslave Shellra V on;
-
 wait 0.3;
 
 

@@ -2968,5 +2968,183 @@ return {
         ["INT"]=13, 
         ["category"]="Armor", 
         ["en"]="Rev. Gauntlets +2"
+    }, 
+    [84]={
+        ["Evasion"]=43, 
+        ["slots"]={
+            [4]="Head"
+        }, 
+        ["jobs"]={
+            [7]="PLD"
+        }, 
+        ["DEX"]=24, 
+        ["VIT"]=33, 
+        ["MND"]=25, 
+        ["discription"]="DEF:129 HP+61 MP+34 STR+30 DEX+24 VIT+33 AGI+24 INT+22 MND+25 CHR+22 Accuracy+37 Evasion+43 Magic Evasion+42 \"Magic Def. Bonus\"+2 Haste+7% Enmity+6 \"Cover\" effect duration +9 Physical damage taken -6% Set: Increases Accuracy, Ranged Accuracy, and Magic Accuracy", 
+        ["AGI"]=24, 
+        ["Haste"]=7, 
+        ["item_level"]=119, 
+        ["HP"]=61, 
+        ["id"]=23046, 
+        ["Set Bonus"]={
+            ["bonus"]={
+                [1]={}, 
+                [2]={
+                    ["Magic Accuracy"]=15, 
+                    ["Ranged Accuracy"]=15, 
+                    ["Accuracy"]=15
+                }, 
+                [3]={
+                    ["Magic Accuracy"]=30, 
+                    ["Ranged Accuracy"]=30, 
+                    ["Accuracy"]=30
+                }, 
+                [4]={
+                    ["Magic Accuracy"]=45, 
+                    ["Ranged Accuracy"]=45, 
+                    ["Accuracy"]=45
+                }, 
+                [5]={
+                    ["Magic Accuracy"]=60, 
+                    ["Ranged Accuracy"]=60, 
+                    ["Accuracy"]=60
+                }
+            }, 
+            ["set id"]=87
+        }, 
+        ["STR"]=30, 
+        ["DEF"]=129, 
+        ["MP"]=34, 
+        ["Accuracy"]=37, 
+        ["INT"]=22, 
+        ["category"]="Armor", 
+        ["CHR"]=22, 
+        ["PDT"]=-6, 
+        ["en"]="Rev. Coronet +2"
+    }, 
+    [85]={
+        ["discription"]="DMG:264 Delay:489 HP+50 Attack+26 \"Magic Atk. Bonus\"+10 Great Sword skill +228 Parrying skill +228 Magic Accuracy skill +188 Enmity+5", 
+        ["Great Sword skill"]=228, 
+        ["Parrying skill"]=228, 
+        ["category"]="Weapon", 
+        ["Magic Atk. Bonus"]=10, 
+        ["en"]="Tunglmyrkvi", 
+        ["delay"]=489, 
+        ["item_level"]=119, 
+        ["slots"]={
+            [0]="Main"
+        }, 
+        ["skill"]="Great Sword", 
+        ["jobs"]={
+            [1]="WAR", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [22]="RUN"
+        }, 
+        ["Attack"]=26, 
+        ["HP"]=50, 
+        ["id"]=20765, 
+        ["damage"]=264
+    }, 
+    [86]={
+        ["discription"]="DEF:32 HP+10 DEX+2 VIT+2", 
+        ["category"]="Armor", 
+        ["en"]="Brigandine", 
+        ["DEX"]=2, 
+        ["HP"]=10, 
+        ["jobs"]={
+            [1]="WAR", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [16]="BLU", 
+            [17]="COR", 
+            [19]="DNC", 
+            [22]="RUN"
+        }, 
+        ["DEF"]=32, 
+        ["slots"]={
+            [5]="Body"
+        }, 
+        ["id"]=13703, 
+        ["VIT"]=2
+    }, 
+    [87]={
+        ["discription"]="Damage taken -10%", 
+        ["id"]=13566, 
+        ["slots"]={
+            [13]="Left Ring", 
+            [14]="Right Ring"
+        }, 
+        ["en"]="Defending Ring", 
+        ["DT"]=-10, 
+        ["category"]="Armor", 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }
+    }, 
+    [88]={
+        ["id"]=26112, 
+        ["en"]="Tuisto Earring", 
+        ["DEF"]=20, 
+        ["slots"]={
+            [11]="Left Ear", 
+            [12]="Right Ear"
+        }, 
+        ["category"]="Armor", 
+        ["discription"]="DEF:20 VIT+10 Converts 150 MP to HP", 
+        ["VIT"]=10, 
+        ["jobs"]={
+            [1]="WAR", 
+            [2]="MNK", 
+            [3]="WHM", 
+            [4]="BLM", 
+            [5]="RDM", 
+            [6]="THF", 
+            [7]="PLD", 
+            [8]="DRK", 
+            [9]="BST", 
+            [10]="BRD", 
+            [11]="RNG", 
+            [12]="SAM", 
+            [13]="NIN", 
+            [14]="DRG", 
+            [15]="SMN", 
+            [16]="BLU", 
+            [17]="COR", 
+            [18]="PUP", 
+            [19]="DNC", 
+            [20]="SCH", 
+            [21]="GEO", 
+            [22]="RUN"
+        }
     }
 }
