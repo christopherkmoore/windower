@@ -153,12 +153,12 @@ end
 
 
 function utils.posCommand(boxName, args)
-    if (args[1] == nil) or (args[2] == nil) then return false end
-    local cmd = args[1]:lower()
+    print(args)
+    local cmd = args[2]:lower()
     if not S{'pos','posx','posy'}:contains(cmd) then
         return false
     end
-    local x,y = tonumber(args[2]),tonumber(args[3])
+    local x,y = tonumber(args[3]),tonumber(args[4])
     if (cmd == 'pos') then
         if (x == nil) or (y == nil) then return false end
         settings.textBoxes[boxName].x = x
