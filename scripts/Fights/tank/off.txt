@@ -32,3 +32,24 @@ send Fivechix otto pld off;
 
 send Chixslave gs c set AutoRegenAgaMode Off;
 
+////////////////////////////////
+// Reset Roles:
+////////////////////////////////
+
+wait 0.3;
+send Onechix otto assist role frontline;
+
+wait 0.3;
+send Twochix otto assist role frontline;
+
+wait 0.3;
+send Threechix otto assist role backline;
+
+wait 0.3;
+send Fourchix otto assist role backline;
+
+wait 0.3;
+send Fivechix otto assist role frontline;
+
+wait 0.3;
+send Chixslave otto assist role backline;

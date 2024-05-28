@@ -97,13 +97,14 @@ send Onechix dressup l bard;
 
 lua load otto;
 send Fourchix lua load autocor;
+send @all lua load fastfollow;
 
-send Onechix bind ^f send @others /follow Onechix
-send Twochix bind ^f send @others /follow Twochix
-send Threechix bind ^f send @others /follow Threechix 
-send Fourchix bind ^f send @others /follow Fourchix 
-send Fivechix bind ^f send @others /follow Fivechix 
-send Chixslave bind ^f send @others /follow Chixslave 
+send Onechix bind ^f ffo me
+send Twochix bind ^f ffo me
+send Threechix bind ^f ffo me
+send Fourchix bind ^f ffo me
+send Fivechix bind ^f ffo me
+send Chixslave bind ^f ffo me
 
 bind ^u send @others exec unfollow
 bind ^m send @all exec mounts

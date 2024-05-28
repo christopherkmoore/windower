@@ -19,7 +19,7 @@
         <!-- He's targeting you! -->
             <all>false</all>
             <casting>false</casting>
-            <damage>false</damage>
+            <damage>true</damage>
             <healing>false</healing>
             <items>false</items>
             <melee>false</melee>
@@ -46,7 +46,7 @@
             <!-- He's targeting you! -->
                 <all>false</all>
                 <casting>false</casting>
-                <damage>false</damage>
+                <damage>true</damage>
                 <healing>false</healing>
                 <melee>false</melee>
                 <misses>false</misses>
@@ -57,7 +57,7 @@
             <!-- He's targeting himself or another monster -->
                 <all>false</all>
                 <casting>false</casting>
-                <damage>false</damage>
+                <damage>true</damage>
                 <healing>false</healing>
                 <melee>false</melee>
                 <misses>false</misses>
@@ -67,7 +67,7 @@
             <my_fellow>
                 <all>false</all>
                 <casting>false</casting>
-                <damage>false</damage>
+                <damage>true</damage>
                 <healing>false</healing>
                 <melee>false</melee>
                 <misses>false</misses>
@@ -78,7 +78,7 @@
             <!-- He's targeting your pet -->
                 <all>false</all>
                 <casting>false</casting>
-                <damage>false</damage>
+                <damage>true</damage>
                 <healing>false</healing>
                 <melee>false</melee>
                 <misses>false</misses>
@@ -98,7 +98,7 @@
             </other_pets>
             <others>
             <!-- He's targeting some guy nearby -->
-                <all>false</all>
+                <all>true</all>
                 <casting>false</casting>
                 <damage>true</damage>
                 <healing>true</healing>
@@ -111,7 +111,7 @@
             <!-- He's targeting a party member -->
                 <all>false</all>
                 <casting>false</casting>
-                <damage>false</damage>
+                <damage>true</damage>
                 <healing>false</healing>
                 <melee>false</melee>
                 <misses>false</misses>
@@ -122,7 +122,7 @@
         <my_fellow>
             <all>false</all>
             <casting>false</casting>
-            <damage>false</damage>
+            <damage>true</damage>
             <healing>false</healing>
             <melee>false</melee>
             <misses>false</misses>
@@ -134,7 +134,7 @@
         <!-- He's targeting your pet -->
             <all>false</all>
             <casting>false</casting>
-            <damage>false</damage>
+            <damage>true</damage>
             <healing>false</healing>
             <melee>false</melee>
             <misses>false</misses>
@@ -172,7 +172,7 @@
         <!-- He's targeting a party member -->
             <all>false</all>
             <casting>false</casting>
-            <damage>false</damage>
+            <damage>true</damage>
             <healing>false</healing>
             <items>false</items>
             <melee>false</melee>

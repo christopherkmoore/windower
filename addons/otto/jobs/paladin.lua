@@ -1,4 +1,4 @@
--- otto blm by TC
+-- otto pld by TC
 
 local paladin = { }
 

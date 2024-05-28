@@ -11,9 +11,10 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
-            ["Threechix"] = "backline"
+            ["Threechix"] = "backline",
+            ["Twochix"] = "frontline"
         },
         ["yalm_fight_range"] = 3.5
     },
@@ -78,11 +79,11 @@ return {
     ["weaponskill"] = {
         ["enabled"] = true,
         ["min_hp"] = 15,
-        ["name"] = "Tachi: Gekko",
+        ["name"] = "Tachi: Fudo",
         ["partner"] = {
-            ["name"] = "Onechix",
+            ["name"] = "Twochix",
             ["tp"] = 1000,
-            ["weaponskill"] = "Savage Blade"
+            ["weaponskill"] = "Tachi: Fudo"
         }
     }
 }

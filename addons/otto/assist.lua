@@ -142,7 +142,7 @@ function assist.puller_target_and_cast(mob)
             ["Category"] = 0x03, -- spell cast
             ["Param"] = 422
         })
-        log('in point')
+
         packets.inject(p)
 
         coroutine.sleep(1)

@@ -11,9 +11,10 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
-            ["Threechix"] = "backline"
+            ["Threechix"] = "backline",
+            ["Twochix"] = "frontline"
         },
         ["yalm_fight_range"] = 3.5
     },
@@ -35,7 +36,7 @@ return {
         },
         ["enabled"] = true,
         ["healing"] = {
-            ["curaga_min_targets"] = 5,
+            ["curaga_min_targets"] = 3,
             ["max"] = {
                 ["curaga"] = 5,
                 ["cure"] = 6,

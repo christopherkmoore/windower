@@ -65,7 +65,7 @@
     </chixslave>
     <fivechix>
         <pos>
-            <x>1301</x>
+            <x>1300</x>
             <y>541</y>
         </pos>
     </fivechix>
@@ -89,8 +89,8 @@
     </threechix>
     <twochix>
         <pos>
-            <x>1333</x>
-            <y>544</y>
+            <x>1113</x>
+            <y>539</y>
         </pos>
     </twochix>
 </settings>

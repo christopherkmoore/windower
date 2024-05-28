@@ -256,7 +256,7 @@ function init_gear_sets()
 	-- EG: sets.engaged.Dagger.Accuracy.Evasion
 	
 	sets.engaged = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Cessance Earring",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Eabani Earring",ear2="Fili Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Petrov Ring",ring2="Rajas Ring",
 		back=gear.capeTP,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                   -- back="Bleating Mantle"
 	sets.engaged.Acc = {main="Naegling",sub="Genmei Shield",ammo="Aurgelmir Orb +1",
@@ -264,7 +264,7 @@ function init_gear_sets()
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Ramuh Ring +1",ring2="Ilabrat Ring",
 		back=gear.capeTP,waist="Olseni Belt",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                        -- back="Letalis Mantle"
 	sets.engaged.DW = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",
-		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Suppanomimi",ear2="Brutal Earring",
+		head="Fili Calot +2",neck="Bard's Charm +1",ear1="Eabani Earring",ear2="Fili Earring",
 		body="Ayanmo Corazza +2",hands="Fili Manchettes +2",ring1="Rajas Ring",ring2="Ilabrat Ring",
 		back=gear.capeTP ,waist="Sailfi Belt +1",legs="Fili Rhingrave +2",feet="Aya. Gambieras +2"}                                         -- back="Bleating Mantle"
 	sets.engaged.DW.Acc = {main="Naegling",sub="Kali",ammo="Aurgelmir Orb +1",

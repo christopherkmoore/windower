@@ -1,0 +1,77 @@
+////////////////////////////////
+// Notes:
+// Important to wait 0.1 after reset step, or send will fail sometimes.
+//
+// Fight Notes: General fight script for unspecific cases.
+//
+////////////////////////////////
+
+send @all exec fights/reset
+
+wait 0.1;
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave exec fights/tank/auto_whm
+
+wait 0.3;
+
+send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave barblindra on;
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix exec fights/tank/auto_brd
+
+send Onechix sing ballad 1 Fivechix;
+
+wait 0.3;
+
+send Onechix sing march 1;
+send Onechix sing minuet 2;
+
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix exec fights/tank/auto_geo
+
+send Threechix otto geo cooldowns on
+
+wait 0.3;
+
+
+////////////////////////////////////
+// Paladin
+////////////////////////////////////
+
+send Fivechix otto pld on;
+
+wait 0.3
+
+////////////////////////////////////
+// Corsair
+////////////////////////////////////
+
+send Fourchix exec fights/tank/auto_cor
+
+send Fourchix cor roll 1 Samurai Roll;
+send Fourchix cor roll 2 Warrior Roll;
+
+wait 0.3
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
+
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

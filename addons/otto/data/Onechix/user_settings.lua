@@ -11,9 +11,10 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
-            ["Threechix"] = "backline"
+            ["Threechix"] = "backline",
+            ["Twochix"] = "frontline"
         },
         ["yalm_fight_range"] = 3.5
     },
@@ -71,7 +72,7 @@ return {
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["min_hp"] = 15,
         ["name"] = "Savage Blade",
         ["partner"] = "none"

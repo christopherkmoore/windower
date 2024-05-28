@@ -2020,12 +2020,9 @@ end
 -- @param baseSet : The set that any currently active defense set will be applied on top of. (gear set table)
 
 function apply_defense(baseSet)
-	table.vprint(baseSet)
 
     if state.DefenseMode.current ~= 'None' then
-        local defenseSet = sets.defense
-		
-		print(defenseSet)
+        local defenseSet = sets.defense		
         defenseSet = sets.defense[state[state.DefenseMode.current .. 'DefenseMode'].current] or defenseSet
 
         for _,group in ipairs(classes.CustomDefenseGroups) do

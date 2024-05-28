@@ -85,8 +85,8 @@
         </aoe>
         <box>
             <pos>
-                <x>1364</x>
-                <y>15</y>
+                <x>1046</x>
+                <y>48</y>
             </pos>
         </box>
         <debuffing>false</debuffing>
@@ -104,6 +104,7 @@
     </onechix>
     <threechix>
         <actions>false</actions>
+        <active>false</active>
         <aoe>
             <p3>false</p3>
             <p4>false</p4>

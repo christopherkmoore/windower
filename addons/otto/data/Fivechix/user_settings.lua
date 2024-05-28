@@ -11,9 +11,10 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "frontline",
-            ["Threechix"] = "backline"
+            ["Threechix"] = "backline",
+            ["Twochix"] = "frontline"
         },
         ["yalm_fight_range"] = 3
     },
@@ -61,7 +62,7 @@ return {
     },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "none",
+        ["cast_type"] = "spell",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

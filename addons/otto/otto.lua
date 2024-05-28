@@ -155,7 +155,9 @@ otto._events['load'] = windower.register_event('load', function()
         windower.add_to_chat(123, err_msg)
         error(err_msg)
     end
-
+    -- I can't for the life of me figure out where in gearswap this is being rebound...
+    -- if you're not me and don't have or want this script, just delete this next line.
+    windower.send_command('bind ^t exec targetnpc')
     otto.init()
 end)
 
@@ -177,7 +179,6 @@ function otto.distances_from_master()
         if user_settings.assist.master ~= nil and user_settings.assist.master ~= "" then
             local p = windower.ffxi.get_player()
             if p.name == user_settings.assist.master then 
-                targets[p.name] = p.name
                 for player, _ in pairs(otto.config.ipc_monitored_boxes) do
                     local added = false
                     if player ~= user_settings.assist.master then 
@@ -203,7 +204,7 @@ function otto.distances_from_master()
                         end
 
                     end
-                    if not added then 
+                    if not added and player ~= user_settings.assist.master then 
                         targets[player] = player
                     end
                 end

@@ -8,9 +8,9 @@ local ffxi = _libs.lor.ffxi
 function healer.init() 
     local defaults = { healing = { min = {}, max = {}}, disable = {} }
     defaults.enabled = true         -- top level enable toggle. on | off
-    defaults.healing.curaga_min_targets = 4
+    defaults.healing.curaga_min_targets = 3
     defaults.healing.min.cure = 3
-    defaults.healing.min.curaga = 3
+    defaults.healing.min.curaga = 2
     defaults.healing.min.waltz = 3
     defaults.healing.min.waltzga = 2
     defaults.healing.max = { }

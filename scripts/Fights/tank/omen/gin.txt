@@ -4,7 +4,8 @@
 //
 // Fight Notes: Omen Gin
 // Hate becomes hard to manage near the end.
-// Purple aura (and eyes) around the monster seems to absorb light skill chain and magic.
+// Purple aura (and eyes) around the monster seems to absorb 
+// light skill chain and magic.
 //
 ////////////////////////////////
 

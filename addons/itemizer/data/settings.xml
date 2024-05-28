@@ -3,6 +3,7 @@
     <global>
         <AutoItems>true</AutoItems>
         <AutoNinjaTools>true</AutoNinjaTools>
+        <AutoStack>true</AutoStack>
         <Delay>0.5</Delay>
         <UseUniversalTools>
             <Aisha>false</Aisha>
@@ -28,7 +29,28 @@
         </UseUniversalTools>
         <version>3.0.1.1</version>
     </global>
+    <chixslave>
+        <version>3.1.0.0</version>
+    </chixslave>
+    <fivechix>
+        <version>3.1.0.0</version>
+    </fivechix>
+    <fourchix>
+        <version>3.1.0.0</version>
+    </fourchix>
+    <illstealyourpez>
+        <version>3.1.0.0</version>
+    </illstealyourpez>
+    <onechix>
+        <version>3.1.0.0</version>
+    </onechix>
+    <threechix>
+        <version>3.1.0.0</version>
+    </threechix>
     <twochix>
-        <version>3.0.1.2</version>
+        <version>3.1.0.0</version>
     </twochix>
+    <windedmule>
+        <version>3.1.0.0</version>
+    </windedmule>
 </settings>

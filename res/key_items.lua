@@ -2739,6 +2739,7 @@ return {
     [2833] = {id=2833,en="shadow throne",ja="シャドウスローン",category="Permanent Key Items"},
     [2834] = {id=2834,en="leaf bench",ja="リーフベンチ",category="Permanent Key Items"},
     [2835] = {id=2835,en="astral cube",ja="アストラルキューブ",category="Permanent Key Items"},
+    [2836] = {id=2836,en="chocobo chair II",ja="チョコボチェアII",category="Permanent Key Items"},
     [2837] = {id=2837,en="Reisenjima Sanctorium orb",ja="醴泉神社の勾玉",category="Temporary Key Items"},
     [2838] = {id=2838,en="\"Sakura and the Magicked Net\"",ja="『サクラちゃんと呪縛の手綱』",category="Mog Garden"},
     [2839] = {id=2839,en="reaper",ja="リーパー",category="Geas Fete"},
@@ -3187,10 +3188,20 @@ return {
     [3337] = {id=3337,en="determined psyche",ja="誓いのプシュケー",category="Temporary Key Items"},
     [3338] = {id=3338,en="Raebrimm's memento",ja="ラエブリームの形見",category="Temporary Key Items"},
     [3339] = {id=3339,en="vial of Chaos's blood",ja="カオスの血",category="Permanent Key Items"},
+    [3340] = {id=3340,en="Mog Kupon A-Sap",ja="クーポンA-Sap",category="Temporary Key Items"},
+    [3341] = {id=3341,en="Mog Kupon A-Jad",ja="クーポンA-Jad",category="Temporary Key Items"},
+    [3342] = {id=3342,en="Mog Kupon A-Rub",ja="クーポンA-Rub",category="Temporary Key Items"},
+    [3344] = {id=3344,en="sheet of chocobo tunes",ja="オーケストリオン譜：チョコボ",category="Permanent Key Items"},
+    [3345] = {id=3345,en="Mog Kupon W-Eth",ja="クーポンW-Eth",category="Temporary Key Items"},
+    [3346] = {id=3346,en="Mog Kupon I-Aby",ja="クーポンI-Aby",category="Temporary Key Items"},
+    [3347] = {id=3347,en="Mog Kupon A-Dia",ja="クーポンA-Dia",category="Temporary Key Items"},
+    [3348] = {id=3348,en="Mog Kupon A-Eme",ja="クーポンA-Eme",category="Temporary Key Items"},
+    [3349] = {id=3349,en="Wing of War",ja="天帝の翼",category="Temporary Key Items"},
+    [3350] = {id=3350,en="sheet of Near East tunes",ja="オーケストリオン譜：近東",category="Permanent Key Items"},
 }, {"id", "en", "ja", "category"}
 
 --[[
-Copyright © 2013-2023, Windower
+Copyright © 2013-2024, Windower
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

@@ -169,7 +169,7 @@ function actions.get_offensive_action(player)
             local preaction = job_queue:pop() 
             local_queue_insert(preaction.action.en, preaction.name)
             if action.preaction == nil and actor:ready_to_use(preaction.action) then
-                log(action.preaction)
+                -- log(action.preaction)
                 action.preaction = preaction
             end
         end 

@@ -61,4 +61,17 @@
             </pos>
         </display>
     </chixslave>
+    <twochix>
+        <display>
+            <pos>
+                <x>893</x>
+                <y>256</y>
+            </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
+        </display>
+    </twochix>
 </settings>

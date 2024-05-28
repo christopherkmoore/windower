@@ -45,7 +45,6 @@ end
 
 
 function pull.try_pulling()
-    log('start')
     local player = windower.ffxi.get_player()
   
     if player.status == 1 and player.target_index then
@@ -61,7 +60,7 @@ function pull.try_pulling()
     if actor:is_moving() then return end
     if now < pull.pull_tick then return end
 
-    pull.pull_tick = now + 1
+    pull.pull_tick = now + 3
 
     if pull.has_target_already() then return end
 

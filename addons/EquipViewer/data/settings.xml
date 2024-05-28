@@ -41,10 +41,40 @@
         <show_encumbrance>true</show_encumbrance>
         <size>32</size>
     </global>
+    <chixslave>
+        <pos>
+            <x>1300</x>
+            <y>750</y>
+        </pos>
+    </chixslave>
+    <fivechix>
+        <pos>
+            <x>1300</x>
+            <y>750</y>
+        </pos>
+    </fivechix>
+    <fourchix>
+        <pos>
+            <x>1300</x>
+            <y>750</y>
+        </pos>
+    </fourchix>
+    <onechix>
+        <pos>
+            <x>1300</x>
+            <y>750</y>
+        </pos>
+    </onechix>
+    <threechix>
+        <pos>
+            <x>1300</x>
+            <y>750</y>
+        </pos>
+    </threechix>
     <twochix>
         <pos>
-            <x>1800</x>
-            <y>900</y>
+            <x>1300</x>
+            <y>750</y>
         </pos>
     </twochix>
 </settings>

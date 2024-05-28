@@ -369,7 +369,7 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 	sets.idle = {
 		main="Malignance Pole",
-		-- sub="Sors Shield",                  -- Genmei Shield
+		sub="Enki Strap",                  -- Genmei Shield
 		ammo="Homiliary",
 		head="Inyanga Tiara +2",            -- probably want for DT Aya. Zucchetto +2
 		-- neck="Cleric's Torque",          -- full time for points in dyna

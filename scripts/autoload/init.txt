@@ -91,6 +91,7 @@ lua load superwarp
 lua load autojoin
 lua load sparks
 lua load aecho;
+lua load nolock;
 send Onechix lua load singer;
 send Onechix sing off;
 send Onechix dressup l bard;
@@ -106,6 +107,7 @@ bind ^a sat allattack
 bind ^w exec warps
 bind ^t exec targetnpc
 bind ^s exec stuns
+unbind ^r
 
 block_mouseinput 1;
 

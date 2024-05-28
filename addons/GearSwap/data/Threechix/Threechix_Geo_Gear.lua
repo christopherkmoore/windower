@@ -49,7 +49,7 @@ function init_gear_sets()
 
 	-- Precast sets to enhance JAs
 	sets.precast.JA.Bolster = {body="Bagua Tunic +1"}
-	sets.precast.JA['Life Cycle'] = {body="Geo. Tunic +1",back=gear.cape_loupan_idle}
+	sets.precast.JA['Life Cycle'] = {body="Geomancy Tunic +2",back=gear.cape_loupan_idle}
 	sets.precast.JA['Radial Arcana'] = {feet="Bagua Sandals +1"}
 	sets.precast.JA['Mending Halation'] = {legs="Bagua Pants +1"}
 	sets.precast.JA['Full Circle'] = {head="Azimuth Hood +2",hands="Bagua Mitaines +1"}
@@ -64,7 +64,7 @@ function init_gear_sets()
 
 	sets.precast.FC = {main=gear.grioavolr_fc_staff,sub="Clerisy Strap +1",ammo="Impatiens",
 		head="Psycloth Tiara",neck="Voltsurge Torque",ear1="Malignance earring",ear2="Azimuth Earring",
-		body="Zendik Robe",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                                                          --ring2="Lebeche Ring",
+		body="Vrikodara Jupon",hands="Volte Gloves",ring1="Kishar Ring",ring2="Weatherspoon Ring",                                                          --ring2="Lebeche Ring",
 		back=gear.capeFC,waist="Witful Belt",legs="Geo. Pants +2",feet="Regal Pumps"}
 
 	sets.precast.FC.Geomancy = set_combine(sets.precast.FC, {range="Dunna",ammo=empty})
@@ -137,17 +137,17 @@ function init_gear_sets()
 	sets.midcast.StatusRemoval = set_combine(sets.midcast.FastRecast, {main=gear.grioavolr_fc_staff,sub="Clemency Grip"})
 	
 	sets.midcast['Elemental Magic'] = {main=gear.grioavolr_MB,ammo="Dosis Tathlum",
-		head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace           ear1="Crematio Earring"
+		head="Geo. Galero +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",         -- neck="Saevus Pendant +1" replaced for Quanpur necklace           ear1="Crematio Earring"
 		body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Weatherspoon Ring",
 		back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 
     sets.midcast['Elemental Magic'].Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",                     -- ear1="Regal Earring"
+        head="Geo. Galero +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",                     -- ear1="Regal Earring"
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].Proc = {main=gear.grioavolr_MB,sub=empty,ammo="Impatiens",
-        head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Gifted Earring",ear2="Loquac. Earring",                             --head="Nahtirah Hat"
+        head="Geo. Galero +2",neck="Loricate Torque +1",ear1="Gifted Earring",ear2="Loquac. Earring",                             --head="Nahtirah Hat"
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Kishar Ring",ring2="Weatherspoon Ring",
         back="Swith Cape +1",waist="Witful Belt",legs="Azimuth Tights +2",feet="Regal Pumps"}
 		
@@ -157,12 +157,12 @@ function init_gear_sets()
         back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace", ear1="Malignance earring",ear2="Azimuth Earring",
+        head="Geo. Galero +2",neck="Sanctity Necklace", ear1="Malignance earring",ear2="Azimuth Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist=gear.ElementalObi,legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast['Elemental Magic'].HighTierNuke.Resistant = {main=gear.grioavolr_MB,ammo="Pemphredo Tathlum",
-        head="Azimuth Hood +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",
+        head="Geo. Galero +2",neck="Sanctity Necklace",ear1="Malignance earring",ear2="Azimuth Earring",
         body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Resonance Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 
@@ -173,12 +173,12 @@ function init_gear_sets()
 		
     sets.midcast['Dark Magic'] = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Erra Pendant",ear1="Malignance Earring",ear2="Friomisi Earring",
-        body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
+        body="Geomancy Tunic +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Yamabuki-no-Obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
 		
     sets.midcast.Drain = {main="Daybreak",sub="Ammurapi Shield",ammo="Pemphredo Tathlum",
         head="Azimuth Hood +2",neck="Erra Pendant",ear1="Malignance earring",ear2="Azimuth Earring", --head="Pixie Hairpin +1"
-        body="Azimuth Coat +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
+        body="Geomancy Tunic +2",hands="Azimuth Gloves +2",ring1="Excelsis Ring",ring2="Weatherspoon Ring",
         back=gear.capeMB,waist="Fucho-no-obi",legs="Azimuth Tights +2",feet="Azimuth Gaiters +2"}
     
     sets.midcast.Aspir = sets.midcast.Drain
@@ -275,12 +275,12 @@ function init_gear_sets()
 	-- .Pet sets are for when Luopan is present.
 	sets.idle.Pet = {main="Sucellus",sub="Genmei Shield",range="Dunna",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Handler's Earring",ear2="Handler's Earring +1",
-		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
+		body="Azimuth Coat +2",hands="Geo. Mitaines +2",ring1="Defending Ring",ring2="Dark Ring",
 		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Psycloth Lappas",feet="Bagua Sandals +1"}
 
 	sets.idle.PDT.Pet = {main="Malignance Pole",sub="Kaja Grip",range="Dunna",
 		head="Azimuth Hood +2",neck="Loricate Torque +1",ear1="Handler's Earring",ear2="Handler's Earring +1",
-		body="Azimuth Coat +2",hands="Geo. Mitaines +1",ring1="Defending Ring",ring2="Dark Ring",
+		body="Azimuth Coat +2",hands="Geo. Mitaines +2",ring1="Defending Ring",ring2="Dark Ring",
 		back=gear.cape_loupan_idle,waist="Isa Belt",legs="Hagondes Pants +1",feet="Bagua Sandals +1"}
 
 	-- .Indi sets are for when an Indi-spell is active.
@@ -373,7 +373,7 @@ function init_gear_sets()
 	sets.weapons.Nehushtan = {main='Nehushtan',sub='Genmei Shield'}
 	sets.weapons.DualWeapons = {main='Nehushtan',sub='Nehushtan'}
 
-	sets.moving = { feet="Geo. Sandals +1" }
+	sets.moving = { feet="Geo. Sandals +2" }
 end
 
 -- Select default macro book on initial load or subjob change.
