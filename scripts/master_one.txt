@@ -1,5 +1,0 @@
-send Twochix lua reload attackwithme
-send Onechix lua reload attackwithme
-wait 1
-send Onechix awm master on
-send Twochix awm slave on

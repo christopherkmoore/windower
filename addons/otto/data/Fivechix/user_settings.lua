@@ -12,7 +12,7 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "frontline",
+            ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },
@@ -57,7 +57,7 @@ return {
     ["job"] = {
         ["paladin"] = {
             ["cooldowns"] = true,
-            ["enabled"] = true
+            ["enabled"] = false
         }
     },
     ["magic_burst"] = {

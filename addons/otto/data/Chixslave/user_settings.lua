@@ -12,7 +12,7 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "frontline",
+            ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },

@@ -56,11 +56,10 @@ wait 0.3
 ////////////////////////////////////
 // Corsair
 ////////////////////////////////////
+send Fourchix cor roll 1 Samurai Roll;
+send Fourchix cor roll 2 Allies;
 
 send Fourchix exec fights/tank/auto_cor
-
-send Fourchix cor roll 1 Samurai Roll;
-send Fourchix cor roll 2 Chaos Roll;
 
 wait 0.3
 

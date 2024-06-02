@@ -2,7 +2,7 @@
 
 local dispel = { monster_ability_dispelables = {},}
 
-local dispels = { 
+local dispels = {
     dispel = {id=260,en="Dispel",ja="ディスペル",cast_time=3,element=7,icon_id=316,icon_id_nq=15,levels={[5]=32,[20]=32},mp_cost=25,prefix="/magic",range=12,recast=10,recast_id=260,requirements=6,skill=35,targets=32,type="BlackMagic"},
     dispelga = {id=360,en="Dispelga",ja="ディスペガ",cast_time=3,element=7,icon_id=316,icon_id_nq=15,levels={[3]=99,[4]=99,[5]=99,[10]=99,[15]=99,[20]=99,[21]=99},mp_cost=200,prefix="/magic",range=12,recast=10,recast_id=360,requirements=0,skill=35,targets=32,type="BlackMagic",unlearnable=true},
     finale = {id=462,en="Magic Finale",ja="魔法のフィナーレ",cast_time=2,element=6,icon_id=-1,icon_id_nq=38,levels={[10]=33},mp_cost=0,prefix="/song",range=12,recast=24,recast_id=462,requirements=0,skill=40,targets=32,type="BardSong"},
@@ -34,7 +34,7 @@ function dispel.should_dispel(id)
     if not user_settings.dispel.enabled then return end
 
     local player = windower.ffxi.get_player()
-    local can_dispel = dispel_jobs:contains(player.main_job) 
+    local can_dispel = dispel_jobs:contains(player.main_job)
 
     if not can_dispel then return end
 
@@ -45,7 +45,7 @@ function dispel.should_dispel(id)
             offense.addToNukeingQueue(dispels.dispel)
         elseif player.main_job == 'BLU' and not offense.checkNukingQueueFor(dispels.blank_gaze) then
             offense.addToNukeingQueue(dispels.blank_gaze)
-        elseif player.main_job == 'COR' and not offense.checkNukingQueueFor(dispels.dark_shot) then 
+        elseif player.main_job == 'COR' and not offense.checkNukingQueueFor(dispels.dark_shot) then
             offense.addToNukeingQueue(dispels.dark_shot)
         end
     end
@@ -55,7 +55,7 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
 
 	if not user_settings.dispel.enabled then return end
 
-	local categories = S{     
+	local categories = S{
     	'mob_tp_finish',
         'spell_finish',
     	'avatar_tp_finish',
@@ -72,7 +72,7 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
 
         if mob and mob.spawn_type == 16 and monitored_ids[mob.claim_id] ~= nil then
             for _, action in pairs(target.raw.actions) do
-                if action_messages:contains(action.message) then 
+                if action_messages:contains(action.message) then
 
                     -- stub a false dispel in the config. check later as dispel resovles if it can be saved as dispelable
                     if otto.config.monster_ability_dispelables == nil or otto.config.monster_ability_dispelables[action.top_level_param] == nil then
@@ -87,7 +87,7 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
                     end
                 end
             end
-        end 
+        end
     end
 
 
@@ -96,7 +96,7 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
         -- table.vprint(basic_info)
         -- log('action')
         -- table.vprint(action)
-        
+
         if dispel_message_successful:contains(action.message) then
             -- log('targets')
             -- table.vprint(offense.dispel)
@@ -104,13 +104,13 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
                 local monster_buff = offense.dispel[target.raw.id]
 
                 -- save new dispellable abilities
-                if otto.config.monster_ability_dispelables[monster_buff] == false then 
+                if otto.config.monster_ability_dispelables[monster_buff] == false then
                     otto.config.monster_ability_dispelables[monster_buff] = true
                     otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
                 end
-                
-                offense.dispel[target.raw.id] = nil 
-                
+
+                offense.dispel[target.raw.id] = nil
+
                 -- cleanup queue if someone else dispeled
                 for _, spell_to_remove in pairs(dispels) do
                     if offense.checkNukingQueueFor(spell_to_remove) then
@@ -118,8 +118,8 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
                     end
                 end
             end
-        end 
-    end 
+        end
+    end
 
     dispel.should_dispel(target.raw.id)
 end

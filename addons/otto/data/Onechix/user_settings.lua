@@ -12,7 +12,7 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "frontline",
+            ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },
@@ -68,7 +68,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

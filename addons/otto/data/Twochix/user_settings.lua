@@ -12,7 +12,7 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "frontline",
+            ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },
@@ -62,7 +62,7 @@ return {
     },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
-        ["cast_type"] = "spell",
+        ["cast_type"] = "none",
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,

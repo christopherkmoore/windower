@@ -41,7 +41,6 @@ function user_job_setup()
 	send_command('bind @\\\\ input /ma "Shell V" <t>')
 	send_command('bind !\\\\ input /ma "Reraise" <me>')
 	send_command('bind @f10 gs c cycle RecoverMode')
-	send_command('bind ^r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c weapons Default;gs c set unlockweapons false')
 	send_command('bind ^q gs c set weapons enspellonly;gs c set unlockweapons true')
 	send_command('bind !r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c set weapons none')
 	send_command('bind !q gs c set skipprocweapons false;gs c set weapons DualProcDaggers;gs c set weaponskillmode proc')
@@ -191,12 +190,12 @@ function init_gear_sets()
 	sets.midcast.Shell = {ring2="Sheltered Ring"}
 	
 	sets.midcast['Enfeebling Magic'] = {main="Marin Staff +1",sub="Enki Strap",range=empty,ammo="Regal Gem",
-		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
+		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Malignance Earring",-- ear2="Snotra Earring",
 		body="Lethargy Sayon +1",hands="Regal Cuffs",ring1="Kishar Ring",ring2="Weatherspoon Ring",
 		back=gear.capeINT,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		
 	sets.midcast['Enfeebling Magic'].Resistant = {main="Marin Staff +1",sub="Enki Strap",range="Kaja Bow",ammo=empty,
-		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Snotra Earring",
+		head="Viti. Chapeau +3",neck="Dls. Torque +2",ear1="Regal Earring",ear2="Malignance Earring",-- ear2="Snotra Earring",
 		body="Atrophy Tabard +2",hands=gear.chironic_enfeeble_hands,ring1="Metamor. Ring +1",ring2="Weatherspoon Ring",
 		back=gear.capeINT,waist="Luminary Sash",legs="Chironic Hose",feet="Vitiation Boots +3"}
 		

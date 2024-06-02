@@ -12,8 +12,8 @@
         <ShowTargetLine>true</ShowTargetLine>
     </global>
     <Threechix>
-        <X>2565</X>
-        <Y>827</Y>
+        <X>1286</X>
+        <Y>618</Y>
     </Threechix>
     <Chixslave>
         <X>2606</X>
@@ -24,7 +24,7 @@
         <Y>849</Y>
     </Fourchix>
     <Twochix>
-        <X>1668</X>
-        <Y>503</Y>
+        <X>1037</X>
+        <Y>604</Y>
     </Twochix>
 </settings>

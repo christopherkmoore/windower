@@ -19,7 +19,6 @@ function user_job_setup()
 	send_command('bind !` input /ja "Yonin" <me>')
 	send_command('bind @` gs c cycle SkillchainMode')
 	send_command('bind !r gs c set WeaponskillMode Proc;gs c set CastingMode Proc;gs c update')
-	send_command('bind ^r gs c set WeaponskillMode Normal;gs c set CastingMode Normal;gs c update')
 
 	utsusemi_cancel_delay = .3
 	utsusemi_ni_cancel_delay = .06
