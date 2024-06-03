@@ -337,6 +337,7 @@ return {
     ["Transcended Unseelie"] = true,
     ["Transcended Vulture"] = false,
     ["Transcended Worm"] = true,
+    ["Tullybloom"] = true,
     ["Twochix"] = true,
     ["Unrelenting Eft"] = false,
     ["Vadleany"] = true,

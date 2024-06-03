@@ -1,0 +1,13 @@
+return {
+-- Table: {1}
+{
+   [17478187]={2},
+},
+-- Table: {2}
+{
+   ["engaged"]="agro",
+   ["id"]=17478187,
+   ["name"]="Apex Blazer Elytra",
+   ["elegy"]=true,
+},
+}

@@ -18,8 +18,11 @@ return {
         },
         ["yalm_fight_range"] = 3
     },
-    ["dispel"] = {
+    ["debug"] = {
         ["enabled"] = false
+    },
+    ["dispel"] = {
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,

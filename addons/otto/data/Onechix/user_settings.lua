@@ -12,14 +12,17 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "backline",
+            ["Onechix"] = "frontline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },
         ["yalm_fight_range"] = 3.5
     },
-    ["dispel"] = {
+    ["debug"] = {
         ["enabled"] = true
+    },
+    ["dispel"] = {
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -54,7 +57,73 @@ return {
         },
         ["ignoreTrusts"] = true
     },
-    ["job"] = {},
+    ["job"] = {
+        ["bard"] = T{
+            ["bard_settings"] = {
+                ["aoe"] = {
+                    ["p1"] = true,
+                    ["p2"] = true,
+                    ["p3"] = true,
+                    ["p4"] = true,
+                    ["p5"] = true,
+                    ["party"] = true
+                },
+                ["clarion"] = true,
+                ["debuffing"] = true,
+                ["marcato"] = true,
+                ["nightingale"] = true,
+                ["pianissimo"] = true,
+                ["recast"] = 20,
+                ["soul_voice"] = true,
+                ["troubadour"] = true
+            },
+            ["debuffs"] = L{
+                [1] = "Carnage Elegy",
+                [2] = "Light Threnody II",
+                ["n"] = 2
+            },
+            ["dummy"] = L{
+                [1] = "Knight's Minne",
+                ["n"] = 1
+            },
+            ["playlist"] = T{
+                ["clear"] = L{
+                    ["n"] = 0
+                }
+            },
+            ["settings"] = T{
+                ["build_playlist"] = true,
+                ["cooldowns"] = true,
+                ["dispels"] = true,
+                ["enabled"] = true,
+                ["fight_type"] = "xp",
+                ["sleeps"] = true
+            },
+            ["song"] = {
+                ["Chixslave"] = L{
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
+                },
+                ["Fivechix"] = L{
+                    [1] = "Foe Sirvente",
+                    [2] = "Mage's Ballad III",
+                    [3] = "Knight's Minne V",
+                    ["n"] = 3
+                },
+                ["Twochix"] = L{
+                    [1] = "Adventurer's Dirge",
+                    ["n"] = 1
+                }
+            },
+            ["songs"] = L{
+                [1] = "Valor Minuet IV",
+                [2] = "Valor Minuet V",
+                [3] = "Victory March",
+                [4] = "Sheepfoe Mambo",
+                ["n"] = 4
+            }
+        }
+    },
     ["magic_burst"] = {
         ["cast_tier"] = 3,
         ["cast_type"] = "spell",
@@ -68,7 +137,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

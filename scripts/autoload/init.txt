@@ -92,8 +92,6 @@ lua load autojoin
 lua load sparks
 lua load aecho;
 lua load nolock;
-send Onechix lua load singer;
-send Onechix sing off;
 send Onechix dressup l bard;
 send Fourchix lua load autocor;
 

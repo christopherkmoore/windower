@@ -121,7 +121,10 @@ local function target_master(player, id)
     }))
 end
 
-function assist.puller_target_and_cast(mob)
+---forces someone to target and try casting
+---@param mob: T{mob}
+---@param spell: param id
+function assist.puller_target_and_cast(mob, spell)
 
     if not mob then
         return
@@ -134,13 +137,13 @@ function assist.puller_target_and_cast(mob)
     --     ['Player Index'] = player.index,
     -- }))
     -- table.vprint(mob)
-    local elegy_recast = windower.ffxi.get_spell_recasts()[422]
+    local elegy_recast = windower.ffxi.get_spell_recasts()[spell]
     if elegy_recast == 0 then
         local p = packets.new('outgoing', 0x01A, {
             ["Target"] = mob.id,
             ["Target Index"] = mob.index,
             ["Category"] = 0x03, -- spell cast
-            ["Param"] = 422
+            ["Param"] = spell
         })
 
         packets.inject(p)

@@ -891,6 +891,53 @@ local function blackmage(args)
     end
 end
 
+local function bard(args)
+    local allowed = T { 'on | off | enabled | disable', 'fight' }
+    local message = ''
+    local should_save = true
+    local arg2 = ''
+    local arg3 = ''
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if (#args > 1) then
+        arg2 = args[2]
+    end
+
+    if command == 'on' or command == 'enable' then
+        user_settings.job.bard.settings.enabled = true
+        message = 'Bard on.'
+        otto.bard.init()
+    elseif command == 'off' or command == 'disable' then
+        user_settings.job.bard.settings.enabled = false
+        message = 'Bard off.'
+        utils.wipe_debufflist()
+        utils.wipe_bufflist()
+        otto.bard.deinit()
+    elseif command == 'fight' then 
+        local allowed_fight_commands = S{'xp', 'boss', 'savetimers', 'normal'}
+        if allowed_fight_commands:contains(arg2) then 
+            message = 'Bard fight mode set: '..arg2
+            user_settings.job.bard.settings.fight_type = arg2
+            otto.bard.check_fight_type()
+        else 
+            message = 'Allowed fight commands are '.. table.concat(allowed_fight_commands, ', ')
+
+        end
+        
+    else
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        windower.add_to_chat(6, message)
+        user_settings:save()
+    end
+end
+
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
     local args = T { ... }
@@ -931,6 +978,8 @@ function events.addon_command(...)
             blackmage(newArgs)
         elseif command == 'pld' or command == 'paladin' then
             paladin(newArgs)
+        elseif command == 'brd' or command == 'bard' then 
+            bard(newArgs)
         end
         -- MARK: commands to local otto
     end

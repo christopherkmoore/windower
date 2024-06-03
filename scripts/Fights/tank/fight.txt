@@ -28,10 +28,9 @@ send Chixslave otto debuff Dia II on;
 
 send Onechix exec fights/tank/auto_brd
 
-wait 0.3;
+send Onechix otto brd fight normal; 
 
-send Onechix sing march 2;
-send Onechix sing minuet 1;
+wait 0.3;
 
 ////////////////////////////////////
 // Geomancer

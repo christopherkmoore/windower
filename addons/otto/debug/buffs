@@ -1,0 +1,18 @@
+return {
+-- Table: {1}
+{
+   ["protect"]=1,
+   ["corsair's roll"]=1,
+   ["rampart"]=1,
+   ["mambo"]=1,
+   ["march"]=1,
+   ["auspice"]=1,
+   ["samurai roll"]=1,
+   ["minuet"]=2,
+   ["barblind"]=1,
+   ["accuracy boost"]=1,
+   ["attack boost"]=1,
+   ["barwater"]=1,
+   ["shell"]=1,
+},
+}

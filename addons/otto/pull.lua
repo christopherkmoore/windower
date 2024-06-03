@@ -4,7 +4,8 @@
 local pull = { }
 
 pull.target = nil
-
+pull.pulling_until = 2
+pull.targets = {}
 pull.pull_tick = os.clock() 
 
 function pull.init() 
@@ -32,8 +33,10 @@ local function sort_closest_target(mobs)
             end
 
             if mob.distance < distance then 
-                distance = mob.distance
-                closest = mob
+                if pull.targets[id] == nil then
+                    distance = mob.distance
+                    closest = mob
+                end
             end
         end
     end
@@ -45,14 +48,6 @@ end
 
 
 function pull.try_pulling()
-    local player = windower.ffxi.get_player()
-  
-    if player.status == 1 and player.target_index then
-        local mob = windower.ffxi.get_mob_by_index(player.target_index)
-        pull.target = mob
-        return
-    end
-
     if not user_settings.pull.enabled then return end
     if user_settings.pull.with == '' then return end 
 
@@ -66,24 +61,15 @@ function pull.try_pulling()
 
     local mob = pull.find_target()
     
-    if mob ~= nil then
-    
-        otto.assist.puller_target_and_cast(mob) -- hard coded to elegy
-        
+    if mob ~= nil and pull.targets[mob.id] == nil then
+
+        otto.assist.puller_target_and_cast(mob, 422) -- hard coded to elegy
         coroutine.sleep(1)
 
         if pull.check_pull_success(mob) then
-            otto.assist.master_target_no_close_in(pull.target.id)
+            otto.assist.master_target_no_close_in(mob.id)
         end
-
     end
-
-
-    if pull.target ~= nil then 
-        if pull.target.hpp == 0 then
-            pull.target = nil
-        end
-    end 
 
 end
 
@@ -98,30 +84,22 @@ function pull.find_target()
 end
 
 function pull.has_target_already() 
-    local player = windower.ffxi.get_player()
-
-    if player.status == 1 then 
-        return true 
-    else 
-        pull.target = nil
+    local count = 0
+    for _, k in pairs(pull.targets) do 
+        count = count + 1
     end
 
-    if pull.target == nil then return false end
-
-    if (pull.target.valid_target) and player.target_index == pull.target.index and pull.target.status == 1 then
-        log('already pulled')
-        return true
-     end
-
-     return false
+    if count >= pull.pulling_until then return true end
 end
 
 function pull.check_pull_success(mob) 
-    if pull.target ~= nil then return true end
     if mob == nil then return false end
 
     if mob.status == 1 then 
-        pull.target = mob
+        local effect = otto.bard.song_timers.song_debuffs[194]
+
+        otto.fight.add_target_effect(mob.id, effect)
+        pull.targets[mob.id] = mob
         return true
     end
 

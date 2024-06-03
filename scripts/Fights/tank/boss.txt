@@ -27,11 +27,10 @@ send Chixslave otto debuff Dia II on;
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
+send Onechix otto brd fight boss; 
 
 wait 0.3;
 send Onechix otto assist role backline;
-send Onechix sing march 2;
-send Onechix sing minuet 1;
 
 ////////////////////////////////////
 // Geomancer

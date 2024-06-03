@@ -18,6 +18,9 @@ return {
         },
         ["yalm_fight_range"] = 3.5
     },
+    ["debug"] = {
+        ["enabled"] = true
+    },
     ["dispel"] = {
         ["enabled"] = false
     },
@@ -64,8 +67,8 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = false,
-            ["enabled"] = false,
+            ["cooldowns"] = true,
+            ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"

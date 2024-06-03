@@ -10,15 +10,7 @@ send Fivechix otto healer off;
 
 send Fourchix cor off;
 
-send Onechix singer off;
-send Onechix sing playlist clear;
-send Onechix singer debuffing off;
-send Onechix sing pianissimo off;
-send Onechix sing nightingale off;
-send Onechix sing troubadour off; 
-send Onechix sing soul_voice off,
-send Onechix sing clarion off;
-send Onechix otto pull off;
+send Onechix otto brd off;
 
 send Threechix otto geo off;
 send Threechix otto geo cooldowns off;

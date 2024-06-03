@@ -218,15 +218,13 @@ function actions.check_job_actions()
     elseif otto.blackmage then
         return otto.blackmage.blm_queue()
     elseif otto.paladin then
-        return otto.paladin.pld_queue()
+        return otto.paladin.check_pld()
     end
 end
 
 function actions.check_job()
     if otto.blackmage then
         otto.blackmage.check_blm()
-    elseif otto.paladin then
-        otto.paladin.check_pld()
     end
 end
 

@@ -59,6 +59,10 @@ function otto_packets.action_handler(raw_actionpacket)
     otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto_packets.processAction(targets, actor_id, monitored_ids) 
+
+    if otto.bard ~= nil then
+        otto.bard.action_handler(category, action, actor_id, add_effect, target)
+    end
 end
 
 ActionPacket.open_listener(otto_packets.action_handler)
@@ -71,8 +75,27 @@ function otto_packets.handle_incoming_chunk(id, data)
         local monitored_ids = otto.getMonitoredIds()
         local action_info = get_action_info(id, data)
         actor:update_status(id, action_info)
-        if id == 0x29 then
+        if id == 0x29 then 
             otto_packets.processMessage(action_info, monitored_ids)
+
+            -- for bard when player dies.
+            local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
+            local buff_lost_messages = S{64,204,206,350,531}
+            local actor = data:unpack('I', 0x04+1)
+            local target = data:unpack('I',0x08+1)
+            local param = data:unpack('I',0x0C+1)
+            local message = data:unpack('H',0x18+1) % 0x8000
+    
+            if death_messages[message] then
+                otto.fight.remove_target(target)
+
+                if otto.bard == nil then return end 
+                if not user_settings.job.bard.settings.enabled then return end 
+                otto.bard.debuffed[target] = nil
+                otto.pull.targets[target] = nil
+            elseif actor == otto.bard.support.player_id and buff_lost_messages:contains(message)  then
+                otto.bard.song_timers.buff_lost(target, param) 
+            end
         end
     elseif (id == 0x037) then -- character update
         if otto.geomancer then 
@@ -82,6 +105,41 @@ function otto_packets.handle_incoming_chunk(id, data)
         otto_packets.register_party_members_changed(data)
     elseif (id == 0x0DF) then -- Char Update
         otto_packets.character_update(data)
+    elseif id == 0x00A then
+        local packet = packets.parse('incoming', data)
+
+        otto.bard.support.player_id = packet.Player
+        otto.bard.support.zone_id = packet.Zone
+        otto.bard.support.player_name = packet['Player Name']
+            
+    elseif id == 0x63 and data:byte(5) == 9 then
+
+        if otto.bard == nil then return end 
+        if not user_settings.job.bard.settings.enabled then return end 
+        -- appears # of copies are not checked anymore and times may only ever be used for afermath, I keep forgetting we dont getno party buff timers
+        local set_buff = {}
+        local set_time = {}
+        
+        local time = os.time()
+        local vana_time = time - 1009810800
+        local bufftime_offset = math.floor(time - (vana_time * 60 % 0x100000000) / 60)
+
+        for n=1,32 do
+            local buff_id = data:unpack('H', n*2+7)
+            local buff_ts = data:unpack('I', n*4+69)
+
+            if buff_ts == 0 then
+                break
+            elseif buff_id ~= 255 then
+                local buff_en = res.buffs[buff_id].en:lower()
+
+                set_buff[buff_en] = (set_buff[buff_en] or 0) + 1
+                set_time[buff_en] = math.floor(buff_ts / 60 + bufftime_offset)
+            end
+        end
+        otto.bard.buffs = set_buff
+        otto.bard.times = set_time
+    
     end
 end
 

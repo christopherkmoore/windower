@@ -18,6 +18,9 @@ return {
         },
         ["yalm_fight_range"] = 3
     },
+    ["debug"] = {
+        ["enabled"] = false
+    },
     ["dispel"] = {
         ["enabled"] = false
     },
@@ -57,7 +60,7 @@ return {
     ["job"] = {
         ["paladin"] = {
             ["cooldowns"] = true,
-            ["enabled"] = false
+            ["enabled"] = true
         }
     },
     ["magic_burst"] = {

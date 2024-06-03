@@ -14,13 +14,13 @@ local debuff_bubbles = S{ 799, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826,
 function geomancer.init()
     local defaults = { entrust = {}, bubble = {}}
     defaults.enabled = false
-    defaults.cooldowns = false
+    defaults.cooldowns = false                    -- blow cooldowns (elicptic, blaze ect for strong bubbles) 
     defaults.geo = 'Geo-Frailty'
     defaults.indi = 'Indi-Fury'
-	defaults.entrust.target ='Twochix'
+	defaults.entrust.target ='Twochix'            -- Target for entrusted Indiclosures
     defaults.entrust.indi = 'Indi-Precision'      -- entrust target and spell
-    defaults.bubble.distance = 8
-    defaults.bubble.target = 'Twochix'
+    defaults.bubble.distance = 8                  -- if the bubbles target is > the users yalm distance, dismiss the bubble.
+    defaults.bubble.target = 'Twochix'            -- used to determine when a bubble should be dismissed.
    
     if user_settings.job.geomancer == nil then
         user_settings.job.geomancer = defaults

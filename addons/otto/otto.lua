@@ -29,6 +29,7 @@ otto = {
 action = T{}
 settings = {}
 user_settings = T{}
+debug_console = T{}
 
 res = require('resources')
 config = require('config')
@@ -51,6 +52,7 @@ local pm_keys = {
 
 otto.events = require('otto_events')
 otto.packets = require('otto_packets')
+otto.debug = require('debug/debug')
 
 otto.assist = require('assist')
 otto.aspir = require('aspir')
@@ -61,6 +63,8 @@ otto.buffs = require('buffs')
 otto.weaponskill = require('weaponskill')
 otto.pull = require('pull')
 otto.dispel = require('dispel')
+otto.fight = require('fight')
+
 
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
@@ -74,6 +78,8 @@ function otto.init()
     otto.pull.init()
     otto.assist.init()
     otto.dispel.init()
+    otto.fight.init() 
+    otto.debug.init()
 
     otto.check_jobs()
     otto.active = true
@@ -95,6 +101,8 @@ function otto.check_jobs()
         otto.blackmage.init()
     elseif player.main_job == "PLD" then 
         otto.paladin = require('jobs/paladin')
+    elseif player.main_job == "BRD" then
+        otto.bard = require('jobs/bard/bard')
     end
 
 end
@@ -125,14 +133,6 @@ otto._events['render'] = windower.register_event('prerender', function()
 
                 if user_settings.aspir.enabled then
                     otto.aspir.prerender()
-                end
-
-                if user_settings.pull.enabled then
-                    -- if dead_statuses:contains(player.status) or (player.hpp <= 0) then
-                    --     user_settings.pull.enabled = false
-                    -- end
-
-                    otto.pull.try_pulling()
                 end
                 
                 if targ ~= nil and targ.id and user_settings.dispel.enabled then

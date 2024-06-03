@@ -21,8 +21,7 @@ paladin.jalist = {
     [48] = {id=48,en="Sentinel",ja="センチネル",duration=30,element=3,icon_id=407,mp_cost=0,prefix="/jobability",range=0,recast_id=75,status=62,targets=1,tp_cost=0,type="JobAbility"},
 }
 
-paladin.job_tick = 5
-paladin.next_tick = os.clock()
+paladin.job_tick = 1
 
 function paladin.init()
     local defaults = { enabled = true }
@@ -33,8 +32,9 @@ function paladin.init()
         user_settings.job.paladin = defaults
         user_settings:save()
     end
-    paladin.next_tick = os.clock()
     paladin.create_bufflist()
+
+    -- paladin.check_pld:loop(paladin.job_tick)
 end
 
 function paladin.deinit() 
@@ -60,18 +60,6 @@ end
 function paladin.check_pld()
     if not user_settings.job.paladin.enabled then return end
 
-    if os.clock() > paladin.next_tick then 
-        paladin.next_tick = os.clock() + paladin.job_tick
-    end
-end
-
-
-function paladin.pld_queue()
-    if not user_settings.job.paladin.enabled then return end
-    local now = os.clock()
-    if now > paladin.next_tick  then return end
-    paladin.next_tick = now + paladin.job_tick
-
     local target = windower.ffxi.get_mob_by_target('t')
 
     if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
@@ -93,6 +81,7 @@ function paladin.pld_queue()
         local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
 
         if actor:can_use(ja) and recast == 0 and not actor:is_acting() and target ~= nil then
+
             if ja.range == 0 then
                 pld_queue:enqueue_action('ability', ja, player.name)
             else 
@@ -112,5 +101,6 @@ function paladin.pld_queue()
 
     return pld_queue:getQueue()
 end
+
 
 return paladin
