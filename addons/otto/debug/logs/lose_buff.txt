@@ -1,0 +1,18 @@
+return {
+-- Table: {1}
+{
+   ["buffs"]={2},
+   ["player"]="Threechix",
+},
+-- Table: {2}
+{
+   ["Protect"]=40,
+   ["Samurai Roll"]=321,
+   ["Haste"]=33,
+   ["Auspice"]=275,
+   ["Corsair's Roll"]=326,
+   ["Barblind"]=109,
+   ["Barwater"]=105,
+   ["Shell"]=41,
+},
+}

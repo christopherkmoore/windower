@@ -2,16 +2,15 @@ local debug = {}
 
 local default = {}
 debug.snapshot = {}
+local json_custom = require('debug/lib/JSON')
 
 function debug.init()
-  -- create user_settings defaults when they don't exist
 
   if user_settings.debug == nil then
       local debug = {
         enabled = false
        }
 
-  
       user_settings.debug = debug
       user_settings:save()
   end
@@ -20,22 +19,48 @@ end
 
 
 function debug.create_log(log, newfile)
-    if user_settings.debug.enabled then
-      local filename = newfile or 'debug_test'
-      print(filename)
-      table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/"..filename)
+  local filename = newfile or 'debug_test'
+  local newLog = log or {}
+  if user_settings.debug.enabled then
+    if type(log) == "table" then
+      table.save(newLog, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
+    elseif  type(log) == "string" or type(log) == "number" then
+      print('saved string')
+      local file = io.open('C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/'..filename..'.txt', "a")
+      file:write(log..'\n')
+      file:close()
     end
+    return
+  end 
+
 end
 
-function debug.create_log_once(log)
+function debug.create_log_once(log, newfile)
 
     if not next(debug.snapshot) then 
       local filename = newfile or 'snapshot'
       debug.snapshot = log
-      table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/"..filename)
+      table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
+      print(filename..' created!')
     end
+
 end
 
+function debug.create_log_once_json(log, newfile)
+
+
+  if not next(debug.snapshot) then 
+    debug.snapshot = log
+    local filename = newfile or 'snapshot'
+
+    local result = json_custom:encode_pretty(log)
+
+    local file = io.open('C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/'..filename..'.json', "a")
+    file:write(result..'\n')
+    file:close()
+    print(filename..' created!')
+  end
+end
 
 
 
@@ -81,6 +106,7 @@ function table.save(  tbl,filename )
   end
   -- initiate variables for save procedure
   local tables,lookup = { tbl },{ [tbl] = 1 }
+
   file:write( "return {"..charE )
   for idx,t in ipairs( tables ) do
     if filename and filename ~= true and filename ~= 1 then

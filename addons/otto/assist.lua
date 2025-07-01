@@ -149,7 +149,7 @@ function assist.puller_target_and_cast(mob, spell)
         packets.inject(p)
 
         coroutine.sleep(1)
-
+        
         local p = packets.new('incoming', 0x058, {
             ['Player'] = player.id,
             ['Target'] = mob.id,

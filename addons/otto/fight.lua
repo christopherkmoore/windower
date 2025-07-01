@@ -11,7 +11,8 @@ fight.my_targets = {}
 
 -- list of allies buffs and debuffs
 fight.my_allies = {}
-
+fight.common = {}
+fight.common.debuff_horn_multiplier = 1.53
 
 function fight.init() 
     fight.update_targets:loop(check_tick)
@@ -22,31 +23,46 @@ end
 function fight.update_targets() 
     local mobs = windower.ffxi.get_mob_array() 
 
-        -- build the entire aggro'd mob list
-        for _, mob in pairs(mobs) do
-            local ids = otto.getMonitoredIds()
-            
-            -- mobs i'm fighting
-            if mob.valid_target == true and mob.is_npc and ids:contains(mob.claim_id) and mob.status == 1 then
-                fight.targets[mob.id] = mob
+    -- build the entire aggro'd mob list
+    for _, mob in pairs(mobs) do
+        local ids = otto.getMonitoredIds()
 
-                -- only add new mobs when they're new, otherwise you reset the statuses
-                if not fight.my_targets[mob.id] then
-                    fight.my_targets[mob.id] = { engaged = "fighting" , id = mob.id, name = mob.name} 
-                end
+        -- mobs i'm fighting
+        if mob.valid_target == true and mob.is_npc and ids:contains(mob.claim_id) and mob.status == 1 then
+            fight.targets[mob.id] = mob
+
+            -- only add new mobs when they're new, otherwise you reset the statuses
+            if not fight.my_targets[mob.id] then
+                fight.my_targets[mob.id] = { engaged = "fighting" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}} 
             end
+        end
 
-            -- mobs that may be fighting me, but i'm not fighting back
-            if mob.valid_target == true and mob.is_npc and (mob.status == 1 and mob.claim_id == 0) and mob.distance < 50 then 
-                fight.targets[mob.id] = mob
+        -- mobs that may be fighting me, but i'm not fighting back
+        if mob.valid_target == true and mob.is_npc and (mob.status == 1 and mob.claim_id == 0) and mob.distance < 50 then 
+            fight.targets[mob.id] = mob
 
-                -- only add new mobs when they're new, otherwise you reset the statuses
-                if not fight.my_targets[mob.id] then
-                    fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, name = mob.name} 
+            -- only add new mobs when they're new, otherwise you reset the statuses
+            -- bug this adds other peoples trusts
+            if not fight.my_targets[mob.id] then
+                fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}} 
+            end
+        end
+    end
+
+    for _, mob in pairs(fight.my_targets) do 
+        -- remove expired debuffs
+        if mob.debuffs then 
+            for key, expires in pairs(mob.debuffs) do
+                local now = os.time()
+                if now >= expires then
+                    mob.debuffs[key] = nil
                 end
             end
         end
-        -- otto.debug.create_log(fight.my_targets)
+    end
+
+    otto.debug.create_log(fight.my_targets, 'my_targets')
+
 end
 
 function fight.add_target_effect(target_id, effect)
@@ -65,6 +81,7 @@ function fight.remove_target_effect(target_id, effect)
         fight.my_targets[target_id][effect] = nil
     end
 end
+
 
 --- tested working.
 function fight.remove_target(id)

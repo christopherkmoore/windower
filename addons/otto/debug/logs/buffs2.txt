@@ -1,0 +1,23 @@
+return {
+-- Table: {1}
+{
+   ["buffs"]={2},
+   ["player"]="Onechix",
+},
+-- Table: {2}
+{
+   ["Protect"]=40,
+   ["Samurai Roll"]=321,
+   ["Rampart"]=623,
+   ["Accuracy Boost"]=553,
+   ["Haste"]=33,
+   ["Auspice"]=275,
+   ["Nightingale"]=347,
+   ["Corsair's Roll"]=326,
+   ["Barblind"]=109,
+   ["Attack Boost"]=549,
+   ["Troubadour"]=348,
+   ["Barwater"]=105,
+   ["Shell"]=41,
+},
+}

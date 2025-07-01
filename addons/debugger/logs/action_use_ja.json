@@ -1,0 +1,32 @@
+{
+  "actor_id": 651267,
+  "category": 6,
+  "param": 355,
+  "recast": 0,
+  "target_count": 1,
+  "targets": [ {
+    "action_count": 1,
+    "actions": [ {
+      "add_effect_animation": 0,
+      "add_effect_effect": 0,
+      "add_effect_message": 0,
+      "add_effect_param": 0,
+      "animation": 311,
+      "effect": 0,
+      "has_add_effect": false,
+      "has_spike_effect": false,
+      "knockback": 0,
+      "message": 0,
+      "param": 0,
+      "reaction": 16,
+      "spike_effect_animation": 0,
+      "spike_effect_effect": 0,
+      "spike_effect_message": 0,
+      "spike_effect_param": 0,
+      "stagger": 0,
+      "unknown": 0
+    } ],
+    "id": 651267
+  } ],
+  "unknown": 0
+}

@@ -1,0 +1,35 @@
+return {
+-- Table: {1}
+{
+   ["valid_target"]=false,
+   ["index"]=2110,
+   ["claim_id"]=0,
+   ["race"]=0,
+   ["hpp"]=32,
+   ["facing"]=0,
+   ["is_npc"]=true,
+   ["in_alliance"]=false,
+   ["in_party"]=false,
+   ["charmed"]=false,
+   ["models"]={2},
+   ["heading"]=0,
+   ["target_index"]=0,
+   ["animation_speed"]=5,
+   ["spawn_type"]=0,
+   ["target_type"]=0,
+   ["z"]=0,
+   ["status"]=0,
+   ["y"]=0,
+   ["x"]=0,
+   ["name"]="Zeid",
+   ["model_scale"]=1,
+   ["id"]=17865022,
+   ["model_size"]=0,
+   ["distance"]=0,
+   ["movement_speed"]=5,
+},
+-- Table: {2}
+{
+   0,
+},
+}

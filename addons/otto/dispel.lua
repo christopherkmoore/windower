@@ -40,6 +40,7 @@ function dispel.should_dispel(id)
 
     if offense.dispel ~= nil and offense.dispel[id] ~= nil then
         if player.main_job == 'BRD' and not offense.checkNukingQueueFor(dispels.finale) then
+            print('here for dispel')
             offense.addToNukeingQueue(dispels.finale)
         elseif player.main_job == 'RDM' and not offense.checkNukingQueueFor(dispels.dispel) then
             offense.addToNukeingQueue(dispels.dispel)

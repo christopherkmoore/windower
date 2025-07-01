@@ -1,0 +1,31 @@
+{
+  "category": 4,
+  "id": 651268,
+  "raw": {
+    "action_count": 1,
+    "actions": [ {
+      "add_effect_animation": 0,
+      "add_effect_effect": 0,
+      "add_effect_message": 0,
+      "add_effect_param": 0,
+      "animation": 8,
+      "category": "spell_finish",
+      "effect": 0,
+      "has_add_effect": false,
+      "has_spike_effect": false,
+      "knockback": 0,
+      "message": 7,
+      "param": 110,
+      "reaction": 0,
+      "spike_effect_animation": 0,
+      "spike_effect_effect": 0,
+      "spike_effect_message": 0,
+      "spike_effect_param": 0,
+      "stagger": 0,
+      "top_level_param": 8,
+      "unknown": 0
+    } ],
+    "id": 651268
+  },
+  "top_level_param": 8
+}

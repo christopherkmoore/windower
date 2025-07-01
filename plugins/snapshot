@@ -1,0 +1,63 @@
+{
+  "actor_id": 651268,
+  "category": 8,
+  "param": 28787,
+  "recast": 0,
+  "target_count": 1,
+  "targets": [ {
+    "action_count": 1,
+    "actions": [ {
+      "add_effect_animation": 0,
+      "add_effect_effect": 0,
+      "add_effect_message": 0,
+      "add_effect_param": 0,
+      "animation": 170,
+      "effect": 0,
+      "has_add_effect": false,
+      "has_spike_effect": false,
+      "knockback": 0,
+      "message": 0,
+      "param": 377,
+      "reaction": 24,
+      "spike_effect_animation": 0,
+      "spike_effect_effect": 0,
+      "spike_effect_message": 0,
+      "spike_effect_param": 0,
+      "stagger": 2,
+      "unknown": 0
+    } ],
+    "id": 651268
+  } ],
+  "unknown": 28531
+}{
+  "actor_id": 651268,
+  "category": 1,
+  "param": 29793,
+  "recast": 0,
+  "target_count": 1,
+  "targets": [ {
+    "action_count": 1,
+    "actions": [ {
+      "add_effect_animation": 0,
+      "add_effect_effect": 0,
+      "add_effect_message": 0,
+      "add_effect_param": 0,
+      "animation": 0,
+      "effect": 0,
+      "has_add_effect": false,
+      "has_spike_effect": false,
+      "knockback": 0,
+      "message": 15,
+      "param": 0,
+      "reaction": 9,
+      "spike_effect_animation": 0,
+      "spike_effect_effect": 0,
+      "spike_effect_message": 0,
+      "spike_effect_param": 0,
+      "stagger": 0,
+      "unknown": 0
+    } ],
+    "id": 17478188
+  } ],
+  "unknown": 12395
+}

@@ -59,6 +59,7 @@ return {
     },
     ["job"] = {
         ["bard"] = T{
+            ["action"] = false,
             ["bard_settings"] = {
                 ["aoe"] = {
                     ["p1"] = true,
@@ -80,7 +81,9 @@ return {
             ["debuffs"] = L{
                 [1] = "Carnage Elegy",
                 [2] = "Light Threnody II",
-                ["n"] = 2
+                [3] = "Pining Nocturne",
+                [4] = "Foe Requiem VII",
+                ["n"] = 4
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -137,7 +140,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

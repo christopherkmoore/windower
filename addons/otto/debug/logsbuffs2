@@ -1,0 +1,20 @@
+return {
+-- Table: {1}
+{
+   ["buffs"]={2},
+   ["player"]="Threechix",
+},
+-- Table: {2}
+{
+   ["Protect"]=40,
+   ["Attack Boost"]=549,
+   ["Colure Active"]=612,
+   ["Haste"]=33,
+   ["Auspice"]=275,
+   ["Corsair's Roll"]=326,
+   ["Barblind"]=109,
+   ["Barwater"]=105,
+   ["Accuracy Boost"]=553,
+   ["Shell"]=41,
+},
+}

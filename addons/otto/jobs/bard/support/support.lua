@@ -224,6 +224,7 @@ function support.start()
 
     support.debuffs = {
         lullaby = {'Horde Lullaby II','Horde Lullaby','Foe Lullaby II','Foe Lullaby'},
+        requiem = {'Foe Requiem I', 'Foe Requiem II', 'Foe Requiem III','Foe Requiem IV','Foe Requiem V','Foe Requiem VI', 'Foe Requiem VII'},
         elegy = {'Carnage Elegy'},
         nocturne = {'Pining Nocturne'},
         threnody = {
@@ -276,6 +277,7 @@ end
 
 -- Targeting 
 function support.is_valid_target(target, distance)
+
     return target.hpp > 0 and target.distance:sqrt() < distance and (target.is_npc or not target.charmed)
 end
 

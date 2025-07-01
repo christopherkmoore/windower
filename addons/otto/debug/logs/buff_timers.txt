@@ -1,0 +1,15 @@
+return {
+-- Table: {1}
+{
+   ["protect"]=1751307635,
+   ["corsair's roll"]=1751306133,
+   ["accuracy boost"]=1751305755,
+   ["haste"]=1751305885,
+   ["auspice"]=1751305866,
+   ["samurai roll"]=1751306184,
+   ["attack boost"]=1751305755,
+   ["barblind"]=1751305874,
+   ["barwater"]=1751305880,
+   ["shell"]=1751307643,
+},
+}

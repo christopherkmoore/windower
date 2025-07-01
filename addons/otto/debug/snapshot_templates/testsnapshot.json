@@ -1,0 +1,31 @@
+{
+  "category": 8,
+  "id": 17879281,
+  "raw": {
+    "action_count": 1,
+    "actions": [ {
+      "add_effect_animation": 23,
+      "add_effect_effect": 0,
+      "add_effect_message": 0,
+      "add_effect_param": 0,
+      "animation": 0,
+      "category": "casting_begin",
+      "effect": 0,
+      "has_add_effect": true,
+      "has_spike_effect": false,
+      "knockback": 0,
+      "message": 327,
+      "param": 248,
+      "reaction": 8,
+      "spike_effect_animation": 0,
+      "spike_effect_effect": 0,
+      "spike_effect_message": 0,
+      "spike_effect_param": 0,
+      "stagger": 2,
+      "top_level_param": 24931,
+      "unknown": 0
+    } ],
+    "id": 17879281
+  },
+  "top_level_param": 24931
+}

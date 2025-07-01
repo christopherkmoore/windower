@@ -48,21 +48,8 @@ function otto_packets.action_handler(raw_actionpacket)
     local actions = target:get_actions()
     local add_effect = action:get_add_effect()
     local action_basic_info = action:get_basic_info()
-
-    if category == 'spell_finish' then
-        if messages_aspir:contains(action.message) then -- aspir seems to have message 228 
-            otto.aspir.update_DB(target:get_name(), action.param) -- see maybe if this can get moved up to otto_packets. The messages are already being caught there.
-        end
-    end
-
-    otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
-    otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
-    otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto_packets.processAction(targets, actor_id, monitored_ids) 
 
-    if otto.bard ~= nil then
-        otto.bard.action_handler(category, action, actor_id, add_effect, target)
-    end
 end
 
 ActionPacket.open_listener(otto_packets.action_handler)
@@ -79,23 +66,26 @@ function otto_packets.handle_incoming_chunk(id, data)
             otto_packets.processMessage(action_info, monitored_ids)
 
             -- for bard when player dies.
-            local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
             local buff_lost_messages = S{64,204,206,350,531}
             local actor = data:unpack('I', 0x04+1)
             local target = data:unpack('I',0x08+1)
             local param = data:unpack('I',0x0C+1)
             local message = data:unpack('H',0x18+1) % 0x8000
-    
+            local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
+
             if death_messages[message] then
                 otto.fight.remove_target(target)
-
-                if otto.bard == nil then return end 
-                if not user_settings.job.bard.settings.enabled then return end 
-                otto.bard.debuffed[target] = nil
-                otto.pull.targets[target] = nil
-            elseif actor == otto.bard.support.player_id and buff_lost_messages:contains(message)  then
-                otto.bard.song_timers.buff_lost(target, param) 
             end
+
+            if otto.bard and user_settings.job.bard.settings.enabled then
+                if death_messages[message] then
+                    otto.bard.debuffed[target] = nil
+                    otto.pull.targets[target] = nil
+                elseif actor == otto.bard.support.player_id and buff_lost_messages:contains(message)  then
+                    otto.bard.song_timers.buff_lost(target, param) 
+                end
+            end
+            
         end
     elseif (id == 0x037) then -- character update
         if otto.geomancer then 
@@ -108,10 +98,11 @@ function otto_packets.handle_incoming_chunk(id, data)
     elseif id == 0x00A then
         local packet = packets.parse('incoming', data)
 
-        otto.bard.support.player_id = packet.Player
-        otto.bard.support.zone_id = packet.Zone
-        otto.bard.support.player_name = packet['Player Name']
-            
+        if otto.bard then
+            otto.bard.support.player_id = packet.Player
+            otto.bard.support.zone_id = packet.Zone
+            otto.bard.support.player_name = packet['Player Name']     
+        end
     elseif id == 0x63 and data:byte(5) == 9 then
 
         if otto.bard == nil then return end 

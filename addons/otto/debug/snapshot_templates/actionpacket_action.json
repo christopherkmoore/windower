@@ -1,0 +1,24 @@
+{
+  "raw": {
+    "add_effect_animation": 0,
+    "add_effect_effect": 0,
+    "add_effect_message": 0,
+    "add_effect_param": 0,
+    "animation": 0,
+    "category": "melee",
+    "effect": 0,
+    "has_add_effect": false,
+    "has_spike_effect": false,
+    "knockback": 0,
+    "message": 1,
+    "param": 968,
+    "reaction": 8,
+    "spike_effect_animation": 0,
+    "spike_effect_effect": 0,
+    "spike_effect_message": 0,
+    "spike_effect_param": 0,
+    "stagger": 2,
+    "top_level_param": 29793,
+    "unknown": 0
+  }
+}

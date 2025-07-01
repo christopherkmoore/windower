@@ -19,6 +19,13 @@ bard.buffs = bard.support.buffs()
 bard.times = {}
 bard.debuffed = {}
 
+
+--- Notes for construction
+--- seems like clarion is messing up knights mine as a dummy song somehow.
+--- pulling needs to be finished (sleeps list check)
+--- dispels need to be added?
+-- also race change ffs
+
 function bard.init()
     local defaults = T{ 
         settings = T{
@@ -61,7 +68,7 @@ end
 function bard.check_fight_type() 
     local type = user_settings.job.bard.settings.fight_type
     if type == 'xp' then
-        user_settings.job.bard.bard_settings.soul_voice = true
+        user_settings.job.bard.bard_settings.soul_voice = true 
         user_settings.job.bard.bard_settings.marcato = true
         user_settings.job.bard.bard_settings.clarion = true
         user_settings.job.bard.bard_settings.pianissimo = true
@@ -113,11 +120,45 @@ function bard.check_bard()
 
         if bard.buffs.silence or bard.buffs.mute or bard.buffs.omerta then return end
 
-        otto.debug.create_log(bard.buffs, 'buffs')
-        otto.debug.create_log(bard.times, 'buff_timers')
         -- check timers
         for k, v in pairs(bard.timers) do
             bard.song_timers.update(k)
+        end
+
+        -- check sleeps
+        if user_settings.job.bard.settings.sleeps and otto.fight.my_targets ~= {} then
+            local total_sleeps = 0
+            local total_mob = 0
+            
+            for index, value in pairs(otto.fight.my_targets) do 
+                if value.debuffs['sleep'] then
+                    total_sleeps = total_sleeps + 1
+                end
+                total_mob = total_mob + 1
+            end
+
+            -- count the total amount of mobs vs the amount slept
+            -- if there needs to be a sleep spell, target a random, nonslept mob
+            if total_mob > total_sleeps and total_mob > 0 then 
+                local keys = table.keys(otto.fight.my_targets)
+                local random_index = math.random(1, total_mob) 
+
+                local random_mob_id = keys[random_index]
+                for id, mob in pairs(otto.fight.my_targets) do
+                    if random_mob_id == id then
+                        otto.assist.puller_target_and_cast(mob, 377)
+                    end
+                end
+            end
+        end
+
+        -- check dispel?
+        local partner, targ = offense.assistee_and_target()
+        otto.debug.create_log(targ, 'debugger')
+        if otto.dispel.should_dispel(targ.id) then
+            print('in should dispel')
+            local player = windower.ffxi.get_player()
+            actions.take_action(player, partner, targ)
         end
 
         -- check songs
@@ -126,12 +167,14 @@ function bard.check_bard()
                 return
             end
         end
-
-        -- check song (pianissimo)
+        
+        -- check song (pianissimo) 
+        -- note: order does matter, pianissimo should come after check normal songs
         if user_settings.job.bard.bard_settings.pianissimo then
             for targ, song in pairs(user_settings.job.bard.song) do
                 local member = bard.support.party_member(targ)
-                if member and bard.support.is_valid_target(member.mob, 20) then
+        
+                if member and member.mob and bard.support.is_valid_target(member.mob, 20) then
                     if bard.cast.check_song(song, targ, bard.buffs, JA_WS_lock) then
                         return
                     end
@@ -139,66 +182,38 @@ function bard.check_bard()
             end
         end
 
+        -- check pulling
+        if user_settings.pull.enabled then
+
+            if #otto.fight.my_targets <= otto.pull.pulling_until then 
+                otto.pull.try_pulling()
+            end
+        end
+
         -- check debuffs
         if user_settings.job.bard.bard_settings.debuffing then
-            local targ = windower.ffxi.get_mob_by_target('bt')
+            local targ = windower.ffxi.get_mob_by_target('t')
             local spell_recasts = windower.ffxi.get_spell_recasts()
+            
+            -- was bt but now is t?
+            if targ and targ.valid_target and targ.distance:sqrt() < 20 then
 
-            if targ and targ.hpp > 0 and targ.valid_target and targ.distance:sqrt() < 20 then
                 for song in user_settings.job.bard.debuffs:it() do
                     local effect
                     for k,v in pairs(bard.support.debuffs) do
                         if table.find(v, song) then
-                            effect =  k
+                            local spell = res.spells:with('name', song)
+                            effect = spell.enn
                             break
                         end
                     end
 
-                    if effect and (not bard.debuffed[targ.id] or not bard.debuffed[targ.id][effect]) and spell_recasts[bard.support.song_by_name(song).id] == 0 then
-                        bard.cast.MA(song,'<bt>')
+                    local mob = otto.fight.my_targets[targ.id]
+                    if effect and (mob and not mob['debuffs'][effect]) and spell_recasts[bard.support.song_by_name(song).id] == 0 then
+                        bard.cast.MA(song,'<t>')
                         break
                     end
                 end
-            end
-        end
-
-        -- check pulling
-        if user_settings.pull.enabled then
-            if #bard.debuffed <= otto.pull.pulling_until then 
-                otto.pull.try_pulling()
-            end
-        end
-                
-        -- check sleeps
-        if user_settings.job.bard.settings.sleeps then
-            local mobs = windower.ffxi.get_mob_array() 
-            local targets = {}
-            local total_mob = 1
-
-            -- build the entire aggro'd mob list
-            for _, mob in pairs(mobs) do
-                local ids = otto.getMonitoredIds()
-                if mob.valid_target == true and mob.is_npc and ids:contains(mob.claim_id) then
-                    targets[total_mob] = mob
-                    total_mob = total_mob + 1
-
-                end
-            end
-            -- table.vprint(bard.debuffed)
-
-            -- build the slept mobs list
-            -- for id, mob in pairs(bard.debuffed) do
-            --     if targets[]
-            -- end
-
-            if total_mob >= 2 then 
-                local random_index = math.random(1, #targets)
-                local mob = targets[random_index]
-                otto.assist.puller_target_and_cast(mob, 377)
-                local effect = bard.song_timers.song_debuffs[2]
-                bard.debuffed[mob.id] = bard.debuffed[mob.id] or {}
-                bard.debuffed[mob.id][effect] = true
-                otto.fight.add_target_effect(mob.id, effect)
             end
         end
     end
@@ -235,8 +250,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
     -- Casting finish
     if category == 'spell_finish' then
         bard.delay = 5
-
-
 
         if bard.buffs.nightingale or bard.buffs.troubadour then 
             bard.delay = 2
@@ -294,27 +307,6 @@ function addon_message(str)
     windower.add_to_chat(207, _addon.name..': '..str)
 end
 
-handled_commands = T{
-    aoe = T{
-        ['on'] = 'on',
-        ['add'] = 'on',
-        ['+'] = 'on',
-        ['watch'] = 'on',
-        ['off'] = 'off',
-        ['remove'] = 'off',
-        ['-'] = 'off',
-        ['ignore'] = 'off',
-    },
-    recast = S{'buff','song'},
-    clear = S{'remove','clear'},
-}
-
-short_commands = {
-    ['p'] = 'pianissimo',
-    ['n'] = 'nightingale',
-    ['t'] = 'troubadour',
-    ['play'] = 'playlist',
-}
 
 function resolve_song(commands)
     local x = tonumber(commands[#commands], 7)

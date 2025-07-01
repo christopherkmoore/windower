@@ -52,6 +52,7 @@ local pm_keys = {
 
 otto.events = require('otto_events')
 otto.packets = require('otto_packets')
+otto.event_handler = require('events/event_handler')
 otto.debug = require('debug/debug')
 
 otto.assist = require('assist')
@@ -107,6 +108,7 @@ function otto.check_jobs()
 
 end
 
+otto._events['action'] = windower.register_event('action', otto.event_handler.action)
 
 otto._events['render'] = windower.register_event('prerender', function()
     if not otto.configs_loaded then return end
@@ -172,6 +174,9 @@ end)
 otto._events['logout'] = windower.register_event('logout', function()
     windower.send_command('lua unload otto')
 end)
+
+otto._events['gain buff'] = windower.register_event('gain buff', otto.event_handler.gain_buff)
+otto._events['lose buff'] = windower.register_event('lose buff', otto.event_handler.lose_buff)
 
 function otto.distances_from_master()
     local targets = S{}

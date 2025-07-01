@@ -8,7 +8,7 @@ profiles['sparks'] = S{
     'prize powder'
 }
 
-profiles['mog'] = S{
+profiles['cleanup'] = S{
     'Beehive chip',
     'Kazham Peppers',
     'black pepper',

@@ -1,0 +1,29 @@
+return {
+-- Table: {1}
+{
+   ["raw"]={2},
+},
+-- Table: {2}
+{
+   ["spike_effect_param"]=0,
+   ["has_add_effect"]=false,
+   ["category"]="spell_finish",
+   ["spike_effect_effect"]=0,
+   ["spike_effect_animation"]=0,
+   ["add_effect_animation"]=0,
+   ["spike_effect_message"]=0,
+   ["animation"]=377,
+   ["has_spike_effect"]=false,
+   ["knockback"]=0,
+   ["top_level_param"]=377,
+   ["effect"]=0,
+   ["message"]=75,
+   ["add_effect_message"]=0,
+   ["reaction"]=0,
+   ["stagger"]=0,
+   ["add_effect_param"]=0,
+   ["unknown"]=0,
+   ["add_effect_effect"]=0,
+   ["param"]=0,
+},
+}

@@ -1,0 +1,29 @@
+return {
+-- Table: {1}
+{
+   [17478185]={2},
+   [17478187]={3},
+},
+-- Table: {2}
+{
+   ["engaged"]="agro",
+   ["debuffs"]={4},
+   ["name"]="Apex Dragonfly",
+   ["id"]=17478185,
+   ["index"]=553,
+},
+-- Table: {3}
+{
+   ["engaged"]="agro",
+   ["debuffs"]={5},
+   ["name"]="Apex Blazer Elytra",
+   ["id"]=17478187,
+   ["index"]=555,
+},
+-- Table: {4}
+{
+},
+-- Table: {5}
+{
+},
+}

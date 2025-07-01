@@ -100,6 +100,12 @@ replacements_map = {
     }
 }
 
+greek_replacement = {
+    [3123] = {ori = 'α', rep = string.char(131,191)},
+    [3124] = {ori = 'β', rep = string.char(131,192)},
+    [3125] = {ori = 'γ', rep = string.char(131,193)},
+    [3126] = {ori = 'δ', rep = string.char(131,194)},
+}
 corsair_rolls = {
     [98] = {[5] = ' (Lucky Roll!)', [9] = ' (Unlucky Roll!)'},      -- Fighter's Roll
     [99] = {[3] = ' (Lucky Roll!)', [7] = ' (Unlucky Roll!)'},      -- Monk's Roll
@@ -304,7 +310,7 @@ default_filters = [[
         <party> <!-- A party member is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <items>false</items>
@@ -317,7 +323,7 @@ default_filters = [[
         <alliance> <!-- An alliance member is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <items>false</items>
@@ -330,7 +336,7 @@ default_filters = [[
         <others> <!-- Some guy nearby is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <items>false</items>
@@ -343,7 +349,7 @@ default_filters = [[
         <my_pet> <!-- Your pet is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <readies>false</readies>
@@ -354,7 +360,7 @@ default_filters = [[
         <my_fellow> <!-- Your adventuring fellow is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <readies>false</readies>
@@ -365,7 +371,7 @@ default_filters = [[
         <other_pets> <!-- Someone else's pet is doing something -->
             <melee>false</melee>
             <ranged>false</ranged>
-            <damage>true</damage>
+            <damage>false</damage>
             <healing>false</healing>
             <misses>false</misses>
             <readies>false</readies>
@@ -378,7 +384,7 @@ default_filters = [[
             <me> <!-- He's targeting you! -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -390,7 +396,7 @@ default_filters = [[
             <party> <!-- He's targeting a party member -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -402,7 +408,7 @@ default_filters = [[
             <alliance> <!-- He's targeting an alliance member -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -414,7 +420,7 @@ default_filters = [[
             <others> <!-- He's targeting some guy nearby -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -426,7 +432,7 @@ default_filters = [[
             <my_pet> <!-- He's targeting your pet -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -438,7 +444,7 @@ default_filters = [[
             <my_fellow> <!-- He's targeting your adventuring fellow -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -450,7 +456,7 @@ default_filters = [[
             <other_pets> <!-- He's targeting someone else's pet -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -462,7 +468,7 @@ default_filters = [[
             <enemies> <!-- He's targeting himself or another monster your party has claimed -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -474,7 +480,7 @@ default_filters = [[
             <monsters> <!-- He's targeting another monster -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -489,7 +495,7 @@ default_filters = [[
             <me> <!-- He's targeting you! -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -501,7 +507,7 @@ default_filters = [[
             <party> <!-- He's targeting a party member -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -513,7 +519,7 @@ default_filters = [[
             <alliance> <!-- He's targeting an alliance member -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -525,7 +531,7 @@ default_filters = [[
             <others> <!-- He's targeting some guy nearby -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -537,7 +543,7 @@ default_filters = [[
             <my_pet> <!-- He's targeting your pet -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -549,7 +555,7 @@ default_filters = [[
             <my_fellow> <!-- He's targeting your adventuring fellow -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -561,7 +567,7 @@ default_filters = [[
             <other_pets> <!-- He's targeting someone else's pet -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -573,7 +579,7 @@ default_filters = [[
             <enemies> <!-- He's targeting a monster your party has claimed -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>
@@ -585,7 +591,7 @@ default_filters = [[
             <monsters> <!-- He's targeting himself or another monster -->
                 <melee>false</melee>
                 <ranged>false</ranged>
-                <damage>true</damage>
+                <damage>false</damage>
                 <healing>false</healing>
                 <misses>false</misses>
                 <items>false</items>

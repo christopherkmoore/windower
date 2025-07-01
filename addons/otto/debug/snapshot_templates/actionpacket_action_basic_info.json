@@ -1,0 +1,11 @@
+{
+  "animation": "main hand",
+  "conclusion": false,
+  "effect": 0,
+  "interruption": false,
+  "message_id": 43,
+  "reaction": "hit",
+  "resource": "monster_abilities",
+  "spell_id": 2967,
+  "stagger": 2
+}
