@@ -12,7 +12,7 @@ return {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
             ["Fourchix"] = "backline",
-            ["Onechix"] = "frontline",
+            ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
         },
@@ -108,8 +108,8 @@ return {
                     ["n"] = 1
                 },
                 ["Fivechix"] = L{
-                    [1] = "Foe Sirvente",
-                    [2] = "Mage's Ballad III",
+                    [1] = "Mage's Ballad III",
+                    [2] = "Foe Sirvente",
                     [3] = "Knight's Minne V",
                     ["n"] = 3
                 },
@@ -140,7 +140,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

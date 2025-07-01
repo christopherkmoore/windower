@@ -79,7 +79,6 @@ function otto_packets.handle_incoming_chunk(id, data)
 
             if otto.bard and user_settings.job.bard.settings.enabled then
                 if death_messages[message] then
-                    otto.bard.debuffed[target] = nil
                     otto.pull.targets[target] = nil
                 elseif actor == otto.bard.support.player_id and buff_lost_messages:contains(message)  then
                     otto.bard.song_timers.buff_lost(target, param) 

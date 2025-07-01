@@ -25,6 +25,7 @@ function event_handler.action(raw)
     local add_effect = action:get_add_effect()
     local action_basic_info = action:get_basic_info()
     local get_spell = action:get_spell() -- returns an integer which needs to be looked up
+    local message_id = action:get_message_id()
 
     local reaction_string = action:get_reaction_string()
     local get_animation_string = action:get_animation_string()
@@ -68,6 +69,18 @@ function event_handler.action(raw)
         end
     end
 
+    if category == 'mob_tp_finish' then
+
+        if S{266, 280, 194}:contains(action.message) then -- target gains the effect of
+            local dispellable = res.buffs[action.param]
+
+            if otto.config.monster_ability_dispelables[action.top_level_param] then
+                otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = true
+            end
+        end
+
+    end
+
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
@@ -78,11 +91,10 @@ function event_handler.action(raw)
 end
 
 function event_handler.action_message(actor_id, target_id, actor_index, target_index, message_id, param_1, param_2, param_3)
-    -- local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
-
-    -- if death_messages[message] then
-    --     otto.fight.remove_target(target)
-    -- end 
+    local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
+    if death_messages[message_id] then
+        otto.fight.remove_target(target_id)
+    end 
 end
 
 function event_handler.gain_buff(raw) 

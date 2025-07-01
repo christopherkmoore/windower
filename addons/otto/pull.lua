@@ -70,6 +70,9 @@ function pull.try_pulling()
         otto.assist.puller_target_and_cast(closest, 422) -- hard coded to elegy
         coroutine.sleep(1)
         if pull.check_pull_success(closest) then
+            -- move to master?
+            -- local master = otto.as
+            -- actor:move_towards(master)
             otto.assist.master_target_no_close_in(closest.id)
         end
     end

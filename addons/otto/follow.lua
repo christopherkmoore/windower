@@ -19,7 +19,7 @@ function follow.init()
     end
 end
 
---todo CKM consider replacing follows scripts with this, toggling on / off?
+-- TODO CKM consider replacing follows scripts with this, toggling on / off?
 function follow.target_exists()
     if (user_settings.follow.target == nil) then return end
     

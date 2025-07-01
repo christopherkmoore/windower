@@ -33,7 +33,7 @@ function fight.update_targets()
 
             -- only add new mobs when they're new, otherwise you reset the statuses
             if not fight.my_targets[mob.id] then
-                fight.my_targets[mob.id] = { engaged = "fighting" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}} 
+                fight.my_targets[mob.id] = { engaged = "fighting" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}, dispellables = {}} 
             end
         end
 
@@ -44,7 +44,7 @@ function fight.update_targets()
             -- only add new mobs when they're new, otherwise you reset the statuses
             -- bug this adds other peoples trusts
             if not fight.my_targets[mob.id] then
-                fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}} 
+                fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}, dispellables = {}} 
             end
         end
     end

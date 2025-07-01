@@ -17,7 +17,6 @@ bard.timers = {AoE={},buffs={}}
 bard.party = bard.support.party()
 bard.buffs = bard.support.buffs()
 bard.times = {}
-bard.debuffed = {}
 
 
 --- Notes for construction
@@ -153,12 +152,12 @@ function bard.check_bard()
         end
 
         -- check dispel?
-        local partner, targ = offense.assistee_and_target()
-        otto.debug.create_log(targ, 'debugger')
-        if otto.dispel.should_dispel(targ.id) then
-            print('in should dispel')
-            local player = windower.ffxi.get_player()
-            actions.take_action(player, partner, targ)
+        if user_settings.dispel.enabled then
+            for _, mob in pairs(otto.fight.my_targets) do
+                if mob.dispellables and #mob.dispellables > 0 then
+                    otto.assist.puller_target_and_cast(mob, 462) -- magic finale
+                end
+            end
         end
 
         -- check songs
@@ -276,10 +275,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
 
         if bard.song_timers.song_buffs[effect] then
             bard.song_timers.adjust(song, windower.ffxi.get_mob_by_id(target.id).name, bard.buffs)
-        elseif bard.song_timers.song_debuffs[effect] then
-            effect = bard.song_timers.song_debuffs[effect]
-            bard.debuffed[target.id] = bard.debuffed[target.id] or {}
-            bard.debuffed[target.id][effect] = true
         end
     end
 
@@ -318,7 +313,6 @@ end
 
 function event_change()
     user_settings.job.bard.action = false
-    bard.debuffed = {}
     bard.song_timers.reset()
 end
 

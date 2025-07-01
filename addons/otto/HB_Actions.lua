@@ -142,7 +142,7 @@ function actions.take_action(player, partner, targ)
 
         if master_engaged and (matching_targets_with_master or otto.assist.is_master) then 
             actor:take_action(action, '<t>')
-            if action ~= nil and action.type == 'nuke_mob' then
+            if action ~= nil and action.type == 'nuke_mob' and action.action.cast_time then
                 coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
             end
         end

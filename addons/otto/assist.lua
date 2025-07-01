@@ -54,7 +54,6 @@ end
 
 function assist.is_master() 
     local player = windower.ffxi.get_player().name
-    
     if user_settings.assist.master == "" then return false end 
 
     return  player == user_settings.assist.master
@@ -131,13 +130,8 @@ function assist.puller_target_and_cast(mob, spell)
     end
 
     local player = windower.ffxi.get_player()
-    -- packets.inject(packets.new('incoming', 0x058, {
-    --     ['Player'] = player.id,
-    --     ['Target'] = id,
-    --     ['Player Index'] = player.index,
-    -- }))
-    -- table.vprint(mob)
     local elegy_recast = windower.ffxi.get_spell_recasts()[spell]
+
     if elegy_recast == 0 then
         local p = packets.new('outgoing', 0x01A, {
             ["Target"] = mob.id,
@@ -233,7 +227,7 @@ local function close_in(target_type) -- 't', 'bt'
 end
 
 function assist.targets()
-    if not assist.is_master then return end
+    if not assist.is_master() then return end
 
     local target = windower.ffxi.get_mob_by_target('t')
 
@@ -283,7 +277,7 @@ function assist.ipc_message_handler(message)
 
     if msg[1] == 'master' then
         locked_closing_in = true 
-        if not assist.is_master then return end          -- maybe bug here? don't think I want to return since the rest of the commands are below.
+        if not assist.is_master() then return end
 
         local id = tonumber(msg[2])
         local player = windower.ffxi.get_player()
@@ -304,9 +298,12 @@ function assist.ipc_message_handler(message)
         end
     end
 
-    if not is_slave then                                            -- check this too.
+    if not is_slave then
         return
     end
+
+    local name = windower.ffxi.get_player().name
+    local role = user_settings.assist.slaves[name]
 
     if msg[1] == 'attack' then
         if msg[2] == 'on' then
@@ -336,10 +333,6 @@ function assist.ipc_message_handler(message)
             log('Slave: Target not found!')
             return
         end
-
-        local name = windower.ffxi.get_player().name
-        local role = user_settings.assist.slaves[name]
-
         if role == 'frontline' then
             local retry_count = 0
             repeat
@@ -387,6 +380,7 @@ function assist.ipc_message_handler(message)
             end
             return
         end
+        print('all_target_master')
 
         assist.all_target_master(targetId)
     end

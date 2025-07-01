@@ -164,12 +164,6 @@ function timers.buff_lost(targ_id,buff_id)
         timers.delete(song,targ)
         return
     end
-
-    local debuff = timers.song_debuffs[buff_id]
-
-    if debuff and otto.bard.debuffed[targ_id] then
-        otto.bard.debuffed[targ_id][debuff] = nil
-    end
 end
 
 function timers.update(targ)
