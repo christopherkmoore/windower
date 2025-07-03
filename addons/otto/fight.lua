@@ -7,10 +7,10 @@ fight.targets = {}
 
 -- if you want to do a status update, do it on these because raw is constantly re-written
 -- needs to be updated for AoE Actions (in packets)
-fight.my_targets = {}
+fight.my_targets = T { }
 
 -- list of allies buffs and debuffs
-fight.my_allies = {}
+fight.my_allies = T { }
 fight.common = {}
 fight.common.debuff_horn_multiplier = 1.53
 
@@ -26,7 +26,6 @@ function fight.update_targets()
     -- build the entire aggro'd mob list
     for _, mob in pairs(mobs) do
         local ids = otto.getMonitoredIds()
-
         -- mobs i'm fighting
         if mob.valid_target == true and mob.is_npc and ids:contains(mob.claim_id) and mob.status == 1 then
             fight.targets[mob.id] = mob
@@ -38,7 +37,7 @@ function fight.update_targets()
         end
 
         -- mobs that may be fighting me, but i'm not fighting back
-        if mob.valid_target == true and mob.is_npc and (mob.status == 1 and mob.claim_id == 0) and mob.distance < 50 then 
+        if mob.valid_target == true and mob.is_npc and (mob.status == 1 and mob.claim_id == 0) and mob.distance < 50 and mob.race == 0 and mob.spawn_type ~= 2 then 
             fight.targets[mob.id] = mob
 
             -- only add new mobs when they're new, otherwise you reset the statuses
@@ -46,6 +45,12 @@ function fight.update_targets()
             if not fight.my_targets[mob.id] then
                 fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, name = mob.name, index = mob.index, debuffs = {}, dispellables = {}} 
             end
+        end
+
+        -- for whatever reason, sometimes death message doesn't clear.
+        -- go ahead and just do this to keep list fresh by removing mobs
+        if fight.my_targets[mob.id] and mob.hpp == 0 then
+            fight.my_targets[mob.id] = nil
         end
     end
 
@@ -79,6 +84,14 @@ function fight.remove_target_effect(target_id, effect)
 
     if should_remove_effect then
         fight.my_targets[target_id][effect] = nil
+    end
+end
+
+function fight.remove_monster_debuff(target_id, effect)
+    local should_remove = fight.my_targets[target_id] and fight.my_targets[target_id]['debuffs'][effect]
+
+    if should_remove then
+        fight.my_targets[target_id]['debuffs'][effect] = nil
     end
 end
 

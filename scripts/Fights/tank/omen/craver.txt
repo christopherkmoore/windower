@@ -2,8 +2,9 @@
 // Notes:
 // Important to wait 0.1 after reset step, or send will fail sometimes.
 //
-// Fight Notes: Omen Midboss setup.
-// Nightengale / Troubadour disabled in case mid boss is the sucky upy buffs one.
+// Fight Notes: Omen Midboss for the fights that aren't gorger. 
+// One of them does big dam, so use 
+// Scherzo to mitigate critical damage. 
 //
 ////////////////////////////////
 
@@ -16,33 +17,37 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/auto_whm
+wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
 
 ////////////////////////////////////
-
-////////////////////////////////////
 // Bard
 ////////////////////////////////////
 
-send Onechix singer on;
+send Onechix exec fights/tank/auto_brd
 
-send Onechix sing pianissimo on;
-send Onechix sing Nightingale off;
-send Onechix sing Troubadour off
-send Onechix sing debuffing off;
-send Onechix sing minuet 2;
-send Onechix sing march 1;
+wait 0.3;
+send Onechix otto brd fight normal;
+send Onechix otto bard songs madrigal 1;
+send Onechix otto bard songs scherzo 1;
+send Onechix otto bard songs march 1;
 
-send Onechix sing ballad 1 Threechix;
+send Onechix otto bard song Twochix dirge;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
 
+send Onechix otto bard song Chixslave ballad 1;
 
 ////////////////////////////////////
 // Geomancer
 ////////////////////////////////////
 
 send Threechix exec fights/auto_geo
+
 
 ////////////////////////////////////
 // Guests

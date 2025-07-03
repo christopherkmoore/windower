@@ -16,7 +16,7 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/auto_whm
-
+wait 0.1;
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
 
@@ -25,18 +25,17 @@ send Chixslave otto buff Chixslave barblindra on;
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
+send Onechix exec fights/tank/auto_brd
+wait 0.3;
+send Onechix otto brd fight savetimers;
+send Onechix otto bard songs minuet 2;
+send Onechix otto bard songs march 1;
 
-send Onechix singer on;
-
-send Onechix sing pianissimo on;
-send Onechix sing Nightingale off;
-send Onechix sing Troubadour off
-send Onechix sing debuffing off;
-send Onechix sing minuet 2;
-send Onechix sing march 1;
-
-send Onechix sing ballad 1 Threechix;
-
+send Onechix otto bard song Twochix dirge;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
 
 ////////////////////////////////////
 // Geomancer
@@ -49,3 +48,10 @@ send Threechix exec fights/auto_geo
 ////////////////////////////////////
 
 
+send Twochix otto assist engages on;
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

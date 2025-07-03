@@ -11,44 +11,18 @@ Dunno who the guy is but he wrote a lot of extremely useful code. Same with Ivaa
 off of what he has done from those libs and healbot.
 
 
--- todo\ 
-singer?\
-    things I don't like about singer
-    when you die it completely fucks everything
-    very often gets out of whack from using timers
-    doesn't know when buffs miss
-    
-    things I like about singer
-    waits until everyone is in range.
-    good support for using an ability + an action (pianissimo + ballad)
 
--- added\
-aspir
-magicburst
-assist / targeting
-pulling
-buffs /debuffs
-healing
-weaponskill / skillchains
-dispel
-pre actions
-jobs/geo
 
 wants
 sub-job
 whm regens
 rdm 
-bard
 pass / lot
 add comments for names on the resists?
 
 Bugs
 geo-preactions are fucking up magic bursts.
-dispel false isn't working for first time on new mobs
-dispel is spamming when 'no effect' happens
-backline roles are drawing weapons using pull
 fix whm erase-ga (it's breaking buffs because of prioritization.) -- maybe fixed?
-clean up vprint logs
 weaponskill / magicburst carries to new target.
 make queue more efficient
 add checks -- aspir is targeting any target
@@ -56,10 +30,16 @@ maybe curaga deciding could use a bit of touch up?
 
 TODO
 aspir is targeting any target -- offensive action need better conditions for performing
-add global on / off
-bug in assist for backline roles. -- offensive action need better conditions for performing
+
 gearswap not swapping rings.
 white should tick faster (cure is too slow sometimes seems like ~3-4 second delay)
+
+
+
+Finish EMPY
+SAM, PLD, COR
+
+
 
 ALTS 
 always -
@@ -97,5 +77,4 @@ Niobid strap
 JSE Cape GEO => Indi Duration (percent bonus is better than duration bonus, maybe?)
 JSE Cape RDM -> Enhancing magic duration.
 
-*voidwatch so I can get tachi: fudo.... 
 *do af quests COR, PLD, BRD (feet), SAM

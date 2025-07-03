@@ -63,6 +63,7 @@ function paladin.check_pld()
     local target = windower.ffxi.get_mob_by_target('t')
 
     if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
+    if actor:is_moving() then return end 
     
     local pld_queue = ActionQueue.new()
     local player = windower.ffxi.get_player()

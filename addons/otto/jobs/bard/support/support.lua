@@ -1,4 +1,4 @@
-local support = {party_slots = L{'p1','p2','p3','p4','p5'}, jp_mods = {}, songs = {}, debuffs = {}, extended_songs = {}}
+local support = {party_slots = L{'p1','p2','p3','p4','p5'}, jp_mods = {}, extended_songs = {}}
 
 local song = {
     [368] = 'Foe Requiem',
@@ -116,6 +116,63 @@ local song = {
     [878] = 'Dark Threnody II',
 }
 
+support.songs = {
+    paeon = {'Army\'s Paeon VI','Army\'s Paeon V','Army\'s Paeon IV','Army\'s Paeon III','Army\'s Paeon II','Army\'s Paeon'},
+    ballad = {'Mage\'s Ballad III','Mage\'s Ballad II','Mage\'s Ballad'},
+    minne = {'Knight\'s Minne V','Knight\'s Minne IV','Knight\'s Minne III','Knight\'s Minne II','Knight\'s Minne'},
+    march = {'Victory March','Advancing March'},
+    minuet = {'Valor Minuet V','Valor Minuet IV','Valor Minuet III','Valor Minuet II','Valor Minuet'}, 
+    madrigal = {'Blade Madrigal','Sword Madrigal'},
+    prelude = {'Archer\'s Prelude','Hunter\'s Prelude'},
+    mambo = {'Dragonfoe Mambo','Sheepfoe Mambo'},
+    aubade = {'Fowl Aubade'},
+    pastoral = {'Herb Pastoral'},
+    fantasia = {'Shining Fantasia'},
+    operetta = {'Puppet\'s Operetta','Scop\'s Operetta'},
+    capriccio = {'Gold Capriccio'},
+    round = {'Warding Round'},
+    gavotte = {'Shining Fantasia'},
+    hymnus = {'Goddess\'s Hymnus'},
+    mazurka = {'Chocobo Mazurka'},
+    sirvente = {'Foe Sirvente'},
+    dirge = {'Adventurer\'s Dirge'},
+    scherzo = {'Sentinel\'s Scherzo'},
+    carol = {},
+    etude = {},
+    setude = {'Herculean Etude','Sinewy Etude'},
+    detude = {'Uncanny Etude','Dextrous Etude'},
+    vetude = {'Vital Etude','Vivacious Etude'},
+    aetude = {'Swift Etude','Quick Etude'},
+    ietude = {'Sage Etude','Learned Etude'},
+    metude = {'Logical Etude','Spirited Etude'},
+    cetude = {'Bewitching Etude','Enchanting Etude'},
+    fcarol = {'Fire Carol','Fire Carol II'},
+    icarol = {'Ice Carol','Ice Carol II'},
+    wcarol = {'Wind Carol','Wind Carol II'},
+    ecarol = {'Earth Carol','Earth Carol II'},
+    tcarol = {'Lightning Carol','Lightning Carol II'},
+    acarol = {'Water Carol','Water Carol II'},
+    lcarol = {'Light Carol','Light Carol II'},
+    dcarol = {'Dark Carol','Dark Carol II'},
+}
+
+support.debuffs = {
+    lullaby = {'Horde Lullaby II','Horde Lullaby','Foe Lullaby II','Foe Lullaby'},
+    requiem = {'Foe Requiem VII', 'Foe Requiem VI', 'Foe Requiem V','Foe Requiem IV','Foe Requiem III','Foe Requiem II', 'Foe Requiem I'},
+    elegy = {'Carnage Elegy'},
+    nocturne = {'Pining Nocturne'},
+    threnody = {
+         fire = 'Fire Threnody', fire2 = 'Fire Threnody II',
+         ice = 'Ice Threnody', ice2 = 'Ice Threnody II',
+         wind = 'Wind Threnody', wind2 = 'Wind Threnody II',
+         earth = 'Earth Threnody', earth2 = 'Earth Threnody II',
+         lightning = 'Ltng. Threnody', lightning2 = 'Ltng. Threnody II',
+         water = 'Water Threnody', water2 = 'Water Threnody II',
+         light = 'Light Threnody', light2 = 'Light Threnody II',
+         dark = 'Dark Threnody', dark2 = 'Dark Threnody II',
+    }
+}
+
 local spell = {
     [57] = {id=57,enl='Haste',dur=180},
     [109] = {id=109,enl='Refresh',dur=150},
@@ -169,7 +226,7 @@ local ext_songs = {
 
 function support.start()
 
-    if user_settings.job.bard.settings.dispel then
+    if user_settings.job.bard.settings.dispels then
         windower.send_command('otto dispel on')
     end
 
@@ -182,62 +239,7 @@ function support.start()
         support.zone_id = info.zone
     end
 
-    support.songs = {
-        paeon = {'Army\'s Paeon VI','Army\'s Paeon V','Army\'s Paeon IV','Army\'s Paeon III','Army\'s Paeon II','Army\'s Paeon'},
-        ballad = {'Mage\'s Ballad III','Mage\'s Ballad II','Mage\'s Ballad'},
-        minne = {'Knight\'s Minne V','Knight\'s Minne IV','Knight\'s Minne III','Knight\'s Minne II','Knight\'s Minne'},
-        march = {'Victory March','Advancing March'},
-        minuet = {'Valor Minuet V','Valor Minuet IV','Valor Minuet III','Valor Minuet II','Valor Minuet'}, 
-        madrigal = {'Blade Madrigal','Sword Madrigal'},
-        prelude = {'Archer\'s Prelude','Hunter\'s Prelude'},
-        mambo = {'Dragonfoe Mambo','Sheepfoe Mambo'},
-        aubade = {'Fowl Aubade'},
-        pastoral = {'Herb Pastoral'},
-        fantasia = {'Shining Fantasia'},
-        operetta = {'Puppet\'s Operetta','Scop\'s Operetta'},
-        capriccio = {'Gold Capriccio'},
-        round = {'Warding Round'},
-        gavotte = {'Shining Fantasia'},
-        hymnus = {'Goddess\'s Hymnus'},
-        mazurka = {'Chocobo Mazurka'},
-        sirvente = {'Foe Sirvente'},
-        dirge = {'Adventurer\'s Dirge'},
-        scherzo = {'Sentinel\'s Scherzo'},
-        carol = {},
-        etude = {},
-        setude = {'Herculean Etude','Sinewy Etude'},
-        detude = {'Uncanny Etude','Dextrous Etude'},
-        vetude = {'Vital Etude','Vivacious Etude'},
-        aetude = {'Swift Etude','Quick Etude'},
-        ietude = {'Sage Etude','Learned Etude'},
-        metude = {'Logical Etude','Spirited Etude'},
-        cetude = {'Bewitching Etude','Enchanting Etude'},
-        fcarol = {'Fire Carol','Fire Carol II'},
-        icarol = {'Ice Carol','Ice Carol II'},
-        wcarol = {'Wind Carol','Wind Carol II'},
-        ecarol = {'Earth Carol','Earth Carol II'},
-        tcarol = {'Lightning Carol','Lightning Carol II'},
-        acarol = {'Water Carol','Water Carol II'},
-        lcarol = {'Light Carol','Light Carol II'},
-        dcarol = {'Dark Carol','Dark Carol II'},
-    }
-
-    support.debuffs = {
-        lullaby = {'Horde Lullaby II','Horde Lullaby','Foe Lullaby II','Foe Lullaby'},
-        requiem = {'Foe Requiem I', 'Foe Requiem II', 'Foe Requiem III','Foe Requiem IV','Foe Requiem V','Foe Requiem VI', 'Foe Requiem VII'},
-        elegy = {'Carnage Elegy'},
-        nocturne = {'Pining Nocturne'},
-        threnody = {
-             fire = 'Fire Threnody', fire2 = 'Fire Threnody II',
-             ice = 'Ice Threnody', ice2 = 'Ice Threnody II',
-             wind = 'Wind Threnody', wind2 = 'Wind Threnody II',
-             earth = 'Earth Threnody', earth2 = 'Earth Threnody II',
-             lightning = 'Ltng. Threnody', lightning2 = 'Ltng. Threnody II',
-             water = 'Water Threnody', water2 = 'Water Threnody II',
-             light = 'Light Threnody', light2 = 'Light Threnody II',
-             dark = 'Dark Threnody', dark2 = 'Dark Threnody II',
-        }
-    }
+    
 
     for buff, tab in pairs(ext_songs) do
         for _, songs in pairs(tab) do
@@ -385,6 +387,15 @@ function support.song_list(songs,targ,maxsongs)
         list[clarion] = (list[clarion] or 0) + 1 
     end
     return list
+end
+
+function support.resolve_song(commands)
+    print(commands)
+    local x = tonumber(commands[#commands], 7)
+
+    if x then commands[#commands] = A{'I','II','III','IV','V','VI'}[x] end
+    print(x)
+    return otto.bard.support.song_from_command(table.concat(commands, ' ',2))
 end
 
 return support

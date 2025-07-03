@@ -1,8 +1,6 @@
 
 -- otto bard by TC -- adapted from singer by Ivaar (thanks bro)
 
-
-
 local bard = {}
 
 bard.support = require('jobs/bard/support/support')
@@ -20,17 +18,12 @@ bard.times = {}
 
 
 --- Notes for construction
---- seems like clarion is messing up knights mine as a dummy song somehow.
---- pulling needs to be finished (sleeps list check)
---- dispels need to be added?
--- also race change ffs
 
 function bard.init()
     local defaults = T{ 
         settings = T{
             enabled = false,
-            build_playlist = true, -- will attempt to build a playlist from your pt.
-            sleeps = true,         -- tries to use horde lullaby when there are multiple mobs.
+            sleeps = true,     -- tries to use horde lullaby when there are multiple mobs.
             dispels = true,
             fight_type = 'xp'  -- xp, boss, savetimers (will basically change the bard_settings to appropriate categories.)
         },
@@ -118,6 +111,12 @@ function bard.check_bard()
         local JA_WS_lock = bard.buffs.amnesia or bard.buffs.impairment
 
         if bard.buffs.silence or bard.buffs.mute or bard.buffs.omerta then return end
+        
+        local total_mob = 0        -- all the below should add up to total mobs, needs_sleep should be 0
+        local total_sleeps = 0
+        local fighting_targets = 1 -- you're always at least fighting on mob, so reduce the needs sleep
+        local unsleepable_targets = 0
+        local not_sleeping = T{ }
 
         -- check timers
         for k, v in pairs(bard.timers) do
@@ -126,36 +125,56 @@ function bard.check_bard()
 
         -- check sleeps
         if user_settings.job.bard.settings.sleeps and otto.fight.my_targets ~= {} then
-            local total_sleeps = 0
-            local total_mob = 0
-            
-            for index, value in pairs(otto.fight.my_targets) do 
-                if value.debuffs['sleep'] then
-                    total_sleeps = total_sleeps + 1
-                end
+
+            -- update this to look at the 'fighting status'
+            for index, mob in pairs(otto.fight.my_targets) do 
                 total_mob = total_mob + 1
+
+                local target = windower.ffxi.get_mob_by_id(mob.id)
+                local unsleepable = otto.config.sleep_immunities[target.name] or false
+                if unsleepable then
+                    unsleepable_targets = unsleepable_targets + 1
+                end
+
+                if mob.debuffs['sleep'] then
+                    total_sleeps = total_sleeps + 1
+                elseif not unsleepable then
+                    not_sleeping[mob.id] = true
+                end
             end
 
+            local needs_sleep = (total_mob - total_sleeps) - (fighting_targets - unsleepable_targets)
             -- count the total amount of mobs vs the amount slept
             -- if there needs to be a sleep spell, target a random, nonslept mob
-            if total_mob > total_sleeps and total_mob > 0 then 
-                local keys = table.keys(otto.fight.my_targets)
-                local random_index = math.random(1, total_mob) 
+            if needs_sleep >= 1 then 
+                local keys = table.keys(not_sleeping)
+                local random_index = math.random(1, needs_sleep) 
 
                 local random_mob_id = keys[random_index]
                 for id, mob in pairs(otto.fight.my_targets) do
                     if random_mob_id == id then
-                        otto.assist.puller_target_and_cast(mob, 377)
+                        -- eventually need to work on this to be swap target
+                        -- assist needs to be expanded to start targeting my_targets
+                        otto.assist.puller_target_and_cast(mob, 377) 
+                        return
                     end
                 end
             end
         end
 
+        -- check pulling
+        if user_settings.pull.enabled then
+            otto.pull.try_pulling()
+        end
+
         -- check dispel?
         if user_settings.dispel.enabled then
             for _, mob in pairs(otto.fight.my_targets) do
-                if mob.dispellables and #mob.dispellables > 0 then
-                    otto.assist.puller_target_and_cast(mob, 462) -- magic finale
+                if mob.dispellables then
+                    for name, id in pairs(mob.dispellables) do
+                        otto.assist.swap_target_and_cast(mob, 462) -- magic finale
+                        return
+                    end
                 end
             end
         end
@@ -181,15 +200,7 @@ function bard.check_bard()
             end
         end
 
-        -- check pulling
-        if user_settings.pull.enabled then
-
-            if #otto.fight.my_targets <= otto.pull.pulling_until then 
-                otto.pull.try_pulling()
-            end
-        end
-
-        -- check debuffs
+        -- check debuffs (TODO: re-write to use my new my_targets and bounce between targets. focus master target first)
         if user_settings.job.bard.bard_settings.debuffing then
             local targ = windower.ffxi.get_mob_by_target('t')
             local spell_recasts = windower.ffxi.get_spell_recasts()
@@ -227,7 +238,6 @@ function bard.deinit()
     windower.send_command('otto dispel off')
     windower.send_command('otto pull off')
 end
-
 
 function bard.action_handler(category, action, actor_id, add_effect, target)
 	local categories = S{     
@@ -298,19 +308,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
 
 end
 
-function addon_message(str)
-    windower.add_to_chat(207, _addon.name..': '..str)
-end
-
-
-function resolve_song(commands)
-    local x = tonumber(commands[#commands], 7)
-
-    if x then commands[#commands] = {'I','II','III','IV','V','VI'}[x] end
-
-    return bard.support.song_from_command(table.concat(commands, ' ',2))
-end
-
 function event_change()
     user_settings.job.bard.action = false
     bard.song_timers.reset()
@@ -326,12 +323,4 @@ windower.register_event('unload', bard.song_timers.reset)
 windower.register_event('status change', status_change)
 windower.register_event('zone change','job change','logout', event_change)
 
-
 return bard
-
--- build playlist
--- sleeps
--- pulling
--- check equipment for horns?
-
-

@@ -31,11 +31,12 @@ wait 0.3;
 // Bard
 ////////////////////////////////////
 
-send Onechix exec fights/auto_brd
-
+send Onechix exec fights/tank/auto_brd
 wait 0.3;
+send Onechix otto brd fight boss;
+send Onechix otto bard songs march 2;
 
-send Onechix sing march 2;
+send Onechix otto pull off;
 
 ////////////////////////////////////
 // Geomancer

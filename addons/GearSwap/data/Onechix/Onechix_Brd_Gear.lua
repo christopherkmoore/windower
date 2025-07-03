@@ -119,14 +119,14 @@ function init_gear_sets()
 
 	-- Gear to enhance certain classes of songs
 	sets.midcast.Ballad = {legs="Fili Rhingrave +2"}
-	sets.midcast.Lullaby = {range="Marsyas"}
-	sets.midcast.Lullaby.Resistant = {range="Gjallarhorn"}
-	sets.midcast['Horde Lullaby'] = {range="Marsyas"}
-	sets.midcast['Horde Lullaby'].Resistant = {range="Gjallarhorn"}
-	sets.midcast['Horde Lullaby'].AoE = {range="Gjallarhorn"}
-	sets.midcast['Horde Lullaby II'] = {range="Marsyas"}
-	sets.midcast['Horde Lullaby II'].Resistant = {range="Gjallarhorn"}
-	sets.midcast['Horde Lullaby II'].AoE = {range="Gjallarhorn"}
+	sets.midcast.Lullaby = {range="Marsyas", hands="Brioso Cuffs +1"}
+	sets.midcast.Lullaby.Resistant = {range="Gjallarhorn", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby'] = {range="Marsyas", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby'].Resistant = {range="Gjallarhorn", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby'].AoE = {range="Gjallarhorn", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby II'] = {range="Marsyas", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby II'].Resistant = {range="Gjallarhorn", hands="Brioso Cuffs +1"}
+	sets.midcast['Horde Lullaby II'].AoE = {range="Gjallarhorn", hands="Brioso Cuffs +1"}
 	sets.midcast.Madrigal = {head="Fili Calot +2"}
 	sets.midcast.Paeon = {}
 	sets.midcast.March = {hands="Fili Manchettes +2"}
@@ -142,7 +142,7 @@ function init_gear_sets()
 
 	-- For song buffs (duration and AF3 set bonus)
 	sets.midcast.SongEffect = {main="Kali",sub="Genmei Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Fili Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1", ring2="Weatherspoon Ring",                                      -- ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Witful Belt",legs="Inyanga Shalwar +2",feet="Brioso Slippers +3"}
 		
@@ -150,7 +150,7 @@ function init_gear_sets()
 
 	-- For song defbuffs (duration primary, accuracy secondary)
 	sets.midcast.SongDebuff = {sub="Ammurapi Shield",range="Gjallarhorn",ammo=empty,
-		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Bragi Earring",ear2="Dellingr Earring",
+		head="Fili Calot +2",neck="Moonbow Whistle +1",ear1="Fili Earring",ear2="Dellingr Earring",
 		body="Fili Hongreline +2",hands="Fili Manchettes +2",ring1="Stikini Ring +1",ring2="Weatherspoon Ring",                                   --ring2="Stikini Ring +1",
 		back=gear.capeFC,waist="Harfner's Sash",legs="Fili Rhingrave +2",feet="Brioso Slippers +3"}
 		

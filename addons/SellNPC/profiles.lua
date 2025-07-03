@@ -9,6 +9,10 @@ profiles['sparks'] = S{
 }
 
 profiles['cleanup'] = S{
+    'Goblin Grease',
+    'Lizard Tail',
+    'Eft Skin',
+    'Slime Juice',
     'Beehive chip',
     'Kazham Peppers',
     'black pepper',

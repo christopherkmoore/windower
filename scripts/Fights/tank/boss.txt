@@ -15,8 +15,8 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/tank/auto_whm
-
 wait 0.3;
+
 
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
@@ -27,10 +27,17 @@ send Chixslave otto debuff Dia II on;
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
-send Onechix otto brd fight boss; 
-
 wait 0.3;
-send Onechix otto assist role backline;
+send Onechix otto brd fight boss;
+send Onechix otto bard songs march 1;
+send Onechix otto bard songs minuet 2;
+
+
+send Onechix otto bard song Twochix dirge;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
 
 ////////////////////////////////////
 // Geomancer
@@ -48,7 +55,6 @@ wait 0.3;
 
 send Fivechix otto pld on;
 send Fivechix otto healer on;
-send Onechix sing ballad 1 Fivechix;
 
 wait 0.3
 
@@ -57,8 +63,6 @@ wait 0.3
 ////////////////////////////////////
 send Fourchix cor roll 1 Samurai Roll;
 send Fourchix cor roll 2 Chaos Roll;
-send Onechix otto assist role backline;
-
 send Fourchix exec fights/tank/auto_cor
 
 wait 0.3
@@ -67,9 +71,10 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
-
-send Threechix otto buff Ornate haste on
-send Threechix otto buff Renew haste on
-
-send Threechix otto buff Bryceb haste on
-send Threechix otto buff Panik haste on
+send Twochix otto assist engages on;
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

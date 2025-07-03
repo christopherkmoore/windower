@@ -30,8 +30,13 @@ function event_handler.action(raw)
     local reaction_string = action:get_reaction_string()
     local get_animation_string = action:get_animation_string()
 
+    if category == "melee" then 
+        otto.fight.remove_monster_debuff(target.id, 'sleep')
+    end
     -- see debugger/logs for action format
-    if action.category == 1 then end  -- melee attack
+    if action.category == 1 then -- melee attack
+    end  
+    
     if action.category == 2 then end  -- finish ranged attack
     if action.category == 3 then end  -- finish weaponskill
     if action.category == 4 then      -- finish spell casting
@@ -54,32 +59,29 @@ function event_handler.action(raw)
     if action.category == 14 then end -- unblinkable job ability
     if action.category == 15 then end -- some RUN JA
 
-    
+    event_processor.update_resist_list(action, target)
     if category == 'spell_finish' then
-        local counter = 0
         for target in actionpacket:get_targets() do -- an action may have multiple targets, iterate over them
             for action in target:get_actions() do -- may also have multiple actions (but mostly just one)
                 event_processor.spell_finished(action, target)
             end
-        end
-
-
-        if messages_aspir:contains(action.message) then -- aspir seems to have message 228 
-            otto.aspir.update_DB(target:get_name(), action.param) -- see maybe if this can get moved up to otto_packets. The messages are already being caught there.
         end
     end
 
     if category == 'mob_tp_finish' then
 
         if S{266, 280, 194}:contains(action.message) then -- target gains the effect of
-            local dispellable = res.buffs[action.param]
-
             if otto.config.monster_ability_dispelables[action.top_level_param] then
-                otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = true
+                local dispellable = res.buffs[action.param]
+                if dispellable and target.id and otto.fight.my_targets[target.id] and otto.fight.my_targets[target.id]['dispellables'] then
+                    otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = true
+                end
             end
         end
 
     end
+
+    
 
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
@@ -87,11 +89,15 @@ function event_handler.action(raw)
 
     if otto.bard ~= nil then
         otto.bard.action_handler(category, action, actor_id, add_effect, target)
+    elseif otto.pld ~= nil then
+        otto.pld.action_handler(category, action, actor_id, add_effect, target)
     end
 end
 
 function event_handler.action_message(actor_id, target_id, actor_index, target_index, message_id, param_1, param_2, param_3)
     local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
+
+    -- $ is asleep
     if death_messages[message_id] then
         otto.fight.remove_target(target_id)
     end 

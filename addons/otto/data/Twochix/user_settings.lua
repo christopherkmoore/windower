@@ -8,10 +8,11 @@ return {
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
+        ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"

@@ -23,6 +23,7 @@ messages_loseEffect = S{64,74,83,123,159,168,204,206,322,341,342,343,344,350,378
 messages_wearOff = S{204,206}
 messages_paralyzed = S{29,84}
 messages_aspir = S{228}
+
 messages_noEffect = S{75}
 messages_specific_debuff_gain = {
     [142]={'Accuracy Down','Evasion Down'},

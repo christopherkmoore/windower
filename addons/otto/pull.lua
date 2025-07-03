@@ -21,6 +21,7 @@ function pull.init()
     end
 end
 
+
 local function sort_closest_target() 
     local mobs = windower.ffxi.get_mob_array()
 
@@ -51,11 +52,37 @@ local function sort_closest_target()
     return nil
 end
 
+function pull.tell_master_to_target()
+    local target = sort_closest_target()
+
+    otto.assist.master_target_no_close_in(target.id)
+end
 
 function pull.try_pulling()
     if not user_settings.pull.enabled then return end
     if user_settings.pull.with == '' then return end 
 
+    local total_mobs = 0
+
+    for i, k in pairs(otto.fight.my_targets) do
+        total_mobs = total_mobs + 1
+    end
+
+    -- check to see if you already have mobs
+    if total_mobs >= pull.pulling_until then 
+        if not user_settings.assist.should_engage then return end
+        local master = user_settings.assist.master
+        local player = windower.ffxi.get_mob_by_name(master)
+        
+        -- just standin around with mobs attacking ya. 0 is idle
+        if player.status == 0 then
+            print('master will pull')
+            pull.tell_master_to_target()
+        end
+        return 
+    end
+
+    -- go get a new mob
     local now = os.clock()
     if actor:is_moving() then return end
     if now < pull.pull_tick then return end

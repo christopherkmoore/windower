@@ -8,6 +8,7 @@ return {
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
+        ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
@@ -22,7 +23,7 @@ return {
         ["enabled"] = true
     },
     ["dispel"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,
@@ -79,11 +80,7 @@ return {
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
-                [1] = "Carnage Elegy",
-                [2] = "Light Threnody II",
-                [3] = "Pining Nocturne",
-                [4] = "Foe Requiem VII",
-                ["n"] = 4
+                ["n"] = 0
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -95,35 +92,34 @@ return {
                 }
             },
             ["settings"] = T{
-                ["build_playlist"] = true,
-                ["cooldowns"] = true,
                 ["dispels"] = true,
                 ["enabled"] = true,
                 ["fight_type"] = "xp",
                 ["sleeps"] = true
             },
-            ["song"] = {
+            ["song"] = T{
                 ["Chixslave"] = L{
                     [1] = "Mage's Ballad III",
                     ["n"] = 1
                 },
                 ["Fivechix"] = L{
+                    [1] = "Mage's Ballad II",
+                    [2] = "Mage's Ballad III",
+                    ["n"] = 2
+                },
+                ["Threechix"] = L{
                     [1] = "Mage's Ballad III",
-                    [2] = "Foe Sirvente",
-                    [3] = "Knight's Minne V",
-                    ["n"] = 3
+                    ["n"] = 1
                 },
                 ["Twochix"] = L{
-                    [1] = "Adventurer's Dirge",
-                    ["n"] = 1
+                    ["n"] = 0
                 }
             },
             ["songs"] = L{
-                [1] = "Valor Minuet IV",
-                [2] = "Valor Minuet V",
-                [3] = "Victory March",
-                [4] = "Sheepfoe Mambo",
-                ["n"] = 4
+                [1] = "Victory March",
+                [2] = "Valor Minuet IV",
+                [3] = "Valor Minuet V",
+                ["n"] = 3
             }
         }
     },

@@ -633,6 +633,18 @@ local function assist_commands(args)
 
         otto.assist.targets()
         return
+    elseif command == 'engages' then
+        if arg2 == 'off' then
+            user_settings.assist.should_engage = false
+            message = 'Auto engage disabled'
+
+         end
+
+         if arg2 == 'on' then
+            user_settings.assist.should_engage = true
+            message = 'Auto engage enabled'
+
+         end
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(6, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
@@ -892,11 +904,12 @@ local function blackmage(args)
 end
 
 local function bard(args)
-    local allowed = T { 'on | off | enabled | disable', 'fight' }
+    local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
     local message = ''
     local should_save = true
-    local arg2 = ''
-    local arg3 = ''
+    local arg2 = ""
+    local arg3 = 1
+    local arg4 = 1
     if (#args > 0) then
         command = args[1]
     end
@@ -904,6 +917,15 @@ local function bard(args)
     if (#args > 1) then
         arg2 = args[2]
     end
+
+    if (#args > 2) then
+        arg3 = args[3]
+    end
+
+    if (#args > 3) then
+        arg4 = args[4]
+    end
+
 
     if command == 'on' or command == 'enable' then
         user_settings.job.bard.settings.enabled = true
@@ -923,12 +945,103 @@ local function bard(args)
             otto.bard.check_fight_type()
         else 
             message = 'Allowed fight commands are '.. table.concat(allowed_fight_commands, ', ')
+        end
+    elseif command == 'songs' then
+        if arg2 == 'clear' then
+            user_settings.job.bard.songs = L{}
+            user_settings:save()
+            return
+        end
+        if arg2 == '' then
+            message = 'Need to supply a song name.'
+        else
+            local songs = otto.bard.support.songs[arg2]
 
+            local songlist = user_settings.job.bard.songs
+            local n = arg3
+            n = tonumber(arg3)
+
+            if n == 0 then
+                for x = #songs, 1, -1 do
+                    local song = songlist:find(songs[x])
+                    -- remove song   
+                    if song then
+                        songlist:remove(song)
+                    end
+                end
+
+            else
+                -- add many songs
+                for x = 1, n do 
+                    local song = songs[x]
+
+                    if not songlist:find(song) then
+                        if #songlist >= 5 then
+                        end
+                        songlist:insert(1, song)
+                    end
+                end
+            end
+        end    
+    elseif command == 'debuff' then
+        if arg2 == 'clear' then
+            user_settings.job.bard.debuffs = L{}
+            user_settings:save()
+            return
+        else
+            if otto.bard.support.debuffs[arg2] then
+                local debuff = otto.bard.support.debuffs[arg2][arg3]
+                if not debuff then return end
+        
+                local to_remove = user_settings.job.bard.debuffs:find(debuff)
+                if to_remove then
+                    user_settings.job.bard.debuffs:remove(to_remove)
+                else
+                    user_settings.job.bard.debuffs:append(debuff)
+                end
+            else
+                message = 'not a valid song choice'
+            end
+           
         end
         
+    elseif command == 'song' then
+        if arg2 == 'clear' then
+            for k, value in pairs(user_settings.job.bard.song) do
+                user_settings.job.bard.song[k] = L{}
+            end
+        else
+            local target = otto.bard.support.party_member(arg2)
+            local songs = otto.bard.support.songs[arg3]
+            local songlist = user_settings.job.bard.song[target.name]
+            local n = arg4
+            n = tonumber(arg4)
+    
+            if n == 0 then
+                for x = #songs, 1, -1 do
+                    local song = songlist:find(songs[x])
+                    -- remove song   
+                    if song then
+                        songlist:remove(song)
+                    end
+                end
+    
+            else
+                -- add many songs
+                for x = 1, n do 
+                    local song = songs[x]
+    
+                    if not songlist:find(song) then
+                        if #songlist >= 5 then
+                        end
+                        songlist:insert(1, song)
+                    end
+                end
+            end
+        end
     else
         windower.add_to_chat(3, "That's not a command")
-        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        windower.add_to_chat(3, 'Allowed commands for bard are ' .. table.concat(allowed, ', '))
         should_save = false
     end
 

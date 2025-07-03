@@ -471,6 +471,8 @@ windower.register_event('addon command', function(...)
         end
 
     elseif handled_commands.clear:contains(commands[1]) and commands[2] then
+        print('fuck3')
+
         local song_list
         if commands[2] == 'aoe' then
             setting.songs:clear()
@@ -480,6 +482,8 @@ windower.register_event('addon command', function(...)
             end
         end
     elseif tonumber(commands[1], 6) and commands[2] then
+        print('fuck1')
+
         local name = commands[commands[3] and #commands]
         local ind = tonumber(commands[1])
 
@@ -525,6 +529,7 @@ windower.register_event('addon command', function(...)
         end
 
     elseif get.songs[commands[1]] then
+        print('fuck')
         local type = commands[1]
         local songs = get.ext_songs(type, commands[2])
 
@@ -559,7 +564,7 @@ windower.register_event('addon command', function(...)
             end
             setting.song[name] = setting.song[name] or L{}
         end
-
+        print('fuck here')
         local song_list = setting.song[name] or setting.songs
 
         if not n then
@@ -576,6 +581,8 @@ windower.register_event('addon command', function(...)
                 end
             end
         else
+            print('fuck finally')
+
             for x = 1, n do
                 local song = songs[x]
 

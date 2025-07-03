@@ -42,11 +42,18 @@ wait 0.3;
 // Bard
 ////////////////////////////////////
 
-send Onechix exec fights/auto_brd
+send Onechix exec fights/tank/auto_brd
 
 wait 0.3;
+send Onechix otto brd fight boss;
+send Onechix otto bard songs minuet 2;
+send Onechix otto bard songs march 1;
 
-send Onechix sing march 2;
+send Onechix otto bard song Twochix dirge;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
 
 ////////////////////////////////////
 // Geomancer

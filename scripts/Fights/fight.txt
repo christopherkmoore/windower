@@ -63,9 +63,3 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
-
-send Threechix otto buff Ornate haste on
-send Threechix otto buff Renew haste on
-
-send Threechix otto buff Bryceb haste on
-send Threechix otto buff Panik haste on

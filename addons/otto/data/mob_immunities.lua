@@ -1,4 +1,10 @@
 return {
+    ["Adamantking Effigy"] = S{
+        2
+    },
+    ["Adamantking Image"] = S{
+        2
+    },
     ["Aggressor Antlion"] = S{
         194
     },
@@ -28,6 +34,9 @@ return {
     ["Bozzeto Warder"] = S{
         2
     },
+    ["Bozzetto Berserker"] = S{
+        2
+    },
     ["Bozzetto Carbuncle"] = S{
         2
     },
@@ -35,6 +44,12 @@ return {
         2
     },
     ["Bozzetto Devout"] = S{
+        2
+    },
+    ["Bozzetto Elementalist"] = S{
+        2
+    },
+    ["Bozzetto High Vicar"] = S{
         2
     },
     ["Bozzetto Hunter"] = S{

@@ -11,6 +11,8 @@ send Fivechix otto healer off;
 send Fourchix cor off;
 
 send Onechix otto brd off;
+send Onechix otto bard songs clear;
+send Onechix otto bard song clear;
 
 send Threechix otto geo off;
 send Threechix otto geo cooldowns off;

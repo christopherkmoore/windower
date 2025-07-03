@@ -304,7 +304,7 @@ function otto_packets.registerEffect(action, a, target)
             end
         end
     elseif S{655}:contains(action.message) and targ_is_enemy then    --${actor} casts ${spell}.${lb}${target} completely resists the spell.
-        offense.register_immunity(target, res.buffs[tact.param])
+        offense.register_immunity(target, res.buffs[action.param])
     elseif messages_paralyzed:contains(action.message) then
         otto.buffs.register_debuff(a, 'paralysis', true)
     end--/message ID checks

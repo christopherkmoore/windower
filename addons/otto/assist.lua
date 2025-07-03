@@ -21,6 +21,7 @@ function assist.init()
     defaults.role =  'frontline' --'frontline' | 'backline' (will close the distance to auto, or stay at range.)
     defaults.master = ''
     defaults.slaves = {  } -- { ['Slave'] = 'role' }
+    defaults.should_engage = false -- controls if master will fight a new target when idle. TODO
 
     if user_settings.assist == nil then
         user_settings.assist = defaults
@@ -123,6 +124,40 @@ end
 ---forces someone to target and try casting
 ---@param mob: T{mob}
 ---@param spell: param id
+function assist.swap_target_and_cast(mob, spell)
+
+    if not mob then
+        return
+    end
+
+    local player = windower.ffxi.get_player()
+    local elegy_recast = windower.ffxi.get_spell_recasts()[spell]
+
+    if elegy_recast == 0 then
+
+        local p = packets.new('incoming', 0x058, {
+            ['Player'] = player.id,
+            ['Target'] = mob.id,
+            ['Player Index'] = player.index,
+        })
+    
+        packets.inject(p)
+        coroutine.sleep(1)
+
+        local p = packets.new('outgoing', 0x01A, {
+            ["Target"] = mob.id,
+            ["Target Index"] = mob.index,
+            ["Category"] = 0x03, -- spell cast
+            ["Param"] = spell
+        })
+
+        packets.inject(p)    
+    end
+end
+
+---forces someone to target and try casting
+---@param mob: T{mob}
+---@param spell: param id
 function assist.puller_target_and_cast(mob, spell)
 
     if not mob then
@@ -153,8 +188,6 @@ function assist.puller_target_and_cast(mob, spell)
         packets.inject(p)
     
     end
-
-
 end
 
 local function target_lock_on()

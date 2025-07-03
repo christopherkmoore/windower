@@ -39,10 +39,8 @@ function dispel.should_dispel(id)
     if not can_dispel then return end
 
     if offense.dispel ~= nil and offense.dispel[id] ~= nil then
-        if player.main_job == 'BRD' and not offense.checkNukingQueueFor(dispels.finale) then
-            print('here for dispel')
-            offense.addToNukeingQueue(dispels.finale)
-        elseif player.main_job == 'RDM' and not offense.checkNukingQueueFor(dispels.dispel) then
+        -- brd has dispels built into it's job
+        if player.main_job == 'RDM' and not offense.checkNukingQueueFor(dispels.dispel) then
             offense.addToNukeingQueue(dispels.dispel)
         elseif player.main_job == 'BLU' and not offense.checkNukingQueueFor(dispels.blank_gaze) then
             offense.addToNukeingQueue(dispels.blank_gaze)
@@ -93,15 +91,10 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
 
 
     if dispel_ids:contains(basic_info.spell_id) then
-        -- log('basic info')
-        -- table.vprint(basic_info)
-        -- log('action')
-        -- table.vprint(action)
-
         if dispel_message_successful:contains(action.message) then
-            -- log('targets')
-            -- table.vprint(offense.dispel)
+
             if offense.dispel[target.raw.id] ~= nil then
+                local dispellable = res.buffs[action.param]
                 local monster_buff = offense.dispel[target.raw.id]
 
                 -- save new dispellable abilities
@@ -110,7 +103,9 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
                     otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
                 end
 
+                -- remove from lists
                 offense.dispel[target.raw.id] = nil
+                otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = nil
 
                 -- cleanup queue if someone else dispeled
                 for _, spell_to_remove in pairs(dispels) do

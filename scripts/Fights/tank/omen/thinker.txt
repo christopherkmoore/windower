@@ -26,12 +26,17 @@ send Chixslave otto buff Chixslave barblindra on;
 // Bard
 ////////////////////////////////////
 
-send Onechix exec fights/auto_brd
-
+send Onechix exec fights/tank/auto_brd
 wait 0.3;
+send Onechix otto brd fight boss;
+send Onechix otto bard songs march 1;
+send Onechix otto bard songs madrigal 1;
+send Onechix otto bard songs hymnus 1;
 
-send Onechix sing minuet 2;
-send Onechix sing march 1;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
 
 
 ////////////////////////////////////
@@ -71,20 +76,11 @@ wait 0.3
 //  so someone doesn't WS and ruin the fight.
 ////////////////////////////////
 
-wait 0.3;
-send Onechix otto assist role backline;
+send Twochix otto ws off
 
-wait 0.3;
-send Twochix otto assist role frontline;
-
-wait 0.3;
-send Threechix otto assist role backline;
-
-wait 0.3;
-send Fourchix otto assist role backline;
-
-wait 0.3;
-send Fivechix otto assist role frontline;
-
-wait 0.3;
-send Chixslave otto assist role backline;
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

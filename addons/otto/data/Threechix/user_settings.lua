@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -67,8 +67,8 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = true,
-            ["enabled"] = true,
+            ["cooldowns"] = false,
+            ["enabled"] = false,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"

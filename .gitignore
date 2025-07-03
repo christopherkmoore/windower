@@ -46,3 +46,4 @@ addons/otto/data/Fourchix/user_settings.lua
 addons/otto/data/Onechix/user_settings.lua
 addons/otto/data/Threechix/user_settings.lua
 addons/otto/data/Twochix/user_settings.lua
+/addons/otto/debug/logs

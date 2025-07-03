@@ -8,7 +8,5 @@
 
 otto buffs wipebuffs;
 otto debuffs wipedebuffs;
-
+send Twochix otto assist engages off;
 otto on;
-
-send Onechix otto brd off;

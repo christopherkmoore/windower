@@ -12,6 +12,66 @@
 //
 ////////////////////////////////
 
-exec fights/tank/fight
+send @all exec fights/reset
 
-send Onechix sing ballad 1 Fivechix;
+wait 0.1;
+
+////////////////////////////////
+// White Mage
+////////////////////////////////
+
+send Chixslave exec fights/auto_whm
+wait 0.3;
+send Chixslave otto buff Chixslave barwatera on;
+send Chixslave otto buff Chixslave baramnesra on;
+
+
+////////////////////////////////////
+// Bard
+////////////////////////////////////
+
+send Onechix exec fights/tank/auto_brd
+wait 0.3;
+send Onechix otto brd fight boss;
+send Onechix otto bard songs march 1;
+send Onechix otto bard songs madrigal 1;
+send Onechix otto bard songs hymnus 1;
+
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull off;
+
+////////////////////////////////////
+// Geomancer
+////////////////////////////////////
+
+send Threechix exec fights/auto_geo
+
+////////////////////////////////////
+// Paladin
+////////////////////////////////////
+
+send Fivechix otto pld on
+
+wait 0.3
+
+////////////////////////////////////
+// Corsair
+////////////////////////////////////
+
+send Fourchix cor on
+
+wait 0.3
+
+////////////////////////////////////
+// Guests
+////////////////////////////////////
+
+
+send Chixslave otto buff Onechix haste on;
+send Chixslave otto buff Twochix haste on;
+send Chixslave otto buff Threechix haste on;
+send Chixslave otto buff Fourchix haste on;
+send Chixslave otto buff Fivechix haste on;
+send Chixslave otto buff Chixslave haste on;

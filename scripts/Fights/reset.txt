@@ -10,6 +10,4 @@ otto buffs wipebuffs;
 otto debuffs wipedebuffs;
 
 otto on;
-
-send Onechix lua reload singer;
-send Onechix sing playlist clear;
+send Twochix otto assist engages off;

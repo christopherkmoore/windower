@@ -26,13 +26,15 @@ send Chixslave otto buff Chixslave barparalyzra on;
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
+send Onechix otto brd fight xp;
+send Onechix otto bard songs minuet 2;
+send Onechix otto bard songs march 1;
 
-send Onechix sing ballad 1 Fivechix;
-
-wait 0.3;
-
-send Onechix sing march 2;
-send Onechix sing minuet 1;
+send Onechix otto bard song Twochix dirge;
+send Onechix otto bard song Chixslave ballad;
+send Onechix otto bard song Fivechix ballad;
+send Onechix otto bard song Threechix ballad;
+send Onechix otto pull on;
 
 
 ////////////////////////////////////
