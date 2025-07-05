@@ -9,6 +9,7 @@ return {
         194
     },
     ["Agon Halo"] = S{
+        2,
         4,
         13
     },
@@ -145,6 +146,9 @@ return {
     ["Mu'Sha Effigy"] = S{
         2,
         28
+    },
+    ["Pallid Percy"] = S{
+        2
     },
     ["Sabotender Dulce"] = S{
         4

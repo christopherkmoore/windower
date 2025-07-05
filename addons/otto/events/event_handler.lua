@@ -2,8 +2,6 @@
 local event_handler = {}
 local event_processor = require('events/event_processor')
 
-event_handler.buffs = { player = windower.ffxi.get_player().name, buffs= S{} }
-
 function event_handler.prerender() 
 end
 
@@ -14,7 +12,6 @@ end
 function event_handler.action(raw) 
 
     local actionpacket = ActionPacket.new(raw)
-    local monitored_ids = otto.getMonitoredIds()
     
     local category = actionpacket:get_category_string() -- ex: 'spell finish'
     local actor_id = actionpacket:get_id()              -- int which can be lookedup ffxi.get_mob_by_id()
@@ -58,13 +55,11 @@ function event_handler.action(raw)
     if action.category == 13 then end -- pet completes ability or weaponskill
     if action.category == 14 then end -- unblinkable job ability
     if action.category == 15 then end -- some RUN JA
+    
 
-    event_processor.update_resist_list(action, target)
-    if category == 'spell_finish' then
-        for target in actionpacket:get_targets() do -- an action may have multiple targets, iterate over them
-            for action in target:get_actions() do -- may also have multiple actions (but mostly just one)
-                event_processor.spell_finished(action, target)
-            end
+    for target in actionpacket:get_targets() do -- an action may have multiple targets, iterate over them
+        for action in target:get_actions() do -- may also have multiple actions (but mostly just one)
+            event_processor.process_buff(action, target)
         end
     end
 
@@ -81,48 +76,71 @@ function event_handler.action(raw)
 
     end
 
-    
-
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
 
     if otto.bard ~= nil then
         otto.bard.action_handler(category, action, actor_id, add_effect, target)
-    elseif otto.pld ~= nil then
-        otto.pld.action_handler(category, action, actor_id, add_effect, target)
+    elseif otto.paladin ~= nil then
+        otto.paladin.action_handler(category, action, actor_id, add_effect, target)
     end
 end
 
 function event_handler.action_message(actor_id, target_id, actor_index, target_index, message_id, param_1, param_2, param_3)
-    local death_messages = {[6]=true,[20]=true,[113]=true,[406]=true,[605]=true,[646]=true}
 
-    -- $ is asleep
-    if death_messages[message_id] then
+    if otto.event_statics.message_death:contains(message_id) then
         otto.fight.remove_target(target_id)
     end 
 end
 
 function event_handler.gain_buff(raw) 
-    local player = windower.ffxi.get_player().name
-    local new = res.buffs[raw]
-    event_handler.buffs.buffs[new.en] = raw 
-    
-    -- otto.debug.create_log(event_handler.buffs, 'gain_buff')
+
+    local player = windower.ffxi.get_player()
+    if not otto.fight.buffs[player.id] then
+        otto.fight.buffs[player.id] = {}
+    end
+    local buff = res.buffs[raw]
+    otto.fight.buffs[player.id][raw] = buff.en
 end
 
 function event_handler.lose_buff(raw)
-    local player = windower.ffxi.get_player().name
-    local new = res.buffs[raw]
-    event_handler.buffs.buffs[new.en] = nil 
-    -- otto.debug.create_log(event_handler.buffs, 'lose_buff')
+    local player = windower.ffxi.get_player()
+    local buff = res.buffs[raw]
+    
+    if not otto.fight.buffs[player.id] then
+        return
+    end
 
+    otto.fight.buffs[player.id][raw] = nil
 end
 
 function event_handler.outgoing_chunk() 
 end
+function event_handler.incoming_chunk(id, data, modified, injected, blocked)
+    
+    if id == 0x076 then -- party buffs update
+        -- local packet = packets.parse('incoming', original) -- would need to write a packet method for this TC
+        for  k = 0, 4 do
+            local id = data:unpack('I', k*48+5)
+            otto.fight.buffs[id] = {}
+            -- buff - the buff.id
+            -- id - the player.id
+            -- i the integer of the table?
+            if id ~= 0 then
+                for i = 1, 32 do
+                    local buff = data:byte(k*48+5+16+i-1) + 256*( math.floor( data:byte(k*48+5+8+ math.floor((i-1)/4)) / 4^((i-1)%4) )%4) -- Credit: Byrth, GearSwap
+                    -- otto.debug.create_log(id, 'debugger')
 
-function event_handler.incoming_chunk() 
+                    if otto.fight.buffs[id][i] ~= buff and buff ~= 255 then
+                        local buff_name = res.buffs[buff]
+
+                        otto.fight.buffs[id][buff] = buff_name.en
+                    end
+                end
+            end
+        end
+    end 
 end
 
 function event_handler.job_change() 
@@ -134,6 +152,26 @@ end
 function event_handler.ipc_message() 
 end
 
+local function parse_party_buffs_update(data)
+    for  k = 0, 4 do
+        local id = data:unpack('I', k*48+5)
+        buffs['whitelist'][id] = {}
+        buffs['blacklist'][id] = {}
+        
+        if id ~= 0 then
+            for i = 1, 32 do
+                local buff = data:byte(k*48+5+16+i-1) + 256*( math.floor( data:byte(k*48+5+8+ math.floor((i-1)/4)) / 4^((i-1)%4) )%4) -- Credit: Byrth, GearSwap
+
+                if buffs['whitelist'][id][i] ~= buff then
+                    buffs['whitelist'][id][i] = buff
+                end
+                if buffs['blacklist'][id][i] ~= buff then
+                    buffs['blacklist'][id][i] = buff
+                end
+            end
+        end
+    end
+end
 
 
 return event_handler

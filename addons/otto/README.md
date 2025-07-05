@@ -27,18 +27,24 @@ weaponskill / magicburst carries to new target.
 make queue more efficient
 add checks -- aspir is targeting any target
 maybe curaga deciding could use a bit of touch up?
+dispel resists not recasting?
 
 TODO
 aspir is targeting any target -- offensive action need better conditions for performing
-
-gearswap not swapping rings.
 white should tick faster (cure is too slow sometimes seems like ~3-4 second delay)
 
 
 
 Finish EMPY
 SAM, PLD, COR
+Dyna D          -- 60 hour ( 3 day lock)   - farm Neck RP + shards for upgrades, prog for waves
+Sortie          -- 20 hour                 - farm gal + earing + stones for +3 empy
+Odys            -- 20 hour                 - farm segs and progress gaol
+Card Farm       -- 20 hours (stax 3)       - Boss drops, plus gil drops
 
+Gil
+Ambuscade
+Sparks
 
 
 ALTS 

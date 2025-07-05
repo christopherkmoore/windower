@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -82,8 +82,11 @@ return {
     },
     ["weaponskill"] = {
         ["enabled"] = false,
-        ["min_hp"] = 80,
-        ["name"] = "Savage Blade",
-        ["partner"] = "none"
+        ["min_hp"] = 10,
+        ["name"] = "Leaden Salute",
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000
+        }
     }
 }

@@ -4,6 +4,7 @@
 //
 // Fight Notes: General fight script for unspecific cases.
 //
+// Fight should be Magic Damage focused. Let Geo go off
 ////////////////////////////////
 
 send @all exec fights/reset
@@ -44,7 +45,8 @@ wait 0.3;
 // Geomancer
 ////////////////////////////////////
 
-send Threechix exec fights/tank/auto_geo
+send Threechix exec fights/tank/auto_geo_mag
+send Threechix otto magicburst doubleburst on
 
 
 wait 0.3;
@@ -72,10 +74,18 @@ wait 0.3
 // Guests
 ////////////////////////////////////
 
+send Twochix otto ws on;
+send Fourchix otto ws on
+send Twochix otto ws Tachi: Fudo; 
+send Twochix otto ws partner off;
+send Twochix otto ws hp 2
+send Fourchix otto ws hp 2
+send Fourchix otto ws partner Twochix 1000 Leaden Salute;
 
 send Chixslave otto buff Onechix haste on;
 send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;
 send Chixslave otto buff Fourchix haste on;
 send Chixslave otto buff Fivechix haste on;
+send Onechix otto buff Fivechix refresh on;
 send Chixslave otto buff Chixslave haste on;

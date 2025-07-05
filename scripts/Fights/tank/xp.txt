@@ -30,8 +30,8 @@ send Onechix exec fights/tank/auto_brd
 
 wait 0.3;
 send Onechix otto brd fight xp;
-send Onechix otto bard songs minuet 2;
 send Onechix otto bard songs march 1;
+send Onechix otto bard songs minuet 2;
 
 send Onechix otto bard song Chixslave ballad;
 send Onechix otto bard song Fivechix ballad;
@@ -79,4 +79,5 @@ send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;
 send Chixslave otto buff Fourchix haste on;
 send Chixslave otto buff Fivechix haste on;
+send Onechix otto buff Fivechix refresh on;
 send Chixslave otto buff Chixslave haste on;

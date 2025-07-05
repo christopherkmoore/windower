@@ -75,7 +75,6 @@ config FrameRateDivisor 1
 du blinking all all on
 lua load equipviewer
 lua load PartyBuffs
-lua load scoreboard
 wait 30
 lua load GearInfo
 
@@ -91,7 +90,6 @@ lua load superwarp
 lua load autojoin
 lua load sparks
 lua load aecho;
-lua load nolock;
 send Onechix dressup l bard;
 send Fourchix lua load autocor;
 

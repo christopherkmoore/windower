@@ -1051,6 +1051,54 @@ local function bard(args)
     end
 end
 
+local function whitemage(args)
+    local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
+    local message = ''
+    local should_save = true
+    local arg2 = ""
+    local arg3 = 1
+    local arg4 = 1
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if (#args > 1) then
+        arg2 = args[2]
+    end
+
+    if (#args > 2) then
+        arg3 = args[3]
+    end
+
+    if (#args > 3) then
+        arg4 = args[4]
+    end
+
+
+    if command == 'on' or command == 'enable' then
+        otto.whitemage.init()
+
+        user_settings.job.whitemage.enabled = true
+        message = 'White mage on.'
+    elseif command == 'off' or command == 'disable' then
+        user_settings.job.whitemage.enabled = false
+        message = 'White mage off.'
+        utils.wipe_debufflist()
+        utils.wipe_bufflist()
+        otto.whitemage.deinit()
+    else
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for whm are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        windower.add_to_chat(6, message)
+        user_settings:save()
+    end
+end
+
+
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
     local args = T { ... }
@@ -1093,6 +1141,8 @@ function events.addon_command(...)
             paladin(newArgs)
         elseif command == 'brd' or command == 'bard' then 
             bard(newArgs)
+        elseif command == 'whm' or command == 'whitemage' then
+            whitemage(newArgs)
         end
         -- MARK: commands to local otto
     end

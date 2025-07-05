@@ -1,42 +1,6 @@
 return {
 -- Table: {1}
 {
-   ["raw"]={2},
-   ["id"]=651268,
-   ["top_level_param"]=29793,
-   ["category"]=1,
-},
--- Table: {2}
-{
-   ["id"]=651268,
-   ["actions"]={3},
-   ["action_count"]=1,
-},
--- Table: {3}
-{
-   {4},
-},
--- Table: {4}
-{
-   ["spike_effect_param"]=0,
-   ["has_add_effect"]=false,
-   ["category"]="melee",
-   ["spike_effect_effect"]=0,
-   ["spike_effect_animation"]=0,
-   ["add_effect_animation"]=0,
-   ["spike_effect_message"]=0,
-   ["animation"]=0,
-   ["has_spike_effect"]=false,
-   ["knockback"]=0,
-   ["top_level_param"]=29793,
-   ["effect"]=0,
-   ["message"]=15,
-   ["add_effect_message"]=0,
-   ["reaction"]=9,
-   ["stagger"]=0,
-   ["add_effect_param"]=0,
-   ["unknown"]=0,
-   ["add_effect_effect"]=0,
-   ["param"]=0,
+   [3]="poison",
 },
 }

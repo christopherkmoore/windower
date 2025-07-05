@@ -1,0 +1,29 @@
+return {
+-- Table: {1}
+{
+   ["raw"]={2},
+},
+-- Table: {2}
+{
+   ["spike_effect_param"]=0,
+   ["has_add_effect"]=true,
+   ["category"]="weaponskill_begin",
+   ["spike_effect_effect"]=0,
+   ["spike_effect_animation"]=0,
+   ["add_effect_animation"]=23,
+   ["spike_effect_message"]=0,
+   ["animation"]=0,
+   ["has_spike_effect"]=false,
+   ["knockback"]=0,
+   ["top_level_param"]=24931,
+   ["effect"]=0,
+   ["message"]=43,
+   ["add_effect_message"]=0,
+   ["reaction"]=8,
+   ["stagger"]=2,
+   ["add_effect_param"]=0,
+   ["unknown"]=0,
+   ["add_effect_effect"]=0,
+   ["param"]=156,                 -- ws tachi: fudo
+},
+}

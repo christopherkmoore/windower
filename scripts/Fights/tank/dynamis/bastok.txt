@@ -8,7 +8,7 @@
 
 send @all exec fights/reset
 send @all gs disable neck
-
+send Onechix gs enable neck
 wait 0.1;
 
 ////////////////////////////////
@@ -79,4 +79,5 @@ send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;
 send Chixslave otto buff Fourchix haste on;
 send Chixslave otto buff Fivechix haste on;
+send Onechix otto buff Fivechix refresh on;
 send Chixslave otto buff Chixslave haste on;

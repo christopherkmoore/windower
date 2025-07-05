@@ -413,8 +413,7 @@ function assist.ipc_message_handler(message)
             end
             return
         end
-        print('all_target_master')
-
+        
         assist.all_target_master(targetId)
     end
 end

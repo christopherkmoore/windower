@@ -66,6 +66,7 @@ return {
     [815] = false,
     [855] = false,
     [856] = true,
+    [925] = false,
     [1060] = false,
     [1078] = false,
     [1079] = false,

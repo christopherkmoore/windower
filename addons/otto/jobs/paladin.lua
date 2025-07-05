@@ -1,6 +1,16 @@
 -- otto pld by TC
+-- TODO 
+-- add a whm mp check and enable disable healer at certain mpp levels
+-- cover for allies taking damage combine with movement?
 
 local paladin = { }
+local player = windower.ffxi.get_player()
+paladin.timers = {buffs={}}
+
+-- job check ticks
+paladin.check_interval = 0.4
+paladin.delay = 4
+paladin.counter = 0
 
 paladin.bufflist = {
     [855] = {id=855,en="Enlight II",ja="エンライトII",cast_time=3,duration=180,element=6,icon_id=337,icon_id_nq=6,levels={[7]=100},mp_cost=36,prefix="/magic",range=0,recast=30,recast_id=855,requirements=0,skill=32,status=274,targets=1,type="WhiteMagic"},
@@ -14,14 +24,22 @@ paladin.debufflist = {
     [112] = {id=112,en="Flash",ja="フラッシュ",cast_time=0.5,element=6,icon_id=158,icon_id_nq=6,levels={[3]=45,[7]=37,[22]=45},mp_cost=25,prefix="/magic",range=12,recast=45,recast_id=112,requirements=0,skill=32,targets=32,type="WhiteMagic"}
 }
 
+-- make this configurable when I need for content that uses things like holy hircle or fealty
 paladin.jalist = { 
     [46] = {id=46,en="Shield Bash",ja="シールドバッシュ",element=4,icon_id=406,mp_cost=0,prefix="/jobability",range=2,recast_id=73,targets=32,tp_cost=0,type="JobAbility"},
-    [394] = {id=394,en="Majesty",ja="マジェスティ",duration=180,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=150,status=621,targets=1,tp_cost=0,type="JobAbility"},
+    -- [394] = {id=394,en="Majesty",ja="マジェスティ",duration=180,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=150,status=621,targets=1,tp_cost=0,type="JobAbility"},
     [92] = {id=92,en="Rampart",ja="ランパート",duration=30,element=3,icon_id=409,mp_cost=0,prefix="/jobability",range=0,recast_id=77,status=93,targets=1,tp_cost=0,type="JobAbility"},
     [48] = {id=48,en="Sentinel",ja="センチネル",duration=30,element=3,icon_id=407,mp_cost=0,prefix="/jobability",range=0,recast_id=75,status=62,targets=1,tp_cost=0,type="JobAbility"},
-}
+    [278] = {id=278,en="Palisade",ja="パリセード",duration=60,element=6,icon_id=413,mp_cost=0,prefix="/jobability",range=0,recast_id=42,status=478,targets=1,tp_cost=0,type="JobAbility"},
+    [329] = {id=329,en="Intervene",ja="インターヴィーン",duration=30,element=6,icon_id=1070,mp_cost=0,prefix="/jobability",range=2,recast_id=254,status=496,targets=32,tp_cost=0,type="JobAbility"},
 
-paladin.job_tick = 1
+    -- situational, increases resistance to enfeebling magic
+    -- [157] = {id=157,en="Fealty",ja="フィールティ",duration=60,element=6,icon_id=413,mp_cost=0,prefix="/jobability",range=0,recast_id=78,status=344,targets=1,tp_cost=0,type="JobAbility"},
+
+    -- sitautional, good for undead fights
+    -- [277] = {id=277,en="Sepulcher",ja="セプルカー",duration=180,element=6,icon_id=411,mp_cost=0,prefix="/jobability",range=8,recast_id=41,status=463,targets=32,tp_cost=0,type="JobAbility"},
+    -- [47] = {id=47,en="Holy Circle",ja="ホーリーサークル",duration=180,element=6,icon_id=405,mp_cost=0,prefix="/jobability",range=0,recast_id=74,status=74,targets=1,tp_cost=0,type="JobAbility"},
+}
 
 function paladin.init()
     local defaults = { enabled = true }
@@ -34,7 +52,7 @@ function paladin.init()
     end
     paladin.create_bufflist()
 
-    -- paladin.check_pld:loop(paladin.job_tick)
+    paladin.check_pld:loop(paladin.check_interval)
 end
 
 function paladin.deinit() 
@@ -43,11 +61,12 @@ function paladin.deinit()
 end
 
 function paladin.create_bufflist()
-    local player = windower.ffxi.get_player()
 
     if player.sub_job == "BLU" then
         -- paladin.bufflist[547] = {id=547,en="Cocoon",ja="コクーン",blu_points=1,cast_time=1.75,duration=90,element=15,icon_id=-1,icon_id_nq=59,levels={[16]=8},mp_cost=10,prefix="/magic",range=0,recast=60,recast_id=547,requirements=0,skill=43,status=93,targets=1,type="BlueMagic"}
-        paladin.debufflist[592] = {id=592,en="Blank Gaze",ja="ブランクゲイズ",blu_points=2,cast_time=3,element=6,icon_id=-1,icon_id_nq=62,levels={[16]=38},mp_cost=25,prefix="/magic",range=9,recast=10,recast_id=592,requirements=0,skill=43,targets=32,type="BlueMagic"}
+        paladin.debufflist[605] = {id=605,en="Geist Wall",ja="ガイストウォール",blu_points=3,cast_time=3,element=7,icon_id=-1,icon_id_nq=63,levels={[16]=46},mp_cost=35,prefix="/magic",range=4,recast=30,recast_id=605,requirements=0,skill=43,targets=32,type="BlueMagic"}
+        -- paladin.debufflist[584] = {id=584,en="Sheep Song",ja="シープソング",blu_points=2,cast_time=3,duration=60,element=6,icon_id=-1,icon_id_nq=62,levels={[16]=16},mp_cost=22,prefix="/magic",range=4,recast=60,recast_id=584,requirements=0,skill=43,status=2,targets=32,type="BlueMagic"}
+        -- paladin.debufflist[592] = {id=592,en="Blank Gaze",ja="ブランクゲイズ",blu_points=2,cast_time=3,element=6,icon_id=-1,icon_id_nq=62,levels={[16]=38},mp_cost=25,prefix="/magic",range=9,recast=10,recast_id=592,requirements=0,skill=43,targets=32,type="BlueMagic"}
     end
 
     for _, spell in pairs(paladin.bufflist) do
@@ -59,48 +78,91 @@ end
 -- The pld main function.
 function paladin.check_pld()
     if not user_settings.job.paladin.enabled then return end
+    paladin.counter = paladin.counter + paladin.check_interval
 
-    local target = windower.ffxi.get_mob_by_target('t')
+    if paladin.counter >= paladin.delay then
+        paladin.counter = 0
+        paladin.delay = paladin.check_interval
 
-    if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
-    if actor:is_moving() then return end 
-    
-    local pld_queue = ActionQueue.new()
-    local player = windower.ffxi.get_player()
-    local buffs = S(player.buffs)
+        local target = windower.ffxi.get_mob_by_target('t')
 
-    local sleep = {id=253,en="Sleep",ja="スリプル",cast_time=2.5,duration=60,element=7,icon_id=310,icon_id_nq=15,levels={[4]=20,[5]=25,[8]=30,[20]=30,[21]=35},mp_cost=19,prefix="/magic",range=12,recast=30,recast_id=253,requirements=6,skill=35,status=2,targets=32,type="BlackMagic"}
-    -- can't cast this if youre slept
-    if buffs:contains(sleep.status) then 
-        print("JUST WOKE UP SLEEP ERASE ME")
-        local cure = {id=1,en="Cure",ja="ケアル",cast_time=2,element=6,icon_id=86,icon_id_nq=6,levels={[3]=1,[5]=3,[7]=5,[20]=5},mp_cost=8,prefix="/magic",range=12,recast=5,recast_id=1,requirements=1,skill=33,targets=63,type="WhiteMagic"}
-        pld_queue:enqueue_action('cure', cure, player.name)
+        if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
+        if actor:is_moving() then return end 
+        
+        local pld_queue = ActionQueue.new()
+        local buffs = S(player.buffs)
+
+        local sleep = {id=253,en="Sleep",ja="スリプル",cast_time=2.5,duration=60,element=7,icon_id=310,icon_id_nq=15,levels={[4]=20,[5]=25,[8]=30,[20]=30,[21]=35},mp_cost=19,prefix="/magic",range=12,recast=30,recast_id=253,requirements=6,skill=35,status=2,targets=32,type="BlackMagic"}
+        -- can't cast this if youre slept
+        if buffs:contains(sleep.status) then 
+            print("JUST WOKE UP SLEEP ERASE ME")
+            local cure = {id=1,en="Cure",ja="ケアル",cast_time=2,element=6,icon_id=86,icon_id_nq=6,levels={[3]=1,[5]=3,[7]=5,[20]=5},mp_cost=8,prefix="/magic",range=12,recast=5,recast_id=1,requirements=1,skill=33,targets=63,type="WhiteMagic"}
+            pld_queue:enqueue_action('cure', cure, player.name)
+            return
+        end
+
+        for _, ja in pairs(paladin.jalist) do
+            local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
+
+            if actor:can_use(ja) and recast == 0 and not actor:is_acting() and target ~= nil then
+
+                if ja.range == 0 then
+                    pld_queue:enqueue_action('ability', ja, player.name)
+                else 
+                    pld_queue:enqueue_action('ability', ja, target.name)
+                end
+
+            end
+        end
+
+        for _, spell in pairs(paladin.debufflist) do
+            local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
+
+            if actor:can_use(spell) and recast == 0 and not actor:is_acting() then
+                pld_queue:enqueue_action('debuff', spell, target.name)
+            end
+        end
+        return pld_queue:getQueue()
+
+    end
+end
+
+function paladin.action_handler(category, action, actor_id, add_effect, target)
+	local categories = S{     
+    	'job_ability',
+    	'casting_begin',
+        'spell_finish',
+        'item_finish',
+        'item_begin'
+	 }
+
+     local start_categories = S{ 'casting_begin', 'item_begin'}
+
+    if not categories:contains(category) or action.param == 0 then
         return
     end
 
-    for _, ja in pairs(paladin.jalist) do
-        local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
+    if actor_id ~= player.id then return end
 
-        if actor:can_use(ja) and recast == 0 and not actor:is_acting() and target ~= nil then
+    -- Casting finish
+    if category == 'spell_finish' then
+        paladin.delay = 5
+    end
 
-            if ja.range == 0 then
-                pld_queue:enqueue_action('ability', ja, player.name)
-            else 
-                pld_queue:enqueue_action('ability', ja, target.name)
-            end
+    if category == 'item_finish' then 
+        paladin.delay = 2.2
+    end
 
+    if start_categories:contains(category) then 
+        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
+            paladin.delay = 4.2
+        end
+
+        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
+            paladin.delay = 2.2
         end
     end
 
-    for _, spell in pairs(paladin.debufflist) do
-        local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
-
-        if actor:can_use(spell) and recast == 0 and not actor:is_acting() then
-            pld_queue:enqueue_action('debuff', spell, target.name)
-        end
-    end
-
-    return pld_queue:getQueue()
 end
 
 

@@ -12,7 +12,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -84,10 +84,6 @@ return {
         ["enabled"] = true,
         ["min_hp"] = 15,
         ["name"] = "Tachi: Fudo",
-        ["partner"] = {
-            ["name"] = "Twochix",
-            ["tp"] = 1000,
-            ["weaponskill"] = "Tachi: Fudo"
-        }
+        ["partner"] = "none"
     }
 }

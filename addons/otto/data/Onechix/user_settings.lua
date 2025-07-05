@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["dispel"] = {
         ["enabled"] = true
@@ -80,7 +80,11 @@ return {
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
-                ["n"] = 0
+                [1] = "Carnage Elegy",
+                [2] = "Pining Nocturne",
+                [3] = "Light Threnody II",
+                [4] = "Foe Requiem VII",
+                ["n"] = 4
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -103,9 +107,8 @@ return {
                     ["n"] = 1
                 },
                 ["Fivechix"] = L{
-                    [1] = "Mage's Ballad II",
-                    [2] = "Mage's Ballad III",
-                    ["n"] = 2
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Threechix"] = L{
                     [1] = "Mage's Ballad III",
@@ -116,9 +119,9 @@ return {
                 }
             },
             ["songs"] = L{
-                [1] = "Victory March",
-                [2] = "Valor Minuet IV",
-                [3] = "Valor Minuet V",
+                [1] = "Valor Minuet IV",
+                [2] = "Valor Minuet V",
+                [3] = "Victory March",
                 ["n"] = 3
             }
         }

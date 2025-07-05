@@ -37,13 +37,25 @@ end
 
 function debug.create_log_once(log, newfile)
 
-    if not next(debug.snapshot) then 
+    if not next(debug.snapshot)  then 
       local filename = newfile or 'snapshot'
-      debug.snapshot = log
+      debug.snapshot = file
       table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
       print(filename..' created!')
     end
 
+end
+
+function debug.create_2log_for_comparison(log, newfile, log2, newfile2)
+  local filename = newfile or 'snapshot'
+  local filename2 = newfile2 or 'snapshot'
+  if not next(debug.snapshot) then
+    debug.snapshot = filename
+
+    table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
+    table.save(log2, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename2..".txt")
+    print(filename..' and '..filename2..' created!')
+  end
 end
 
 function debug.create_log_once_json(log, newfile)

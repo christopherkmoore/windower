@@ -18,7 +18,6 @@ local messages_blacklist = _libs.lor.packets.messages_blacklist
 -- 578,582,583,584,587,588,590,592,601,603,606,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,
 -- 629,630,631,632,633,634,635,636,652,669,673,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,
 -- 696,697,698,699,704,705,706,707,708,709,710,711,712,713,714,715,718,719,720,721,722,723,724,725,726,727,728,729,731,735}
-local whitelist = L{ 'Gravity', 'Poison' }
 
 local get_action_info = _libs.lor.packets.get_action_info
 local parse_char_update = _libs.lor.packets.parse_char_update
@@ -93,7 +92,7 @@ function otto_packets.handle_incoming_chunk(id, data)
     elseif (id == 0x0DD) then  --Party member update
         otto_packets.register_party_members_changed(data)
     elseif (id == 0x0DF) then -- Char Update
-        otto_packets.character_update(data)
+        
     elseif id == 0x00A then
         local packet = packets.parse('incoming', data)
 
@@ -188,11 +187,6 @@ function otto_packets.processAction(targets, actor_id, monitored_ids)
                             otto.buffs.register_buff(t, otto.geomancer.indi.latest, true)
                         end
                     end
-                      
-                    if otto.modes.showPacketInfo then
-                        local msg = res.action_messages[action.message] or {en='???'}
-                        atcfs('[0x28]Action(%s): %s { %s } %s %s { %s } | %s', action.message, actor.name, action.param, rarr, t.name, action.param, msg.en)
-                    end
                     otto_packets.registerEffect(action, a, t)
                 end--/message ID not on blacklist
             end--/loop through targ's actions
@@ -225,6 +219,7 @@ function otto_packets.registerEffect(action, a, target)
     local targ_is_enemy = (target.spawn_type == 16)
     if messages_magicDamage:contains(action.message) then      --action_info.param: spell; tact.param: damage
         local spell = res.spells[action.param]
+        
         if S{230,231,232,233,234}:contains(action.param) then
             otto.buffs.register_debuff(target, 'Bio', true, spell)
         elseif S{23,24,25,26,27,33,34,35,36,37}:contains(action.param) then
@@ -310,16 +305,6 @@ function otto_packets.registerEffect(action, a, target)
     end--/message ID checks
 end
 
-function otto_packets.character_update(data) 
-    if otto.modes.showPacketInfo then
-        local player = windower.ffxi.get_player()
-        local parsed = packets.parse('incoming', data)
-        if (player ~= nil) and (player.id ~= parsed.ID) then
-            local person = windower.ffxi.get_mob_by_id(parsed.ID)
-            atc('Caught char update packet for '..person.name)
-        end
-    end
-end
 
 function otto_packets.register_party_members_changed(data)
     local parsed = packets.parse('incoming', data)

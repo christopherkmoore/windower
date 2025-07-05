@@ -53,6 +53,7 @@ local pm_keys = {
 otto.events = require('otto_events')
 otto.packets = require('otto_packets')
 otto.event_handler = require('events/event_handler')
+otto.event_statics = require('events/event_statics')
 otto.debug = require('debug/debug')
 
 otto.assist = require('assist')
@@ -104,6 +105,8 @@ function otto.check_jobs()
         otto.paladin = require('jobs/paladin')
     elseif player.main_job == "BRD" then
         otto.bard = require('jobs/bard/bard')
+    elseif player.main_job == "WHM" then
+        otto.whitemage = require('jobs/whitemage')
     end
 
 end
@@ -149,6 +152,8 @@ end)
 
 otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
 otto._events['inc'] = windower.register_event('incoming chunk', otto.packets.handle_incoming_chunk)
+otto._events['event handler inc'] = windower.register_event('incoming chunk', otto.event_handler.incoming_chunk)
+
 otto._events['job change'] = windower.register_event('job change', otto.check_jobs)
 
 otto._events['load'] = windower.register_event('load', function()

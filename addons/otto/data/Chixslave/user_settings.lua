@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "frontline",
+            ["Fourchix"] = "backline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -57,7 +57,11 @@ return {
         },
         ["ignoreTrusts"] = false
     },
-    ["job"] = {},
+    ["job"] = {
+        ["whitemage"] = {
+            ["enabled"] = true
+        }
+    },
     ["magic_burst"] = {
         ["cast_tier"] = 2,
         ["cast_type"] = "holy",

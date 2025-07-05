@@ -147,17 +147,13 @@ function bard.check_bard()
             -- count the total amount of mobs vs the amount slept
             -- if there needs to be a sleep spell, target a random, nonslept mob
             if needs_sleep >= 1 then 
-                local keys = table.keys(not_sleeping)
-                local random_index = math.random(1, needs_sleep) 
 
-                local random_mob_id = keys[random_index]
-                for id, mob in pairs(otto.fight.my_targets) do
-                    if random_mob_id == id then
-                        -- eventually need to work on this to be swap target
-                        -- assist needs to be expanded to start targeting my_targets
-                        otto.assist.puller_target_and_cast(mob, 377) 
-                        return
-                    end
+                for id, _ in pairs(not_sleeping) do
+                    local mob = otto.fight.my_targets[id]
+                    -- eventually need to work on this to be swap target
+                    -- assist needs to be expanded to start targeting my_targets
+                    otto.assist.puller_target_and_cast(mob, 377) 
+                    return
                 end
             end
         end
@@ -288,12 +284,12 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
         end
     end
 
-    if cateogry == 'item_finish' then 
+    if category == 'item_finish' then 
         bard.delay = 2.2
     end
 
     if start_categories:contains(category) then 
-        if param == 24931 then  -- Begin Casting/WS/Item/Range
+        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
             bard.delay = 4.2
             
             if bard.buffs.nightingale or bard.buffs.troubadour then 
@@ -301,7 +297,7 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
             end
         end
 
-        if param == 28787 then -- Failed Casting/WS/Item/Range
+        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
             bard.delay = 2.2
         end
     end

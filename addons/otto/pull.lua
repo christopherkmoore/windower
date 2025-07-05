@@ -76,7 +76,6 @@ function pull.try_pulling()
         
         -- just standin around with mobs attacking ya. 0 is idle
         if player.status == 0 then
-            print('master will pull')
             pull.tell_master_to_target()
         end
         return 
