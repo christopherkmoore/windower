@@ -11,7 +11,7 @@ bard.check_interval = 0.4
 bard.delay = 4
 bard.counter = 0
 
-bard.timers = {AoE={},buffs={}}
+bard.timers = {AoE={}}
 bard.party = bard.support.party()
 bard.buffs = bard.support.buffs()
 bard.times = {}
@@ -148,6 +148,7 @@ function bard.check_bard()
             -- if there needs to be a sleep spell, target a random, nonslept mob
             if needs_sleep >= 1 then 
 
+                -- need to update to sleep a random mob
                 for id, _ in pairs(not_sleeping) do
                     local mob = otto.fight.my_targets[id]
                     -- eventually need to work on this to be swap target
@@ -261,12 +262,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
         end
 
         local spell = bard.support.spell_by_id(action.top_level_param)
-        if spell then
-            bard.timers.buffs[spell.enl] = bard.timers.buffs[spell.enl] or {}
-            bard.timers.buffs[spell.enl][target.name] = os.time() + spell.dur
-            -- adds buff and buff duration on spell bard.cast
-            return
-        end
 
         local song = bard.support.song_name(action.top_level_param)
 

@@ -27,17 +27,6 @@ local function process_buff(action, target)
             -- otto.fight.update_ally_debuff(player_id, buff, timestamp)
         end
 
-        if spell.targets.Self then
-            local ids = otto.getMonitoredIds()
-            local is_me = ids:contains(target.id)
-
-            if is_me then
-                -- print(buff.en)
-                -- otto.fight.update_ally_buffs(target.id, buff, timestamp)
-                -- return
-            end
-        end
-
         spell.action_target = target
     end
 
@@ -50,11 +39,6 @@ local function process_buff(action, target)
         if job_ability.targets.Enemy then
             -- otto.fight.update_ally_debuff(player_id, buff, timestamp)
         end
-
-        if job_ability.targets.Self then
-            -- otto.fight.update_ally_buffs(target.id, buff, timestamp)
-        end
-
     end
 end
 
@@ -68,18 +52,18 @@ local function process_debuff(action, target)
     
     -- TODO: somehow poison is getting through... and so are not my debuffs
     local is_debuff = otto.event_statics.enfeebling:contains(action.param)
-    if spell and player_debuff and is_debuff and action.category == 'spell_finish' then
-        local player_debuff = res.buffs[spell.status]
+    -- if spell and player_debuff and is_debuff and action.category == 'spell_finish' then
+    --     local player_debuff = res.buffs[spell.status]
 
-        if player_debuff and spell.targets.Self then
-            local ids = otto.getMonitoredIds()
-            local is_me = ids:contains(target.id)
-            if is_me then
-                otto.fight.update_ally_debuff(target.id, player_debuff)
-                return
-            end
-        end
-    end
+    --     if player_debuff and spell.targets.Self then
+    --         local ids = otto.getMonitoredIds()
+    --         local is_me = ids:contains(target.id)
+    --         if is_me then
+    --             -- otto.fight.update_ally_debuff(target.id, player_debuff)
+    --             return
+    --         end
+    --     end
+    -- end
 
     if spell and action.category == 'spell_finish' then
         local enemy_debuff = res.buffs[spell.status]

@@ -74,7 +74,16 @@ function debug.create_log_once_json(log, newfile)
   end
 end
 
-
+function debug.save_table(log, newfile)
+  local filename = newfile or 'debug_test'
+  local newLog = log or {}
+  if user_settings.debug.enabled then
+    if type(log) == "table" then
+      table.save(newLog, "C:/Users/chris/Desktop/Windower/addons/otto/"..filename..".lua")
+    end 
+      -- error
+  end 
+end
 
 
 

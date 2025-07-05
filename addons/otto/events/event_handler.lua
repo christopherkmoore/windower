@@ -12,7 +12,8 @@ end
 function event_handler.action(raw) 
 
     local actionpacket = ActionPacket.new(raw)
-    
+    local monitored_ids = otto.getMonitoredIds()
+
     local category = actionpacket:get_category_string() -- ex: 'spell finish'
     local actor_id = actionpacket:get_id()              -- int which can be lookedup ffxi.get_mob_by_id()
     local target = actionpacket:get_targets()()         -- big payload, see debug json dumps
@@ -28,7 +29,7 @@ function event_handler.action(raw)
     local get_animation_string = action:get_animation_string()
 
     if category == "melee" then 
-        otto.fight.remove_monster_debuff(target.id, 'sleep')
+        otto.fight.remove_target_debuff(target.id, 'sleep')
     end
     -- see debugger/logs for action format
     if action.category == 1 then -- melee attack
@@ -96,52 +97,28 @@ end
 
 function event_handler.gain_buff(raw) 
 
-    local player = windower.ffxi.get_player()
-    if not otto.fight.buffs[player.id] then
-        otto.fight.buffs[player.id] = {}
-    end
-    local buff = res.buffs[raw]
-    otto.fight.buffs[player.id][raw] = buff.en
+    -- local player = windower.ffxi.get_player()
+    -- if not otto.fight.buffs[player.id] then
+    --     otto.fight.buffs[player.id] = {}
+    -- end
+    -- local buff = res.buffs[raw]
+    -- otto.fight.buffs[player.id][raw] = buff.en
 end
 
 function event_handler.lose_buff(raw)
-    local player = windower.ffxi.get_player()
-    local buff = res.buffs[raw]
+    -- local player = windower.ffxi.get_player()
+    -- local buff = res.buffs[raw]
     
-    if not otto.fight.buffs[player.id] then
-        return
-    end
+    -- if not otto.fight.buffs[player.id] then
+    --     return
+    -- end
 
-    otto.fight.buffs[player.id][raw] = nil
+    -- otto.fight.buffs[player.id][raw] = nil
 end
 
 function event_handler.outgoing_chunk() 
 end
-function event_handler.incoming_chunk(id, data, modified, injected, blocked)
-    
-    if id == 0x076 then -- party buffs update
-        -- local packet = packets.parse('incoming', original) -- would need to write a packet method for this TC
-        for  k = 0, 4 do
-            local id = data:unpack('I', k*48+5)
-            otto.fight.buffs[id] = {}
-            -- buff - the buff.id
-            -- id - the player.id
-            -- i the integer of the table?
-            if id ~= 0 then
-                for i = 1, 32 do
-                    local buff = data:byte(k*48+5+16+i-1) + 256*( math.floor( data:byte(k*48+5+8+ math.floor((i-1)/4)) / 4^((i-1)%4) )%4) -- Credit: Byrth, GearSwap
-                    -- otto.debug.create_log(id, 'debugger')
 
-                    if otto.fight.buffs[id][i] ~= buff and buff ~= 255 then
-                        local buff_name = res.buffs[buff]
-
-                        otto.fight.buffs[id][buff] = buff_name.en
-                    end
-                end
-            end
-        end
-    end 
-end
 
 function event_handler.job_change() 
 end
@@ -153,25 +130,65 @@ function event_handler.ipc_message()
 end
 
 local function parse_party_buffs_update(data)
+    -- only gets the buffs for the parties, so fight buffs need to be built
+    -- from the 'gain/lose buff' handlers as well (that on is the pt member)
+    -- left out here
     for  k = 0, 4 do
         local id = data:unpack('I', k*48+5)
-        buffs['whitelist'][id] = {}
-        buffs['blacklist'][id] = {}
-        
+        otto.fight.buffs[id] = {}
+
         if id ~= 0 then
             for i = 1, 32 do
                 local buff = data:byte(k*48+5+16+i-1) + 256*( math.floor( data:byte(k*48+5+8+ math.floor((i-1)/4)) / 4^((i-1)%4) )%4) -- Credit: Byrth, GearSwap
-
-                if buffs['whitelist'][id][i] ~= buff then
-                    buffs['whitelist'][id][i] = buff
-                end
-                if buffs['blacklist'][id][i] ~= buff then
-                    buffs['blacklist'][id][i] = buff
+                if otto.fight.buffs[id][i] ~= buff and buff ~= 255 then
+                    local buff_name = res.buffs[buff]
+                    otto.fight.buffs[id][buff] = buff_name.en
                 end
             end
         end
     end
 end
 
+local function parse_my_buffs_update(data)
+    local player = windower.ffxi.get_player()
+    if not otto.fight.buffs[player.id]  then
+        otto.fight.buffs[player.id] = {}
+    end
+
+    if not otto.fight.buff_timers[player.id] then
+        otto.fight.buff_timers[player.id] = {}
+    end
+
+    -- appears # of copies are not checked anymore and times may only ever be used for afermath, I keep forgetting we dont getno party buff timers
+    local set_time = {}
+    
+    local time = os.time()
+    local vana_time = time - 1009810800
+    local bufftime_offset = math.floor(time - (vana_time * 60 % 0x100000000) / 60)
+
+    otto.fight.buffs[player.id] = {}
+    otto.fight.buff_timers[player.id] = {}
+
+    for i=1,32 do
+        local buff_id = data:unpack('H', i*2+7)
+        local buff_ts = data:unpack('I', i*4+69)
+        local buff_name = res.buffs[buff_id]
+
+        if otto.fight.buffs[player.id] and otto.fight.buffs[player.id][i] ~= buff_id and buff_id ~= 255 then
+            otto.fight.buffs[player.id][buff_id] = buff_name.en
+            otto.fight.buff_timers[player.id][buff_id] = math.floor(buff_ts / 60 + bufftime_offset)
+        end
+    end
+
+end    
+
+function event_handler.incoming_chunk(id, data, modified, injected, blocked)
+    
+    if id == 0x076 then -- party buffs update
+        parse_party_buffs_update(data)
+    elseif id == 0x63 and data:byte(5) == 9 then
+        parse_my_buffs_update(data)
+    end 
+end
 
 return event_handler
