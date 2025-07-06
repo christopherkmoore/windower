@@ -139,7 +139,9 @@ function bard.check_bard()
                 if mob.debuffs['sleep'] then
                     total_sleeps = total_sleeps + 1
                 elseif not unsleepable then
-                    not_sleeping[mob.id] = true
+                    if mob.engaged == 'agro' then
+                        not_sleeping[mob.id] = true
+                    end
                 end
             end
 
@@ -196,28 +198,19 @@ function bard.check_bard()
 
         -- check debuffs (TODO: re-write to use my new my_targets and bounce between targets. focus master target first)
         if user_settings.job.bard.bard_settings.debuffing then
-            local targ = windower.ffxi.get_mob_by_target('t')
-            local spell_recasts = windower.ffxi.get_spell_recasts()
+            local mob = windower.ffxi.get_mob_by_target('t')
             
-            -- was bt but now is t?
-            if targ and targ.valid_target and targ.distance:sqrt() < 20 then
+            if mob and otto.cast.is_mob_valid_target(mob, 20) then
 
                 for song in user_settings.job.bard.debuffs:it() do
-                    local effect
-                    for k,v in pairs(bard.support.debuffs) do
-                        if table.find(v, song) then
-                            local spell = res.spells:with('name', song)
-                            effect = spell.enn
-                            break
-                        end
-                    end
+                    local spell = res.spells:with('name', song)
+                    local debuff = res.buffs[spell.status]
+                    local my_mob = otto.fight.my_targets[mob.id]
 
-                    local mob = otto.fight.my_targets[targ.id]
-                    if effect and (mob and not mob['debuffs'][effect]) and spell_recasts[bard.support.song_by_name(song).id] == 0 then
-                        local spell = res.spells:with('name', song)
-
-                        otto.cast.spell(spell, mob)
-                        break
+                    if spell and (mob and not my_mob['debuffs'][debuff.en]) then
+                        local delay = otto.cast.spell(spell, mob)
+                        bard.delay = delay
+                        return
                     end
                 end
             end
