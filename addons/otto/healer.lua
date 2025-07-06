@@ -14,11 +14,6 @@ function healer.init()
     defaults.healing.min.waltz = 3
     defaults.healing.min.waltzga = 2
     defaults.healing.max = { }
-    defaults.ignoreTrusts = true
-    defaults.activateOutdoors = false
-    defaults.deactivateIndoors = true
-    defaults.disable.cure = false
-    defaults.disable.curaga = false
 
     if user_settings.healer == nil then
         user_settings.healer = defaults
@@ -229,7 +224,7 @@ function healer.get_cure_queue()
             end
         end
     end
-    if (not user_settings.healer.disable.curaga) and (user_settings.healer.healing.max[user_settings.healer.healing.modega] > 0) then
+    if user_settings.healer.healing.max[user_settings.healer.healing.modega] > 0 then
         local spell, p = healer.pick_best_curaga_possibility()
         if spell ~= nil then
             cq:enqueue('cure', spell, p.name, p.hpp, (' (%s)'):format(p.missing))

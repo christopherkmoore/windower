@@ -228,7 +228,7 @@ end
 function otto.addPlayer(list, player)
     if (player == nil) or list:contains(player.name) or otto.ignoreList:contains(player.name) then return end
     local is_trust = player.mob and player.mob.spawn_type == 14 or false    --13 = players; 14 = Trust NPC
-    if (settings.ignoreTrusts and is_trust and (not otto.extraWatchList:contains(player.name))) then return end
+    if is_trust and (not otto.extraWatchList:contains(player.name)) then return end
     local status = player.mob and player.mob.status or player.status
     if dead_statuses:contains(status) or (player.hpp <= 0) then
         --Player is dead.  Reset their buff/debuff lists and don't include them in monitored list

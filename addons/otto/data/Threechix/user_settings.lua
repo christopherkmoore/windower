@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["dispel"] = {
         ["enabled"] = false

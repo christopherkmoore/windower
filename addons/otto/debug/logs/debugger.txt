@@ -1,32 +1,7 @@
 return {
 -- Table: {1}
 {
-   ["mp_cost"]=70,
-   ["requirements"]=0,
-   ["duration"]=180,
-   ["range"]=0,
-   ["levels"]={2},
-   ["prefix"]="/magic",
-   ["recast"]=12,
-   ["icon_id"]=-1,
-   ["id"]=779,
-   ["icon_id_nq"]=0,
-   ["element"]=0,
-   ["enn"]="indi-fury",
-   ["type"]="Geomancy",
-   ["targets"]={3},
-   ["status"]=549,
-   ["en"]="Indi-Fury",
-   ["skill"]=44,
-   ["recast_id"]=779,
-   ["cast_time"]=2,
-},
--- Table: {2}
-{
-   [21]=34,
-},
--- Table: {3}
-{
-   ["Self"]=true,
+   ["Prelude"]=0.1,
+   ["Madrigal"]=0.1,
 },
 }

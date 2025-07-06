@@ -127,6 +127,7 @@ function timers.duration(song_name, buffs)
     local item = windower.ffxi.get_items('equipment')
     for _,slot in ipairs(slots) do
         local mod = equip_mods[windower.ffxi.get_items(item[slot..'_bag'],item[slot]).id]
+        otto.debug.create_log(mod, 'debugger')
         if mod then
             for k,v in pairs(mod) do
                 if k == 1 then

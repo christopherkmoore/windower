@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = true
@@ -113,8 +113,7 @@ return {
                     ["n"] = 1
                 },
                 ["Twochix"] = L{
-                    [1] = "Adventurer's Dirge",
-                    ["n"] = 1
+                    ["n"] = 0
                 }
             },
             ["songs"] = L{

@@ -11,7 +11,7 @@ return {
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"

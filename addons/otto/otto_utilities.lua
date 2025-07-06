@@ -211,16 +211,11 @@ function utils.disableCommand(cmd, disable)
     if S{'cure','cures','curing'}:contains(cmd) then
         if (not disable) then
             if (user_settings.healer.healing.max.cure == 0) then
-                user_settings.healer.disable.cure = true
                 atc(123,'Error: Unable to enable curing because you have no Cure spells available.')
                 return
             end
         end
-        user_settings.healer.disable.cure = disable
         atc('Curing'..msg)
-    elseif S{'curaga'}:contains(cmd) then
-        user_settings.healer.disable.curaga = disable
-        atc('Curaga use'..msg)
     elseif S{'na','heal_debuff','cure_debuff'}:contains(cmd) then
         user_settings.healer.disable.na = disable
         atc('Removal of status effects'..msg)
@@ -573,7 +568,6 @@ function help_text()
         {'unignore <player>','Stops ignoring the given player/npc (=/= watch)'},
         {'watch <player>','Monitors the given player/npc so they will be healed'},
         {'unwatch <player>','Stops monitoring the given player/npc (=/= ignore)'},
-        {'ignoretrusts <on/off>','Toggles whether or not Trust NPCs should be ignored (default: on)'},
         {'ascmd','Sets a player to assist, toggles whether or not to engage, or toggles being active with no argument'},
         {'wscmd1','Sets the weaponskill to use'},
         {'wscmd2','Sets when weaponskills should be used according to whether the mob HP is < or > the given amount'},

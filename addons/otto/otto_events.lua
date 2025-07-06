@@ -287,9 +287,6 @@ local function healer_commands(args)
 
     if command == 'on' or command == 'enable' then
         user_settings.healer.enabled = true
-        user_settings.healer.disable.cure = false
-        user_settings.healer.disable.curaga = false
-
         utils.disableCommand('cure', false)
         message = 'Healing has been enabled'
     elseif command == 'off' or command == 'disable' then
@@ -424,18 +421,12 @@ local function healbot_commands(args)
         end
     elseif S { 'ignore', 'unignore', 'watch', 'unwatch' }:contains(command) then
         monitorCommand(command, args[2])
-    elseif command == 'ignoretrusts' then
-        utils.toggleX(settings, 'ignoreTrusts', args[2], 'Ignoring of Trust NPCs', 'IgnoreTrusts')
     elseif command == 'packetinfo' then
         toggleMode('showPacketInfo', args[2], 'Packet info display', 'PacketInfo')
     elseif command == 'debug' then
         toggleMode('debug', args[2], 'Debug mode', 'debug mode')
     elseif command == 'independent' then
         toggleMode('independent', args[2], 'Independent mode', 'independent mode')
-    elseif S { 'deactivateindoors', 'deactivate_indoors' }:contains(command) then
-        utils.toggleX(settings, 'deactivateIndoors', args[2], 'Deactivation in indoor zones', 'DeactivateIndoors')
-    elseif S { 'activateoutdoors', 'activate_outdoors' }:contains(command) then
-        utils.toggleX(settings, 'activateOutdoors', args[2], 'Activation in outdoor zones', 'ActivateOutdoors')
     elseif utils.txtbox_cmd_map[command] ~= nil then
         local boxName = utils.txtbox_cmd_map[command]
         if utils.posCommand(boxName, args) then

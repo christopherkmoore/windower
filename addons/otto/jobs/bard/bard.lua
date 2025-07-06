@@ -213,7 +213,9 @@ function bard.check_bard()
 
                     local mob = otto.fight.my_targets[targ.id]
                     if effect and (mob and not mob['debuffs'][effect]) and spell_recasts[bard.support.song_by_name(song).id] == 0 then
-                        bard.cast.MA(song,'<t>')
+                        local spell = res.spells:with('name', song)
+
+                        otto.cast.spell(spell, '<t>')
                         break
                     end
                 end
@@ -256,14 +258,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
 
         if bard.buffs.nightingale or bard.buffs.troubadour then 
             bard.delay = 2
-        end
-
-        local spell = bard.support.spell_by_id(action.top_level_param)
-        if spell then
-            bard.timers.buffs[spell.enl] = bard.timers.buffs[spell.enl] or {}
-            bard.timers.buffs[spell.enl][target.name] = os.time() + spell.dur
-            -- adds buff and buff duration on spell bard.cast
-            return
         end
 
         local song = bard.support.song_name(action.top_level_param)
