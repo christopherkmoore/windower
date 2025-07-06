@@ -12,7 +12,6 @@ end
 function event_handler.action(raw) 
 
     local actionpacket = ActionPacket.new(raw)
-    local monitored_ids = otto.getMonitoredIds()
 
     local category = actionpacket:get_category_string() -- ex: 'spell finish'
     local actor_id = actionpacket:get_id()              -- int which can be lookedup ffxi.get_mob_by_id()
@@ -27,22 +26,18 @@ function event_handler.action(raw)
 
     local reaction_string = action:get_reaction_string()
     local get_animation_string = action:get_animation_string()
+    
 
-    if category == "melee" then 
-        otto.fight.remove_target_debuff(target.id, 'sleep')
-    end
+    
     -- see debugger/logs for action format
     if action.category == 1 then -- melee attack
     end  
     
     if action.category == 2 then end  -- finish ranged attack
     if action.category == 3 then end  -- finish weaponskill
-    if action.category == 4 then      -- finish spell casting
-    
-        for t, action in targets do 
-            -- otto.debug.create_log_once_json(action)
-        end
-    end  
+    if action.category == 4 then end  -- finish spell casting
+
+     
     if action.category == 5 then end  -- finish item use
     if action.category == 6 then      -- use job ability 
 
@@ -64,56 +59,20 @@ function event_handler.action(raw)
         end
     end
 
-    if category == 'mob_tp_finish' then
-
-        if S{266, 280, 194}:contains(action.message) then -- target gains the effect of
-            if otto.config.monster_ability_dispelables[action.top_level_param] then
-                local dispellable = res.buffs[action.param]
-                if dispellable and target.id and otto.fight.my_targets[target.id] and otto.fight.my_targets[target.id]['dispellables'] then
-                    otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = true
-                end
-            end
-        end
-
-    end
-
+    -- setup custom action handlers who implement their own logic
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
-    otto.dispel.action_handler(category, action, actor_id, target, monitored_ids, action_basic_info)
+    otto.dispel.action_handler(category, action, actor_id, target, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
 
+    -- extremely useful for classes to manage delay with an action handler
+    -- will result in the char being actually playable by a human
     if otto.bard ~= nil then
         otto.bard.action_handler(category, action, actor_id, add_effect, target)
+    elseif otto.whitemage ~= nil then
+        otto.whitemage.action_handler(category, action, actor_id, add_effect, target)
     elseif otto.paladin ~= nil then
         otto.paladin.action_handler(category, action, actor_id, add_effect, target)
     end
-end
-
-function event_handler.action_message(actor_id, target_id, actor_index, target_index, message_id, param_1, param_2, param_3)
-
-    if otto.event_statics.message_death:contains(message_id) then
-        otto.fight.remove_target(target_id)
-    end 
-end
-
-function event_handler.gain_buff(raw) 
-
-    -- local player = windower.ffxi.get_player()
-    -- if not otto.fight.buffs[player.id] then
-    --     otto.fight.buffs[player.id] = {}
-    -- end
-    -- local buff = res.buffs[raw]
-    -- otto.fight.buffs[player.id][raw] = buff.en
-end
-
-function event_handler.lose_buff(raw)
-    -- local player = windower.ffxi.get_player()
-    -- local buff = res.buffs[raw]
-    
-    -- if not otto.fight.buffs[player.id] then
-    --     return
-    -- end
-
-    -- otto.fight.buffs[player.id][raw] = nil
 end
 
 function event_handler.outgoing_chunk() 
@@ -179,15 +138,45 @@ local function parse_my_buffs_update(data)
             otto.fight.buff_timers[player.id][buff_id] = math.floor(buff_ts / 60 + bufftime_offset)
         end
     end
-
 end    
+
+local function parse_action_message(message_id, target_id, param_1)
+    local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
+    local resisted = otto.event_statics.resisted:contains(message_id)
+    local debuff_expired = otto.event_statics.lose_effect:contains(message_id)
+
+    if immune then
+        event_processor.update_resist_list(message_id, target_id)
+        return
+    end
+    
+    -- Debuff expired
+    if debuff_expired then
+        local buff = res.buffs[param_1]
+        otto.fight.remove_target_debuff(target_id, buff.en)
+    end
+
+    if immune or resisted then return end 
+
+    -- mob died.
+    if otto.event_statics.message_death:contains(message_id) then
+        otto.fight.remove_target(target_id)
+    end 
+end
 
 function event_handler.incoming_chunk(id, data, modified, injected, blocked)
     
     if id == 0x076 then -- party buffs update
         parse_party_buffs_update(data)
-    elseif id == 0x63 and data:byte(5) == 9 then
+    elseif id == 0x63 and data:byte(5) == 9 then -- my buffs update with timers
         parse_my_buffs_update(data)
+    elseif id == 0x028 then -- action
+    elseif id == 0x029 then -- action message
+        local target_id = data:unpack('I',0x09)
+        local param_1 = data:unpack('I',0x0D)
+        local message_id = data:unpack('H',0x19)%32768
+        
+        parse_action_message(message_id, target_id, param_1)
     end 
 end
 

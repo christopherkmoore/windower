@@ -738,9 +738,11 @@ local function geomancer(args)
 
     if command == 'on' or command == 'enable' then
         user_settings.job.geomancer.enabled = true
+        otto.geomancer.init()
         message = 'Geomancer on.'
     elseif command == 'off' or command == 'disable' then
         user_settings.job.geomancer.enabled = false
+        otto.geomancer.deinit()
         message = 'Geomancer off.'
     elseif command == 'cooldowns' then
         if arg2 == 'on' then
@@ -845,6 +847,36 @@ local function paladin(args)
         otto.paladin.deinit()
     else
         windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        windower.add_to_chat(6, message)
+        user_settings:save()
+    end
+end
+
+local function debug(args)
+    local allowed = T { 'on | off | enabled | disable' }
+    local command = 'help'
+    local message = ''
+    local should_save = true
+    
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if command == 'on' or command == 'enable' then
+        windower.send_command('send @others otto debug off')
+        user_settings.debug.enabled = true
+        
+        message = 'Debug mode turned on. Others have had debug mode turned off.'
+    elseif command == 'off' or command == 'disable' then
+        user_settings.debug.enabled = false
+        message = 'Debug mode turned off.'
+    else
+        windower.add_to_chat(3, "Bruh it's not hard")
         windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
         should_save = false
     end
@@ -1111,7 +1143,9 @@ function events.addon_command(...)
     if (#args > 1) then
         local newArgs = table.slice(args, 2)
         -- MARK: commands to sub programs
-        if command == 'aspir' then
+        if command == 'debug' then
+            debug(newArgs)
+        elseif command == 'aspir' then
             aspir_command(newArgs)
         elseif command == 'magicburst' or command == 'magic_burst' or command == 'mb' or command == 'amb' then
             magic_burst_command(newArgs)

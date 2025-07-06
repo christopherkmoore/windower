@@ -103,6 +103,9 @@ magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO', 'WHM'}
 magic_burst.jutsu_users = {'NIN'}
 magic_burst.helix_users = {'SCH'}
 
+magic_burst.window_open = false
+magic_burst.window_open_target = nil
+
 local last_skillchain = nil
 local player = nil
 local last_skillchain_tick = nil
@@ -212,6 +215,9 @@ function burst_window_close()
 		if user_settings.magic_burst.gearswap then
 			windower.send_command('gs c notbursting')
 		end
+
+		magic_burst.window_open = false
+		magic_burst.window_open_target = nil
 	end
 end
 
@@ -223,7 +229,7 @@ function cast_spell(spell)
 	offense.addToNukeingQueue(spell)
 end
 
-function get_spell(skillchain, doubleBurst)
+function magic_burst.get_spell(skillchain, doubleBurst)
 	local spell_element = ''
 	local weather_element, day_element = get_bonus_elements()
 	local spell = ''
@@ -344,7 +350,7 @@ function do_burst(target, skillchain)
 		set_target(target)
 	end
 
-	local spell = get_spell(skillchain, false)
+	local spell = magic_burst.get_spell(skillchain, false)
 
 	if (spell == nil or spell == '') then
 		if (user_settings.magic_burst.show_spell) then
@@ -365,7 +371,7 @@ function do_burst(target, skillchain)
 	cast_spell(spell)
 
 	if (user_settings.magic_burst.double_burst) then
-		local spell = get_spell(skillchain, true)
+		local spell = magic_burst.get_spell(skillchain, true)
 		cast_spell(spell)
 	end
 
@@ -401,6 +407,7 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
     if add_effect and skillchain_ids:contains(add_effect.message_id) then
 
 		actions.remove_bursting_spells()
+		magic_burst.window_open = true
 
 		local party = windower.ffxi.get_party()
 		local party_ids = T{}
@@ -417,6 +424,7 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
 		local bt = windower.ffxi.get_mob_by_target('bt')
 		local target = windower.ffxi.get_mob_by_id(target.id)
 
+		magic_burst.window_open_target = target.id
 		-- Make sure the mob is claimed by our alliance then
 		if (target ~= nil and ((cur_t and cur_t.id == target.id) or (bt and bt.id == target.id) or party_ids:contains(target.claim_id))) then
 			-- Make sure the mob is a valid MB target

@@ -1,13 +1,32 @@
 return {
 -- Table: {1}
 {
-   [553]=1751731756,
-   [326]=1751731774,
-   [481]=1751857316,
-   [321]=1751732245,
-   [198]=1751732028,
-   [214]=1751732035,
-   [549]=1751731756,
-   [3]=1751731878,
+   ["mp_cost"]=70,
+   ["requirements"]=0,
+   ["duration"]=180,
+   ["range"]=0,
+   ["levels"]={2},
+   ["prefix"]="/magic",
+   ["recast"]=12,
+   ["icon_id"]=-1,
+   ["id"]=779,
+   ["icon_id_nq"]=0,
+   ["element"]=0,
+   ["enn"]="indi-fury",
+   ["type"]="Geomancy",
+   ["targets"]={3},
+   ["status"]=549,
+   ["en"]="Indi-Fury",
+   ["skill"]=44,
+   ["recast_id"]=779,
+   ["cast_time"]=2,
+},
+-- Table: {2}
+{
+   [21]=34,
+},
+-- Table: {3}
+{
+   ["Self"]=true,
 },
 }

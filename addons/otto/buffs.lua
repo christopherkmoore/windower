@@ -50,10 +50,6 @@ function buffs.review_active_buffs(player, buff_list)
                 end
             end
         end
-
-        if player.main_job == "GEO" then
-            otto.geomancer.check_buffs()
-        end
     end
 end
 

@@ -57,14 +57,15 @@ otto.event_statics = require('events/event_statics')
 otto.debug = require('debug/debug')
 
 otto.assist = require('assist')
-otto.aspir = require('aspir')
-otto.magic_burst = require('magic_burst')
+otto.aspir = require('jobs/support/aspir')
+otto.magic_burst = require('jobs/support/magic_burst')
+otto.dispel = require('jobs/support/dispel')
+otto.cast = require('jobs/support/cast')
 otto.follow = require('follow')
 otto.healer = require('healer')
 otto.buffs = require('buffs')
 otto.weaponskill = require('weaponskill')
 otto.pull = require('pull')
-otto.dispel = require('dispel')
 otto.fight = require('fight')
 
 
@@ -97,7 +98,6 @@ function otto.check_jobs()
 
     if player.main_job == "GEO" then
         otto.geomancer = require('jobs/geomancer')
-        otto.geomancer.init()
     elseif player.main_job == "BLM" then
         otto.blackmage = require('jobs/blackmage')
         otto.blackmage.init()
@@ -179,9 +179,6 @@ end)
 otto._events['logout'] = windower.register_event('logout', function()
     windower.send_command('lua unload otto')
 end)
-
-otto._events['gain buff'] = windower.register_event('gain buff', otto.event_handler.gain_buff)
-otto._events['lose buff'] = windower.register_event('lose buff', otto.event_handler.lose_buff)
 
 function otto.distances_from_master()
     local targets = S{}

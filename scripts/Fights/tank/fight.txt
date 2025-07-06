@@ -38,6 +38,9 @@ send Onechix otto bard song Fivechix ballad;
 send Onechix otto bard song Threechix ballad;
 send Onechix otto pull on;
 
+send Onechix otto bard debuff nocturne
+send Onechix otto bard debuff elegy
+
 wait 0.3;
 
 ////////////////////////////////////

@@ -56,12 +56,12 @@ local function update_allies(party)
 end
 
 local function update_buffs() 
+    -- update p0 buffs, with timers
     local player = windower.ffxi.get_player()
     local player_buff_timers = fight.buff_timers[player.id]
     
     local debuffs = {}
     local buffs = {}
-    otto.debug.create_log(player_buff_timers, 'debugger') 
 
     if player_buff_timers then 
         for buff_id, buff_ts in pairs(player_buff_timers) do 
@@ -76,6 +76,7 @@ local function update_buffs()
         fight.my_allies[player.id].debuff_timers = debuffs
     end
 
+    -- update rest of partys buffs
     for player_id, ally in pairs(fight.my_allies) do 
         if fight.buffs then
             local player_buffs = fight.buffs[player_id] 
@@ -108,9 +109,7 @@ function fight.update_allies()
 
     update_buffs()
 
-    
-    otto.debug.create_log(fight.my_allies, 'my_allies')
-    otto.debug.save_table(fight.my_allies, 'data/fight/my_allies')
+    -- otto.debug.create_log(fight.my_allies, 'my_allies')
 end
 
 --=====================================================================
@@ -173,13 +172,19 @@ function fight.update_targets()
         end
     end
 
-    otto.debug.create_log(fight.my_targets, 'my_targets')
+    -- otto.debug.create_log(fight.my_targets, 'my_targets')
 end
 
 --=====================================================================
 -- MARK: Targets - add / remove + utility methods
 --=====================================================================
 
+function fight.target_is_mine(id) 
+    if fight.my_targets[id] then
+        return true
+    end
+    return false
+end
 
 function fight.target_lookup(name, id, index)
     for k, v in pairs(fight.my_targets) do

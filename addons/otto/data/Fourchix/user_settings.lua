@@ -22,7 +22,7 @@ return {
         ["enabled"] = false
     },
     ["dispel"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,

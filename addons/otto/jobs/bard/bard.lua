@@ -11,7 +11,7 @@ bard.check_interval = 0.4
 bard.delay = 4
 bard.counter = 0
 
-bard.timers = {AoE={}}
+bard.timers = {AoE={},buffs={}}
 bard.party = bard.support.party()
 bard.buffs = bard.support.buffs()
 bard.times = {}
@@ -125,7 +125,6 @@ function bard.check_bard()
 
         -- check sleeps
         if user_settings.job.bard.settings.sleeps and otto.fight.my_targets ~= {} then
-
             -- update this to look at the 'fighting status'
             for index, mob in pairs(otto.fight.my_targets) do 
                 total_mob = total_mob + 1
@@ -147,14 +146,18 @@ function bard.check_bard()
             -- count the total amount of mobs vs the amount slept
             -- if there needs to be a sleep spell, target a random, nonslept mob
             if needs_sleep >= 1 then 
-
-                -- need to update to sleep a random mob
-                for id, _ in pairs(not_sleeping) do
-                    local mob = otto.fight.my_targets[id]
-                    -- eventually need to work on this to be swap target
-                    -- assist needs to be expanded to start targeting my_targets
-                    otto.assist.puller_target_and_cast(mob, 377) 
-                    return
+                local random = math.random(1, needs_sleep)
+                local counter = 1
+                for mob_id, _ in pairs(not_sleeping) do
+                    if counter == random then
+                        local mob = otto.fight.my_targets[mob_id]
+                        -- eventually need to work on this to be swap target
+                        -- assist needs to be expanded to start targeting my_targets
+                        otto.assist.puller_target_and_cast(mob, 377) 
+                        return
+    
+                    end
+                    counter = counter + 1
                 end
             end
         end
@@ -164,16 +167,9 @@ function bard.check_bard()
             otto.pull.try_pulling()
         end
 
-        -- check dispel?
-        if user_settings.dispel.enabled then
-            for _, mob in pairs(otto.fight.my_targets) do
-                if mob.dispellables then
-                    for name, id in pairs(mob.dispellables) do
-                        otto.assist.swap_target_and_cast(mob, 462) -- magic finale
-                        return
-                    end
-                end
-            end
+        if otto.dispel.should_dispel_new() ~= nil then
+            local mob = otto.dispel.should_dispel_new()
+            otto.assist.swap_target_and_cast(mob, 462) -- magic finale
         end
 
         -- check songs
@@ -234,6 +230,7 @@ function bard.deinit()
 
     windower.send_command('otto dispel off')
     windower.send_command('otto pull off')
+    windower.send_command('otto bard debuff clear')
 end
 
 function bard.action_handler(category, action, actor_id, add_effect, target)
@@ -262,6 +259,12 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
         end
 
         local spell = bard.support.spell_by_id(action.top_level_param)
+        if spell then
+            bard.timers.buffs[spell.enl] = bard.timers.buffs[spell.enl] or {}
+            bard.timers.buffs[spell.enl][target.name] = os.time() + spell.dur
+            -- adds buff and buff duration on spell bard.cast
+            return
+        end
 
         local song = bard.support.song_name(action.top_level_param)
 

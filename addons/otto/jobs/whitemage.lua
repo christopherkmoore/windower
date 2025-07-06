@@ -1,6 +1,6 @@
 
 
--- otto pld by TC
+-- otto white mage by TC
 
 
 -- support
@@ -38,7 +38,7 @@ function whitemage.init()
     end
     whitemage.create_bufflist()
 
-    whitemage.check_pld:loop(whitemage.check_interval)
+    whitemage.check_whm:loop(whitemage.check_interval)
 end
 
 function whitemage.create_bufflist()
@@ -53,7 +53,7 @@ end
 
 
 
-function whitemage.check_pld()
+function whitemage.check_whm()
     if not user_settings.job.whitemage.enabled then return end
     whitemage.counter = whitemage.counter + whitemage.check_interval
 
@@ -64,6 +64,15 @@ function whitemage.check_pld()
         whitemage.delay = whitemage.check_interval
         
         if actor:is_moving() then return end 
+
+        -- wake up sleeping allies
+        for _, ally in otto.fight.my_allies do
+            if ally.debuffs['sleep'] then
+                local curaga = res.spells[7]
+                local delay = otto.cast.spell(curaga, ally.name)
+                paladin.delay = delay
+            end 
+        end
 
         -- start 
     end

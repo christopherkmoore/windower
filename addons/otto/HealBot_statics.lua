@@ -17,12 +17,10 @@ msg_gain_spell = S{82,230,236,237,268,271}
 msg_gain_ws = S{186,194,242,243}
 msg_gain_other = S{374,375,412}
 
-dispellable_monster_ja = S{346}
 
 messages_loseEffect = S{64,74,83,123,159,168,204,206,322,341,342,343,344,350,378,453,531,647}
 messages_wearOff = S{204,206}
 messages_paralyzed = S{29,84}
-messages_aspir = S{228}
 
 messages_noEffect = S{75}
 messages_specific_debuff_gain = {

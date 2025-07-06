@@ -13,8 +13,7 @@ local dispels = {
 
 local dispel_jobs = S{ 'BRD', 'RDM', 'BLU', 'COR'}
 
-local dispel_ids = S{ 260, 360, 462, 592, 605, 132 }
-local action_messages = S{ 186, 194, 205, 230, 266, 280, 319 }
+local dispel_spell_ids = S{ 260, 360, 462, 592, 605, 132 }
 local dispel_message_successful = S { 341, 342}
 
 function dispel.init()
@@ -50,8 +49,19 @@ function dispel.should_dispel(id)
     end
 end
 
-function dispel.action_handler(category, action, actor_id, target, monitored_ids, basic_info)
+function dispel.should_dispel_new()
+    if user_settings.dispel.enabled then
+        for _, mob in pairs(otto.fight.my_targets) do
+            if mob.dispellables then
+                for name, id in pairs(mob.dispellables) do
+                    return mob
+                end
+            end
+        end
+    end
+end
 
+function dispel.action_handler(category, action, actor_id, target, basic_info)
 	if not user_settings.dispel.enabled then return end
 
 	local categories = S{
@@ -64,54 +74,48 @@ function dispel.action_handler(category, action, actor_id, target, monitored_ids
         return
     end
 
-    -- add check here to determine that the mob is claimed by pt. mob.target_index == monitored ids?
+    if otto.fight.target_is_mine(actor_id) and otto.event_statics.monster_buff_gained:contains(action.message) then
+        -- add check here to determine that the mob is claimed by pt. mob.target_index == monitored ids?
+        for _, action in pairs(target.raw.actions) do
+            local buff = res.buffs[action.param]
+            if buff then
+                otto.fight.update_target_dispellable(target.raw.id, buff.en)
+            end
 
-    if monitored_ids[target.raw.id] == nil and monitored_ids[actor_id] == nil then
-        local mob = windower.ffxi.get_mob_by_id(actor_id)
+            -- stub a false dispel in the config. check later as dispel resovles if it can be saved as dispelable
+            if otto.config.monster_ability_dispelables == nil or otto.config.monster_ability_dispelables[action.top_level_param] == nil then
+                otto.config.monster_ability_dispelables[action.top_level_param] = false
+                otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
+                offense.dispel[target.raw.id] = action.top_level_param
+            end
 
-        if mob and mob.spawn_type == 16 and monitored_ids[mob.claim_id] ~= nil then
-            for _, action in pairs(target.raw.actions) do
-                if action_messages:contains(action.message) then
-
-                    -- stub a false dispel in the config. check later as dispel resovles if it can be saved as dispelable
-                    if otto.config.monster_ability_dispelables == nil or otto.config.monster_ability_dispelables[action.top_level_param] == nil then
-                        otto.config.monster_ability_dispelables[action.top_level_param] = false
-                        otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
-                        offense.dispel[target.raw.id] = action.top_level_param
-                    end
-
-                    -- immediately add for known dispelables
-                    if otto.config.monster_ability_dispelables[action.top_level_param] == true then
-                        offense.dispel[target.raw.id] = action.top_level_param
-                    end
-                end
+            -- immediately add for known dispelables
+            if otto.config.monster_ability_dispelables[action.top_level_param] == true then
+                offense.dispel[target.raw.id] = action.top_level_param
             end
         end
     end
 
 
-    if dispel_ids:contains(basic_info.spell_id) then
-        if dispel_message_successful:contains(action.message) then
+    if dispel_spell_ids:contains(basic_info.spell_id) and dispel_message_successful:contains(action.message) then
+        if offense.dispel[target.raw.id] ~= nil then
+            local dispellable = res.buffs[action.param]
+            local monster_buff = offense.dispel[target.raw.id]
 
-            if offense.dispel[target.raw.id] ~= nil then
-                local dispellable = res.buffs[action.param]
-                local monster_buff = offense.dispel[target.raw.id]
+            -- save new dispellable abilities
+            if otto.config.monster_ability_dispelables[monster_buff] == false then
+                otto.config.monster_ability_dispelables[monster_buff] = true
+                otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
+            end
 
-                -- save new dispellable abilities
-                if otto.config.monster_ability_dispelables[monster_buff] == false then
-                    otto.config.monster_ability_dispelables[monster_buff] = true
-                    otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
-                end
+            -- remove from lists
+            offense.dispel[target.raw.id] = nil
+            otto.fight.my_targets[target.id]['dispellables'][dispellable.en] = nil
 
-                -- remove from lists
-                offense.dispel[target.raw.id] = nil
-                otto.fight.my_targets[target.id]['dispellables'][dispellable.enl] = nil
-
-                -- cleanup queue if someone else dispeled
-                for _, spell_to_remove in pairs(dispels) do
-                    if offense.checkNukingQueueFor(spell_to_remove) then
-                        actions.remove_offensive_action(spell_to_remove.id)
-                    end
+            -- cleanup queue if someone else dispeled
+            for _, spell_to_remove in pairs(dispels) do
+                if offense.checkNukingQueueFor(spell_to_remove) then
+                    actions.remove_offensive_action(spell_to_remove.id)
                 end
             end
         end

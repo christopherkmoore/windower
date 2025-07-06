@@ -11,6 +11,7 @@
     -TC
 ]]
 
+-- need to add a 'engager' who will move to the target, then the frontline slaves move to him
 -- Commands related to targeting / engaging during battle
 local assist = { _events = {} }
 

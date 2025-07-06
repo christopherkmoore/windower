@@ -213,12 +213,8 @@ function actions.get_offensive_action(player)
 end
 
 function actions.check_job_actions()
-    if otto.geomancer then
-        return otto.geomancer.geo_geomancy_queue()
-    elseif otto.blackmage then
+    if otto.blackmage then
         return otto.blackmage.blm_queue()
-    elseif otto.paladin then
-        return otto.paladin.check_pld()
     end
 end
 

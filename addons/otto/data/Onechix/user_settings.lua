@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["dispel"] = {
         ["enabled"] = true
@@ -70,21 +70,19 @@ return {
                     ["p5"] = true,
                     ["party"] = true
                 },
-                ["clarion"] = true,
+                ["clarion"] = false,
                 ["debuffing"] = true,
-                ["marcato"] = true,
+                ["marcato"] = false,
                 ["nightingale"] = true,
                 ["pianissimo"] = true,
                 ["recast"] = 20,
-                ["soul_voice"] = true,
+                ["soul_voice"] = false,
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
                 [1] = "Carnage Elegy",
                 [2] = "Pining Nocturne",
-                [3] = "Light Threnody II",
-                [4] = "Foe Requiem VII",
-                ["n"] = 4
+                ["n"] = 2
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -98,7 +96,7 @@ return {
             ["settings"] = T{
                 ["dispels"] = true,
                 ["enabled"] = true,
-                ["fight_type"] = "xp",
+                ["fight_type"] = "normal",
                 ["sleeps"] = true
             },
             ["song"] = T{
@@ -115,7 +113,8 @@ return {
                     ["n"] = 1
                 },
                 ["Twochix"] = L{
-                    ["n"] = 0
+                    [1] = "Adventurer's Dirge",
+                    ["n"] = 1
                 }
             },
             ["songs"] = L{

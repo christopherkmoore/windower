@@ -6,12 +6,12 @@ local json_custom = require('debug/lib/JSON')
 
 function debug.init()
 
-  if user_settings.debug == nil then
+  if user_settings.debug.enabled == nil then
       local debug = {
         enabled = false
        }
 
-      user_settings.debug = debug
+      user_settings.debug.enabled = debug
       user_settings:save()
   end
 
@@ -37,7 +37,7 @@ end
 
 function debug.create_log_once(log, newfile)
 
-    if not next(debug.snapshot)  then 
+    if user_settings.debug.enabled and not next(debug.snapshot) then 
       local filename = newfile or 'snapshot'
       debug.snapshot = file
       table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
@@ -49,7 +49,7 @@ end
 function debug.create_2log_for_comparison(log, newfile, log2, newfile2)
   local filename = newfile or 'snapshot'
   local filename2 = newfile2 or 'snapshot'
-  if not next(debug.snapshot) then
+  if user_settings.debug.enabled and not next(debug.snapshot) then
     debug.snapshot = filename
 
     table.save(log, "C:/Users/chris/Desktop/Windower/addons/otto/debug/logs/"..filename..".txt")
@@ -61,7 +61,7 @@ end
 function debug.create_log_once_json(log, newfile)
 
 
-  if not next(debug.snapshot) then 
+  if user_settings.debug.enabled and not next(debug.snapshot) then 
     debug.snapshot = log
     local filename = newfile or 'snapshot'
 
