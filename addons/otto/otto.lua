@@ -26,10 +26,8 @@ otto = {
     _events = {}, txts = {}, config = {}, 
  }
 
-action = T{}
 settings = {}
 user_settings = T{}
-debug_console = T{}
 
 res = require('resources')
 config = require('config')

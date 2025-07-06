@@ -1206,7 +1206,7 @@ function events.addon_command(...)
         healer_commands('off')
         utils.wipe_bufflist()
         utils.wipe_debufflist()
-        otto.assist.locked_closing_in = false
+        -- otto.assist.locked_closing_in = false
         windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then
         table.vprint(user_settings)

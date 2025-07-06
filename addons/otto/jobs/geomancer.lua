@@ -129,7 +129,7 @@ local function check_spells()
     end
 
     if not geomancer.indi.info.active  then
-        local delay = otto.cast.spell(indi_action, '<me>')
+        local delay = otto.cast.spell_no_check(indi_action, '<me>')
         geomancer.delay = delay
         return
     end

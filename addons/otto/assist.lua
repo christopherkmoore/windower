@@ -15,6 +15,23 @@
 -- Commands related to targeting / engaging during battle
 local assist = { _events = {} }
 
+local function assign_roles() 
+    -- roles
+    -- tank, backline, frontline, puller
+    local player = windower.ffxi.get_player()
+
+    if player.main_job == "BRD" or player.main_job == "GEO" or player.main_job == "WHM" or 
+    player.main_job == "BLM"  or player.main_job == "SMN"  or player.main_job == "SCH" then
+        user_settings.assist.slaves[player.name] = 'backline'
+    elseif player.main_job == "RUN" or player.main_job == "PLD" then
+        user_settings.assist.slaves[player.name] = 'tank'
+    else
+        user_settings.assist.slaves[player.name] = 'frontline'
+    end  
+
+
+end
+
 function assist.init() 
     local defaults = { }
     defaults.enabled = true
@@ -31,6 +48,8 @@ function assist.init()
 
     windower.register_event('incoming chunk', assist.incoming_chunk_handler)
     windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
+
+    assign_roles()
 end
 
 local closing_in = false
@@ -132,7 +151,7 @@ function assist.swap_target_and_cast(mob, spell)
     end
 
     local player = windower.ffxi.get_player()
-    local elegy_recast = windower.ffxi.get_spell_recasts()[spell]
+    local elegy_recast = windower.ffxi.get_spell_recasts()[spell] or windower.ffxi.get_spell_recasts()[spell.id]
 
     if elegy_recast == 0 then
 

@@ -81,5 +81,4 @@ send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;
 send Chixslave otto buff Fourchix haste on;
 send Chixslave otto buff Fivechix haste on;
-send Onechix otto buff Fivechix refresh on;
 send Chixslave otto buff Chixslave haste on;

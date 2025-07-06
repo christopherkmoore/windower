@@ -14,6 +14,19 @@ function cast.spell(spell, mob)
     if actor:is_moving() then return 1 end
     if not actor:in_casting_range(mob) then return 0 end
     if not actor:can_use(spell) then return 0 end
+    
+    if mob and mob.name and mob.id then
+        local current_mob_target = windower.ffxi.get_mob_by_target('t')
+
+        if current_mob_target and otto.fight.my_targets[mob.id] and mob.id == current_mob_target.id then
+            otto.assist.swap_target_and_cast(mob, spell.id)
+            return spell.cast_time
+        else 
+            windower.send_command(('input %s "%s" <t>'):format("/ma", spell.en))
+            return spell.cast_time
+        
+        end
+    end
 
     windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob.name))
     return spell.cast_time

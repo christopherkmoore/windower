@@ -95,6 +95,7 @@ function bard.check_fight_type()
 end
 
 function bard.check_bard()
+    otto.debug.create_log(bard.buffs, 'bard_buffs')
     if not user_settings.job.bard.settings.enabled then return end
     bard.party = bard.support.party()
 
@@ -215,7 +216,7 @@ function bard.check_bard()
                     if effect and (mob and not mob['debuffs'][effect]) and spell_recasts[bard.support.song_by_name(song).id] == 0 then
                         local spell = res.spells:with('name', song)
 
-                        otto.cast.spell(spell, '<t>')
+                        otto.cast.spell(spell, mob)
                         break
                     end
                 end

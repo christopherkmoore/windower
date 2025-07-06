@@ -329,10 +329,23 @@ function support.buffs()
     return set_buff
 end
 
+function support.spell_by_id(id)
+    return spell[id]
+end
+
 function support.song_name(id)
     return song[id]
 end
 
+function support.spell(name)
+    name = string.lower(name)
+    for k,v in pairs(spell) do
+        if v and v.enl and string.lower(v.enl) == name then
+            return v
+        end
+    end
+    return nil
+end
 
 function support.song_by_name(name)
     if not name then return end
