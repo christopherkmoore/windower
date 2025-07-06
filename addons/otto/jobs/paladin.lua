@@ -4,8 +4,6 @@
 -- cover for allies taking damage combine with movement?
 
 local paladin = { }
-local player = windower.ffxi.get_player()
-paladin.timers = {buffs={}}
 
 -- job check ticks
 paladin.check_interval = 0.4
@@ -61,6 +59,7 @@ function paladin.deinit()
 end
 
 function paladin.create_bufflist()
+    local player = windower.ffxi.get_player()
 
     if player.sub_job == "BLU" then
         -- paladin.bufflist[547] = {id=547,en="Cocoon",ja="コクーン",blu_points=1,cast_time=1.75,duration=90,element=15,icon_id=-1,icon_id_nq=59,levels={[16]=8},mp_cost=10,prefix="/magic",range=0,recast=60,recast_id=547,requirements=0,skill=43,status=93,targets=1,type="BlueMagic"}
@@ -79,13 +78,16 @@ function paladin.check_pld()
     if paladin.counter >= paladin.delay then
         paladin.counter = 0
         paladin.delay = paladin.check_interval
-
-        local target = windower.ffxi.get_mob_by_target('t')
-
-        if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
-        if actor:is_moving() then return end 
         
+        local player = windower.ffxi.get_player()
+        local target = windower.ffxi.get_mob_by_target('t')
         local buffs = S(player.buffs)
+
+        if not player or player.main_job ~= 'PLD' or (player.status ~= 1 and player.status ~= 0) then return end
+    
+        if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
+        if actor:is_moving() or buffs.stun or buffs.sleep or buffs.charm or buffs.terror or buffs.petrification then return end
+        
         local sleep = {id=253,en="Sleep",ja="スリプル",cast_time=2.5,duration=60,element=7,icon_id=310,icon_id_nq=15,levels={[4]=20,[5]=25,[8]=30,[20]=30,[21]=35},mp_cost=19,prefix="/magic",range=12,recast=30,recast_id=253,requirements=6,skill=35,status=2,targets=32,type="BlackMagic"}
 
         -- wake up sleeping allies
@@ -166,6 +168,7 @@ function paladin.action_handler(category, action, actor_id, add_effect, target)
     if not categories:contains(category) or action.param == 0 then
         return
     end
+    local player = windower.ffxi.get_player()
 
     if actor_id ~= player.id then return end
 

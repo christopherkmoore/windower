@@ -100,7 +100,6 @@ function otto.check_jobs()
         otto.geomancer = require('jobs/geomancer')
     elseif player.main_job == "BLM" then
         otto.blackmage = require('jobs/blackmage')
-        otto.blackmage.init()
     elseif player.main_job == "PLD" then 
         otto.paladin = require('jobs/paladin')
     elseif player.main_job == "BRD" then

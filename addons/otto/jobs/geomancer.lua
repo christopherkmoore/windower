@@ -47,7 +47,7 @@ function geomancer.init()
 end
 
 function geomancer.deinit()
-    -- empty for now.
+    -- empty for now but for clearing debuffs
 end
 
 
@@ -107,12 +107,15 @@ local function toggle_fc()
 end
 
 local function check_spells()
-
-    local entrust_recast = windower.ffxi.get_ability_recasts()[93]
     local player = windower.ffxi.get_player()
     local buffs = S(player.buffs)
+
+    if actor:is_moving() or buffs.stun or buffs.sleep or buffs.charm or buffs.terror or buffs.petrification then return end
+    if not player or player.main_job ~= 'GEO' or (player.status ~= 1 and player.status ~= 0) then return end
+
+    local entrust_recast = windower.ffxi.get_ability_recasts()[93]
     local indi_action = utils.normalize_action(user_settings.job.geomancer.indi, 'spells') or {}
-    otto.debug.create_log(indi_action, 'debugger')
+
     
     -- check if the bubble is far from the target, if it is, FC and get a new one
     if geomancer.should_full_circle then 
@@ -138,7 +141,8 @@ local function check_spells()
         local protection_ability = check_should_protect_bubble() 
         
         if protection_ability then
-            geo_queue:enqueue_action('ability', protection_ability, player.name)
+            local delay = otto.cast.job_ability(protection_ability, '<me>')
+            geomancer.delay = delay
         end
     end
 
@@ -218,36 +222,43 @@ end
 
 function geomancer.check_geo()
     if not user_settings.job.geomancer.enabled then return end
-    
-    local action = utils.normalize_action(user_settings.job.geomancer.geo, 'spells')
-    local loupan = windower.ffxi.get_mob_by_target('pet')
-    local bubble_target = windower.ffxi.get_mob_by_name(user_settings.job.geomancer.bubble.target)
 
-    if action and loupan == nil then
-        if idle_bubbles:contains(action.id) then 
-            geomancer.bubble_should_cast = true
-            geomancer.bubble_target = user_settings.job.geomancer.bubble.target
-            geomancer.bubble_action = action
+    geomancer.counter = geomancer.counter + geomancer.check_interval
+
+    if geomancer.counter >= geomancer.delay then
+        geomancer.counter = 0
+        geomancer.delay = geomancer.check_interval
+
+        local action = utils.normalize_action(user_settings.job.geomancer.geo, 'spells')
+        local loupan = windower.ffxi.get_mob_by_target('pet')
+        local bubble_target = windower.ffxi.get_mob_by_name(user_settings.job.geomancer.bubble.target)
+
+        if action and loupan == nil then
+            if idle_bubbles:contains(action.id) then 
+                geomancer.bubble_should_cast = true
+                geomancer.bubble_target = user_settings.job.geomancer.bubble.target
+                geomancer.bubble_action = action
+            end
+
+            if bubble_target and debuff_bubbles:contains(action.id) and bubble_target.status == 1 then
+                geomancer.bubble_should_cast = true
+                geomancer.bubble_target = '<t>' -- bug here... 
+                geomancer.bubble_action = action
+            end
+
+            if active_bubbles:contains(action.id) and bubble_target.status == 1 then
+                geomancer.bubble_should_cast = true
+                geomancer.bubble_target = user_settings.job.geomancer.bubble.target
+                geomancer.bubble_action = action
+            end
+        else
+            geomancer.bubble_should_cast = false
+            geomancer.bubble_target = nil
         end
 
-        if bubble_target and debuff_bubbles:contains(action.id) and bubble_target.status == 1 then
-            geomancer.bubble_should_cast = true
-            geomancer.bubble_target = '<t>' -- bug here... 
-            geomancer.bubble_action = action
-        end
-
-        if active_bubbles:contains(action.id) and bubble_target.status == 1 then
-            geomancer.bubble_should_cast = true
-            geomancer.bubble_target = user_settings.job.geomancer.bubble.target
-            geomancer.bubble_action = action
-        end
-    else
-        geomancer.bubble_should_cast = false
-        geomancer.bubble_target = nil
+        check_bubble_out_of_range()
+        check_spells()
     end
-
-    check_bubble_out_of_range()
-    check_spells()
 end
 
 return geomancer

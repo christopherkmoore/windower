@@ -909,9 +909,11 @@ local function blackmage(args)
 
     if command == 'on' or command == 'enable' then
         user_settings.job.blackmage.enabled = true
+        otto.blackmage.init()
         message = 'Blackmage on.'
     elseif command == 'off' or command == 'disable' then
         user_settings.job.blackmage.enabled = false
+        otto.blackmage.deinit()
         message = 'Blackmage off.'
     elseif command == 'cooldowns' then
         if arg2 == 'on' then

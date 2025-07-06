@@ -19,7 +19,7 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
             local song = user_settings.job.bard.dummy[i]
 
             if basesongs - i >= 0 and currsongs == maxsongs - i and spell_recasts[otto.bard.support.song_by_name(song).id] <= 0 then
-                otto.cast.spell(song, ta)
+                windower.send_command(('input /ma "%s" %s'):format(song,ta))
                 otto.bard.delay = 1.2
                 return true
             end
@@ -69,7 +69,7 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
                     otto.bard.delay = 1.2
                 end
             else
-                otto.cast.spell(song.enl, ta)
+                windower.send_command(('input /ma "%s" %s'):format(song.enl,ta))
                 otto.bard.delay = 1.2
             end
             return true

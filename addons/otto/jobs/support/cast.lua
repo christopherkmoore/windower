@@ -37,12 +37,7 @@ function cast.spell_with_pre_action(spell, job_ability, target)
     local delay = cast.job_ability(job_ability, '<me>')
     coroutine.sleep(delay)
 
-    local spell_recasts = windower.ffxi.get_spell_recasts()
-    if actor:is_moving() then return 1 end
-    if not actor:in_casting_range(target) then return 0 end
-    if not actor:can_use(spell) then return 0 end
-
-    windower.send_command(('input %s "%s" %s'):format(spell.prefix, spell.en, target))
+    cast.spell(spell, target)
     return spell.cast_time
 end
 

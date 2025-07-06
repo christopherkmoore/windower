@@ -118,16 +118,8 @@ function actions.take_action(player, partner, targ)
 
         --Otherwise, there may be an offensive action
         local action = actions.get_offensive_action(player)
-        if action == nil then actions.check_job() return end
 
         local monitored_players = otto.getMonitoredPlayers()
-        if (action.type == 'preaction' and monitored_players[action.name] ~= nil) or action.type == 'ability'  then
-            if action.type == 'bubble' then
-                actor:take_action(action, '<t>')
-            end
-
-            actor:take_action(action, action.name)
-        end
 
         if user_settings.pull.enabled then 
             actor:take_action(action, '<t>')
@@ -161,19 +153,6 @@ function actions.get_offensive_action(player)
 	local target = windower.ffxi.get_mob_by_target()
     if target == nil then return nil end
     local action = {}
-
-    local job_queue = actions.check_job_actions()
-
-    if job_queue ~= nil then
-        while not job_queue:empty() do
-            local preaction = job_queue:pop() 
-            local_queue_insert(preaction.action.en, preaction.name)
-            if action.preaction == nil and actor:ready_to_use(preaction.action) then
-                -- log(action.preaction)
-                action.preaction = preaction
-            end
-        end 
-    end
     
     local nukeingQ = offense.getNukeQueue(target)
     while not nukeingQ:empty() do 
@@ -198,9 +177,7 @@ function actions.get_offensive_action(player)
     action.weaponskill = otto.weaponskill.action(target)
 
     local_queue_disp()
-    if action.preaction ~= nil then 
-        return action.preaction
-    elseif action.nuke ~= nil then        
+    if action.nuke ~= nil then        
         return action.nuke
     elseif action.weaponskill ~= nil then
         return action.weaponskill
@@ -212,17 +189,6 @@ function actions.get_offensive_action(player)
 	return nil
 end
 
-function actions.check_job_actions()
-    if otto.blackmage then
-        return otto.blackmage.blm_queue()
-    end
-end
-
-function actions.check_job()
-    if otto.blackmage then
-        otto.blackmage.check_blm()
-    end
-end
 
 
 -- Utility methods for managing the nukeing queue. The nuking queue is made as things are added and removed
