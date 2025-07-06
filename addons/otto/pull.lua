@@ -119,8 +119,6 @@ function pull.check_pull_success(mob)
     if mob == nil then return false end
 
     if mob.status == 1 then 
-        local effect = otto.bard.song_timers.song_debuffs[194]
-
         pull.targets[mob.id] = mob
         return true
     end

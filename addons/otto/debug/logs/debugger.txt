@@ -1,7 +1,5 @@
 return {
 -- Table: {1}
 {
-   ["Prelude"]=0.1,
-   ["Madrigal"]=0.1,
 },
 }

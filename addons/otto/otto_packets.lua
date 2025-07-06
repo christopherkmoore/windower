@@ -92,15 +92,6 @@ function otto_packets.handle_incoming_chunk(id, data)
     elseif (id == 0x0DD) then  --Party member update
         otto_packets.register_party_members_changed(data)
     elseif (id == 0x0DF) then -- Char Update
-        
-    elseif id == 0x00A then
-        local packet = packets.parse('incoming', data)
-
-        if otto.bard then
-            otto.bard.support.player_id = packet.Player
-            otto.bard.support.zone_id = packet.Zone
-            otto.bard.support.player_name = packet['Player Name']     
-        end
     elseif id == 0x63 and data:byte(5) == 9 then
 
         if otto.bard == nil then return end 

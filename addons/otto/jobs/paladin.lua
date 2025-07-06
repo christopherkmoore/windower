@@ -82,7 +82,6 @@ function paladin.check_pld()
         local player = windower.ffxi.get_player()
         local target = windower.ffxi.get_mob_by_target('t')
         local buffs = S(player.buffs)
-
         if not player or player.main_job ~= 'PLD' or (player.status ~= 1 and player.status ~= 0) then return end
     
         if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
@@ -103,6 +102,7 @@ function paladin.check_pld()
         end
 
         for _, ja in pairs(paladin.jalist) do
+            -- CKM check this tomorrow
             local recast = windower.ffxi.get_ability_recasts()[ja.recast_id]
 
             if recast == 0 and target ~= nil then
@@ -122,7 +122,7 @@ function paladin.check_pld()
             local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
 
             if recast == 0 then
-                local delay = otto.cast.spell(spell, '<t>')
+                local delay = otto.cast.spell_no_check(spell, '<t>')
                 paladin.delay = delay
                 return
             end
@@ -130,9 +130,9 @@ function paladin.check_pld()
 
 
         for _, spell in pairs(paladin.bufflist) do
-            local player_id = windower.ffxi.get_player().id
+            local player_id = windower.ffxi.get_player()
             local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
-            local my_buffs = otto.fight.my_allies[player_id].buffs
+            local my_buffs = otto.fight.my_allies[player.id].buffs
 
             if my_buffs[spell.status] == nil and recast == 0 then
                 local buff = res.buffs[spell.status]
@@ -140,11 +140,11 @@ function paladin.check_pld()
                 if buff.en == "Protect" then
                     local pre_action = res.job_abilities[394] -- use majesty for buffed protect
                     -- add check to see if fam is in range.
-                    local delay = otto.cast.spell_with_pre_action(spell, pre_action, '<me>')
+                    local delay = otto.cast.spell_with_pre_action(spell, pre_action, player.mob)
                     paladin.delay = delay
                     return
                 else
-                    local delay = otto.cast.spell(spell, '<me>')
+                    local delay = otto.cast.spell(spell, player.mob)
                     paladin.delay = delay
                     return
     

@@ -980,7 +980,7 @@ local function bard(args)
         if arg2 == '' then
             message = 'Need to supply a song name.'
         else
-            local songs = otto.bard.support.songs[arg2]
+            local songs = otto.event_statics.songs[arg2]
 
             local songlist = user_settings.job.bard.songs
             local n = arg3
@@ -1014,8 +1014,8 @@ local function bard(args)
             user_settings:save()
             return
         else
-            if otto.bard.support.debuffs[arg2] then
-                local debuff = otto.bard.support.debuffs[arg2][arg3]
+            if otto.event_statics.debuffs[arg2] then
+                local debuff = otto.event_statics.debuffs[arg2][arg3]
                 if not debuff then return end
         
                 local to_remove = user_settings.job.bard.debuffs:find(debuff)
@@ -1037,7 +1037,7 @@ local function bard(args)
             end
         else
             local target = otto.bard.support.party_member(arg2)
-            local songs = otto.bard.support.songs[arg3]
+            local songs = otto.event_statics.songs[arg3]
             local songlist = user_settings.job.bard.song[target.name]
             local n = arg4
             n = tonumber(arg4)

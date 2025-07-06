@@ -37,16 +37,14 @@ function actions.get_defensive_action()
 	
     local action = {}
 	
-    if (not user_settings.healer.disable.cure) then
-		local cureq = otto.healer.get_cure_queue()
-		while (not cureq:empty()) do
-			local cact = cureq:pop()
-            local_queue_insert(cact.action.en, cact.name)
-			if (action.cure == nil) and actor:in_casting_range(cact.name) then
-				action.cure = cact
-			end
-		end
-	end
+    local cureq = otto.healer.get_cure_queue()
+    while (not cureq:empty()) do
+        local cact = cureq:pop()
+        local_queue_insert(cact.action.en, cact.name)
+        if (action.cure == nil) and actor:in_casting_range(cact.name) then
+            action.cure = cact
+        end
+    end
 
 	if (not settings.disable.na) then
 		local dbuffq = otto.buffs.getDebuffQueue()

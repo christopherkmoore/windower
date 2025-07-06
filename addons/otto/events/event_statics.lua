@@ -24,4 +24,93 @@ event_statics.monster_buff_gained = S{ 186, 194, 205, 230, 266, 280, 319 }
 
 event_statics.cant_cast_states = T{ 0, 2, 6, 7, 10, 14, 28, 29, 193, 262 } -- KO, Sleep, Silence, Petrification, Stun, Charm, Terrorize, Mute, Lullaby, Omerta
 
+--=====================================================================
+-- MARK: Bard stuff 
+--=====================================================================
+event_statics.song_buff_ids = S{195,196,197,198,199,200,201,206} -- 215 etude and 216 carol?
+
+event_statics.songs = {
+    paeon = {'Army\'s Paeon VI','Army\'s Paeon V','Army\'s Paeon IV','Army\'s Paeon III','Army\'s Paeon II','Army\'s Paeon'},
+    ballad = {'Mage\'s Ballad III','Mage\'s Ballad II','Mage\'s Ballad'},
+    minne = {'Knight\'s Minne V','Knight\'s Minne IV','Knight\'s Minne III','Knight\'s Minne II','Knight\'s Minne'},
+    march = {'Victory March','Advancing March'},
+    minuet = {'Valor Minuet V','Valor Minuet IV','Valor Minuet III','Valor Minuet II','Valor Minuet'}, 
+    madrigal = {'Blade Madrigal','Sword Madrigal'},
+    prelude = {'Archer\'s Prelude','Hunter\'s Prelude'},
+    mambo = {'Dragonfoe Mambo','Sheepfoe Mambo'},
+    aubade = {'Fowl Aubade'},
+    pastoral = {'Herb Pastoral'},
+    fantasia = {'Shining Fantasia'},
+    operetta = {'Puppet\'s Operetta','Scop\'s Operetta'},
+    capriccio = {'Gold Capriccio'},
+    round = {'Warding Round'},
+    gavotte = {'Shining Fantasia'},
+    hymnus = {'Goddess\'s Hymnus'},
+    mazurka = {'Chocobo Mazurka'},
+    sirvente = {'Foe Sirvente'},
+    dirge = {'Adventurer\'s Dirge'},
+    scherzo = {'Sentinel\'s Scherzo'},
+    carol = {},
+    etude = {},
+    setude = {'Herculean Etude','Sinewy Etude'},
+    detude = {'Uncanny Etude','Dextrous Etude'},
+    vetude = {'Vital Etude','Vivacious Etude'},
+    aetude = {'Swift Etude','Quick Etude'},
+    ietude = {'Sage Etude','Learned Etude'},
+    metude = {'Logical Etude','Spirited Etude'},
+    cetude = {'Bewitching Etude','Enchanting Etude'},
+    fcarol = {'Fire Carol','Fire Carol II'},
+    icarol = {'Ice Carol','Ice Carol II'},
+    wcarol = {'Wind Carol','Wind Carol II'},
+    ecarol = {'Earth Carol','Earth Carol II'},
+    tcarol = {'Lightning Carol','Lightning Carol II'},
+    acarol = {'Water Carol','Water Carol II'},
+    lcarol = {'Light Carol','Light Carol II'},
+    dcarol = {'Dark Carol','Dark Carol II'},
+}
+
+event_statics.debuffs = {
+    lullaby = {'Horde Lullaby II','Horde Lullaby','Foe Lullaby II','Foe Lullaby'},
+    requiem = {'Foe Requiem VII', 'Foe Requiem VI', 'Foe Requiem V','Foe Requiem IV','Foe Requiem III','Foe Requiem II', 'Foe Requiem I'},
+    elegy = {'Carnage Elegy'},
+    nocturne = {'Pining Nocturne'},
+    threnody = {
+         fire = 'Fire Threnody', fire2 = 'Fire Threnody II',
+         ice = 'Ice Threnody', ice2 = 'Ice Threnody II',
+         wind = 'Wind Threnody', wind2 = 'Wind Threnody II',
+         earth = 'Earth Threnody', earth2 = 'Earth Threnody II',
+         lightning = 'Ltng. Threnody', lightning2 = 'Ltng. Threnody II',
+         water = 'Water Threnody', water2 = 'Water Threnody II',
+         light = 'Light Threnody', light2 = 'Light Threnody II',
+         dark = 'Dark Threnody', dark2 = 'Dark Threnody II',
+    }
+}
+
+event_statics.extra_song_harp = {
+    [18571] = 4, -- Daurdabla 99
+    [18575] = 3, -- Daurdabla 90
+    [18576] = 3, -- Daurdabla 95
+    [18839] = 4, -- Daurdabla 99-2
+    [21400] = 3, -- Blurred Harp
+    [21401] = 3, -- Blurred Harp +1
+    [21407] = 3, -- Terpander
+}
+
+event_statics.honor_march_horn = {
+    [21398] = true -- Marsyas
+}
+
+--=====================================================================
+-- MARK: General 
+--=====================================================================
+
+event_statics.equippable_bags = {
+    'Inventory',
+    'Wardrobe',
+    'Wardrobe2',
+    'Wardrobe3',
+    'Wardrobe4'
+}
+
+
 return event_statics

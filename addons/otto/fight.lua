@@ -109,7 +109,7 @@ function fight.update_allies()
 
     update_buffs()
 
-    -- otto.debug.create_log(fight.my_allies, 'my_allies')
+    otto.debug.create_log(fight.my_allies, 'my_allies')
 end
 
 --=====================================================================

@@ -19,6 +19,7 @@ end
 
 
 function debug.create_log(log, newfile)
+
   local filename = newfile or 'debug_test'
   local newLog = log or {}
   if user_settings.debug.enabled then
