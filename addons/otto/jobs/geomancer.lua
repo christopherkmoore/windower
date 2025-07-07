@@ -44,6 +44,10 @@ function geomancer.init()
         user_settings:save()
     end
 
+    if user_settings.aspir.enabled then
+        otto.aspir.init()
+    end
+
     otto.assist.init()
     geomancer.check_geo:loop(geomancer.check_interval)
 
@@ -51,6 +55,7 @@ end
 
 function geomancer.deinit()
     -- empty for now but for clearing debuffs
+    otto.aspir.deinit()
 end
 
 
@@ -109,6 +114,14 @@ local function toggle_fc()
     geomancer.should_full_circle = false
 end
 
+local function check_aspir()
+    if otto.aspir.aspirable_target then
+        local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
+        geomancer.delay = delay
+        return
+    end
+
+end
 local function check_spells()
     local player = windower.ffxi.get_player()
     local buffs = S(player.buffs)
@@ -266,6 +279,11 @@ function geomancer.check_geo()
         end
 
         check_bubble_out_of_range()
+        
+        if user_settings.aspir.enabled then
+            check_aspir()
+        end
+        
         check_spells()
     end
 end

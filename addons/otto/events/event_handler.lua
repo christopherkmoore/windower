@@ -132,6 +132,7 @@ local function parse_my_buffs_update(data)
     local time = os.time()
     local vana_time = time - 1009810800
     local bufftime_offset = math.floor(time - (vana_time * 60 % 0x100000000) / 60)
+    otto.fight.buffs[player.id] = {}
 
 
     for i = 1, 32 do

@@ -18,7 +18,7 @@ function cast.spell(spell, mob)
     if mob and type(mob) == 'table' and mob.name and mob.id then
         local current_mob_target = windower.ffxi.get_mob_by_target('t')
 
-        -- it's one of the targets i'm fighting
+        -- I'm not targeting the right mob, so swap
         if current_mob_target and otto.fight.my_targets[mob.id] and mob.id ~= current_mob_target.id then
             otto.assist.swap_target_and_cast(mob, spell.id)
             return spell.cast_time
@@ -26,6 +26,7 @@ function cast.spell(spell, mob)
 
         local ally = otto.fight.my_allies[mob.id]
 
+        -- I'm not targeting the right ally, so swap
         if ally and current_mob_target ~= ally.id then
             otto.assist.swap_target_and_cast(mob, spell.id)
             return spell.cast_time
@@ -39,9 +40,12 @@ function cast.spell(spell, mob)
         elseif mob == '<me>' then
             windower.send_command(('input %s "%s" <me>'):format("/ma", spell.en))
             return spell.cast_time
+        else
+            print('cast.spell is being sent a mob name. This wont work with multiple mobs.')
+            windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob))
+            return spell.cast_time
         end
 
-        windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob))
         return spell.cast_time
     end
 

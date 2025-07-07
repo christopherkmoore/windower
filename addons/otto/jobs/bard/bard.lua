@@ -200,7 +200,7 @@ function bard.check_bard()
             end
         end
 
-        -- check debuffs (TODO: re-write to use my new my_targets and bounce between targets. focus master target first)
+        -- check debuffs 
         if user_settings.job.bard.bard_settings.debuffing then
             for _, mob in pairs(otto.fight.my_targets) do
                 if mob and otto.cast.is_mob_valid_target(mob, 20) then

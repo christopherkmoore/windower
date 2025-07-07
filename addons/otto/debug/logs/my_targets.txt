@@ -1,80 +1,105 @@
 return {
 -- Table: {1}
 {
-   [17478094]={2},
-   [17478089]={3},
-   [17478092]={4},
-   [17478093]={5},
+   [17478091]={2},
+   [17478094]={3},
+   [17478095]={4},
+   [17478092]={5},
+   [17478093]={6},
 },
 -- Table: {2}
 {
    ["engaged"]="agro",
-   ["debuffs"]={6},
-   ["name"]="Apex Worker Lugcrawler",
-   ["id"]=17478094,
-   ["distance"]=38.355255126953,
-   ["dispellables"]={7},
-   ["index"]=462,
+   ["debuffs"]={7},
+   ["name"]="Apex Hornfly",
+   ["id"]=17478091,
+   ["distance"]=38.079524993896,
+   ["dispellables"]={8},
+   ["index"]=459,
 },
 -- Table: {3}
 {
-   ["engaged"]="fighting",
-   ["debuffs"]={8},
+   ["engaged"]="agro",
+   ["debuffs"]={9},
    ["name"]="Apex Worker Lugcrawler",
-   ["id"]=17478089,
-   ["distance"]=717.88391113281,
-   ["dispellables"]={9},
-   ["index"]=457,
+   ["id"]=17478094,
+   ["distance"]=43.04842376709,
+   ["dispellables"]={10},
+   ["index"]=462,
 },
 -- Table: {4}
 {
    ["engaged"]="agro",
-   ["debuffs"]={10},
-   ["name"]="Apex Hornfly",
-   ["id"]=17478092,
-   ["distance"]=38.490894317627,
-   ["dispellables"]={11},
-   ["index"]=460,
+   ["debuffs"]={11},
+   ["name"]="Locus Worker Lugcrawler",
+   ["id"]=17478095,
+   ["distance"]=43.000694274902,
+   ["dispellables"]={12},
+   ["index"]=463,
 },
 -- Table: {5}
 {
-   ["engaged"]="fighting",
-   ["debuffs"]={12},
-   ["name"]="Locus Hornfly",
-   ["id"]=17478093,
-   ["distance"]=4.9706501960754,
-   ["dispellables"]={13},
-   ["index"]=461,
+   ["engaged"]="agro",
+   ["debuffs"]={13},
+   ["name"]="Apex Hornfly",
+   ["id"]=17478092,
+   ["distance"]=46.959629058838,
+   ["dispellables"]={14},
+   ["index"]=460,
 },
 -- Table: {6}
+{
+   ["engaged"]="agro",
+   ["debuffs"]={15},
+   ["name"]="Locus Hornfly",
+   ["id"]=17478093,
+   ["distance"]=33.042900085449,
+   ["dispellables"]={16},
+   ["index"]=461,
+},
+-- Table: {7}
+{
+   ["sleep"]=true,
+   ["Nocturne"]=true,
+   ["Elegy"]=true,
+},
+-- Table: {8}
+{
+},
+-- Table: {9}
 {
    ["Nocturne"]=true,
    ["sleep"]=true,
    ["Elegy"]=true,
 },
--- Table: {7}
-{
-},
--- Table: {8}
-{
-   ["sleep"]=true,
-},
--- Table: {9}
-{
-},
 -- Table: {10}
 {
-   ["sleep"]=true,
 },
 -- Table: {11}
 {
-},
--- Table: {12}
-{
+   ["Nocturne"]=true,
    ["sleep"]=true,
    ["Elegy"]=true,
 },
+-- Table: {12}
+{
+},
 -- Table: {13}
+{
+   ["Nocturne"]=true,
+   ["sleep"]=true,
+   ["Elegy"]=true,
+},
+-- Table: {14}
+{
+},
+-- Table: {15}
+{
+   ["Nocturne"]=true,
+   ["sleep"]=true,
+   ["Elegy"]=true,
+},
+-- Table: {16}
 {
 },
 }

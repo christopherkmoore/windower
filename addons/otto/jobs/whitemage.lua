@@ -25,8 +25,27 @@ local function start()
 end
 
 function whitemage.init()
-    local defaults = { enabled = true }
-    defaults.enabled = true
+    local defaults = T{ 
+        settings = T{
+            auto_raise = true,     -- tries to auto raise when party members die. Pretty low priority
+            devotion = {
+                enabled= true,
+                target= 'Fivechix',    
+            },
+            blow_cooldowns = true,
+        },
+        debuffs = L {"Dia II","Slow","Paralyze", "Silence", "Addle"},
+        buffs = L {"Protectra V", "Shellra V", "Auspice", "Aurorastorm"},
+        buff = T {
+            ["Chixslave"] = L{ 
+                "Haste", "Reraise IV" },
+            ["Fivechix"] = L { "Haste"},
+            ["Fourchix"] = L {"Haste"},
+            ["Onechix"] = L {"Haste"},
+            ["Threechix"] = L {"Haste"},
+            ["Twochix"] = L {"Haste"}
+        }
+    }
 
     if user_settings.job.whitemage == nil then
         user_settings.job.whitemage = defaults
@@ -197,23 +216,43 @@ local function regen(ally_id)
     return false
 end
 
-local function debuff(ally_id, debuff, try_aga) 
+local function remove_na(ally_id, debuff, try_aga) 
     local player = windower.ffxi.get_player()
     local ally = otto.fight.my_allies[ally_id]
     local strategems_recast = windower.ffxi.get_ability_recasts()[231]
     local accession = res.job_abilities[218]
     local target = otto.fight.my_allies[ally_id]
-
+    local divine_seal = res.job_abilities[74]
+    local divine_seal_recast = windower.ffxi.get_ability_recasts()[26]
+    local divine_caress = res.job_abilities[270]
+    local divine_caress_recast = windower.ffxi.get_ability_recasts()[32]
 
     local cure_name = otto.event_statics.debuff_to_dispel_map[debuff]
     local debuff_spell = res.spells:with('name', cure_name)
 
+    -- divine seal + na for AoE Erase
+    if target and debuff_spell and try_aga and debuff_spell.en == "Erase" and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 and divine_seal_recast == 0 then
+        local delay = otto.cast.spell_with_pre_action(debuff_spell, divine_seal, target)
+        whitemage.delay = delay
+        return true
+
+    end
+
+    -- Accesssion + na for AoE Erase
     if target and debuff_spell and try_aga and player.sub_job == "SCH" and strategems_recast == 0 and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 then
         local delay = otto.cast.spell_with_pre_action(debuff_spell, accession, target)
         whitemage.delay = delay
         return true
     end
 
+       -- divine caress + non AoE
+    if target and debuff_spell and debuff_spell.en ~= "Erase" and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 and divine_caress_recast == 0 then
+        local delay = otto.cast.spell_with_pre_action(debuff_spell, divine_caress, target)
+        whitemage.delay = delay
+        return true
+    end
+
+    -- Okay fine just a regular old na... pray for Divine Viel Proc :P
     if target and debuff_spell and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 then
         local delay = otto.cast.spell(debuff_spell, target)
         whitemage.delay = delay
@@ -241,7 +280,6 @@ function whitemage.check_whm()
     whitemage.counter = whitemage.counter + whitemage.check_interval
 
     if whitemage.counter >= whitemage.delay then
-        otto.debug.create_log(whitemage.raises, 'raise_action')
 
         whitemage.counter = 0
         whitemage.delay = whitemage.check_interval
@@ -250,10 +288,12 @@ function whitemage.check_whm()
         local player = windower.ffxi.get_player()
         local buffs = S(player.buffs)
 
+        -- TODO Add all the contains states here.
         if buffs:contains(42) and (buffs:contains(19) or buffs:contains(2)) then
             cancel_buff(42)
         end
 
+        -- CKM TEST
         -- wake up sleeping allies
         for _, ally in pairs(otto.fight.my_allies) do
             if ally.debuffs['sleep'] then
@@ -266,20 +306,28 @@ function whitemage.check_whm()
         local sortable_hpps = T{}
         local aga_counter = 0
         local combined_missing_hp = 0
-
+        local party_total_hp = 0
+        local dead_allies = 0
+        
         -- pre-cure setup
         for _, ally in pairs(otto.fight.my_allies) do
-            local missingHP = math.ceil((ally.hp/(ally.hpp/100))-ally.hp)
-            if missingHP > 0 then
-                sortable_hps[ally.id] = missingHP
-                sortable_hpps[ally.id] = 100 - ally.hpp
+            if ally.hp ~= 0 then
+                local missingHP = math.ceil((ally.hp/(ally.hpp/100))-ally.hp)
+                if missingHP > 0 then
+                    sortable_hps[ally.id] = missingHP
+                    sortable_hpps[ally.id] = 100 - ally.hpp
+                end
+
+                if ally.hpp < 60 then
+                    aga_counter = aga_counter + 1
+                end
+                party_total_hp = party_total_hp + (missingHP + ally.hp)
+                combined_missing_hp = combined_missing_hp + missingHP
             end
 
-            if ally.hpp < 50 then
-                aga_counter = aga_counter + 1
+            if ally.hp == 0 then
+                dead_allies = dead_allies + 1
             end
-
-            combined_missing_hp = combined_missing_hp + missingHP
         end 
 
         local needs_aga = aga_counter >= 3
@@ -287,10 +335,21 @@ function whitemage.check_whm()
 
         local counter = 0
 
-        -- cures + regen
+        -- cures + regen 
         for k,v in spairs(sortable_hpps, function(t,a,b) return t[b] < t[a] end) do 
             if counter > 1 then break end
             
+            -- Things are pretty fucked, maybe try a benediction
+            if dead_allies >= 2 and needs_aga then
+                local benediction = res.job_abilities[18]
+                local bene_recast = windower.ffxi.get_ability_recasts()[0]
+
+                if benediction and bene_recast == 0 then
+                    otto.cast.job_ability(benediction, '<me>')
+                end
+
+            end 
+
             if needs_aga then curaga(combined_missing_hp, k) end
 
             if v >= 25 then
@@ -298,11 +357,12 @@ function whitemage.check_whm()
                 if otto.cast.is_ally_valid_target(k, 20) then 
                     cure(k, missing)
                 end
-            else
-                if otto.cast.is_ally_valid_target(k, 20) then 
-                    if not regen(k) then break end
-                end
             end
+
+            if otto.cast.is_ally_valid_target(k, 20) then 
+                if not regen(k) then break end
+            end
+
             counter = counter + 1
         end
        
@@ -313,6 +373,7 @@ function whitemage.check_whm()
         local sortable_debuffs_ids = S { }
         local aga_target
 
+        -- remove na setup
         for k,v in pairs(otto.fight.my_allies) do
             if v.debuffs then
                 for buff_id, v in pairs(v.debuffs) do
@@ -324,7 +385,8 @@ function whitemage.check_whm()
 
         local times_appearing = 0
         local last = ''
-        -- see if you can aga something off
+
+        -- see if you can aga an ally debuff off using strategems
         for k,v in spairs(sortable_debuffs, function(t,a,b) return t[b] < t[a] end) do 
             
             if v == last then
@@ -344,23 +406,70 @@ function whitemage.check_whm()
 
         if try_aga_debuffing and debuff_name ~= '' then
             if otto.cast.is_ally_valid_target(aga_target, 20) then 
-                if debuff(aga_target, debuff_name, try_aga_debuffing) then return end
+                if remove_na(aga_target, debuff_name, try_aga_debuffing) then return end
             end
         end
 
         for ally_id, debuff_name in pairs(sortable_debuffs) do
             if otto.cast.is_ally_valid_target(ally_id, 20) then 
-                if debuff(ally_id, debuff_name, false) then return end -- don't get caught trying to do all these debuffs
+                if remove_na(ally_id, debuff_name, false) then return end -- don't get caught trying to do all these debuffs
             end    
         end
 
-
         -- buffs
+        for _, ally in pairs(otto.fight.my_allies) do
+            if ally and otto.cast.is_mob_valid_target(ally, 20) and ally.buffs then
+                for buff in user_settings.job.whitemage.buffs:it() do
+                    local spell = res.spells:with('name', buff)
+                    local buff = res.buffs[spell.status] 
+                    local spell_recasts = windower.ffxi.get_spell_recasts()
+                    local has_buff = ally.buffs[buff.id] or false
+                    
+                    if spell and spell_recasts and spell_recasts[spell.id] == 0 and ally and not has_buff and otto.cast.aoe_range(spell, spell.range) then
+                        local delay = otto.cast.spell(spell, '<me>')
+                        whitemage.delay = delay
+                        return
+                    end
+                end
+            end
+        end
+
+        -- single target buffs
+            for target, buffs in pairs(user_settings.job.whitemage.buff) do
+                for buff in buffs:it() do
+                    local spell = res.spells:with('name', buff)
+                    local buff = res.buffs[spell.status]
+                    local spell_recasts = windower.ffxi.get_spell_recasts()
+                    local ally = otto.fight.ally_lookup(target, nil, nil)
+                    local has_buff = ally.buffs[buff.id] or false
+                    
+                    if spell and spell_recasts and spell_recasts[spell.id] == 0 and ally and not has_buff then
+                        local delay = otto.cast.spell(spell, ally)
+                        whitemage.delay = delay
+                        return
+                    end
+                end
+            end
 
         --debuffs 
+        -- for _, mob in pairs(otto.fight.my_targets) do
+            local mob = windower.ffxi.get_mob_by_target('t')
+            if mob and otto.cast.is_mob_valid_target(mob, 20) then
+                for debuff_spell in user_settings.job.whitemage.debuffs:it() do
+                    local spell = res.spells:with('name', debuff_spell)
+                    local debuff = res.buffs[spell.status]
+                    local spell_recasts = windower.ffxi.get_spell_recasts()
+                    local has_debuff = mob.debuffs[debuff.en] or false
 
+                    if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
+                        local delay = otto.cast.spell(spell, '<t>')
+                        whitemage.delay = delay
+                        return
+                    end
+                end
+            end
+        -- end
 
-        -- CKM TEST
         -- check for KO, with raise already sent.
         -- and remove if a player is no longer KO'd
         for ally_id, _ in pairs(whitemage.raises) do
@@ -372,15 +481,14 @@ function whitemage.check_whm()
                 end
             end
         end
-
         
-        -- CKM TEST
+        -- auto-raises
         for _, ally in pairs(otto.fight.my_allies) do
             if ally.buffs then
                 for buff_id, name in pairs(ally.buffs) do
 
                     -- don't attemp to raise the same person
-                    if name == "KO" then 
+                    if name == "KO" and user_settings.job.whitemage.auto_raise then 
                         if not whitemage.raises:contains(ally.id) and ally.distance < 20 then
                             raise(ally.id)
                         end
@@ -389,6 +497,10 @@ function whitemage.check_whm()
             end
         end
 
+        -- blow_cooldowns
+        -- Devotion
+        -- Sacrosanctity   -- Enhanced magic defense
+        -- Asylum          -- Enhanced resistance to enfeebling + Dispel effects
         -- abilities
             -- devotion
 
@@ -417,7 +529,6 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
 
     -- Casting finish
     if category == 'spell_finish' then
-        -- CKM TEST
         
         if otto.event_statics.raise_spells:contains(action.top_level_param) then 
             local ally = otto.fight.my_allies[target.id]
@@ -426,13 +537,22 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
             end
         end
 
-
+        -- CKM TEST -- this seems to happen quite often. (maybe fixed, if you don't see messages)
+        -- you can remove
         if action.message == 283 or action.message == 423 or action.message == 659 or action.message == 75 then
+                        
             if otto.event_statics.na_spells:contains(action.top_level_param) then
-                
-                -- local buff = res.buffs[2]
+                print(" I could be stuck in a debuff na cycle, check ")
+                local spell_cast = res.spells:with('recast_id', action.top_level_param)     --optional
+                local buff_to_search = otto.event_statics.dispel_to_debuff_map[spell_cast.en]
+                local buff = res.buffs:with('name', buff_to_search)
+                local ally = otto.fight.my_allies[target.id]
+                if spell_cast and buff and ally then
+                    print("Manually removing "..buff_to_search..' from '..ally.name)
+
+                    ally.buffs[buff.id] = nil
+                end
             end
-            print(" I could be stuck in a debuff na cycle, check ")
         end
 
         whitemage.delay = 5

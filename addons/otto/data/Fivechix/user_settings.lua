@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "tank",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -37,7 +37,7 @@ return {
             ["curaga"] = false,
             ["cure"] = true
         },
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -60,7 +60,7 @@ return {
     ["job"] = {
         ["paladin"] = {
             ["cooldowns"] = true,
-            ["enabled"] = true
+            ["enabled"] = false
         }
     },
     ["magic_burst"] = {

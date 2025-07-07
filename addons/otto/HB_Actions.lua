@@ -33,9 +33,9 @@ end
 --[[
 	Builds an action queue for defensive actions.  Returns the action deemed most important at the time.
 --]]
-function actions.get_defensive_action()
+-- function actions.get_defensive_action()
 	
-    local action = {}
+--     local action = {}
 	
     -- local cureq = otto.healer.get_cure_queue()
     -- while (not cureq:empty()) do
@@ -57,89 +57,89 @@ function actions.get_defensive_action()
 	-- 	end
 	-- end
     
-	if (not settings.disable.buff) then
-		local buffq = otto.buffs.getBuffQueue()
-		while (not buffq:empty()) do
-			local bact = buffq:pop()
-            if (bact.action ~= nil ) then 
-                local_queue_insert(bact.action.en, bact.name)
-                if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
-                    action.buff = bact
-                end
-            end
-		end
-	end
+	-- if (not settings.disable.buff) then
+	-- 	local buffq = otto.buffs.getBuffQueue()
+	-- 	while (not buffq:empty()) do
+	-- 		local bact = buffq:pop()
+    --         if (bact.action ~= nil ) then 
+    --             local_queue_insert(bact.action.en, bact.name)
+    --             if (action.buff == nil) and actor:in_casting_range(bact.name) and actor:ready_to_use(bact.action) then
+    --                 action.buff = bact
+    --             end
+    --         end
+	-- 	end
+	-- end
 	
-	local_queue_disp()
+	-- local_queue_disp()
 	
-	if (action.cure ~= nil) then
-		if (action.debuff ~= nil) and (action.debuff.action.en == 'Paralyna') and (action.debuff.name == actor.name) then
-			return action.debuff
-		elseif (action.debuff ~= nil) and ((action.debuff.prio + 2) < action.cure.prio) then
-			return action.debuff
-		elseif (action.buff ~= nil) and ((action.buff.prio + 2) < action.cure.prio) then
-			return action.buff
-		end
-		return action.cure
-	elseif (action.debuff ~= nil) then
-		if (action.buff ~= nil) and (action.buff.prio < action.debuff.prio) then
-			return action.buff
-		end
-		return action.debuff
-	elseif (action.buff ~= nil) then
-		return action.buff
-	end
-	return nil
-end
+	-- if (action.cure ~= nil) then
+	-- 	if (action.debuff ~= nil) and (action.debuff.action.en == 'Paralyna') and (action.debuff.name == actor.name) then
+	-- 		return action.debuff
+	-- 	elseif (action.debuff ~= nil) and ((action.debuff.prio + 2) < action.cure.prio) then
+	-- 		return action.debuff
+	-- 	elseif (action.buff ~= nil) and ((action.buff.prio + 2) < action.cure.prio) then
+	-- 		return action.buff
+	-- 	end
+	-- 	return action.cure
+	-- elseif (action.debuff ~= nil) then
+	-- 	if (action.buff ~= nil) and (action.buff.prio < action.debuff.prio) then
+	-- 		return action.buff
+	-- 	end
+	-- 	return action.debuff
+	-- elseif (action.buff ~= nil) then
+	-- 	return action.buff
+	-- end
+	-- return nil
+    -- end
 
 
-function actions.take_action(player, partner, targ)
-    otto.buffs.checkOwnBuffs()
-    local_queue_reset()
-    local action = actions.get_defensive_action()
-    if (action ~= nil) then         --If there's a defensive action to perform
-        --Record attempt time for buffs/debuffs
-        otto.buffs.buffList[action.name] = otto.buffs.buffList[action.name] or {}
-        if (action.type == 'buff') and (otto.buffs.buffList[action.name][action.buff]) then
-            otto.buffs.buffList[action.name][action.buff].attempted = os.clock()
-        elseif (action.type == 'debuff') then
-            otto.buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
-            if otto.buffs.debuffList[action.name][action.debuff.id].times_attempted and otto.buffs.debuffList[action.name][action.debuff.id].times_attempted > 0 then
-                otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = otto.buffs.debuffList[action.name][action.debuff.id].times_attempted + 1
-            else
-                otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = 1
-            end
-        end
+-- function actions.take_action(player, partner, targ)
+--     -- otto.buffs.checkOwnBuffs()
+--     local_queue_reset()
+--     -- local action = actions.get_defensive_action()
+--     if (action ~= nil) then         --If there's a defensive action to perform
+--         --Record attempt time for buffs/debuffs
+--         otto.buffs.buffList[action.name] = otto.buffs.buffList[action.name] or {}
+--         if (action.type == 'buff') and (otto.buffs.buffList[action.name][action.buff]) then
+--             otto.buffs.buffList[action.name][action.buff].attempted = os.clock()
+--         elseif (action.type == 'debuff') then
+--             otto.buffs.debuffList[action.name][action.debuff.id].attempted = os.clock()
+--             if otto.buffs.debuffList[action.name][action.debuff.id].times_attempted and otto.buffs.debuffList[action.name][action.debuff.id].times_attempted > 0 then
+--                 otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = otto.buffs.debuffList[action.name][action.debuff.id].times_attempted + 1
+--             else
+--                 otto.buffs.debuffList[action.name][action.debuff.id].times_attempted = 1
+--             end
+--         end
         
-        actor:take_action(action)
-    else 
+--         actor:take_action(action)
+--     else 
 
-        --Otherwise, there may be an offensive action
-        local action = actions.get_offensive_action(player)
+--         --Otherwise, there may be an offensive action
+--         local action = actions.get_offensive_action(player)
 
-        local monitored_players = otto.getMonitoredPlayers()
+--         local monitored_players = otto.getMonitoredPlayers()
 
-        if user_settings.pull.enabled then 
-            actor:take_action(action, '<t>')
-        end
+--         if user_settings.pull.enabled then 
+--             actor:take_action(action, '<t>')
+--         end
 
-        local master = windower.ffxi.get_mob_by_name(user_settings.assist.master)
-        if master == nil then return end
+--         local master = windower.ffxi.get_mob_by_name(user_settings.assist.master)
+--         if master == nil then return end
 
-        local master_engaged = (master.status == 1)
-        local matching_targets_with_master = player.target_index == master.target_index
+--         local master_engaged = (master.status == 1)
+--         local matching_targets_with_master = player.target_index == master.target_index
 
 
-        if master_engaged and (matching_targets_with_master or otto.assist.is_master) then 
-            actor:take_action(action, '<t>')
-            if action ~= nil and action.type == 'nuke_mob' and action.action.cast_time then
-                coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
-            end
-        end
-        offense.cleanup()
-    end
+--         if master_engaged and (matching_targets_with_master or otto.assist.is_master) then 
+--             actor:take_action(action, '<t>')
+--             if action ~= nil and action.type == 'nuke_mob' and action.action.cast_time then
+--                 coroutine.schedule(actions.remove_offensive_action:prepare(action.action.id), action.action.cast_time)
+--             end
+--         end
+--         offense.cleanup()
+--     end
 
-end
+-- end
 
 
 --[[

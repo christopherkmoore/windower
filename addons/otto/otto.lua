@@ -71,7 +71,6 @@ function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new()
     utils.load_configs()
 
-    otto.aspir.init()
     otto.follow.init()
     otto.magic_burst.init()
     -- otto.healer.init()
@@ -131,11 +130,6 @@ otto._events['render'] = windower.register_event('prerender', function()
             if actor:action_delay_passed() then
                 actor.last_action = now   
 
-                actions.take_action(player, partner, targ)
-
-                if user_settings.aspir.enabled then
-                    otto.aspir.prerender()
-                end
                 
                 if targ ~= nil and targ.id and user_settings.dispel.enabled then
                     otto.dispel.should_dispel(targ.id)

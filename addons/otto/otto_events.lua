@@ -33,9 +33,11 @@ local function aspir_command(arg)
     elseif command == 'on' or command == 'enable' or command == 'start' then
         user_settings.aspir.enabled = true
         message = 'Aspir enabled at ' .. user_settings.aspir.casting_mp .. '% mp'
+        otto.aspir.init()
     elseif command == 'off' or command == 'disable' == command == 'stop' then
         user_settings.aspir.enabled = false
         message = 'Aspiring is disabled'
+        otto.aspir.deinit()
     elseif command == 'mp' then
         if arg2 == nil or arg2 == '' then
             windower.add_to_chat(3, 'otto aspir mp requires a mp percent')

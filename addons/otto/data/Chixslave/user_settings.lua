@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "tank",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -58,8 +58,58 @@ return {
         ["ignoreTrusts"] = false
     },
     ["job"] = {
-        ["whitemage"] = {
-            ["enabled"] = true
+        ["whitemage"] = T{
+            ["buff"] = T{
+                ["Chixslave"] = L{
+                    [1] = "Haste",
+                    [2] = "Reraise IV",
+                    [3] = "Aurorastorm",
+                    ["n"] = 3
+                },
+                ["Fivechix"] = L{
+                    [1] = "Haste",
+                    ["n"] = 1
+                },
+                ["Fourchix"] = L{
+                    [1] = "Haste",
+                    ["n"] = 1
+                },
+                ["Onechix"] = L{
+                    [1] = "Haste",
+                    ["n"] = 1
+                },
+                ["Threechix"] = L{
+                    [1] = "Haste",
+                    ["n"] = 1
+                },
+                ["Twochix"] = L{
+                    [1] = "Haste",
+                    ["n"] = 1
+                }
+            },
+            ["buffs"] = L{
+                [1] = "Protectra V",
+                [2] = "Shellra V",
+                [3] = "Auspice",
+                ["n"] = 3
+            },
+            ["debuffs"] = L{
+                [1] = "Dia II",
+                [2] = "Slow",
+                [3] = "Paralyze",
+                [4] = "Silence",
+                [5] = "Addle",
+                ["n"] = 5
+            },
+            ["enabled"] = false,
+            ["settings"] = T{
+                ["auto_raise"] = true,
+                ["blow_cooldowns"] = true,
+                ["devotion"] = {
+                    ["enabled"] = true,
+                    ["target"] = "Fivechix"
+                }
+            }
         }
     },
     ["magic_burst"] = {

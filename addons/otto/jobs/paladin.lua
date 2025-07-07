@@ -168,8 +168,8 @@ function paladin.action_handler(category, action, actor_id, add_effect, target)
     if not categories:contains(category) or action.param == 0 then
         return
     end
+    
     local player = windower.ffxi.get_player()
-
     if actor_id ~= player.id then return end
 
     -- Casting finish

@@ -15,23 +15,38 @@ function blackmage.init()
         user_settings.job.blackmage = defaults
         user_settings:save()
     end
-
-    otto.assist.init()
+    if user_settings.aspir.enabled then
+        otto.assist.init()
+    end
     blackmage.check_blm:loop(blackmage.check_interval)
+    otto.aspir.init()
+
 end
 
 function blackmage.deinit()
     -- empty for now but for clearing debuffs
+    otto.aspir.deinit()
+
 end
 
 function blackmage.should_drain()
     local should_drain = windower.ffxi.get_player().vitals.hpp < 80
-
+    local target = windower.ffxi.get_mob_by_target('t')
     local drain = {id=245,en="Drain",ja="ドレイン",cast_time=3,element=7,icon_id=236,icon_id_nq=15,levels={[4]=12,[8]=10,[20]=21,[21]=15},mp_cost=21,prefix="/magic",range=12,recast=60,recast_id=245,requirements=2,skill=37,targets=32,type="BlackMagic"}
     local drain_cooldown = windower.ffxi.get_spell_recasts()[drain.id]
 
-    if drain_cooldown == 0 and should_drain and not offense.checkNukingQueueFor(drain) then
-        offense.addToNukeingQueue(drain)
+    if target and drain_cooldown == 0 and should_drain then
+        local delay = otto.cast.spell(drain, target)
+        blackmage.delay = delay
+        return
+    end
+end
+
+local function check_aspir()
+    if otto.aspir.aspirable_target then
+        local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
+        blackmage.delay = delay
+        return
     end
 end
 
@@ -39,34 +54,43 @@ end
 function blackmage.check_blm()
     if not user_settings.job.blackmage.enabled then return end
 
-    local player = windower.ffxi.get_player()
-    local buffs = S(player.buffs)
-    
-    blackmage.should_drain()
+    blackmage.counter = blackmage.counter + blackmage.check_interval
 
-    if player.vitals.hpp < 60 then
-        local manawall = {id=254,en="Mana Wall",ja="マナウォール",duration=300,element=7,icon_id=388,mp_cost=0,prefix="/jobability",range=0,recast_id=39,status=437,targets=1,tp_cost=0,type="JobAbility"}
-        local manawall_recast = windower.ffxi.get_ability_recasts()[manawall.recast_id]
+    if blackmage.counter >= blackmage.delay then
+        blackmage.counter = 0
+        blackmage.delay = blackmage.check_interval
 
-        if manawall_recast == 0 and not buffs:contains(manawall.status) then 
-            local delay = otto.cast.job_ability(manawall, '<me>')
-            blackmage.delay = delay
-            return
+        if user_settings.aspir.enabled then
+            check_aspir()
+        end
+
+        local player = windower.ffxi.get_player()
+        local buffs = S(player.buffs)
+        
+        blackmage.should_drain()
+
+        if player.vitals.hpp < 60 then
+            local manawall = {id=254,en="Mana Wall",ja="マナウォール",duration=300,element=7,icon_id=388,mp_cost=0,prefix="/jobability",range=0,recast_id=39,status=437,targets=1,tp_cost=0,type="JobAbility"}
+            local manawall_recast = windower.ffxi.get_ability_recasts()[manawall.recast_id]
+
+            if manawall_recast == 0 and not buffs:contains(manawall.status) then 
+                local delay = otto.cast.job_ability(manawall, '<me>')
+                blackmage.delay = delay
+                return
+            end
+        end
+
+        if user_settings.job.blackmage.cooldowns then
+            local cascade = {id=388,en="Cascade",ja="カスケード",duration=60,element=7,icon_id=661,mp_cost=0,prefix="/jobability",range=0,recast_id=12,status=598,targets=1,tp_cost=0,type="JobAbility"}
+            local cascade_recast = windower.ffxi.get_ability_recasts()[cascade.recast_id]
+
+            if player.vitals.tp >= 1000 and cascade_recast == 0 and not buffs:contains(cascade.status) then
+                local delay = otto.cast.job_ability(cascade, '<me>')
+                blackmage.delay = delay
+                return
+            end
         end
     end
-
-    if user_settings.job.blackmage.cooldowns then
-        local cascade = {id=388,en="Cascade",ja="カスケード",duration=60,element=7,icon_id=661,mp_cost=0,prefix="/jobability",range=0,recast_id=12,status=598,targets=1,tp_cost=0,type="JobAbility"}
-        local cascade_recast = windower.ffxi.get_ability_recasts()[cascade.recast_id]
-
-        if player.vitals.tp >= 1000 and cascade_recast == 0 and not buffs:contains(cascade.status) then
-            local delay = otto.cast.job_ability(cascade, '<me>')
-            blackmage.delay = delay
-            return
-        end
-    end
-
-    return blm_queue:getQueue()
 end
 
         
@@ -84,7 +108,8 @@ function blackmage.action_handler(category, action, actor_id, add_effect, target
     if not categories:contains(category) or action.param == 0 then
         return
     end
-
+    
+    local player = windower.ffxi.get_player()
     if actor_id ~= player.id then return end
 
     -- Casting finish

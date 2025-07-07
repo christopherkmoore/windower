@@ -27,32 +27,31 @@ end
 --=====================================================================
 -- creates the structure for first load.
 local function create_allies(party)
-    if not next(fight.my_allies)  then 
-        fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = party.p0.mob.distance, target_index = party.p0.mob.target_index, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = {}, buff_timers = {}, debuff_timers = {}, debuffs = {} }
-        fight.my_allies[party.p1.mob.id] = { name = party.p1.mob.name, id = party.p1.mob.id, index = party.p1.mob.index, distance = party.p1.mob.distance, target_index = party.p1.mob.target_index, claim_id = party.p1.mob.claim_id, tp = party.p1.tp, zone = party.p1.zone, mpp = party.p1.mpp, mp = party.p1.mp, hp = party.p1.hp, hpp = party.p1.hpp, buffs = {}, debuffs = {} }
-        fight.my_allies[party.p2.mob.id] = { name = party.p2.mob.name, id = party.p2.mob.id, index = party.p2.mob.index, distance = party.p2.mob.distance, target_index = party.p2.mob.target_index, claim_id = party.p2.mob.claim_id, tp = party.p2.tp, zone = party.p2.zone, mpp = party.p2.mpp, mp = party.p2.mp, hp = party.p2.hp, hpp = party.p2.hpp, buffs = {}, debuffs = {} }
-        fight.my_allies[party.p3.mob.id] = { name = party.p3.mob.name, id = party.p3.mob.id, index = party.p3.mob.index, distance = party.p3.mob.distance, target_index = party.p3.mob.target_index, claim_id = party.p3.mob.claim_id, tp = party.p3.tp, zone = party.p3.zone, mpp = party.p3.mpp, mp = party.p3.mp, hp = party.p3.hp, hpp = party.p3.hpp, buffs = {}, debuffs = {} }
-        fight.my_allies[party.p4.mob.id] = { name = party.p4.mob.name, id = party.p4.mob.id, index = party.p4.mob.index, distance = party.p4.mob.distance, target_index = party.p4.mob.target_index, claim_id = party.p4.mob.claim_id, tp = party.p4.tp, zone = party.p4.zone, mpp = party.p4.mpp, mp = party.p4.mp, hp = party.p4.hp, hpp = party.p4.hpp, buffs = {}, debuffs = {} }
-        fight.my_allies[party.p5.mob.id] = { name = party.p5.mob.name, id = party.p5.mob.id, index = party.p5.mob.index, distance = party.p5.mob.distance, target_index = party.p5.mob.target_index, claim_id = party.p5.mob.claim_id, tp = party.p5.tp, zone = party.p5.zone, mpp = party.p5.mpp, mp = party.p5.mp, hp = party.p5.hp, hpp = party.p5.hpp, buffs = {}, debuffs = {} }
-        return
+    if not next(fight.my_allies) then 
+        if party.p0 ~= nil and party.p0.mob then 
+            fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = party.p0.mob.distance, target_index = party.p0.mob.target_index, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = {}, buff_timers = {}, debuff_timers = {}, debuffs = {} }
+        end
+
+        if party.p1 ~= nil and party.p1.mob then 
+            fight.my_allies[party.p1.mob.id] = { name = party.p1.mob.name, id = party.p1.mob.id, index = party.p1.mob.index, distance = party.p1.mob.distance, target_index = party.p1.mob.target_index, claim_id = party.p1.mob.claim_id, tp = party.p1.tp, zone = party.p1.zone, mpp = party.p1.mpp, mp = party.p1.mp, hp = party.p1.hp, hpp = party.p1.hpp, buffs = {}, debuffs = {} }
+        end
+
+        if party.p2 ~= nil and party.p2.mob then 
+            fight.my_allies[party.p2.mob.id] = { name = party.p2.mob.name, id = party.p2.mob.id, index = party.p2.mob.index, distance = party.p2.mob.distance, target_index = party.p2.mob.target_index, claim_id = party.p2.mob.claim_id, tp = party.p2.tp, zone = party.p2.zone, mpp = party.p2.mpp, mp = party.p2.mp, hp = party.p2.hp, hpp = party.p2.hpp, buffs = {}, debuffs = {} }
+        end
+
+        if party.p3 ~= nil and party.p3.mob then 
+            fight.my_allies[party.p3.mob.id] = { name = party.p3.mob.name, id = party.p3.mob.id, index = party.p3.mob.index, distance = party.p3.mob.distance, target_index = party.p3.mob.target_index, claim_id = party.p3.mob.claim_id, tp = party.p3.tp, zone = party.p3.zone, mpp = party.p3.mpp, mp = party.p3.mp, hp = party.p3.hp, hpp = party.p3.hpp, buffs = {}, debuffs = {} }
+        end
+
+        if party.p4 ~= nil and party.p4.mob then 
+            fight.my_allies[party.p4.mob.id] = { name = party.p4.mob.name, id = party.p4.mob.id, index = party.p4.mob.index, distance = party.p4.mob.distance, target_index = party.p4.mob.target_index, claim_id = party.p4.mob.claim_id, tp = party.p4.tp, zone = party.p4.zone, mpp = party.p4.mpp, mp = party.p4.mp, hp = party.p4.hp, hpp = party.p4.hpp, buffs = {}, debuffs = {} }
+        end
+
+        if party.p5 ~= nil and party.p5.mob then 
+            fight.my_allies[party.p5.mob.id] = { name = party.p5.mob.name, id = party.p5.mob.id, index = party.p5.mob.index, distance = party.p5.mob.distance, target_index = party.p5.mob.target_index, claim_id = party.p5.mob.claim_id, tp = party.p5.tp, zone = party.p5.zone, mpp = party.p5.mpp, mp = party.p5.mp, hp = party.p5.hp, hpp = party.p5.hpp, buffs = {}, debuffs = {} }
+        end
     end
-end
-
-local function update_allies(party) 
-    -- need to unwrap, cause can be nil?
-    local p0_target = fight.target_lookup(nil, nil, party.p0.mob.target_index) or ''
-    local p1_target = fight.target_lookup(nil, nil, party.p1.mob.target_index) or ''
-    local p2_target = fight.target_lookup(nil, nil, party.p2.mob.target_index) or ''
-    local p3_target = fight.target_lookup(nil, nil, party.p3.mob.target_index) or ''
-    local p4_target = fight.target_lookup(nil, nil, party.p4.mob.target_index) or ''
-    local p5_target = fight.target_lookup(nil, nil, party.p5.mob.target_index) or ''
-
-    fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = math.sqrt(party.p0.mob.distance), target_index = party.p0.mob.target_index, target_name = p0_target, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = fight.my_allies[party.p0.mob.id].buffs, debuffs = fight.my_allies[party.p0.mob.id].debuffs }
-    fight.my_allies[party.p1.mob.id] = { name = party.p1.mob.name, id = party.p1.mob.id, index = party.p1.mob.index, distance = math.sqrt(party.p1.mob.distance), target_index = party.p1.mob.target_index, target_name = p1_target, claim_id = party.p1.mob.claim_id, tp = party.p1.tp, zone = party.p1.zone, mpp = party.p1.mpp, mp = party.p1.mp, hp = party.p1.hp, hpp = party.p1.hpp, buffs = fight.my_allies[party.p1.mob.id].buffs, debuffs = fight.my_allies[party.p1.mob.id].debuffs }
-    fight.my_allies[party.p2.mob.id] = { name = party.p2.mob.name, id = party.p2.mob.id, index = party.p2.mob.index, distance = math.sqrt(party.p2.mob.distance), target_index = party.p2.mob.target_index, target_name = p2_target, claim_id = party.p2.mob.claim_id, tp = party.p2.tp, zone = party.p2.zone, mpp = party.p2.mpp, mp = party.p2.mp, hp = party.p2.hp, hpp = party.p2.hpp, buffs = fight.my_allies[party.p2.mob.id].buffs, debuffs = fight.my_allies[party.p2.mob.id].debuffs }
-    fight.my_allies[party.p3.mob.id] = { name = party.p3.mob.name, id = party.p3.mob.id, index = party.p3.mob.index, distance = math.sqrt(party.p3.mob.distance), target_index = party.p3.mob.target_index, target_name = p3_target, claim_id = party.p3.mob.claim_id, tp = party.p3.tp, zone = party.p3.zone, mpp = party.p3.mpp, mp = party.p3.mp, hp = party.p3.hp, hpp = party.p3.hpp, buffs = fight.my_allies[party.p3.mob.id].buffs, debuffs = fight.my_allies[party.p3.mob.id].debuffs }
-    fight.my_allies[party.p4.mob.id] = { name = party.p4.mob.name, id = party.p4.mob.id, index = party.p4.mob.index, distance = math.sqrt(party.p4.mob.distance), target_index = party.p4.mob.target_index, target_name = p4_target, claim_id = party.p4.mob.claim_id, tp = party.p4.tp, zone = party.p4.zone, mpp = party.p4.mpp, mp = party.p4.mp, hp = party.p4.hp, hpp = party.p4.hpp, buffs = fight.my_allies[party.p4.mob.id].buffs, debuffs = fight.my_allies[party.p4.mob.id].debuffs }
-    fight.my_allies[party.p5.mob.id] = { name = party.p5.mob.name, id = party.p5.mob.id, index = party.p5.mob.index, distance = math.sqrt(party.p5.mob.distance), target_index = party.p5.mob.target_index, target_name = p5_target, claim_id = party.p5.mob.claim_id, tp = party.p5.tp, zone = party.p5.zone, mpp = party.p5.mpp, mp = party.p5.mp, hp = party.p5.hp, hpp = party.p5.hpp, buffs = fight.my_allies[party.p5.mob.id].buffs, debuffs = fight.my_allies[party.p5.mob.id].debuffs }    
 end
 
 local function update_buffs() 
@@ -99,6 +98,39 @@ local function update_buffs()
 end
 
 
+local function update_allies(party) 
+    -- need to unwrap, cause can be nil?
+    if party.p0 ~= nil and party.p0.mob then 
+        local p0_target = fight.target_lookup(nil, nil, party.p0.mob.target_index) or ''
+         fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = math.sqrt(party.p0.mob.distance), target_index = party.p0.mob.target_index, target_name = p0_target, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = fight.my_allies[party.p0.mob.id].buffs, debuffs = fight.my_allies[party.p0.mob.id].debuffs }
+    end
+    
+    if party.p1 ~= nil and party.p1.mob then 
+        local p1_target = fight.target_lookup(nil, nil, party.p1.mob.target_index) or ''
+        fight.my_allies[party.p1.mob.id] = { name = party.p1.mob.name, id = party.p1.mob.id, index = party.p1.mob.index, distance = math.sqrt(party.p1.mob.distance), target_index = party.p1.mob.target_index, target_name = p1_target, claim_id = party.p1.mob.claim_id, tp = party.p1.tp, zone = party.p1.zone, mpp = party.p1.mpp, mp = party.p1.mp, hp = party.p1.hp, hpp = party.p1.hpp, buffs = fight.my_allies[party.p1.mob.id].buffs, debuffs = fight.my_allies[party.p1.mob.id].debuffs }
+    end
+
+    if party.p2 ~= nil and party.p2.mob then
+        local p2_target = fight.target_lookup(nil, nil, party.p2.mob.target_index) or ''
+        fight.my_allies[party.p2.mob.id] = { name = party.p2.mob.name, id = party.p2.mob.id, index = party.p2.mob.index, distance = math.sqrt(party.p2.mob.distance), target_index = party.p2.mob.target_index, target_name = p2_target, claim_id = party.p2.mob.claim_id, tp = party.p2.tp, zone = party.p2.zone, mpp = party.p2.mpp, mp = party.p2.mp, hp = party.p2.hp, hpp = party.p2.hpp, buffs = fight.my_allies[party.p2.mob.id].buffs, debuffs = fight.my_allies[party.p2.mob.id].debuffs }    
+    end
+    
+    if party.p3 ~= nil and party.p3.mob then
+        local p3_target = fight.target_lookup(nil, nil, party.p3.mob.target_index) or ''
+        fight.my_allies[party.p3.mob.id] = { name = party.p3.mob.name, id = party.p3.mob.id, index = party.p3.mob.index, distance = math.sqrt(party.p3.mob.distance), target_index = party.p3.mob.target_index, target_name = p3_target, claim_id = party.p3.mob.claim_id, tp = party.p3.tp, zone = party.p3.zone, mpp = party.p3.mpp, mp = party.p3.mp, hp = party.p3.hp, hpp = party.p3.hpp, buffs = fight.my_allies[party.p3.mob.id].buffs, debuffs = fight.my_allies[party.p3.mob.id].debuffs }
+    end
+
+    if party.p4 ~= nil and party.p4.mob then 
+        local p4_target = fight.target_lookup(nil, nil, party.p4.mob.target_index) or ''
+        fight.my_allies[party.p4.mob.id] = { name = party.p4.mob.name, id = party.p4.mob.id, index = party.p4.mob.index, distance = math.sqrt(party.p4.mob.distance), target_index = party.p4.mob.target_index, target_name = p4_target, claim_id = party.p4.mob.claim_id, tp = party.p4.tp, zone = party.p4.zone, mpp = party.p4.mpp, mp = party.p4.mp, hp = party.p4.hp, hpp = party.p4.hpp, buffs = fight.my_allies[party.p4.mob.id].buffs, debuffs = fight.my_allies[party.p4.mob.id].debuffs }
+    end
+    
+    if party.p5 ~= nil and party.p5.mob then 
+        local p5_target = fight.target_lookup(nil, nil, party.p5.mob.target_index) or ''
+        fight.my_allies[party.p5.mob.id] = { name = party.p5.mob.name, id = party.p5.mob.id, index = party.p5.mob.index, distance = math.sqrt(party.p5.mob.distance), target_index = party.p5.mob.target_index, target_name = p5_target, claim_id = party.p5.mob.claim_id, tp = party.p5.tp, zone = party.p5.zone, mpp = party.p5.mpp, mp = party.p5.mp, hp = party.p5.hp, hpp = party.p5.hpp, buffs = fight.my_allies[party.p5.mob.id].buffs, debuffs = fight.my_allies[party.p5.mob.id].debuffs }        
+    end
+end
+
 -- main function, updates every second
 function fight.update_allies()
     local party = windower.ffxi.get_party()
@@ -120,15 +152,15 @@ end
 function fight.ally_lookup(name, id, index) 
     for k, v in pairs(fight.my_allies) do
         if name and v.name:lower() == name:lower() then
-            return T { v, v.mob }
+            return v
         end
 
         if id and v.mob.id == id then
-            return T { v, v.mob }
+            return v
         end
 
         if index and v.mob.index == index then
-            return T { v, v.mob }
+            return v
         end
     end
 end
@@ -139,6 +171,7 @@ end
 
 -- main function on 1 second tick
 function fight.update_targets() 
+
     local mobs = windower.ffxi.get_mob_array() 
 
     -- build the entire aggro'd mob list

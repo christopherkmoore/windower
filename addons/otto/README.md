@@ -15,24 +15,20 @@ off of what he has done from those libs and healbot.
 
 wants
 sub-job
-whm regens
 rdm 
 pass / lot
-add comments for names on the resists?
 
 Bugs
-geo-preactions are fucking up magic bursts.
-fix whm erase-ga (it's breaking buffs because of prioritization.) -- maybe fixed?
 weaponskill / magicburst carries to new target.
-make queue more efficient
 add checks -- aspir is targeting any target
-maybe curaga deciding could use a bit of touch up?
-dispel resists not recasting?
+add distance checks on spells targets to improve the check ticks
+add nil checks during my_allies updates
+spell.cast definitely has bugs
 
 TODO
-aspir is targeting any target -- offensive action need better conditions for performing
-white should tick faster (cure is too slow sometimes seems like ~3-4 second delay)
-
+finish WHM buffs / debuffs
+remove old buffs/ debuffs
+AutoCOR? Dunno seems pretty simple... buffs i guess?
 
 
 Finish EMPY

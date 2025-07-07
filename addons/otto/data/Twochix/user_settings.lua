@@ -8,10 +8,10 @@ return {
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
-        ["should_engage"] = true,
+        ["should_engage"] = false,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "tank",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -81,12 +81,6 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = true,
-        ["name"] = "Tachi: Fudo",
-        ["partner"] = {
-            ["name"] = "Twochix",
-            ["tp"] = 1000,
-            ["weaponskill"] = "Tachi: Fudo"
-        }
+        ["enabled"] = false
     }
 }

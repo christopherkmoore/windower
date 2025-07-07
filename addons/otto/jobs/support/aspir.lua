@@ -2,15 +2,20 @@
 
 local aspir = T{ immunities = {}, _events = {} }
 
-require('luau')
-require('actions')
-
 local spell = { 
-    aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
-    aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir3 = {id=881,en="Aspir III",ja="アスピルIII",cast_time=3,element=7,icon_id=657,icon_id_nq=15,levels={[4]=550,[21]=550},mp_cost=2,prefix="/magic",range=12,recast=26,recast_id=881,requirements=0,skill=37,targets=32,type="BlackMagic"},
+    aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
+    aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
 }
 
+-- genearl check ticks
+aspir.check_interval = 0.4
+aspir.delay = 4
+aspir.counter = 0
+
+aspir.aspirable_target = T{}
+aspir.should_use_spell = T{}
+aspir.loop = {}
 
 function aspir.init()
 
@@ -25,62 +30,68 @@ function aspir.init()
         user_settings:save()
     end
 
+    aspir.loop = coroutine.create(aspir.check_loop)
+
+end
+
+function aspir.deinit()
+    aspir.loop.yield()
 end
 
 local tick_delay = os.clock()
 
-function aspir.should_cast()
-    -- no target
+local function can_cast()
+    -- check if a target is set and if it's alive still 
+    if aspir.aspirable_target and otto.fight.my_targets[aspir.aspirable_target.id] then return end
+
     local player = windower.ffxi.get_player()
-    if not player.target_index then return false end
-   
-    -- is claimed
-    local mob = windower.ffxi.get_mob_by_index(player.target_index)
-    if mob.claim_id == 0 then return false end
-    
-    -- mob has mp
-    if otto.config.maspir_immunities[mob.name] == false then return false end
+    for target_id, mob in pairs(otto.fight.my_targets) do
+        local aspirable = otto.config.maspir_immunities[mob.name] == false
+        local valid_target = otto.cast.is_mob_valid_target(mob, spell.aspir.range)
+        local at_mp_threshhold = user_settings.aspir.casting_mp < player.vitals.mpp
 
-    -- is casters mpp at threshold mpp?
-    if user_settings.aspir.casting_mp < player.vitals.mpp then return false end
-
-    -- is a valid target
-    if mob.is_npc and mob.valid_target and mob.distance < 510 then 
-        return true
-    end
-    return true
-end
-
--- Prerender entry point. Steps through with early returns for if aspir should be added to the
--- offensive nuking queue.
-function aspir.prerender()
-    if not user_settings.aspir.enabled then return end
-    if not aspir.should_cast() then return end 
-    
-    local spells = windower.ffxi.get_spells()
-
-    local aspir3_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir3.id]
-    if spells[spell.aspir3.id] == true and aspir3_cooldown == 0 and (user_settings.aspir.tier == 3 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
-        if offense.nukes[spell.aspir3.id] == nil then
-            offense.addToNukeingQueue(spell.aspir3)
-            return
+        if aspirable and valid_target and at_mp_threshhold then 
+            aspir.aspirable_target= mob
+            return true
         end
     end
 
-    local aspir2_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir2.id]
-    if spells[spell.aspir2.id] == true and aspir2_cooldown == 0 and (user_settings.aspir.tier == 2 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir2) then
-        if offense.nukes[spell.aspir2.id] == nil then
-            offense.addToNukeingQueue(spell.aspir2)
-            return
-        end        
-    end
+    aspir.aspirable_target = T{}
+    return false
+end
 
-    local aspir_cooldown = windower.ffxi.get_spell_recasts()[spell.aspir.id]
-    if spells[spell.aspir.id] == true and aspir_cooldown == 0 and (user_settings.aspir.tier == 1 or user_settings.aspir.casts_all) and not offense.checkNukingQueueFor(spell.aspir3) then
-        if offense.nukes[spell.aspir] == nil then
-            offense.addToNukeingQueue(spell.aspir)
+local function set_aspir() 
+    if not aspir.aspirable_target then return end
+
+    local spells_learned = windower.ffxi.get_spells()
+    local cooldowns = windower.ffxi.get_spell_recasts()
+    local tier_trying = 3
+
+    for aspir in spell:it() do
+        local learned = spells_learned[aspir.id] 
+        local cooldown = cooldowns[aspir.id]
+
+        if learned and cooldown == 0 and (user_settings.aspir.tier == tier_trying or user_settings.aspir.casts_all) then
+            aspir.should_use_spell = aspir
             return
-        end        
+        end
+        tier_trying = tier_trying - 1
+    end
+end
+
+function aspir.check_loop()
+    print('in check loop')
+    if not user_settings.aspir.enabled then return end
+    if not otto.fight.my_targets and not aspir.aspirable_target then return end 
+
+    aspir.counter = aspir.counter + aspir.check_interval
+
+    if aspir.counter >= aspir.delay then
+        aspir.counter = 0
+        aspir.delay = aspir.check_interval
+
+        if not can_cast() then return end 
+        set_aspir() 
     end
 end
 
@@ -92,6 +103,44 @@ function aspir.update_DB(actor, damage)
     otto.config.maspir_immunities[actor] = hasMP
 
     otto.config.maspir_immunities.save(otto.config.maspir_immunities)
+end
+       
+function aspir.action_handler(category, action, actor_id, add_effect, target)
+	local categories = S{     
+    	'job_ability',
+    	'casting_begin',
+        'spell_finish',
+        'item_finish',
+        'item_begin'
+	 }
+
+     local start_categories = S{ 'casting_begin', 'item_begin'}
+
+    if not categories:contains(category) or action.param == 0 then
+        return
+    end
+    local player = windower.ffxi.get_player()
+    if actor_id ~= player.id then return end
+
+    -- Casting finish
+    if category == 'spell_finish' then
+        aspir.delay = 5
+    end
+
+    if category == 'item_finish' then 
+        aspir.delay = 2.2
+    end
+
+    if start_categories:contains(category) then 
+        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
+            aspir.delay = 4.2
+        end
+
+        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
+            aspir.delay = 2.2
+        end
+    end
+
 end
 
 return aspir
