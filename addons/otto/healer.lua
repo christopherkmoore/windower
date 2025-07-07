@@ -20,6 +20,7 @@ function healer.init()
         user_settings:save()
     end
 
+    otto.assist.init()
     healer.init_cure_potencies()
 
     user_settings.healer.healing.max = {}

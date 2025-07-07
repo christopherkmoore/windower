@@ -22,14 +22,12 @@ local function assign_roles()
 
     if player.main_job == "BRD" or player.main_job == "GEO" or player.main_job == "WHM" or 
     player.main_job == "BLM"  or player.main_job == "SMN"  or player.main_job == "SCH" then
-        user_settings.assist.slaves[player.name] = 'backline'
+        windower.send_command('otto assist role backline')
     elseif player.main_job == "RUN" or player.main_job == "PLD" then
-        user_settings.assist.slaves[player.name] = 'tank'
+        windower.send_command('otto assist role tank')
     else
-        user_settings.assist.slaves[player.name] = 'frontline'
+        windower.send_command('otto assist role frontline')
     end  
-
-
 end
 
 function assist.init() 
@@ -46,8 +44,10 @@ function assist.init()
         user_settings:save()
     end
 
-    windower.register_event('incoming chunk', assist.incoming_chunk_handler)
-    windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
+    if otto._events['assist incoming chunk'] == nil or otto._events['assist outgoing chunk'] == nil then
+        otto._events['assist incoming chunk'] = windower.register_event('incoming chunk', assist.incoming_chunk_handler)
+        otto._events['assist outgoing chunk'] = windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
+    end
 
     assign_roles()
 end
@@ -151,7 +151,7 @@ function assist.swap_target_and_cast(mob, spell)
     end
 
     local player = windower.ffxi.get_player()
-    local elegy_recast = windower.ffxi.get_spell_recasts()[spell] or windower.ffxi.get_spell_recasts()[spell.id]
+    local elegy_recast = windower.ffxi.get_spell_recasts()[spell]
 
     if elegy_recast == 0 then
 
@@ -277,40 +277,6 @@ local function close_in(target_type) -- 't', 'bt'
 	
 	closing_in = false
 	windower.ffxi.run(false)
-end
-
-function assist.targets()
-    if not assist.is_master() then return end
-
-    local target = windower.ffxi.get_mob_by_target('t')
-
-    if not target then return end
-
-    local player_target = windower.ffxi.get_mob_by_id(target.id)
-		
-    if not player_target then
-		return
-    end
-
-    windower.send_ipc_message('target '..player_target.id)
-end
-
--- targets something
--- player 
-function assist.target(player)
-    if not player then return end
-
-    local target = windower.ffxi.get_mob_by_target('t')
-    
-    if not target then return end
-
-    local player_target = windower.ffxi.get_mob_by_id(target.id)
-		
-    if not player_target then
-		return
-    end
-
-    windower.send_ipc_message('target '..player_target.id..' '..player)
 end
 
 function assist.master_target_no_close_in(id)

@@ -69,6 +69,6 @@ send Fourchix exec fights/tank/auto_cor
 wait 0.3
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 

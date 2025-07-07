@@ -8,6 +8,7 @@
 -- ex step 3 something > Light
 -- skillchains addons has code for steps I believe.
 
+-- min_hp not implemented. I don't think the partner.tp is either
 local lor_res = _libs.lor.resources
 local ffxi = _libs.lor.ffxi
 
@@ -15,10 +16,10 @@ local weaponskill = { }
 
 function weaponskill.init()
     local defaults = { }
-    defaults.enabled = true           -- top level enable toggle. on | off
+    defaults.enabled = true              -- top level enable toggle. on | off
 	defaults.partner = 'none'            -- weaponskill partner to create skillchains with
-	defaults.min_hp = 80             -- Don't weaponskill below this hp%
-	defaults.name = 'Savage Blade'   -- Weaponskill to use
+	defaults.min_hp = 80                 -- Don't weaponskill below this hp%
+	defaults.name = 'Savage Blade'       -- Weaponskill to use
    
     if user_settings.weaponskill == nil then
         user_settings.weaponskill = defaults
@@ -44,11 +45,19 @@ function weaponskill.can_close_skillchain()
 end
 
 function weaponskill.should_weaponskill_to_close()
-    if not weaponskill.skillchain_active then return false end
-    if not weaponskill.can_skillchain then return false end
 
     local now = os.clock() 
-    if now < weaponskill.window_close and now > weaponskill.window_open then
+    local window_open = now < weaponskill.window_close and now > weaponskill.window_open
+    if weaponskill.skillchain_active and weaponskill.can_skillchain and window_open and user_settings.weaponskill.partner.name and otto.fight.ally_lookup(user_settings.weaponskill.partner.name) then
+        return true
+    end
+
+    return false
+end
+
+function weaponskill.should_weaponskill_to_open()
+    local now = os.clock() 
+    if not weaponskill.skillchain_active and weaponskill.skillchain_start == 0 then
         return true
     end
 
@@ -102,20 +111,23 @@ function weaponskill.action(target)
         local player = windower.ffxi.get_player().name
         local should_open_ws = (user_settings.weaponskill.partner == 'none' or user_settings.weaponskill.partner == '' or user_settings.weaponskill.partner.name == player)
 
-        if  should_open_ws and not weaponskill.skillchain_active then
-            if user_settings.weaponskill.partner == 'none' then 
-                return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
-            else 
-                return {action=lor_res.action_for(user_settings.weaponskill.partner.weaponskill),name='<t>'}
-            end
-
-        end
-        
-        if (weaponskill.should_weaponskill_to_close()) then
+        if weaponskill.should_weaponskill_to_close() then
+            weaponskill.close_window()
             return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
         end
+
+        if weaponskill.should_weaponskill_to_open() then
+            if user_settings.weaponskill.partner == 'none' then
+                weaponskill.open_window()
+                return {action=lor_res.action_for(user_settings.weaponskill.name),name='<t>'}
+            else 
+                weaponskill.open_window()
+                return {action=lor_res.action_for(user_settings.weaponskill.partner.weaponskill),name='<t>'}
+            end
+        end
+
+        weaponskill.check_should_window_close(target)
     end
-    weaponskill.check_should_window_close(target)
 
     return nil
 end
@@ -138,7 +150,7 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
     local ws_is_from_teammate = ids:contains(actor)
     if not ws_is_from_teammate then return end
 
-    weaponskill.close_and_reopen_window(target.id)
+    weaponskill.close_and_reopen_window(target.id) -- there was a ws and now it's ready for close
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then

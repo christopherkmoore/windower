@@ -64,6 +64,10 @@ send Fourchix cor on
 wait 0.3
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
+
+send Twochix otto ws on;
+send Twochix otto ws Tachi: Fudo; 
+send Twochix otto ws partner Twochix 1000 Tachi: Fudo;

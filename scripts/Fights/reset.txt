@@ -6,8 +6,5 @@
 // Reset Step
 ////////////////////////////////
 
-otto buffs wipebuffs;
-otto debuffs wipedebuffs;
 
 otto on;
-send Twochix otto assist engages off;

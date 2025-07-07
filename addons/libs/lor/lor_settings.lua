@@ -92,6 +92,7 @@ end
     exist, then it is created and populated with the default values.
 --]]
 function lor_settings.load(filepath, defaults)
+
     if type(filepath) ~= 'string' then
         filepath, defaults = 'data/settings.lua', filepath
     end

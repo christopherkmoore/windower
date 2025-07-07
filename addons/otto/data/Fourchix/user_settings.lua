@@ -10,8 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -81,12 +81,6 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = false,
-        ["min_hp"] = 10,
-        ["name"] = "Leaden Salute",
-        ["partner"] = {
-            ["name"] = "Twochix",
-            ["tp"] = 1000
-        }
+        ["enabled"] = false
     }
 }

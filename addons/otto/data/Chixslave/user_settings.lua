@@ -10,8 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -37,7 +37,7 @@ return {
             ["curaga"] = false,
             ["cure"] = false
         },
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -80,8 +80,6 @@ return {
     },
     ["weaponskill"] = {
         ["enable"] = true,
-        ["min_hp"] = 80,
-        ["name"] = "Savage Blade",
-        ["partner"] = "none"
+        ["enabled"] = false
     }
 }

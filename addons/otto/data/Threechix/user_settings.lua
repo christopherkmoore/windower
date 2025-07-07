@@ -10,8 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -95,9 +95,6 @@ return {
         ["with"] = "/ma Poison"
     },
     ["weaponskill"] = {
-        ["enabled"] = true,
-        ["min_hp"] = 80,
-        ["name"] = "Savage Blade",
-        ["partner"] = "none"
+        ["enabled"] = false
     }
 }

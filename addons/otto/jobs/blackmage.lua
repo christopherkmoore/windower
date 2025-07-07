@@ -16,7 +16,7 @@ function blackmage.init()
         user_settings:save()
     end
 
-    
+    otto.assist.init()
     blackmage.check_blm:loop(blackmage.check_interval)
 end
 

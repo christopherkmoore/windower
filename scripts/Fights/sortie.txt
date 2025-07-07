@@ -45,7 +45,7 @@ send Threechix otto buff Threechix indi-acumen on;
 send Threechix otto geo bubble Twochix geo-malaise 8;
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
 send Threechix otto buff panik haste on;

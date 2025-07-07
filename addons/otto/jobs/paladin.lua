@@ -51,6 +51,7 @@ function paladin.init()
     end
     paladin.create_bufflist()
 
+    otto.assist.init()
     paladin.check_pld:loop(paladin.check_interval)
 end
 
@@ -78,7 +79,6 @@ function paladin.check_pld()
     if paladin.counter >= paladin.delay then
         paladin.counter = 0
         paladin.delay = paladin.check_interval
-        
         local player = windower.ffxi.get_player()
         local target = windower.ffxi.get_mob_by_target('t')
         local buffs = S(player.buffs)

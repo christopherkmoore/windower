@@ -12,6 +12,7 @@
 
 	TODO: maybe open / close window from ws? use to know when to burst.
 	filtering burst targets by if window was opened by a teammate?
+	during window add a debuff to the monster 'burst-window-open'?
 ]]
 
 local magic_burst = T{ _events = { } }

@@ -70,14 +70,18 @@ send Fourchix exec fights/tank/auto_cor
 wait 0.3
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
+send Twochix otto ws on;
+send Twochix otto ws Tachi: Fudo; 
+send Twochix otto ws partner Twochix 1000 Tachi: Fudo;
+
 send Twochix otto assist engages on;
+
 send Chixslave otto buff Onechix haste on;
 send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;
 send Chixslave otto buff Fourchix haste on;
 send Chixslave otto buff Fivechix haste on;
-send Onechix otto buff Fivechix refresh on;
 send Chixslave otto buff Chixslave haste on;

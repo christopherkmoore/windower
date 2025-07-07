@@ -18,6 +18,7 @@ bard.times = {}
 
 
 --- Notes for construction
+-- ideas: auto playlist creation (look at jobs), adapt to conditions (mages MP Low, swap to 2 ballads?) Etudes?
 
 function bard.init()
     local defaults = T{ 
@@ -53,6 +54,7 @@ function bard.init()
         user_settings:save()
     end
 
+    otto.assist.init()
     bard.support.start()
     bard.check_bard:loop(bard.check_interval)
 end
@@ -95,7 +97,6 @@ function bard.check_fight_type()
 end
 
 function bard.check_bard()
-    otto.debug.create_log(bard.buffs, 'bard_buffs')
     if not user_settings.job.bard.settings.enabled then return end
     bard.party = bard.support.party()
 
@@ -172,7 +173,10 @@ function bard.check_bard()
 
         if otto.dispel.should_dispel_new() ~= nil then
             local mob = otto.dispel.should_dispel_new()
-            otto.assist.swap_target_and_cast(mob, 462) -- magic finale
+            local spell = res.spells[462]
+            local delay = otto.cast.spell(spell, mob)
+            bard.delay = delay
+            return
         end
 
         -- check songs
@@ -198,19 +202,19 @@ function bard.check_bard()
 
         -- check debuffs (TODO: re-write to use my new my_targets and bounce between targets. focus master target first)
         if user_settings.job.bard.bard_settings.debuffing then
-            local mob = windower.ffxi.get_mob_by_target('t')
-            
-            if mob and otto.cast.is_mob_valid_target(mob, 20) then
+            for _, mob in pairs(otto.fight.my_targets) do
+                if mob and otto.cast.is_mob_valid_target(mob, 20) then
+                    for song in user_settings.job.bard.debuffs:it() do
+                        local spell = res.spells:with('name', song)
+                        local debuff = res.buffs[spell.status]
+                        local spell_recasts = windower.ffxi.get_spell_recasts()
+                        local has_debuff = mob['debuffs'][debuff.en] or false
 
-                for song in user_settings.job.bard.debuffs:it() do
-                    local spell = res.spells:with('name', song)
-                    local debuff = res.buffs[spell.status]
-                    local my_mob = otto.fight.my_targets[mob.id]
-
-                    if spell and (mob and not my_mob['debuffs'][debuff.en]) then
-                        local delay = otto.cast.spell(spell, mob)
-                        bard.delay = delay
-                        return
+                        if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
+                            local delay = otto.cast.spell(spell, mob)
+                            bard.delay = delay
+                            return
+                        end
                     end
                 end
             end

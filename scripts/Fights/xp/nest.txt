@@ -38,7 +38,7 @@ send Onechix sing march 1;
 send Threechix exec fights/auto_geo
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
 send Threechix otto buff Twochix Haste on;

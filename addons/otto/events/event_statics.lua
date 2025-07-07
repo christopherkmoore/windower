@@ -25,7 +25,14 @@ event_statics.monster_buff_gained = S{ 186, 194, 205, 230, 266, 280, 319 }
 event_statics.cant_cast_states = T{ 0, 2, 6, 7, 10, 14, 28, 29, 193, 262 } -- KO, Sleep, Silence, Petrification, Stun, Charm, Terrorize, Mute, Lullaby, Omerta
 
 --=====================================================================
--- MARK: Bard stuff 
+-- MARK: White Mage 
+--=====================================================================
+
+event_statics.debuff_to_dispel_map = {['Accuracy Down']='Erase',['addle']='Erase',['AGI Down']='Erase',['Attack Down']='Erase',['bind']='Erase',['Bio']='Erase',['blindness']='Blindna',['Burn']='Erase',['Choke']='Erase',['CHR Down']='Erase',['curse']='Cursna',['Defense Down']='Erase',['DEX Down']='Erase',['Dia']='Erase',['disease']='Viruna',['doom']='Cursna',['Drown']='Erase',['Elegy']='Erase',['Evasion Down']='Erase',['Frost']='Erase',['Inhibit TP']='Erase',['INT Down']='Erase',['Lullaby']='Cure',['Magic Acc. Down']='Erase',['Magic Atk. Down']='Erase',['Magic Def. Down']='Erase',['Magic Evasion Down']='Erase',['Max HP Down']='Erase',['Max MP Down']='Erase',['Max TP Down']='Erase',['MND Down']='Erase',['Nocturne']='Erase',['paralysis']='Paralyna',['petrification']='Stona',['plague']='Viruna',['poison']='Poisona',['Rasp']='Erase',['Requiem']='Erase',['Shock']='Erase',['silence']='Silena',['slow']='Erase',['STR Down']='Erase',['VIT Down']='Erase',['weight']='Erase'}
+event_statics.raise_spells = S{12,13,140,494} 
+event_statics.na_spells = S{143, 14, 15, 16, 17, 18, 19, 20, 95} 
+--=====================================================================
+-- MARK: Bard 
 --=====================================================================
 event_statics.song_buff_ids = S{195,196,197,198,199,200,201,206} -- 215 etude and 216 carol?
 

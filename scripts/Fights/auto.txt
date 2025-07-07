@@ -61,7 +61,7 @@ send Fourchix exec fights/auto_blm
 wait 0.3
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
 send Onechix otto pull on;

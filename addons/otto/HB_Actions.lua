@@ -37,25 +37,25 @@ function actions.get_defensive_action()
 	
     local action = {}
 	
-    local cureq = otto.healer.get_cure_queue()
-    while (not cureq:empty()) do
-        local cact = cureq:pop()
-        local_queue_insert(cact.action.en, cact.name)
-        if (action.cure == nil) and actor:in_casting_range(cact.name) then
-            action.cure = cact
-        end
-    end
+    -- local cureq = otto.healer.get_cure_queue()
+    -- while (not cureq:empty()) do
+    --     local cact = cureq:pop()
+    --     local_queue_insert(cact.action.en, cact.name)
+    --     if (action.cure == nil) and actor:in_casting_range(cact.name) then
+    --         action.cure = cact
+    --     end
+    -- end
 
-	if (not settings.disable.na) then
-		local dbuffq = otto.buffs.getDebuffQueue()
-		while (not dbuffq:empty()) do
-			local dbact = dbuffq:pop()
-            local_queue_insert(dbact.action.en, dbact.name)
-			if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
-				action.debuff = dbact
-			end
-		end
-	end
+	-- if (not settings.disable.na) then
+	-- 	local dbuffq = otto.buffs.getDebuffQueue()
+	-- 	while (not dbuffq:empty()) do
+	-- 		local dbact = dbuffq:pop()
+    --         local_queue_insert(dbact.action.en, dbact.name)
+	-- 		if (action.debuff == nil) and actor:in_casting_range(dbact.name) and actor:ready_to_use(dbact.action) then
+	-- 			action.debuff = dbact
+	-- 		end
+	-- 	end
+	-- end
     
 	if (not settings.disable.buff) then
 		local buffq = otto.buffs.getBuffQueue()

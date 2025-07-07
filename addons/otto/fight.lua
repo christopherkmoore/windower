@@ -172,7 +172,7 @@ function fight.update_targets()
         end
     end
 
-    -- otto.debug.create_log(fight.my_targets, 'my_targets')
+    otto.debug.create_log(fight.my_targets, 'my_targets')
 end
 
 --=====================================================================

@@ -11,8 +11,8 @@ return {
         ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -141,9 +141,6 @@ return {
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
-        ["enabled"] = false,
-        ["min_hp"] = 15,
-        ["name"] = "Savage Blade",
-        ["partner"] = "none"
+        ["enabled"] = false
     }
 }

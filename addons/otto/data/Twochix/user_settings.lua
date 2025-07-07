@@ -11,8 +11,8 @@ return {
         ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -82,8 +82,11 @@ return {
     },
     ["weaponskill"] = {
         ["enabled"] = true,
-        ["min_hp"] = 15,
         ["name"] = "Tachi: Fudo",
-        ["partner"] = "none"
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Tachi: Fudo"
+        }
     }
 }

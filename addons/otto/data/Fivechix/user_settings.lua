@@ -10,8 +10,8 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
-            ["Fourchix"] = "backline",
+            ["Fivechix"] = "tank",
+            ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
             ["Twochix"] = "frontline"
@@ -37,7 +37,7 @@ return {
             ["curaga"] = false,
             ["cure"] = true
         },
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["healing"] = {
             ["curaga_min_targets"] = 3,
             ["max"] = {
@@ -80,9 +80,6 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = false,
-        ["min_hp"] = 80,
-        ["name"] = "Swift Blade",
-        ["partner"] = "none"
+        ["enabled"] = false
     }
 }

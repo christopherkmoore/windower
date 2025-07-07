@@ -1,58 +1,80 @@
 return {
 -- Table: {1}
 {
-   [17478073]={2},
-   [17478074]={3},
-   [17478071]={4},
+   [17478094]={2},
+   [17478089]={3},
+   [17478092]={4},
+   [17478093]={5},
 },
 -- Table: {2}
 {
    ["engaged"]="agro",
-   ["debuffs"]={5},
-   ["name"]="Locus Hornfly",
-   ["id"]=17478073,
-   ["distance"]=29.269855499268,
-   ["dispellables"]={6},
-   ["index"]=441,
+   ["debuffs"]={6},
+   ["name"]="Apex Worker Lugcrawler",
+   ["id"]=17478094,
+   ["distance"]=38.355255126953,
+   ["dispellables"]={7},
+   ["index"]=462,
 },
 -- Table: {3}
 {
-   ["engaged"]="agro",
-   ["debuffs"]={7},
+   ["engaged"]="fighting",
+   ["debuffs"]={8},
    ["name"]="Apex Worker Lugcrawler",
-   ["id"]=17478074,
-   ["distance"]=49.064346313477,
-   ["dispellables"]={8},
-   ["index"]=442,
+   ["id"]=17478089,
+   ["distance"]=717.88391113281,
+   ["dispellables"]={9},
+   ["index"]=457,
 },
 -- Table: {4}
 {
    ["engaged"]="agro",
-   ["debuffs"]={9},
+   ["debuffs"]={10},
    ["name"]="Apex Hornfly",
-   ["id"]=17478071,
-   ["distance"]=31.470781326294,
-   ["dispellables"]={10},
-   ["index"]=439,
+   ["id"]=17478092,
+   ["distance"]=38.490894317627,
+   ["dispellables"]={11},
+   ["index"]=460,
 },
 -- Table: {5}
 {
-   ["sleep"]=true,
+   ["engaged"]="fighting",
+   ["debuffs"]={12},
+   ["name"]="Locus Hornfly",
+   ["id"]=17478093,
+   ["distance"]=4.9706501960754,
+   ["dispellables"]={13},
+   ["index"]=461,
 },
 -- Table: {6}
 {
+   ["Nocturne"]=true,
+   ["sleep"]=true,
+   ["Elegy"]=true,
 },
 -- Table: {7}
 {
-   ["sleep"]=true,
 },
 -- Table: {8}
 {
+   ["sleep"]=true,
 },
 -- Table: {9}
 {
 },
 -- Table: {10}
+{
+   ["sleep"]=true,
+},
+-- Table: {11}
+{
+},
+-- Table: {12}
+{
+   ["sleep"]=true,
+   ["Elegy"]=true,
+},
+-- Table: {13}
 {
 },
 }

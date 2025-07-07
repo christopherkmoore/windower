@@ -68,7 +68,7 @@ send Fourchix cor roll 2 war;
 wait 0.3
 
 ////////////////////////////////////
-// Guests
+// Guests+ Fight specific setup
 ////////////////////////////////////
 
 send Chixslave otto buff Onechix haste on;

@@ -15,17 +15,34 @@ function cast.spell(spell, mob)
     if not actor:in_casting_range(mob) then return 0 end
     if not actor:can_use(spell) then return 0 end
     
-    if mob and mob.name and mob.id then
+    if mob and type(mob) == 'table' and mob.name and mob.id then
         local current_mob_target = windower.ffxi.get_mob_by_target('t')
 
-        if current_mob_target and otto.fight.my_targets[mob.id] and mob.id == current_mob_target.id then
+        -- it's one of the targets i'm fighting
+        if current_mob_target and otto.fight.my_targets[mob.id] and mob.id ~= current_mob_target.id then
             otto.assist.swap_target_and_cast(mob, spell.id)
             return spell.cast_time
-        else 
+        end
+
+        local ally = otto.fight.my_allies[mob.id]
+
+        if ally and current_mob_target ~= ally.id then
+            otto.assist.swap_target_and_cast(mob, spell.id)
+            return spell.cast_time
+        end
+    end
+
+    if type(mob) == 'string' then
+        if mob == '<t>' then
             windower.send_command(('input %s "%s" <t>'):format("/ma", spell.en))
             return spell.cast_time
-        
+        elseif mob == '<me>' then
+            windower.send_command(('input %s "%s" <me>'):format("/ma", spell.en))
+            return spell.cast_time
         end
+
+        windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob))
+        return spell.cast_time
     end
 
     windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob.name))
@@ -50,6 +67,7 @@ end
 -- @param parameters A targets name
 -- @return The delay for the job class to be added to check_interval
 function cast.job_ability(job_ability, target)
+    if not job_ability then return end
     local ability_recasts = windower.ffxi.get_ability_recasts()[job_ability.recast_id]
 
     if not actor:can_use(job_ability) then return 0 end
@@ -77,21 +95,21 @@ end
 --=====================================================================
 
 --- Check if a monster is a valid target
--- @param parameters A mob
+-- @param parameters A mob SPECIFICALLY from otto.fight.my_targets, since so much validation is done there already. 
 -- @param parameters The distance the monster should be within in yalms
 -- @return A boolean if the target is valid or false if it's invalid
 function cast.is_mob_valid_target(mob, distance)
-    return mob.hpp > 0 and mob.distance:sqrt() < distance and (mob.is_npc or not mob.charmed)
+    return mob.distance:sqrt() < distance
 end
 
 --- Check if a party member is a valid target
+--- Developer notes allys distances are already in yalms from being put in the allys hash
 -- @param parameters A player.id
 -- @param parameters The distance the ally should be within in yalms
 -- @return A boolean if the party member is valid or false if it's invalid
 function cast.is_ally_valid_target(id, distance)
     local ally = otto.fight.my_allies[id]
-
-    return ally and ally.hpp > 0 and ally.distance:sqrt() < distance and (not ally.is_npc or not ally.charmed)  
+    return ally and ally.hpp > 0 and ally.distance < distance
 end
 
 --- Check if your party is in aoe_range of a spell. 

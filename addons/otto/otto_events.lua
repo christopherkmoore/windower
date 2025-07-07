@@ -259,7 +259,10 @@ local function magic_burst_command(arg)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end
@@ -319,7 +322,9 @@ local function healer_commands(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
         user_settings:save()
     end
 end
@@ -330,6 +335,7 @@ local function weaponskill_commands(args)
     local message = ''
     local arg2 = ''
     local arg3 = ''
+    local arg4 = ''
 
     if (#args > 0) then
         command = args[1]:lower()
@@ -341,6 +347,14 @@ local function weaponskill_commands(args)
 
     if (#args > 2) then
         arg3 = args[3]:lower()
+    end
+
+    if (#args > 3) then
+        arg3 = args[4]:lower()
+    end
+
+    if (#args > 4) then
+        arg4 = args[5]:lower()
     end
 
     local should_save = true
@@ -358,11 +372,17 @@ local function weaponskill_commands(args)
         end
 
         local partner = utils.getPlayerName(arg2)
-        if (partner ~= nil) then
+        local ws = arg3..' '..arg4
+        local partner_weaponskill = utils.formatActionName(ws)
+    
+        if (partner ~= nil and partner_weaponskill ~= nil) then
             local partnertp = tonumber(args3) or 1000
-            user_settings.weaponskill.partner = { name = partner, tp = partnertp }
+            user_settings.weaponskill.enabled = true
+            user_settings.weaponskill.partner = { name = partner, tp = partnertp, weaponskill = partner_weaponskill }
             atc("Will attempt to skillchain with " .. partner .. " when TP is " .. partnertp)
         else
+            atc("Invalid args. Ex structure is:")
+            atc("otto ws partner Twochix 1000 Tachi: Fudo")
             atc(6, 'Error: Invalid argument for ws waitfor: ' .. tostring(args[3]))
         end
     elseif (command == 'hp') then --Target's HP
@@ -373,12 +393,21 @@ local function weaponskill_commands(args)
         else
             atc(6, 'Error: Invalid arguments for ws hp%: ' .. arg2)
         end
+    elseif (command == 'clear') then -- Completely clear Skillchain configuration
+        user_settings.weaponskill.enabled = false
+        user_settings.weaponskill.min_hp = nil
+        user_settings.weaponskill.name = nil
+        user_settings.weaponskill.partner = nil
+        atc('Weaponskill settings cleared.')
     else
         utils.register_ws(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+        
         user_settings:save()
     end
 end
@@ -549,6 +578,7 @@ local function assist_commands(args)
         command = args[1]
     end
 
+
     if (#args > 1) then
         arg2 = args[2]
     end
@@ -594,7 +624,7 @@ local function assist_commands(args)
             should_save = false
         end
 
-        if arg2 == 'frontline' or arg2 == 'backline' then
+        if arg2 == 'frontline' or arg2 == 'backline' or 'puller' or 'tank' then
             local name = windower.ffxi.get_player().name
             user_settings.assist.slaves[name] = arg2:lower()
             message = 'Assist role is selected as ' .. arg2 .. '. Setting a role means you are a slave.'
@@ -616,26 +646,21 @@ local function assist_commands(args)
             user_settings.assist.yalm_fight_range = yalms
             message = 'Assists will engage at a distance of ' .. arg2 .. ' yalms'
         end
-    elseif command == 'targets' or command == 't' then
-        if arg2 ~= nil and arg2 ~= '' then
-            otto.assist.target(arg2)
-            return
-        end
-
-        otto.assist.targets()
-        return
     elseif command == 'engages' then
         if arg2 == 'off' then
             user_settings.assist.should_engage = false
             message = 'Auto engage disabled'
-
          end
 
          if arg2 == 'on' then
             user_settings.assist.should_engage = true
             message = 'Auto engage enabled'
-
          end
+    elseif command == 'config' then
+        if arg2 == 'refresh' then
+            utils.refresh_config()
+        end
+
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(6, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
@@ -643,7 +668,9 @@ local function assist_commands(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
 
         if should_merge_saves then
             utils.unionSettings()
@@ -801,7 +828,9 @@ local function geomancer(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
 
         if should_merge_saves then
             utils.unionSettings()
@@ -843,7 +872,10 @@ local function paladin(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end
@@ -873,7 +905,10 @@ local function debug(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end
@@ -923,7 +958,10 @@ local function blackmage(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end
@@ -1071,7 +1109,10 @@ local function bard(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end
@@ -1118,7 +1159,10 @@ local function whitemage(args)
     end
 
     if should_save then
-        windower.add_to_chat(6, message)
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
         user_settings:save()
     end
 end

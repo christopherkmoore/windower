@@ -132,6 +132,7 @@ end
 
 
 function utils.register_ws(args)
+    print(args)
     local argstr = table.concat(args,' ')
     local wsname = utils.formatActionName(argstr)
     local ws = lor_res.action_for(wsname)
@@ -142,6 +143,7 @@ function utils.register_ws(args)
         atcfs(123,'Error: Invalid weaponskill name: %s', wsname)
     end
 end
+
 
 function utils.wipe_bufflist()
     otto.buffs.buffList = {}
@@ -363,6 +365,11 @@ end
 --==============================================================================
 --          Initialization Functions
 --==============================================================================
+function utils.refresh_config()
+    local player = windower.ffxi.get_player()
+    user_settings = lor_settings.load('data/'..player.name..'/user_settings.lua')
+    atcc(262, 'Reloaded config files.')
+end
 
 function utils.load_configs()
     local defaults = {
@@ -476,6 +483,9 @@ end
 -- them all for changes and merge the tables for slaves together. That way a person using the CLI doesn't have to enter
 -- in the same commands multiple times. I also just duplicated the loop too because someone in my monitored boxes group was 
 -- empty after a single iteration.
+
+-- CKM Later: I Could probably clean this up by just adding a name to assist
+-- otto assist Twochix role tank then send everyone to refresh their configs?
 function utils.unionSettings(secondIteration) 
     for player, _ in pairs(otto.config.ipc_monitored_boxes) do
         if not (player == windower.ffxi.get_player().name) then 
@@ -502,7 +512,7 @@ function utils.unionSettings(secondIteration)
     end
 
     if secondIteration ~= nil and secondIteration then 
-        windower.send_command('otto r')
+        windower.send_command('send @all otto assist config refresh')
         return 
     end
 
@@ -515,6 +525,30 @@ function merge(a, b)
     for k,v in pairs(b) do c[k] = v end
     return c
 end
+
+function spairs(t, order)
+    -- collect the keys
+    local keys = {}
+    for k in pairs(t) do keys[#keys+1] = k end
+
+    -- if order function given, sort by it by passing the table and keys a, b,
+    -- otherwise just sort the keys 
+    if order then
+        table.sort(keys, function(a,b) return order(t, a, b) end)
+    else
+        table.sort(keys)
+    end
+
+    -- return the iterator function
+    local i = 0
+    return function()
+        i = i + 1
+        if keys[i] then
+            return keys[i], t[keys[i]]
+        end
+    end
+end
+
 
 --==============================================================================
 --          Table Functions

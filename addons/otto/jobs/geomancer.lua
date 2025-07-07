@@ -44,6 +44,7 @@ function geomancer.init()
         user_settings:save()
     end
 
+    otto.assist.init()
     geomancer.check_geo:loop(geomancer.check_interval)
 
 end
@@ -122,10 +123,12 @@ local function check_spells()
     -- check if the bubble is far from the target, if it is, FC and get a new one
     if geomancer.should_full_circle then 
         local ja_ability = use_full_circle()
-        local delay = otto.cast.job_ability(ja_ability, '<me>')
-        geomancer.delay = delay
-        coroutine.schedule(toggle_fc:prepare(), 5)
-        return        
+        if ja_ability then
+            local delay = otto.cast.job_ability(ja_ability, '<me>')
+            geomancer.delay = delay
+            coroutine.schedule(toggle_fc:prepare(), 5)
+            return        
+        end
     end
 
     if not geomancer.indi.info.active  then
@@ -155,6 +158,7 @@ local function check_spells()
 
         if ecliptic_attrition_recast == 0 and loupan ~= nil then
             local ecliptic_attrition = {id=347,en="Ecliptic Attrition",ja="サークルエンリッチ",element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=244,targets=1,tp_cost=0,type="JobAbility"}
+            -- print('ecliptic_attrition')
             local delay = otto.cast.job_ability(ecliptic_attrition, '<me>')
             geomancer.delay = delay
             geomancer.ecliptic_attrition_active = true
@@ -208,12 +212,15 @@ local function check_spells()
         local collimated_ferver_recast = windower.ffxi.get_ability_recasts()[245]
     
         if theurgic_focus_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then 
+            -- print('theurgic_focus')
             local delay = otto.cast.job_ability(theurgic_focus, '<me>')
             geomancer.delay = delay
             return
         end
 
         if collimated_ferver_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then
+            -- print('collimated_ferver')
+
             local delay = otto.cast.job_ability(collimated_ferver, '<me>')
             geomancer.delay = delay
             return

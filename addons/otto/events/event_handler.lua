@@ -185,8 +185,12 @@ function event_handler.incoming_chunk(id, data, modified, injected, blocked)
         local target_id = data:unpack('I', 0x09)
         local param_1 = data:unpack('I', 0x0D)
         local message_id = data:unpack('H', 0x19) % 32768
-
         parse_action_message(message_id, target_id, param_1)
+
+    -- elseif id == 0x0E2 then
+    --     print('packet recieved')
+    --     local packet = packets.parse('incoming', data)
+    --     otto.debug.create_log(packet, 'debugger')
     end
 end
 

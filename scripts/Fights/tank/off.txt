@@ -9,6 +9,7 @@ send Fivechix otto healer off;
 
 
 send Fourchix cor off;
+send Twochix otto assist engages off;
 
 send Onechix otto brd off;
 send Onechix otto bard songs clear;
@@ -17,33 +18,17 @@ send Onechix otto bard song clear;
 send Threechix otto geo off;
 send Threechix otto geo cooldowns off;
 
-
+send @all otto ws clear;
 send @all otto follow off;
-otto r all
 
 wait 0.3;
 send Fivechix otto pld off;
 
 send Chixslave gs c set AutoRegenAgaMode Off;
 
+send @all otto buffs wipebuffs;
+send @all otto debuffs wipedebuffs;
+
 ////////////////////////////////
 // Reset Roles:
 ////////////////////////////////
-
-wait 0.3;
-send Onechix otto assist role backline
-
-wait 0.3;
-send Twochix otto assist role frontline;
-
-wait 0.3;
-send Threechix otto assist role backline;
-
-wait 0.3;
-send Fourchix otto assist role frontline
-
-wait 0.3;
-send Fivechix otto assist role frontline;
-
-wait 0.3;
-send Chixslave otto assist role backline;

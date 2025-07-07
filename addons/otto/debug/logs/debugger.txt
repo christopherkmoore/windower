@@ -1,7 +1,26 @@
 return {
 -- Table: {1}
 {
-   ["Prelude"]=0.1,
-   ["Madrigal"]=0.1,
+   ["debuffs"]={2},
+   ["index"]=1150,
+   ["target_index"]=459,
+   ["id"]=782433,
+   ["distance"]=2.1620698975196,
+   ["claim_id"]=0,
+   ["zone"]=171,
+   ["hpp"]=98,
+   ["hp"]=2220,
+   ["name"]="Fourchix",
+   ["mp"]=244,
+   ["mpp"]=92,
+   ["buffs"]={3},
+   ["tp"]=3000,
+   ["target_name"]="Apex Hornfly",
+},
+-- Table: {2}
+{
+},
+-- Table: {3}
+{
 },
 }
