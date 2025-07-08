@@ -37,7 +37,7 @@ weaponskill.target = nil
 function weaponskill.can_close_skillchain() 
     if not weaponskill.skillchain_active then return false end
 
-    if os.clock() > weaponskill.window_close then
+    if os.time() > weaponskill.window_close then
         return true
     end
 
@@ -46,7 +46,7 @@ end
 
 function weaponskill.should_weaponskill_to_close()
 
-    local now = os.clock() 
+    local now = os.time() 
     local window_open = now < weaponskill.window_close and now > weaponskill.window_open
     if weaponskill.skillchain_active and weaponskill.can_skillchain and window_open and user_settings.weaponskill.partner.name and otto.fight.ally_lookup(user_settings.weaponskill.partner.name) then
         return true
@@ -56,7 +56,7 @@ function weaponskill.should_weaponskill_to_close()
 end
 
 function weaponskill.should_weaponskill_to_open()
-    local now = os.clock() 
+    local now = os.time() 
     if not weaponskill.skillchain_active and weaponskill.skillchain_start == 0 then
         return true
     end
@@ -66,7 +66,7 @@ end
 
 function weaponskill.open_window(for_target) 
     weaponskill.skillchain_active = true
-    weaponskill.skillchain_start = os.clock() 
+    weaponskill.skillchain_start = os.time() 
     weaponskill.window_open = weaponskill.skillchain_start + 3
     weaponskill.window_close = weaponskill.window_open + 7
     weaponskill.target = for_target
@@ -98,7 +98,7 @@ function weaponskill.check_should_window_close(target)
         weaponskill.close_window()
     end
 
-    if os.clock() > weaponskill.window_close then
+    if os.time() > weaponskill.window_close then
         weaponskill.close_window()
     end
 end
@@ -146,11 +146,12 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
         return
     end
 
-    local ids = otto.getMonitoredIds()
-    local ws_is_from_teammate = ids:contains(actor)
-    if not ws_is_from_teammate then return end
+    local ally = otto.fight.my_allies[actor]
+    local mob = otto.fight.my_targets[target.id]
+    if not otto.cast.is_mob_valid_target(mob) then return end    -- if the action was taken on a target that's not one of mine, don't care.
+	if not ally then return end                              	 -- not my allys ws, not my problem.
 
-    weaponskill.close_and_reopen_window(target.id) -- there was a ws and now it's ready for close
+    weaponskill.close_and_reopen_window(target.id)               -- there was a ws and now it's ready for close
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then
         if res.weapon_skills[action.top_level_param].en ~= nil and res.weapon_skills[action.top_level_param].en == user_settings.weaponskill.partner.weaponskill then

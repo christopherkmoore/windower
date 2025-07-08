@@ -24,10 +24,9 @@ add checks -- aspir is targeting any target
 add distance checks on spells targets to improve the check ticks
 add nil checks during my_allies updates
 spell.cast definitely has bugs
+check functions tick even when class is nil. find a way to turn off the check
 
 TODO
-finish WHM buffs / debuffs
-remove old buffs/ debuffs
 AutoCOR? Dunno seems pretty simple... buffs i guess?
 
 

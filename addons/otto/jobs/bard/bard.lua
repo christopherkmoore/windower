@@ -106,9 +106,7 @@ function bard.check_bard()
         bard.counter = 0
         bard.delay = bard.check_interval
 
-        local play = windower.ffxi.get_player()
-        if not play or play.main_job ~= 'BRD' or (play.status ~= 1 and play.status ~= 0) then return end
-        if actor:is_moving() or bard.buffs.stun or bard.buffs.sleep or bard.buffs.charm or bard.buffs.terror or bard.buffs.petrification then return end
+        if actor:is_moving() or otto.player_check.mage_disabled() then return end
 
         local JA_WS_lock = bard.buffs.amnesia or bard.buffs.impairment
 
@@ -171,6 +169,7 @@ function bard.check_bard()
             otto.pull.try_pulling()
         end
 
+        -- dispel
         if otto.dispel.should_dispel_new() ~= nil then
             local mob = otto.dispel.should_dispel_new()
             local spell = res.spells[462]
@@ -224,8 +223,6 @@ end
 
 
 function bard.deinit() 
-    utils.wipe_debufflist()
-    utils.wipe_bufflist()
     user_settings.job.bard.settings.enabled = false
 
     windower.send_command('otto dispel off')

@@ -148,4 +148,23 @@ function cast.aoe_range(distance)
     return true
 end
 
+-- CKM Try this when you have time after testing these big refactor changes. might solve cast.spell problem
+local function get_target(targ)
+    if targ == nil then
+        return nil
+    elseif istable(targ) then
+        return targ
+    elseif tonumber(targ) and (tonumber(targ) > 255) then
+        return windower.ffxi.get_mob_by_id(tonumber(targ))
+    elseif S{'<me>', 'me'}:contains(targ) then
+        return windower.ffxi.get_mob_by_target('me')
+    elseif targ == '<t>' then
+        return windower.ffxi.get_mob_by_target()
+    elseif isstr(targ) then
+        local target = windower.ffxi.get_mob_by_name(targ)
+        return target or windower.ffxi.get_mob_by_name(targ:ucfirst())
+    end
+    return nil
+end
+
 return cast

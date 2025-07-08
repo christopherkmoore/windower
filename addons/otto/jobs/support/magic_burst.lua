@@ -15,95 +15,18 @@
 	during window add a debuff to the monster 'burst-window-open'?
 ]]
 
-local magic_burst = T{ _events = { } }
-
-skillchain_ids = S{288,289,290,291,292,293,294,295,296,297,298,299,300,301,385,386,387,388,389,390,391,392,393,394,395,396,397,767,768,769,770}
-
-local skillchains = {
-	[288] = {id=288,english='Light',elements={'Light','Thunder','Wind','Fire'}},
-	[289] = {id=289,english='Darkness',elements={'Dark','Ice','Water','Earth'}},
-	[290] = {id=290,english='Gravitation',elements={'Dark','Earth'}},
-	[291] = {id=291,english='Fragmentation',elements={'Thunder','Wind'}},
-	[292] = {id=292,english='Distortion',elements={'Ice','Water'}},
-	[293] = {id=293,english='Fusion',elements={'Light','Fire'}},
-	[294] = {id=294,english='Compression',elements={'Dark'}},
-	[295] = {id=295,english='Liquefaction',elements={'Fire'}},
-	[296] = {id=296,english='Induration',elements={'Ice'}},
-	[297] = {id=297,english='Reverberation',elements={'Water'}},
-	[298] = {id=298,english='Transfixion', elements={'Light'}},
-	[299] = {id=299,english='Scission',elements={'Earth'}},
-	[300] = {id=300,english='Detonation',elements={'Wind'}},
-	[301] = {id=301,english='Impaction',elements={'Thunder'}},
-	[385] = {id=385, english='Light',elements={'Light','Thunder','Wind','Fire'}} -- CKM added because this is the absorbs message.
-}
-
-local magic_tiers = {
-	[1] = {suffix=''},
-	[2] = {suffix='II'},
-	[3] = {suffix='III'},
-	[4] = {suffix='IV'},
-	[5] = {suffix='V'},
-	[6] = {suffix='VI'}
-}
-
-local jutsu_tiers = {
-    [1] = {suffix='Ichi'},
-    [2] = {suffix='Ni'},
-    [3] = {suffix='San'}
-}
-
-local spell_priorities = {
-	[1] = {element='Thunder'},
-	[2] = {element='Ice'},
-	[3] = {element='Wind'},
-	[4] = {element='Fire'},
-	[5] = {element='Water'},
-	[6] = {element='Earth'},
-	[7] = {element='Dark'},
-	[8] = {element='Light'}
-}
-
-local storms = {
-	[178] = {id=178,name='Firestorm',weather=4},
-	[179] = {id=179,name='Hailstorm',weather=12},
-	[180] = {id=180,name='Windstorm',weather=10},
-	[181] = {id=181,name='Sandstorm',weather=8},
-	[182] = {id=182,name='Thunderstorm',weather=14},
-	[183] = {id=183,name='Rainstorm',weather=6},
-	[184] = {id=184,name='Aurorastorm',weather=16},
-	[185] = {id=185,name='Voidstorm',weather=18},
-	[589] = {id=589,name='Firestorm',weather=5},
-	[590] = {id=590,name='Hailstorm',weather=13},
-	[591] = {id=591,name='Windstorm',weather=11},
-	[592] = {id=592,name='Sandstorm',weather=9},
-	[593] = {id=593,name='Thunderstorm',weather=15},
-	[594] = {id=594,name='Rainstorm',weather=7},
-	[595] = {id=595,name='Aurorastorm',weather=17},
-	[596] = {id=596,name='Voidstorm',weather=19}
-}
-
-local elements = {
-	['Light'] = {spell=nil,helix='Luminohelix',ga=nil,ja=nil,ra=nil,jutsu=nil,white='Banish',holy="Holy"},
-	['Dark'] = {spell=nil,helix='Noctohelix',ga=nil,ja=nil,ra=nil,jutsu=nil,white=nil,holy=nil},
-	['Thunder'] = {spell='Thunder',helix='Ionohelix',ga='Thundaga',ja='Thundaja',ra='Thundara',jutsu='Raiton',white=nil,holy=nil},
-	['Ice'] = {spell='Blizzard',helix='Cryohelix',ga='Blizzaga',ja='Blizzaja',ra='Blizzara',jutsu='Hyoton',white=nil,holy=nil},
-	['Fire'] = {spell='Fire',helix='Pyrohelix',ga='Firaga',ja='Firaja',ra='Fira',jutsu='Katon',white=nil,holy=nil},
-	['Wind'] = {spell='Aero',helix='Anemohelix',ga='Aeroga',ja='Aeroja',ra='Aerora',jutsu='Huton',white=nil,holy=nil},
-	['Water'] = {spell='Water',helix='Hydrohelix',ga='Waterga',ja='Waterja',ra='Watera',jutsu='Suiton',white=nil,holy=nil},
-	['Earth'] = {spell='Stone',helix='Geohelix',ga='Stonega',ja='Stoneja',ra='Stonera',jutsu='Doton',white=nil,holy=nil},
-}
+local magic_burst = T{ }
 
 magic_burst.cast_types = {'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white', 'holy' }
 magic_burst.spell_users = {'BLM', 'RDM', 'DRK', 'GEO', 'WHM'}
 magic_burst.jutsu_users = {'NIN'}
 magic_burst.helix_users = {'SCH'}
 
-magic_burst.window_open = false
+magic_burst.window_open = 0
+magic_burst.window_close = 0
 magic_burst.window_open_target = nil
-
-local last_skillchain = nil
-local player = nil
-local last_skillchain_tick = nil
+magic_burst.window_open_spell = nil
+magic_burst.window_open_double_burst_spell = nil
 
 function magic_burst.init()
     local defaults = { }
@@ -112,7 +35,6 @@ function magic_burst.init()
 	defaults.mp = 100               -- stop bursting below this amount of mp. note that this is flat amount, not mp percent
     defaults.cast_tier = 3          -- nuke tier to mb with
     defaults.cast_type = "spell"    -- the spell type to cast with. values can be 'spell', 'helix', 'ga', 'ja', 'ra', 'jutsu', 'white'
-    defaults.change_target = true   -- will attempt to burst other skillchains around you.
     defaults.check_day = true       -- evaluates current vanadiel day
 	defaults.check_weather = true   -- default true, you probably just want this true
 	defaults.double_burst = false   -- single burst is false, double burst is true
@@ -125,42 +47,14 @@ function magic_burst.init()
         user_settings.magic_burst = defaults
         user_settings:save()
     end
-
 end
 
-function buff_active(id)
-    if T(windower.ffxi.get_player().buffs):contains(id) == true then
-        return true
-    end
-    return false
+function magic_burst.deinit()
+	-- not used for now, but can clean up handlers I suppose?
 end
 
 
-function disabled()
-	for _, disabled_id in pairs(cant_cast_states) do
-		if buff_active(disabled_id) then
-			return true
-		end
-	end
-	
-    return false
-end
-
-function low_mp(spell)
-	local sp = res.spells:with('name', spell)
-	if (sp == nil) then
-		return false
-	end
-
-	local mp_cost = sp.mp_cost
-    if (mp_cost == nil or (player.vitals.mp - mp_cost <= user_settings.magic_burst.mp)) then
-        return true
-    end
-
-	return false
-end
-
-function check_recast(spell_name)
+local function check_recast(spell_name)
     local recasts = windower.ffxi.get_spell_recasts()
 	local spell = res.spells:with('name', spell_name)
 	if (spell == nil) then
@@ -172,7 +66,7 @@ function check_recast(spell_name)
     return recast
 end
 
-function get_bonus_elements()
+local function get_bonus_elements()
 	-- Use best possible bonus element, default to day
 	local day_element = res.elements[res.days[windower.ffxi.get_info().day].element].en
 	local weather_id = windower.ffxi.get_info().weather
@@ -183,45 +77,78 @@ function get_bonus_elements()
 		for i=1,#player.buffs do
 			local buff = player.buffs[i]
 
-			for _, storm in pairs(storms) do
+			for _, storm in pairs(otto.event_statics.storms) do
 				if (storm.id == buff) then
 					weather_id = storm.weather
 				end
 			end
 		end
 	end
-	weather_element = res.elements[res.weather[weather_id].element].en
+	local weather_element = res.elements[res.weather[weather_id].element].en
 
 	return weather_element, day_element
 end
 
-function burst_window_close()
-	local now = os.clock()
-	-- the times aren't always accurate 0.5 seconds is a rounding to favor closing the bursting window
-	local bursting_window_close_time = last_skillchain_tick + 8.5 
+local function close_window()	
+	if user_settings.magic_burst.gearswap then
+		windower.send_command('gs c notbursting')
+	end
+	magic_burst.window_close = 0
+	magic_burst.window_open = 0
+	magic_burst.window_open_target = nil
+	magic_burst.window_open_spell = nil
+	magic_burst.window_open_double_burst_spell = nil
+end
 
-	if now > bursting_window_close_time then -- CKM test this is working. Fucking coroutines failed me.
-		actions.remove_bursting_spells()
-		
-		last_skillchain = {}
-		last_skillchain.english = 'None'
-		last_skillchain.elements = {}
-	
-		if user_settings.magic_burst.gearswap then
-			windower.send_command('gs c notbursting')
-		end
-
-		magic_burst.window_open = false
-		magic_burst.window_open_target = nil
+local function check_burst_window_close()
+	local now = os.time()
+	if now > magic_burst.window_close then 
+		close_window()
 	end
 end
 
-function cast_spell(spell) 
-	if (user_settings.magic_burst.show_spell) then
-		windower.add_to_chat(123, "Casting - "..spell.name..' for the burst!')
+local function should_cast_death(skillchain) 
+	local job = windower.ffxi.get_player().main_job
+	local death = res.spells:with('name', "Death")
+	local knowsDeath = windower.ffxi.get_spells()[death.id]
+	local deathRecast = check_recast(death.name)
+	
+	if skillchain.english == 'Darkness' and job == 'BLM' and knowsDeath and deathRecast == 0 and user_settings.magic_burst.death then
+		return true
 	end
 
-	offense.addToNukeingQueue(spell)
+	return false
+end
+
+local function window_ready(target, skillchain)
+	if user_settings.magic_burst.gearswap then
+		windower.send_command('gs c bursting')
+	end
+
+	if not target or not target.valid_target or not target.hpp <= 0 then
+		windower.add_to_chat(123, "Bad Target!")
+		return
+	end
+
+	local spell = magic_burst.get_spell(skillchain, false)
+
+	if not spell or spell == '' or otto.player_check.mage_disabled() then
+		if user_settings.magic_burst.gearswap then
+			windower.send_command('gs c notbursting')
+		end	
+		return
+	end
+	
+	magic_burst.window_open = os.time()
+	magic_burst.window_open_target = target
+	magic_burst.window_open_spell = spell
+
+	if (user_settings.magic_burst.double_burst) then
+		local spell = magic_burst.get_spell(skillchain, true)
+		magic_burst.window_open_double_burst_spell = spell
+	end
+
+	coroutine.schedule(burst_window_close:prepare(), 9)
 end
 
 function magic_burst.get_spell(skillchain, doubleBurst)
@@ -234,9 +161,9 @@ function magic_burst.get_spell(skillchain, doubleBurst)
 	elseif (user_settings.magic_burst.check_day and T(skillchain.elements):contains(day_element)) then
 		spell_element = day_element
 	else
-		for i=1,#spell_priorities do
-			if (T(skillchain.elements):contains(spell_priorities[i].element)) then
-				spell_element = spell_priorities[i].element
+		for i=1,#otto.event_statics.spell_priorities do
+			if (T(skillchain.elements):contains(otto.event_statics.spell_priorities[i].element)) then
+				spell_element = otto.event_statics.spell_priorities[i].element
 				break
 			end 
 		end
@@ -246,13 +173,13 @@ function magic_burst.get_spell(skillchain, doubleBurst)
 	if doubleBurst and tier - 1 ~= 0 then tier = tier - 1 end
 
 	-- Find spell/helix/jutsu that will be best based on best element
-	if (elements[spell_element] ~= nil and elements[spell_element][user_settings.magic_burst.cast_type] ~= nil) then
+	if (otto.event_statics.elements[spell_element] ~= nil and otto.event_statics.elements[spell_element][user_settings.magic_burst.cast_type] ~= nil) then
 
-		spell = elements[spell_element][user_settings.magic_burst.cast_type]
+		spell = otto.event_statics.elements[spell_element][user_settings.magic_burst.cast_type]
 
 		tier = (tier >= 1 and tier or 1)
 		spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
-		spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
+		spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and otto.event_statics.jutsu_tiers[tier].suffix or otto.event_statics.magic_tiers[tier].suffix)
 
 		local recast = check_recast(spell)
 		if (recast > 0) then
@@ -262,12 +189,12 @@ function magic_burst.get_spell(skillchain, doubleBurst)
 
 	if (spell == nil or spell == '') then
 		for _,element in pairs(skillchain.elements) do
-			if (elements[element] ~= nil and elements[element][user_settings.magic_burst.cast_type] ~= nil) then
-				spell = elements[element][user_settings.magic_burst.cast_type]
+			if (otto.event_statics.elements[element] ~= nil and otto.event_statics.elements[element][user_settings.magic_burst.cast_type] ~= nil) then
+				spell = otto.event_statics.elements[element][user_settings.magic_burst.cast_type]
 
 				tier = (tier >= 1 and tier or 1)
 				spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and ':' or '')..(tier > 1 and ' ' or '')
-				spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and jutsu_tiers[tier].suffix or magic_tiers[tier].suffix)
+				spell = spell..(user_settings.magic_burst.cast_type == 'jutsu' and otto.event_statics.jutsu_tiers[tier].suffix or otto.event_statics.magic_tiers[tier].suffix)
 			
 				local recast = check_recast(spell)
 				if (recast == 0) then
@@ -284,7 +211,6 @@ function magic_burst.get_spell(skillchain, doubleBurst)
 		element_list = element_list..skillchain.elements[i]..(i<#skillchain.elements and ', ' or '')
 	end
 
-
 	local resSpell = res.spells:with('name', spell)
 	
 	if should_cast_death(skillchain) then
@@ -292,87 +218,6 @@ function magic_burst.get_spell(skillchain, doubleBurst)
 	end
 
 	return resSpell
-end
-
-function should_cast_death(skillchain) 
-	local job = windower.ffxi.get_player().main_job
-	local death = res.spells:with('name', "Death")
-	local knowsDeath = windower.ffxi.get_spells()[death.id]
-	local deathRecast = check_recast(death.name)
-	
-	if skillchain.english == 'Darkness' and job == 'BLM' and knowsDeath and deathRecast == 0 and user_settings.magic_burst.death then
-		return true
-	end
-
-	return false
-end
-
-function set_target(target)
-	local cur_target = nil
-	if (player.target_index) then
-		cur_target = windower.ffxi.get_mob_by_index(player.target_index)
-	end
-
-	if (target == nil or not target.valid_target or not target.is_npc or target.hpp == nil or target.hpp <= 0) then
-		return 0
-	end
-
-	if (cur_target ~= nil and cur_target.id == target.id) then
-		return 0
-	end
-
-	packets.inject(packets.new('incoming', 0x058, {
-		['Player'] = player.id,
-		['Target'] = target.id,
-		['Player Index'] = player.index,
-	}))
-
-	return 1
-end
-
-function do_burst(target, skillchain)
-	if user_settings.magic_burst.gearswap then
-		windower.send_command('gs c bursting')
-	end
-
-	player = windower.ffxi.get_player()
-	if (target == nil or not target.valid_target or target.hpp <= 0) then
-		windower.add_to_chat(123, "Bad Target!")
-		return
-	end
-
-	if (user_settings.magic_burst.change_target) then
-		set_target(target)
-	end
-
-	local spell = magic_burst.get_spell(skillchain, false)
-
-	if (spell == nil or spell == '') then
-		if (user_settings.magic_burst.show_spell) then
-			windower.add_to_chat(123, "No spell found for burst!")
-		end
-		if user_settings.magic_burst.gearswap then
-			windower.send_command('gs c notbursting')
-		end
-		return
-	elseif (disabled()) then
-		windower.add_to_chat(123, "Unable to cast, disabled!")
-		if user_settings.magic_burst.gearswap then
-			windower.send_command('gs c notbursting')
-		end		
-		return
-	end
-	
-	cast_spell(spell)
-
-	if (user_settings.magic_burst.double_burst) then
-		local spell = magic_burst.get_spell(skillchain, true)
-		cast_spell(spell)
-	end
-
-	last_skillchain_tick = os.clock()
-	coroutine.schedule(burst_window_close:prepare(), 9)
-
 end
 
 -- MARK: Events
@@ -390,50 +235,27 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
     if not categories:contains(category) or action.param == 0 then
         return
     end
+
+	local mob = otto.fight.my_targets[target.id]
+    local ally = otto.fight.my_allies[actor]
+
 	
-	-- CKM I think I brought this over from skillchains
-	-- CKM but it's breaking MB from alliances.
+	if not mob then return end       -- not my mob, not my problem.                          
+	if not ally then return end      -- not my ally closing sc, not my problem.
+	if not otto.cast.is_mob_valid_target(mob) then return end
 
-    -- local ids = otto.getMonitoredIds()
-	-- log(ids)
-    -- local ws_is_from_teammate = ids:contains(actor)
-    -- if not ws_is_from_teammate then return end
+    if add_effect and otto.event_statics.skillchain_ids:contains(add_effect.message_id) then
 
-    if add_effect and skillchain_ids:contains(add_effect.message_id) then
+		magic_burst.window_open = os.time() 
+		magic_burst.window_close = magic_burst.window_open + 8
 
-		actions.remove_bursting_spells()
-		magic_burst.window_open = true
+		local last_skillchain = otto.event_statics.skillchain[add_effect.message_id]
+		magic_burst.window_open_target = target
 
-		local party = windower.ffxi.get_party()
-		local party_ids = T{}
-	
-		for _, member in pairs (party) do
-			if (type(member) == 'table' and member.mob) then
-				party_ids:append(member.mob.id)
-			end
-		end
-
-		last_skillchain = skillchains[add_effect.message_id]
-
-		local cur_t = windower.ffxi.get_mob_by_target('t')
-		local bt = windower.ffxi.get_mob_by_target('bt')
-		local target = windower.ffxi.get_mob_by_id(target.id)
-
-		magic_burst.window_open_target = target.id
-		-- Make sure the mob is claimed by our alliance then
-		if (target ~= nil and ((cur_t and cur_t.id == target.id) or (bt and bt.id == target.id) or party_ids:contains(target.claim_id))) then
-			-- Make sure the mob is a valid MB target
-			if (target and (target.is_npc and target.valid_target and not target.in_party and not target.charmed) and target.hpp ~= 0 and target.distance:sqrt() < 22) then
-				if not closed then
-					do_burst(target, last_skillchain)
-					return
-				end
-			end
-		end
+		window_ready(target, last_skillchain)
 	else
-		if actions.has_bursting_spells() then			
-			actions.remove_bursting_spells()
-		end
+		-- any ws that doesn't open a skillchain will close one, and disable magic bursting.
+		close_window()
 	end
 end
 
@@ -459,9 +281,9 @@ windower.register_event('job change', function(main_id, main_lvl, sub_id, sub_lv
 	elseif (T(magic_burst.helix_users):contains(sub)) then
 		user_settings.magic_burst.cast_type = 'helix'
 	end
+
+	user_settings:save()
 	windower.add_to_chat(123, '> Cast type set to: '..user_settings.magic_burst.cast_type)
 end)
-
-ActionPacket.open_listener(magic_burst.action_handler)
 
 return magic_burst

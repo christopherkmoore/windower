@@ -176,7 +176,7 @@ function fight.update_targets()
 
     -- build the entire aggro'd mob list
     for _, mob in pairs(mobs) do
-        local ids = otto.getMonitoredIds()
+        local ids = fight.my_allies:keyset()
         -- mobs i'm fighting
         if mob.valid_target == true and mob.is_npc and ids:contains(mob.claim_id) and mob.status == 1 then
             fight.targets[mob.id] = mob
@@ -211,13 +211,6 @@ end
 --=====================================================================
 -- MARK: Targets - add / remove + utility methods
 --=====================================================================
-
-function fight.target_is_mine(id) 
-    if fight.my_targets[id] then
-        return true
-    end
-    return false
-end
 
 function fight.target_lookup(name, id, index)
     for k, v in pairs(fight.my_targets) do

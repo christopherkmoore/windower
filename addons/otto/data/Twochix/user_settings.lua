@@ -8,10 +8,10 @@ return {
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
-        ["should_engage"] = false,
+        ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "tank",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -81,6 +81,27 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = false
+        ["enabled"] = true,
+        ["name"] = "Tachi: Fudo",
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = {
+                ["element"] = 6,
+                ["en"] = "Tachi: Fudo",
+                ["enn"] = "tachi:_fudo",
+                ["icon_id"] = 622,
+                ["id"] = 156,
+                ["prefix"] = "/weaponskill",
+                ["range"] = 2,
+                ["skill"] = 10,
+                ["skillchain_a"] = "Light",
+                ["skillchain_b"] = "Distortion",
+                ["skillchain_c"] = "",
+                ["targets"] = S{
+                    "Enemy"
+                }
+            }
+        }
     }
 }

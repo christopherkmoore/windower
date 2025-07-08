@@ -10,7 +10,7 @@ return {
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "tank",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -101,7 +101,7 @@ return {
                 [5] = "Addle",
                 ["n"] = 5
             },
-            ["enabled"] = false,
+            ["enabled"] = true,
             ["settings"] = T{
                 ["auto_raise"] = true,
                 ["blow_cooldowns"] = true,

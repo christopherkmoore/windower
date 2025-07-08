@@ -15,7 +15,6 @@ aspir.counter = 0
 
 aspir.aspirable_target = T{}
 aspir.should_use_spell = T{}
-aspir.loop = {}
 
 function aspir.init()
 
@@ -30,12 +29,15 @@ function aspir.init()
         user_settings:save()
     end
 
-    aspir.loop = coroutine.create(aspir.check_loop)
+    aspir.check_loop:loop(aspir.check_interval)
 
 end
 
 function aspir.deinit()
-    aspir.loop.yield()
+    -- find a way to remove check_loop ( since it still runs)
+    -- otto.aspir = nil
+    -- coroutine.schedule(burst_window_close:prepare(), 9)
+
 end
 
 local tick_delay = os.clock()
@@ -80,7 +82,6 @@ local function set_aspir()
 end
 
 function aspir.check_loop()
-    print('in check loop')
     if not user_settings.aspir.enabled then return end
     if not otto.fight.my_targets and not aspir.aspirable_target then return end 
 
@@ -119,6 +120,7 @@ function aspir.action_handler(category, action, actor_id, add_effect, target)
     if not categories:contains(category) or action.param == 0 then
         return
     end
+    
     local player = windower.ffxi.get_player()
     if actor_id ~= player.id then return end
 

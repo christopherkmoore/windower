@@ -314,13 +314,6 @@ local function healer_commands(args)
         else
             atc('Error: Invalid argument specified for minCure')
         end
-
-        -- elseif S{'disable'}:contains(command) then
-        --     if not validate(args, 2, 'Error: No argument specified for Disable') then return end
-        --     utils.disableCommand(arg2, true)
-        -- elseif S{'enable'}:contains(command) then
-        --     if not validate(args, 2, 'Error: No argument specified for Enable') then return end
-        --     utils.disableCommand(args[2]:lower(), false)
     end
 
     if should_save then
@@ -372,11 +365,11 @@ local function weaponskill_commands(args)
             user_settings:save()
             return
         end
+        
+        local partner = windower.ffxi.get_mob_by_name(arg2:ucfirst()).name
+        local ws = arg3:ucfirst()..' '..arg4:ucfirst()
+        local partner_weaponskill = utils.get_weaponskill(ws)
 
-        local partner = utils.getPlayerName(arg2)
-        local ws = arg3..' '..arg4
-        local partner_weaponskill = utils.formatActionName(ws)
-    
         if (partner ~= nil and partner_weaponskill ~= nil) then
             local partnertp = tonumber(args3) or 1000
             user_settings.weaponskill.enabled = true
@@ -402,7 +395,15 @@ local function weaponskill_commands(args)
         user_settings.weaponskill.partner = nil
         atc('Weaponskill settings cleared.')
     else
-        utils.register_ws(args)
+        local ws_string = command:ucfirst()..' '..arg2:ucfirst()
+        local weaponskill = utils.get_weaponskill(ws_string)
+
+        if (weaponskill ~= nil) then
+            user_settings.weaponskill.name = weaponskill.en
+            atcfs('Will now use %s', weaponskill.en)
+        else
+            atcfs(123,'Error: Invalid weaponskill name: %s', ws_string)
+        end
     end
 
     if should_save then
@@ -414,74 +415,6 @@ local function weaponskill_commands(args)
     end
 end
 
--- TODO still work to do to fix out parsing commands
-local function healbot_commands(args)
-    local command = 'help'
-    local arg2 = ''
-    local arg3 = ''
-
-    if (#args > 0) then
-        command = args[1]:lower()
-    end
-
-    if (#args > 1) then
-        arg2 = args[2]:lower()
-    end
-
-    if (#args > 2) then
-        arg3 = args[3]:lower()
-    end
-
-    if S { 'spam', 'nuke' }:contains(command) then
-        local cmd = args[2] and args[2]:lower() or (settings.spam.active and 'off' or 'on')
-        if S { 'on', 'true' }:contains(cmd) then
-            settings.spam.active = true
-            if (settings.spam.name ~= nil) then
-                atc('Action spamming is now on. Action: ' .. settings.spam.name)
-            else
-                atc('Action spamming is now on. To set a spell to use: //otto spam use <action>')
-            end
-        elseif S { 'off', 'false' }:contains(cmd) then
-            settings.spam.active = false
-            atc('Action spamming is now off.')
-        else
-            if S { 'use', 'set' }:contains(cmd) then
-                table.remove(args, 2)
-            end
-            utils.register_spam_action(args)
-        end
-    elseif S { 'ignore', 'unignore', 'watch', 'unwatch' }:contains(command) then
-        monitorCommand(command, args[2])
-    elseif command == 'packetinfo' then
-        toggleMode('showPacketInfo', args[2], 'Packet info display', 'PacketInfo')
-    elseif command == 'debug' then
-        toggleMode('debug', args[2], 'Debug mode', 'debug mode')
-    elseif command == 'independent' then
-        toggleMode('independent', args[2], 'Independent mode', 'independent mode')
-    elseif utils.txtbox_cmd_map[command] ~= nil then
-        local boxName = utils.txtbox_cmd_map[command]
-        if utils.posCommand(boxName, args) then
-            utils.refresh_textBoxes()
-        else
-            utils.toggleVisible(boxName, args[2])
-        end
-
-        -- elseif command == 'info' then
-        -- local cmd = args[2]     --Take the first element as the command
-
-        -- if not _libs.lor.exec then
-        --     atc(3,'Unable to parse info.  Windower/addons/libs/lor/lor_exec.lua was unable to be loaded.')
-        --     atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/lor_libs to download it.')
-        --     return
-        -- end
-        -- local cmd = args[2]     --Take the first element as the command
-        -- table.remove(args, 2)   --Remove the first from the list of args
-        -- _libs.lor.exec.process_input(cmd, args)
-    else
-        atc('Error: Unknown command')
-    end
-end
-
 local function buffs_commands(args)
     local command = 'help'
 
@@ -490,11 +423,11 @@ local function buffs_commands(args)
     end
 
     if command == 'wipebuffs' then -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
-        utils.wipe_bufflist()
+        otto.buffs.wipe_bufflist()
     elseif command == 'help' then
         error()
     else
-        otto.buffs.registerNewBuff(args)
+        otto.buffs.register_new_buff(args)
     end
 end
 
@@ -506,17 +439,17 @@ local function debuffs_commands(args)
     end
 
     if command == 'wipedebuffs' then -- CKM added to completely clear buff lists (needed to resolve conflicting buffs -- ex barstonra / barfira)
-        utils.wipe_debufflist()
+        otto.buffs.wipe_debufflist()
     elseif command == 'ignore' then
         table.remove(args, 1)
-        otto.buffs.registerIgnoreDebuff(args, true)
+        otto.buffs.register_ignore_debuff(args, true)
     elseif command == 'unignore' then
         table.remove(args, 1)
-        otto.buffs.registerIgnoreDebuff(args, false)
+        otto.buffs.register_ignore_debuff(args, false)
     elseif command == 'help' then
 
     else
-        utils.register_offensive_debuff(args)
+        otto.buffs.register_offensive_debuff(args)
     end
 end
 
@@ -554,7 +487,7 @@ local function follow_commands(args)
             return
         end
     else --args[1] is guaranteed to have a value if this is reached
-        local pname = utils.getPlayerName(arg1)
+        local pname = windower.ffxi.get_mob_by_name(arg1:ucfirst()).name
         if (pname ~= nil) then
             user_settings.follow.target = pname
             user_settings.follow.active = true
@@ -754,7 +687,6 @@ local function geomancer(args)
     end
 
     local should_save = true
-    local should_merge_saves = false
 
     if command == 'on' or command == 'enable' then
         user_settings.job.geomancer.enabled = true
@@ -834,11 +766,7 @@ local function geomancer(args)
             windower.add_to_chat(6, message)
         end
 
-        if should_merge_saves then
-            utils.unionSettings()
-        else
-            user_settings:save()
-        end
+        user_settings:save()
     end
 end
 
@@ -864,8 +792,8 @@ local function paladin(args)
     elseif command == 'off' or command == 'disable' then
         user_settings.job.paladin.enabled = false
         message = 'Paladin off.'
-        utils.wipe_debufflist()
-        utils.wipe_bufflist()
+        otto.buffs.wipe_debufflist()
+        otto.buffs.wipe_bufflist()
         otto.paladin.deinit()
     else
         windower.add_to_chat(3, "That's not a command")
@@ -972,6 +900,7 @@ local function bard(args)
     local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
     local message = ''
     local should_save = true
+    local command = ''
     local arg2 = ""
     local arg3 = 1
     local arg4 = 1
@@ -999,8 +928,8 @@ local function bard(args)
     elseif command == 'off' or command == 'disable' then
         user_settings.job.bard.settings.enabled = false
         message = 'Bard off.'
-        utils.wipe_debufflist()
-        utils.wipe_bufflist()
+        otto.buffs.wipe_debufflist()
+        otto.buffs.wipe_bufflist()
         otto.bard.deinit()
     elseif command == 'fight' then 
         local allowed_fight_commands = S{'xp', 'boss', 'savetimers', 'normal'}
@@ -1123,6 +1052,7 @@ local function whitemage(args)
     local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
     local message = ''
     local should_save = true
+    local command = ''
     local arg2 = ""
     local arg3 = 1
     local arg4 = 1
@@ -1151,8 +1081,8 @@ local function whitemage(args)
     elseif command == 'off' or command == 'disable' then
         user_settings.job.whitemage.enabled = false
         message = 'White mage off.'
-        utils.wipe_debufflist()
-        utils.wipe_bufflist()
+        otto.buffs.wipe_debufflist()
+        otto.buffs.wipe_bufflist()
         otto.whitemage.deinit()
     else
         windower.add_to_chat(3, "That's not a command")
@@ -1188,8 +1118,6 @@ function events.addon_command(...)
             aspir_command(newArgs)
         elseif command == 'magicburst' or command == 'magic_burst' or command == 'mb' or command == 'amb' then
             magic_burst_command(newArgs)
-        elseif command == 'healbot' or command == 'hb' then
-            healbot_commands(newArgs)
         elseif command == 'follow' or command == 'f' then
             follow_commands(newArgs)
         elseif command == 'assist' or command == 'a' then
@@ -1250,8 +1178,8 @@ function events.addon_command(...)
     elseif S { 'stop', 'off' }:contains(command) then
         otto.activate = off
         healer_commands('off')
-        utils.wipe_bufflist()
-        utils.wipe_debufflist()
+        otto.buffs.wipe_bufflist()
+        otto.buffs.wipe_debufflist()
         -- otto.assist.locked_closing_in = false
         windower.add_to_chat(147, 'Otto powering dooow~~!')
     elseif command == 'echo' then

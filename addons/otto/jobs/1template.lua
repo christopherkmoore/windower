@@ -26,8 +26,6 @@ function temp_job.init()
 end
 
 function temp_job.deinit() 
-    utils.wipe_debufflist()
-    utils.wipe_bufflist()
 end
 
 

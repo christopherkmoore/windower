@@ -9,7 +9,7 @@
 --          Input Handling Functions
 --==============================================================================
 
-utils = {normalize={}}
+utils = { normalize={}, immunities=lor_settings.load('data/mob_immunities.lua')}
 local lor_res = _libs.lor.resources
 local lc_res = lor_res.lc_res
 local ffxi = _libs.lor.ffxi
@@ -19,6 +19,14 @@ function utils.normalize_str(str)
     return str:lower():gsub(' ', '_'):gsub('%.', '')
 end
 
+-- Exchanges a weaponskill for a resouce from the weapon_skills res.
+function utils.get_weaponskill(search)
+    for k,v in pairs(res.weapon_skills) do 
+        if v.name == search then
+            return v
+        end 
+    end
+end
 
 function utils.normalize_action(action, action_type)
     -- atcf('utils.normalize_action(%s, %s)', tostring(action), tostring(action_type))
@@ -75,44 +83,24 @@ utils.txtbox_cmd_map = {
 }
 
 
-local function _get_player_id(player_name)
-    local player_mob = windower.ffxi.get_mob_by_name(player_name)
-    if player_mob then
-        return player_mob.id
+
+
+-- not used?
+function utils.normalized_mob(mob)
+    if istable(mob) then
+        return mob
+    elseif isnum(mob) then
+        return windower.ffxi.get_mob_by_id(mob)
     end
-    return nil
-end
-utils.get_player_id = _libs.lor.advutils.scached(_get_player_id)
-
-
-function utils.register_offensive_debuff(args)
-
-    local maintain = args[#args] 
-
-    if maintain == 'on' then 
-        maintain = true
-    elseif maintain == 'off' then
-        maintain = false
-    else
-        error('Could not determine buff on | off value in command. Please make sure the last word corresponds to on | off ')
-    end
-
-    table.remove(args, #args) -- pop the toggle off the table
-    local arg_string = table.concat(args,' ')
-    local spell_name = utils.formatActionName(arg_string)
-    local spell = lor_res.action_for(spell_name)
-
-    if (spell ~= nil) then
-        if actor:can_use(spell) then
-            offense.maintain_debuff(spell, maintain)
-        else
-            atcfs(123,'Error: Unable to cast %s', spell.en)
-        end
-    else
-        atcfs(123,'Error: Invalid spell name: %s', spell_name)
-    end
+    return mob
 end
 
+
+function utils.register_immunity(mob, debuff)
+    utils.immunities[mob.name] = S(utils.immunities[mob.name]) or S{}
+    utils.immunities[mob.name]:add(debuff.id)
+    utils.immunities:save()
+end
 
 function utils.register_spam_action(args)
     local argstr = table.concat(args,' ')
@@ -130,32 +118,7 @@ function utils.register_spam_action(args)
     end
 end
 
-
-function utils.register_ws(args)
-    print(args)
-    local argstr = table.concat(args,' ')
-    local wsname = utils.formatActionName(argstr)
-    local ws = lor_res.action_for(wsname)
-    if (ws ~= nil) then
-        user_settings.weaponskill.name = ws.en
-        atcfs('Will now use %s', ws.en)
-    else
-        atcfs(123,'Error: Invalid weaponskill name: %s', wsname)
-    end
-end
-
-
-function utils.wipe_bufflist()
-    otto.buffs.buffList = {}
-end
-
-function utils.wipe_debufflist()
-    offense.debuffs = {}
-end
-
-
 function utils.posCommand(boxName, args)
-    print(args)
     local cmd = args[2]:lower()
     if not S{'pos','posx','posy'}:contains(cmd) then
         return false
@@ -240,66 +203,6 @@ function utils.disableCommand(cmd, disable)
     end
 end
 
-function monitorCommand(cmd, pname)
-    if (pname == nil) then
-        atc('Error: No argument specified for '..cmd)
-        return
-    end
-    local name = utils.getPlayerName(pname)
-    if cmd == 'ignore' then
-        if (not otto.ignoreList:contains(name)) then
-            otto.ignoreList:add(name)
-            atc('Will now ignore '..name)
-            if otto.extraWatchList:contains(name) then
-                otto.extraWatchList:remove(name)
-            end
-        else
-            atc('Error: Already ignoring '..name)
-        end
-    elseif cmd == 'unignore' then
-        if (otto.ignoreList:contains(name)) then
-            otto.ignoreList:remove(name)
-            atc('Will no longer ignore '..name)
-        else
-            atc('Error: Was not ignoring '..name)
-        end
-    elseif cmd == 'watch' then
-        if (not otto.extraWatchList:contains(name)) then
-            otto.extraWatchList:add(name)
-            atc('Will now watch '..name)
-            if otto.ignoreList:contains(name) then
-                otto.ignoreList:remove(name)
-            end
-        else
-            atc('Error: Already watching '..name)
-        end
-    elseif cmd == 'unwatch' then
-        if (otto.extraWatchList:contains(name)) then
-            otto.extraWatchList:remove(name)
-            atc('Will no longer watch '..name)
-        else
-            atc('Error: Was not watching '..name)
-        end
-    end
-end
-
-function validate(args, numArgs, message)
-    for i = 1, numArgs do
-        if (args[i] == nil) then
-            atc(message..' ('..i..')')
-            return false
-        end
-    end
-    return true
-end
-
-function utils.getPlayerName(name)
-    local target = ffxi.get_target(name)
-    if target ~= nil then
-        return target.name
-    end
-    return nil
-end
 
 --==============================================================================
 --          String Formatting Functions
@@ -308,10 +211,6 @@ end
 function utils.formatActionName(text)
     if (type(text) ~= 'string') or (#text < 1) then return nil end
     
-    local fromAlias = otto.config.aliases[text]
-    if (fromAlias ~= nil) then
-        return fromAlias
-    end
     
     local spell_from_lc = lc_res.spells[text:lower()]
     if spell_from_lc ~= nil then
@@ -394,7 +293,7 @@ function utils.load_configs()
 
     
     otto.config = {
-        aliases = config.load('../shortcuts/data/aliases.xml'),
+        
         mabil_debuffs = lor_settings.load('data/mabil_debuffs.lua'),
         priorities = lor_settings.load('data/priorities.lua'),
         cure_potency = lor_settings.load('data/cure_potency.lua', cure_potency_defaults),
@@ -436,7 +335,6 @@ function process_mabil_debuffs()
     end
     otto.config.mabil_debuffs:save()
 end
-
 
 function utils.update_settings(loaded)
     for key,val in pairs(loaded) do
@@ -549,29 +447,6 @@ function spairs(t, order)
     end
 end
 
-
---==============================================================================
---          Table Functions
---==============================================================================
-
-function getPrintable(list, inverse)
-    local qstring = ''
-    for index,line in pairs(list) do
-        local check = index
-        local add = line
-        if (inverse) then
-            check = line
-            add = index
-        end
-        if (tostring(check) ~= 'n') then
-            if (#qstring > 1) then
-                qstring = qstring..'\n'
-            end
-            qstring = qstring..add
-        end
-    end
-    return qstring
-end
 
 --======================================================================================================================
 --                      Misc.

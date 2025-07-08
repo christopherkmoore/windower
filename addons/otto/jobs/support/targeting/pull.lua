@@ -7,7 +7,7 @@ local pull = { }
 pull.target = nil
 pull.pulling_until = 2
 pull.targets = {}
-pull.pull_tick = os.clock() 
+pull.pull_tick = os.time() 
 
 function pull.init() 
 
@@ -82,7 +82,7 @@ function pull.try_pulling()
     end
 
     -- go get a new mob
-    local now = os.clock()
+    local now = os.time()
     if actor:is_moving() then return end
     if now < pull.pull_tick then return end
 

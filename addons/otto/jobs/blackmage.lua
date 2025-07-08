@@ -53,6 +53,7 @@ end
 -- The BLM main function.
 function blackmage.check_blm()
     if not user_settings.job.blackmage.enabled then return end
+    if actor:is_moving() or otto.player_check.mage_disabled() then return end
 
     blackmage.counter = blackmage.counter + blackmage.check_interval
 
@@ -64,8 +65,7 @@ function blackmage.check_blm()
             check_aspir()
         end
 
-        local player = windower.ffxi.get_player()
-        local buffs = S(player.buffs)
+        local buffs = otto.player_check.my_buffs()
         
         blackmage.should_drain()
 

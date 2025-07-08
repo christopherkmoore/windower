@@ -1,17 +1,26 @@
 local event_processor = {}
 
-function event_processor.update_resist_list(message_id, target_id)
-    local target = windower.ffxi.get_mob_by_id(target_id)
+function event_processor.update_resist_list(message_id, target_id, param)
+    local target = otto.fight.my_targets[target_id]
 
-    if S {655, 656}:contains(message_id) then
-        if action.top_level_param == 377 then -- make more robus by adding all sleeps
-            otto.config.sleep_immunities[target.name] = true
-            otto.config.sleep_immunities.save(otto.config.sleep_immunities)
+    if target then
+        -- CKM TEST, mayne needs top_level_param in stead.
+        local buff_immunity = res.buffs[param]
+        if buff_immunity then 
+            utils.register_immunity(target, buff_immunity)
         end
-    end
 
-    if otto.event_statics.aspir:contains(message_id) then -- aspir seems to have message 228 
-        otto.aspir.update_DB(target.name, action.param)
+        if S {655, 656}:contains(message_id) then
+            if action.top_level_param == 377 then -- make more robus by adding all sleeps
+                otto.config.sleep_immunities[target.name] = true
+                otto.config.sleep_immunities.save(otto.config.sleep_immunities)
+            end
+        end
+
+        if otto.event_statics.aspir:contains(message_id) then -- aspir seems to have message 228 
+            -- CKM TEST - this seems weird as hell after moving it here
+            otto.aspir.update_DB(target.name, action.param) -- action.param is damage? seems weird
+        end
     end
 end
 

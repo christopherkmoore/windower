@@ -11,7 +11,7 @@ return {
         ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "frontline",
+            ["Fivechix"] = "tank",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -23,7 +23,7 @@ return {
         ["enabled"] = false
     },
     ["dispel"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,
@@ -70,17 +70,19 @@ return {
                     ["p5"] = true,
                     ["party"] = true
                 },
-                ["clarion"] = true,
+                ["clarion"] = false,
                 ["debuffing"] = true,
-                ["marcato"] = true,
+                ["marcato"] = false,
                 ["nightingale"] = true,
                 ["pianissimo"] = true,
                 ["recast"] = 20,
-                ["soul_voice"] = true,
+                ["soul_voice"] = false,
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
-                ["n"] = 0
+                [1] = "Carnage Elegy",
+                [2] = "Pining Nocturne",
+                ["n"] = 2
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -93,26 +95,33 @@ return {
             },
             ["settings"] = T{
                 ["dispels"] = true,
-                ["enabled"] = false,
-                ["fight_type"] = "xp",
+                ["enabled"] = true,
+                ["fight_type"] = "normal",
                 ["sleeps"] = true
             },
             ["song"] = T{
                 ["Chixslave"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Fivechix"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Threechix"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Twochix"] = L{
-                    ["n"] = 0
+                    [1] = "Adventurer's Dirge",
+                    ["n"] = 1
                 }
             },
             ["songs"] = L{
-                ["n"] = 0
+                [1] = "Valor Minuet IV",
+                [2] = "Valor Minuet V",
+                [3] = "Victory March",
+                ["n"] = 3
             }
         }
     },
@@ -129,7 +138,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = false,
+        ["enabled"] = true,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

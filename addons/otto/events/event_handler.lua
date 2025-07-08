@@ -63,6 +63,13 @@ function event_handler.action(raw)
     for target in actionpacket:get_targets() do -- an action may have multiple targets, iterate over them
         for action in target:get_actions() do -- may also have multiple actions (but mostly just one)
             event_processor.process_buff(action, target)
+            if not otto.event_statics.messages_blacklist:contains(action.message) then
+                if otto.geomancer then 
+                    if indi_spell_ids:contains(action.param) then
+                        otto.geomancer.indi.latest = {spell = res.spells[action.param], landed = os.time(), is_indi = true}
+                    end
+                end    
+            end
         end
     end
 
@@ -149,13 +156,24 @@ local function parse_my_buffs_update(data)
     end
 end
 
+local function register_party_members_changed(data)
+    local parsed = packets.parse('incoming', data)
+    local pmName = parsed.Name
+    local pmJobId = parsed['Main job']
+    local pmSubJobId = parsed['Sub job']
+    otto.partyMemberInfo[pmName] = otto.partyMemberInfo[pmName] or {}
+    otto.partyMemberInfo[pmName].job = res.jobs[pmJobId].ens
+    otto.partyMemberInfo[pmName].subjob = res.jobs[pmSubJobId].ens
+    --atc('Caught party member update packet for '..parsed.Name..' | '..parsed.ID)
+end
+
 local function parse_action_message(message_id, target_id, param_1)
     local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
     local resisted = otto.event_statics.resisted:contains(message_id)
     local debuff_expired = otto.event_statics.lose_effect:contains(message_id)
 
     if immune then
-        event_processor.update_resist_list(message_id, target_id)
+        event_processor.update_resist_list(message_id, target_id, param_1)
         return
     end
 
@@ -172,7 +190,56 @@ local function parse_action_message(message_id, target_id, param_1)
     -- mob died.
     if otto.event_statics.message_death:contains(message_id) then
         otto.fight.remove_target(target_id)
+        otto.pull.targets[target_id] = nil
     end
+end
+
+local function parse_bard_timers(data)
+    if otto.bard == nil then return end 
+    if not user_settings.job.bard.settings.enabled then return end 
+    -- appears # of copies are not checked anymore and times may only ever be used for afermath, I keep forgetting we dont getno party buff timers
+    local set_buff = {}
+    local set_time = {}
+    
+    local time = os.time()
+    local vana_time = time - 1009810800
+    local bufftime_offset = math.floor(time - (vana_time * 60 % 0x100000000) / 60)
+
+    for n=1,32 do
+        local buff_id = data:unpack('H', n*2+7)
+        local buff_ts = data:unpack('I', n*4+69)
+
+        if buff_ts == 0 then
+            break
+        elseif buff_id ~= 255 then
+            local buff_en = res.buffs[buff_id].en:lower()
+
+            set_buff[buff_en] = (set_buff[buff_en] or 0) + 1
+            set_time[buff_en] = math.floor(buff_ts / 60 + bufftime_offset)
+        end
+    end
+    otto.bard.buffs = set_buff
+    otto.bard.times = set_time
+end
+
+local function parse_char_update(data)
+    local indi_info = {}
+    local indi_byte = data:byte(0x59)
+
+    if ((indi_byte%128)/64) >= 1 then
+        indi_info.active = true
+        indi_info.element_id = indi_byte % 8
+        indi_info.element = res.elements[indi_info.element_id].en
+        indi_info.size = math.floor((indi_byte%64)/16) + 1      --Range: 1~4
+        if ((indi_byte%16)/8) >= 1 then
+            indi_info.target = 'Enemy'
+        else
+            indi_info.target = 'Ally'
+        end
+    else
+        indi_info.active = false
+    end
+    return indi_info
 end
 
 function event_handler.incoming_chunk(id, data, modified, injected, blocked)
@@ -183,11 +250,30 @@ function event_handler.incoming_chunk(id, data, modified, injected, blocked)
         parse_my_buffs_update(data)
     elseif id == 0x028 then -- action
     elseif id == 0x029 then -- action message
+        local actor = data:unpack('I', 0x04+1)
+        local target = data:unpack('I',0x08+1)
+        local param = data:unpack('I',0x0C+1)
+        local message = data:unpack('H',0x18+1) % 0x8000
+        
+        local buff_lost_messages = S{64,204,206,350,531} -- CKM TEST
+        if otto.bard and actor == otto.bard.support.player_id and buff_lost_messages:contains(message)  then
+            otto.bard.song_timers.buff_lost(target, param) 
+        end
+
         local target_id = data:unpack('I', 0x09)
         local param_1 = data:unpack('I', 0x0D)
         local message_id = data:unpack('H', 0x19) % 32768
         parse_action_message(message_id, target_id, param_1)
-
+    elseif id == 0x037 then -- character update
+        if otto.geomancer then 
+            otto.geomancer.indi.info = parse_char_update(data) 
+        end   
+    elseif id == 0x0DD then  --Party member update
+        register_party_members_changed(data)
+    elseif id == 0x63 and data:byte(5) == 9 then -- contains buff info with timestamps
+        -- use this for basically keeping a duration for songs without having to do a bunch
+        -- of number crunching to calc song dur and +song etc..
+        parse_bard_timers(data)
     -- elseif id == 0x0E2 then
     --     print('packet recieved')
     --     local packet = packets.parse('incoming', data)

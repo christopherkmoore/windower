@@ -390,7 +390,6 @@ function support.song_list(songs,targ,maxsongs)
 end
 
 function support.resolve_song(commands)
-    print(commands)
     local x = tonumber(commands[#commands], 7)
 
     if x then commands[#commands] = A{'I','II','III','IV','V','VI'}[x] end

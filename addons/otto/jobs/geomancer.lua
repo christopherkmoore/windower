@@ -123,11 +123,9 @@ local function check_aspir()
 
 end
 local function check_spells()
-    local player = windower.ffxi.get_player()
-    local buffs = S(player.buffs)
+    local buffs = otto.player_check.my_buffs()
 
-    if actor:is_moving() or buffs.stun or buffs.sleep or buffs.charm or buffs.terror or buffs.petrification then return end
-    if not player or player.main_job ~= 'GEO' or (player.status ~= 1 and player.status ~= 0) then return end
+    if actor:is_moving() or otto.player_check.mage_disabled() then return end
 
     local entrust_recast = windower.ffxi.get_ability_recasts()[93]
     local indi_action = utils.normalize_action(user_settings.job.geomancer.indi, 'spells') or {}
@@ -149,10 +147,6 @@ local function check_spells()
         geomancer.delay = delay
         return
     end
-    -- seems the save as above??
-    -- if geomancer.indi.info.active and (geomancer.indi.latest.spell ~= nil and geomancer.indi.latest.spell.en ~= indi_action.en) then
-    --     geo_queue:enqueue_action('buff', indi_action, player.name) 
-    -- end
 
     -- check for a buffed loupan that could use healing.
     if (geomancer.blaze_active or geomancer.ecliptic_attrition_active) and user_settings.job.geomancer.cooldowns then
@@ -217,33 +211,34 @@ local function check_spells()
 
     -- redo bursting
 
-    if actions.has_bursting_spells() and user_settings.job.geomancer.cooldowns then
-        local theurgic_focus = {id=352,en="Theurgic Focus",ja="タウマテルギフォカス",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=249,status=59,targets=1,tp_cost=0,type="JobAbility"}
-        local collimated_ferver = {id=348,en="Collimated Fervor",ja="コリメイトファーバー",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=245,status=517,targets=1,tp_cost=0,type="JobAbility"}
+    -- if actions.has_bursting_spells() and user_settings.job.geomancer.cooldowns then
+    --     local theurgic_focus = {id=352,en="Theurgic Focus",ja="タウマテルギフォカス",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=249,status=59,targets=1,tp_cost=0,type="JobAbility"}
+    --     local collimated_ferver = {id=348,en="Collimated Fervor",ja="コリメイトファーバー",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=245,status=517,targets=1,tp_cost=0,type="JobAbility"}
 
-        local theurgic_focus_recast = windower.ffxi.get_ability_recasts()[249]
-        local collimated_ferver_recast = windower.ffxi.get_ability_recasts()[245]
+    --     local theurgic_focus_recast = windower.ffxi.get_ability_recasts()[249]
+    --     local collimated_ferver_recast = windower.ffxi.get_ability_recasts()[245]
     
-        if theurgic_focus_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then 
-            -- print('theurgic_focus')
-            local delay = otto.cast.job_ability(theurgic_focus, '<me>')
-            geomancer.delay = delay
-            return
-        end
+    --     if theurgic_focus_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then 
+    --         -- print('theurgic_focus')
+    --         local delay = otto.cast.job_ability(theurgic_focus, '<me>')
+    --         geomancer.delay = delay
+    --         return
+    --     end
 
-        if collimated_ferver_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then
-            -- print('collimated_ferver')
+    --     if collimated_ferver_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then
+    --         -- print('collimated_ferver')
 
-            local delay = otto.cast.job_ability(collimated_ferver, '<me>')
-            geomancer.delay = delay
-            return
-        end
-    end
+    --         local delay = otto.cast.job_ability(collimated_ferver, '<me>')
+    --         geomancer.delay = delay
+    --         return
+    --     end
+    -- end
 
 end
 
 function geomancer.check_geo()
     if not user_settings.job.geomancer.enabled then return end
+    if actor:is_moving() or otto.player_check.mage_disabled() then return end
 
     geomancer.counter = geomancer.counter + geomancer.check_interval
 
