@@ -261,6 +261,8 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
         local effect = target.raw.actions[1].param
 
         if bard.song_timers.song_buffs[effect] and not bard.buffs.pianissimo and (not user_settings.job.bard.bard_settings.aoe.party or bard.support.aoe_range()) then
+            print('here in adjust')
+
             bard.song_timers.adjust(song, 'AoE', bard.buffs)
         end
 

@@ -8,7 +8,8 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
     local min_recast = user_settings.job.bard.bard_settings.recast
     local ta = targ == 'AoE' and '<me>' or targ
 
-    
+    otto.debug.create_log(otto.bard.timers, 'debugger2')
+    print(targ)
     local spell_recasts = windower.ffxi.get_spell_recasts()
     local ability_recasts = windower.ffxi.get_ability_recasts()
 
