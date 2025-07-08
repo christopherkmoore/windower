@@ -23,8 +23,8 @@ local function assign_roles()
     if player.main_job == "BRD" or player.main_job == "GEO" or player.main_job == "WHM" or 
     player.main_job == "BLM"  or player.main_job == "SMN"  or player.main_job == "SCH" then
         windower.send_command('otto assist role backline')
-    elseif player.main_job == "RUN" or player.main_job == "PLD" then
-        windower.send_command('otto assist role tank')
+    -- elseif player.main_job == "RUN" or player.main_job == "PLD" then
+    --     windower.send_command('otto assist role tank')
     else
         windower.send_command('otto assist role frontline')
     end  

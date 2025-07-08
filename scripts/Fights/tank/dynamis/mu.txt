@@ -16,7 +16,6 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/tank/auto_whm
-
 wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;

@@ -31,7 +31,7 @@ end
 
 function blackmage.should_drain()
     local should_drain = windower.ffxi.get_player().vitals.hpp < 80
-    local target = windower.ffxi.get_mob_by_target('t')
+    local target = otoo.cast.party_target()
     local drain = {id=245,en="Drain",ja="ドレイン",cast_time=3,element=7,icon_id=236,icon_id_nq=15,levels={[4]=12,[8]=10,[20]=21,[21]=15},mp_cost=21,prefix="/magic",range=12,recast=60,recast_id=245,requirements=2,skill=37,targets=32,type="BlackMagic"}
     local drain_cooldown = windower.ffxi.get_spell_recasts()[drain.id]
 

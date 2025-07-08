@@ -126,11 +126,11 @@ end
 local function curaga(missingHps, ally_id)
     local spellId = 7
 
-    if missingHps > 1000 and missingHps <=1200  then
+    if missingHps > 1200 and missingHps <=1800  then
         spellId = spellId + 1
-    elseif missingHps > 1201 and missingHps <=2500 then
+    elseif missingHps > 1801 and missingHps <=3500 then
         spellId = spellId + 2
-    elseif missingHps > 2501 and missingHps <=3900 then
+    elseif missingHps > 3501 and missingHps <=5000 then
         spellId = spellId + 3
     elseif missingHps > 5000 then 
         spellId = 11
@@ -155,11 +155,11 @@ local function cure(ally_id, missingHps)
         spellId = spellId + 1
     elseif missingHps > 301 and missingHps <=500 then
         spellId = spellId + 2
-    elseif missingHps > 501 and missingHps <=700 then
+    elseif missingHps > 501 and missingHps <=900 then
         spellId = spellId + 3
-    elseif missingHps > 701 and missingHps <=1200 then
+    elseif missingHps > 901 and missingHps <=1700 then
         spellId = spellId + 4
-    elseif missingHps > 1201 then 
+    elseif missingHps > 1701 then 
         spellId = 6
     end
 
@@ -291,7 +291,7 @@ function whitemage.check_whm()
         for _, ally in pairs(otto.fight.my_allies) do
             if ally.debuffs['sleep'] then
                 local curaga = res.spells[7]
-                local delay = otto.cast.spell(curaga, ally.name)
+                local delay = otto.cast.spell(curaga, ally)
                 whitemage.delay = delay
             end 
         end
@@ -347,12 +347,12 @@ function whitemage.check_whm()
 
             if v >= 25 then
                 local missing = sortable_hps[k]
-                if otto.cast.is_ally_valid_target(k, 20) then 
+                if k and otto.cast.is_ally_valid_target(k, 20) then 
                     cure(k, missing)
                 end
             end
 
-            if otto.cast.is_ally_valid_target(k, 20) then 
+            if k and otto.cast.is_ally_valid_target(k, 20) then 
                 if not regen(k) then break end
             end
 
@@ -398,13 +398,13 @@ function whitemage.check_whm()
         end
 
         if try_aga_debuffing and debuff_name ~= '' then
-            if otto.cast.is_ally_valid_target(aga_target, 20) then 
+            if aga_target and otto.cast.is_ally_valid_target(aga_target, 20) then 
                 if remove_na(aga_target, debuff_name, try_aga_debuffing) then return end
             end
         end
 
         for ally_id, debuff_name in pairs(sortable_debuffs) do
-            if otto.cast.is_ally_valid_target(ally_id, 20) then 
+            if ally_id and otto.cast.is_ally_valid_target(ally_id, 20) then 
                 if remove_na(ally_id, debuff_name, false) then return end -- don't get caught trying to do all these debuffs
             end    
         end
@@ -413,6 +413,7 @@ function whitemage.check_whm()
         otto.buffs.cast()
 
         --debuffs 
+
         otto.debuffs.cast() 
 
         -- check for KO, with raise already sent.

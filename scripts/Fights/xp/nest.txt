@@ -27,9 +27,9 @@ send Chixslave otto buff Chixslave barblindra on;
 
 send Onechix exec fights/auto_brd
 
-send Onechix sing madrigal 1;
-send Onechix sing minuet 1;
-send Onechix sing march 1;
+send Onechix bard songs madrigal 1;
+send Onechix bard songs minuet 1;
+send Onechix bard songs march 1;
 
 ////////////////////////////////////
 // Geomancer

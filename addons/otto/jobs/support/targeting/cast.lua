@@ -1,55 +1,76 @@
 local cast = {}
 
+
+--=====================================================================
+-- MARK: Targets / Targeting
+--=====================================================================
+
+
+-- maybe rename since I deleted the old one
+function cast.has_dot_my_target(my_target)
+
+    if my_target and my_target.debuffs then
+        for debuff, _ in pairs(my_target.debuffs) do
+            local mapped = res.buffs:with('en', debuff)
+            if otto.event_statics.dot_debuffs:contains(mapped.id) then
+                return true
+            end
+        end
+    end
+end
+
+function cast.party_target()
+    for _, target in pairs(otto.fight.my_targets) do
+        if target.engaged == 'fighting' then
+            return target
+        end
+    end
+end
+
+function cast.distance_between_points(one, two)
+    if one and one.x and two and two.x then
+        local x = one.x - two.x
+        local y = one.y - two.y
+        local z = one.z - two.z 
+
+        local total = (x * x) + (y * y) + (z * z)
+        return total:sqrt() 
+    end
+    return nil
+end
 --=====================================================================
 -- MARK: Casting
 --=====================================================================
 
---- Cast a spell, or fail because of preconditions
+--- Cast a spell on a current targeted mob, or may swap to a new mob.
 -- @param parameters A spell from res.spells
 -- @param parameters A mob
 -- @return The delay for the job class to be added to check_interval
 function cast.spell(spell, mob)
-    print(spell)
-    print(mob)
-    local spell_recasts = windower.ffxi.get_spell_recasts()
+    if mob == nil then return 0 end
+    if not spell and spell.id and mob then return 0 end 
     if actor:is_moving() then return 1 end
     
-    if mob and type(mob) == 'table' and mob.name and mob.id then
-        local current_mob_target = windower.ffxi.get_mob_by_target('t')
+    local current_mob_target = windower.ffxi.get_mob_by_target()
 
-        -- I'm not targeting the right mob, so swap
-        if current_mob_target and otto.fight.my_targets[mob.id] and mob.id ~= current_mob_target.id then
-            otto.assist.swap_target_and_cast(mob, spell.id)
-            return spell.cast_time
-        end
-
-        local ally = otto.fight.my_allies[mob.id]
-
-        -- I'm not targeting the right ally, so swap
-        if ally and current_mob_target ~= ally.id then
-            otto.assist.swap_target_and_cast(mob, spell.id)
-            return spell.cast_time
-        end
-    end
-    print('should_use_spell')
-
-    if type(mob) == 'string' then
-        if mob == '<t>' then
-            windower.send_command(('input %s "%s" <t>'):format("/ma", spell.en))
-            return spell.cast_time
-        elseif mob == '<me>' then
-            windower.send_command(('input %s "%s" <me>'):format("/ma", spell.en))
-            return spell.cast_time
-        else
-            print('cast.spell is being sent a mob name. This wont work with multiple mobs.')
-            print('spell: '..spell.en)
-            print('mob: '..mob)
-            windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob))
-            return spell.cast_time
-        end
-
+    -- I'm not targeting the right mob, so swap
+    if current_mob_target and current_mob_target.id and mob and mob.id and mob.id ~= current_mob_target.id then
+        otto.assist.swap_target_and_cast(mob, spell.id)
         return spell.cast_time
     end
+
+    if current_mob_target and current_mob_target.id and mob and mob.id and mob.id == current_mob_target.id then
+        windower.send_command(('input %s "%s" <t>'):format("/ma", spell.en))
+        return spell.cast_time
+    end
+
+    -- local ally = otto.fight.my_allies[mob.id]
+
+    -- -- I'm not targeting the right ally, so swap
+    -- if ally and current_mob_target ~= ally.id then
+    --     otto.assist.swap_target_and_cast(mob, spell.id)
+    --     return spell.cast_time
+    -- end
 
     windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob.name))
     return spell.cast_time
@@ -73,7 +94,7 @@ end
 -- @param parameters A targets name
 -- @return The delay for the job class to be added to check_interval
 function cast.job_ability(job_ability, target)
-    if not job_ability then return end
+    if not job_ability then return 0 end
     local ability_recasts = windower.ffxi.get_ability_recasts()[job_ability.recast_id]
 
     if not actor:can_use(job_ability) then return 0 end
@@ -96,6 +117,20 @@ function cast.spell_with_pre_action(spell, job_ability, target)
     return spell.cast_time
 end
 
+--- Sending as <t> <me> or a pet name like a Geo bubble. Or an Ally Name.
+--- Basically you need to be absolutely sure its' a valid target before using. 
+-- @param parameters A spell from res.spells
+-- @param parameters A targets name
+-- @return The delay for the job class to be added to check_interval
+function cast.spell_with_pre_action_no_check(spell, job_ability, target)
+
+    local delay = cast.job_ability(job_ability, '<me>')
+    coroutine.sleep(delay)
+
+    cast.spell(spell, target)
+    return spell.cast_time
+end
+
 --=====================================================================
 -- MARK: Targeting
 --=====================================================================
@@ -105,7 +140,7 @@ end
 -- @param parameters The distance the monster should be within in yalms
 -- @return A boolean if the target is valid or false if it's invalid
 function cast.is_mob_valid_target(mob, distance)
-    return mob.distance:sqrt() < distance
+    return mob and mob.distance and distance and mob.distance:sqrt() < distance
 end
 
 --- Check if a party member is a valid target
@@ -126,7 +161,7 @@ function cast.aoe_range(spell)
     local player = windower.ffxi.get_player()
 
     for id, ally in pairs(otto.fight.my_allies) do
-        if ally and ally.zone == player.zone and cast.is_ally_valid_target(id, spell.distance) then
+        if spell and spell.distance and ally and ally.zone == player.zone and cast.is_ally_valid_target(id, spell.distance) then
             return true
         end
     end
@@ -148,25 +183,6 @@ function cast.aoe_range(distance)
     end
 
     return true
-end
-
--- CKM Try this when you have time after testing these big refactor changes. might solve cast.spell problem
-local function get_target(targ)
-    if targ == nil then
-        return nil
-    elseif istable(targ) then
-        return targ
-    elseif tonumber(targ) and (tonumber(targ) > 255) then
-        return windower.ffxi.get_mob_by_id(tonumber(targ))
-    elseif S{'<me>', 'me'}:contains(targ) then
-        return windower.ffxi.get_mob_by_target('me')
-    elseif targ == '<t>' then
-        return windower.ffxi.get_mob_by_target()
-    elseif isstr(targ) then
-        local target = windower.ffxi.get_mob_by_name(targ)
-        return target or windower.ffxi.get_mob_by_name(targ:ucfirst())
-    end
-    return nil
 end
 
 return cast

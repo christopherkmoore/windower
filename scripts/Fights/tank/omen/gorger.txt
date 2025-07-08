@@ -14,9 +14,9 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
-send Chixslave otto healer on;
+send Chixslave exec fights/tank/auto_whm
+wait 0.3;
 
-send Chixslave otto healer on;
 send Chixslave otto magicburst off;
 send Chixslave otto magicburst t 2;
 send Chixslave otto magicburst c holy;

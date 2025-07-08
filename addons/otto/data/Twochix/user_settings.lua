@@ -11,7 +11,7 @@ return {
         ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
-            ["Fivechix"] = "tank",
+            ["Fivechix"] = "frontline",
             ["Fourchix"] = "frontline",
             ["Onechix"] = "backline",
             ["Threechix"] = "backline",
@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = false

@@ -44,7 +44,7 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
 	local mob = otto.fight.my_targets[target.id]
 	if not mob then return end       -- not my mob, not my problem.                          
-	if not otto.cast.is_mob_valid_target(mob) then return end
+	if not otto.cast.is_mob_valid_target(mob, 20) then return end
 
 
     if mob and otto.event_statics.monster_buff_gained:contains(action.message) then
@@ -62,8 +62,9 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
             end
 
             -- immediately add for known dispelables
-            if otto.config.monster_ability_dispelables[action.top_level_param] == true then
-                offense.dispel[target.raw.id] = action.top_level_param
+            if buff and otto.config.monster_ability_dispelables[action.top_level_param] == true then
+                print('here')
+                otto.fight.update_target_dispellable(target.raw.id, buff.en)
             end
         end
     end

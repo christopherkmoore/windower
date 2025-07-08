@@ -29,8 +29,8 @@ send Onechix exec fights/auto_brd
 
 wait 0.3;
 
-send Onechix sing minuet 2;
-send Onechix sing march 1;
+send Onechix bard songs minuet 2;
+send Onechix bard songs march 1;
 
 
 ////////////////////////////////////
@@ -68,7 +68,7 @@ send Onechix otto pull on;
 send Threechix otto geo cooldowns on;
 send Twochix otto buff Haste Samba on;
 
-send Onechix sing ballad 1 Fivechix;
+send Onechix otto bard Fivechix ballad;
 wait 40
 
 send Threechix otto buff Ornate haste on

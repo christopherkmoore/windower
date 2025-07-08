@@ -19,11 +19,16 @@ rdm
 pass / lot
 
 Bugs
+
+dispel not working
+weaponskills not working
+maybe MB not working
+auto targeting is still pretty bad
+sleep seen broken for single target. -- because engaged not updating. not brd problem i think
+
 weaponskill / magicburst carries to new target.
 add checks -- aspir is targeting any target
 add distance checks on spells targets to improve the check ticks
-add nil checks during my_allies updates
-spell.cast definitely has bugs
 check functions tick even when class is nil. find a way to turn off the check
 
 TODO

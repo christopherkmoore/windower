@@ -242,7 +242,7 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
 	
 	if not mob then return end       -- not my mob, not my problem.                          
 	if not ally then return end      -- not my ally closing sc, not my problem.
-	if not otto.cast.is_mob_valid_target(mob) then return end
+	if not otto.cast.is_mob_valid_target(mob, 20) then return end
 
     if add_effect and otto.event_statics.skillchain_ids:contains(add_effect.message_id) then
 

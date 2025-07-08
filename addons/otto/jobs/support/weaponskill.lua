@@ -132,7 +132,7 @@ function weaponskill.action(target)
     return nil
 end
 
-function weaponskill.action_handler(category, action, actor, add_effect, target)
+function weaponskill.action_handler(category, action, actor_id, add_effect, target)
 	if not user_settings.weaponskill.enabled then return end
     if user_settings.weaponskill.partner == nil or user_settings.weaponskill.partner == 'none' then return end
 
@@ -146,10 +146,15 @@ function weaponskill.action_handler(category, action, actor, add_effect, target)
         return
     end
 
-    local ally = otto.fight.my_allies[actor]
+
+
+    local ally = otto.fight.my_allies[actor_id]
     local mob = otto.fight.my_targets[target.id]
-    if not otto.cast.is_mob_valid_target(mob) then return end    -- if the action was taken on a target that's not one of mine, don't care.
-	if not ally then return end                              	 -- not my allys ws, not my problem.
+    
+    if not otto.cast.is_mob_valid_target(mob, 20) then return end   -- if the action was taken on a target that's not one of mine, don't care.
+	if not ally then return end                                     -- not my allys ws, not my problem.
+    if not mob then return end                        	            -- not my mob ws, not my problem.
+    print('here')
 
     weaponskill.close_and_reopen_window(target.id)               -- there was a ws and now it's ready for close
 

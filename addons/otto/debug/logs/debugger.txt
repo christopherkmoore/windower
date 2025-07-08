@@ -1,9 +1,29 @@
 return {
 -- Table: {1}
 {
-   ["song_list_count"]=1,
-   ["currsongs"]=1,
-   ["basesongs"]=3,
-   ["maxsongs"]=3,
+   ["raw"]={2},
+},
+-- Table: {2}
+{
+   ["spike_effect_param"]=0,
+   ["has_add_effect"]=false,
+   ["category"]="weaponskill_finish",
+   ["spike_effect_effect"]=0,
+   ["spike_effect_animation"]=0,
+   ["add_effect_animation"]=0,
+   ["spike_effect_message"]=0,
+   ["animation"]=178,
+   ["has_spike_effect"]=false,
+   ["knockback"]=0,
+   ["top_level_param"]=156,
+   ["effect"]=0,
+   ["message"]=185,
+   ["add_effect_message"]=0,
+   ["reaction"]=24,
+   ["stagger"]=2,
+   ["add_effect_param"]=0,
+   ["unknown"]=0,
+   ["add_effect_effect"]=0,
+   ["param"]=21336,
 },
 }

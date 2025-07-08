@@ -54,8 +54,9 @@ end
 
 function pull.tell_master_to_target()
     local target = sort_closest_target()
-
-    otto.assist.master_target_no_close_in(target.id)
+    if target and target.id then 
+        otto.assist.master_target_no_close_in(target.id)
+    end
 end
 
 function pull.try_pulling()

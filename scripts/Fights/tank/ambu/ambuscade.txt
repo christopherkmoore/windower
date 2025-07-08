@@ -50,7 +50,7 @@ wait 0.3;
 
 send Fivechix otto pld on;
 
-send Onechix sing ballad 1 Fivechix;
+send Onechix bard song Fivechix ballad;
 
 wait 0.3
 

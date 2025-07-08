@@ -17,6 +17,7 @@ geomancer.indi = { latest = {}, info = {} }
 
 geomancer.should_full_circle = false
 geomancer.bubble_should_cast = false
+
 geomancer.bubble_target = nil
 geomancer.bubble_action = nil
 
@@ -66,9 +67,11 @@ local function check_bubble_out_of_range()
     local loupan = windower.ffxi.get_mob_by_target('pet')
 
     if not loupan then geomancer.should_full_circle = false return end
-    local distance_between_bubble_and_target = math.abs(loupan.x - bubble_target.x) -- this is not yalm perfect.
+    local target_coords = { x = bubble_target.x, y = bubble_target.y, z = bubble_target.z}
+    local bubble_coords = { x = loupan.x, y = loupan.y, z = loupan.z }
+    local distance_between_old_bubble_and_target = otto.cast.distance_between_points(target_coords, bubble_coords)
 
-    if distance_between_bubble_and_target > (user_settings.job.geomancer.bubble.distance or 10)  then
+    if distance_between_old_bubble_and_target and distance_between_old_bubble_and_target > (user_settings.job.geomancer.bubble.distance or 10)  then
         geomancer.should_full_circle = true
     end
 end
@@ -116,6 +119,8 @@ end
 
 local function check_aspir()
     if otto.aspir.aspirable_target and otto.aspir.should_use_spell then
+        print('aspir')
+
         local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
         geomancer.delay = delay
         return
@@ -128,9 +133,8 @@ local function check_spells()
     if actor:is_moving() or otto.player.mage_disabled() then return end
 
     local entrust_recast = windower.ffxi.get_ability_recasts()[93]
-    local indi_action = utils.normalize_action(user_settings.job.geomancer.indi, 'spells') or {}
+    local indi_action = res.spells:with('name', user_settings.job.geomancer.indi)
 
-    
     -- check if the bubble is far from the target, if it is, FC and get a new one
     if geomancer.should_full_circle then 
         local ja_ability = use_full_circle()
@@ -143,6 +147,8 @@ local function check_spells()
     end
 
     if not geomancer.indi.info.active  then
+        -- print('indi, nocheck ')
+
         local delay = otto.cast.spell_no_check(indi_action, '<me>')
         geomancer.delay = delay
         return
@@ -155,6 +161,7 @@ local function check_spells()
         if protection_ability then
             local delay = otto.cast.job_ability(protection_ability, '<me>')
             geomancer.delay = delay
+            return
         end
     end
 
@@ -170,16 +177,17 @@ local function check_spells()
             geomancer.ecliptic_attrition_active = true
             return
         end
-
     end
 
     -- check for entrust recast, and blow the cooldown.
     if user_settings.job.geomancer.entrust and user_settings.job.geomancer.entrust.target and user_settings.job.geomancer.entrust.indi then 
         local action = {id=386,en="Entrust",ja="エントラスト",duration=60,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=93,status=584,targets=1,tp_cost=0,type="JobAbility"}
+        local target = windower.ffxi.get_mob_by_name(user_settings.job.geomancer.entrust.target)
 
-        if entrust_recast == 0 or buffs:contains(action.status) then 
-            local spell = utils.normalize_action(user_settings.job.geomancer.entrust.indi, 'spells')
-            local delay = otto.cast.spell_with_pre_action(spell, action, user_settings.job.geomancer.entrust.target)
+        if target and entrust_recast == 0 or buffs:contains(action.status) then 
+            local spell = res.spells:with('name', user_settings.job.geomancer.indi)
+            -- print('entrust pre-action ')
+            local delay = otto.cast.spell_with_pre_action(spell, action, target)
             geomancer.delay = delay
             return
         end
@@ -247,26 +255,29 @@ function geomancer.check_geo()
         geomancer.counter = 0
         geomancer.delay = geomancer.check_interval
 
-        local action = utils.normalize_action(user_settings.job.geomancer.geo, 'spells')
+        local action = res.spells:with('name', user_settings.job.geomancer.geo)
         local loupan = windower.ffxi.get_mob_by_target('pet')
         local bubble_target = windower.ffxi.get_mob_by_name(user_settings.job.geomancer.bubble.target)
 
         if action and loupan == nil then
-            if idle_bubbles:contains(action.id) then 
+             -- requires an ally target
+            if idle_bubbles:contains(action.id) then
                 geomancer.bubble_should_cast = true
-                geomancer.bubble_target = user_settings.job.geomancer.bubble.target
+                geomancer.bubble_target = otto.fight.ally_lookup(user_settings.job.geomancer.bubble.target, nil, nil)
                 geomancer.bubble_action = action
             end
 
-            if bubble_target and debuff_bubbles:contains(action.id) and bubble_target.status == 1 then
+            -- requires an enemy target
+            if bubble_target and debuff_bubbles:contains(action.id) then
                 geomancer.bubble_should_cast = true
-                geomancer.bubble_target = '<t>' -- bug here... 
+                geomancer.bubble_target = otto.cast.party_target()
                 geomancer.bubble_action = action
             end
 
+             -- requires an ally target
             if active_bubbles:contains(action.id) and bubble_target.status == 1 then
                 geomancer.bubble_should_cast = true
-                geomancer.bubble_target = user_settings.job.geomancer.bubble.target
+                geomancer.bubble_target = otto.fight.ally_lookup(user_settings.job.geomancer.bubble.target, nil, nil)
                 geomancer.bubble_action = action
             end
         else

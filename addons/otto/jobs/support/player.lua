@@ -12,7 +12,7 @@ end
 
 function player.disabled() 
     for _, disabled_id in pairs(otto.event_statics.disabled_states) do
-		if player.buff_active.buff_active(disabled_id) then
+		if player.buff_active(disabled_id) then
 			return true
 		end
 	end
@@ -39,7 +39,7 @@ end
 function melee_disabled()
     local player = windower.ffxi.get_player()
 	for _, disabled_id in pairs(otto.event_statics.melee_disabled_states) do
-		if player.buff_active.buff_active(disabled_id) then
+		if player.buff_active(disabled_id) then
 			return true
 		end
 	end

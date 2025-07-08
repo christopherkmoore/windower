@@ -2,14 +2,14 @@
 
 local aspir = T{ immunities = {}, _events = {} }
 
-local spell = { 
+local aspirs = { 
     aspir3 = {id=881,en="Aspir III",ja="アスピルIII",cast_time=3,element=7,icon_id=657,icon_id_nq=15,levels={[4]=550,[21]=550},mp_cost=2,prefix="/magic",range=12,recast=26,recast_id=881,requirements=0,skill=37,targets=32,type="BlackMagic"},
     aspir2 = {id=248,en="Aspir II",ja="アスピルII",cast_time=3,element=7,icon_id=239,icon_id_nq=15,levels={[4]=83,[8]=78,[20]=97,[21]=90},mp_cost=5,prefix="/magic",range=12,recast=11,recast_id=248,requirements=2,skill=37,targets=32,type="BlackMagic"},
     aspir  = {id=247,en="Aspir",ja="アスピル",cast_time=3,element=7,icon_id=238,icon_id_nq=15,levels={[4]=25,[8]=20,[20]=36,[21]=30},mp_cost=10,prefix="/magic",range=12,recast=60,recast_id=247,requirements=2,skill=37,targets=32,type="BlackMagic"},
 }
 
 -- genearl check ticks
-aspir.check_interval = 0.4
+aspir.check_interval = 1.5
 aspir.delay = 4
 aspir.counter = 0
 
@@ -49,7 +49,7 @@ local function can_cast()
     local player = windower.ffxi.get_player()
     for target_id, mob in pairs(otto.fight.my_targets) do
         local aspirable = otto.config.maspir_immunities[mob.name] == false
-        local valid_target = otto.cast.is_mob_valid_target(mob, spell.aspir.range)
+        local valid_target = otto.cast.is_mob_valid_target(mob, aspirs.aspir.range)
         local at_mp_threshhold = user_settings.aspir.casting_mp < player.vitals.mpp
 
         if aspirable and valid_target and at_mp_threshhold then 
@@ -69,7 +69,7 @@ local function set_aspir()
     local cooldowns = windower.ffxi.get_spell_recasts()
     local tier_trying = 3
 
-    for aspir in spell:it() do
+    for id, aspir in pairs(aspirs) do
         local learned = spells_learned[aspir.id] 
         local cooldown = cooldowns[aspir.id]
 
@@ -121,28 +121,6 @@ function aspir.action_handler(category, action, actor_id, add_effect, target)
         return
     end
     
-    local player = windower.ffxi.get_player()
-    if actor_id ~= player.id then return end
-
-    -- Casting finish
-    if category == 'spell_finish' then
-        aspir.delay = 5
-    end
-
-    if category == 'item_finish' then 
-        aspir.delay = 2.2
-    end
-
-    if start_categories:contains(category) then 
-        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
-            aspir.delay = 4.2
-        end
-
-        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
-            aspir.delay = 2.2
-        end
-    end
-
 end
 
 return aspir

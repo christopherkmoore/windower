@@ -77,7 +77,7 @@ function event_handler.action(raw)
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
-
+    otto.fight.action_handler(category, action, actor_id, target, basic_info)
     -- extremely useful for classes to manage delay with an action handler
     -- will result in the char being actually playable by a human
     if otto.bard ~= nil then
@@ -179,7 +179,7 @@ local function parse_action_message(message_id, target_id, param_1)
 
     -- Debuff expired
     if debuff_expired then
-        local buff = res.buffs[param_1]
+        local buff = res.buffs[param_1] -- CKM TEST for spells like dia, I may have to make the spell, then map the spell to the debuffs spell.status
         otto.fight.remove_target_debuff(target_id, buff.en)
     end
 

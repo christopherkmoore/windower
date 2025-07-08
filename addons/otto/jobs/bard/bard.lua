@@ -129,16 +129,15 @@ function bard.check_bard()
             for index, mob in pairs(otto.fight.my_targets) do 
                 total_mob = total_mob + 1
 
-                local target = windower.ffxi.get_mob_by_id(mob.id)
-                local unsleepable = otto.config.sleep_immunities[target.name] or false
-                if unsleepable then
+                local unsleepable = otto.config.sleep_immunities[mob.name] or false
+                if unsleepable or otto.cast.has_dot_my_target(mob) then --CKM TEST
                     unsleepable_targets = unsleepable_targets + 1
                 end
 
                 if mob.debuffs['sleep'] then
                     total_sleeps = total_sleeps + 1
                 elseif not unsleepable then
-                    if mob.engaged == 'agro' then
+                    if mob.engaged == 'agro' and not otto.cast.has_dot_my_target(mob) then --CKM TEST
                         not_sleeping[mob.id] = true
                     end
                 end
@@ -261,8 +260,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
         local effect = target.raw.actions[1].param
 
         if bard.song_timers.song_buffs[effect] and not bard.buffs.pianissimo and (not user_settings.job.bard.bard_settings.aoe.party or bard.support.aoe_range()) then
-            print('here in adjust')
-
             bard.song_timers.adjust(song, 'AoE', bard.buffs)
         end
 

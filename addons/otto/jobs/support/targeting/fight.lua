@@ -18,6 +18,7 @@ fight.common = {}
 fight.common.debuff_horn_multiplier = 1.53
 
 function fight.init() 
+    
     fight.update_targets:loop(check_tick)
     fight.update_allies:loop(check_tick)
 end
@@ -100,32 +101,32 @@ end
 
 local function update_allies(party) 
     -- need to unwrap, cause can be nil?
-    if party.p0 ~= nil and party.p0.mob then 
+    if party and party.p0 and party.p0.mob then 
         local p0_target = fight.target_lookup(nil, nil, party.p0.mob.target_index) or ''
          fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = math.sqrt(party.p0.mob.distance), target_index = party.p0.mob.target_index, target_name = p0_target, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = fight.my_allies[party.p0.mob.id].buffs, debuffs = fight.my_allies[party.p0.mob.id].debuffs }
     end
     
-    if party.p1 ~= nil and party.p1.mob then 
+    if party and party.p1 and party.p1.mob then 
         local p1_target = fight.target_lookup(nil, nil, party.p1.mob.target_index) or ''
         fight.my_allies[party.p1.mob.id] = { name = party.p1.mob.name, id = party.p1.mob.id, index = party.p1.mob.index, distance = math.sqrt(party.p1.mob.distance), target_index = party.p1.mob.target_index, target_name = p1_target, claim_id = party.p1.mob.claim_id, tp = party.p1.tp, zone = party.p1.zone, mpp = party.p1.mpp, mp = party.p1.mp, hp = party.p1.hp, hpp = party.p1.hpp, buffs = fight.my_allies[party.p1.mob.id].buffs, debuffs = fight.my_allies[party.p1.mob.id].debuffs }
     end
 
-    if party.p2 ~= nil and party.p2.mob then
+    if party and party.p2 and party.p2.mob then
         local p2_target = fight.target_lookup(nil, nil, party.p2.mob.target_index) or ''
         fight.my_allies[party.p2.mob.id] = { name = party.p2.mob.name, id = party.p2.mob.id, index = party.p2.mob.index, distance = math.sqrt(party.p2.mob.distance), target_index = party.p2.mob.target_index, target_name = p2_target, claim_id = party.p2.mob.claim_id, tp = party.p2.tp, zone = party.p2.zone, mpp = party.p2.mpp, mp = party.p2.mp, hp = party.p2.hp, hpp = party.p2.hpp, buffs = fight.my_allies[party.p2.mob.id].buffs, debuffs = fight.my_allies[party.p2.mob.id].debuffs }    
     end
     
-    if party.p3 ~= nil and party.p3.mob then
+    if party and party.p3 and party.p3.mob then
         local p3_target = fight.target_lookup(nil, nil, party.p3.mob.target_index) or ''
         fight.my_allies[party.p3.mob.id] = { name = party.p3.mob.name, id = party.p3.mob.id, index = party.p3.mob.index, distance = math.sqrt(party.p3.mob.distance), target_index = party.p3.mob.target_index, target_name = p3_target, claim_id = party.p3.mob.claim_id, tp = party.p3.tp, zone = party.p3.zone, mpp = party.p3.mpp, mp = party.p3.mp, hp = party.p3.hp, hpp = party.p3.hpp, buffs = fight.my_allies[party.p3.mob.id].buffs, debuffs = fight.my_allies[party.p3.mob.id].debuffs }
     end
 
-    if party.p4 ~= nil and party.p4.mob then 
+    if party and party.p4 and party.p4.mob then 
         local p4_target = fight.target_lookup(nil, nil, party.p4.mob.target_index) or ''
         fight.my_allies[party.p4.mob.id] = { name = party.p4.mob.name, id = party.p4.mob.id, index = party.p4.mob.index, distance = math.sqrt(party.p4.mob.distance), target_index = party.p4.mob.target_index, target_name = p4_target, claim_id = party.p4.mob.claim_id, tp = party.p4.tp, zone = party.p4.zone, mpp = party.p4.mpp, mp = party.p4.mp, hp = party.p4.hp, hpp = party.p4.hpp, buffs = fight.my_allies[party.p4.mob.id].buffs, debuffs = fight.my_allies[party.p4.mob.id].debuffs }
     end
     
-    if party.p5 ~= nil and party.p5.mob then 
+    if party and party.p5 and party.p5.mob then 
         local p5_target = fight.target_lookup(nil, nil, party.p5.mob.target_index) or ''
         fight.my_allies[party.p5.mob.id] = { name = party.p5.mob.name, id = party.p5.mob.id, index = party.p5.mob.index, distance = math.sqrt(party.p5.mob.distance), target_index = party.p5.mob.target_index, target_name = p5_target, claim_id = party.p5.mob.claim_id, tp = party.p5.tp, zone = party.p5.zone, mpp = party.p5.mpp, mp = party.p5.mp, hp = party.p5.hp, hpp = party.p5.hpp, buffs = fight.my_allies[party.p5.mob.id].buffs, debuffs = fight.my_allies[party.p5.mob.id].debuffs }        
     end
@@ -172,6 +173,7 @@ end
 -- main function on 1 second tick
 function fight.update_targets() 
 
+    -- need to update 'engaged' when fighting a mob.
     local mobs = windower.ffxi.get_mob_array() 
 
     -- build the entire aggro'd mob list
@@ -183,7 +185,7 @@ function fight.update_targets()
 
             -- only add new mobs when they're new, otherwise you reset the statuses
             if not fight.my_targets[mob.id] then
-                fight.my_targets[mob.id] = { engaged = "fighting" , id = mob.id, distance = mob.distance, name = mob.name, index = mob.index, debuffs = {}, dispellables = {}} 
+                fight.my_targets[mob.id] = { engaged = "agro" , id = mob.id, distance = mob.distance, name = mob.name, index = mob.index, debuffs = {}, dispellables = {}} 
             end
         end
 
@@ -240,6 +242,7 @@ function fight.remove_target_debuff(target_id, effect)
     local should_remove = fight.my_targets[target_id] and fight.my_targets[target_id]['debuffs'][effect]
 
     if should_remove then
+        -- print('removed: '..effect..' on '..target_id)
         fight.my_targets[target_id]['debuffs'][effect] = nil
     end
 end
@@ -265,5 +268,31 @@ function fight.remove_target(id)
     fight.targets[id] = nil
     fight.my_targets[id] = nil
 end 
+
+-- Notes
+-- add an action handler parsing melee hits. update the 'engaged' state based on that.
+-- I think it'll be more accurate.
+function fight.action_handler(category, action, actor_id, target, basic_info)
+	local categories = S{
+    	'melee',
+	 }
+
+    if not categories:contains(category) or action.param == 0 then
+        return
+    end
+
+
+	local mob = otto.fight.my_targets[target.id]
+	if not mob then return end       -- not my mob, not my problem.     
+              
+    local ally = otto.fight.my_allies[actor_id]
+    if not ally then return end       -- not my player, not my problem
+
+    -- I guess the mob should be close too if i'm 'fighting' it
+	if not otto.cast.is_mob_valid_target(mob, 20) then return end
+    -- otto.debug.create_2log_for_comparison(action, 'debugger', target, 'debugger2')
+    mob.engaged = 'fighting'
+
+end
 
 return fight

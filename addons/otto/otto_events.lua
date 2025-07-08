@@ -601,7 +601,7 @@ local function assist_commands(args)
 
          if arg2 == 'on' then
             user_settings.assist.should_engage = true
-            message = 'Auto engasend sendge enabled'
+            message = 'Auto engage enabled'
          end
     elseif command == 'config' then
         if arg2 == 'refresh' then

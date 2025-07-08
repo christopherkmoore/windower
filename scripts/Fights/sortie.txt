@@ -14,7 +14,8 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
-send Chixslave exec fights/auto_whm
+send Chixslave exec fights/tank/auto_whm
+wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
@@ -23,12 +24,13 @@ send Chixslave otto buff Chixslave barblindra on;
 // Bard
 ////////////////////////////////////
 
-send Onechix exec fights/auto_brd
+send Onechix exec fights/tank/auto_brd
+wait 0.3;
 
-send Onechix sing minuet 2;
-send Onechix sing march 1;
+send Onechix bard songs minuet 2;
+send Onechix bard songs march 1;
 
-send Onechix sing ws off;
+send Onechix otto ws off;
 send Onechix otto ws off;
 
 ////////////////////////////////////

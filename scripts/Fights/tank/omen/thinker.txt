@@ -15,8 +15,7 @@ wait 0.1;
 // White Mage
 ////////////////////////////////
 
-send Chixslave exec fights/auto_whm
-
+send Chixslave exec fights/tank/auto_whm
 wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;

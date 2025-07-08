@@ -97,7 +97,7 @@ function paladin.check_pld()
                 local cure = res.spells[1]
                 local pre_action = res.job_abilities[394] -- use majesty for buffed cure
 
-                local delay = otto.cast.spell_with_pre_action(cure, pre_action, ally.name)
+                local delay = otto.cast.spell_with_pre_action(cure, pre_action, '<me>')
                 paladin.delay = delay
                 return
             end 
@@ -134,19 +134,18 @@ function paladin.check_pld()
         for _, spell in pairs(paladin.bufflist) do
             local player_id = windower.ffxi.get_player()
             local recast = windower.ffxi.get_spell_recasts()[spell.recast_id]
-            local my_buffs = otto.fight.my_allies[player.id].buffs
-
-            if my_buffs[spell.status] == nil and recast == 0 then
+            local me = otto.fight.my_allies[player.id]
+            if me and me.buffs and me.buffs[spell.status] == nil and recast == 0 then
                 local buff = res.buffs[spell.status]
 
                 if buff.en == "Protect" then
                     local pre_action = res.job_abilities[394] -- use majesty for buffed protect
                     -- add check to see if fam is in range.
-                    local delay = otto.cast.spell_with_pre_action(spell, pre_action, player.mob)
+                    local delay = otto.cast.spell_with_pre_action(spell, pre_action, '<me>')
                     paladin.delay = delay
                     return
                 else
-                    local delay = otto.cast.spell(spell, player.mob)
+                    local delay = otto.cast.spell_no_check(spell, '<me>')
                     paladin.delay = delay
                     return
     
