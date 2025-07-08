@@ -244,6 +244,10 @@ end
 
 function event_handler.incoming_chunk(id, data, modified, injected, blocked)
 
+    if id == 0x63 and data:byte(5) == 9 then
+        parse_bard_timers(data)
+    end
+
     if id == 0x076 then -- party buffs update
         parse_party_buffs_update(data)
     elseif id == 0x63 and data:byte(5) == 9 then -- my buffs update with timers
@@ -270,10 +274,10 @@ function event_handler.incoming_chunk(id, data, modified, injected, blocked)
         end   
     elseif id == 0x0DD then  --Party member update
         register_party_members_changed(data)
-    elseif id == 0x63 and data:byte(5) == 9 then -- contains buff info with timestamps
+
+    else -- contains buff info with timestamps
         -- use this for basically keeping a duration for songs without having to do a bunch
         -- of number crunching to calc song dur and +song etc..
-        parse_bard_timers(data)
     -- elseif id == 0x0E2 then
     --     print('packet recieved')
     --     local packet = packets.parse('incoming', data)

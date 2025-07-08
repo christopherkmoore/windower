@@ -411,7 +411,6 @@ function whitemage.check_whm()
 
         -- -- buffs
         otto.buffs.cast()
-        otto.debug.create_log(otto.buffs.buff_list, 'debugger')
 
         --debuffs 
         otto.debuffs.cast() 

@@ -2,7 +2,7 @@ return {
 -- Table: {1}
 {
    ["song_list_count"]=1,
-   ["currsongs"]=0,
+   ["currsongs"]=1,
    ["basesongs"]=3,
    ["maxsongs"]=3,
 },
