@@ -277,7 +277,7 @@ end
 
 function whitemage.check_whm()
     if not user_settings.job.whitemage.enabled then return end
-    if actor:is_moving() or otto.player_check.mage_disabled() then return end
+    if actor:is_moving() or otto.player.mage_disabled() then return end
 
     whitemage.counter = whitemage.counter + whitemage.check_interval
 
@@ -410,56 +410,11 @@ function whitemage.check_whm()
         end
 
         -- -- buffs
-        -- for _, ally in pairs(otto.fight.my_allies) do
-        --     if ally and otto.cast.is_mob_valid_target(ally, 20) and ally.buffs then
-        --         for buff in otto.buffs.buff_list:it() do
-        --             local spell = res.spells:with('name', buff)
-        --             local buff = res.buffs[spell.status] 
-        --             local spell_recasts = windower.ffxi.get_spell_recasts()
-        --             local has_buff = ally.buffs[buff.id] or false
-                    
-        --             if spell and spell_recasts and spell_recasts[spell.id] == 0 and ally and not has_buff and otto.cast.aoe_range(spell, spell.range) then
-        --                 local delay = otto.cast.spell(spell, '<me>')
-        --                 whitemage.delay = delay
-        --                 return
-        --             end
-        --         end
-        --     end
-        -- end
-
-        -- single target buffs
-            for target, buff in pairs(otto.buffs.buff_list) do
-                local spell = res.spells:with('name', buff)
-                local buff = res.buffs[spell.status]
-                local spell_recasts = windower.ffxi.get_spell_recasts()
-                local ally = otto.fight.ally_lookup(target, nil, nil)
-                local has_buff = ally.buffs[buff.id] or false
-                
-                if spell and spell_recasts and spell_recasts[spell.id] == 0 and ally and not has_buff then
-                    local delay = otto.cast.spell(spell, ally)
-                    whitemage.delay = delay
-                    return
-                end
-            end
+        otto.buffs.cast()
+        otto.debug.create_log(otto.buffs.buff_list, 'debugger')
 
         --debuffs 
-        -- for _, mob in pairs(otto.fight.my_targets) do
-            local mob = windower.ffxi.get_mob_by_target('t')
-            if mob and otto.cast.is_mob_valid_target(mob, 20) then
-                for debuff_spell, _ in pairs(otto.buffs.debuff_list) do
-                    local spell = res.spells:with('name', debuff_spell)
-                    local debuff = res.buffs[spell.status]
-                    local spell_recasts = windower.ffxi.get_spell_recasts()
-                    local has_debuff = otto.fight.my_targets[mob.id].debuffs[debuff.en] or false
-
-                    if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
-                        local delay = otto.cast.spell(spell, '<t>')
-                        whitemage.delay = delay
-                        return
-                    end
-                end
-            end
-        -- end
+        otto.debuffs.cast() 
 
         -- check for KO, with raise already sent.
         -- and remove if a player is no longer KO'd
@@ -494,7 +449,6 @@ function whitemage.check_whm()
         -- Asylum          -- Enhanced resistance to enfeebling + Dispel effects
         -- abilities
             -- devotion
-
 
     end
 end

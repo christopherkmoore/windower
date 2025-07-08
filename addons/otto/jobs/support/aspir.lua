@@ -13,8 +13,8 @@ aspir.check_interval = 0.4
 aspir.delay = 4
 aspir.counter = 0
 
-aspir.aspirable_target = T{}
-aspir.should_use_spell = T{}
+aspir.aspirable_target = nil
+aspir.should_use_spell = nil
 
 function aspir.init()
 

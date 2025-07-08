@@ -9,11 +9,10 @@ local cast = {}
 -- @param parameters A mob
 -- @return The delay for the job class to be added to check_interval
 function cast.spell(spell, mob)
-    
+    print(spell)
+    print(mob)
     local spell_recasts = windower.ffxi.get_spell_recasts()
     if actor:is_moving() then return 1 end
-    if not actor:in_casting_range(mob) then return 0 end
-    if not actor:can_use(spell) then return 0 end
     
     if mob and type(mob) == 'table' and mob.name and mob.id then
         local current_mob_target = windower.ffxi.get_mob_by_target('t')
@@ -32,6 +31,7 @@ function cast.spell(spell, mob)
             return spell.cast_time
         end
     end
+    print('should_use_spell')
 
     if type(mob) == 'string' then
         if mob == '<t>' then
@@ -42,6 +42,8 @@ function cast.spell(spell, mob)
             return spell.cast_time
         else
             print('cast.spell is being sent a mob name. This wont work with multiple mobs.')
+            print('spell: '..spell.en)
+            print('mob: '..mob)
             windower.send_command(('input %s "%s" %s'):format("/ma", spell.en, mob))
             return spell.cast_time
         end

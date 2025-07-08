@@ -28,6 +28,15 @@ function utils.get_weaponskill(search)
     end
 end
 
+-- Exchanges a weaponskill for a resouce from the weapon_skills res.
+function utils.get_job_ability(search)
+    for k,v in pairs(res.job_abilities) do 
+        if v.name == search then
+            return v
+        end 
+    end
+end
+
 function utils.normalize_action(action, action_type)
     -- atcf('utils.normalize_action(%s, %s)', tostring(action), tostring(action_type))
     if istable(action) then return action end
@@ -100,22 +109,6 @@ function utils.register_immunity(mob, debuff)
     utils.immunities[mob.name] = S(utils.immunities[mob.name]) or S{}
     utils.immunities[mob.name]:add(debuff.id)
     utils.immunities:save()
-end
-
-function utils.register_spam_action(args)
-    local argstr = table.concat(args,' ')
-    local action_name = utils.formatActionName(argstr)
-    local action = lor_res.action_for(action_name)
-    if (action ~= nil) then
-        if actor:can_use(action) then
-            settings.spam.name = action.en
-            atcfs('Will now spam %s', settings.spam.name)
-        else
-            atcfs(123,'Error: Unable to cast %s', action.en)
-        end
-    else
-        atcfs(123,'Error: Invalid action name: %s', action_name)
-    end
 end
 
 function utils.posCommand(boxName, args)
@@ -374,47 +367,6 @@ function utils.refresh_textBoxes()
         end
         otto.txts[box] = texts.new(bst)
     end
-end
-
--- This ended up being some fucking jank. because each person has to hold their own state but know about updates
--- from the other boxes, I added a setting to save all the boxes otto runs on, then I can iterate and update
--- them all for changes and merge the tables for slaves together. That way a person using the CLI doesn't have to enter
--- in the same commands multiple times. I also just duplicated the loop too because someone in my monitored boxes group was 
--- empty after a single iteration.
-
--- CKM Later: I Could probably clean this up by just adding a name to assist
--- otto assist Twochix role tank then send everyone to refresh their configs?
-function utils.unionSettings(secondIteration) 
-    for player, _ in pairs(otto.config.ipc_monitored_boxes) do
-        if not (player == windower.ffxi.get_player().name) then 
-
-            local temp_settings = lor_settings.load('data/'..player..'/user_settings.lua')
-
-            -- look for a value in my settings and apply it to theirs. If they don't match, take mine
-            if temp_settings.assist.master == nil or temp_settings.assist.master == '' then
-                if user_settings.assist.master ~= nil or user_settings.assist.master ~= ''  then
-                    temp_settings.assist.master = user_settings.assist.master
-                end
-            elseif temp_settings.assist.master ~= user_settings.assist.master then
-                temp_settings.assist.master = user_settings.assist.master
-            end
-
-            if temp_settings.assist.slaves ~= nil and user_settings.assist.slaves ~= nil then
-                local new = merge(temp_settings.assist.slaves, user_settings.assist.slaves)
-                temp_settings.assist.slaves = new
-                user_settings.assist.slaves = new
-                user_settings:save()
-                temp_settings:save()
-            end
-        end
-    end
-
-    if secondIteration ~= nil and secondIteration then 
-        windower.send_command('send @all otto assist config refresh')
-        return 
-    end
-
-    utils.unionSettings(true)
 end
 
 function merge(a, b)

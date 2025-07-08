@@ -56,8 +56,9 @@ otto.weaponskill = require('jobs/support/weaponskill')
 otto.aspir = require('jobs/support/aspir')
 otto.magic_burst = require('jobs/support/magic_burst')
 otto.dispel = require('jobs/support/dispel')
-otto.buffs = require('jobs/support/buffs')
-otto.player_check = require('jobs/support/player_check')
+otto.buffs = require('jobs/support/magic/buffs')
+otto.debuffs = require('jobs/support/magic/debuffs')
+otto.player = require('jobs/support/player')
 otto.draw = require('drawing/draw')
 -- otto.follow = require('follow')
 
@@ -65,7 +66,6 @@ otto.draw = require('drawing/draw')
 function otto.init()
     _G["actor"] = _libs.lor.actor.Actor.new() -- work to get rid of this i think.
     utils.load_configs()
-    otto.fight.init() 
 
     -- otto.follow.init()
     otto.magic_burst.init()
@@ -73,7 +73,7 @@ function otto.init()
     otto.pull.init()
     otto.assist.init()
     otto.dispel.init()
-    otto.debug.init()
+    otto.fight.init() 
 
     otto.check_jobs()
     otto.active = true

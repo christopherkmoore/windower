@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = true
@@ -80,9 +80,7 @@ return {
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
-                [1] = "Carnage Elegy",
-                [2] = "Pining Nocturne",
-                ["n"] = 2
+                ["n"] = 0
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -138,7 +136,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

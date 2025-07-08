@@ -13,8 +13,10 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
     local ability_recasts = windower.ffxi.get_ability_recasts()
 
     if actor:is_moving() then return false end
-
+    local some = {basesongs = basesongs, currsongs = currsongs, maxsongs = maxsongs, song_list_count = #song_list}
+    otto.debug.create_log(some, 'debugger')
     if basesongs > 2 and currsongs < maxsongs and #song_list > currsongs then
+        print('in here')
         for i = 1, #user_settings.job.bard.dummy do
             local song = user_settings.job.bard.dummy[i]
 
@@ -25,7 +27,7 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
             end
         end
     end
-
+    print(math.min(#song_list, maxsongs))
     for i = 1, math.min(#song_list, maxsongs) do
         local song = otto.bard.support.song_by_name(song_list[i])
 
@@ -72,6 +74,7 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
                 windower.send_command(('input /ma "%s" %s'):format(song.enl,ta))
                 otto.bard.delay = 1.2
             end
+            print("end")
             return true
         end
     end

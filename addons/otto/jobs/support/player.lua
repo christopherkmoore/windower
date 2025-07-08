@@ -1,8 +1,8 @@
-local player_check = {}
+local player = {}
 local static_me = windower.ffxi.get_player()
 
 
-function player_check.buff_active(id)
+function player.buff_active(id)
     local player = windower.ffxi.get_player()
     if T(windower.ffxi.get_player().buffs):contains(id) == true then
         return true
@@ -10,9 +10,9 @@ function player_check.buff_active(id)
     return false
 end
 
-function player_check.disabled() 
+function player.disabled() 
     for _, disabled_id in pairs(otto.event_statics.disabled_states) do
-		if player_check.buff_active.buff_active(disabled_id) then
+		if player.buff_active.buff_active(disabled_id) then
 			return true
 		end
 	end
@@ -21,14 +21,14 @@ function player_check.disabled()
     
 end
 
-function player_check.my_buffs() 
+function player.my_buffs() 
     local player = windower.ffxi.get_player()
     return S(player.buffs)
 end
 
-function player_check.mage_disabled()
+function player.mage_disabled()
     for _, disabled_id in pairs(otto.event_statics.mage_disabled_states) do
-		if player_check.buff_active.buff_active(disabled_id) then
+		if player.buff_active(disabled_id) then
 			return true
 		end
 	end
@@ -36,10 +36,10 @@ function player_check.mage_disabled()
     return false
 end
 
-function player_check.melee_disabled()
+function melee_disabled()
     local player = windower.ffxi.get_player()
 	for _, disabled_id in pairs(otto.event_statics.melee_disabled_states) do
-		if player_check.buff_active.buff_active(disabled_id) then
+		if player.buff_active.buff_active(disabled_id) then
 			return true
 		end
 	end
@@ -49,4 +49,6 @@ end
 
 
 
-return player_check
+
+
+return player

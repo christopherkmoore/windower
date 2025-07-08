@@ -44,9 +44,9 @@ function assist.init()
         user_settings:save()
     end
 
-    if otto._events['assist incoming chunk'] == nil or otto._events['assist outgoing chunk'] == nil then
-        otto._events['assist incoming chunk'] = windower.register_event('incoming chunk', assist.incoming_chunk_handler)
-        otto._events['assist outgoing chunk'] = windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
+    if otto.assist._events['assist incoming chunk'] == nil or otto._events['assist outgoing chunk'] == nil then
+        otto.assist._events['assist incoming chunk'] = windower.register_event('incoming chunk', assist.incoming_chunk_handler)
+        otto.assist._events['assist outgoing chunk'] = windower.register_event('outgoing chunk', assist.outgoing_chunk_handler)
     end
 
     assign_roles()

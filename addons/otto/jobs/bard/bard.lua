@@ -106,7 +106,7 @@ function bard.check_bard()
         bard.counter = 0
         bard.delay = bard.check_interval
 
-        if actor:is_moving() or otto.player_check.mage_disabled() then return end
+        if actor:is_moving() or otto.player.mage_disabled() then return end
 
         local JA_WS_lock = bard.buffs.amnesia or bard.buffs.impairment
 

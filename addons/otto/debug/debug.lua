@@ -1,6 +1,5 @@
 local debug = {}
 
-local default = {}
 debug.snapshot = {}
 local json_custom = require('debug/lib/JSON')
 

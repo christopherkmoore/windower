@@ -508,18 +508,20 @@ local function assist_commands(args)
     local command = 'help'
     local message = ''
     local arg2 = ''
-
+    local arg3 = ''
     if (#args > 0) then
         command = args[1]
     end
-
 
     if (#args > 1) then
         arg2 = args[2]
     end
 
+    if (#args > 2) then
+        arg3 = args[3]
+    end
+
     local should_save = true
-    local should_merge_saves = false
 
     if command == 'on' or command == 'enable' then
         user_settings.assist.enabled = true
@@ -536,8 +538,8 @@ local function assist_commands(args)
         end
         user_settings.assist.master = windower.ffxi.get_player().name
         message = 'Assist configured with ' .. user_settings.assist.master .. ' as master'
-        should_merge_saves = true
-    elseif command == 'slave' then
+        windower.send_command('send @others otto assist role slave')
+    elseif command == 'slave' then -- don't call this, only set the master and the others become slaves by default
         local name = windower.ffxi.get_player().name
         local inSet = S(user_settings.assist.slaves):contains(name)
         if inSet or arg2 == 'off' then
@@ -545,26 +547,36 @@ local function assist_commands(args)
 
             message = 'Assist is removing you as a slave... be free.'
             windower.send_command('input /autotarget on')
-            should_merge_saves = true
         elseif not inSet or arg2 == 'on' then
             user_settings.assist.slaves[name] = ''
             message = 'Assist configured with ' .. name .. ' as a slave'
             windower.send_command('input /autotarget off')
-            should_merge_saves = true
         end
     elseif command == 'role' then
         if arg2 == nil then
             message =
             'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
-            should_save = false
         end
 
-        if arg2 == 'frontline' or arg2 == 'backline' or 'puller' or 'tank' then
+        if arg2 == 'frontline' or arg2 == 'backline' or arg2 == 'puller' or arg2 =='tank' then
             local name = windower.ffxi.get_player().name
             user_settings.assist.slaves[name] = arg2:lower()
             message = 'Assist role is selected as ' .. arg2 .. '. Setting a role means you are a slave.'
-            should_merge_saves = true
+            windower.send_command('send @others otto assist set '..name..' '..arg2)
+        else
+            message = 'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
         end
+
+    elseif command == 'set' then
+        if arg2 == nil or arg3 == nil then
+            message = "Don't call this command, it's for automagic updating"
+        end
+        
+        local name = arg2
+        local role = arg3
+
+        user_settings.assist.slaves[name] = role
+
     elseif command == 'yalmfightrange' or command == 'range' or command == 'yalm' or command == 'y' or command == 'r' then
         if arg2 == nil or arg2 == '' then
             windower.add_to_chat(3, 'You need to provide a range between 0-5')
@@ -589,13 +601,12 @@ local function assist_commands(args)
 
          if arg2 == 'on' then
             user_settings.assist.should_engage = true
-            message = 'Auto engage enabled'
+            message = 'Auto engasend sendge enabled'
          end
     elseif command == 'config' then
         if arg2 == 'refresh' then
             utils.refresh_config()
         end
-
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(6, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
@@ -607,11 +618,7 @@ local function assist_commands(args)
             windower.add_to_chat(6, message)
         end
 
-        if should_merge_saves then
-            utils.unionSettings()
-        else
-            user_settings:save()
-        end
+        user_settings:save()
     end
 end
 

@@ -115,7 +115,7 @@ local function toggle_fc()
 end
 
 local function check_aspir()
-    if otto.aspir.aspirable_target then
+    if otto.aspir.aspirable_target and otto.aspir.should_use_spell then
         local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
         geomancer.delay = delay
         return
@@ -123,9 +123,9 @@ local function check_aspir()
 
 end
 local function check_spells()
-    local buffs = otto.player_check.my_buffs()
+    local buffs = otto.player.my_buffs()
 
-    if actor:is_moving() or otto.player_check.mage_disabled() then return end
+    if actor:is_moving() or otto.player.mage_disabled() then return end
 
     local entrust_recast = windower.ffxi.get_ability_recasts()[93]
     local indi_action = utils.normalize_action(user_settings.job.geomancer.indi, 'spells') or {}
@@ -165,7 +165,6 @@ local function check_spells()
 
         if ecliptic_attrition_recast == 0 and loupan ~= nil then
             local ecliptic_attrition = {id=347,en="Ecliptic Attrition",ja="サークルエンリッチ",element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=244,targets=1,tp_cost=0,type="JobAbility"}
-            -- print('ecliptic_attrition')
             local delay = otto.cast.job_ability(ecliptic_attrition, '<me>')
             geomancer.delay = delay
             geomancer.ecliptic_attrition_active = true
@@ -211,34 +210,36 @@ local function check_spells()
 
     -- redo bursting
 
-    -- if actions.has_bursting_spells() and user_settings.job.geomancer.cooldowns then
-    --     local theurgic_focus = {id=352,en="Theurgic Focus",ja="タウマテルギフォカス",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=249,status=59,targets=1,tp_cost=0,type="JobAbility"}
-    --     local collimated_ferver = {id=348,en="Collimated Fervor",ja="コリメイトファーバー",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=245,status=517,targets=1,tp_cost=0,type="JobAbility"}
+    if otto.magic_burst.window_open_spell and otto.magic_burst.window_open_target then
+        local theurgic_focus = {id=352,en="Theurgic Focus",ja="タウマテルギフォカス",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=249,status=59,targets=1,tp_cost=0,type="JobAbility"}
+        local collimated_ferver = {id=348,en="Collimated Fervor",ja="コリメイトファーバー",duration=60,element=7,icon_id=47,mp_cost=0,prefix="/jobability",range=0,recast_id=245,status=517,targets=1,tp_cost=0,type="JobAbility"}
 
-    --     local theurgic_focus_recast = windower.ffxi.get_ability_recasts()[249]
-    --     local collimated_ferver_recast = windower.ffxi.get_ability_recasts()[245]
+        local theurgic_focus_recast = windower.ffxi.get_ability_recasts()[249]
+        local collimated_ferver_recast = windower.ffxi.get_ability_recasts()[245]
     
-    --     if theurgic_focus_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then 
-    --         -- print('theurgic_focus')
-    --         local delay = otto.cast.job_ability(theurgic_focus, '<me>')
-    --         geomancer.delay = delay
-    --         return
-    --     end
+        if user_settings.job.geomancer.cooldowns and theurgic_focus_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then 
+            local delay = otto.cast.spell_with_pre_action(otto.magic_burst.window_open_spell, theurgic_focus, otto.magic_burst.window_open_target)
+            geomancer.delay = delay
+            return
+        end
 
-    --     if collimated_ferver_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then
-    --         -- print('collimated_ferver')
+        if user_settings.job.geomancer.cooldowns and  collimated_ferver_recast == 0 and (not buffs:contains(theurgic_focus.status) or not buffs:contains(collimated_ferver.status)) then
+            local delay = otto.cast.spell_with_pre_action(otto.magic_burst.window_open_spell, collimated_ferver, otto.magic_burst.window_open_target)
+            geomancer.delay = delay
+            return
+        end
 
-    --         local delay = otto.cast.job_ability(collimated_ferver, '<me>')
-    --         geomancer.delay = delay
-    --         return
-    --     end
-    -- end
+        local delay = otto.cast.spell(otto.magic_burst.window_open_spell, otto.magic_burst.window_open_target)
+        geomancer.delay = delay
+        return
+
+    end
 
 end
 
 function geomancer.check_geo()
     if not user_settings.job.geomancer.enabled then return end
-    if actor:is_moving() or otto.player_check.mage_disabled() then return end
+    if actor:is_moving() or otto.player.mage_disabled() then return end
 
     geomancer.counter = geomancer.counter + geomancer.check_interval
 
@@ -277,8 +278,8 @@ function geomancer.check_geo()
         
         if user_settings.aspir.enabled then
             check_aspir()
+
         end
-        
         check_spells()
     end
 end

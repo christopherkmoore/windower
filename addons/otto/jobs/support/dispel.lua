@@ -15,6 +15,7 @@ function dispel.init()
 end
 
 function dispel.should_dispel_new()
+    local player = windower.ffxi.get_player()
     local can_dispel = otto.event_statics.dispel_jobs:contains(player.main_job)
 
     if user_settings.dispel.enabled and can_dispel then

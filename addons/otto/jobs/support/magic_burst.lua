@@ -132,7 +132,7 @@ local function window_ready(target, skillchain)
 
 	local spell = magic_burst.get_spell(skillchain, false)
 
-	if not spell or spell == '' or otto.player_check.mage_disabled() then
+	if not spell or spell == '' or otto.player.mage_disabled() then
 		if user_settings.magic_burst.gearswap then
 			windower.send_command('gs c notbursting')
 		end	

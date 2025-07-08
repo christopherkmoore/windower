@@ -82,12 +82,12 @@ function paladin.check_pld()
         paladin.delay = paladin.check_interval
         local player = windower.ffxi.get_player()
         local target = windower.ffxi.get_mob_by_target('t')
-        local buffs = otto.player_check.my_buffs()
+        local buffs = otto.player.my_buffs()
 
         if not player or player.main_job ~= 'PLD' or (player.status ~= 1 and player.status ~= 0) then return end
     
         if not (target ~= nil and target.valid_target and target.claim_id > 0 and target.is_npc) then return end
-        if actor:is_moving() or otto.player_check.disabled() then return end
+        if actor:is_moving() or otto.player.disabled() then return end
         
         local sleep = {id=253,en="Sleep",ja="スリプル",cast_time=2.5,duration=60,element=7,icon_id=310,icon_id_nq=15,levels={[4]=20,[5]=25,[8]=30,[20]=30,[21]=35},mp_cost=19,prefix="/magic",range=12,recast=30,recast_id=253,requirements=6,skill=35,status=2,targets=32,type="BlackMagic"}
 

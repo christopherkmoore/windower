@@ -1,7 +1,9 @@
 return {
 -- Table: {1}
 {
-   ["Dia II"]=true,
+   ["song_list_count"]=1,
+   ["currsongs"]=0,
+   ["basesongs"]=3,
+   ["maxsongs"]=3,
 },
-}0
-0
+}

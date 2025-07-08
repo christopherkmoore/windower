@@ -73,7 +73,7 @@ end
 function draw.isPerformingAction(moving)
     local status = ('is %s'):format((moving and 'moving' or 'idle'))
      
-    if otto.player_check.disabled() then
+    if otto.player.disabled() then
         acting = true
         status = 'is disabled'
     end
