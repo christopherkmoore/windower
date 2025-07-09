@@ -97,15 +97,14 @@ local function check_should_protect_bubble()
     local dematerialize = {id=351,en="Dematerialize",ja="デマテリアライズ",duration=60,element=6,icon_id=46,mp_cost=0,prefix="/jobability",range=0,recast_id=248,status=518,targets=1,tp_cost=0,type="JobAbility"}
     
     local loupan = windower.ffxi.get_mob_by_target('pet')
+    local life_cycle_ready = otto.cast.is_off_cooldown(life_cycle)
+    local dematerialize_ready = otto.cast.is_off_cooldown(dematerialize)
 
-    local life_cycle_recast = windower.ffxi.get_ability_recasts()[life_cycle.recast_id]
-    local dematerialize_recast = windower.ffxi.get_ability_recasts()[dematerialize.recast_id]
-
-    if dematerialize_recast == 0 and user_settings.job.geomancer.cooldowns then
+    if dematerialize_ready and user_settings.job.geomancer.cooldowns then
         return dematerialize
     end
 
-    if loupan and loupan.hpp < 30 and life_cycle_recast == 0 and user_settings.job.geomancer.cooldowns then
+    if loupan and loupan.hpp < 30 and life_cycle_ready  and user_settings.job.geomancer.cooldowns then
         return life_cycle
     end
 
@@ -119,8 +118,6 @@ end
 
 local function check_aspir()
     if otto.aspir.ready.target and otto.aspir.ready.spell then
-        print('aspir')
-
         local delay = otto.cast.spell(otto.aspir.ready.spell, otto.aspir.ready.target)
         geomancer.delay = delay
         return
@@ -133,7 +130,6 @@ local function check_spells()
     if actor:is_moving() or otto.player.mage_disabled() then return end
 
     local entrust_recast = windower.ffxi.get_ability_recasts()[93]
-    print(entrust_recast)
     local indi_action = res.spells:with('name', user_settings.job.geomancer.indi)
 
     -- check if the bubble is far from the target, if it is, FC and get a new one

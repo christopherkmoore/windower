@@ -67,14 +67,14 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = true,
+            ["cooldowns"] = false,
             ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
             },
-            ["geo"] = "Geo-Frailty",
-            ["indi"] = "Indi-Fury"
+            ["geo"] = "Geo-Malaise",
+            ["indi"] = "Indi-Acumen"
         }
     },
     ["magic_burst"] = {

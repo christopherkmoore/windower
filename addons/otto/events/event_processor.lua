@@ -9,9 +9,6 @@ function event_processor.update_resist_list(message_id, target_id, param)
         if buff_immunity then 
             utils.register_immunity(target, buff_immunity)
         end
-
-
-
     end
 end
 

@@ -79,7 +79,7 @@ function debug.save_table(log, newfile)
   local newLog = log or {}
   if user_settings.debug.enabled then
     if type(log) == "table" then
-      table.save(newLog, "C:/Users/chris/Desktop/Windower/addons/otto/"..filename..".lua")
+      table.save(newLog, "C:/Users/chris/Desktop/Windower/addons/otto/data/"..filename..".lua")
     end 
       -- error
   end 
@@ -87,7 +87,23 @@ end
 
 
 
-
+function serialize (o)
+  if type(o) == "number" then
+    io.write(o)
+  elseif type(o) == "string" then
+    io.write(string.format("%q", o))
+  elseif type(o) == "table" then
+    io.write("{\n")
+    for k,v in pairs(o) do
+      io.write("  ", k, " = ")
+      serialize(v)
+      io.write(",\n")
+    end
+    io.write("}\n")
+  else
+    error("cannot serialize a " .. type(o))
+  end
+end
 
 
 

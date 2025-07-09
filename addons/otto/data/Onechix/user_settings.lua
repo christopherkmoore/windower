@@ -70,13 +70,13 @@ return {
                     ["p5"] = true,
                     ["party"] = true
                 },
-                ["clarion"] = true,
+                ["clarion"] = false,
                 ["debuffing"] = true,
-                ["marcato"] = true,
+                ["marcato"] = false,
                 ["nightingale"] = true,
                 ["pianissimo"] = true,
                 ["recast"] = 20,
-                ["soul_voice"] = true,
+                ["soul_voice"] = false,
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
@@ -94,7 +94,7 @@ return {
             ["settings"] = T{
                 ["dispels"] = true,
                 ["enabled"] = true,
-                ["fight_type"] = "xp",
+                ["fight_type"] = "normal",
                 ["sleeps"] = true
             },
             ["song"] = T{
@@ -116,9 +116,9 @@ return {
                 }
             },
             ["songs"] = L{
-                [1] = "Valor Minuet IV",
-                [2] = "Valor Minuet V",
-                [3] = "Victory March",
+                [1] = "Victory March",
+                [2] = "Valor Minuet IV",
+                [3] = "Valor Minuet V",
                 ["n"] = 3
             }
         }

@@ -85,6 +85,14 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = false
+        ["close"] = true,
+        ["enabled"] = true,
+        ["min_hp"] = 2,
+        ["name"] = "Leaden Salute",
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Tachi: Fudo"
+        }
     }
 }

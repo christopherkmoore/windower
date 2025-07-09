@@ -74,6 +74,7 @@ function event_handler.action(raw)
             if S {655, 656}:contains(action.message) then
                 if action.top_level_param == 377 then -- make more robus by adding all sleeps
                     otto.config.sleep_immunities[target.name] = true
+                    
                     otto.config.sleep_immunities.save(otto.config.sleep_immunities)
                 end
             end
@@ -81,11 +82,11 @@ function event_handler.action(raw)
         end
     end
 
+
     local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
 
     if immune then
         event_processor.update_resist_list(message_id, target.id, action.param)
-        return
     end
 
     -- setup custom action handlers who implement their own logic
@@ -93,6 +94,7 @@ function event_handler.action(raw)
     otto.dispel.action_handler(category, action, actor_id, target, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto.fight.action_handler(category, action, actor_id, target, action_basic_info)
+    otto.aspir.action_handler(category, action, action_basic_info)
     -- extremely useful for classes to manage delay with an action handler
     -- will result in the char being actually playable by a human
     if otto.bard ~= nil then

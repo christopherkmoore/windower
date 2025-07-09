@@ -20,9 +20,6 @@ pass / lot
 
 Bugs
 
-maybe MB not working -- strings crash
-aspir not working
-
 auto targeting is still pretty bad
 
 add checks -- aspir is targeting any target

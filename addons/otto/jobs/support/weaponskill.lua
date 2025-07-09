@@ -11,6 +11,7 @@
 -- min_hp not implemented. I don't think the partner.tp is either
 
 local weaponskill = { }
+
 weaponskill.check_interval = 0.4
 
 function weaponskill.init()
@@ -28,7 +29,9 @@ function weaponskill.init()
     end
 
     weaponskill.check_should_window_close:loop(weaponskill.check_interval)
+end
 
+function weaponskill.deinit()
 end
 
 weaponskill.skillchain_active = false
@@ -38,20 +41,12 @@ weaponskill.window_close = 0
 weaponskill.can_skillchain_to_close = false
 weaponskill.target = nil
 
-function weaponskill.can_close_skillchain() 
-    if not weaponskill.skillchain_active then return false end
-
-    if os.clock() > weaponskill.window_close then
-        return true
-    end
-
-    return false
-end
 
 function weaponskill.should_weaponskill_to_close()
     local player = windower.ffxi.get_player()
     local now = os.clock() 
     local closes = user_settings.weaponskill.close
+
     local window_open = now < weaponskill.window_close and now > weaponskill.window_open
     if weaponskill.skillchain_active and weaponskill.can_skillchain_to_close and window_open and closes then
         return true
@@ -61,9 +56,14 @@ function weaponskill.should_weaponskill_to_close()
 end
 
 function weaponskill.should_weaponskill_to_open()
+    if weaponskill.skillchain_active or weaponskill.can_skillchain_to_close then return end
+    
     local now = os.clock() 
     local should_open = user_settings.weaponskill.open
-    if not weaponskill.skillchain_active and weaponskill.first_step_started == 0 and should_open then
+    if should_open and weaponskill.first_step_started == 0 then
+        local target = windower.ffxi.get_mob_by_target()
+        weaponskill.open_window(target) 
+        print('should_weaponskill_to_open')
         return true
     end
 
@@ -71,6 +71,7 @@ function weaponskill.should_weaponskill_to_open()
 end
 
 function weaponskill.open_window(for_target) 
+    print('opening window for SC')
     weaponskill.skillchain_active = true
     weaponskill.first_step_started = os.clock() 
     weaponskill.window_open = weaponskill.first_step_started + 3
@@ -108,21 +109,19 @@ end
 
 function weaponskill.action()
     local player = windower.ffxi.get_player()
+
     if user_settings.weaponskill.enabled and (user_settings.weaponskill.name ~= nil) and (player.status == 1) and (player.vitals.tp > 999) then
+        local target = windower.ffxi.get_mob_by_target()
+        local can_ws_target = otto.cast.is_mob_valid_target(target, 4) -- 2 yalms seems hella small
+        if can_ws_target  then
 
-        -- local hp = user_settings.weaponskill.min_hp or 0
-        -- local hp_ok = target.hpp >= hp
-
-        if weaponskill.should_weaponskill_to_close() then
-            return utils.get_weaponskill(user_settings.weaponskill.name)
+            if weaponskill.should_weaponskill_to_close() or weaponskill.should_weaponskill_to_open() then
+                local ws = utils.get_weaponskill(user_settings.weaponskill.name)
+                otto.cast.weapon_skill(ws, '<t>')
+            end
         end
-
-        if weaponskill.should_weaponskill_to_open() then
-            return utils.get_weaponskill(user_settings.weaponskill.name)
-        end
-
     end
-    return nil
+    
 end
 
 function weaponskill.action_handler(category, action, actor_id, add_effect, target)
@@ -145,7 +144,7 @@ function weaponskill.action_handler(category, action, actor_id, add_effect, targ
     if not otto.cast.is_mob_valid_target(mob, 20) then return end   -- if the action was taken on a target that's not one of mine, don't care.
 	if not ally then return end                                     -- not my allys ws, not my problem.
     if not mob then return end                        	            -- not my mob ws, not my problem.
-
+    print('opening window')
     weaponskill.close_and_reopen_window(target)               -- there was a ws and now it's ready for close
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then

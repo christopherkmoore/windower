@@ -20,16 +20,19 @@ function corsair.init()
         user_settings.job.corsair = defaults
         user_settings:save()
     end
+    otto.weaponskill.init()
 
-    corsair.check_pld:loop(corsair.check_interval)
+    corsair.check_cor:loop(corsair.check_interval)
 end
 
 function corsair.deinit() 
+    otto.weaponskill.deinit()
+
 end
 
 
 
-function corsair.check_pld()
+function corsair.check_cor()
     if not user_settings.job.corsair.enabled then return end
     corsair.counter = corsair.counter + corsair.check_interval
 
@@ -40,17 +43,9 @@ function corsair.check_pld()
         local target = windower.ffxi.get_mob_by_target()
         -- start 
 
-        -- weaponskills
-        if otto.weaponskill.action() ~= nil then
-            local weaponskill = otto.weaponskill.action()
-            local can_ws_target = otto.cast.is_mob_valid_target(target, weaponskill.range + 2) -- 2 yalms seems hella small
-            local has_juice = (player.status == 1) and (player.vitals.tp > 999) 
-            local ws_target = otto.weaponskill.target or target
-            
-            if weaponskill and otto.fight.my_targets[target.id] and can_ws_target and has_juice then
-                otto.cast.weapon_skill(weaponskill)
-            end
-        end
+        
+        -- weaponskills / skillchains
+        otto.weaponskill.action()
 
     end
 end

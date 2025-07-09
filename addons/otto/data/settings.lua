@@ -1,25 +1,4 @@
 return {
-    ["activateOutdoors"] = false,
-    ["deactivateIndoors"] = true,
-    ["disable"] = {
-        ["curaga"] = false,
-        ["cure"] = false
-
-    },
-    ["healing"] = {
-        ["curaga_min_targets"] = 2,
-        ["min"] = {
-            ["curaga"] = 0,
-            ["cure"] = 0,
-            ["waltz"] = 0,
-            ["waltzga"] = 0
-        },
-        ["max"] = {},
-    },
-    ["ignoreTrusts"] = true,
-    ["spam"] = {
-        ["name"] = "Stone"
-    },
     ["textBoxes"] = {
         ["actionInfo"] = {
             ["visible"] = true,
@@ -41,9 +20,9 @@ return {
             ["y"] = 600
         },
         ["moveInfo"] = {
-            ["visible"] = true,
-            ["x"] = -200,
-            ["y"] = 550
+            ["visible"] = false,
+            ["x"] = 0,
+            ["y"] = 18
         }
     }
 }

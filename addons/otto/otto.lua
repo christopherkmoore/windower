@@ -69,7 +69,6 @@ function otto.init()
 
     -- otto.follow.init()
     otto.magic_burst.init()
-    otto.weaponskill.init()
     otto.pull.init()
     otto.assist.init()
     otto.dispel.init()

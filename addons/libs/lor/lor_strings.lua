@@ -204,6 +204,7 @@ function string.format(s, ...)
             fmt_args[i] = arg or 'nil'
         end
     end
+    
     return str_format(s, unpack(fmt_args))
 end
 

@@ -130,14 +130,14 @@ function bard.check_bard()
                 total_mob = total_mob + 1
 
                 local unsleepable = otto.config.sleep_immunities[mob.name] or false
-                if unsleepable or otto.cast.has_dot_my_target(mob) then --CKM TEST
+                if unsleepable or otto.cast.has_DoT(mob) then --CKM TEST
                     unsleepable_targets = unsleepable_targets + 1
                 end
 
                 if mob.debuffs['sleep'] then
                     total_sleeps = total_sleeps + 1
                 elseif not unsleepable then
-                    if mob.engaged == 'agro' and not otto.cast.has_dot_my_target(mob) then --CKM TEST
+                    if mob.engaged == 'agro' and not otto.cast.has_DoT(mob) then --CKM TEST
                         not_sleeping[mob.id] = true
                     end
                 end

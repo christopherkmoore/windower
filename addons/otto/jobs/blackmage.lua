@@ -71,8 +71,8 @@ function blackmage.check_blm()
 
         if player.vitals.hpp < 60 then
             local manawall = {id=254,en="Mana Wall",ja="マナウォール",duration=300,element=7,icon_id=388,mp_cost=0,prefix="/jobability",range=0,recast_id=39,status=437,targets=1,tp_cost=0,type="JobAbility"}
-            local manawall_recast = windower.ffxi.get_ability_recasts()[manawall.recast_id]
-
+            local recast = otto.cast.is_off_cooldown(manawall)
+            
             if manawall_recast == 0 and not buffs:contains(manawall.status) then 
                 local delay = otto.cast.job_ability(manawall, '<me>')
                 blackmage.delay = delay

@@ -21,16 +21,18 @@ function samurai.init()
         user_settings:save()
     end
 
+    otto.weaponskill.init()
 
-    samurai.check_pld:loop(samurai.check_interval)
+    samurai.check_sam:loop(samurai.check_interval)
 end
 
 function samurai.deinit() 
+    otto.weaponskill.deinit()
 end
 
 
 
-function samurai.check_pld()
+function samurai.check_sam()
     if not user_settings.job.samurai.enabled then return end
     samurai.counter = samurai.counter + samurai.check_interval
 
@@ -41,17 +43,9 @@ function samurai.check_pld()
         local player = windower.ffxi.get_player()
         local target = windower.ffxi.get_mob_by_target()
 
-        -- start 
-        local weaponskill = otto.weaponskill.action()
-        if weaponskill then
-            local can_ws_target = otto.cast.is_mob_valid_target(target, weaponskill.range + 2) -- 2 yalms seems hella small
-            local has_juice = (player.status == 1) and (player.vitals.tp > 999) 
-            local ws_target = otto.weaponskill.target or target
-            
-            if weaponskill and otto.fight.my_targets[target.id] and can_ws_target and has_juice then
-                otto.cast.weapon_skill(weaponskill)
-            end
-        end
+        -- weaponskills / skillchains
+        otto.weaponskill.action()
+        
     end
 end
 
