@@ -155,6 +155,7 @@ function bard.check_bard()
                         -- eventually need to work on this to be swap target
                         -- assist needs to be expanded to start targeting my_targets
                         otto.assist.puller_target_and_cast(mob, 377) 
+                        bard.delay = 2
                         return
     
                     end
@@ -169,13 +170,14 @@ function bard.check_bard()
         end
 
         -- dispel
-        if otto.dispel.should_dispel_new() ~= nil then
-            local mob = otto.dispel.should_dispel_new()
-            local spell = res.spells[462]
-            local delay = otto.cast.spell(spell, mob)
+        local magic_finale = res.spells[462]
+        local delay = otto.dispel.should_dispel(magic_finale)
+        if delay then
+            print('casting magic finale')
             bard.delay = delay
             return
         end
+
 
         -- check songs
         if not user_settings.job.bard.bard_settings.aoe.party or bard.support.aoe_range() then

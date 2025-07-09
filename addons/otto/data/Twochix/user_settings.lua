@@ -8,7 +8,7 @@ return {
     ["assist"] = {
         ["enabled"] = true,
         ["master"] = "Twochix",
-        ["should_engage"] = false,
+        ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
@@ -85,9 +85,15 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
+        ["close"] = true,
         ["enabled"] = true,
         ["min_hp"] = 2,
         ["name"] = "Tachi: Fudo",
-        ["open"] = true
+        ["open"] = true,
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Tachi: Fudo"
+        }
     }
 }

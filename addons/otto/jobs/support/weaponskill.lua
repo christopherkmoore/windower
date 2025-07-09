@@ -63,7 +63,6 @@ function weaponskill.should_weaponskill_to_open()
     if should_open and weaponskill.first_step_started == 0 then
         local target = windower.ffxi.get_mob_by_target()
         weaponskill.open_window(target) 
-        print('should_weaponskill_to_open')
         return true
     end
 
@@ -71,7 +70,6 @@ function weaponskill.should_weaponskill_to_open()
 end
 
 function weaponskill.open_window(for_target) 
-    print('opening window for SC')
     weaponskill.skillchain_active = true
     weaponskill.first_step_started = os.clock() 
     weaponskill.window_open = weaponskill.first_step_started + 3
@@ -144,7 +142,6 @@ function weaponskill.action_handler(category, action, actor_id, add_effect, targ
     if not otto.cast.is_mob_valid_target(mob, 20) then return end   -- if the action was taken on a target that's not one of mine, don't care.
 	if not ally then return end                                     -- not my allys ws, not my problem.
     if not mob then return end                        	            -- not my mob ws, not my problem.
-    print('opening window')
     weaponskill.close_and_reopen_window(target)               -- there was a ws and now it's ready for close
 
     if action.top_level_param ~= nil and action.top_level_param > 0 and action.top_level_param < 255  then

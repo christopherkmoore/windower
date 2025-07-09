@@ -14,7 +14,7 @@ function dispel.init()
 
 end
 
-function dispel.should_dispel_new()
+function dispel.should_dispel(spell)
     local player = windower.ffxi.get_player()
     local can_dispel = otto.event_statics.dispel_jobs:contains(player.main_job)
 
@@ -22,7 +22,8 @@ function dispel.should_dispel_new()
         for _, mob in pairs(otto.fight.my_targets) do
             if mob.dispellables then
                 for name, id in pairs(mob.dispellables) do
-                    return mob
+                    local delay = otto.cast.spell(spell, mob)
+                    return delay
                 end
             end
         end

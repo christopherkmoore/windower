@@ -70,17 +70,19 @@ return {
                     ["p5"] = true,
                     ["party"] = true
                 },
-                ["clarion"] = false,
+                ["clarion"] = true,
                 ["debuffing"] = true,
-                ["marcato"] = false,
+                ["marcato"] = true,
                 ["nightingale"] = true,
                 ["pianissimo"] = true,
                 ["recast"] = 20,
-                ["soul_voice"] = false,
+                ["soul_voice"] = true,
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
-                ["n"] = 0
+                [1] = "Pining Nocturne",
+                [2] = "Carnage Elegy",
+                ["n"] = 2
             },
             ["dummy"] = L{
                 [1] = "Knight's Minne",
@@ -94,7 +96,7 @@ return {
             ["settings"] = T{
                 ["dispels"] = true,
                 ["enabled"] = true,
-                ["fight_type"] = "normal",
+                ["fight_type"] = "xp",
                 ["sleeps"] = true
             },
             ["song"] = T{
