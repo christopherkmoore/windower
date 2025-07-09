@@ -20,7 +20,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -62,6 +62,10 @@ return {
         ["blackmage"] = {
             ["cooldowns"] = true,
             ["enabled"] = false
+        },
+        ["samurai"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = true
         }
     },
     ["magic_burst"] = {
@@ -81,27 +85,14 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
+        ["close"] = true,
         ["enabled"] = true,
         ["name"] = "Tachi: Fudo",
+        ["open"] = true,
         ["partner"] = {
             ["name"] = "Twochix",
             ["tp"] = 1000,
-            ["weaponskill"] = {
-                ["element"] = 6,
-                ["en"] = "Tachi: Fudo",
-                ["enn"] = "tachi:_fudo",
-                ["icon_id"] = 622,
-                ["id"] = 156,
-                ["prefix"] = "/weaponskill",
-                ["range"] = 2,
-                ["skill"] = 10,
-                ["skillchain_a"] = "Light",
-                ["skillchain_b"] = "Distortion",
-                ["skillchain_c"] = "",
-                ["targets"] = S{
-                    "Enemy"
-                }
-            }
+            ["weaponskill"] = "Tachi: Fudo"
         }
     }
 }

@@ -46,8 +46,6 @@ wait 0.3;
 
 send Threechix exec fights/tank/auto_geo_mag
 send Threechix otto magicburst doubleburst on
-
-
 wait 0.3;
 
 
@@ -73,6 +71,10 @@ wait 0.3
 // Guests Tachi: Fudo > Leaden Salute for Darkness
 ////////////////////////////////////
 
+send Twochix otto ws clear;
+send Fourchix otto ws clear;
+send Twochix otto ws open on
+send Fourchix otto ws close on;
 
 send Twochix otto ws on;
 send Fourchix otto ws on

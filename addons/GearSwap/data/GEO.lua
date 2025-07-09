@@ -105,40 +105,7 @@ function job_filter_precast(spell, spellMap, eventArgs)
 end
 
 function job_pretarget(spell, spellMap, eventArgs)
-    if spell.type == 'Geomancy' then
-		if spell.english:startswith('Indi') then
-			if state.Buff.Entrust then
-				if spell.target.type == 'SELF' then
-					add_to_chat(204, 'Entrust active - You can\'t entrust yourself.')
-					eventArgs.cancel = true
-				end
-			elseif spell.target.type ~= 'SELF' then
-				if state.AutoEntrust.value and ((spell.target.type == 'PLAYER' and not spell.target.charmed) or (spell.target.type == 'NPC')) and spell.target.in_party then
-					local spell_recasts = windower.ffxi.get_spell_recasts()
-					local abil_recasts = windower.ffxi.get_ability_recasts()
-					eventArgs.cancel = true
-
-					if spell_recasts[spell.recast_id] > 1.5 then
-						add_to_chat(123,'Abort: ['..spell.english..'] waiting on recast. ('..seconds_to_clock(spell_recasts[spell.recast_id]/60)..')')
-					elseif abil_recasts[93] > 0 then
-						add_to_chat(123,'Abort: [Entrust] waiting on recast. ('..seconds_to_clock(abil_recasts[93])..')')
-					else
-						send_command('@input /ja "Entrust" <me>; wait 1.1; input /ma "'..spell.name..'" '..spell.target.name)
-					end
-				elseif spell.target.raw == '<t>' then
-					change_target('<me>')
-				end
-			end
-		elseif spell.english:startswith('Geo') then
-			if set.contains(spell.targets, 'Enemy') then
-				if ((spell.target.type == 'PLAYER' and not spell.target.charmed) or (spell.target.type == 'NPC' and spell.target.in_party)) then
-					eventArgs.cancel = true
-				end
-			elseif not ((spell.target.type == 'PLAYER' and not spell.target.charmed and spell.target.in_party) or (spell.target.type == 'NPC' and spell.target.in_party) or (spell.target.raw == '<stpt>' or spell.target.raw == '<stal>' or spell.target.raw == '<st>')) then
-				change_target('<me>')
-			end
-		end
-	end
+    
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
@@ -534,11 +501,6 @@ function handle_elemental(cmdParams)
 end
 
 function job_tick()
-	-- if player.indi then windower.chat.input('/ma "Indi-Poison <me>') return true end -- for skillup cheats
-	if check_geo() then return true end
-	-- if check_buff() then return true end
-	-- if check_buffup() then return true end
-	if check_convert() then return true end
 
 	return false
 end
@@ -565,47 +527,6 @@ function check_convert()
 	return false
 end
 
-function check_geo()
-	if state.AutoBuffMode.value ~= 'Off' and not data.areas.cities:contains(world.area) then
-		if not pet.isvalid then
-			used_ecliptic = false
-		end
-		local abil_recasts = windower.ffxi.get_ability_recasts()
-		if autoindi ~= 'None' and ((not player.indi) or last_indi ~= autoindi) then
-			windower.chat.input('/ma "Indi-'..autoindi..'" <me>')
-			tickdelay = os.clock() + 2.1
-			return true
-		elseif autoentrust ~= 'None' and abil_recasts[93] < latency and (player.in_combat or state.CombatEntrustOnly.value == false) then
-			send_command('@input /ja "Entrust" <me>; wait 1.1; input /ma "Indi-'..autoentrust..'" '..autoentrustee)
-			tickdelay = os.clock() + 3.5
-			return true
-		elseif pet.isvalid then
-			local pet = windower.ffxi.get_mob_by_target("pet")
-			if pet.distance:sqrt() > 50 then --If pet is greater than detectable.
-				windower.chat.input('/ja "Full Circle" <me>')
-				tickdelay = os.clock() + 1.1
-				return true
-			elseif state.AutoGeoAbilities.value and abil_recasts[244] < latency and not used_ecliptic and not buffactive.Bolster then
-				windower.chat.input('/ja "Ecliptic Attrition" <me>;')
-				used_ecliptic = true
-				return true
-			else
-				return false
-			end
-		elseif autogeo ~= 'None' and (windower.ffxi.get_mob_by_target('bt') or data.spells.geo_buffs:contains(autogeo)) then
-			if player.in_combat and state.AutoGeoAbilities.value and abil_recasts[247] < latency and not buffactive.Bolster then
-				windower.chat.input('/ja "Blaze of Glory" <me>;')
-				tickdelay = os.clock() + 1.1
-				return true
-			else
-				windower.chat.input('/ma "Geo-'..autogeo..'" <bt>')
-				tickdelay = os.clock() + 3.1
-				return true
-			end
-		end
-	end
-	return false
-end
 
 --Luopan Distance Tracking
 debuff_list = S{'Gravity','Paralysis','Slow','Languor','Vex','Torpor','Slip','Malaise','Fade','Frailty','Wilt','Poison'}
@@ -630,123 +551,6 @@ luopan:stroke_transparency(192)
 
 bt_color = '\\cs(230,118,116)'
 
-windower.raw_register_event('prerender', function()
-    local s = windower.ffxi.get_mob_by_target('me')
-    if windower.ffxi.get_mob_by_target('pet') then
-        myluopan = windower.ffxi.get_mob_by_target('pet')
-    else
-        myluopan = nil
-    end
-    local luopan_txtbox = ''
-    local indi_count = 0
-    local geo_count = 0
-    local battle_target = windower.ffxi.get_mob_by_target('bt') or false
-    if myluopan and last_geo then
-        luopan_txtbox = luopan_txtbox..' \\cs(0,255,0)Geo-'..last_geo..':\\cs(255,255,255)\n'
-        for i,v in pairs(windower.ffxi.get_mob_array()) do
-            local DistanceBetween = ((myluopan.x - v.x)*(myluopan.x-v.x) + (myluopan.y-v.y)*(myluopan.y-v.y)):sqrt()
-            if DistanceBetween < (6 + v.model_size) and not (v.status == 2 or v.status == 3) and v.name and v.name ~= '' and v.name ~= "Luopan" and v.valid_target and v.model_size > 0 then
-                if debuff_list:contains(last_geo) then
-					if v.is_npc and not (v.in_party or ignore_list:contains(v.name)) then
-						if battle_target and battle_target.id == v.id then
-							luopan_txtbox = luopan_txtbox..' '..bt_color..v.name.." "..string.format("%.2f",DistanceBetween).."\\cs(255,255,255)\n"
-						else
-							luopan_txtbox = luopan_txtbox..' '..v.name.." "..string.format("%.2f",DistanceBetween).."\n"
-						end
-						geo_count = geo_count + 1
-					end
-                else
-					if v.in_party then
-						luopan_txtbox = luopan_txtbox..' '..v.name.." "..string.format("%.2f",DistanceBetween).."\n"
-						geo_count = geo_count + 1
-					end
-                end
-            end
-        end
-    end
-
-    if buffactive['Colure Active'] and last_indi then
-		if myluopan then
-			luopan_txtbox = luopan_txtbox..'\n'
-		end
-		luopan_txtbox = luopan_txtbox..' \\cs(0,255,0)Indi-'..last_indi..':\\cs(255,255,255)\n'
-		for i,v in pairs(windower.ffxi.get_mob_array()) do
-			local DistanceBetween = ((s.x - v.x)*(s.x-v.x) + (s.y-v.y)*(s.y-v.y)):sqrt()
-			if DistanceBetween < (6 + v.model_size) and (v.status == 1 or v.status == 0) and v.name and v.name ~= '' and v.name ~= "Luopan" and v.name ~= s.name and v.valid_target and v.model_size > 0 then
-				if debuff_list:contains(last_indi) then
-					if v.is_npc and not (v.in_party or ignore_list:contains(v.name)) then
-						if battle_target and battle_target.id == v.id then
-							luopan_txtbox = luopan_txtbox..' '..bt_color..v.name.." "..string.format("%.2f",DistanceBetween).."\\cs(255,255,255)\n"
-						else
-							luopan_txtbox = luopan_txtbox..' '..v.name.." "..string.format("%.2f",DistanceBetween).."\n"
-						end
-						indi_count = indi_count + 1
-					end
-				else
-					if v.in_party then
-						luopan_txtbox = luopan_txtbox..' '..v.name.." "..string.format("%.2f",DistanceBetween).."\n"
-						indi_count = indi_count + 1
-					end
-				end
-			end
-		end
-    end
-
-    luopan.value = luopan_txtbox
-    if state.ShowDistance and state.ShowDistance.value and ((myluopan and geo_count ~= 0) or (buffactive['Colure Active'] and indi_count ~= 0)) then
-        luopan:visible(true)
-    else
-        luopan:visible(false)
-    end
-
-end)
-
-function check_buff()
-	if state.AutoBuffMode.value ~= 'Off' and not data.areas.cities:contains(world.area) then
-		local spell_recasts = windower.ffxi.get_spell_recasts()
-		for i in pairs(buff_spell_lists[state.AutoBuffMode.Value]) do
-			if not buffactive[buff_spell_lists[state.AutoBuffMode.Value][i].Buff] and (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Always' or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Combat' and (player.in_combat or being_attacked)) or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Engaged' and player.status == 'Engaged') or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Idle' and player.status == 'Idle') or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'OutOfCombat' and not (player.in_combat or being_attacked))) and spell_recasts[buff_spell_lists[state.AutoBuffMode.Value][i].SpellID] < spell_latency and silent_can_use(buff_spell_lists[state.AutoBuffMode.Value][i].SpellID) then
-				windower.chat.input('/ma "'..buff_spell_lists[state.AutoBuffMode.Value][i].Name..'" <me>')
-				tickdelay = os.clock() + 2
-				return true
-			end
-		end
-	else
-		return false
-	end
-end
-
-function check_buffup()
-	if buffup ~= '' then
-		local needsbuff = false
-		for i in pairs(buff_spell_lists[buffup]) do
-			if not buffactive[buff_spell_lists[buffup][i].Buff] and silent_can_use(buff_spell_lists[buffup][i].SpellID) then
-				needsbuff = true
-				break
-			end
-		end
-
-		if not needsbuff then
-			add_to_chat(217, 'All '..buffup..' buffs are up!')
-			buffup = ''
-			return false
-		end
-
-		local spell_recasts = windower.ffxi.get_spell_recasts()
-
-		for i in pairs(buff_spell_lists[buffup]) do
-			if not buffactive[buff_spell_lists[buffup][i].Buff] and silent_can_use(buff_spell_lists[buffup][i].SpellID) and spell_recasts[buff_spell_lists[buffup][i].SpellID] < spell_latency then
-				windower.chat.input('/ma "'..buff_spell_lists[buffup][i].Name..'" <me>')
-				tickdelay = os.clock() + 2
-				return true
-			end
-		end
-
-		return false
-	else
-		return false
-	end
-end
 
 -- buff_spell_lists = {
 -- 	Auto = {

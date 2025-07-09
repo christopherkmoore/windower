@@ -29,7 +29,7 @@ function debuffs.cast()
                             debuff_spell(spell, mob) 
                         end
 
-                        if otto.event_statics.dot_debuffs:contains(debuff.id) then
+                        if not otto.event_statics.dot_debuffs:contains(debuff.id) then
                             debuff_spell(spell, mob) 
                         end
                     end
@@ -52,7 +52,7 @@ function debuffs.cast()
                             debuff_spell(spell, mob_target) 
                         end
 
-                        if otto.event_statics.dot_debuffs:contains(debuff.id) then
+                        if not otto.event_statics.dot_debuffs:contains(debuff.id) then
                             debuff_spell(spell, mob_target) 
                         end
                     end

@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -67,7 +67,7 @@ return {
                 ["distance"] = 8,
                 ["target"] = "Twochix"
             },
-            ["cooldowns"] = false,
+            ["cooldowns"] = true,
             ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
@@ -83,7 +83,7 @@ return {
         ["change_target"] = true,
         ["check_day"] = true,
         ["check_weather"] = true,
-        ["double_burst"] = false,
+        ["double_burst"] = true,
         ["enabled"] = true,
         ["gearswap"] = true,
         ["mp"] = 100,

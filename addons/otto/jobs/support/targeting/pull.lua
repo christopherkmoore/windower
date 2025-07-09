@@ -76,7 +76,7 @@ function pull.try_pulling()
         local player = windower.ffxi.get_mob_by_name(master)
         
         -- just standin around with mobs attacking ya. 0 is idle
-        if player.status == 0 then
+        if player and player.status and player.status == 0 then
             pull.tell_master_to_target()
         end
         return 

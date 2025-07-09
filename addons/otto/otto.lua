@@ -97,8 +97,54 @@ function otto.check_jobs()
         otto.bard = require('jobs/bard/bard')
     elseif player.main_job == "WHM" then
         otto.whitemage = require('jobs/whitemage')
+    elseif player.main_job == "SAM" then
+        otto.samurai = require('jobs/samurai')
+    elseif player.main_job == "COR" then
+        otto.corsair = require('jobs/corsair')
     end
+end
 
+function otto.start()
+    local player = windower.ffxi.get_player()
+    if otto.active then
+        if player.main_job == "GEO" then
+            otto.geomancer.init()
+        elseif player.main_job == "BLM" then
+            otto.blackmage.init()
+        elseif player.main_job == "PLD" then 
+            otto.paladin.init()
+        elseif player.main_job == "BRD" then
+            otto.bard.init()
+        elseif player.main_job == "WHM" then
+            otto.whitemage.init()
+        elseif player.main_job == "SAM" then
+            otto.samurai.init()
+        elseif player.main_job == "COR" then
+            otto.corsair.init()
+        end
+    end
+end
+
+function otto.stop()
+    local player = windower.ffxi.get_player()
+
+    if not otto.active then
+        if player.main_job == "GEO" then
+            otto.geomancer.deinit()
+        elseif player.main_job == "BLM" then
+            otto.blackmage.deinit()
+        elseif player.main_job == "PLD" then 
+            otto.paladin.deinit()
+        elseif player.main_job == "BRD" then
+            otto.bard.deinit()
+        elseif player.main_job == "WHM" then
+            otto.whitemage.deinit()
+        elseif player.main_job == "SAM" then
+            otto.samurai.deinit()
+        elseif player.main_job == "COR" then
+            otto.corsair.deinit()
+        end
+    end
 end
 
 otto._events['action'] = windower.register_event('action', otto.event_handler.action)

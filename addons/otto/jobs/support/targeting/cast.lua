@@ -49,7 +49,7 @@ end
 function cast.spell(spell, mob)
     if mob == nil then return 0 end
     if not spell and spell.id and mob then return 0 end 
-    if actor:is_moving() then return 1 end
+    if mob and not otto.fight.my_targets[mob.id] then return 0 end
     
     local current_mob_target = windower.ffxi.get_mob_by_target()
 
@@ -102,6 +102,18 @@ function cast.job_ability(job_ability, target)
     windower.send_command(('input %s "%s" %s'):format(job_ability.prefix, job_ability.en, target))
 
     return 1
+end
+
+--- Use a Weaponskill, or fail because of preconditions
+-- @param parameters A spell from res.job_abilities
+-- @param parameters A targets name
+-- @return The delay for the job class to be added to check_interval
+function cast.weapon_skill(weapon_skill, target)
+    if not weapon_skill then return 0 end
+    -- check tp? stuff liek that?
+
+    windower.send_command(('input %s "%s" <t>'):format(weapon_skill.prefix, weapon_skill.en))
+    return 0
 end
 
 --- Cast a spell with a pre-action, or fail because of preconditions

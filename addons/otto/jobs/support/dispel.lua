@@ -48,7 +48,7 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
 
     if mob and otto.event_statics.monster_buff_gained:contains(action.message) then
-        
+        -- otto.debug.create_2log_for_comparison(action, 'debugger', target, 'debugger2')
         for _, action in pairs(target.raw.actions) do
             local buff = res.buffs[action.param]
             if buff then
@@ -71,13 +71,12 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
 
     if otto.event_statics.dispel_spell_ids:contains(basic_info.spell_id) and otto.event_statics.dispel_message_successful:contains(action.message) then
-        if offense.dispel[target.raw.id] ~= nil then
+        if otto.fight.my_targets[target.raw.id] then
             local dispellable = res.buffs[action.param]
-            local monster_buff = offense.dispel[target.raw.id]
 
             -- save new dispellable abilities
-            if otto.config.monster_ability_dispelables[monster_buff] == false then
-                otto.config.monster_ability_dispelables[monster_buff] = true
+            if otto.config.monster_ability_dispelables[action.top_level_param] == false then
+                otto.config.monster_ability_dispelables[action.top_level_param] = true
                 otto.config.monster_ability_dispelables.save(otto.config.monster_ability_dispelables)
             end
 

@@ -61,6 +61,10 @@ return {
         ["blackmage"] = {
             ["cooldowns"] = true,
             ["enabled"] = true
+        },
+        ["corsair"] = {
+            ["cooldowns"] = true,
+            ["enabled"] = true
         }
     },
     ["magic_burst"] = {

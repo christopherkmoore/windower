@@ -138,6 +138,13 @@ return {
         2,
         28
     },
+    ["Locus Blazer Elytra"] = S{
+        126,
+        130,
+        170,
+        231,
+        266
+    },
     ["Monolithic Boulder"] = S{
         4,
         13,

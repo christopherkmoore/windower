@@ -20,19 +20,20 @@ pass / lot
 
 Bugs
 
-dispel not working
-weaponskills not working
-maybe MB not working
-auto targeting is still pretty bad
-sleep seen broken for single target. -- because engaged not updating. not brd problem i think
+maybe MB not working -- strings crash
+aspir not working
 
-weaponskill / magicburst carries to new target.
+auto targeting is still pretty bad
+
 add checks -- aspir is targeting any target
 add distance checks on spells targets to improve the check ticks
 check functions tick even when class is nil. find a way to turn off the check
 
 TODO
+The dispel monster immunities is wrong...
 AutoCOR? Dunno seems pretty simple... buffs i guess?
+get rid of indiviual job on's in the script. can just be otto on now and start does init for 
+everyones job. The individual commands will still work tho
 
 
 Finish EMPY

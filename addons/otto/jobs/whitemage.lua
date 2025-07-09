@@ -444,6 +444,7 @@ function whitemage.check_whm()
         end
 
         -- blow_cooldowns
+
         -- Devotion
         -- Sacrosanctity   -- Enhanced magic defense
         -- Asylum          -- Enhanced resistance to enfeebling + Dispel effects

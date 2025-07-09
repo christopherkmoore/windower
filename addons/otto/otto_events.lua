@@ -31,9 +31,9 @@ local function aspir_command(arg)
             windower.add_to_chat(3, 'Aspir tier ' .. user_settings.aspir.tier .. ' is out of bounds')
         end
     elseif command == 'on' or command == 'enable' or command == 'start' then
+        otto.aspir.init()
         user_settings.aspir.enabled = true
         message = 'Aspir enabled at ' .. user_settings.aspir.casting_mp .. '% mp'
-        otto.aspir.init()
     elseif command == 'off' or command == 'disable' == command == 'stop' then
         user_settings.aspir.enabled = false
         message = 'Aspiring is disabled'
@@ -358,6 +358,30 @@ local function weaponskill_commands(args)
         user_settings.weaponskill.enabled = true
     elseif command == 'off' then
         user_settings.weaponskill.enabled = false
+    elseif command == 'close' then
+        if arg2 == 'on' then
+            user_settings.weaponskill.close = true
+            message = 'Will close weaponskills.'
+        end
+
+        if arg2 == 'off' then
+            user_settings.weaponskill.close = false
+            message = 'Will stop closing weaponskills.'
+        end
+
+        user_settings.weaponskill.close = true
+    elseif command == 'open' then
+        if arg2 == 'on' then
+            user_settings.weaponskill.open = true
+            message = 'Will open weaponskills.'
+        end
+
+        if arg2 == 'off' then
+            user_settings.weaponskill.open = false
+            message = 'Will stop opening weaponskills.'
+        end
+
+        user_settings.weaponskill.open = true
     elseif (command == 'partner') then --another player's TP
         if arg2 == 'off' then
             user_settings.weaponskill.partner = 'none'
@@ -373,7 +397,7 @@ local function weaponskill_commands(args)
         if (partner ~= nil and partner_weaponskill ~= nil) then
             local partnertp = tonumber(args3) or 1000
             user_settings.weaponskill.enabled = true
-            user_settings.weaponskill.partner = { name = partner, tp = partnertp, weaponskill = partner_weaponskill }
+            user_settings.weaponskill.partner = { name = partner, tp = partnertp, weaponskill = partner_weaponskill.en }
             atc("Will attempt to skillchain with " .. partner .. " when TP is " .. partnertp)
         else
             atc("Invalid args. Ex structure is:")
@@ -393,6 +417,8 @@ local function weaponskill_commands(args)
         user_settings.weaponskill.min_hp = nil
         user_settings.weaponskill.name = nil
         user_settings.weaponskill.partner = nil
+        user_settings.weaponskill.close = nil
+        user_settings.weaponskill.open = nil
         atc('Weaponskill settings cleared.')
     else
         local ws_string = command:ucfirst()..' '..arg2:ucfirst()
@@ -696,8 +722,8 @@ local function geomancer(args)
     local should_save = true
 
     if command == 'on' or command == 'enable' then
-        user_settings.job.geomancer.enabled = true
         otto.geomancer.init()
+        user_settings.job.geomancer.enabled = true
         message = 'Geomancer on.'
     elseif command == 'off' or command == 'disable' then
         user_settings.job.geomancer.enabled = false
@@ -793,15 +819,91 @@ local function paladin(args)
     end
 
     if command == 'on' or command == 'enable' then
+        otto.paladin.init()
         user_settings.job.paladin.enabled = true
         message = 'Paladin on.'
-        otto.paladin.init()
     elseif command == 'off' or command == 'disable' then
         user_settings.job.paladin.enabled = false
         message = 'Paladin off.'
         otto.buffs.wipe_debufflist()
         otto.buffs.wipe_bufflist()
         otto.paladin.deinit()
+    else
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
+        user_settings:save()
+    end
+end
+
+local function samurai(args)
+    local allowed = T { 'on | off | enabled | disable'}
+    local command = 'help'
+    local message = ''
+    local should_save = true
+    local arg2 = ''
+    local arg3 = ''
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if (#args > 1) then
+        arg2 = args[2]
+    end
+
+    if command == 'on' or command == 'enable' then
+        otto.samurai.init()
+        user_settings.job.samurai.enabled = true
+        message = 'Samurai on.'
+    elseif command == 'off' or command == 'disable' then
+        user_settings.job.samurai.enabled = false
+        message = 'Samurai off.'
+        otto.samurai.deinit()
+    else
+        windower.add_to_chat(3, "That's not a command")
+        windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
+        should_save = false
+    end
+
+    if should_save then
+        if message ~= '' then
+            windower.add_to_chat(6, message)
+        end
+
+        user_settings:save()
+    end
+end
+
+local function corsair(args)
+    local allowed = T { 'on | off | enabled | disable'}
+    local command = 'help'
+    local message = ''
+    local should_save = true
+    local arg2 = ''
+    local arg3 = ''
+    if (#args > 0) then
+        command = args[1]
+    end
+
+    if (#args > 1) then
+        arg2 = args[2]
+    end
+
+    if command == 'on' or command == 'enable' then
+        otto.corsair.init()
+        user_settings.job.corsair.enabled = true
+        message = 'Corsair on.'
+    elseif command == 'off' or command == 'disable' then
+        otto.corsair.deinit()
+        user_settings.job.corsair.enabled = false
+        message = 'Corsair off.'
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(3, 'Allowed commands for assist are ' .. table.concat(allowed, ', '))
@@ -871,8 +973,8 @@ local function blackmage(args)
     end
 
     if command == 'on' or command == 'enable' then
-        user_settings.job.blackmage.enabled = true
         otto.blackmage.init()
+        user_settings.job.blackmage.enabled = true
         message = 'Blackmage on.'
     elseif command == 'off' or command == 'disable' then
         user_settings.job.blackmage.enabled = false
@@ -929,9 +1031,9 @@ local function bard(args)
 
 
     if command == 'on' or command == 'enable' then
+        otto.bard.init()
         user_settings.job.bard.settings.enabled = true
         message = 'Bard on.'
-        otto.bard.init()
     elseif command == 'off' or command == 'disable' then
         user_settings.job.bard.settings.enabled = false
         message = 'Bard off.'
@@ -1082,7 +1184,6 @@ local function whitemage(args)
 
     if command == 'on' or command == 'enable' then
         otto.whitemage.init()
-
         user_settings.job.whitemage.enabled = true
         message = 'White mage on.'
     elseif command == 'off' or command == 'disable' then
@@ -1151,6 +1252,10 @@ function events.addon_command(...)
             bard(newArgs)
         elseif command == 'whm' or command == 'whitemage' then
             whitemage(newArgs)
+        elseif command == 'sam' or command == 'samurai' then
+            samurai(newArgs)
+        elseif command == 'cor' or command == 'corsair' then
+            corsair(newArgs)
         end
         -- MARK: commands to local otto
     end
@@ -1181,10 +1286,12 @@ function events.addon_command(...)
         windower.add_to_chat(6, 'geo | f - otto geo.')
     elseif S { 'start', 'on' }:contains(command) then
         otto.activate = true
+        otto.start()
         windower.add_to_chat(5, 'Otto is live!')
     elseif S { 'stop', 'off' }:contains(command) then
         otto.activate = off
         healer_commands('off')
+        otto.stop()
         otto.buffs.wipe_bufflist()
         otto.buffs.wipe_debufflist()
         -- otto.assist.locked_closing_in = false

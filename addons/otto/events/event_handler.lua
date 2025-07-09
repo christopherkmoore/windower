@@ -70,14 +70,29 @@ function event_handler.action(raw)
                     end
                 end    
             end
+            
+            if S {655, 656}:contains(action.message) then
+                if action.top_level_param == 377 then -- make more robus by adding all sleeps
+                    otto.config.sleep_immunities[target.name] = true
+                    otto.config.sleep_immunities.save(otto.config.sleep_immunities)
+                end
+            end
+    
         end
+    end
+
+    local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
+
+    if immune then
+        event_processor.update_resist_list(message_id, target.id, action.param)
+        return
     end
 
     -- setup custom action handlers who implement their own logic
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
-    otto.fight.action_handler(category, action, actor_id, target, basic_info)
+    otto.fight.action_handler(category, action, actor_id, target, action_basic_info)
     -- extremely useful for classes to manage delay with an action handler
     -- will result in the char being actually playable by a human
     if otto.bard ~= nil then
@@ -168,14 +183,9 @@ local function register_party_members_changed(data)
 end
 
 local function parse_action_message(message_id, target_id, param_1)
-    local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
     local resisted = otto.event_statics.resisted:contains(message_id)
     local debuff_expired = otto.event_statics.lose_effect:contains(message_id)
-
-    if immune then
-        event_processor.update_resist_list(message_id, target_id, param_1)
-        return
-    end
+    local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
 
     -- Debuff expired
     if debuff_expired then

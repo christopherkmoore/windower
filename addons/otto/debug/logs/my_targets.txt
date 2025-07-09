@@ -1,134 +1,43 @@
 return {
 -- Table: {1}
 {
-   [17478087]={2},
-   [17478093]={3},
-   [17478088]={4},
-   [17478094]={5},
-   [17478091]={6},
-   [17478095]={7},
-   [17478092]={8},
+   [17478188]={2},
+   [17478185]={3},
 },
 -- Table: {2}
 {
-   ["engaged"]="agro",
-   ["debuffs"]={9},
-   ["name"]="Apex Hornfly",
-   ["id"]=17478087,
-   ["distance"]=11.575199127197,
-   ["dispellables"]={10},
-   ["index"]=455,
+   ["engaged"]="fighting",
+   ["debuffs"]={4},
+   ["name"]="Locus Blazer Elytra",
+   ["id"]=17478188,
+   ["distance"]=32.222087860107,
+   ["dispellables"]={5},
+   ["index"]=556,
 },
 -- Table: {3}
 {
    ["engaged"]="agro",
-   ["debuffs"]={11},
-   ["name"]="Locus Hornfly",
-   ["id"]=17478093,
-   ["distance"]=9.2835006713867,
-   ["dispellables"]={12},
-   ["index"]=461,
+   ["debuffs"]={6},
+   ["name"]="Apex Dragonfly",
+   ["id"]=17478185,
+   ["distance"]=11.181041717529,
+   ["dispellables"]={7},
+   ["index"]=553,
 },
 -- Table: {4}
-{
-   ["engaged"]="agro",
-   ["debuffs"]={13},
-   ["name"]="Locus Hornfly",
-   ["id"]=17478088,
-   ["distance"]=12.971723556519,
-   ["dispellables"]={14},
-   ["index"]=456,
-},
--- Table: {5}
-{
-   ["engaged"]="agro",
-   ["debuffs"]={15},
-   ["name"]="Apex Worker Lugcrawler",
-   ["id"]=17478094,
-   ["distance"]=38.551509857178,
-   ["dispellables"]={16},
-   ["index"]=462,
-},
--- Table: {6}
-{
-   ["engaged"]="agro",
-   ["debuffs"]={17},
-   ["name"]="Apex Hornfly",
-   ["id"]=17478091,
-   ["distance"]=10.176830291748,
-   ["dispellables"]={18},
-   ["index"]=459,
-},
--- Table: {7}
-{
-   ["engaged"]="fighting",
-   ["debuffs"]={19},
-   ["name"]="Locus Worker Lugcrawler",
-   ["id"]=17478095,
-   ["distance"]=18.158138275146,
-   ["dispellables"]={20},
-   ["index"]=463,
-},
--- Table: {8}
-{
-   ["engaged"]="agro",
-   ["debuffs"]={21},
-   ["name"]="Apex Hornfly",
-   ["id"]=17478092,
-   ["distance"]=11.989129066467,
-   ["dispellables"]={22},
-   ["index"]=460,
-},
--- Table: {9}
-{
-   ["sleep"]=true,
-   ["Dia"]=true,
-},
--- Table: {10}
-{
-},
--- Table: {11}
-{
-   ["sleep"]=true,
-   ["Dia"]=true,
-},
--- Table: {12}
-{
-},
--- Table: {13}
-{
-   ["sleep"]=true,
-},
--- Table: {14}
-{
-},
--- Table: {15}
-{
-},
--- Table: {16}
-{
-},
--- Table: {17}
-{
-   ["sleep"]=true,
-},
--- Table: {18}
-{
-},
--- Table: {19}
 {
    ["sleep"]=true,
    ["Dia"]=true,
    ["Flash"]=true,
 },
--- Table: {20}
+-- Table: {5}
 {
 },
--- Table: {21}
+-- Table: {6}
 {
    ["sleep"]=true,
 },
--- Table: {22}
+-- Table: {7}
 {
 },
 }

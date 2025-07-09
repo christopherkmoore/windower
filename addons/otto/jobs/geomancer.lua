@@ -118,10 +118,10 @@ local function toggle_fc()
 end
 
 local function check_aspir()
-    if otto.aspir.aspirable_target and otto.aspir.should_use_spell then
+    if otto.aspir.ready.target and otto.aspir.ready.spell then
         print('aspir')
 
-        local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
+        local delay = otto.cast.spell(otto.aspir.ready.spell, otto.aspir.ready.target)
         geomancer.delay = delay
         return
     end
@@ -133,6 +133,7 @@ local function check_spells()
     if actor:is_moving() or otto.player.mage_disabled() then return end
 
     local entrust_recast = windower.ffxi.get_ability_recasts()[93]
+    print(entrust_recast)
     local indi_action = res.spells:with('name', user_settings.job.geomancer.indi)
 
     -- check if the bubble is far from the target, if it is, FC and get a new one

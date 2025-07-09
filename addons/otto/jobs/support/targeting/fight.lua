@@ -28,7 +28,8 @@ end
 --=====================================================================
 -- creates the structure for first load.
 local function create_allies(party)
-    if not next(fight.my_allies) then 
+    local next = next
+    if next(fight.my_allies) == nil then 
         if party.p0 ~= nil and party.p0.mob then 
             fight.my_allies[party.p0.mob.id] = { name = party.p0.mob.name, id = party.p0.mob.id, index = party.p0.mob.index, distance = party.p0.mob.distance, target_index = party.p0.mob.target_index, claim_id = party.p0.mob.claim_id, tp = party.p0.tp, zone = party.p0.zone, mpp = party.p0.mpp, mp = party.p0.mp, hp = party.p0.hp, hpp = party.p0.hpp, buffs = {}, buff_timers = {}, debuff_timers = {}, debuffs = {} }
         end
@@ -290,7 +291,6 @@ function fight.action_handler(category, action, actor_id, target, basic_info)
 
     -- I guess the mob should be close too if i'm 'fighting' it
 	if not otto.cast.is_mob_valid_target(mob, 20) then return end
-    -- otto.debug.create_2log_for_comparison(action, 'debugger', target, 'debugger2')
     mob.engaged = 'fighting'
 
 end

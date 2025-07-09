@@ -121,11 +121,12 @@ local function should_cast_death(skillchain)
 end
 
 local function window_ready(target, skillchain)
+
 	if user_settings.magic_burst.gearswap then
 		windower.send_command('gs c bursting')
 	end
-
-	if not target or not target.valid_target or not target.hpp <= 0 then
+	
+	if not target then
 		windower.add_to_chat(123, "Bad Target!")
 		return
 	end
@@ -148,7 +149,7 @@ local function window_ready(target, skillchain)
 		magic_burst.window_open_double_burst_spell = spell
 	end
 
-	coroutine.schedule(burst_window_close:prepare(), 9)
+	coroutine.schedule(check_burst_window_close:prepare(), 9)
 end
 
 function magic_burst.get_spell(skillchain, doubleBurst)
@@ -243,13 +244,12 @@ function magic_burst.action_handler(category, action, actor, add_effect, target)
 	if not mob then return end       -- not my mob, not my problem.                          
 	if not ally then return end      -- not my ally closing sc, not my problem.
 	if not otto.cast.is_mob_valid_target(mob, 20) then return end
-
     if add_effect and otto.event_statics.skillchain_ids:contains(add_effect.message_id) then
 
 		magic_burst.window_open = os.time() 
 		magic_burst.window_close = magic_burst.window_open + 8
 
-		local last_skillchain = otto.event_statics.skillchain[add_effect.message_id]
+		local last_skillchain = otto.event_statics.skillchains[add_effect.message_id]
 		magic_burst.window_open_target = target
 
 		window_ready(target, last_skillchain)

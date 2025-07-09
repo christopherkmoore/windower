@@ -72,6 +72,8 @@ wait 0.3
 ////////////////////////////////////
 
 send Twochix otto ws on;
+send Twochix otto ws close on
+send Twochix otto ws open on
 send Twochix otto ws Tachi: Fudo; 
 send Twochix otto ws partner Twochix 1000 Tachi: Fudo;
 

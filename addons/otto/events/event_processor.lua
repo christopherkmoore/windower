@@ -10,17 +10,8 @@ function event_processor.update_resist_list(message_id, target_id, param)
             utils.register_immunity(target, buff_immunity)
         end
 
-        if S {655, 656}:contains(message_id) then
-            if action.top_level_param == 377 then -- make more robus by adding all sleeps
-                otto.config.sleep_immunities[target.name] = true
-                otto.config.sleep_immunities.save(otto.config.sleep_immunities)
-            end
-        end
 
-        if otto.event_statics.aspir:contains(message_id) then -- aspir seems to have message 228 
-            -- CKM TEST - this seems weird as hell after moving it here
-            otto.aspir.update_DB(target.name, action.param) -- action.param is damage? seems weird
-        end
+
     end
 end
 

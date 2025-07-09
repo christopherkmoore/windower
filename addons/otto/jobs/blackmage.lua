@@ -43,8 +43,8 @@ function blackmage.should_drain()
 end
 
 local function check_aspir()
-    if otto.aspir.aspirable_target then
-        local delay = otto.cast.spell(otto.aspir.should_use_spell, otto.aspir.aspirable_target)
+    if otto.aspir.ready.target then
+        local delay = otto.cast.spell(otto.aspir.ready.spell, otto.aspir.ready.target)
         blackmage.delay = delay
         return
     end
