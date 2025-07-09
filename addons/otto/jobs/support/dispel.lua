@@ -48,7 +48,6 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
 
     if mob and otto.event_statics.monster_buff_gained:contains(action.message) then
-        -- otto.debug.create_2log_for_comparison(action, 'debugger', target, 'debugger2')
         for _, action in pairs(target.raw.actions) do
             local buff = res.buffs[action.param]
             if buff then
@@ -63,7 +62,6 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
             -- immediately add for known dispelables
             if buff and otto.config.monster_ability_dispelables[action.top_level_param] == true then
-                print('here')
                 otto.fight.update_target_dispellable(target.raw.id, buff.en)
             end
         end

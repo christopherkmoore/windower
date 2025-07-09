@@ -155,11 +155,11 @@ local function cure(ally_id, missingHps)
         spellId = spellId + 1
     elseif missingHps > 301 and missingHps <=500 then
         spellId = spellId + 2
-    elseif missingHps > 501 and missingHps <=900 then
+    elseif missingHps > 501 and missingHps <=1000 then
         spellId = spellId + 3
-    elseif missingHps > 901 and missingHps <=1700 then
+    elseif missingHps > 1001 and missingHps <=1400 then
         spellId = spellId + 4
-    elseif missingHps > 1701 then 
+    elseif missingHps > 1401 then 
         spellId = 6
     end
 
@@ -276,6 +276,7 @@ local function cancel_buff(buff_id)
 end
 
 function whitemage.check_whm()
+
     if not user_settings.job.whitemage.enabled then return end
     if actor:is_moving() or otto.player.mage_disabled() then return end
 
@@ -358,7 +359,7 @@ function whitemage.check_whm()
 
             counter = counter + 1
         end
-       
+
         -- debuff na
         local try_aga_debuffing = false
         local debuff_name = ''

@@ -243,7 +243,6 @@ function fight.remove_target_debuff(target_id, effect)
     local should_remove = fight.my_targets[target_id] and fight.my_targets[target_id]['debuffs'][effect]
 
     if should_remove then
-        -- print('removed: '..effect..' on '..target_id)
         fight.my_targets[target_id]['debuffs'][effect] = nil
     end
 end
@@ -270,10 +269,10 @@ function fight.remove_target(id)
     fight.my_targets[id] = nil
 end 
 
--- Notes
--- add an action handler parsing melee hits. update the 'engaged' state based on that.
--- I think it'll be more accurate.
+
+
 function fight.action_handler(category, action, actor_id, target, basic_info)
+    -- I think it'll be more accurate.
 	local categories = S{
     	'melee',
 	 }

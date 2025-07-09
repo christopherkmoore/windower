@@ -88,7 +88,6 @@ function buffs.register_offensive_debuff(args)
     end
 
     local arg_string = table.concat(args,' ')
-    print(arg_string)
     
     local targetName = ''
     
@@ -231,12 +230,12 @@ function buffs.cast()
 
             local ja_ability = utils.get_job_ability(buff)
             if ja_ability then
-                local ja_ability_recasts = windower.ffxi.get_ability_recasts()
+                local is_ready = otto.cast.is_off_cooldown(ja_ability)
                 local ally = otto.fight.ally_lookup(target, nil, nil)
                 local buff = res.buffs[spell.status]
                 local has_buff = ally.buffs[buff.id] or false
                 
-                if ja_ability and ja_ability_recasts and ja_ability_recasts[ja_ability.id] == 0 and ally and not has_buff then
+                if ja_ability and is_ready and ally and not has_buff then
                     local delay = otto.cast.job_ability(ja_ability, ally)
                     return delay
                 end

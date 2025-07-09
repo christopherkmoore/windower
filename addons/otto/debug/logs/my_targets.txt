@@ -1,34 +1,32 @@
 return {
 -- Table: {1}
 {
-   [17478188]={2},
-   [17478185]={3},
+   [17478186]={2},
+   [17478188]={3},
 },
 -- Table: {2}
 {
-   ["engaged"]="fighting",
+   ["engaged"]="agro",
    ["debuffs"]={4},
-   ["name"]="Locus Blazer Elytra",
-   ["id"]=17478188,
-   ["distance"]=32.222087860107,
+   ["name"]="Locus Dragonfly",
+   ["id"]=17478186,
+   ["distance"]=45.957054138184,
    ["dispellables"]={5},
-   ["index"]=556,
+   ["index"]=554,
 },
 -- Table: {3}
 {
-   ["engaged"]="agro",
+   ["engaged"]="fighting",
    ["debuffs"]={6},
-   ["name"]="Apex Dragonfly",
-   ["id"]=17478185,
-   ["distance"]=11.181041717529,
+   ["name"]="Locus Blazer Elytra",
+   ["id"]=17478188,
+   ["distance"]=35.21947479248,
    ["dispellables"]={7},
-   ["index"]=553,
+   ["index"]=556,
 },
 -- Table: {4}
 {
    ["sleep"]=true,
-   ["Dia"]=true,
-   ["Flash"]=true,
 },
 -- Table: {5}
 {
@@ -36,6 +34,7 @@ return {
 -- Table: {6}
 {
    ["sleep"]=true,
+   ["Dia"]=true,
 },
 -- Table: {7}
 {
