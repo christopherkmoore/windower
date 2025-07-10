@@ -1158,7 +1158,7 @@ local function bard(args)
 end
 
 local function whitemage(args)
-    local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
+    local allowed = T { 'on | off | enabled | disable', 'devotion' }
     local message = ''
     local should_save = true
     local command = ''
@@ -1192,6 +1192,14 @@ local function whitemage(args)
         otto.buffs.wipe_debufflist()
         otto.buffs.wipe_bufflist()
         otto.whitemage.deinit()
+    elseif command == 'devotion' then
+        if arg2 == nil then 
+            windower.add_to_chat(3, 'Need to provide a devotion target.')
+            return
+        end
+        user_settings.job.whitemage.devotion = arg2
+        message = 'Devotion will be used on '..arg2
+
     else
         windower.add_to_chat(3, "That's not a command")
         windower.add_to_chat(3, 'Allowed commands for whm are ' .. table.concat(allowed, ', '))

@@ -109,6 +109,21 @@ function cast.job_ability(job_ability, target)
     return 1
 end
 
+--- Cast a job_ability on '<me>' or another player by string.
+---@param job_ability table 
+---@param target string 
+---@return int The delay for the job class to be added to check_interval
+function cast.job_ability_ally(job_ability, target)
+    if not cast.is_off_cooldown(job_ability) then return 0 end 
+
+    -- if not actor:can_use(job_ability) then return 0 end
+    
+    local command = 'input /ja "'..job_ability.en..'" '..target.name
+    windower.send_command(command)
+
+    return 1
+end
+
 --- Cast a weapon_skill on a current targeted mob '<t>'.
 ---@param weapon_skill table 
 ---@param target string 

@@ -237,6 +237,54 @@ local function face_target(target_type) -- 't', 'bt'
 end
 
 
+--- Will run towards 'master'. Start starts running towards master
+--- when you're outside of start yalm range. Finish is when you're done moving
+--- towards master.
+---@param start int yalms  
+---@param finish int yalms 
+function assist.come_to_master(start, finish)
+    if assist.already_coming then return end 
+    local master = otto.fight.ally_lookup(user_settings.assist.master)
+    if not master then return end
+
+    local master_mob = windower.ffxi.get_mob_by_id(master.id)
+    local me = windower.ffxi.get_player()
+    local me_mob = windower.ffxi.get_mob_by_id(me.id)
+    if not master_mob and not me_mob then return end 
+    
+	local dist = math.sqrt(master_mob.distance)
+
+    if dist > 3 then 
+		closing_in = true
+		log('Slave: Closing in ---> '..master_mob.name)
+    else 
+        face_target()
+	end
+
+    local me_coords = {x = me_mob.x, y = me_mob.y, z = me_mob.z}
+    local master_coords = {x = master_mob.x, y = master_mob.y, z = master_mob.z}
+
+    local distance_away_from_master = otto.cast.distance_between_points(me_coords, master_coords)
+
+    if distance_away_from_master > start then
+        assist.already_coming = true 
+        while (master_mob and dist >= finish) do
+            windower.ffxi.run(heading_to(master_mob.x, master_mob.y))
+            coroutine.sleep(0.2)
+            master_mob = windower.ffxi.get_mob_by_id(master.id)
+    
+            if master_mob then
+                dist = math.sqrt(master_mob.distance)
+            else
+                master_mob = nil
+            end
+        end
+    end
+
+    assist.already_coming = false 
+	windower.ffxi.run(false)
+end
+
 local function close_in(target_type) -- 't', 'bt'
     if locked_closing_in then face_target() return end
 
@@ -282,7 +330,7 @@ end
 function assist.master_target_no_close_in(id)
     if not id then return end
 
-    locked_closing_in = true 
+    -- locked_closing_in = true 
 
     windower.send_ipc_message('master '..id)
 end
@@ -303,14 +351,13 @@ function assist.ipc_message_handler(message)
 
         while player.status == player_status["Idle"] do
             assist.attack_on(id)
-            target_lock_on:schedule(1)
             coroutine.sleep(1)
 
             player = windower.ffxi.get_player()
         end
 
         while player.status == player_status['Engaged'] do
-            face_target()
+            close_in()
             coroutine.sleep(.5)
 
             player = windower.ffxi.get_player()
@@ -360,20 +407,18 @@ function assist.ipc_message_handler(message)
                 player = windower.ffxi.get_player()
                 retry_count = retry_count + 1
             until player.status == player_status['Engaged'] or retry_count > max_retry
-    
-            if not locked_closing_in then 
-                target_lock_on:schedule(1)
-            end
 
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
-				if not closing_in and not locked_closing_in then
-					close_in()
-				end
+                assist.come_to_master(5, 0.2)
 
-                if locked_closing_in then
-                    face_target()
-                end
+				-- if not closing_in and not locked_closing_in then
+				-- 	-- close_in()
+				-- end
+
+                -- if locked_closing_in then
+                --     face_target()
+                -- end
 				coroutine.sleep(.5)
 				player = windower.ffxi.get_player()
 			end

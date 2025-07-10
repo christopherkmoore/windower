@@ -212,6 +212,11 @@ function buffs.buff_for_action(action)
     end
 end
 
+--==============================================================================
+--    Call this for buffing
+--==============================================================================
+
+
 -- The main function for if you want to cast buffs
 function buffs.cast()
     for target, buffs in pairs(otto.buffs.buff_list) do

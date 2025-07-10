@@ -1,87 +1,59 @@
 return {
 -- Table: {1}
 {
-   [17478188]={2},
-   [17478185]={3},
-   [17478186]={4},
-   [17478184]={5},
+   [17478184]={2},
+   [17478186]={3},
+   [17478187]={4},
 },
 -- Table: {2}
 {
    ["engaged"]="fighting",
-   ["debuffs"]={6},
-   ["name"]="Locus Blazer Elytra",
-   ["id"]=17478188,
-   ["distance"]=33.731552124023,
-   ["dispellables"]={7},
-   ["index"]=556,
+   ["debuffs"]={5},
+   ["name"]="Apex Dragonfly",
+   ["id"]=17478184,
+   ["distance"]=237.90782165527,
+   ["dispellables"]={6},
+   ["index"]=552,
 },
 -- Table: {3}
 {
    ["engaged"]="agro",
-   ["debuffs"]={8},
-   ["name"]="Apex Dragonfly",
-   ["id"]=17478185,
-   ["distance"]=48.677719116211,
-   ["dispellables"]={9},
-   ["index"]=553,
+   ["debuffs"]={7},
+   ["name"]="Locus Dragonfly",
+   ["id"]=17478186,
+   ["distance"]=55.233535766602,
+   ["dispellables"]={8},
+   ["index"]=554,
 },
 -- Table: {4}
 {
    ["engaged"]="agro",
-   ["debuffs"]={10},
-   ["name"]="Locus Dragonfly",
-   ["id"]=17478186,
-   ["distance"]=38.758888244629,
-   ["dispellables"]={11},
-   ["index"]=554,
+   ["debuffs"]={9},
+   ["name"]="Apex Blazer Elytra",
+   ["id"]=17478187,
+   ["distance"]=13.687879562378,
+   ["dispellables"]={10},
+   ["index"]=555,
 },
 -- Table: {5}
 {
-   ["engaged"]="agro",
-   ["debuffs"]={12},
-   ["name"]="Apex Dragonfly",
-   ["id"]=17478184,
-   ["distance"]=18.134561538696,
-   ["dispellables"]={13},
-   ["index"]=552,
+   ["Flash"]=true,
 },
 -- Table: {6}
 {
-   ["sleep"]=true,
-   ["Dia"]=true,
-   ["Elegy"]=true,
-   ["Nocturne"]=true,
-   ["Flash"]=true,
 },
 -- Table: {7}
 {
 },
 -- Table: {8}
 {
-   ["Nocturne"]=true,
-   ["sleep"]=true,
-   ["Elegy"]=true,
 },
 -- Table: {9}
 {
+   ["sleep"]=true,
+   ["Elegy"]=true,
 },
 -- Table: {10}
-{
-   ["Nocturne"]=true,
-   ["sleep"]=true,
-   ["Elegy"]=true,
-},
--- Table: {11}
-{
-},
--- Table: {12}
-{
-   ["sleep"]=true,
-   ["Nocturne"]=true,
-   ["Elegy"]=true,
-},
--- Table: {13}
 {
 },
 }

@@ -213,6 +213,10 @@ local function check_spells()
         end
     end
 
+    -- Check if you need to come closer to the fight
+    otto.assist.come_to_master(13, 8)
+
+
     -- redo bursting
 
     if otto.magic_burst.window_open_spell and otto.magic_burst.window_open_target then

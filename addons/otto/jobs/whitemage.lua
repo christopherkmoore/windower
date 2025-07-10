@@ -28,10 +28,7 @@ function whitemage.init()
     local defaults = T{ 
         settings = T{
             auto_raise = true,     -- tries to auto raise when party members die. Pretty low priority
-            devotion = {
-                enabled= true,
-                target= 'Fivechix',    
-            },
+            devotion = 'Fivechix',
             blow_cooldowns = true,
         },
         debuffs = L {"Dia II","Slow","Paralyze", "Silence", "Addle"},
@@ -235,7 +232,6 @@ local function remove_na(ally_id, debuff, try_aga)
         local delay = otto.cast.spell_with_pre_action(debuff_spell, divine_seal, target)
         whitemage.delay = delay
         return true
-
     end
 
     -- Accesssion + na for AoE Erase
@@ -292,8 +288,8 @@ function whitemage.check_whm()
         for _, ally in pairs(otto.fight.my_allies) do
             if ally.debuffs['sleep'] then
                 local curaga = res.spells[7]
-                local delay = otto.cast.spell(curaga, ally)
-                whitemage.delay = delay
+                local cast_time = otto.cast.spell(curaga, ally)
+                whitemage.delay = cast_time
             end 
         end
         local sortable_hps = T{}
@@ -307,6 +303,7 @@ function whitemage.check_whm()
         for _, ally in pairs(otto.fight.my_allies) do
             if ally.hp ~= 0 then
                 local missingHP = math.ceil((ally.hp/(ally.hpp/100))-ally.hp)
+                
                 if missingHP > 0 then
                     sortable_hps[ally.id] = missingHP
                     sortable_hpps[ally.id] = 100 - ally.hpp
@@ -315,6 +312,7 @@ function whitemage.check_whm()
                 if ally.hpp < 60 then
                     aga_counter = aga_counter + 1
                 end
+
                 party_total_hp = party_total_hp + (missingHP + ally.hp)
                 combined_missing_hp = combined_missing_hp + missingHP
             end
@@ -410,11 +408,10 @@ function whitemage.check_whm()
             end    
         end
 
-        -- -- buffs
+        -- buffs
         otto.buffs.cast()
 
-        --debuffs 
-
+        -- debuffs 
         otto.debuffs.cast() 
 
         -- check for KO, with raise already sent.
@@ -443,14 +440,28 @@ function whitemage.check_whm()
                 end
             end
         end
-
+        
+        -- Check if you need to come closer to the fight
+        otto.assist.come_to_master(17, 14)
+        
         -- blow_cooldowns
-
         -- Devotion
+        if user_settings.job.whitemage.devotion then
+            local ally = otto.fight.ally_lookup(user_settings.job.whitemage.devotion)
+            if ally then
+
+                local recasts = windower.ffxi.get_ability_recasts()
+                local devotion = res.job_abilities[154]
+                local devotion_recast = recasts[devotion.recast_id]
+                
+                if devotion and devotion_recast == 0  and ally.mpp and ally.mpp < 21 then
+                    otto.cast.job_ability_ally(devotion, ally)
+                end
+            end
+        end
+
         -- Sacrosanctity   -- Enhanced magic defense
         -- Asylum          -- Enhanced resistance to enfeebling + Dispel effects
-        -- abilities
-            -- devotion
 
     end
 end
@@ -476,7 +487,9 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
 
     -- Casting finish
     if category == 'spell_finish' then
-        
+        -- set delay when a spell finishes.
+        whitemage.delay = 1
+
         if otto.event_statics.raise_spells:contains(action.top_level_param) then 
             local ally = otto.fight.my_allies[target.id]
             if ally then
@@ -494,6 +507,7 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
                 local buff_to_search = otto.event_statics.dispel_to_debuff_map[spell_cast.en]
                 local buff = res.buffs:with('name', buff_to_search)
                 local ally = otto.fight.my_allies[target.id]
+                
                 if spell_cast and buff and ally then
                     print("Manually removing "..buff_to_search..' from '..ally.name)
 
@@ -518,7 +532,6 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
             whitemage.delay = 2.2
         end
     end
-
 end
 
 

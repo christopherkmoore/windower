@@ -152,6 +152,10 @@ function paladin.check_pld()
                 end
             end
         end
+
+        -- Check if you need to come closer to the fight
+        otto.assist.come_to_master(5, 0.2)
+
     end
 end
 

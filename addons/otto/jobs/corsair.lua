@@ -46,6 +46,9 @@ function corsair.check_cor()
         
         -- weaponskills / skillchains
         otto.weaponskill.action()
+        
+        -- Check if you need to come closer to the fight
+        otto.assist.come_to_master(5, 0.2)
 
     end
 end

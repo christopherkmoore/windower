@@ -19,7 +19,7 @@ return {
         ["yalm_fight_range"] = 3.5
     },
     ["debug"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["dispel"] = {
         ["enabled"] = false
@@ -101,6 +101,7 @@ return {
                 [5] = "Addle",
                 ["n"] = 5
             },
+            ["devotion"] = "Fivechix",
             ["enabled"] = true,
             ["settings"] = T{
                 ["auto_raise"] = true,

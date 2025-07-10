@@ -90,6 +90,10 @@ function blackmage.check_blm()
                 return
             end
         end
+
+        -- Check if you need to come closer to the fight
+        otto.assist.come_to_master(17, 14)
+
     end
 end
 

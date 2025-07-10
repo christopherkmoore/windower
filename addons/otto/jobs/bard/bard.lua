@@ -200,6 +200,9 @@ function bard.check_bard()
             end
         end
 
+        -- Check if you need to come closer to the fight
+        otto.assist.come_to_master(12, 12)
+
         -- check debuffs 
         if user_settings.job.bard.bard_settings.debuffing then
             for _, mob in pairs(otto.fight.my_targets) do
