@@ -23,7 +23,7 @@ return {
         ["enabled"] = false
     },
     ["dispel"] = {
-        ["enabled"] = true
+        ["enabled"] = false
     },
     ["follow"] = {
         ["active"] = false,
@@ -70,13 +70,13 @@ return {
                     ["p5"] = true,
                     ["party"] = true
                 },
-                ["clarion"] = true,
+                ["clarion"] = false,
                 ["debuffing"] = true,
-                ["marcato"] = true,
+                ["marcato"] = false,
                 ["nightingale"] = true,
                 ["pianissimo"] = true,
                 ["recast"] = 20,
-                ["soul_voice"] = true,
+                ["soul_voice"] = false,
                 ["troubadour"] = true
             },
             ["debuffs"] = L{
@@ -93,33 +93,26 @@ return {
             },
             ["settings"] = T{
                 ["dispels"] = true,
-                ["enabled"] = true,
-                ["fight_type"] = "xp",
+                ["enabled"] = false,
+                ["fight_type"] = "normal",
                 ["sleeps"] = true
             },
             ["song"] = T{
                 ["Chixslave"] = L{
-                    [1] = "Mage's Ballad III",
-                    ["n"] = 1
+                    ["n"] = 0
                 },
                 ["Fivechix"] = L{
-                    [1] = "Mage's Ballad III",
-                    ["n"] = 1
+                    ["n"] = 0
                 },
                 ["Threechix"] = L{
-                    [1] = "Mage's Ballad III",
-                    ["n"] = 1
+                    ["n"] = 0
                 },
                 ["Twochix"] = L{
-                    [1] = "Adventurer's Dirge",
-                    ["n"] = 1
+                    ["n"] = 0
                 }
             },
             ["songs"] = L{
-                [1] = "Victory March",
-                [2] = "Valor Minuet IV",
-                [3] = "Valor Minuet V",
-                ["n"] = 3
+                ["n"] = 0
             }
         }
     },
@@ -136,7 +129,7 @@ return {
         ["show_spell"] = false
     },
     ["pull"] = {
-        ["enabled"] = true,
+        ["enabled"] = false,
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {

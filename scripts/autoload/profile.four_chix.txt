@@ -11,7 +11,6 @@
 wait 5;
 load LuaCore;
 load Config;
-load InfoBar;
 load Run;
 load Sandbox;
 load Timers;

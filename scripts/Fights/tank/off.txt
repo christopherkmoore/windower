@@ -8,6 +8,9 @@
 send Chixslave otto whm off;
 
 send Fourchix cor off;
+send Fourchix otto cor off;
+
+send Twochix otto sam off;
 send Twochix otto assist engages off;
 
 send Onechix otto brd off;

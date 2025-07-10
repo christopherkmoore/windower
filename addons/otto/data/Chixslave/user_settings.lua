@@ -102,7 +102,7 @@ return {
                 ["n"] = 5
             },
             ["devotion"] = "Fivechix",
-            ["enabled"] = true,
+            ["enabled"] = false,
             ["settings"] = T{
                 ["auto_raise"] = true,
                 ["blow_cooldowns"] = true,

@@ -562,9 +562,22 @@ local function assist_commands(args)
             user_settings:save()
             return
         end
-        user_settings.assist.master = windower.ffxi.get_player().name
-        message = 'Assist configured with ' .. user_settings.assist.master .. ' as master'
-        windower.send_command('send @others otto assist role slave')
+
+        if arg2 then
+            local ally = otto.fight.ally_lookup(arg2, nil, nil)
+            if ally then
+                user_settings.assist.master = arg2
+                message = 'Assist configured with ' .. user_settings.assist.master .. ' as master'                
+            end
+        end
+
+        if arg2 == '' then 
+            local player = windower.ffxi.get_player()
+            user_settings.assist.master = player.name
+
+            windower.send_command('send @others otto assist master '..player.name)
+        end
+
     elseif command == 'slave' then -- don't call this, only set the master and the others become slaves by default
         local name = windower.ffxi.get_player().name
         local inSet = S(user_settings.assist.slaves):contains(name)

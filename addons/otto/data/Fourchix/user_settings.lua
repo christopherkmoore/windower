@@ -64,7 +64,7 @@ return {
         },
         ["corsair"] = {
             ["cooldowns"] = true,
-            ["enabled"] = true
+            ["enabled"] = false
         }
     },
     ["magic_burst"] = {

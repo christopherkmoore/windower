@@ -247,7 +247,12 @@ function assist.come_to_master(start, finish)
     local master = otto.fight.ally_lookup(user_settings.assist.master)
     if not master then return end
 
+    local mobs_fighting = otto.fight.my_targets:keyset()
+    if mobs_fighting == 0 then return end
+    
     local master_mob = windower.ffxi.get_mob_by_id(master.id)
+    
+
     local me = windower.ffxi.get_player()
     local me_mob = windower.ffxi.get_mob_by_id(me.id)
     if not master_mob and not me_mob then return end 

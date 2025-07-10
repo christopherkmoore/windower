@@ -58,7 +58,7 @@ function buffs.register_offensive_debuff(args)
     local spell = {}
     local spell_guess = ''
     local count = 0
-    local pop_count = 0
+    local pop_count = -1
     for i=0, #args-1 do
         count = count + 1
         local spell_attempt = {}
@@ -82,15 +82,17 @@ function buffs.register_offensive_debuff(args)
         atcfs(123,'Error: Unable to cast %s', arg_string)
     end
 
+    print(args)
     -- finally pop off the spell (hopefully)
     for i=0, pop_count do
+        print(pop)
         table.remove(args, #args)
     end
 
     local arg_string = table.concat(args,' ')
     
     local targetName = ''
-    
+    print(pop_count)
     if arg_string == nil or arg_string == '' then
         targetName = 'AoE'
     else
