@@ -53,87 +53,69 @@ end
 --- Cast a spell on a current targeted mob, or may swap to a new mob.
 ---@param spell table 
 ---@param mob table 
----@return int The delay for the job class to be added to check_interval for whatever job casting it.
 function cast.spell(spell, mob)
-    if not cast.is_off_cooldown(spell) then return 0 end 
+    if not cast.is_off_cooldown(spell) then return end 
     if mob == nil then return 0 end
-    if not spell and spell.id and mob then return 0 end 
+    if not spell and spell.id and mob then return end 
     local current_mob_target = windower.ffxi.get_mob_by_target()
 
     -- I'm not targeting the right mob, so swap
     if current_mob_target and current_mob_target.id and mob and mob.id and mob.id ~= current_mob_target.id then
         otto.assist.swap_target_and_cast(mob, spell.id)
-        return spell.cast_time
+        return 
     end
 
     if current_mob_target and current_mob_target.id and mob and mob.id and mob.id == current_mob_target.id then
         local command = 'input /ma "'..spell.en..'" <t>'
         windower.send_command(command)
-        return spell.cast_time
+        return 
     end
 
     if mob and mob.name and spell and spell.en then
         local command = 'input /ma "'..spell.en..'" '..mob.name
         windower.send_command(command)
-        return spell.cast_time
     end
-    return 0    
 end
 
 --- Cast a spell on a current targeted mob '<t>'.
 ---@param spell table 
 ---@param target table 
----@return int The delay for the job class to be added to check_interval
 function cast.spell_no_check(spell, target)
-    if not cast.is_off_cooldown(spell) then return 0 end 
+    if not cast.is_off_cooldown(spell) then return end 
 
-    -- if actor:is_moving() then return 1 end
-    -- if not actor:can_use(spell) then return 0 end
     local command = 'input /ma "'..spell.en..'" '..target
     windower.send_command(command)
-    return spell.cast_time
 end
 
 --- Cast a job_ability on '<me>' or another player by string.
 ---@param job_ability table 
 ---@param target string 
----@return int The delay for the job class to be added to check_interval
 function cast.job_ability(job_ability, target)
-    if not cast.is_off_cooldown(job_ability) then return 0 end 
-
-    -- if not actor:can_use(job_ability) then return 0 end
+    if not cast.is_off_cooldown(job_ability) then return end 
     
     local command = 'input /ja "'..job_ability.en..'" '..target
     windower.send_command(command)
-
-    return 1
 end
 
 --- Cast a job_ability on '<me>' or another player by string.
 ---@param job_ability table 
 ---@param target string 
----@return int The delay for the job class to be added to check_interval
 function cast.job_ability_ally(job_ability, target)
-    if not cast.is_off_cooldown(job_ability) then return 0 end 
-
-    -- if not actor:can_use(job_ability) then return 0 end
+    if not cast.is_off_cooldown(job_ability) then return end 
     
     local command = 'input /ja "'..job_ability.en..'" '..target.name
     windower.send_command(command)
 
-    return 1
 end
 
 --- Cast a weapon_skill on a current targeted mob '<t>'.
 ---@param weapon_skill table 
 ---@param target string 
----@return int The delay for the job class to be added to check_interval
 function cast.weapon_skill(weapon_skill, target)
-    if not cast.is_off_cooldown(weapon_skill) then return 0 end 
+    if not cast.is_off_cooldown(weapon_skill) then return end 
     
     local command = 'input /ws "'..weapon_skill.en..'" <t>'
     windower.send_command(command)
-    return 1
 end
 
 
@@ -141,14 +123,12 @@ end
 ---@param spell table 
 ---@param job_ability string 
 ---@param target table 
----@return int The delay for the job class to be added to check_interval
 function cast.spell_with_pre_action(spell, job_ability, target)
-    if not cast.is_off_cooldown(spell) then return 0 end 
-    local delay = cast.job_ability(job_ability, '<me>')
-    coroutine.sleep(delay)
+    if not cast.is_off_cooldown(spell) then return end 
+    cast.job_ability(job_ability, '<me>')
+    coroutine.sleep(1)
 
     cast.spell(spell, target)
-    return spell.cast_time
 end
 
 --=====================================================================
@@ -202,6 +182,12 @@ end
 ---@param distance int in yalm range 
 ---@return boolean 
 function cast.is_mob_valid_target(mob, distance)
+    -- if mob == nil then return end
+    -- local ally = otto.fight.my_allies[mob.id]
+    -- if ally then 
+    --     return cast.is_ally_valid_target(ally.id, distance)
+    -- end
+
     return mob and mob.distance and distance and mob.distance:sqrt() < distance
 end
 

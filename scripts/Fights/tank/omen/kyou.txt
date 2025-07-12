@@ -11,8 +11,7 @@
 //
 ////////////////////////////////
 
-send @all exec fights/reset
-
+send @all otto on;
 wait 0.1;
 
 ////////////////////////////////
@@ -20,17 +19,20 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/auto_whm
+
 wait 0.3;
+
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave baramnesra on;
-
 
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
+
 wait 0.3;
+
 send Onechix otto brd fight boss;
 send Onechix otto bard songs march 1;
 send Onechix otto bard songs madrigal 1;
@@ -51,15 +53,11 @@ send Threechix exec fights/auto_geo
 // Paladin
 ////////////////////////////////////
 
-send Fivechix otto pld on
-
 wait 0.3
 
 ////////////////////////////////////
 // Corsair
 ////////////////////////////////////
-
-send Fourchix cor on
 
 wait 0.3
 
@@ -68,6 +66,8 @@ wait 0.3
 ////////////////////////////////////
 
 send Twochix otto ws on;
+send Twochix otto ws open on
+send Twochix otto ws close on
 send Twochix otto ws Tachi: Fudo; 
 send Twochix otto ws partner Twochix 1000 Tachi: Fudo;
 

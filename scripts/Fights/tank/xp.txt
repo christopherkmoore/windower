@@ -6,8 +6,7 @@
 //
 ////////////////////////////////
 
-send @all exec fights/reset
-
+send @all otto on;
 wait 0.1;
 
 ////////////////////////////////
@@ -38,8 +37,10 @@ send Onechix otto bard song Fivechix ballad;
 send Onechix otto bard song Threechix ballad;
 send Onechix otto pull on;
 
-send Onechix otto bard debuff nocturne
-send Onechix otto bard debuff elegy
+send Onechix otto debuff Pining Nocturne on
+send Onechix otto debuff Carnage Elegy on
+send Onechix otto debuff Foe Requiem VII on
+
 wait 0.3;
 
 ////////////////////////////////////
@@ -52,12 +53,9 @@ send Threechix otto geo cooldowns on
 
 wait 0.3;
 
-
 ////////////////////////////////////
 // Paladin
 ////////////////////////////////////
-
-send Fivechix otto pld on;
 
 wait 0.3
 
@@ -75,7 +73,7 @@ wait 0.3
 ////////////////////////////////////
 // Guests+ Fight specific setup
 ////////////////////////////////////
-
+send Twochix otto assist engages on;
 
 send Twochix otto ws on;
 send Twochix otto ws close on
@@ -83,7 +81,6 @@ send Twochix otto ws open on
 send Twochix otto ws Tachi: Fudo; 
 send Twochix otto ws partner Twochix 1000 Tachi: Fudo;
 
-send Twochix otto assist engages on;
 send Chixslave otto buff Onechix haste on;
 send Chixslave otto buff Twochix haste on;
 send Chixslave otto buff Threechix haste on;

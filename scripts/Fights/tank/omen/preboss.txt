@@ -7,15 +7,17 @@
 //
 ////////////////////////////////
 
-send @all exec fights/reset
-
+send @all otto on;
 wait 0.1;
 
 ////////////////////////////////
 // White Mage
 ////////////////////////////////
+
 send Chixslave exec fights/tank/auto_whm
+
 wait 0.3;
+
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
 
@@ -24,13 +26,15 @@ send Chixslave otto buff Chixslave barblindra on;
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
+
 send Onechix exec fights/tank/auto_brd
+
 wait 0.3;
+
 send Onechix otto brd fight savetimers;
 send Onechix otto bard songs minuet 2;
 send Onechix otto bard songs march 1;
 
-send Onechix otto bard song Twochix dirge;
 send Onechix otto bard song Chixslave ballad;
 send Onechix otto bard song Fivechix ballad;
 send Onechix otto bard song Threechix ballad;
@@ -47,6 +51,8 @@ send Threechix exec fights/auto_geo
 ////////////////////////////////////
 
 send Twochix otto ws on;
+send Twochix otto ws open on
+send Twochix otto ws close on
 send Twochix otto ws Tachi: Fudo; 
 send Twochix otto ws partner Twochix 1000 Tachi: Fudo;
 

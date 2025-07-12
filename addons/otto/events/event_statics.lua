@@ -39,7 +39,7 @@ event_statics.na_spells = S{143, 14, 15, 16, 17, 18, 19, 20, 95}
 -- MARK: Bard 
 --=====================================================================
 event_statics.song_buff_ids = S{195,196,197,198,199,200,201,206} -- 215 etude and 216 carol?
-
+event_statics.sleep_spell_ids = S{253, 259, 98, 678, 584, 576, 463, 471, 376, 377, 273, 274} -- Sleep, Sleep II, Repose, Dream Flower, Sheep Song, Yawn, Foe Lullaby, Foe Lullaby II, Horde Lullaby, Horde Lullaby II, Sleepga, Sleepga II
 event_statics.songs = {
     paeon = {'Army\'s Paeon VI','Army\'s Paeon V','Army\'s Paeon IV','Army\'s Paeon III','Army\'s Paeon II','Army\'s Paeon'},
     ballad = {'Mage\'s Ballad III','Mage\'s Ballad II','Mage\'s Ballad'},

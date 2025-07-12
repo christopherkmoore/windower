@@ -18,7 +18,6 @@ send Chixslave otto buff Chixslave Boost-STR on;
 send Chixslave otto buff Chixslave Auspice on;
 send Chixslave otto buff Chixslave Aurorastorm on;
 send Chixslave otto buff Chixslave Reraise IV on; 
-//send Chixslave hb buff Chixslave Aquaveil on; 
 
 
 

@@ -7,8 +7,9 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
+        ["fight_style"] = "free",
         ["master"] = "Twochix",
-        ["should_engage"] = false,
+        ["should_engage"] = true,
         ["slaves"] = {
             ["Chixslave"] = "backline",
             ["Fivechix"] = "frontline",
@@ -65,7 +66,7 @@ return {
         },
         ["samurai"] = {
             ["cooldowns"] = true,
-            ["enabled"] = false
+            ["enabled"] = true
         }
     },
     ["magic_burst"] = {
@@ -85,6 +86,14 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
-        ["enabled"] = false
+        ["close"] = true,
+        ["enabled"] = true,
+        ["name"] = "Tachi: Fudo",
+        ["open"] = true,
+        ["partner"] = {
+            ["name"] = "Twochix",
+            ["tp"] = 1000,
+            ["weaponskill"] = "Tachi: Fudo"
+        }
     }
 }

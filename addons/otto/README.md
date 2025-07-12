@@ -18,18 +18,32 @@ sub-job
 rdm 
 pass / lot
 
+TEST
+test updated moving and replace actor calls
+
 Bugs
-
-auto targeting is still pretty bad
-
-add checks -- aspir is targeting any target
-add distance checks on spells targets to improve the check ticks
-check functions tick even when class is nil. find a way to turn off the check
+add debuff immunity check to debuffs
+pld also can use buffs and debuffs now, remove old code. + update scripts
+Bards song get messed up.
+I think cure step down maybe not working?
+fight can't update allies when zoning so add a tick and a piece of code that knows when they're zoning, and set up delays like other jobs
 
 TODO
-The dispel monster immunities is wrong...
-AutoCOR? Dunno seems pretty simple... buffs i guess?
-get rid of indiviual job on's in the script. can just be otto on now and start does init for 
+- Now that I have this shining one, It might be time for step based skill chains.
+- maybe it should be like otto job on and otto on (top level enabled and job enabled.)
+- something that parses if my target casts spells and uses it for silence
+- add to assist, so it will have a new command (which is the fight style)
+    - fight - master is free to move, people follow master.
+    - trash, Have people auto-fight and free kill mobs. DD's take unique targets.
+    - planted (everyone just stays still, good for xp)
+    - boss (maybe you wanna have the tank target one mob and dds another?)
+    - target master target (to fix my targetnpc script)
+- draw something that shows actions taken?
+- I could move job delays into player.delay.. and use a single action handler to update the delays.
+- find a way to use coroutines for job ticks, that way you could clean them up when the job is off.
+- The dispel monster immunities is wrong...
+- AutoCOR? Dunno seems pretty simple... buffs i guess?
+- get rid of indiviual job on's in the script. can just be otto on now and start does init for 
 everyones job. The individual commands will still work tho
 
 
@@ -58,6 +72,7 @@ Missions -
     Finish voracious 
 
 Gear -
+https://www.bg-wiki.com/ffxi/Deacon_Sword
     RDM AF - Empy - Relic
     BLM AF - Empy - Relic - MB set
 

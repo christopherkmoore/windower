@@ -6,7 +6,7 @@
 //
 ////////////////////////////////
 
-send @all exec fights/reset
+
 
 wait 0.3;
 

@@ -11,14 +11,13 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
     local spell_recasts = windower.ffxi.get_spell_recasts()
     local ability_recasts = windower.ffxi.get_ability_recasts()
 
-    if actor:is_moving() then return false end
+    if otto.player.is_moving then return false end
     if basesongs > 2 and currsongs < maxsongs and #song_list > currsongs then
         for i = 1, #user_settings.job.bard.dummy do
             local song = user_settings.job.bard.dummy[i]
 
             if basesongs - i >= 0 and currsongs == maxsongs - i and spell_recasts[otto.bard.support.song_by_name(song).id] <= 0 then
                 windower.send_command(('input /ma "%s" %s'):format(song,ta))
-                otto.bard.delay = 3
             end
         end
     end
@@ -40,18 +39,15 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
                     end
                 end
                 windower.send_command('input /ja "Soul Voice" <me>')
-                otto.bard.delay = 1.2
             end
 
             if not JA_WS_lock and user_settings.job.bard.bard_settings.clarion and not buffs['clarion call'] and ability_recasts[254] <= 0 then
                 windower.send_command('input /ja "Clarion Call" <me>')
-                otto.bard.delay = 1.2
             end
 
 
             if ta == '<me>' and user_settings.job.bard.bard_settings.nightingale and not JA_WS_lock and not buffs.nightingale and ability_recasts[109] <= 0 and ability_recasts[110] <= 0 then
                 windower.send_command('input /ja "Nightingale" <me>')
-                otto.bard.delay = 1.2
             elseif ta == '<me>' and user_settings.job.bard.bard_settings.troubadour and not JA_WS_lock and not buffs.troubadour and ability_recasts[110] <= 0 then
                 for targ, songs in pairs(otto.bard.timers) do
                     for song in pairs(songs) do
@@ -59,15 +55,12 @@ function cast.check_song(song_list,targ,buffs,JA_WS_lock)
                     end
                 end
                 windower.send_command('input /ja "Troubadour" <me>')
-                otto.bard.delay = 1.2
             elseif ta ~= '<me>' and not buffs.pianissimo then 
                 if not JA_WS_lock and ability_recasts[112] <= 0 then
                     windower.send_command('input /ja "Pianissimo" <me>')
-                    otto.bard.delay = 1.2
                 end
             else
                 windower.send_command(('input /ma "%s" %s'):format(song.enl,ta))
-                otto.bard.delay = 3
             end
             return true
         end

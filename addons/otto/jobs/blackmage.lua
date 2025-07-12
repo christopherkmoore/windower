@@ -3,7 +3,6 @@
 local blackmage = { }
 -- job check ticks
 blackmage.check_interval = 0.4
-blackmage.delay = 4
 blackmage.counter = 0
 
 function blackmage.init()
@@ -18,13 +17,16 @@ function blackmage.init()
     if user_settings.aspir.enabled then
         otto.assist.init()
     end
+
+    user_settings.job.blackmage.enable = true
+
     blackmage.check_blm:loop(blackmage.check_interval)
     otto.aspir.init()
 
 end
 
 function blackmage.deinit()
-    -- empty for now but for clearing debuffs
+    user_settings.job.blackmage.enable = false
     otto.aspir.deinit()
 
 end
@@ -36,16 +38,14 @@ function blackmage.should_drain()
     local drain_cooldown = windower.ffxi.get_spell_recasts()[drain.id]
 
     if target and drain_cooldown == 0 and should_drain then
-        local delay = otto.cast.spell(drain, target)
-        blackmage.delay = delay
+        otto.cast.spell(drain, target)
         return
     end
 end
 
 local function check_aspir()
     if otto.aspir.ready.target then
-        local delay = otto.cast.spell(otto.aspir.ready.spell, otto.aspir.ready.target)
-        blackmage.delay = delay
+        otto.cast.spell(otto.aspir.ready.spell, otto.aspir.ready.target)
         return
     end
 end
@@ -53,13 +53,13 @@ end
 -- The BLM main function.
 function blackmage.check_blm()
     if not user_settings.job.blackmage.enabled then return end
-    if actor:is_moving() or otto.player.mage_disabled() then return end
+    if otto.player.is_moving or otto.player.mage_disabled() then return end
 
     blackmage.counter = blackmage.counter + blackmage.check_interval
 
-    if blackmage.counter >= blackmage.delay then
+    if blackmage.counter >= otto.player.delay then
         blackmage.counter = 0
-        blackmage.delay = blackmage.check_interval
+        otto.player.delay = blackmage.check_interval
 
         if user_settings.aspir.enabled then
             check_aspir()
@@ -74,8 +74,7 @@ function blackmage.check_blm()
             local recast = otto.cast.is_off_cooldown(manawall)
             
             if manawall_recast == 0 and not buffs:contains(manawall.status) then 
-                local delay = otto.cast.job_ability(manawall, '<me>')
-                blackmage.delay = delay
+                otto.cast.job_ability(manawall, '<me>')
                 return
             end
         end
@@ -85,57 +84,17 @@ function blackmage.check_blm()
             local cascade_recast = windower.ffxi.get_ability_recasts()[cascade.recast_id]
 
             if player.vitals.tp >= 1000 and cascade_recast == 0 and not buffs:contains(cascade.status) then
-                local delay = otto.cast.job_ability(cascade, '<me>')
-                blackmage.delay = delay
+                otto.cast.job_ability(cascade, '<me>')
                 return
             end
         end
 
         -- Check if you need to come closer to the fight
-        otto.assist.come_to_master(17, 14)
-
-    end
-end
-
-        
-function blackmage.action_handler(category, action, actor_id, add_effect, target)
-	local categories = S{     
-    	'job_ability',
-    	'casting_begin',
-        'spell_finish',
-        'item_finish',
-        'item_begin'
-	 }
-
-     local start_categories = S{ 'casting_begin', 'item_begin'}
-
-    if not categories:contains(category) or action.param == 0 then
-        return
-    end
-    
-    local player = windower.ffxi.get_player()
-    if actor_id ~= player.id then return end
-
-    -- Casting finish
-    if category == 'spell_finish' then
-        blackmage.delay = 5
-    end
-
-    if category == 'item_finish' then 
-        blackmage.delay = 2.2
-    end
-
-    if start_categories:contains(category) then 
-        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
-            blackmage.delay = 4.2
+        if user_settings.assist.fight_style == 'follow_master' then
+            otto.assist.come_to_master(13, 14)
         end
 
-        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
-            blackmage.delay = 2.2
-        end
     end
-
-end
-
+end    
 
 return blackmage

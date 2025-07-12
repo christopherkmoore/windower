@@ -1,15 +1,36 @@
 local event_processor = {}
 
-function event_processor.update_resist_list(message_id, target_id, param)
+function event_processor.update_resist_list(message_id, target_id, action)
     local target = otto.fight.my_targets[target_id]
 
     if target then
         -- CKM TEST, mayne needs top_level_param in stead.
-        local buff_immunity = res.buffs[param]
-        if buff_immunity then 
-            utils.register_immunity(target, buff_immunity)
+        local buff_immunity = res.buffs[action.param]
+        if buff_immunity and not message_id == 228 then -- 228 is for aspir, so ignore that one.
+            utils.immunities[target.name] = S(utils.immunities[target.name]) or S{}
+            utils.immunities[target.name]:add(buff_immunity.id)
+            utils.immunities:save()
+        end
+
+        if otto.event_statics.sleep_spell_ids:contains(action.top_level_param) and  otto.config.sleep_immunities then 
+            local mob = windower.ffxi.get_mob_by_id(target.id)
+            otto.config.sleep_immunities[target.name] = true
+            otto.config.sleep_immunities.save(otto.config.sleep_immunities)
+        end
+
+        if message_id == 228 then
+            if otto.config.maspir_immunities[target.name] ~= nil then return end
+            if otto.config.maspir_immunities == nil then
+                otto.config.maspir_immunities = {}
+            end
+            -- update the db with records of monsters who actually can be aspir'd.
+            local hasMP = action.param ~= 0               
+            otto.config.maspir_immunities[target.name] = hasMP
+        
+            otto.config.maspir_immunities.save(otto.config.maspir_immunities)
         end
     end
+   
 end
 
 function event_processor.process_buff(action, target)

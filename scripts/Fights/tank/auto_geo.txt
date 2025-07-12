@@ -2,8 +2,6 @@
 // Geomancer
 ////////////////////////////////////
 
-send Threechix otto on;
-send Threechix otto geo on;
 
 send Threechix otto aspir t 3;
 send Threechix otto aspir all;

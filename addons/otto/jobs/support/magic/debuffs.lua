@@ -1,3 +1,4 @@
+
 local debuffs = {}
 
 local function debuff_spell(spell, mob) 
@@ -6,8 +7,8 @@ local function debuff_spell(spell, mob)
     local has_debuff = otto.fight.my_targets[mob.id].debuffs[debuff.en] or false
 
     if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
-        local delay = otto.cast.spell(spell, mob)
-        return delay
+        otto.cast.spell(spell, mob)
+        return true 
     end
 end
 
@@ -19,6 +20,7 @@ function debuffs.cast()
 
         if target == '' or target == 'AoE' then
             for d_spell, _ in pairs(debuff_spells) do
+                local player = windower.ffxi.get_player()
                 for _, mob in pairs(otto.fight.my_targets) do
                     if mob and otto.cast.is_mob_valid_target(mob, 20) then
                         local spell = res.spells:with('name', d_spell)
@@ -26,11 +28,11 @@ function debuffs.cast()
 
                         if otto.event_statics.dot_debuffs:contains(debuff.id) and mob.engaged == 'fighting' then
                             -- Make sure spell isn't a dot. It will mess up sleeps otherwise.
-                            debuff_spell(spell, mob) 
+                            if debuff_spell(spell, mob) then return end
                         end
 
                         if not otto.event_statics.dot_debuffs:contains(debuff.id) then
-                            debuff_spell(spell, mob) 
+                            if debuff_spell(spell, mob) then return end
                         end
                     end
                 end
@@ -49,11 +51,11 @@ function debuffs.cast()
 
                         if otto.event_statics.dot_debuffs:contains(debuff.id) and mob_target.engaged == 'fighting' then
                             -- Make sure spell isn't a dot. It will mess up sleeps otherwise.
-                            debuff_spell(spell, mob_target) 
+                            return debuff_spell(spell, mob_target) 
                         end
 
                         if not otto.event_statics.dot_debuffs:contains(debuff.id) then
-                            debuff_spell(spell, mob_target) 
+                            return debuff_spell(spell, mob_target) 
                         end
                     end
                 end

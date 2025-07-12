@@ -22,8 +22,9 @@ function dispel.should_dispel(spell)
         for _, mob in pairs(otto.fight.my_targets) do
             if mob.dispellables then
                 for name, id in pairs(mob.dispellables) do
-                    local delay = otto.cast.spell(spell, mob)
-                    return delay
+                    if otto.cast.is_mob_valid_target(mob, spell.range) then
+                        otto.cast.spell(spell, mob)
+                    end
                 end
             end
         end
@@ -45,7 +46,6 @@ function dispel.action_handler(category, action, actor_id, target, basic_info)
 
 	local mob = otto.fight.my_targets[target.id]
 	if not mob then return end       -- not my mob, not my problem.                          
-	if not otto.cast.is_mob_valid_target(mob, 20) then return end
 
 
     if mob and otto.event_statics.monster_buff_gained:contains(action.message) then

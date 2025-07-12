@@ -7,6 +7,7 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
+        ["fight_style"] = "free",
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
@@ -102,7 +103,7 @@ return {
                 ["n"] = 5
             },
             ["devotion"] = "Fivechix",
-            ["enabled"] = false,
+            ["enabled"] = true,
             ["settings"] = T{
                 ["auto_raise"] = true,
                 ["blow_cooldowns"] = true,
@@ -130,6 +131,7 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
+        ["close"] = true,
         ["enable"] = true,
         ["enabled"] = false
     }

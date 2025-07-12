@@ -70,15 +70,6 @@ function event_handler.action(raw)
                     end
                 end    
             end
-            
-            if S {655, 656}:contains(action.message) then
-                if action.top_level_param == 377 then -- make more robus by adding all sleeps
-                    otto.config.sleep_immunities[target.name] = true
-                    
-                    otto.config.sleep_immunities.save(otto.config.sleep_immunities)
-                end
-            end
-    
         end
     end
 
@@ -86,27 +77,32 @@ function event_handler.action(raw)
     local immune = otto.event_statics.immune:contains(message_id) -- ${actor} casts ${spell}.${lb}${target} completely resists the spell.
 
     if immune then
-        event_processor.update_resist_list(message_id, target.id, action.param)
+        event_processor.update_resist_list(message_id, target.id, action)
     end
 
     -- setup custom action handlers who implement their own logic
+    otto.player.action_handler(category, action, actor_id)
     otto.weaponskill.action_handler(category, action, actor_id, add_effect, target)
     otto.dispel.action_handler(category, action, actor_id, target, action_basic_info)
     otto.magic_burst.action_handler(category, action, actor_id, add_effect, target)
     otto.fight.action_handler(category, action, actor_id, target, action_basic_info)
-    otto.aspir.action_handler(category, action, action_basic_info)
+
     -- extremely useful for classes to manage delay with an action handler
     -- will result in the char being actually playable by a human
     if otto.bard ~= nil then
         otto.bard.action_handler(category, action, actor_id, add_effect, target)
     elseif otto.whitemage ~= nil then
         otto.whitemage.action_handler(category, action, actor_id, add_effect, target)
-    elseif otto.paladin ~= nil then
-        otto.paladin.action_handler(category, action, actor_id, add_effect, target)
     end
 end
 
-function event_handler.outgoing_chunk()
+function event_handler.outgoing_chunk(id, data, modified, injected, blocked)
+    if id == 0x015 then
+        local parsed = packets.parse('outgoing', data)
+        otto.player.is_moving = otto.player.last_coords ~= modified:sub(5, 16)
+        otto.player.last_coords = modified:sub(5, 16)
+        otto.player.target_index = parsed['Target Index']
+    end
 end
 
 function event_handler.job_change()
@@ -258,6 +254,13 @@ function event_handler.incoming_chunk(id, data, modified, injected, blocked)
 
     if id == 0x63 and data:byte(5) == 9 then
         parse_bard_timers(data)
+    end
+
+    if id == 0x034 or id == 0x032 then
+        otto.player.target_interacted = true
+        coroutine.sleep(3)
+        otto.player.target_interacted = false
+
     end
 
     if id == 0x076 then -- party buffs update

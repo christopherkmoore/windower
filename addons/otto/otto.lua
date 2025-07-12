@@ -105,44 +105,39 @@ end
 
 function otto.start()
     local player = windower.ffxi.get_player()
-    if otto.active then
-        if player.main_job == "GEO" then
-            otto.geomancer.init()
-        elseif player.main_job == "BLM" then
-            otto.blackmage.init()
-        elseif player.main_job == "PLD" then 
-            otto.paladin.init()
-        elseif player.main_job == "BRD" then
-            otto.bard.init()
-        elseif player.main_job == "WHM" then
-            otto.whitemage.init()
-        elseif player.main_job == "SAM" then
-            otto.samurai.init()
-        elseif player.main_job == "COR" then
-            otto.corsair.init()
-        end
+    if player.main_job == "GEO" then
+        otto.geomancer.init()
+    elseif player.main_job == "BLM" then
+        otto.blackmage.init()
+    elseif player.main_job == "PLD" then 
+        otto.paladin.init()
+    elseif player.main_job == "BRD" then
+        otto.bard.init()
+    elseif player.main_job == "WHM" then
+        otto.whitemage.init()
+    elseif player.main_job == "SAM" then
+        otto.samurai.init()
+    elseif player.main_job == "COR" then
+        otto.corsair.init()
     end
 end
 
 function otto.stop()
     local player = windower.ffxi.get_player()
-
-    if not otto.active then
-        if player.main_job == "GEO" then
-            otto.geomancer.deinit()
-        elseif player.main_job == "BLM" then
-            otto.blackmage.deinit()
-        elseif player.main_job == "PLD" then 
-            otto.paladin.deinit()
-        elseif player.main_job == "BRD" then
-            otto.bard.deinit()
-        elseif player.main_job == "WHM" then
-            otto.whitemage.deinit()
-        elseif player.main_job == "SAM" then
-            otto.samurai.deinit()
-        elseif player.main_job == "COR" then
-            otto.corsair.deinit()
-        end
+    if player.main_job == "GEO" then
+        otto.geomancer.deinit()
+    elseif player.main_job == "BLM" then
+        otto.blackmage.deinit()
+    elseif player.main_job == "PLD" then 
+        otto.paladin.deinit()
+    elseif player.main_job == "BRD" then
+        otto.bard.deinit()
+    elseif player.main_job == "WHM" then
+        otto.whitemage.deinit()
+    elseif player.main_job == "SAM" then
+        otto.samurai.deinit()
+    elseif player.main_job == "COR" then
+        otto.corsair.deinit()
     end
 end
 
@@ -153,8 +148,9 @@ otto._events['render'] = windower.register_event('prerender', function()
     otto.draw.distances_from_master()
 end)
 
-otto._events['outgoing chunk'] = windower.register_event('addon command', otto.events.addon_command)
-otto._events['event handler inc'] = windower.register_event('incoming chunk', otto.event_handler.incoming_chunk)
+otto._events['addon command'] = windower.register_event('addon command', otto.events.addon_command)
+otto._events['event handler incoming'] = windower.register_event('incoming chunk', otto.event_handler.incoming_chunk)
+otto._events['event handler outgoing'] = windower.register_event('outgoing chunk', otto.event_handler.outgoing_chunk)
 
 otto._events['job change'] = windower.register_event('job change', otto.check_jobs)
 

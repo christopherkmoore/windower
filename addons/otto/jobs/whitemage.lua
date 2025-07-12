@@ -15,9 +15,7 @@ local player = windower.ffxi.get_player()
 
 -- job check ticks
 whitemage.check_interval = 0.4
-whitemage.delay = 4
 whitemage.counter = 0
-
 
 
 local function start() 
@@ -44,6 +42,8 @@ function whitemage.init()
         }
     }
 
+    user_settings.job.whitemage.enabled = true
+
     if user_settings.job.whitemage == nil then
         user_settings.job.whitemage = defaults
         user_settings:save()
@@ -57,6 +57,8 @@ function whitemage.init()
 end
 
 function whitemage.deinit() 
+    user_settings.job.whitemage.enabled = false
+
 end
 
 local function curaga_step_down(spellId, ally_id, times_tried)
@@ -88,6 +90,7 @@ local function cure_step_down(spellId, ally_id, times_tried)
     local target = otto.fight.my_allies[ally_id]
     local recast = windower.ffxi.get_spell_recasts()[spell.id]
     if spell and target and recast == 0 then
+        print(spell.en..' from step down!')
         otto.cast.spell(spell, target)
     else
         cure_step_down(spellId, ally_id, times_tried)
@@ -111,7 +114,7 @@ local function raise_step_down(ally_id, times_tried)
         recast = windower.ffxi.get_spell_recasts()[spell.id]    
     end
     
-    print(' Riase step down!')
+    print('Raise step down!')
     if spell and target and recast == 0 then
         otto.cast.spell(spell, target)
     else
@@ -178,8 +181,7 @@ local function raise(ally_id)
     local recast = windower.ffxi.get_spell_recasts()[arise.id]
 
     if arise and target and recast == 0 then
-        local delay = otto.cast.spell(arise, target)
-        whitemage.delay = delay / 2 -- 12 seconds is probably not really correct
+        otto.cast.spell(arise, target)
         return
     else
         raise_step_down(arise, ally_id, 0)
@@ -199,14 +201,12 @@ local function regen(ally_id)
         local regenSpell = res.spells:with('name', 'Regen IV')
         local recast = windower.ffxi.get_spell_recasts()[regenSpell.id]
         if target and regenSpell and recast == 0 and player.sub_job == "SCH" and strategems_recast == 0 then
-            local delay = otto.cast.spell_with_pre_action(regenSpell, accession, target)
-            whitemage.delay = delay
+            otto.cast.spell_with_pre_action(regenSpell, accession, target)
             return true
 
         end
         if target and regenSpell and recast == 0 then
-            local delay = otto.cast.spell(regenSpell, target)
-            whitemage.delay = delay
+            otto.cast.spell(regenSpell, target)
             return true
         end
     end
@@ -229,29 +229,25 @@ local function remove_na(ally_id, debuff, try_aga)
 
     -- divine seal + na for AoE Erase
     if target and debuff_spell and try_aga and debuff_spell.en == "Erase" and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 and divine_seal_recast == 0 then
-        local delay = otto.cast.spell_with_pre_action(debuff_spell, divine_seal, target)
-        whitemage.delay = delay
+        otto.cast.spell_with_pre_action(debuff_spell, divine_seal, target)
         return true
     end
 
     -- Accesssion + na for AoE Erase
     if target and debuff_spell and try_aga and player.sub_job == "SCH" and strategems_recast == 0 and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 then
-        local delay = otto.cast.spell_with_pre_action(debuff_spell, accession, target)
-        whitemage.delay = delay
+        otto.cast.spell_with_pre_action(debuff_spell, accession, target)
         return true
     end
 
        -- divine caress + non AoE
     if target and debuff_spell and debuff_spell.en ~= "Erase" and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 and divine_caress_recast == 0 then
-        local delay = otto.cast.spell_with_pre_action(debuff_spell, divine_caress, target)
-        whitemage.delay = delay
+        otto.cast.spell_with_pre_action(debuff_spell, divine_caress, target)
         return true
     end
 
     -- Okay fine just a regular old na... pray for Divine Viel Proc :P
     if target and debuff_spell and windower.ffxi.get_spell_recasts()[debuff_spell.id] == 0 then
-        local delay = otto.cast.spell(debuff_spell, target)
-        whitemage.delay = delay
+        otto.cast.spell(debuff_spell, target)
         return true
     end
 
@@ -273,25 +269,22 @@ end
 
 function whitemage.check_whm()
 
-    if not user_settings.job.whitemage.enabled then return end
-    if actor:is_moving() or otto.player.mage_disabled() then return end
+    if otto.player.is_moving or otto.player.mage_disabled() then return end
 
     whitemage.counter = whitemage.counter + whitemage.check_interval
-
-    if whitemage.counter >= whitemage.delay then
-
+    if whitemage.counter >= otto.player.delay then
         whitemage.counter = 0
-        whitemage.delay = whitemage.check_interval
+        otto.player.delay = whitemage.check_interval
 
-        -- CKM TEST
+        -- CKM TEST - not working.
         -- wake up sleeping allies
         for _, ally in pairs(otto.fight.my_allies) do
-            if ally.debuffs['sleep'] then
+            if ally.debuffs[2] then
                 local curaga = res.spells[7]
-                local cast_time = otto.cast.spell(curaga, ally)
-                whitemage.delay = cast_time
+                otto.cast.spell(curaga, ally)
             end 
         end
+
         local sortable_hps = T{}
         local sortable_hpps = T{}
         local aga_counter = 0
@@ -351,13 +344,14 @@ function whitemage.check_whm()
                 end
             end
 
-            if k and otto.cast.is_ally_valid_target(k, 20) then 
+            if k and otto.cast.is_ally_valid_target(k, 20) and user_settings.job.whitemage.enabled then
                 if not regen(k) then break end
             end
 
             counter = counter + 1
         end
-
+        if not user_settings.job.whitemage.enabled then return end
+        
         -- debuff na
         local try_aga_debuffing = false
         local debuff_name = ''
@@ -409,7 +403,7 @@ function whitemage.check_whm()
         end
 
         -- buffs
-        otto.buffs.cast()
+        otto.buffs.cast() 
 
         -- debuffs 
         otto.debuffs.cast() 
@@ -442,8 +436,9 @@ function whitemage.check_whm()
         end
         
         -- Check if you need to come closer to the fight
-        otto.assist.come_to_master(17, 14)
-        
+        if user_settings.assist.fight_style == 'follow_master' then
+            otto.assist.come_to_master(13, 14)
+        end
         -- blow_cooldowns
         -- Devotion
         if user_settings.job.whitemage.devotion then
@@ -453,13 +448,14 @@ function whitemage.check_whm()
                 local recasts = windower.ffxi.get_ability_recasts()
                 local devotion = res.job_abilities[154]
                 local devotion_recast = recasts[devotion.recast_id]
-                
+
                 if devotion and devotion_recast == 0  and ally.mpp and ally.mpp < 21 then
                     otto.cast.job_ability_ally(devotion, ally)
                 end
             end
         end
 
+        -- Sublimation
         -- Sacrosanctity   -- Enhanced magic defense
         -- Asylum          -- Enhanced resistance to enfeebling + Dispel effects
 
@@ -477,7 +473,6 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
         'item_begin'
 	 }
 
-     local start_categories = S{ 'casting_begin', 'item_begin'}
 
     if not categories:contains(category) or action.param == 0 then
         return
@@ -488,7 +483,6 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
     -- Casting finish
     if category == 'spell_finish' then
         -- set delay when a spell finishes.
-        whitemage.delay = 1
 
         if otto.event_statics.raise_spells:contains(action.top_level_param) then 
             local ally = otto.fight.my_allies[target.id]
@@ -516,21 +510,6 @@ function whitemage.action_handler(category, action, actor_id, add_effect, target
             end
         end
 
-        whitemage.delay = 5
-    end
-
-    if category == 'item_finish' then 
-        whitemage.delay = 2.2
-    end
-
-    if start_categories:contains(category) then 
-        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
-            whitemage.delay = 4.2
-        end
-
-        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
-            whitemage.delay = 2.2
-        end
     end
 end
 

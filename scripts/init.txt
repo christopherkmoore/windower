@@ -110,10 +110,11 @@ bind ^d send @all exec dismounts
 bind ^a sat allattack
 bind ^w exec warps
 bind ^t exec targetnpc
+bind ^g send @all exec otto_off
+bind ^h send @all exec otto_on
 
 block_mouseinput 1;
 
 wait 3
 
 send Twochix exec ui-show;
-hb reload;

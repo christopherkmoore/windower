@@ -25,6 +25,7 @@ end
 local function maintain_debuff(spell, maintain, targetName)
 
     buffs.debuff_list[targetName] = buffs.debuff_list[targetName] or {}
+    local player = windower.ffxi.get_player()
 
     if maintain then
         buffs.debuff_list[targetName][spell.en] = true
@@ -39,6 +40,7 @@ local function maintain_debuff(spell, maintain, targetName)
         atcf('Will %smaintain debuff on %s: %s', msg, targetName, spell.en)
 
     end
+
 end
 
 function buffs.register_offensive_debuff(args)
@@ -53,46 +55,41 @@ function buffs.register_offensive_debuff(args)
     end
     table.remove(args, #args) -- pop the toggle off the table
 
---  pop pop                                   pop
---  otto debuff word two three buff two three on;
+
+    -- iterate through the args backwards checking to see if there's a spell match in there.
+    -- need to do this because
     local spell = {}
     local spell_guess = ''
     local count = 0
     local pop_count = -1
     for i=0, #args-1 do
+
         count = count + 1
         local spell_attempt = {}
-        if i == 0 then
-            spell_guess = args[#args - i]
+        
+        spell_guess = args[#args - i]..' '..spell_guess
+        spell_attempt = res.spells:with('en', spell_guess:trim())    
 
-            spell_attempt = res.spells:with('name', spell_guess)
-        else
-            spell_guess = args[#args - i]..' '..spell_guess
-            spell_attempt = res.spells:with('name', spell_guess)    
-        end
-
-        if spell_attempt and spell_attempt.name then
+        if spell_attempt and spell_attempt.en then
             spell = spell_attempt
-            pop_count = pop_count + 1
+            pop_count = i
+            break 
         end
     end -- do this horseshit because the command can get pretty complicated: EX
     -- otto debuff Stormride Surfer II Dia II on
     
-    if not actor:can_use(spell) then
-        atcfs(123,'Error: Unable to cast %s', arg_string)
+    if spell and spell.name == nil then
+        atcfs(123,'Error: Unable to cast %s', spell_attempt)
     end
 
-    print(args)
     -- finally pop off the spell (hopefully)
     for i=0, pop_count do
-        print(pop)
         table.remove(args, #args)
     end
 
     local arg_string = table.concat(args,' ')
     
     local targetName = ''
-    print(pop_count)
     if arg_string == nil or arg_string == '' then
         targetName = 'AoE'
     else
@@ -230,8 +227,8 @@ function buffs.cast()
                 local ally = otto.fight.ally_lookup(target, nil, nil)
                 local has_buff = ally.buffs[buff.id] or false
                 if spell and spell_recasts and spell_recasts[spell.id] == 0 and ally and not has_buff then
-                    local delay = otto.cast.spell(spell, ally)
-                    return delay
+                    otto.cast.spell(spell, ally)
+                    return true
                 end
             end
 
@@ -243,8 +240,8 @@ function buffs.cast()
                 local has_buff = ally.buffs[buff.id] or false
                 
                 if ja_ability and is_ready and ally and not has_buff then
-                    local delay = otto.cast.job_ability(ja_ability, ally)
-                    return delay
+                    otto.cast.job_ability(ja_ability, ally)
+                    return true 
                 end
             end
         end

@@ -45,7 +45,7 @@ function aspir.can_cast()
 
     for _, mob in pairs(otto.fight.my_targets) do 
         if otto.config.maspir_immunities[mob.name] == nil or otto.config.maspir_immunities[mob.name] == true then
-            local valid_target = otto.cast.is_mob_valid_target(mob, aspirs.aspir.range)
+            local valid_target = otto.cast.is_mob_valid_target(mob, 12)
             if valid_target then
                 aspir.ready.target = mob
                 return
@@ -76,7 +76,7 @@ end
 function aspir.check_loop()
     if not user_settings.aspir.enabled then return end
 
-    if aspir.ready.target and otto.fight.my_targets[aspir.ready.target.id] == nil then 
+    if aspir.ready.target and otto.fight.my_targets[aspir.ready.target.id] == nil and otto.cast.is_mob_valid_target(aspir.ready.target, 12) then 
         aspir.ready.target = nil
     end
     local player = windower.ffxi.get_player()
@@ -86,29 +86,6 @@ function aspir.check_loop()
         aspir.set_aspir()
     end
 
-end
-
-
-function aspir.action_handler(category, action, action_basic_info)
-	local categories = S{     
-        'spell_finish',
-	 }
-
-    if otto.event_statics.aspir:contains(action.message) and action_basic_info and action_basic_info.id then -- aspir seems to have message 228 
-        local mob = windower.ffxi.get_mob_by_id(action_basic_info.id)
-        if mob and mob.name then 
-            if otto.config.maspir_immunities[mob.name] ~= nil then return end
-            if otto.config.maspir_immunities == nil then
-                otto.config.maspir_immunities = {}
-            end
-            -- update the db with records of monsters who actually can be aspir'd.
-            local hasMP = action.param ~= 0                -- okay WTF the action param here is the damage...
-            print(mob.name)
-            otto.config.maspir_immunities[mob.name] = hasMP
-        
-            otto.config.maspir_immunities.save(otto.config.maspir_immunities)
-        end
-    end
 end
 
 return aspir

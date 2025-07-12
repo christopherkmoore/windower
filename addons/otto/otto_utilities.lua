@@ -106,9 +106,7 @@ end
 
 
 function utils.register_immunity(mob, debuff)
-    utils.immunities[mob.name] = S(utils.immunities[mob.name]) or S{}
-    utils.immunities[mob.name]:add(debuff.id)
-    utils.immunities:save()
+    
 end
 
 function utils.posCommand(boxName, args)

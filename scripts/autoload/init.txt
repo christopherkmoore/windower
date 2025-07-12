@@ -99,6 +99,8 @@ bind ^f send @others /follow Twochix
 bind ^u send @others exec unfollow
 bind ^m send @all exec mounts
 bind ^d send @all exec dismounts
+bind ^g send @all exec otto_off
+bind ^h send @all exec otto_on
 bind ^a sat allattack
 bind ^w exec warps
 bind ^t exec targetnpc
@@ -110,4 +112,3 @@ block_mouseinput 1;
 wait 3
 
 send Twochix exec ui-show;
-hb reload;

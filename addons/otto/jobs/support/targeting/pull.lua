@@ -84,7 +84,7 @@ function pull.try_pulling()
 
     -- go get a new mob
     local now = os.time()
-    if actor:is_moving() then return end
+    if otto.player.is_moving then return end
     if now < pull.pull_tick then return end
 
     pull.pull_tick = now + 3

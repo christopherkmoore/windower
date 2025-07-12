@@ -7,8 +7,7 @@
 //
 ////////////////////////////////
 
-send @all exec fights/reset
-
+send @all otto on;
 wait 0.1;
 
 ////////////////////////////////
@@ -16,17 +15,21 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/tank/auto_whm
+
 wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;
 send Chixslave otto buff Chixslave barblindra on;
+send Chixslave otto debuff Dia II on
 
 ////////////////////////////////////
 // Bard
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
+
 wait 0.3;
+
 send Onechix otto brd fight boss;
 send Onechix otto bard songs march 1;
 send Onechix otto bard songs madrigal 1;
@@ -52,15 +55,11 @@ send Threechix otto geo cooldowns on;
 // Paladin
 ////////////////////////////////////
 
-send Fivechix otto pld on
-
 wait 0.3
 
 ////////////////////////////////////
 // Corsair
 ////////////////////////////////////
-
-send Fourchix cor on
 
 wait 0.3
 

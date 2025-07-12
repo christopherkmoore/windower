@@ -11,7 +11,8 @@ return {
     ["Agon Halo"] = S{
         2,
         4,
-        13
+        13,
+        194
     },
     ["Amaranth Barrier"] = S{
         4,
@@ -305,6 +306,9 @@ return {
         4,
         13
     },
+    ["Brachys"] = S{
+        0
+    },
     ["Broadleaf Palm"] = S{
         2,
         194
@@ -336,6 +340,49 @@ return {
     ["Dragua"] = S{
         13,
         194
+    },
+    ["Entozoon"] = S{
+        85,
+        133,
+        134,
+        140,
+        143,
+        145,
+        153,
+        156,
+        172,
+        177,
+        190,
+        193,
+        199,
+        201,
+        204,
+        205,
+        208,
+        210,
+        219,
+        232,
+        234,
+        236,
+        254,
+        259,
+        264,
+        265,
+        267,
+        268,
+        278,
+        288,
+        293,
+        295,
+        309,
+        343,
+        368,
+        375,
+        391,
+        392,
+        425,
+        449,
+        481
     },
     ["Gaizkin"] = S{
         4
@@ -595,8 +642,19 @@ return {
         2,
         28
     },
+    ["Nostos Beetle"] = S{
+        227,
+        293
+    },
+    ["Nostos Cockatrice"] = S{
+        0
+    },
+    ["Nostos Morbol"] = S{
+        0
+    },
     ["Pallid Percy"] = S{
-        2
+        2,
+        433
     },
     ["Sabotender Dulce"] = S{
         4
@@ -607,6 +665,18 @@ return {
     ["Sovereign Behemoth"] = S{
         10,
         28
+    },
+    ["Sweetwater Beetle"] = S{
+        127
+    },
+    ["Sweetwater Fly"] = S{
+        0
+    },
+    ["Sweetwater Leech"] = S{
+        0
+    },
+    ["Sweetwater Tiger"] = S{
+        0
     },
     ["Wintry Cave"] = S{
         5,

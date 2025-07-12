@@ -8,7 +8,6 @@ bard.song_timers = require('jobs/bard/support/timers')
 bard.cast = require('jobs/bard/support/cast')
 
 bard.check_interval = 0.4
-bard.delay = 4
 bard.counter = 0
 
 bard.timers = {AoE={},buffs={}}
@@ -56,6 +55,7 @@ function bard.init()
 
     otto.assist.init()
     bard.support.start()
+    user_settings.job.bard.settings.enabled = true
     bard.check_bard:loop(bard.check_interval)
 end
 
@@ -102,11 +102,11 @@ function bard.check_bard()
 
     bard.counter = bard.counter + bard.check_interval
 
-    if bard.counter >= bard.delay then
+    if bard.counter >= otto.player.delay then
         bard.counter = 0
-        bard.delay = bard.check_interval
+        otto.player.delay = bard.check_interval
 
-        if actor:is_moving() or otto.player.mage_disabled() then return end
+        if otto.player.is_moving or otto.player.mage_disabled() then return end
 
         local JA_WS_lock = bard.buffs.amnesia or bard.buffs.impairment
 
@@ -150,12 +150,11 @@ function bard.check_bard()
                 local random = math.random(1, needs_sleep)
                 local counter = 1
                 for mob_id, _ in pairs(not_sleeping) do
-                    if counter == random then
-                        local mob = otto.fight.my_targets[mob_id]
+                    local mob = otto.fight.my_targets[mob_id]
+                    if counter == random and otto.cast.is_mob_valid_target(mob, 19) then
                         -- eventually need to work on this to be swap target
                         -- assist needs to be expanded to start targeting my_targets
                         otto.assist.puller_target_and_cast(mob, 377) 
-                        bard.delay = 2
                         return
     
                     end
@@ -171,13 +170,7 @@ function bard.check_bard()
 
         -- dispel
         local magic_finale = res.spells[462]
-        local delay = otto.dispel.should_dispel(magic_finale)
-        if delay then
-            print('casting magic finale')
-            bard.delay = delay
-            return
-        end
-
+        otto.dispel.should_dispel(magic_finale)
 
         -- check songs
         if not user_settings.job.bard.bard_settings.aoe.party or bard.support.aoe_range() then
@@ -201,34 +194,35 @@ function bard.check_bard()
         end
 
         -- Check if you need to come closer to the fight
-        otto.assist.come_to_master(12, 12)
+        if user_settings.assist.fight_style == 'follow_master' then
+            otto.assist.come_to_master(8, 5)
+        end
 
         -- check debuffs 
-        if user_settings.job.bard.bard_settings.debuffing then
-            for _, mob in pairs(otto.fight.my_targets) do
-                if mob and otto.cast.is_mob_valid_target(mob, 20) then
-                    for song in user_settings.job.bard.debuffs:it() do
-                        local spell = res.spells:with('name', song)
-                        local debuff = res.buffs[spell.status]
-                        local spell_recasts = windower.ffxi.get_spell_recasts()
-                        local has_debuff = mob['debuffs'][debuff.en] or false
+        otto.debuffs.cast()
+        -- if user_settings.job.bard.bard_settings.debuffing then
+        --     for _, mob in pairs(otto.fight.my_targets) do
+        --         if mob and otto.cast.is_mob_valid_target(mob, 20) then
+        --             for song in user_settings.job.bard.debuffs:it() do
+        --                 local spell = res.spells:with('name', song)
+        --                 local debuff = res.buffs[spell.status]
+        --                 local spell_recasts = windower.ffxi.get_spell_recasts()
+        --                 local has_debuff = mob['debuffs'][debuff.en] or false
 
-                        if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
-                            local delay = otto.cast.spell(spell, mob)
-                            bard.delay = delay
-                            return
-                        end
-                    end
-                end
-            end
-        end
+        --                 if spell and spell_recasts and spell_recasts[spell.id] == 0 and mob and not has_debuff then
+        --                     otto.cast.spell(spell, mob)
+        --                     return
+        --                 end
+        --             end
+        --         end
+        --     end
+        -- end
     end
 end
 
 
 function bard.deinit() 
     user_settings.job.bard.settings.enabled = false
-
     windower.send_command('otto dispel off')
     windower.send_command('otto pull off')
     windower.send_command('otto bard debuff clear')
@@ -253,12 +247,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
 
     -- Casting finish
     if category == 'spell_finish' then
-        bard.delay = 5
-
-        if bard.buffs.nightingale or bard.buffs.troubadour then 
-            bard.delay = 2
-        end
-
         local song = bard.support.song_name(action.top_level_param)
 
         if not song then return end
@@ -274,25 +262,6 @@ function bard.action_handler(category, action, actor_id, add_effect, target)
             bard.song_timers.adjust(song, windower.ffxi.get_mob_by_id(target.id).name, bard.buffs)
         end
     end
-
-    if category == 'item_finish' then 
-        bard.delay = 2.2
-    end
-
-    if start_categories:contains(category) then 
-        if action.top_level_param == 24931 then  -- Begin Casting/WS/Item/Range
-            bard.delay = 4.2
-            
-            if bard.buffs.nightingale or bard.buffs.troubadour then 
-                bard.delay = 2
-            end
-        end
-
-        if action.top_level_param == 28787 then -- Failed Casting/WS/Item/Range
-            bard.delay = 2.2
-        end
-    end
-
 end
 
 function event_change()

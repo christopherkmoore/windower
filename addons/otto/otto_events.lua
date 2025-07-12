@@ -1,9 +1,8 @@
 local events = T {}
 require('tables')
 
-
 local function aspir_command(arg)
-    local allowed = T { 'r', 'reload', 'tier', 't', 'on', 'enable', 'start', 'all', 'single', 'assist' }
+    local allowed = T {'r', 'reload', 'tier', 't', 'on', 'enable', 'start', 'all', 'single', 'assist'}
     local command = 'help'
     local message = ''
     local arg2 = ''
@@ -71,7 +70,7 @@ local function aspir_command(arg)
 end
 
 local function magic_burst_command(arg)
-    local allowed = T { 'test', 'help', 'status', 'show' }
+    local allowed = T {'test', 'help', 'status', 'show'}
     local message = ''
     local command = 'help'
     local arg2 = ''
@@ -85,27 +84,21 @@ local function magic_burst_command(arg)
     end
 
     function show_help()
+        windower.add_to_chat(2, _addon.name ..
+            ': magic burst on|off - turn auto magic bursting on or off\n magic bursts show on|off - display messages about skillchains|magic bursts')
+        windower.add_to_chat(2, _addon.name .. ': Auto Bursts: \t\t' ..
+            (user_settings.magic_burst.enabled and 'On' or 'Off'))
         windower.add_to_chat(2,
-        _addon.name ..
-        ': magic burst on|off - turn auto magic bursting on or off\n magic bursts show on|off - display messages about skillchains|magic bursts')
-        windower.add_to_chat(2,
-        _addon.name .. ': Auto Bursts: \t\t' .. (user_settings.magic_burst.enabled and 'On' or 'Off'))
-        windower.add_to_chat(2,
-        _addon.name ..
-        ': Magic Burst Type: \t' ..
-        user_settings.magic_burst.cast_type .. ' Tier: \t' .. (user_settings.magic_burst.cast_tier))
+            _addon.name .. ': Magic Burst Type: \t' .. user_settings.magic_burst.cast_type .. ' Tier: \t' ..
+                (user_settings.magic_burst.cast_tier))
         windower.add_to_chat(2, _addon.name .. ': Min MP: \t\t' .. user_settings.magic_burst.mp)
+        windower.add_to_chat(2, _addon.name .. ': Double Burst: ' .. (user_settings.magic_burst.double_burst and
+            ('On' .. ' delay ' .. user_settings.magic_burst.double_burst_delay .. ' seconds') or 'Off'))
         windower.add_to_chat(2,
-        _addon.name ..
-        ': Double Burst: ' ..
-        (user_settings.magic_burst.double_burst and ('On' .. ' delay ' .. user_settings.magic_burst.double_burst_delay .. ' seconds') or 'Off'))
-        windower.add_to_chat(2,
-        _addon.name ..
-        ': Check Elements - Day: ' ..
-        (user_settings.magic_burst.check_day and 'On' or 'Off') ..
-        ' Weather: ' .. (user_settings.magic_burst.check_weather and 'On' or 'Off'))
-        windower.add_to_chat(2,
-        _addon.name .. ': Show Spell: \t' .. (user_settings.magic_burst.show_spell and 'On' or 'Off'))
+            _addon.name .. ': Check Elements - Day: ' .. (user_settings.magic_burst.check_day and 'On' or 'Off') ..
+                ' Weather: ' .. (user_settings.magic_burst.check_weather and 'On' or 'Off'))
+        windower.add_to_chat(2, _addon.name .. ': Show Spell: \t' ..
+            (user_settings.magic_burst.show_spell and 'On' or 'Off'))
     end
 
     local should_save = true
@@ -123,7 +116,7 @@ local function magic_burst_command(arg)
     elseif (command == 'cast' or command == 'c') then
         if arg2 == nil or arg2 == '' then
             windower.add_to_chat(3,
-            "Usage: otto mb cast spell|helix|jutsu Tells AutoMB what magic type to try to cast if the default is not what you want.")
+                "Usage: otto mb cast spell|helix|jutsu Tells AutoMB what magic type to try to cast if the default is not what you want.")
             return
         end
         local cast_types = utils.cast_types()
@@ -137,13 +130,14 @@ local function magic_burst_command(arg)
     elseif (command == 'tier' or command == 't') then
         if arg2 == nil or arg2 == '' or not tonumber(arg2) then
             windower.add_to_chat(3,
-            "Usage: tier 1~6 tells autoMB what tier spell to use for Ninjutsu 1~3 will become ichi|ni|san.")
+                "Usage: tier 1~6 tells autoMB what tier spell to use for Ninjutsu 1~3 will become ichi|ni|san.")
             return
         end
 
         local t = tonumber(arg2)
 
-        if user_settings.magic_burst.cast_type == 'jutsu' and (user_settings.magic_burst.cast_tier > 0 and user_settings.magic_burst.cast_tier < 4) then
+        if user_settings.magic_burst.cast_type == 'jutsu' and
+            (user_settings.magic_burst.cast_tier > 0 and user_settings.magic_burst.cast_tier < 4) then
             user_settings.magic_burst.cast_tier = t
             message = 'magic burst (t)ier updated to ' .. arg2
         elseif (t > 0 and t < 7) then
@@ -224,7 +218,7 @@ local function magic_burst_command(arg)
             return
         end
 
-        if not T { 'on', 'off' }:contains(arg2) then
+        if not T {'on', 'off'}:contains(arg2) then
             windower.add_to_chat(3, 'Provide the command on | off for this command instead of ' .. arg2)
             return
         end
@@ -246,7 +240,8 @@ local function magic_burst_command(arg)
         end
 
         user_settings.magic_burst.change_target = not user_settings.magic_burst.change_target
-        message = "Auto target swapping " .. (user_settings.magic_burst.change_target and 'enabled' or 'disabled') .. "."
+        message = "Auto target swapping " .. (user_settings.magic_burst.change_target and 'enabled' or 'disabled') ..
+                      "."
     elseif command == "nukewall" then
         if arg2 == nil or arg2 == '' then
             windower.add_to_chat(3, 'Provide an integer 1-5.')
@@ -255,7 +250,7 @@ local function magic_burst_command(arg)
         local n = tonumber(arg2)
 
         user_settings.magic_burst.nuke_wall_offest = n
-        message = 'Nuke wall offest set to '..n
+        message = 'Nuke wall offest set to ' .. n
     else
         should_save = false
     end
@@ -271,7 +266,7 @@ end
 
 local function healer_commands(args)
     local command = 'help'
-    local allowed = T { 'test', 'help', 'status', 'show' }
+    local allowed = T {'test', 'help', 'status', 'show'}
     local message = ''
     local arg2 = ''
     local arg3 = ''
@@ -326,7 +321,7 @@ end
 
 local function weaponskill_commands(args)
     local command = 'help'
-    local allowed = T { 'test', 'help', 'status', 'show' }
+    local allowed = T {'test', 'help', 'status', 'show'}
     local message = ''
     local arg2 = ''
     local arg3 = ''
@@ -382,29 +377,33 @@ local function weaponskill_commands(args)
         end
 
         user_settings.weaponskill.open = true
-    elseif (command == 'partner') then --another player's TP
+    elseif (command == 'partner') then -- another player's TP
         if arg2 == 'off' then
             user_settings.weaponskill.partner = 'none'
             atc('Weaponskill partner removed.')
             user_settings:save()
             return
         end
-        
+
         local partner = windower.ffxi.get_mob_by_name(arg2:ucfirst()).name
-        local ws = arg3:ucfirst()..' '..arg4:ucfirst()
+        local ws = arg3:ucfirst() .. ' ' .. arg4:ucfirst()
         local partner_weaponskill = utils.get_weaponskill(ws)
 
         if (partner ~= nil and partner_weaponskill ~= nil) then
             local partnertp = tonumber(args3) or 1000
             user_settings.weaponskill.enabled = true
-            user_settings.weaponskill.partner = { name = partner, tp = partnertp, weaponskill = partner_weaponskill.en }
+            user_settings.weaponskill.partner = {
+                name = partner,
+                tp = partnertp,
+                weaponskill = partner_weaponskill.en
+            }
             atc("Will attempt to skillchain with " .. partner .. " when TP is " .. partnertp)
         else
             atc("Invalid args. Ex structure is:")
             atc("otto ws partner Twochix 1000 Tachi: Fudo")
             atc(6, 'Error: Invalid argument for ws waitfor: ' .. tostring(args[3]))
         end
-    elseif (command == 'hp') then --Target's HP
+    elseif (command == 'hp') then -- Target's HP
         local hp = tonumber(arg2)
         if (hp ~= nil) then
             user_settings.weaponskill.min_hp = hp
@@ -421,14 +420,14 @@ local function weaponskill_commands(args)
         user_settings.weaponskill.open = nil
         atc('Weaponskill settings cleared.')
     else
-        local ws_string = command:ucfirst()..' '..arg2:ucfirst()
+        local ws_string = command:ucfirst() .. ' ' .. arg2:ucfirst()
         local weaponskill = utils.get_weaponskill(ws_string)
 
         if (weaponskill ~= nil) then
             user_settings.weaponskill.name = weaponskill.en
             atcfs('Will now use %s', weaponskill.en)
         else
-            atcfs(123,'Error: Invalid weaponskill name: %s', ws_string)
+            atcfs(123, 'Error: Invalid weaponskill name: %s', ws_string)
         end
     end
 
@@ -436,7 +435,7 @@ local function weaponskill_commands(args)
         if message ~= '' then
             windower.add_to_chat(6, message)
         end
-        
+
         user_settings:save()
     end
 end
@@ -493,9 +492,9 @@ local function follow_commands(args)
 
     local should_save = true
 
-    if S { 'off', 'end', 'false', 'pause', 'stop', 'exit' }:contains(arg1) then
+    if S {'off', 'end', 'false', 'pause', 'stop', 'exit'}:contains(arg1) then
         user_settings.follow.active = false
-    elseif S { 'distance', 'dist', 'd' }:contains(arg1) then
+    elseif S {'distance', 'dist', 'd'}:contains(arg1) then
         local dist = tonumber(arg2)
         if (dist ~= nil) and (0 < dist) and (dist < 45) then
             user_settings.follow.distance = dist
@@ -504,7 +503,7 @@ local function follow_commands(args)
             atc('Error: Invalid argument specified for follow distance')
             return
         end
-    elseif S { 'resume', 'on' }:contains(arg1) then
+    elseif S {'resume', 'on'}:contains(arg1) then
         if (user_settings.follow.target ~= nil) then
             user_settings.follow.active = true
             atc('Now following ' .. user_settings.follow.target .. '.')
@@ -512,7 +511,7 @@ local function follow_commands(args)
             atc(6, 'Error: Unable to resume follow - no target set')
             return
         end
-    else --args[1] is guaranteed to have a value if this is reached
+    else -- args[1] is guaranteed to have a value if this is reached
         local pname = windower.ffxi.get_mob_by_name(arg1:ucfirst()).name
         if (pname ~= nil) then
             user_settings.follow.target = pname
@@ -530,7 +529,7 @@ local function follow_commands(args)
 end
 
 local function assist_commands(args)
-    local allowed = T { 'on | off | enabled | disable', 'yalmfightrange', 'role', 'master', 'slave', 'target' }
+    local allowed = T {'on | off | enabled | disable', 'yalmfightrange', 'role', 'master', 'slave', 'target'}
     local command = 'help'
     local message = ''
     local arg2 = ''
@@ -555,6 +554,29 @@ local function assist_commands(args)
     elseif command == 'off' or command == 'disable' then
         user_settings.assist.enabled = false
         message = 'Assiting has been toggled off.'
+    elseif command == 'target' then
+        local mob_index = otto.player.target_index
+        if mob_index == nil then
+            return
+        end
+
+        local mob_index_to_string = tostring(mob_index)
+        local message = 'target ' .. mob_index_to_string
+        windower.send_ipc_message(message)
+    elseif command == 'style' then
+        local allowed_args = S {'free', 'follow_master'}
+        if arg2 == nil then
+            message = 'valid fights are free and follow_master'
+        end
+
+        if allowed_args:contains(arg2) then
+            user_settings.assist.fight_style = arg2
+            message = 'Style set to free.'
+
+            user_settings:save()
+            return
+        end
+
     elseif command == 'master' then
         if arg2 == 'off' then
             user_settings.assist.master = ''
@@ -567,15 +589,15 @@ local function assist_commands(args)
             local ally = otto.fight.ally_lookup(arg2, nil, nil)
             if ally then
                 user_settings.assist.master = arg2
-                message = 'Assist configured with ' .. user_settings.assist.master .. ' as master'                
+                message = 'Assist configured with ' .. user_settings.assist.master .. ' as master'
             end
         end
 
-        if arg2 == '' then 
+        if arg2 == '' then
             local player = windower.ffxi.get_player()
             user_settings.assist.master = player.name
 
-            windower.send_command('send @others otto assist master '..player.name)
+            windower.send_command('send @others otto assist master ' .. player.name)
         end
 
     elseif command == 'slave' then -- don't call this, only set the master and the others become slaves by default
@@ -594,23 +616,24 @@ local function assist_commands(args)
     elseif command == 'role' then
         if arg2 == nil then
             message =
-            'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
+                'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
         end
 
-        if arg2 == 'frontline' or arg2 == 'backline' or arg2 == 'puller' or arg2 =='tank' then
+        if arg2 == 'frontline' or arg2 == 'backline' or arg2 == 'puller' or arg2 == 'tank' then
             local name = windower.ffxi.get_player().name
             user_settings.assist.slaves[name] = arg2:lower()
             message = 'Assist role is selected as ' .. arg2 .. '. Setting a role means you are a slave.'
-            windower.send_command('send @others otto assist set '..name..' '..arg2)
+            windower.send_command('send @others otto assist set ' .. name .. ' ' .. arg2)
         else
-            message = 'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
+            message =
+                'Please provide a role of: frontline | backline \n frontline will engage melee while backline support from afar'
         end
 
     elseif command == 'set' then
         if arg2 == nil or arg3 == nil then
             message = "Don't call this command, it's for automagic updating"
         end
-        
+
         local name = arg2
         local role = arg3
 
@@ -636,12 +659,12 @@ local function assist_commands(args)
         if arg2 == 'off' then
             user_settings.assist.should_engage = false
             message = 'Auto engage disabled'
-         end
+        end
 
-         if arg2 == 'on' then
+        if arg2 == 'on' then
             user_settings.assist.should_engage = true
             message = 'Auto engage enabled'
-         end
+        end
     elseif command == 'config' then
         if arg2 == 'refresh' then
             utils.refresh_config()
@@ -705,11 +728,10 @@ local function dispel_commands(args)
     end
 end
 
-
 -- TODO this was added quickly, I should go back and account for entry errors and return errors.
 -- TODO add indi command
 local function geomancer(args)
-    local allowed = T { 'on | off | enabled | disable', 'bubble', 'entrust', 'cooldowns' }
+    local allowed = T {'on | off | enabled | disable', 'bubble', 'entrust', 'cooldowns'}
     local command = 'help'
     local message = ''
     local arg2 = ''
@@ -778,8 +800,8 @@ local function geomancer(args)
 
         if action then
             user_settings.job.geomancer.geo = action.en
-            message = 'Will use ' ..
-            action.en .. ' using' .. arg2 .. ' to determine Full Circle usage at yalm distance of ~' .. arg4
+            message = 'Will use ' .. action.en .. ' using' .. arg2 ..
+                          ' to determine Full Circle usage at yalm distance of ~' .. arg4
         end
 
         if arg4 then
@@ -817,7 +839,7 @@ local function geomancer(args)
 end
 
 local function paladin(args)
-    local allowed = T { 'on | off | enabled | disable'}
+    local allowed = T {'on | off | enabled | disable'}
     local command = 'help'
     local message = ''
     local should_save = true
@@ -857,7 +879,7 @@ local function paladin(args)
 end
 
 local function samurai(args)
-    local allowed = T { 'on | off | enabled | disable'}
+    local allowed = T {'on | off | enabled | disable'}
     local command = 'help'
     local message = ''
     local should_save = true
@@ -895,7 +917,7 @@ local function samurai(args)
 end
 
 local function corsair(args)
-    local allowed = T { 'on | off | enabled | disable'}
+    local allowed = T {'on | off | enabled | disable'}
     local command = 'help'
     local message = ''
     local should_save = true
@@ -933,11 +955,11 @@ local function corsair(args)
 end
 
 local function debug(args)
-    local allowed = T { 'on | off | enabled | disable' }
+    local allowed = T {'on | off | enabled | disable'}
     local command = 'help'
     local message = ''
     local should_save = true
-    
+
     if (#args > 0) then
         command = args[1]
     end
@@ -945,7 +967,7 @@ local function debug(args)
     if command == 'on' or command == 'enable' then
         windower.send_command('send @others otto debug off')
         user_settings.debug.enabled = true
-        
+
         message = 'Debug mode turned on. Others have had debug mode turned off.'
     elseif command == 'off' or command == 'disable' then
         user_settings.debug.enabled = false
@@ -969,7 +991,7 @@ end
 -- TODO add indi command
 -- copied from geomancer for BLM
 local function blackmage(args)
-    local allowed = T { 'on | off | enabled | disable', 'bubble', 'entrust', 'cooldowns' }
+    local allowed = T {'on | off | enabled | disable', 'bubble', 'entrust', 'cooldowns'}
     local command = 'help'
     local message = ''
     local should_save = true
@@ -1019,7 +1041,7 @@ local function blackmage(args)
 end
 
 local function bard(args)
-    local allowed = T { 'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff' }
+    local allowed = T {'on | off | enabled | disable', 'fight', 'song', 'songs', 'debuff'}
     local message = ''
     local should_save = true
     local command = ''
@@ -1042,7 +1064,6 @@ local function bard(args)
         arg4 = args[4]
     end
 
-
     if command == 'on' or command == 'enable' then
         otto.bard.init()
         user_settings.job.bard.settings.enabled = true
@@ -1053,18 +1074,18 @@ local function bard(args)
         otto.buffs.wipe_debufflist()
         otto.buffs.wipe_bufflist()
         otto.bard.deinit()
-    elseif command == 'fight' then 
-        local allowed_fight_commands = S{'xp', 'boss', 'savetimers', 'normal'}
-        if allowed_fight_commands:contains(arg2) then 
-            message = 'Bard fight mode set: '..arg2
+    elseif command == 'fight' then
+        local allowed_fight_commands = S {'xp', 'boss', 'savetimers', 'normal'}
+        if allowed_fight_commands:contains(arg2) then
+            message = 'Bard fight mode set: ' .. arg2
             user_settings.job.bard.settings.fight_type = arg2
             otto.bard.check_fight_type()
-        else 
-            message = 'Allowed fight commands are '.. table.concat(allowed_fight_commands, ', ')
+        else
+            message = 'Allowed fight commands are ' .. table.concat(allowed_fight_commands, ', ')
         end
     elseif command == 'songs' then
         if arg2 == 'clear' then
-            user_settings.job.bard.songs = L{}
+            user_settings.job.bard.songs = L {}
             user_settings:save()
             return
         end
@@ -1088,7 +1109,7 @@ local function bard(args)
 
             else
                 -- add many songs
-                for x = 1, n do 
+                for x = 1, n do
                     local song = songs[x]
 
                     if not songlist:find(song) then
@@ -1098,17 +1119,19 @@ local function bard(args)
                     end
                 end
             end
-        end    
+        end
     elseif command == 'debuff' then
         if arg2 == 'clear' then
-            user_settings.job.bard.debuffs = L{}
+            user_settings.job.bard.debuffs = L {}
             user_settings:save()
             return
         else
             if otto.event_statics.debuffs[arg2] then
                 local debuff = otto.event_statics.debuffs[arg2][arg3]
-                if not debuff then return end
-        
+                if not debuff then
+                    return
+                end
+
                 local to_remove = user_settings.job.bard.debuffs:find(debuff)
                 if to_remove then
                     user_settings.job.bard.debuffs:remove(to_remove)
@@ -1118,13 +1141,13 @@ local function bard(args)
             else
                 message = 'not a valid song choice'
             end
-           
+
         end
-        
+
     elseif command == 'song' then
         if arg2 == 'clear' then
             for k, value in pairs(user_settings.job.bard.song) do
-                user_settings.job.bard.song[k] = L{}
+                user_settings.job.bard.song[k] = L {}
             end
         else
             local target = otto.bard.support.party_member(arg2)
@@ -1132,7 +1155,7 @@ local function bard(args)
             local songlist = user_settings.job.bard.song[target.name]
             local n = arg4
             n = tonumber(arg4)
-    
+
             if n == 0 then
                 for x = #songs, 1, -1 do
                     local song = songlist:find(songs[x])
@@ -1141,12 +1164,12 @@ local function bard(args)
                         songlist:remove(song)
                     end
                 end
-    
+
             else
                 -- add many songs
-                for x = 1, n do 
+                for x = 1, n do
                     local song = songs[x]
-    
+
                     if not songlist:find(song) then
                         if #songlist >= 5 then
                         end
@@ -1171,7 +1194,7 @@ local function bard(args)
 end
 
 local function whitemage(args)
-    local allowed = T { 'on | off | enabled | disable', 'devotion' }
+    local allowed = T {'on | off | enabled | disable', 'devotion'}
     local message = ''
     local should_save = true
     local command = ''
@@ -1194,7 +1217,6 @@ local function whitemage(args)
         arg4 = args[4]
     end
 
-
     if command == 'on' or command == 'enable' then
         otto.whitemage.init()
         user_settings.job.whitemage.enabled = true
@@ -1206,12 +1228,12 @@ local function whitemage(args)
         otto.buffs.wipe_bufflist()
         otto.whitemage.deinit()
     elseif command == 'devotion' then
-        if arg2 == nil then 
+        if arg2 == nil then
             windower.add_to_chat(3, 'Need to provide a devotion target.')
             return
         end
         user_settings.job.whitemage.devotion = arg2
-        message = 'Devotion will be used on '..arg2
+        message = 'Devotion will be used on ' .. arg2
 
     else
         windower.add_to_chat(3, "That's not a command")
@@ -1228,10 +1250,9 @@ local function whitemage(args)
     end
 end
 
-
 -- addon load. parses commands passed to otto
 function events.addon_command(...)
-    local args = T { ... }
+    local args = T {...}
     local command = 'help'
 
     if (#args > 0) then
@@ -1269,7 +1290,7 @@ function events.addon_command(...)
             blackmage(newArgs)
         elseif command == 'pld' or command == 'paladin' then
             paladin(newArgs)
-        elseif command == 'brd' or command == 'bard' then 
+        elseif command == 'brd' or command == 'bard' then
             bard(newArgs)
         elseif command == 'whm' or command == 'whitemage' then
             whitemage(newArgs)
@@ -1283,7 +1304,7 @@ function events.addon_command(...)
 
     if command == 'refresh' then
         utils.load_configs()
-    elseif S { 'r', 'reload' }:contains(command) then
+    elseif S {'r', 'reload'}:contains(command) then
         if args[2] ~= nil and args[2]:lower() == 'all' then
             for player, _ in pairs(otto.config.ipc_monitored_boxes) do
                 windower.send_command('send ' .. player .. ' otto r')
@@ -1291,7 +1312,7 @@ function events.addon_command(...)
             end
         end
         windower.send_command('lua reload otto')
-    elseif S { 'help', 'man', '?' }:contains(command) then
+    elseif S {'help', 'man', '?'}:contains(command) then
         windower.add_to_chat(6, 'Top level commands are:')
         windower.add_to_chat(6, 'aspir - configure auto aspir!')
         windower.add_to_chat(6, 'magicburst | mb - make things explody.')
@@ -1305,11 +1326,11 @@ function events.addon_command(...)
         windower.add_to_chat(6, 'dispel | f - similar to aspir, toggle auto-dispeling under the right conditions.')
         windower.add_to_chat(6, 'pull | f - an otto puller')
         windower.add_to_chat(6, 'geo | f - otto geo.')
-    elseif S { 'start', 'on' }:contains(command) then
+    elseif S {'start', 'on'}:contains(command) then
         otto.activate = true
         otto.start()
         windower.add_to_chat(5, 'Otto is live!')
-    elseif S { 'stop', 'off' }:contains(command) then
+    elseif S {'stop', 'off'}:contains(command) then
         otto.activate = off
         healer_commands('off')
         otto.stop()

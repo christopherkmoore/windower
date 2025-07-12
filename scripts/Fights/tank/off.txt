@@ -4,27 +4,22 @@
 //
 ////////////////////////////////
 
-
-send Chixslave otto whm off;
+send @all otto off
 
 send Fourchix cor off;
-send Fourchix otto cor off;
 
-send Twochix otto sam off;
 send Twochix otto assist engages off;
 
-send Onechix otto brd off;
-send Onechix otto bard songs clear;
-send Onechix otto bard song clear;
+send Onechix otto brd fight normal;
+send Onechix otto pull off;
 
-send Threechix otto geo off;
 send Threechix otto geo cooldowns off;
 
 send @all otto ws clear;
-send @all otto follow off;
+send @all otto ws open off
+send @all otto ws close off;
 
-send Fivechix otto pld off;
-send Fivechix otto healer off;
+send @all otto follow off;
 
 
 

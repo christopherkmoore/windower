@@ -34,6 +34,7 @@ function assist.init()
     local defaults = { }
     defaults.enabled = true
     defaults.yalm_fight_range = 3.5
+    defaults.fight_style = 'free'      -- free, follow_master
     defaults.role =  'frontline' --'frontline' | 'backline' (will close the distance to auto, or stay at range.)
     defaults.master = ''
     defaults.slaves = {  } -- { ['Slave'] = 'role' }
@@ -139,6 +140,31 @@ local function target_master(player, id)
         ['Target'] = id,
         ['Player Index'] = player.index,
     }))
+end
+
+local function npc_interact_maser(id)
+    local mob = windower.ffxi.get_mob_by_index(id)
+
+    if not mob then return end
+    local times_tried = 0
+
+    while otto.player.target_interacted ~= true do
+
+        local p = packets.new('outgoing', 0x01A, {
+            ["Target"] = mob.id,
+            ["Target Index"] = mob.index,
+            ["Category"] = 0,
+            ["Param"] = 0,
+            ["_unknown1"] = 0,
+        })
+
+        packets.inject(p)
+        times_tried = times_tried + 1
+        coroutine.sleep(2)
+        if times_tried == 5 then break end
+    end
+    otto.player.target_interacted = false
+
 end
 
 ---forces someone to target and try casting
@@ -251,18 +277,15 @@ function assist.come_to_master(start, finish)
     if mobs_fighting == 0 then return end
     
     local master_mob = windower.ffxi.get_mob_by_id(master.id)
-    
 
     local me = windower.ffxi.get_player()
     local me_mob = windower.ffxi.get_mob_by_id(me.id)
-    if not master_mob and not me_mob then return end 
-    
-	local dist = math.sqrt(master_mob.distance)
+    if master_mob == nil or me_mob == nil then return end 
 
-    if dist > 3 then 
-		closing_in = true
-		log('Slave: Closing in ---> '..master_mob.name)
-    else 
+	local dist = math.sqrt(master_mob.distance)
+    local role = user_settings.assist.slaves[me.name]
+
+    if dist < 3 and role == 'frontline' then 
         face_target()
 	end
 
@@ -415,7 +438,7 @@ function assist.ipc_message_handler(message)
 
 			coroutine.sleep(1)
 			while player.status == player_status['Engaged'] do
-                assist.come_to_master(5, 0.2)
+                assist.come_to_master(5, 1)
 
 				-- if not closing_in and not locked_closing_in then
 				-- 	-- close_in()
@@ -441,16 +464,7 @@ function assist.ipc_message_handler(message)
 
     elseif msg[1] == 'target' then     
         local targetId = tonumber(msg[2])
-        if msg[3] then
-            local player = windower.ffxi.get_player()
-            if player.name == msg[3] then
-                target_master(player, targetId)   
-                return
-            end
-            return
-        end
-        
-        assist.all_target_master(targetId)
+        npc_interact_maser(targetId)
     end
 end
 

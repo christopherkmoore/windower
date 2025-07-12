@@ -7,8 +7,7 @@
 // Fight should be Magic Damage focused. Let Geo go off
 ////////////////////////////////
 
-send @all exec fights/reset
-
+send @all otto on;
 wait 0.1;
 
 ////////////////////////////////
@@ -16,6 +15,7 @@ wait 0.1;
 ////////////////////////////////
 
 send Chixslave exec fights/tank/auto_whm
+
 wait 0.3;
 
 send Chixslave otto buff Chixslave barwatera on;
@@ -27,16 +27,21 @@ send Chixslave otto debuff Dia II on;
 ////////////////////////////////////
 
 send Onechix exec fights/tank/auto_brd
+
 wait 0.3;
+
 send Onechix otto brd fight normal;
 send Onechix otto bard songs march 1;
 send Onechix otto bard songs minuet 2;
 
-send Onechix otto bard song Twochix dirge;
 send Onechix otto bard song Chixslave ballad;
 send Onechix otto bard song Fivechix ballad;
 send Onechix otto bard song Threechix ballad;
 send Onechix otto pull off;
+
+send Onechix otto debuff Pining Nocturne on
+send Onechix otto debuff Carnage Elegy on
+send Onechix otto debuff Foe Requiem VII on
 
 wait 0.3;
 
@@ -48,22 +53,19 @@ send Threechix exec fights/tank/auto_geo_mag
 send Threechix otto magicburst doubleburst on
 wait 0.3;
 
-
 ////////////////////////////////////
 // Paladin
 ////////////////////////////////////
-
-send Fivechix otto pld on;
 
 wait 0.3
 
 ////////////////////////////////////
 // Corsair
 ////////////////////////////////////
+send Fourchix exec fights/tank/auto_cor
+
 send Fourchix cor roll 1 Samurai Roll;
 send Fourchix cor roll 2 Allies;
-
-send Fourchix exec fights/tank/auto_cor
 
 wait 0.3
 

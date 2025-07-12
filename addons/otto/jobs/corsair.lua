@@ -21,19 +21,19 @@ function corsair.init()
         user_settings:save()
     end
     otto.weaponskill.init()
-
+    user_settings.job.corsair.enabled = true
+    
     corsair.check_cor:loop(corsair.check_interval)
 end
 
 function corsair.deinit() 
     otto.weaponskill.deinit()
-
+    user_settings.job.corsair.enabled = false
 end
-
-
 
 function corsair.check_cor()
     if not user_settings.job.corsair.enabled then return end
+    if otto.player.melee_disabled() then return end 
     corsair.counter = corsair.counter + corsair.check_interval
 
     if corsair.counter >= corsair.delay then
@@ -45,10 +45,13 @@ function corsair.check_cor()
 
         
         -- weaponskills / skillchains
-        otto.weaponskill.action()
-        
+        if player.status == 1 then
+            otto.weaponskill.action()
+        end        
         -- Check if you need to come closer to the fight
-        otto.assist.come_to_master(5, 0.2)
+        if user_settings.assist.fight_style == 'follow_master' then
+            otto.assist.come_to_master(5, 1)
+        end
 
     end
 end

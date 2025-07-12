@@ -5,9 +5,7 @@
 // Fight Notes: General fight script for unspecific cases.
 //
 ////////////////////////////////
-send @all exec fights/reset
 
-wait 0.1;
 
 ////////////////////////////////
 // White Mage

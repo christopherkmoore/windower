@@ -7,6 +7,7 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
+        ["fight_style"] = "free",
         ["master"] = "Twochix",
         ["should_engage"] = true,
         ["slaves"] = {
@@ -23,7 +24,7 @@ return {
         ["enabled"] = false
     },
     ["dispel"] = {
-        ["enabled"] = false
+        ["enabled"] = true
     },
     ["follow"] = {
         ["active"] = false,
@@ -86,6 +87,7 @@ return {
                 [1] = "Knight's Minne",
                 ["n"] = 1
             },
+            ["enabled"] = true,
             ["playlist"] = T{
                 ["clear"] = L{
                     ["n"] = 0
@@ -93,26 +95,34 @@ return {
             },
             ["settings"] = T{
                 ["dispels"] = true,
-                ["enabled"] = false,
+                ["enabled"] = true,
                 ["fight_type"] = "normal",
                 ["sleeps"] = true
             },
             ["song"] = T{
                 ["Chixslave"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Fivechix"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad III",
+                    ["n"] = 1
                 },
                 ["Threechix"] = L{
-                    ["n"] = 0
+                    [1] = "Mage's Ballad II",
+                    [2] = "Mage's Ballad III",
+                    ["n"] = 2
                 },
                 ["Twochix"] = L{
-                    ["n"] = 0
+                    [1] = "Adventurer's Dirge",
+                    ["n"] = 1
                 }
             },
             ["songs"] = L{
-                ["n"] = 0
+                [1] = "Victory March",
+                [2] = "Valor Minuet IV",
+                [3] = "Valor Minuet V",
+                ["n"] = 3
             }
         }
     },
@@ -133,6 +143,8 @@ return {
         ["with"] = "/ma carnage elegy"
     },
     ["weaponskill"] = {
-        ["enabled"] = false
+        ["close"] = true,
+        ["enabled"] = false,
+        ["open"] = true
     }
 }

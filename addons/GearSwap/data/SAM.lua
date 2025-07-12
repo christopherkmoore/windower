@@ -104,33 +104,7 @@ function job_precast(spell, spellMap, eventArgs)
 end
 
 function job_filtered_action(spell, eventArgs)
-	if spell.type == 'WeaponSkill' then
-		local available_ws = S(windower.ffxi.get_abilities().weapon_skills)
-		-- WS 112 is Double Thrust, meaning a Spear is equipped.
-		if available_ws:contains(112) then
-            if spell.english == "Tachi: Fudo" then
-				windower.chat.input('/ws "Stardiver" '..spell.target.raw)
-                cancel_spell()
-				eventArgs.cancel = true
-            elseif spell.english == "Tachi: Shoha" then
-                send_command('@input /ws "Impulse Drive" '..spell.target.raw)
-                cancel_spell()
-				eventArgs.cancel = true
-            elseif spell.english == "Tachi: Rana" then
-                send_command('@input /ws "Penta Thrust" '..spell.target.raw)
-                cancel_spell()
-				eventArgs.cancel = true
-            elseif spell.english == "Tachi: Gekko" then
-                send_command('@input /ws "Sonic Thrust" '..spell.target.raw)
-                cancel_spell()
-				eventArgs.cancel = true
-            elseif spell.english == "Tachi: Hobaku" then
-                send_command('@input /ws "Leg Sweep" '..spell.target.raw)
-                cancel_spell()
-				eventArgs.cancel = true
-            end
-        end
-	end
+	
 end
 
 function job_post_precast(spell, spellMap, eventArgs)

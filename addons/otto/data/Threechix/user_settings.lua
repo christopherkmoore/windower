@@ -7,6 +7,7 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
+        ["fight_style"] = "free",
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
@@ -68,7 +69,7 @@ return {
                 ["target"] = "Twochix"
             },
             ["cooldowns"] = false,
-            ["enabled"] = false,
+            ["enabled"] = true,
             ["entrust"] = {
                 ["indi"] = "Indi-Precision",
                 ["target"] = "Twochix"
@@ -95,6 +96,7 @@ return {
         ["with"] = "/ma Poison"
     },
     ["weaponskill"] = {
+        ["close"] = true,
         ["enabled"] = false
     }
 }

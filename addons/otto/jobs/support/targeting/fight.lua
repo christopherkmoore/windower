@@ -211,6 +211,7 @@ function fight.update_targets()
     otto.debug.create_log(fight.my_targets, 'my_targets')
 end
 
+
 --=====================================================================
 -- MARK: Targets - add / remove + utility methods
 --=====================================================================
@@ -293,5 +294,10 @@ function fight.action_handler(category, action, actor_id, target, basic_info)
     mob.engaged = 'fighting'
 
 end
+
+windower.register_event('zone change', function()
+    print('cleared Targets')
+    otto.fight.my_targets = {}
+end)
 
 return fight

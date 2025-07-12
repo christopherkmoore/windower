@@ -7,6 +7,7 @@ return {
     },
     ["assist"] = {
         ["enabled"] = true,
+        ["fight_style"] = "free",
         ["master"] = "Twochix",
         ["slaves"] = {
             ["Chixslave"] = "backline",
@@ -64,7 +65,7 @@ return {
         },
         ["corsair"] = {
             ["cooldowns"] = true,
-            ["enabled"] = false
+            ["enabled"] = true
         }
     },
     ["magic_burst"] = {
@@ -85,6 +86,7 @@ return {
         ["with"] = ""
     },
     ["weaponskill"] = {
+        ["close"] = true,
         ["enabled"] = false
     }
 }
